@@ -36,3 +36,20 @@ Interactive GPU visualization is the default for formal user-facing runs:
 Use `--headless` only for explicit batch operation.
 
 Each completed run stores a self-contained result directory under `runs/` with the scenario config snapshot, run manifest, rosbag, PX4 ULog, model snapshot, recorder log, and scenario-specific data.
+
+
+## Public experiment API
+
+User experiments can use the stable context API instead of raw PX4/Gazebo topics:
+
+~~~python
+from amsim import ScenarioContext
+
+with ScenarioContext() as ctx:
+    ctx.vehicle.takeoff(2.5)
+    ctx.arm.move_position("arm_joint_1", -5.0, unit="deg")
+    obs = ctx.observe()
+    ctx.vehicle.land()
+~~~
+
+See `docs/PUBLIC_API.md` and `docs/CUSTOM_SCENARIOS.md`.

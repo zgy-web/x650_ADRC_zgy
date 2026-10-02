@@ -11,6 +11,7 @@ from .paths import PROJECT_ROOT
 BUILTIN_CONFIG_DIR = PROJECT_ROOT / "configs" / "scenarios"
 USER_SCENARIO_DIR = PROJECT_ROOT / "scenarios"
 
+
 @dataclass(frozen=True)
 class ScenarioSpec:
     name: str
@@ -18,6 +19,7 @@ class ScenarioSpec:
     module: str
     config: dict
     source: str
+
 
 def _validate_name(name: str) -> str:
     if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", name):
@@ -27,37 +29,33 @@ def _validate_name(name: str) -> str:
         )
     return name
 
+
 def discover() -> dict[str, ScenarioSpec]:
     found: dict[str, ScenarioSpec] = {}
-    if not BUILTIN_CONFIG_DIR.is_dir():
-        return found
 
-    for path in sorted(BUILTIN_CONFIG_DIR.glob("*.yaml")):
-        data = yaml.safe_load(path.read_text()) or {}
-        name = str(data.get("name") or path.stem)
-        _validate_name(name)
+    if BUILTIN_CONFIG_DIR.is_dir():
+        for path in sorted(BUILTIN_CONFIG_DIR.glob("*.yaml")):
+            data = yaml.safe_load(path.read_text()) or {}
+            name = str(data.get("name") or path.stem)
+            _validate_name(name)
+            module = data.get("module") or f"amsim.scenarios.{name}"
 
-        module = data.get("module")
-        if not module:
-            module = f"amsim.scenarios.{name}"
+            if name in found:
+                raise RuntimeError(f"Duplicate scenario name: {name}")
 
-        if name in found:
-            raise RuntimeError(f"Duplicate scenario name: {name}")
-
-        found[name] = ScenarioSpec(
-            name=name,
-            config_path=path,
-            module=str(module),
-            config=data,
-            source="builtin",
-        )
+            found[name] = ScenarioSpec(
+                name=name,
+                config_path=path,
+                module=str(module),
+                config=data,
+                source="builtin",
+            )
 
     if USER_SCENARIO_DIR.is_dir():
         for path in sorted(USER_SCENARIO_DIR.glob("*.yaml")):
             data = yaml.safe_load(path.read_text()) or {}
             name = str(data.get("name") or path.stem)
             _validate_name(name)
-            module_file = USER_SCENARIO_DIR / f"{name}.py"
             module = data.get("module") or str(Path("scenarios") / f"{name}.py")
 
             if name in found:
@@ -75,12 +73,14 @@ def discover() -> dict[str, ScenarioSpec]:
 
     return found
 
+
 def get(name: str) -> ScenarioSpec:
     scenarios = discover()
     if name not in scenarios:
         available = ", ".join(sorted(scenarios)) or "(none)"
         raise KeyError(f"Unknown scenario '{name}'. Available: {available}")
     return scenarios[name]
+
 
 def create_template(name: str) -> tuple[Path, Path]:
     _validate_name(name)
@@ -92,37 +92,42 @@ def create_template(name: str) -> tuple[Path, Path]:
         raise FileExistsError(f"Scenario already exists: {name}")
 
     py_path.write_text(
-        '''"""User scenario entry point.
+        """\"\"\"User experiment.
 
 The platform owns PX4/Gazebo startup, rendering, readiness checks, logging,
-shutdown, and ULog finalization. Put only experiment logic here.
+shutdown, and ULog archival. Experiment logic uses the stable public API.
+\"\"\"
 
-For now this template is a process entry point. The higher-level Vehicle/Arm/
-Observation API will be added without changing how scenarios are discovered.
-"""
+from amsim import ScenarioContext
 
-import os
-import yaml
-
-CONFIG_PATH = os.environ["AMSIM_SCENARIO_CONFIG"]
-CONFIG = yaml.safe_load(open(CONFIG_PATH))
 
 def main():
-    print(f"Running user scenario: {CONFIG['name']}")
-    # TODO: experiment logic goes here.
-    # Future API:
-    #   ctx.vehicle.takeoff(...)
-    #   ctx.arm.move_position(...)
-    #   obs = ctx.observe()
-    #   ctx.vehicle.land()
+    with ScenarioContext() as ctx:
+        ctx.vehicle.takeoff(2.5)
+
+        # Example arm command:
+        # ctx.arm.move_position(
+        #     "arm_joint_1",
+        #     -5.0,
+        #     unit="deg",
+        #     max_speed=0.5,
+        #     speed_unit="deg/s",
+        # )
+
+        obs = ctx.observe()
+        print(obs)
+
+        ctx.wait(2.0)
+        ctx.vehicle.land()
+
 
 if __name__ == "__main__":
     main()
-'''
+"""
     )
 
     yaml_path.write_text(
-        f'''schema_version: 1
+        f"""schema_version: 1
 name: {name}
 module: scenarios/{name}.py
 backend: px4_sitl
@@ -133,6 +138,6 @@ record:
   rosbag: true
   px4_ulog: true
   ground_truth: true
-'''
+"""
     )
     return py_path, yaml_path

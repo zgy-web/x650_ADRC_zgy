@@ -25,8 +25,36 @@ This creates:
 - `scenarios/my_test.py`
 - `scenarios/my_test.yaml`
 
-The YAML controls experiment configuration and whether visualization/data
-recording are enabled. The Python file contains experiment-specific logic.
+The YAML selects model/runtime options. The Python file contains experiment
+logic using the public API.
+
+A generated template looks like:
+
+~~~python
+from amsim import ScenarioContext
+
+def main():
+    with ScenarioContext() as ctx:
+        ctx.vehicle.takeoff(2.5)
+
+        # Optional manipulator motion:
+        # ctx.arm.move_position(
+        #     "arm_joint_1",
+        #     -5.0,
+        #     unit="deg",
+        #     max_speed=0.5,
+        #     speed_unit="deg/s",
+        # )
+
+        obs = ctx.observe()
+        print(obs)
+
+        ctx.wait(2.0)
+        ctx.vehicle.land()
+
+if __name__ == "__main__":
+    main()
+~~~
 
 Run it with:
 
@@ -36,10 +64,31 @@ Run it with:
 
 The scenario name is discovered dynamically; it is not hard-coded into the CLI.
 
-## Extension direction
+## Select a manipulator model
 
-The current user-scenario entry point is intentionally minimal while the
-validated flight workflows remain unchanged. The next API layer will expose a
-stable context object with Vehicle, Arm, Observation, timing, and logging APIs,
-so user experiments can express logic without depending on raw PX4, Gazebo, or
-transport topics.
+The scenario YAML can select either the reviewed reference model or a generated
+configurable model:
+
+~~~yaml
+model: x500_underfold
+~~~
+
+or:
+
+~~~yaml
+model: x500_serial_3link_example
+~~~
+
+The selected model determines the discovered joint list exposed through
+`ctx.arm.joints`.
+
+## Ground truth
+
+Ground truth is evaluation-only and must be requested explicitly:
+
+~~~python
+obs = ctx.observe(ground_truth=True)
+~~~
+
+Normal `ctx.observe()` returns PX4-estimated vehicle state plus arm state
+without exposing Gazebo ground truth.
