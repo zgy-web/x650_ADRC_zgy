@@ -41,6 +41,16 @@ def _git_head(path: Path) -> str | None:
     return p.stdout.strip() if p.returncode == 0 else None
 
 
+def _git_dirty(path: Path) -> bool | None:
+    p = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=path,
+        text=True,
+        capture_output=True,
+    )
+    return bool(p.stdout.strip()) if p.returncode == 0 else None
+
+
 def _scenario_python() -> Path:
     explicit = os.environ.get("AMSIM_SCENARIO_PYTHON")
     if explicit:
@@ -292,7 +302,9 @@ def run(name: str, headless: bool = False) -> Path:
         "schema_version": 1,
         "platform_version": __version__,
         "platform_git_commit": _git_head(PROJECT_ROOT),
+        "platform_git_dirty": _git_dirty(PROJECT_ROOT),
         "px4_git_commit": _git_head(px4_dir()),
+        "px4_git_dirty": _git_dirty(px4_dir()),
         "model_name": model_spec.model_name,
         "model_sha256": model_spec.sha256,
         "model_source": model_spec.source,

@@ -110,14 +110,40 @@ def gpu_render_status() -> dict:
         if driver
         else None
     )
+    bundled_egl_ready = bool(
+        driver
+        and egl_json.is_file()
+        and gpucomp
+        and gpucomp.is_file()
+    )
 
+    system_egl_json = Path("/usr/share/glvnd/egl_vendor.d/10_nvidia.json")
+    system_gpucomp_candidates = [
+        Path(f"/usr/lib/x86_64-linux-gnu/libnvidia-gpucomp.so.{driver}"),
+        Path(f"/usr/lib64/libnvidia-gpucomp.so.{driver}"),
+    ] if driver else []
+    system_gpucomp = next(
+        (p for p in system_gpucomp_candidates if p.is_file()),
+        None,
+    )
+    system_egl_ready = bool(
+        driver
+        and system_egl_json.is_file()
+        and system_gpucomp
+    )
+
+    egl_source = (
+        "bundled"
+        if bundled_egl_ready
+        else "system"
+        if system_egl_ready
+        else "missing"
+    )
     virtualgl_ready = bool(
         gpu
         and driver
         and vglrun.is_file()
-        and egl_json.is_file()
-        and gpucomp
-        and gpucomp.is_file()
+        and egl_source != "missing"
         and desktop["display_ok"]
     )
 
@@ -157,10 +183,19 @@ def gpu_render_status() -> dict:
         "virtualgl_ready": virtualgl_ready,
         "virtualgl": vglrun.is_file(),
         "vglrun": str(vglrun),
-        "egl_json": str(egl_json),
-        "egl_json_ok": egl_json.is_file(),
-        "gpucomp": str(gpucomp) if gpucomp else "",
-        "gpucomp_ok": bool(gpucomp and gpucomp.is_file()),
+        "egl_source": egl_source,
+        "egl_json": str(
+            egl_json if bundled_egl_ready else system_egl_json
+        ),
+        "egl_json_ok": bundled_egl_ready or system_egl_ready,
+        "gpucomp": str(
+            gpucomp
+            if bundled_egl_ready
+            else system_gpucomp
+            if system_gpucomp
+            else ""
+        ),
+        "gpucomp_ok": bundled_egl_ready or bool(system_gpucomp),
     }
 
 
@@ -215,20 +250,21 @@ def start_gui() -> dict:
     prefix = [dbus, "--"] if dbus else []
 
     if render["selected_backend"] == "virtualgl":
-        egl_dir = Path(
-            os.environ.get(
-                "AMSIM_EGL_DIR",
-                str(workspace_root() / "egl-test"),
+        if render.get("egl_source") == "bundled":
+            egl_dir = Path(
+                os.environ.get(
+                    "AMSIM_EGL_DIR",
+                    str(workspace_root() / "egl-test"),
+                )
             )
-        )
-        env["LD_LIBRARY_PATH"] = str(egl_dir / "lib") + (
-            ":" + env["LD_LIBRARY_PATH"]
-            if env.get("LD_LIBRARY_PATH")
-            else ""
-        )
-        env["__EGL_VENDOR_LIBRARY_FILENAMES"] = str(
-            egl_dir / "10_nvidia.json"
-        )
+            env["LD_LIBRARY_PATH"] = str(egl_dir / "lib") + (
+                ":" + env["LD_LIBRARY_PATH"]
+                if env.get("LD_LIBRARY_PATH")
+                else ""
+            )
+            env["__EGL_VENDOR_LIBRARY_FILENAMES"] = str(
+                egl_dir / "10_nvidia.json"
+            )
         app = [
             render["vglrun"],
             "-d",
@@ -320,3 +356,146 @@ def stop_gui() -> dict:
         "pid": pid,
         "signal": "SIGTERM",
     }
+
+
+DESKTOP_STATE = STATE_DIR / "desktop.json"
+
+
+def _desktop_owned_state() -> dict | None:
+    if not DESKTOP_STATE.is_file():
+        return None
+    try:
+        return json.loads(DESKTOP_STATE.read_text())
+    except Exception:
+        return None
+
+
+def start_virtual_desktop() -> dict:
+    """Start a localhost-only Xvfb + VNC + noVNC stack for remote servers."""
+    required = ["Xvfb", "x11vnc", "websockify"]
+    missing = [name for name in required if not shutil.which(name)]
+    if missing:
+        raise RuntimeError(
+            "virtual desktop tools missing: " + ", ".join(missing)
+            + "; run deploy/host/install_ubuntu22.sh"
+        )
+
+    current = _desktop_owned_state()
+    if current and any(
+        _alive(int(pid))
+        for pid in current.get("pids", {}).values()
+        if pid
+    ):
+        return {**current, **desktop_status(), "owned": True}
+
+    env = _desktop_env()
+    display = env["DISPLAY"]
+    control = results_dir() / "_control"
+    control.mkdir(parents=True, exist_ok=True)
+    stamp = time.strftime("%Y%m%d_%H%M%S")
+    pids: dict[str, int | None] = {
+        "xvfb": None,
+        "x11vnc": None,
+        "novnc": None,
+    }
+    logs: dict[str, str] = {}
+
+    if not desktop_status()["display_ok"]:
+        xvfb_log = control / f"xvfb_{stamp}.log"
+        f = open(xvfb_log, "w")
+        proc = subprocess.Popen(
+            [
+                "Xvfb", display,
+                "-screen", "0", "1280x800x24",
+                "-ac", "+extension", "GLX", "+render", "-noreset",
+            ],
+            stdin=subprocess.DEVNULL,
+            stdout=f,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+        f.close()
+        pids["xvfb"] = proc.pid
+        logs["xvfb"] = str(xvfb_log)
+        time.sleep(1.0)
+
+    if not desktop_status()["display_ok"]:
+        raise RuntimeError(f"failed to start X display {display}")
+
+    vnc_log = control / f"x11vnc_{stamp}.log"
+    f = open(vnc_log, "w")
+    proc = subprocess.Popen(
+        [
+            "x11vnc", "-display", display, "-localhost",
+            "-rfbport", "5901", "-forever", "-shared", "-nopw",
+        ],
+        stdin=subprocess.DEVNULL,
+        stdout=f,
+        stderr=subprocess.STDOUT,
+        start_new_session=True,
+    )
+    f.close()
+    pids["x11vnc"] = proc.pid
+    logs["x11vnc"] = str(vnc_log)
+
+    novnc_log = control / f"novnc_{stamp}.log"
+    f = open(novnc_log, "w")
+    proc = subprocess.Popen(
+        [
+            "websockify", "--web=/usr/share/novnc/",
+            "127.0.0.1:6080", "127.0.0.1:5901",
+        ],
+        stdin=subprocess.DEVNULL,
+        stdout=f,
+        stderr=subprocess.STDOUT,
+        start_new_session=True,
+    )
+    f.close()
+    pids["novnc"] = proc.pid
+    logs["novnc"] = str(novnc_log)
+    time.sleep(1.5)
+
+    status = desktop_status()
+    state = {
+        "display": display,
+        "pids": pids,
+        "logs": logs,
+        "started_at": time.time(),
+        "localhost_only": True,
+    }
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    DESKTOP_STATE.write_text(json.dumps(state, indent=2))
+    if not (
+        status["display_ok"]
+        and status["vnc_5901"]
+        and status["novnc_6080"]
+    ):
+        raise RuntimeError(
+            "virtual desktop did not become ready: "
+            + json.dumps(status)
+        )
+    return {**state, **status, "owned": True}
+
+
+def stop_virtual_desktop() -> dict:
+    state = _desktop_owned_state()
+    if not state:
+        return {"stopped": True, "reason": "no owned desktop state"}
+
+    stopped = {}
+    for name in ("novnc", "x11vnc", "xvfb"):
+        pid = state.get("pids", {}).get(name)
+        if not pid or not _alive(int(pid)):
+            stopped[name] = True
+            continue
+        try:
+            os.killpg(int(pid), signal.SIGTERM)
+        except OSError:
+            pass
+        deadline = time.monotonic() + 3
+        while time.monotonic() < deadline and _alive(int(pid)):
+            time.sleep(0.1)
+        stopped[name] = not _alive(int(pid))
+
+    DESKTOP_STATE.unlink(missing_ok=True)
+    return {"stopped": all(stopped.values()), "components": stopped}

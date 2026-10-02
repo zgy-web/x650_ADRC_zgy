@@ -28,9 +28,9 @@ echo "workspace : $WORKSPACE"
 echo "PX4       : $PX4_DIR"
 echo "ROS ws    : $ROS_WS"
 echo "venv      : $VENV"
-
 if [[ ! -d "$PX4_DIR/.git" ]]; then
-  git clone --recursive https://github.com/PX4/PX4-Autopilot.git "$PX4_DIR"
+  git -c http.version=HTTP/1.1 clone \
+    https://github.com/PX4/PX4-Autopilot.git "$PX4_DIR"
 fi
 
 actual="$(git -C "$PX4_DIR" rev-parse HEAD)"
@@ -39,36 +39,49 @@ if [[ "$actual" != "$PX4_COMMIT" ]]; then
     echo "[FAIL] PX4 checkout has local changes; refusing checkout" >&2
     exit 2
   fi
-  git -C "$PX4_DIR" fetch --all --tags
+  git -c http.version=HTTP/1.1 -C "$PX4_DIR" fetch --all --tags
   git -C "$PX4_DIR" checkout "$PX4_COMMIT"
 fi
 
-git -C "$PX4_DIR" submodule update --init --recursive
+git -C "$PX4_DIR" submodule sync --recursive
+git -c http.version=HTTP/1.1 -C "$PX4_DIR" \
+  submodule update --init --recursive --jobs 4 -- \
+  Tools/simulation/gz \
+  src/drivers/gps/devices \
+  src/lib/events/libevents \
+  src/lib/heatshrink/heatshrink \
+  src/modules/mavlink/mavlink \
+  src/modules/uxrce_dds_client/Micro-XRCE-DDS-Client
 
-if [[ "$SKIP_PX4_BUILD" -eq 0 && ! -x "$PX4_DIR/build/px4_sitl_default/bin/px4" ]]; then
-  cmake -S "$PX4_DIR" -B "$PX4_DIR/build/px4_sitl_default" -GNinja -DCONFIG=px4_sitl_default
-  cmake --build "$PX4_DIR/build/px4_sitl_default"
+if [[ ! -x "$VENV/bin/python3" ]]; then
+  /usr/bin/python3 -m venv --system-site-packages "$VENV"
+fi
+"$VENV/bin/python3" -m pip install \
+  -r "$PX4_DIR/Tools/setup/requirements.txt"
+"$VENV/bin/python3" -m pip install \
+  -r "$ROOT/deploy/host/runtime-requirements.txt"
+
+if [[ "$SKIP_PX4_BUILD" -eq 0 \
+   && ! -x "$PX4_DIR/build/px4_sitl_default/bin/px4" ]]; then
+  PATH="$VENV/bin:$PATH" \
+    cmake -S "$PX4_DIR" -B "$PX4_DIR/build/px4_sitl_default" \
+      -GNinja -DCONFIG=px4_sitl_default
+  PATH="$VENV/bin:$PATH" \
+    cmake --build "$PX4_DIR/build/px4_sitl_default"
 fi
 
 rm -rf "$ROS_WS/src/px4_msgs"
-mkdir -p "$ROS_WS/src/px4_msgs/msg"
-cp "$ROOT/vendor/px4_msgs/CMakeLists.txt" "$ROS_WS/src/px4_msgs/CMakeLists.txt"
-cp "$ROOT/vendor/px4_msgs/package.xml" "$ROS_WS/src/px4_msgs/package.xml"
-cp "$PX4_DIR"/msg/*.msg "$ROS_WS/src/px4_msgs/msg/"
+mkdir -p "$ROS_WS/src"
+cp -a "$ROOT/vendor/px4_msgs" "$ROS_WS/src/px4_msgs"
 
 set +u
 source /opt/ros/humble/setup.bash
 set -u
 (
   cd "$ROS_WS"
-  colcon build --symlink-install --packages-select px4_msgs
+  PATH="/usr/local/bin:/usr/bin:/bin:/opt/ros/humble/bin" \
+    /usr/bin/colcon build --symlink-install --packages-select px4_msgs
 )
-
-if [[ ! -x "$VENV/bin/python3" ]]; then
-  /usr/bin/python3 -m venv --system-site-packages "$VENV"
-fi
-"$VENV/bin/python3" -m pip install -r "$ROOT/deploy/host/runtime-requirements.txt"
-
 MODEL_DST="$PX4_DIR/Tools/simulation/gz/models/x500_underfold"
 mkdir -p "$(dirname "$MODEL_DST")"
 rm -rf "$MODEL_DST"

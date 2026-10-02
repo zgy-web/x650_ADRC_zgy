@@ -93,6 +93,20 @@ def cmd_desktop_status(_: argparse.Namespace) -> int:
     print(json.dumps(result, indent=2))
     return 0 if result.get("display_ok") else 2
 
+def cmd_desktop_start(_: argparse.Namespace) -> int:
+    from .visualization import start_virtual_desktop
+    result = start_virtual_desktop()
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_desktop_stop(_: argparse.Namespace) -> int:
+    from .visualization import stop_virtual_desktop
+    result = stop_virtual_desktop()
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("stopped") else 2
+
+
 def cmd_render_status(_: argparse.Namespace) -> int:
     from .visualization import gpu_render_status
     result = gpu_render_status()
@@ -204,6 +218,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     ds = sp.add_parser("desktop-status", help="check remote desktop/X availability")
     ds.set_defaults(func=cmd_desktop_status)
+
+    dstart = sp.add_parser("desktop-start", help="start localhost-only Xvfb/VNC/noVNC")
+    dstart.set_defaults(func=cmd_desktop_start)
+
+    dstop = sp.add_parser("desktop-stop", help="stop the owned virtual desktop")
+    dstop.set_defaults(func=cmd_desktop_stop)
 
     rs = sp.add_parser("render-status", help="check GPU/VirtualGL rendering prerequisites")
     rs.set_defaults(func=cmd_render_status)

@@ -89,3 +89,33 @@ A second host is accepted only after:
 Docker packaging remains a later layer; the current development host does not
 have Docker installed, so Docker artifacts will not be presented as validated
 until they are exercised on an appropriate host.
+
+## Clean Ubuntu host installer
+
+For an Ubuntu 22.04 host, the repository provides a host-layer installer:
+
+~~~bash
+sudo ./deploy/host/install_ubuntu22.sh
+./scripts/amsim setup --check-only
+./scripts/amsim setup
+./scripts/amsim doctor
+~~~
+
+The installer does **not** modify the NVIDIA driver, firewall, SSH configuration,
+or cloud-vendor services. It installs ROS 2 Humble, Gazebo Harmonic, ros_gz,
+build tools, Micro-XRCE-DDS Agent 2.4.2, and optional remote-visualization tools.
+
+For a headless remote server with an NVIDIA GPU, start the localhost-only
+display/VNC layer with:
+
+~~~bash
+./scripts/amsim desktop-start
+./scripts/amsim render-status
+~~~
+
+Then use `amsim gui-start` or any non-headless `amsim run ...` command.
+The VNC/noVNC listeners bind to localhost only; expose them through an
+authorized SSH/cloud tunnel rather than opening firewall ports.
+
+The 2026-10-02 clean-room validation report is in
+`docs/CLEAN_ROOM_VALIDATION_2026-10-02.md`.
