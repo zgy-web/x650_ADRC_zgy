@@ -104,6 +104,13 @@ def cmd_gui_stop(_: argparse.Namespace) -> int:
     print(json.dumps(result, indent=2))
     return 0 if result.get("stopped") else 2
 
+
+def cmd_run(args: argparse.Namespace) -> int:
+    from .run_manager import run
+    folder = run(args.scenario, headless=args.headless)
+    print(json.dumps({"success": True, "scenario": args.scenario, "results": str(folder)}, indent=2))
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="amsim")
     p.add_argument("--version", action="version", version=__version__)
@@ -143,6 +150,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     gx = sp.add_parser("gui-stop", help="stop only the Gazebo GUI")
     gx.set_defaults(func=cmd_gui_stop)
+
+    rn = sp.add_parser("run", help="run a configured scenario")
+    rn.add_argument("scenario", choices=["hover", "arm_motion"])
+    rn.add_argument("--headless", action="store_true", help="explicitly disable Gazebo GUI")
+    rn.set_defaults(func=cmd_run)
 
     return p
 

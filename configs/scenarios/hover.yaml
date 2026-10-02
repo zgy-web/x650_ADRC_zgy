@@ -4,10 +4,13 @@ backend: px4_sitl
 vehicle:
   takeoff_height_m: 2.5
 timeline:
-  stable_hold_s: 3.0
+  stable_required_s: 3.0
+  pre_hold_s: 10.0
   experiment_hold_s: 20.0
   post_hold_s: 10.0
 record:
   rosbag: true
   px4_ulog: true
   ground_truth: true
+visualization:
+  default: gui

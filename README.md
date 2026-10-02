@@ -22,3 +22,17 @@ P0/P1 bootstrap: frozen reference, reviewed model asset, environment doctor, and
 ~~~
 
 Do not edit `legacy/v3_reference` during productization.
+
+
+## Scenario runs
+
+Interactive GPU visualization is the default for formal user-facing runs:
+
+~~~bash
+./scripts/amsim run hover
+./scripts/amsim run arm_motion
+~~~
+
+Use `--headless` only for explicit batch operation.
+
+Each completed run stores a self-contained result directory under `runs/` with the scenario config snapshot, run manifest, rosbag, PX4 ULog, model snapshot, recorder log, and scenario-specific data.
