@@ -126,6 +126,7 @@ if __name__ == "__main__":
 name: {name}
 module: scenarios/{name}.py
 backend: px4_sitl
+model: x500_underfold
 visualization:
   default: gui
 record:

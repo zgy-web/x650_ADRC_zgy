@@ -37,7 +37,10 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def cmd_start(args: argparse.Namespace) -> int:
     from .runtime.process import start
-    state = start(wait_s=args.wait)
+    from .modeling.manager import resolve, install, env_for
+    spec = resolve(args.model)
+    install(spec)
+    state = start(wait_s=args.wait, env_overrides=env_for(spec))
     print(json.dumps(state, indent=2))
     return 0
 
@@ -134,6 +137,30 @@ def cmd_run(args: argparse.Namespace) -> int:
     print(json.dumps({"success": True, "scenario": args.scenario, "results": str(folder)}, indent=2))
     return 0
 
+def cmd_model_list(_: argparse.Namespace) -> int:
+    from .modeling.manager import inventory
+    print(json.dumps(inventory(), indent=2))
+    return 0
+
+def cmd_model_build(args: argparse.Namespace) -> int:
+    from .modeling.manager import resolve, validate_sdf
+    spec = resolve(args.model)
+    ok, detail = validate_sdf(spec)
+    payload = {
+        "ok": ok,
+        "ref": spec.ref,
+        "model_name": spec.model_name,
+        "source": spec.source,
+        "sdf": str(spec.sdf_path),
+        "sha256": spec.sha256,
+        "joints": spec.joints,
+        "total_arm_mass_kg": spec.total_arm_mass_kg,
+    }
+    print(json.dumps(payload, indent=2))
+    if not ok:
+        print(detail, file=sys.stderr)
+    return 0 if ok else 2
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="amsim")
     p.add_argument("--version", action="version", version=__version__)
@@ -148,6 +175,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     s = sp.add_parser("start", help="start PX4 SITL/Gazebo runtime")
     s.add_argument("--wait", type=float, default=75.0)
+    s.add_argument("--model", default="x500_underfold", help="reviewed model or configurable model ref")
     s.set_defaults(func=cmd_start)
 
     c = sp.add_parser("check", help="run non-flight readiness check")
@@ -185,6 +213,13 @@ def build_parser() -> argparse.ArgumentParser:
     ns = sp.add_parser("new-scenario", help="create a user scenario template")
     ns.add_argument("name")
     ns.set_defaults(func=cmd_new_scenario)
+
+    ml = sp.add_parser("model-list", help="list reviewed and configurable models")
+    ml.set_defaults(func=cmd_model_list)
+
+    mb = sp.add_parser("model-build", help="build and validate a configurable model")
+    mb.add_argument("model")
+    mb.set_defaults(func=cmd_model_build)
 
     return p
 

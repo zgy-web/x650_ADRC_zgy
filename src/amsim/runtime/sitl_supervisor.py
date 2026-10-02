@@ -17,7 +17,6 @@ import time
 from ..paths import PROJECT_ROOT, px4_dir, results_dir, model_dir
 
 
-MODEL = "x500_underfold"
 
 
 def sha256(path):
@@ -34,26 +33,34 @@ def main():
     here = PROJECT_ROOT
     px4 = px4_dir()
 
+    model_name = os.environ.get("AMSIM_MODEL_NAME", "x500_underfold")
+    expected_sha = os.environ.get(
+        "AMSIM_MODEL_SHA256",
+        "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8",
+    )
+    try:
+        joint_names = json.loads(
+            os.environ.get("AMSIM_MODEL_JOINTS", '["arm_joint_1","arm_joint_2"]')
+        )
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Invalid AMSIM_MODEL_JOINTS JSON") from exc
+
+    if not isinstance(joint_names, list) or not joint_names:
+        raise RuntimeError("AMSIM_MODEL_JOINTS must be a non-empty JSON list")
+
     models = px4 / "Tools/simulation/gz/models"
-    installed_model_dir = models / MODEL
+    installed_model_dir = models / model_name
     model_sdf = installed_model_dir / "model.sdf"
-    source_model_sdf = model_dir() / "model.sdf"
     binary = px4 / "build/px4_sitl_default/bin/px4"
 
-    expected_sha = "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
-
-    for path in (binary, model_sdf, source_model_sdf):
+    for path in (binary, model_sdf):
         if not path.is_file():
             raise RuntimeError(f"Missing: {path}")
-
-    source_sha = sha256(source_model_sdf)
-    if source_sha != expected_sha:
-        raise RuntimeError(f"Bundled reviewed model hash mismatch: {source_sha}")
 
     actual_sha = sha256(model_sdf)
     if actual_sha != expected_sha:
         raise RuntimeError(
-            "Installed x500_underfold model hash differs from reviewed model.\n"
+            f"Installed model hash differs for {model_name}.\n"
             f"expected={expected_sha}\n"
             f"actual={actual_sha}"
         )
@@ -93,7 +100,7 @@ def main():
 
     env.update(
         PX4_SYS_AUTOSTART="4001",
-        PX4_SIM_MODEL=MODEL,
+        PX4_SIM_MODEL=model_name,
     )
 
     env["GZ_SIM_RESOURCE_PATH"] = (
@@ -154,50 +161,45 @@ def main():
             if line.strip()
         ]
 
-    def discover_underfold_topics(timeout=60):
+    def discover_model_topics(timeout=60):
         deadline = time.monotonic() + timeout
         last_topics = []
+        escaped_model = re.escape(model_name)
 
         while time.monotonic() < deadline:
             ensure_children_alive()
-
             topics = gz_topics()
             last_topics = topics
 
-            cmd1_matches = []
-
-            pattern = re.compile(
-                r"^/model/(x500_underfold(?:_[0-9]+)?)/"
-                r"joint/arm_joint_1/cmd_vel$"
+            instance_pattern = re.compile(
+                rf"^/model/({escaped_model}(?:_[0-9]+)?)/joint/"
             )
+            instances = sorted({
+                match.group(1)
+                for topic in topics
+                if (match := instance_pattern.match(topic))
+            })
 
-            for topic in topics:
-                match = pattern.match(topic)
-                if match:
-                    cmd1_matches.append(
-                        (match.group(1), topic)
-                    )
-
-            if len(cmd1_matches) == 1:
-                instance, cmd1 = cmd1_matches[0]
-
-                cmd2 = (
-                    f"/model/{instance}/joint/"
-                    "arm_joint_2/cmd_vel"
-                )
+            if len(instances) == 1:
+                instance = instances[0]
+                commands = {}
+                complete = True
+                for joint_name in joint_names:
+                    topic = f"/model/{instance}/joint/{joint_name}/cmd_vel"
+                    if topic not in topics:
+                        complete = False
+                        break
+                    commands[joint_name] = topic
 
                 states = [
                     topic for topic in topics
-                    if topic.endswith(
-                        f"/model/{instance}/joint_state"
-                    )
+                    if topic.endswith(f"/model/{instance}/joint_state")
                 ]
 
-                if cmd2 in topics and len(states) == 1:
+                if complete and len(states) == 1:
                     return {
                         "instance": instance,
-                        "cmd1_gz": cmd1,
-                        "cmd2_gz": cmd2,
+                        "joint_commands_gz": commands,
                         "joint_state_gz": states[0],
                     }
 
@@ -205,17 +207,16 @@ def main():
 
         relevant = [
             t for t in last_topics
-            if "underfold" in t or "arm_joint" in t
+            if model_name in t or "arm_joint" in t
         ]
-
         raise RuntimeError(
-            "Could not uniquely discover x500_underfold Gazebo topics.\n"
+            f"Could not uniquely discover Gazebo topics for {model_name}.\n"
             + "\n".join(relevant)
         )
 
     try:
         print(
-            f"Reviewed model SHA256: {actual_sha}",
+            f"Model {model_name} SHA256: {actual_sha}",
             flush=True
         )
 
@@ -237,7 +238,7 @@ def main():
             flush=True
         )
 
-        discovered = discover_underfold_topics()
+        discovered = discover_model_topics()
 
         print(
             "Gazebo model instance: "
@@ -256,46 +257,48 @@ def main():
             "run",
             "ros_gz_bridge",
             "parameter_bridge",
+        ]
 
-            discovered["cmd1_gz"]
-            + "@std_msgs/msg/Float64]gz.msgs.Double",
+        for joint_name in joint_names:
+            bridge_args.append(
+                discovered["joint_commands_gz"][joint_name]
+                + "@std_msgs/msg/Float64]gz.msgs.Double"
+            )
 
-            discovered["cmd2_gz"]
-            + "@std_msgs/msg/Float64]gz.msgs.Double",
-
+        bridge_args.extend([
             discovered["joint_state_gz"]
             + "@sensor_msgs/msg/JointState[gz.msgs.Model",
-
             "/ground_truth/odometry"
             + "@nav_msgs/msg/Odometry[gz.msgs.Odometry",
-
             "/clock"
             + "@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-
             "--ros-args",
+        ])
 
-            "-r",
-            discovered["cmd1_gz"]
-            + ":=/arm/arm_joint_1/cmd_vel",
+        for joint_name in joint_names:
+            bridge_args.extend([
+                "-r",
+                discovered["joint_commands_gz"][joint_name]
+                + f":=/arm/{joint_name}/cmd_vel",
+            ])
 
+        bridge_args.extend([
             "-r",
-            discovered["cmd2_gz"]
-            + ":=/arm/arm_joint_2/cmd_vel",
-
-            "-r",
-            discovered["joint_state_gz"]
-            + ":=/arm/joint_states",
-        ]
+            discovered["joint_state_gz"] + ":=/arm/joint_states",
+        ])
 
         launch("bridge", bridge_args)
 
         runtime = {
-            "model": MODEL,
+            "model": model_name,
             "model_sha256": actual_sha,
+            "joint_names": joint_names,
             **discovered,
             "ros_joint_state": "/arm/joint_states",
-            "ros_cmd1": "/arm/arm_joint_1/cmd_vel",
-            "ros_cmd2": "/arm/arm_joint_2/cmd_vel",
+            "ros_joint_commands": {
+                joint_name: f"/arm/{joint_name}/cmd_vel"
+                for joint_name in joint_names
+            },
         }
 
         (logs / "runtime.json").write_text(

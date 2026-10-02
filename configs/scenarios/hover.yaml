@@ -2,6 +2,7 @@ schema_version: 1
 name: hover
 module: amsim.scenarios.hover
 backend: px4_sitl
+model: x500_underfold
 vehicle:
   takeoff_height_m: 2.5
 timeline:

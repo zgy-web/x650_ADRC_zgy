@@ -4,3 +4,4 @@ runs/
 build/
 .env
 .venv/
+generated/

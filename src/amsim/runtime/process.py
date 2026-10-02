@@ -33,7 +33,7 @@ def status() -> dict:
     pid = int(state["pid"])
     return {**state, "running": _alive(pid)}
 
-def start(wait_s: float = 75.0) -> dict:
+def start(wait_s: float = 75.0, env_overrides: dict[str, str] | None = None) -> dict:
     current = status()
     if current.get("running"):
         raise RuntimeError(f"runtime already running (pid={current['pid']})")
@@ -45,11 +45,15 @@ def start(wait_s: float = 75.0) -> dict:
     launch_log = control_logs / f"start_{stamp}.log"
     before = set(results_dir().glob("runtime_*"))
 
+    child_env = os.environ.copy()
+    if env_overrides:
+        child_env.update({str(k): str(v) for k, v in env_overrides.items()})
+
     log = open(launch_log, "w")
     proc = subprocess.Popen(
         [sys.executable, "-m", "amsim.runtime.sitl_supervisor"],
         cwd=PROJECT_ROOT,
-        env=os.environ.copy(),
+        env=child_env,
         stdin=subprocess.DEVNULL,
         stdout=log,
         stderr=subprocess.STDOUT,
@@ -59,6 +63,7 @@ def start(wait_s: float = 75.0) -> dict:
         "pid": proc.pid,
         "started_at": time.time(),
         "launch_log": str(launch_log),
+        "model": child_env.get("AMSIM_MODEL_NAME", "x500_underfold"),
     }
     STATE_FILE.write_text(json.dumps(state, indent=2))
 

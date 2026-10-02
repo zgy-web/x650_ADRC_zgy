@@ -1,0 +1,50 @@
+schema_version: 1
+name: x500_underfold_2link_editable
+mode: generated_serial_arm
+model_name: x500_amsim_2link
+template_model: assets/models/x500_underfold/model.sdf
+
+arm:
+  mount_xyz_m: [0.0, 0.0, -0.10]
+  joint_axis_xyz: [0.0, 1.0, 0.0]
+  joint_state_rate_hz: 50
+  self_collide: false
+
+  links:
+    - name: arm_link_1
+      geometry:
+        type: box
+        length_m: 0.30
+        width_m: 0.04
+        height_m: 0.04
+      mass:
+        mass_kg: 0.25
+      material_rgba: [0.1, 0.3, 0.8, 1.0]
+      joint:
+        name: arm_joint_1
+        initial_angle_deg: 150.0
+        physical_limits_deg: [90.0, 180.0]
+        effort_limit: 10.0
+        velocity_limit_rad_s: 2.0
+        damping: 0.05
+        friction: 0.01
+        controller: velocity
+
+    - name: arm_link_2
+      geometry:
+        type: box
+        length_m: 0.25
+        width_m: 0.035
+        height_m: 0.035
+      mass:
+        mass_kg: 0.20
+      material_rgba: [0.8, 0.2, 0.1, 1.0]
+      joint:
+        name: arm_joint_2
+        initial_angle_deg: -150.0
+        physical_limits_deg: [-175.0, -90.0]
+        effort_limit: 8.0
+        velocity_limit_rad_s: 2.0
+        damping: 0.05
+        friction: 0.01
+        controller: velocity

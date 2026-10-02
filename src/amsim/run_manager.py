@@ -15,6 +15,7 @@ from .runtime.process import status as runtime_status
 from .runtime.process import stop as runtime_stop
 from .scenario_registry import get as get_scenario
 from .visualization import start_gui, stop_gui
+from .modeling.manager import resolve as resolve_model, install as install_model, env_for as model_env
 
 MODEL_SHA256 = "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
 
@@ -107,6 +108,8 @@ def run(name: str, headless: bool = False) -> Path:
     spec = get_scenario(name)
     config_path = spec.config_path
     config = spec.config
+    model_spec = resolve_model(str(config.get("model", "x500_underfold")))
+    install_model(model_spec)
 
     if runtime_status().get("running"):
         raise RuntimeError("An amsim runtime is already running; stop it before 'amsim run'.")
@@ -116,6 +119,7 @@ def run(name: str, headless: bool = False) -> Path:
     env["PYTHONPATH"] = str(PROJECT_ROOT / "src") + (":" + prior_pp if prior_pp else "")
     env["AMSIM_SCENARIO_CONFIG"] = str(config_path)
     env["AMSIM_SCENARIO_NAME"] = name
+    env.update(model_env(model_spec))
     _apply_builtin_compat(name, config, env)
 
     before = {p.resolve() for p in results_dir().glob(f"{name}_*") if p.is_dir()}
@@ -128,7 +132,7 @@ def run(name: str, headless: bool = False) -> Path:
     started_wall = time.time()
 
     try:
-        runtime_start(wait_s=75)
+        runtime_start(wait_s=75, env_overrides=model_env(model_spec))
         runtime_owned = True
         _readiness(env)
 
@@ -195,7 +199,10 @@ def run(name: str, headless: bool = False) -> Path:
         "platform_version": __version__,
         "platform_git_commit": _git_head(PROJECT_ROOT),
         "px4_git_commit": _git_head(px4_dir()),
-        "model_sha256": MODEL_SHA256,
+        "model_name": model_spec.model_name,
+        "model_sha256": model_spec.sha256,
+        "model_source": model_spec.source,
+        "model_config": str(model_spec.config_path) if model_spec.config_path else None,
         "scenario": name,
         "scenario_source": spec.source,
         "scenario_module": spec.module,
