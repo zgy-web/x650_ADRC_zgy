@@ -1,5 +1,6 @@
 schema_version: 1
 name: hover
+module: amsim.scenarios.hover
 backend: px4_sitl
 vehicle:
   takeoff_height_m: 2.5

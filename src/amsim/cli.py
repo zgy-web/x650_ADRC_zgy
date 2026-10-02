@@ -105,6 +105,29 @@ def cmd_gui_stop(_: argparse.Namespace) -> int:
     return 0 if result.get("stopped") else 2
 
 
+def cmd_scenarios(_: argparse.Namespace) -> int:
+    from .scenario_registry import discover
+    rows = []
+    for name, spec in sorted(discover().items()):
+        rows.append({
+            "name": name,
+            "source": spec.source,
+            "config": str(spec.config_path),
+            "module": spec.module,
+        })
+    print(json.dumps(rows, indent=2))
+    return 0
+
+def cmd_new_scenario(args: argparse.Namespace) -> int:
+    from .scenario_registry import create_template
+    py_path, yaml_path = create_template(args.name)
+    print(json.dumps({
+        "created": True,
+        "python": str(py_path),
+        "config": str(yaml_path),
+    }, indent=2))
+    return 0
+
 def cmd_run(args: argparse.Namespace) -> int:
     from .run_manager import run
     folder = run(args.scenario, headless=args.headless)
@@ -152,9 +175,16 @@ def build_parser() -> argparse.ArgumentParser:
     gx.set_defaults(func=cmd_gui_stop)
 
     rn = sp.add_parser("run", help="run a configured scenario")
-    rn.add_argument("scenario", choices=["hover", "arm_motion"])
+    rn.add_argument("scenario")
     rn.add_argument("--headless", action="store_true", help="explicitly disable Gazebo GUI")
     rn.set_defaults(func=cmd_run)
+
+    ls = sp.add_parser("scenarios", help="list discovered built-in and user scenarios")
+    ls.set_defaults(func=cmd_scenarios)
+
+    ns = sp.add_parser("new-scenario", help="create a user scenario template")
+    ns.add_argument("name")
+    ns.set_defaults(func=cmd_new_scenario)
 
     return p
 

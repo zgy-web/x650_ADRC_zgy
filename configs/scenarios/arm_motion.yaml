@@ -1,5 +1,6 @@
 schema_version: 1
 name: arm_motion
+module: amsim.scenarios.arm_motion
 backend: px4_sitl
 vehicle:
   takeoff_height_m: 2.5
@@ -18,3 +19,5 @@ record:
   rosbag: true
   px4_ulog: true
   ground_truth: true
+visualization:
+  default: gui

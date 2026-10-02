@@ -8,13 +8,12 @@ import subprocess
 import time
 from pathlib import Path
 
-import yaml
-
 from . import __version__
 from .paths import PROJECT_ROOT, px4_dir, results_dir, workspace_root
 from .runtime.process import start as runtime_start
 from .runtime.process import status as runtime_status
 from .runtime.process import stop as runtime_stop
+from .scenario_registry import get as get_scenario
 from .visualization import start_gui, stop_gui
 
 MODEL_SHA256 = "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
@@ -56,11 +55,7 @@ def _active_ulog() -> Path:
     return src.resolve()
 
 def _readiness(env: dict) -> None:
-    cmd = [
-        str(_scenario_python()),
-        "-m",
-        "amsim.runtime.readiness_check",
-    ]
+    cmd = [str(_scenario_python()), "-m", "amsim.runtime.readiness_check"]
     p = subprocess.run(cmd, cwd=PROJECT_ROOT, env=env)
     if p.returncode != 0:
         raise RuntimeError(f"readiness check failed with rc={p.returncode}")
@@ -90,28 +85,40 @@ def _finalize_ulog(folder: Path, marker: dict) -> None:
     })
     result_path.write_text(json.dumps(result, indent=2))
 
+def _scenario_command(module: str) -> list[str]:
+    py = str(_scenario_python())
+    path = Path(module)
+    if path.suffix == ".py" and path.is_file():
+        return [py, str(path)]
+    return [py, "-m", module]
+
+def _apply_builtin_compat(name: str, config: dict, env: dict) -> None:
+    # Compatibility shim while legacy-reviewed experiments are migrated
+    # onto the higher-level Scenario/Vehicle/Arm APIs.
+    if name == "arm_motion":
+        joint = config["arm"]["joints"]["arm_joint_1"]
+        env["MOTION_Q1_TARGET_DEG"] = str(joint["target_deg"])
+        env["MOTION_MAX_SPEED_DEG_S"] = str(joint["max_speed_deg_s"])
+        env["MOTION_HOLD_S"] = str(config["timeline"]["target_hold_s"])
+        env["MOTION_PRE_HOLD_S"] = str(config["timeline"]["pre_hold_s"])
+        env["MOTION_POST_HOLD_S"] = str(config["timeline"]["post_hold_s"])
+
 def run(name: str, headless: bool = False) -> Path:
-    if name not in {"hover", "arm_motion"}:
-        raise ValueError(f"Scenario not implemented yet: {name}")
+    spec = get_scenario(name)
+    config_path = spec.config_path
+    config = spec.config
 
     if runtime_status().get("running"):
         raise RuntimeError("An amsim runtime is already running; stop it before 'amsim run'.")
-
-    config_path = PROJECT_ROOT / "configs" / "scenarios" / f"{name}.yaml"
-    config = yaml.safe_load(config_path.read_text())
-    if config.get("name") != name:
-        raise RuntimeError(f"Scenario config name mismatch: {config_path}")
 
     env = os.environ.copy()
     prior_pp = env.get("PYTHONPATH", "")
     env["PYTHONPATH"] = str(PROJECT_ROOT / "src") + (":" + prior_pp if prior_pp else "")
     env["AMSIM_SCENARIO_CONFIG"] = str(config_path)
+    env["AMSIM_SCENARIO_NAME"] = name
+    _apply_builtin_compat(name, config, env)
 
-    before = {
-        p.resolve()
-        for p in results_dir().glob(f"{name}_*")
-        if p.is_dir()
-    }
+    before = {p.resolve() for p in results_dir().glob(f"{name}_*") if p.is_dir()}
 
     runtime_owned = False
     gui_owned = False
@@ -123,7 +130,6 @@ def run(name: str, headless: bool = False) -> Path:
     try:
         runtime_start(wait_s=75)
         runtime_owned = True
-
         _readiness(env)
 
         if not headless:
@@ -138,32 +144,35 @@ def run(name: str, headless: bool = False) -> Path:
             "inode": int(st.st_ino),
         }
 
-        if name == "hover":
-            module = "amsim.scenarios.hover"
-        else:
-            module = "amsim.scenarios.arm_motion"
-            joint = config["arm"]["joints"]["arm_joint_1"]
-            env["MOTION_Q1_TARGET_DEG"] = str(joint["target_deg"])
-            env["MOTION_MAX_SPEED_DEG_S"] = str(joint["max_speed_deg_s"])
-            env["MOTION_HOLD_S"] = str(config["timeline"]["target_hold_s"])
-            env["MOTION_PRE_HOLD_S"] = str(config["timeline"]["pre_hold_s"])
-            env["MOTION_POST_HOLD_S"] = str(config["timeline"]["post_hold_s"])
+        scenario_rc = subprocess.run(
+            _scenario_command(spec.module),
+            cwd=PROJECT_ROOT,
+            env=env,
+        ).returncode
 
-        cmd = [str(_scenario_python()), "-m", module]
-        scenario_rc = subprocess.run(cmd, cwd=PROJECT_ROOT, env=env).returncode
-
-        after = {
-            p.resolve()
-            for p in results_dir().glob(f"{name}_*")
-            if p.is_dir()
-        }
+        after = {p.resolve() for p in results_dir().glob(f"{name}_*") if p.is_dir()}
         created = sorted(after - before, key=lambda p: p.stat().st_mtime)
-        if len(created) != 1:
+
+        if len(created) == 1:
+            folder = created[0]
+        elif spec.source == "user" and scenario_rc == 0:
+            # User plugins may initially produce no files. Give them a standard
+            # run directory so metadata and ULog still have a home.
+            folder = (
+                results_dir()
+                / (f"{name}_" + time.strftime("%Y%m%d_%H%M%S") + f"_{os.getpid()}")
+            )
+            folder.mkdir(parents=True, exist_ok=False)
+            (folder / "result.json").write_text(json.dumps({
+                "success": True,
+                "experiment": name,
+                "plugin_managed_result": True,
+            }, indent=2))
+        else:
             raise RuntimeError(
                 "Could not uniquely identify scenario result directory: "
                 + repr([str(p) for p in created])
             )
-        folder = created[0]
 
     finally:
         if gui_owned:
@@ -188,6 +197,8 @@ def run(name: str, headless: bool = False) -> Path:
         "px4_git_commit": _git_head(px4_dir()),
         "model_sha256": MODEL_SHA256,
         "scenario": name,
+        "scenario_source": spec.source,
+        "scenario_module": spec.module,
         "headless": headless,
         "started_wall_time": started_wall,
         "finished_wall_time": time.time(),
