@@ -79,7 +79,9 @@ if command -v nvidia-smi >/dev/null 2>&1; then
 fi
 echo "=== AMSIM host install verification ==="
 /usr/bin/python3 --version
+set +u
 source /opt/ros/humble/setup.bash
+set -u
 ros2 --help >/dev/null
 gz sim --versions | head -n1
 command -v colcon
