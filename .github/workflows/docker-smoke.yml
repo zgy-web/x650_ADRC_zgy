@@ -1,0 +1,62 @@
+name: Docker smoke
+
+on:
+  push:
+    branches: [simulation]
+    paths:
+      - "deploy/docker/**"
+      - "deploy/host/**"
+      - "src/**"
+      - "scripts/**"
+      - "configs/**"
+      - "assets/**"
+      - "vendor/**"
+      - "pyproject.toml"
+      - ".dockerignore"
+      - ".github/workflows/docker-smoke.yml"
+  workflow_dispatch:
+
+jobs:
+  docker-headless:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Build complete AMSIM image
+        run: |
+          docker build \
+            -f deploy/docker/Dockerfile \
+            -t amsim:simulation-ci \
+            .
+
+      - name: Host prerequisite smoke inside image
+        run: |
+          docker run --rm \
+            -e AMSIM_REQUIRE_GPU=0 \
+            amsim:simulation-ci \
+            ./scripts/amsim setup --check-only
+
+      - name: Doctor without CI GPU
+        run: |
+          docker run --rm \
+            -e AMSIM_REQUIRE_GPU=0 \
+            amsim:simulation-ci \
+            ./scripts/amsim doctor
+
+      - name: Headless runtime and flight smoke
+        run: |
+          docker run --rm \
+            -e AMSIM_REQUIRE_GPU=0 \
+            amsim:simulation-ci \
+            ./scripts/amsim run hover --headless
+
+      - name: Software HIL transport smoke
+        run: |
+          docker run --rm \
+            -e AMSIM_REQUIRE_GPU=0 \
+            amsim:simulation-ci \
+            bash -lc 'source /opt/ros/humble/setup.bash && source /opt/amsim/ros2_px4_ws/install/setup.bash && /opt/amsim/amsim-venv/bin/python3 tests/smoke/hil_software_smoke.py'
