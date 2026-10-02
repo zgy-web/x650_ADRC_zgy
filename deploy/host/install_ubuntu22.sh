@@ -52,7 +52,9 @@ if ! command -v MicroXRCEAgent >/dev/null 2>&1; then
   rm -rf "$XRCE_ROOT"
   git clone --branch "v$XRCE_VERSION" --depth 1 \
     https://github.com/eProsima/Micro-XRCE-DDS-Agent.git "$XRCE_ROOT"
+  set +u
   source /opt/ros/humble/setup.bash
+  set -u
   cmake -S "$XRCE_ROOT" -B "$XRCE_ROOT/build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr/local \
