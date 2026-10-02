@@ -53,3 +53,10 @@ with ScenarioContext() as ctx:
 ~~~
 
 See `docs/PUBLIC_API.md` and `docs/CUSTOM_SCENARIOS.md`.
+
+
+## Platform-managed recording
+
+Custom scenarios automatically receive standardized rosbag, PX4 ULog, model and
+scenario snapshots, run metadata, and a writable `AMSIM_RUN_DIR`. Experiment
+code does not need to manage recording processes. See `docs/RECORDING.md`.
