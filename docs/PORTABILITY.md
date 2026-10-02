@@ -33,19 +33,20 @@ This separation avoids baking a cloud-vendor NVIDIA driver into the project.
 ## Host workflow
 
 ~~~bash
-git clone <repository>
-cd aerial_manipulator_sim
-git switch simulation
+git clone -b simulation https://github.com/lilinanan/safe-aerial-manipulator-testbed.git
+cd safe-aerial-manipulator-testbed
 
+sudo ./deploy/host/install_ubuntu22.sh
 ./scripts/amsim setup --check-only
 ./scripts/amsim setup
 ./scripts/amsim doctor
+./scripts/amsim desktop-start   # remote/headless server
 ./scripts/amsim run hover
 ~~~
 
-The full bootstrap is intentionally not run on the golden development server
-because its PX4 tree contains historical local/submodule state that must remain
-untouched. It will be exercised on a clean second host.
+The full workflow was exercised on a clean second Ubuntu 22.04 host on
+2026-10-02. The original golden development server remains preserved because
+its historical PX4 tree must not be reset or cleaned.
 
 ## Path portability
 
@@ -69,8 +70,9 @@ clean host.
 1. VirtualGL + NVIDIA EGL when that validated remote-server path is available.
 2. direct X/OpenGL otherwise.
 
-The existing AutoDL server still selects VirtualGL and has been regression
-tested after this abstraction.
+The clean-room server selected VirtualGL using its system NVIDIA EGL/GLVND
+runtime (driver 580.142), confirming that the product does not require the
+old AutoDL-specific copied EGL runtime.
 
 ## Clean-room acceptance
 
