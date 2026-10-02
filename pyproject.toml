@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aerial-manipulator-sim"
+version = "0.1.0"
+description = "Reproducible PX4/Gazebo aerial-manipulator simulation platform"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+amsim = "amsim.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

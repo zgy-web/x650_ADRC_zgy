@@ -1,0 +1,20 @@
+schema_version: 1
+name: arm_motion
+backend: px4_sitl
+vehicle:
+  takeoff_height_m: 2.5
+arm:
+  joints:
+    arm_joint_1:
+      target_deg: -5.0
+      max_speed_deg_s: 0.5
+    arm_joint_2:
+      target_deg: 0.0
+timeline:
+  pre_hold_s: 20.0
+  target_hold_s: 5.0
+  post_hold_s: 20.0
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -e
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export AMSIM_WORKSPACE="${AMSIM_WORKSPACE:-$(cd "$ROOT/.." && pwd)}"
+export AMSIM_PX4_DIR="${AMSIM_PX4_DIR:-$AMSIM_WORKSPACE/PX4-Autopilot}"
+export AMSIM_ROS_WS="${AMSIM_ROS_WS:-$AMSIM_WORKSPACE/ros2_px4_ws}"
+export AMSIM_RESULTS_DIR="${AMSIM_RESULTS_DIR:-$ROOT/runs}"
+export ROS_DOMAIN_ID="${ROS_DOMAIN_ID:-0}"
+export ROS_LOCALHOST_ONLY="${ROS_LOCALHOST_ONLY:-0}"
+export RMW_IMPLEMENTATION="${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}"
+export HEADLESS="${HEADLESS:-1}"
+export PX4_SIM_SPEED_FACTOR="${PX4_SIM_SPEED_FACTOR:-1}"
+export GZ_PARTITION="${GZ_PARTITION:-amsim_default}"
+
+ROS_DISTRO="${ROS_DISTRO:-humble}"
+if [ -f "/opt/ros/$ROS_DISTRO/setup.bash" ]; then
+  source "/opt/ros/$ROS_DISTRO/setup.bash"
+fi
+if [ -f "$AMSIM_ROS_WS/install/setup.bash" ]; then
+  source "$AMSIM_ROS_WS/install/setup.bash"
+fi
+
+export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+exec python3 -m amsim.cli "$@"
