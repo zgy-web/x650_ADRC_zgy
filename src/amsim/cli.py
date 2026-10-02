@@ -9,6 +9,16 @@ from . import __version__
 from .doctor import check
 from .paths import PROJECT_ROOT, px4_dir, ros_ws, results_dir, reference_dir, workspace_root
 
+def cmd_setup(args: argparse.Namespace) -> int:
+    script = PROJECT_ROOT / "deploy" / "host" / "bootstrap_workspace.sh"
+    cmd = [str(script)]
+    if args.check_only:
+        cmd.append("--check-only")
+    if args.skip_px4_build:
+        cmd.append("--skip-px4-build")
+    return subprocess.run(cmd, cwd=PROJECT_ROOT).returncode
+
+
 def cmd_info(_: argparse.Namespace) -> int:
     payload = {
         "version": __version__,
@@ -165,6 +175,11 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="amsim")
     p.add_argument("--version", action="version", version=__version__)
     sp = p.add_subparsers(dest="command", required=True)
+
+    setup = sp.add_parser("setup", help="prepare or validate a portable host workspace")
+    setup.add_argument("--check-only", action="store_true")
+    setup.add_argument("--skip-px4-build", action="store_true")
+    setup.set_defaults(func=cmd_setup)
 
     a = sp.add_parser("info", help="show resolved platform paths")
     a.set_defaults(func=cmd_info)

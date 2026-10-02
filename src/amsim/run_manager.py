@@ -45,6 +45,11 @@ def _scenario_python() -> Path:
     explicit = os.environ.get("AMSIM_SCENARIO_PYTHON")
     if explicit:
         return Path(explicit)
+    venv = os.environ.get("AMSIM_VENV")
+    if venv:
+        candidate = Path(venv) / "bin" / "python3"
+        if candidate.is_file():
+            return candidate
     candidate = workspace_root() / "cloud-arm-venv" / "bin" / "python3"
     if candidate.is_file():
         return candidate

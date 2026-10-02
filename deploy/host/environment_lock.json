@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "validated_host": {
+    "os": "Ubuntu 22.04.3 LTS",
+    "python": "Python 3.10.12",
+    "gazebo_sim": "8.15.0",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "nvidia_driver": "560.35.03"
+  },
+  "project": {
+    "px4_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "reviewed_model_sha256": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8",
+    "px4_msgs_snapshot_sha256": "b4376671ea16597756b42950d3808ec038dbe17afd67283f1562dd6d23185669",
+    "micro_xrce_agent": "2.4.2",
+    "ros_distro": "humble",
+    "ros_gz": "0.244.12-3jammy",
+    "rosbag2": "0.15.17",
+    "pymavlink": "2.4.50",
+    "pyyaml": "5.4.1"
+  }
+}
