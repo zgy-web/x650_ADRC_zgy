@@ -422,13 +422,18 @@ def start_virtual_desktop() -> dict:
     if not desktop_status()["display_ok"]:
         raise RuntimeError(f"failed to start X display {display}")
 
+    bind = os.environ.get("AMSIM_DESKTOP_BIND", "127.0.0.1")
+    vnc_args = [
+        "x11vnc", "-display", display,
+        "-rfbport", "5901", "-forever", "-shared", "-nopw",
+    ]
+    if bind in {"127.0.0.1", "localhost"}:
+        vnc_args.append("-localhost")
+
     vnc_log = control / f"x11vnc_{stamp}.log"
     f = open(vnc_log, "w")
     proc = subprocess.Popen(
-        [
-            "x11vnc", "-display", display, "-localhost",
-            "-rfbport", "5901", "-forever", "-shared", "-nopw",
-        ],
+        vnc_args,
         stdin=subprocess.DEVNULL,
         stdout=f,
         stderr=subprocess.STDOUT,
@@ -443,7 +448,7 @@ def start_virtual_desktop() -> dict:
     proc = subprocess.Popen(
         [
             "websockify", "--web=/usr/share/novnc/",
-            "127.0.0.1:6080", "127.0.0.1:5901",
+            f"{bind}:6080", "127.0.0.1:5901",
         ],
         stdin=subprocess.DEVNULL,
         stdout=f,
@@ -461,7 +466,8 @@ def start_virtual_desktop() -> dict:
         "pids": pids,
         "logs": logs,
         "started_at": time.time(),
-        "localhost_only": True,
+        "bind": bind,
+        "localhost_only": bind in {"127.0.0.1", "localhost"},
     }
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     DESKTOP_STATE.write_text(json.dumps(state, indent=2))

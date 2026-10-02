@@ -121,3 +121,5 @@ authorized SSH/cloud tunnel rather than opening firewall ports.
 
 The 2026-10-02 clean-room validation report is in
 `docs/CLEAN_ROOM_VALIDATION_2026-10-02.md`.
+
+The one-command host installer has also been re-tested on a third fresh machine by the project owner.

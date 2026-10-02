@@ -72,11 +72,14 @@ def check() -> tuple[bool, list[dict]]:
     except Exception as exc:
         add("results_writable", False, f"{results}: {exc}")
 
+    require_gpu = os.environ.get("AMSIM_REQUIRE_GPU", "1").lower() not in {"0", "false", "no"}
     gpu = shutil.which("nvidia-smi")
     if gpu:
         rc, out = run([gpu, "--query-gpu=name,driver_version", "--format=csv,noheader"])
         add("gpu", rc == 0, out or "nvidia-smi failed")
-    else:
+    elif require_gpu:
         add("gpu", False, "nvidia-smi not found")
+    else:
+        add("gpu", True, "not required (AMSIM_REQUIRE_GPU=0)")
 
     return all(x["ok"] for x in checks), checks

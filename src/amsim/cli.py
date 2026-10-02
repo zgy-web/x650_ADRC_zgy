@@ -166,6 +166,44 @@ def cmd_model_list(_: argparse.Namespace) -> int:
     print(json.dumps(inventory(), indent=2))
     return 0
 
+def cmd_hil_doctor(args: argparse.Namespace) -> int:
+    from .hil.doctor import probe
+    result = probe(args.mavlink, args.baud, args.timeout)
+    if args.require_hil and result.get("ok") and not result.get("hil_enabled"):
+        result["ok"] = False
+        result["error"] = "PX4 heartbeat present but HIL mode is not enabled"
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("ok") else 2
+
+
+def cmd_hil_start(args: argparse.Namespace) -> int:
+    from .hil.process import start
+    result = start(
+        args.mavlink,
+        baud=args.baud,
+        model=args.model,
+        xrce_serial=args.xrce_serial,
+        xrce_baud=args.xrce_baud,
+        wait_s=args.wait,
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_hil_status(_: argparse.Namespace) -> int:
+    from .hil.process import status
+    result = status()
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("running") else 1
+
+
+def cmd_hil_stop(_: argparse.Namespace) -> int:
+    from .hil.process import stop
+    result = stop()
+    print(json.dumps(result, indent=2))
+    return 0 if result.get("stopped") else 2
+
+
 def cmd_model_build(args: argparse.Namespace) -> int:
     from .modeling.manager import resolve, validate_sdf
     spec = resolve(args.model)
@@ -255,6 +293,28 @@ def build_parser() -> argparse.ArgumentParser:
     mb = sp.add_parser("model-build", help="build and validate a configurable model")
     mb.add_argument("model")
     mb.set_defaults(func=cmd_model_build)
+
+    hd = sp.add_parser("hil-doctor", help="probe a real PX4 MAVLink HIL connection")
+    hd.add_argument("--mavlink", required=True, help="serial device or pymavlink connection URL")
+    hd.add_argument("--baud", type=int, default=921600)
+    hd.add_argument("--timeout", type=float, default=8.0)
+    hd.add_argument("--require-hil", action="store_true")
+    hd.set_defaults(func=cmd_hil_doctor)
+
+    hs = sp.add_parser("hil-start", help="start Gazebo against a PX4 HIL MAVLink endpoint")
+    hs.add_argument("--mavlink", required=True, help="serial device or pymavlink connection URL")
+    hs.add_argument("--baud", type=int, default=921600)
+    hs.add_argument("--model", default="x500_underfold")
+    hs.add_argument("--xrce-serial", help="optional second serial link for Micro-XRCE-DDS")
+    hs.add_argument("--xrce-baud", type=int, default=921600)
+    hs.add_argument("--wait", type=float, default=60.0)
+    hs.set_defaults(func=cmd_hil_start)
+
+    hst = sp.add_parser("hil-status", help="show HIL runtime status")
+    hst.set_defaults(func=cmd_hil_status)
+
+    hsp = sp.add_parser("hil-stop", help="stop the owned HIL runtime")
+    hsp.set_defaults(func=cmd_hil_stop)
 
     return p
 

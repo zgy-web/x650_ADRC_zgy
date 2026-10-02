@@ -421,7 +421,6 @@ Validated on the second clean host:
 
 Not yet claimed as validated:
 
-- the one-command host installer on a third fully fresh host
 - Docker packaging
 - PX4 HIL
 - physical UAV hardware

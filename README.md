@@ -345,6 +345,8 @@ virtualgl_ready: true
 - [自定义场景](docs/CUSTOM_SCENARIOS.md)
 - [数据记录](docs/RECORDING.md)
 - [可配置机械臂模型](docs/CONFIGURABLE_MODELS.md)
+- [PX4 HIL 使用与验证](docs/HIL.md)
+- [Docker 使用说明](deploy/docker/README.md)
 
 ## 当前范围
 
@@ -363,9 +365,8 @@ virtualgl_ready: true
 
 ### 尚未宣称已验证
 
-- 第三台全新服务器上的“一键 host installer”从零完整复测
 - Docker 打包
-- PX4 HIL
+- 实体 PX4 HIL（软件 HIL bridge 已实现并通过回环测试，真实飞控仍需接入验证）
 - 实体无人机硬件
 
 `legacy/v3_reference` 是冻结的历史参考工作流，产品化过程中不要修改。

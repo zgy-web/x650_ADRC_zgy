@@ -1,0 +1,7 @@
+.amsim
+generated
+runs
+__pycache__
+*.pyc
+*.pyo
+.git/modules

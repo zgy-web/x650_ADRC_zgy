@@ -1,0 +1,18 @@
+services:
+  amsim:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    image: safe-aerial-manipulator-testbed:simulation
+    working_dir: /opt/amsim/project
+    environment:
+      AMSIM_DISPLAY: ":1"
+      AMSIM_DESKTOP_BIND: "0.0.0.0"
+      AMSIM_RENDER_BACKEND: "auto"
+    volumes:
+      - ../../runs:/opt/amsim/project/runs
+    ports:
+      - "127.0.0.1:6080:6080"
+    gpus: all
+    stdin_open: true
+    tty: true
