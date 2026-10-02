@@ -1,65 +1,81 @@
-# Safe Aerial Manipulator Testbed
+# 安全空中机械臂测试平台
 
-A reusable PX4 SITL + Gazebo Harmonic + ROS 2 platform for aerial-manipulator simulation, visualization, control, and data recording.
+一个可复用的 **PX4 SITL + Gazebo Harmonic + ROS 2** 空中机械臂仿真、可视化、控制与数据记录平台。
 
-> **Active simulation branch:** `simulation`
-> The simulation platform is intentionally developed outside `main`.
+> **当前仿真开发分支：** `simulation`
+>
+> 仿真平台有意独立于 `main` 分支维护。
 
 <p align="center">
-  <img src="docs/images/simulation_reviewed_underfold.png" width="48%" alt="Reviewed two-link aerial manipulator in Gazebo">
-  <img src="docs/images/simulation_3link_overview.png" width="48%" alt="Configurable three-link aerial manipulator in Gazebo">
+  <img src="docs/images/simulation_reviewed_underfold.png" width="48%" alt="Gazebo 中的已验证两连杆空中机械臂">
+  <img src="docs/images/simulation_3link_overview.png" width="48%" alt="Gazebo 中的可配置三连杆空中机械臂">
 </p>
 
-The current release has been clean-room validated on Ubuntu 22.04 with an NVIDIA RTX 3080 Ti. Validation covered PX4 SITL, Gazebo Sim 8.15, ROS 2 Humble, GPU rendering through VirtualGL, reviewed and generated manipulators, public Vehicle/Arm APIs, rosbag recording, and PX4 ULog archiving.
+当前版本已在一台全新的 Ubuntu 22.04 服务器上完成 clean-room 验证。验证内容包括 PX4 SITL、Gazebo Sim 8.15、ROS 2 Humble、基于 VirtualGL 的 NVIDIA GPU 渲染、已验证机械臂模型、可配置 N 连杆机械臂、公共 Vehicle/Arm API、rosbag 记录以及 PX4 ULog 归档。
 
-## What this repository provides
+## 项目提供的能力
 
-- PX4 SITL + Gazebo Harmonic runtime with a fixed PX4 commit.
-- A reviewed two-link aerial-manipulator model.
-- Configurable serial N-link manipulator generation.
-- Stable public experiment APIs: `ScenarioContext`, `VehicleAPI`, `ArmAPI`, and observations.
-- Separation between PX4-estimated state and optional Gazebo ground truth.
-- Scenario discovery and user-defined scenario templates.
-- Platform-managed rosbag + PX4 ULog recording.
-- GPU Gazebo GUI on remote Linux servers.
-- A clean-host installer for Ubuntu 22.04.
-- A backend boundary reserved for future PX4 HIL support.
+- 固定 PX4 commit 的 PX4 SITL + Gazebo Harmonic 仿真运行环境。
+- 已验证的两连杆空中机械臂模型。
+- 可配置串联 N 连杆机械臂生成器。
+- 稳定的公共实验 API：`ScenarioContext`、`VehicleAPI`、`ArmAPI` 和观测接口。
+- 明确区分 PX4 估计状态与可选的 Gazebo ground truth。
+- 场景自动发现和用户自定义场景模板。
+- 平台统一管理 rosbag + PX4 ULog 记录。
+- 面向远程 Linux 服务器的 GPU Gazebo GUI。
+- Ubuntu 22.04 clean-host 安装脚本。
+- 为未来 PX4 HIL 预留的后端接口边界。
 
-## Quick start
+## 快速开始
 
-### 1. Clone the simulation branch
+### 1. 克隆 `simulation` 分支
 
 ```bash
 git clone -b simulation https://github.com/lilinanan/safe-aerial-manipulator-testbed.git
 cd safe-aerial-manipulator-testbed
 ```
 
-If the repository is private, authenticate to GitHub first, for example with `gh auth login`, or use your configured SSH credentials.
+如果仓库仍为 private，需要先完成 GitHub 认证。例如可以使用：
 
-### 2. Install host dependencies
+```bash
+gh auth login
+gh auth setup-git
+```
 
-Validated target: **Ubuntu 22.04**.
+也可以继续使用你已经配置好的 Git HTTPS 或 SSH 凭据。
+
+### 2. 安装主机级依赖
+
+当前验证目标系统为 **Ubuntu 22.04**。
 
 ```bash
 sudo ./deploy/host/install_ubuntu22.sh
 ```
 
-This installs ROS 2 Humble, Gazebo Harmonic / Gazebo Sim 8, ros_gz, rosbag2, build tools, Micro-XRCE-DDS Agent 2.4.2, and remote-visualization utilities.
+该脚本会安装：
 
-The installer deliberately does **not** modify:
+- ROS 2 Humble
+- Gazebo Harmonic / Gazebo Sim 8
+- ros_gz
+- rosbag2
+- 编译工具链
+- Micro-XRCE-DDS Agent 2.4.2
+- 远程可视化所需工具
 
-- NVIDIA driver
-- firewall rules
-- SSH configuration
-- cloud-provider services
+该脚本**不会修改**：
 
-For GPU rendering, install a working NVIDIA driver before running the simulator. Verify with:
+- NVIDIA 驱动
+- 防火墙规则
+- SSH 配置
+- 云平台自身的系统服务
+
+如需 GPU 渲染，请先确保服务器已有可用 NVIDIA 驱动：
 
 ```bash
 nvidia-smi
 ```
 
-### 3. Prepare the project workspace
+### 3. 准备项目工作区
 
 ```bash
 ./scripts/amsim setup --check-only
@@ -67,17 +83,17 @@ nvidia-smi
 ./scripts/amsim doctor
 ```
 
-A healthy installation ends with:
+安装正常时，`doctor` 最后会输出：
 
 ```text
 READY
 ```
 
-The first full setup can take several minutes because PX4 SITL and the ROS message package are compiled.
+第一次完整执行 `setup` 可能需要几分钟，因为需要编译 PX4 SITL 和 ROS 消息包。
 
-### 4. Start visualization on a remote server
+### 4. 在远程服务器上启动可视化
 
-On a headless remote server:
+如果运行在没有物理显示器的远程服务器上：
 
 ```bash
 ./scripts/amsim desktop-start
@@ -85,7 +101,7 @@ On a headless remote server:
 ./scripts/amsim render-status
 ```
 
-A working NVIDIA path should report a VirtualGL renderer similar to:
+在验证通过的 NVIDIA 路径下，`render-status` 应显示类似：
 
 ```text
 selected_backend: virtualgl
@@ -93,43 +109,43 @@ ready: true
 gpu: NVIDIA ...
 ```
 
-The VNC/noVNC listeners are localhost-only by design. Use an SSH or cloud-provider tunnel to view them; do not open the ports publicly.
+VNC/noVNC 默认只监听 localhost。建议通过 SSH 隧道或云平台的端口转发访问，**不要直接把这些端口暴露到公网**。
 
-If you already have a usable local X display, `desktop-start` is not required.
+如果本机已经有可用 X display，则不需要执行 `desktop-start`。
 
-### 5. Run the validated examples
+### 5. 运行已验证示例
 
-Stationary hover baseline:
+悬停基线：
 
 ```bash
 ./scripts/amsim run hover
 ```
 
-Arm-motion experiment:
+机械臂运动实验：
 
 ```bash
 ./scripts/amsim run arm_motion
 ```
 
-Visualization is enabled by default for user-facing runs. Explicit batch mode:
+面向用户的正式运行默认开启可视化。如需显式无界面批处理：
 
 ```bash
 ./scripts/amsim run hover --headless
 ```
 
-Each completed run is stored under `runs/` and can contain:
+每次完成的实验都会在 `runs/` 下生成独立结果目录，通常包含：
 
-- scenario configuration snapshot
-- model snapshot
-- run manifest
-- rosbag2 recording
+- 场景配置快照
+- 模型快照
+- 运行 manifest
+- rosbag2 数据
 - PX4 ULog
-- recorder log
-- scenario-specific result files
+- recorder 日志
+- 场景专属结果文件
 
-## Basic runtime commands
+## 常用运行命令
 
-Start the reviewed two-link model:
+启动已验证的两连杆模型：
 
 ```bash
 ./scripts/amsim start
@@ -137,14 +153,14 @@ Start the reviewed two-link model:
 ./scripts/amsim gui-start
 ```
 
-Inspect status:
+查看状态：
 
 ```bash
 ./scripts/amsim status
 ./scripts/amsim gui-status
 ```
 
-Stop cleanly:
+正常停止：
 
 ```bash
 ./scripts/amsim gui-stop
@@ -152,28 +168,28 @@ Stop cleanly:
 ./scripts/amsim desktop-stop
 ```
 
-## Configurable manipulators
+## 可配置机械臂
 
-List available models:
+查看当前可用模型：
 
 ```bash
 ./scripts/amsim model-list
 ```
 
-Build the supplied three-link example:
+构建仓库中提供的三连杆示例：
 
 ```bash
 ./scripts/amsim model-build x500_serial_3link_example
 ```
 
-Start it:
+启动三连杆模型：
 
 ```bash
 ./scripts/amsim start --model x500_serial_3link_example
 ./scripts/amsim gui-start
 ```
 
-The runtime dynamically exposes all configured arm joints, for example:
+运行时会根据配置动态暴露全部机械臂关节，例如：
 
 ```text
 /arm/arm_joint_1/cmd_vel
@@ -182,11 +198,11 @@ The runtime dynamically exposes all configured arm joints, for example:
 /arm/joint_states
 ```
 
-See `docs/CONFIGURABLE_MODELS.md`.
+详细说明见 `docs/CONFIGURABLE_MODELS.md`。
 
-## Public experiment API
+## 公共实验 API
 
-Experiments do not need to manipulate raw PX4/Gazebo topics directly.
+实验代码不需要直接操作底层 PX4/Gazebo topic。
 
 ```python
 from amsim import ScenarioContext
@@ -209,34 +225,48 @@ with ScenarioContext() as ctx:
     ctx.vehicle.land()
 ```
 
-By default, vehicle observations come from the PX4 estimate. Gazebo ground truth must be explicitly requested:
+默认情况下，飞行器状态来自 **PX4 估计值**。
+
+只有显式请求时才会返回 Gazebo ground truth：
 
 ```python
 obs = ctx.observe(ground_truth=True)
 ```
 
-See `docs/PUBLIC_API.md`.
+详细 API 见 `docs/PUBLIC_API.md`。
 
-## Create a custom scenario
+## 创建自定义场景
+
+查看已有场景：
 
 ```bash
 ./scripts/amsim scenarios
+```
+
+创建新的用户场景模板：
+
+```bash
 ./scripts/amsim new-scenario my_experiment
 ```
 
-This creates a Python experiment and YAML configuration under `scenarios/`. Run it with:
+系统会在 `scenarios/` 下生成 Python 实验文件和 YAML 配置文件。
+
+运行：
 
 ```bash
 ./scripts/amsim run my_experiment
 ```
 
-See `docs/CUSTOM_SCENARIOS.md` and `docs/RECORDING.md`.
+更多说明见：
 
-## Validated software baseline
+- `docs/CUSTOM_SCENARIOS.md`
+- `docs/RECORDING.md`
 
-| Component | Validated value |
+## 当前已验证的软件基线
+
+| 组件 | 已验证版本 |
 |---|---|
-| OS | Ubuntu 22.04.3 LTS |
+| 操作系统 | Ubuntu 22.04.3 LTS |
 | Python | 3.10.x |
 | ROS | ROS 2 Humble |
 | Gazebo | Gazebo Sim 8.15.0 |
@@ -244,14 +274,20 @@ See `docs/CUSTOM_SCENARIOS.md` and `docs/RECORDING.md`.
 | rosbag2 | 0.15.17 |
 | PX4 | `d6f12ad1c4f70ad3230afd7d86e971421e02fef4` |
 | Micro-XRCE-DDS Agent | 2.4.2 |
-| Clean-room GPU | NVIDIA RTX 3080 Ti |
-| Clean-room NVIDIA driver | 580.142 |
+| clean-room GPU | NVIDIA RTX 3080 Ti |
+| clean-room NVIDIA 驱动 | 580.142 |
 
-The exact validated `px4_msgs` interface snapshot is vendored in `vendor/px4_msgs`; it is intentionally not regenerated from the current PX4 `msg/` directory.
+经过验证的 `px4_msgs` 接口快照已经固定保存在：
 
-## Troubleshooting
+```text
+vendor/px4_msgs
+```
 
-Run these first:
+该快照**不会**直接根据当前 PX4 的 `msg/` 目录重新生成，因为平台运行所需的 ROS 消息接口与固定 PX4 source tree 中现有消息目录并不完全一致。
+
+## 故障排查
+
+优先执行：
 
 ```bash
 ./scripts/amsim setup --check-only
@@ -260,17 +296,17 @@ Run these first:
 ./scripts/amsim render-status
 ```
 
-Typical issues:
+### `doctor` 提示缺少 ROS / Gazebo / MicroXRCEAgent
 
-**`doctor` reports missing ROS/Gazebo/MicroXRCEAgent**
-Run:
+重新执行：
 
 ```bash
 sudo ./deploy/host/install_ubuntu22.sh
 ```
 
-**GPU exists but rendering is not ready**
-Check:
+### 服务器有 GPU，但 `render-status` 没有 ready
+
+先检查：
 
 ```bash
 nvidia-smi
@@ -278,11 +314,21 @@ nvidia-smi
 ./scripts/amsim render-status
 ```
 
-**Direct renderer says `llvmpipe`**
-That is CPU software OpenGL. On a remote NVIDIA server, use the automatically selected VirtualGL backend when `virtualgl_ready: true`.
+### `direct_renderer` 显示 `llvmpipe`
 
-**A previous run was interrupted**
-Clean owned processes with:
+这表示 direct X/OpenGL 当前使用的是 Mesa CPU 软件渲染。
+
+如果远程服务器有 NVIDIA GPU，并且：
+
+```text
+virtualgl_ready: true
+```
+
+则应优先使用自动选择的 VirtualGL GPU 路径。
+
+### 上一次运行被异常中断
+
+清理本平台拥有的进程：
 
 ```bash
 ./scripts/amsim gui-stop
@@ -290,34 +336,36 @@ Clean owned processes with:
 ./scripts/amsim desktop-stop
 ```
 
-## Documentation
+## 文档
 
-- [Detailed installation guide](docs/INSTALLATION.md)
-- [Portability design](docs/PORTABILITY.md)
-- [Clean-room validation report](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)
-- [Public API](docs/PUBLIC_API.md)
-- [Custom scenarios](docs/CUSTOM_SCENARIOS.md)
-- [Recording](docs/RECORDING.md)
-- [Configurable models](docs/CONFIGURABLE_MODELS.md)
+- [详细安装指南](docs/INSTALLATION.md)
+- [可移植性设计](docs/PORTABILITY.md)
+- [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)
+- [公共 API](docs/PUBLIC_API.md)
+- [自定义场景](docs/CUSTOM_SCENARIOS.md)
+- [数据记录](docs/RECORDING.md)
+- [可配置机械臂模型](docs/CONFIGURABLE_MODELS.md)
 
-## Current scope
+## 当前范围
 
-Validated now:
+### 已验证
 
 - PX4 SITL
 - Gazebo Harmonic
 - ROS 2 Humble
-- remote GPU visualization
-- reviewed two-link manipulator
-- configurable N-link manipulator
-- public control/observation API
-- scenario runner
-- rosbag2 + PX4 ULog recording
+- 远程 NVIDIA GPU 可视化
+- 已验证两连杆机械臂
+- 可配置 N 连杆机械臂
+- 公共控制/观测 API
+- 场景运行器
+- rosbag2 + PX4 ULog 数据记录
+- clean shutdown
 
-Not yet claimed as validated:
+### 尚未宣称已验证
 
-- Docker packaging
+- 第三台全新服务器上的“一键 host installer”从零完整复测
+- Docker 打包
 - PX4 HIL
-- physical UAV hardware
+- 实体无人机硬件
 
-Do not edit `legacy/v3_reference`; it is preserved as the frozen historical reference workflow.
+`legacy/v3_reference` 是冻结的历史参考工作流，产品化过程中不要修改。
