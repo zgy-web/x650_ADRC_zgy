@@ -51,8 +51,10 @@ if [[ "$SKIP_PX4_BUILD" -eq 0 && ! -x "$PX4_DIR/build/px4_sitl_default/bin/px4" 
 fi
 
 rm -rf "$ROS_WS/src/px4_msgs"
-mkdir -p "$ROS_WS/src"
-cp -a "$ROOT/vendor/px4_msgs" "$ROS_WS/src/px4_msgs"
+mkdir -p "$ROS_WS/src/px4_msgs/msg"
+cp "$ROOT/vendor/px4_msgs/CMakeLists.txt" "$ROS_WS/src/px4_msgs/CMakeLists.txt"
+cp "$ROOT/vendor/px4_msgs/package.xml" "$ROS_WS/src/px4_msgs/package.xml"
+cp "$PX4_DIR"/msg/*.msg "$ROS_WS/src/px4_msgs/msg/"
 
 set +u
 source /opt/ros/humble/setup.bash
