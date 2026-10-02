@@ -24,7 +24,7 @@
 - 平台统一管理 rosbag + PX4 ULog 记录。
 - 面向远程 Linux 服务器的 GPU Gazebo GUI。
 - Ubuntu 22.04 clean-host 安装脚本。
-- 为未来 PX4 HIL 预留的后端接口边界。
+- 已实现 Gazebo ↔ MAVLink PX4 HIL 软件后端，并保留可选 Micro-XRCE-DDS ROS 2 链路。
 
 ## 快速开始
 
@@ -347,6 +347,7 @@ virtualgl_ready: true
 - [可配置机械臂模型](docs/CONFIGURABLE_MODELS.md)
 - [PX4 HIL 使用与验证](docs/HIL.md)
 - [Docker 使用说明](deploy/docker/README.md)
+- [Docker CI 验证报告](docs/DOCKER_VALIDATION_2026-10-02.md)
 
 ## 当前范围
 
@@ -362,10 +363,12 @@ virtualgl_ready: true
 - 场景运行器
 - rosbag2 + PX4 ULog 数据记录
 - clean shutdown
+- Docker headless 镜像构建与完整 hover 运行（GitHub Actions）
+- HIL 软件数据链路回环：Gazebo sensors → MAVLink HIL → actuator → Gazebo
 
 ### 尚未宣称已验证
 
-- Docker 打包
+- Docker 内 NVIDIA GPU / VirtualGL GUI（Docker headless 已验证）
 - 实体 PX4 HIL（软件 HIL bridge 已实现并通过回环测试，真实飞控仍需接入验证）
 - 实体无人机硬件
 

@@ -60,3 +60,11 @@ docker compose -f deploy/docker/compose.yaml run --service-ports amsim bash
 ```
 
 Docker 不负责安装或修改宿主机 NVIDIA 驱动。
+
+## 验证状态
+
+Docker headless 路径已由 GitHub Actions 完整验证，包括镜像构建、
+`setup --check-only`、`doctor`、完整 `hover --headless` 与软件 HIL smoke。
+
+GPU GUI 容器路径仍需要 Docker + NVIDIA Container Toolkit 的 GPU 主机验证。
+详见 `docs/DOCKER_VALIDATION_2026-10-02.md`。

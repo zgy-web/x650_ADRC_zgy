@@ -46,4 +46,6 @@ Validated on a fresh Ubuntu 22.04.3 host with an NVIDIA GeForce RTX 3080 Ti
    so direct public-API use works with configurable N-link models.
 7. Run manifests record whether the platform and PX4 Git trees are dirty.
 
-Docker remains unvalidated and is not part of this acceptance result.
+This clean-room report predates the Docker CI validation. Docker headless was
+subsequently validated on 2026-10-02; see
+`docs/DOCKER_VALIDATION_2026-10-02.md`.

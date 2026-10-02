@@ -421,8 +421,8 @@ Validated on the second clean host:
 
 Not yet claimed as validated:
 
-- Docker packaging
-- PX4 HIL
+- NVIDIA GPU / VirtualGL GUI inside Docker (headless Docker is validated)
+- physical PX4 HIL hardware (software HIL transport is validated)
 - physical UAV hardware
 
 See `CLEAN_ROOM_VALIDATION_2026-10-02.md` for the detailed acceptance record.

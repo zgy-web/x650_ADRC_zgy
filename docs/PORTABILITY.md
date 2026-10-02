@@ -88,9 +88,11 @@ A second host is accepted only after:
 8. public API flight smoke succeeds.
 9. no PX4/Gazebo/Agent/GUI processes remain after shutdown.
 
-Docker packaging remains a later layer; the current development host does not
-have Docker installed, so Docker artifacts will not be presented as validated
-until they are exercised on an appropriate host.
+Docker headless packaging is now validated by GitHub Actions: the image builds
+from Ubuntu 22.04, passes host/project checks, runs the complete headless hover
+scenario, and passes the software HIL transport smoke test. NVIDIA GPU GUI
+inside Docker is still a separate validation item because GitHub hosted runners
+do not provide the required GPU/Container Toolkit path.
 
 ## Clean Ubuntu host installer
 
