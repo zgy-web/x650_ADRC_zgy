@@ -1,0 +1,169 @@
+name: Build Pixhawk 6X Pro firmware
+
+on:
+  push:
+    branches: [simulation]
+    paths:
+      - ".github/workflows/build-pixhawk6xpro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-fmuv6x:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 85
+
+    env:
+      PX4_COMMIT: d6f12ad1c4f70ad3230afd7d86e971421e02fef4
+      PX4_BOARD: px4_fmu-v6x_default
+      DEBIAN_FRONTEND: noninteractive
+
+    steps:
+      - name: Check out pinned PX4 firmware source
+        uses: actions/checkout@v4
+        with:
+          repository: PX4/PX4-Autopilot
+          ref: d6f12ad1c4f70ad3230afd7d86e971421e02fef4
+          path: PX4-Autopilot
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify source and FMUv6X board configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd PX4-Autopilot
+          test "$(git rev-parse HEAD)" = "$PX4_COMMIT"
+          test -f boards/px4/fmu-v6x/default.px4board
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          meta=json.loads(Path("boards/px4/fmu-v6x/firmware.prototype").read_text())
+          assert meta["board_id"] == 53, meta
+          assert meta["magic"] == "PX4FWv1", meta
+          print("Pinned PX4 source and FMUv6X board_id 53 confirmed.")
+          PY
+
+      - name: Install ARM NuttX toolchain and Python requirements
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            gcc-arm-none-eabi binutils-arm-none-eabi \
+            libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib \
+            genromfs ninja-build cmake make gcc g++ git \
+            zip unzip rsync python3-dev python3-venv \
+            python3-pip python3-setuptools python3-wheel \
+            libxml2-utils libssl-dev bison flex gperf \
+            libncurses-dev libelf-dev
+          python3 -m venv "$RUNNER_TEMP/px4-firmware-venv"
+          echo "$RUNNER_TEMP/px4-firmware-venv/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/px4-firmware-venv/bin/python" -m pip install --upgrade pip packaging setuptools wheel
+          "$RUNNER_TEMP/px4-firmware-venv/bin/python" -m pip install -r PX4-Autopilot/Tools/setup/requirements.txt
+          arm-none-eabi-gcc --version | head -n 1
+
+      - name: Download pinned NuttX and firmware submodules
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd PX4-Autopilot
+          git -c http.version=HTTP/1.1 submodule update --init --recursive --jobs 4 -- \
+            platforms/nuttx/NuttX/nuttx \
+            platforms/nuttx/NuttX/apps \
+            src/modules/mavlink/mavlink \
+            src/modules/uxrce_dds_client/Micro-XRCE-DDS-Client \
+            src/drivers/gps/devices \
+            src/lib/events/libevents \
+            src/lib/heatshrink/heatshrink \
+            src/drivers/uavcan/libdronecan/dsdl \
+            src/drivers/uavcan/libdronecan/libuavcan/dsdl_compiler/pydronecan \
+            src/drivers/cyphal/libcanard \
+            src/drivers/cyphal/public_regulated_data_types \
+            src/drivers/cyphal/legacy_data_types \
+            src/lib/crypto/monocypher \
+            src/lib/crypto/libtomcrypt \
+            src/lib/crypto/libtommath \
+            src/lib/cdrstream/cyclonedds \
+            src/lib/cdrstream/rosidl
+          echo "=== Core submodule revisions ==="
+          git submodule status \
+            platforms/nuttx/NuttX/nuttx \
+            platforms/nuttx/NuttX/apps \
+            src/modules/mavlink/mavlink
+
+      - name: Compile PX4 FMUv6X firmware
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd PX4-Autopilot
+          test "$(git rev-parse HEAD)" = "$PX4_COMMIT"
+          make "$PX4_BOARD"
+
+      - name: Validate firmware package and create SHA256 manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import shutil
+          import subprocess
+          from pathlib import Path
+
+          src=Path("PX4-Autopilot")
+          sha=subprocess.check_output(
+              ["git","rev-parse","HEAD"], cwd=src, text=True
+          ).strip()
+          expected=os.environ["PX4_COMMIT"]
+          assert sha==expected,(sha,expected)
+
+          candidates=list((src/"build"/"px4_fmu-v6x_default").rglob("*.px4"))
+          assert len(candidates)==1, [str(p) for p in candidates]
+          original=candidates[0]
+          payload=json.loads(original.read_text())
+          assert payload.get("magic")=="PX4FWv1", payload.get("magic")
+          assert int(payload.get("board_id"))==53, payload.get("board_id")
+          size=int(payload.get("image_size",0))
+          maximum=int(payload.get("image_maxsize",0))
+          assert 100000 < size <= 1966080, (size,maximum)
+          assert maximum >= size, (maximum,size)
+          assert payload.get("image"), "Firmware image field missing"
+
+          name="pixhawk6xpro-fmuv6x-"+expected[:8]+".px4"
+          dst=Path("artifacts")/name
+          shutil.copy2(original,dst)
+          digest=hashlib.sha256(dst.read_bytes()).hexdigest()
+          (Path("artifacts")/"SHA256SUMS.txt").write_text(
+              f"{digest}  {name}\n"
+          )
+          meta={
+              "source_repository":"PX4/PX4-Autopilot",
+              "source_commit":sha,
+              "board_target":"px4_fmu-v6x_default",
+              "board_id":payload["board_id"],
+              "board_revision":payload.get("board_revision"),
+              "firmware_magic":payload["magic"],
+              "firmware_image_size":size,
+              "firmware_image_maxsize":maximum,
+              "firmware_git_identity":payload.get("git_identity"),
+              "firmware_sha256":digest,
+              "firmware_filename":name,
+          }
+          (Path("artifacts")/"firmware-validation.json").write_text(
+              json.dumps(meta,indent=2)+"\n"
+          )
+          print(json.dumps(meta,indent=2))
+          PY
+
+      - name: Upload QGroundControl custom firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixhawk6xpro-fmuv6x-d6f12ad1
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 30
