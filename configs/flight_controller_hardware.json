@@ -1,0 +1,6 @@
+{
+  "backend": "hardware",
+  "control_enabled": false,
+  "hil_injection_enabled": false,
+  "hardware_csv": "/root/autodl-tmp/flyarm-sitl-check/hardware_telemetry/pixhawk_com3_20261009_111050.csv"
+}

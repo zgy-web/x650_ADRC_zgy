@@ -1,0 +1,5 @@
+{
+  "backend": "sitl",
+  "control_enabled": false,
+  "hil_injection_enabled": false
+}
