@@ -1,0 +1,23 @@
+Git simulation checkout verification; tests use committed frozen references, no ROS or physical simulator started.
+PID_FF_START hover compensated 8.0
+PID_FF_COMPLETE C:\Users\Liym0817\AppData\Local\Temp\pid_ff_adapter_mock_4uj1hk39
+test_frozen_pid_returns_an_independent_copy (test_api.ApiBehaviorTests.test_frozen_pid_returns_an_independent_copy) ... ok
+test_import_does_not_hijack_generic_modules_or_search_path (test_api.ApiBehaviorTests.test_import_does_not_hijack_generic_modules_or_search_path) ... ok
+test_instances_are_independent_and_reset_restores_fresh_sequence (test_api.ApiBehaviorTests.test_instances_are_independent_and_reset_restores_fresh_sequence) ... ok
+test_invalid_inputs_are_rejected (test_api.ApiBehaviorTests.test_invalid_inputs_are_rejected) ... ok
+test_motion_filter_repeated_stamps_and_preserved_reset (test_api.ApiBehaviorTests.test_motion_filter_repeated_stamps_and_preserved_reset) ... ok
+test_quaternion_and_matrix_input_produce_same_commands (test_api.ApiBehaviorTests.test_quaternion_and_matrix_input_produce_same_commands) ... ok
+test_all_26_pid_values_match_archived_selection (test_api.ArchivedImplementationRegressionTests.test_all_26_pid_values_match_archived_selection) ... ok
+test_hold_to_task_preserves_ff_history_but_does_not_advance_core (test_api.ArchivedImplementationRegressionTests.test_hold_to_task_preserves_ff_history_but_does_not_advance_core) ... ok
+test_sequential_controller_feedforward_and_bridge_match_archived (test_api.ArchivedImplementationRegressionTests.test_sequential_controller_feedforward_and_bridge_match_archived) ... ok
+test_child_frame_linear_velocity_becomes_world_velocity (test_simulation_adapter.SimulationAdapterTests.test_child_frame_linear_velocity_becomes_world_velocity) ... ok
+test_failure_still_stops_arm_and_lands (test_simulation_adapter.SimulationAdapterTests.test_failure_still_stops_arm_and_lands) ... ok
+test_flight_monitor_rejects_failsafe (test_simulation_adapter.SimulationAdapterTests.test_flight_monitor_rejects_failsafe) ... ok
+test_hover_finishes_and_restores_vehicle_pump (test_simulation_adapter.SimulationAdapterTests.test_hover_finishes_and_restores_vehicle_pump) ... ok
+test_model_mismatch_is_rejected_before_takeoff (test_simulation_adapter.SimulationAdapterTests.test_model_mismatch_is_rejected_before_takeoff) ... ok
+test_presets_keep_frozen_limits_and_speed (test_simulation_adapter.SimulationAdapterTests.test_presets_keep_frozen_limits_and_speed) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 6.847s
+
+OK

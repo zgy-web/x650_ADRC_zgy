@@ -1,0 +1,11 @@
+{
+  "experiment": "pid_ff_wholebody_v1",
+  "success": true,
+  "scenario_returncode": 0,
+  "ulog_source": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/rootfs/log/2026-10-17/12_13_13.ulg",
+  "ulog_copied": true,
+  "ulog_archive_method": "copy_after_px4_shutdown",
+  "ulog_sha256": "1c9cd3fa22d92763153a505d587d36f6aaf85cf44d15761d266369f974b875b9",
+  "ulog_size_bytes": 13468360,
+  "ulog_finalized_wall_time": 1792239255.9504585
+}

@@ -1,0 +1,17 @@
+1/7 Waiting for PX4 MAVLink heartbeat
+2/7 Waiting for PX4, joint and truth telemetry
+3/7 Waiting for normal PX4 preflight checks
+4/7 Checking reviewed underfold joint zero
+5/7 Checking ROS-to-Gazebo command bridge
+6/7 Rechecking telemetry freshness
+7/7 CHECK PASSED: no arming or flight commands sent.
+arm_joint_1: q=-0.0000000 rad (-0.0000 deg), dq=-0.0000000 rad/s
+arm_joint_2: q=+0.0000000 rad (+0.0000 deg), dq=+0.0000000 rad/s
+Results: /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/check_underfold_20261017_201314
+PID_FF_START hover compensated 8.0
+PID_FF_COMPLETE /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/pid_ff_wholebody_v1_20261017_201319_3094
+{
+  "success": true,
+  "scenario": "pid_ff_wholebody_v1",
+  "results": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/pid_ff_wholebody_v1_20261017_201319_3094"
+}

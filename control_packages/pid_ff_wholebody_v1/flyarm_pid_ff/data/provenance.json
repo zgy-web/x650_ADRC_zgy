@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "source_suite": "wholebody_closed_loop_20261015/formal",
+  "formal_flights": 24,
+  "scope": "Verified control equations and PID profile packaged without numeric retuning. Package integration validation is recorded separately.",
+  "pid_sha256": "935428d891b59e64b6a0190f0eac888fbf66cbb989578745adefd25eda395dd2",
+  "files": [
+    {
+      "file": "_core/controller.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/controller.py",
+      "original_sha256": "0233ea5b6fabe3ebbb01f382d8fb1101e60bbb58192f09c1fa84e077b062e444",
+      "packaged_sha256": "9df9c826c26ac6843e2608fc3a87114fe92eace4e9e27c7ea8df92724d85fdeb",
+      "change": "Package-relative imports and local metadata path only"
+    },
+    {
+      "file": "_core/trajectory.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/trajectory.py",
+      "original_sha256": "9e52a9667021ec72ef404c042e7e95d8e6f0f9097105ba9f7cc093727361802c",
+      "packaged_sha256": "4dc551cfd211497f97d58d7f668ba630c617971eeee2717ce1b8ae7b513a7a09",
+      "change": "Package-relative imports and local metadata path only"
+    },
+    {
+      "file": "_core/braking.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/braking.py",
+      "original_sha256": "a0868398cb9570b4721300f5d6b1e4967f9cdf1441b0ffe324ac721a5fcc8f55",
+      "packaged_sha256": "a0868398cb9570b4721300f5d6b1e4967f9cdf1441b0ffe324ac721a5fcc8f55",
+      "change": "Byte-for-byte copy"
+    },
+    {
+      "file": "_core/kinematics.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/kinematics.py",
+      "original_sha256": "142df986febcf79729478abf1941972f7e6099e1dbc0bd9f8048a166f8e6a973",
+      "packaged_sha256": "142df986febcf79729478abf1941972f7e6099e1dbc0bd9f8048a166f8e6a973",
+      "change": "Byte-for-byte copy"
+    },
+    {
+      "file": "_core/feedforward.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/feedforward.py",
+      "original_sha256": "e27dc45d8cfd70e9bf9e3f11f58eb9645ca0682dc81f9323dbab0aeb6090f83d",
+      "packaged_sha256": "e27dc45d8cfd70e9bf9e3f11f58eb9645ca0682dc81f9323dbab0aeb6090f83d",
+      "change": "Byte-for-byte copy"
+    },
+    {
+      "file": "_core/control_adapter.py",
+      "original_path": "benchmark/whole_body_closed_loop_v1/control_adapter.py",
+      "original_sha256": "50f63d57ff8e9ea338098cdb00e6db1a5f1a2f4496f8c9d288040edb2cf19a03",
+      "packaged_sha256": "50f63d57ff8e9ea338098cdb00e6db1a5f1a2f4496f8c9d288040edb2cf19a03",
+      "change": "Byte-for-byte copy"
+    }
+  ]
+}

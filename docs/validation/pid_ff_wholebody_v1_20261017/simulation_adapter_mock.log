@@ -1,0 +1,17 @@
+MOCK ADAPTER VALIDATION — no physical simulator executed.
+Command: python -m unittest discover -s control_packages/pid_ff_wholebody_v1/tests -p test_simulation_adapter.py -v
+
+test_child_frame_linear_velocity_becomes_world_velocity (test_simulation_adapter.SimulationAdapterTests.test_child_frame_linear_velocity_becomes_world_velocity) ... ok
+test_failure_still_stops_arm_and_lands (test_simulation_adapter.SimulationAdapterTests.test_failure_still_stops_arm_and_lands) ... ok
+test_flight_monitor_rejects_failsafe (test_simulation_adapter.SimulationAdapterTests.test_flight_monitor_rejects_failsafe) ... ok
+test_hover_finishes_and_restores_vehicle_pump (test_simulation_adapter.SimulationAdapterTests.test_hover_finishes_and_restores_vehicle_pump) ... PID_FF_START hover compensated 8.0
+PID_FF_COMPLETE C:\Users\Liym0817\AppData\Local\Temp\pid_ff_adapter_mock_12o8krdv
+ok
+test_model_mismatch_is_rejected_before_takeoff (test_simulation_adapter.SimulationAdapterTests.test_model_mismatch_is_rejected_before_takeoff) ... ok
+test_presets_keep_frozen_limits_and_speed (test_simulation_adapter.SimulationAdapterTests.test_presets_keep_frozen_limits_and_speed) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.482s
+
+OK
+

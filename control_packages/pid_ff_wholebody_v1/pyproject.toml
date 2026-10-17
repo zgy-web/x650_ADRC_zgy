@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flyarm-pid-ff"
+version = "1.0.0"
+description = "Validated PX4/Gazebo x500_underfold whole-body PID and feedforward interface"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.23"]
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["flyarm_pid_ff*"]
+
+[tool.setuptools.package-data]
+flyarm_pid_ff = ["data/*.json"]

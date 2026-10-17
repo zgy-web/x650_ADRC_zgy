@@ -6,3 +6,8 @@ build/
 .venv/
 generated/
 .amsim/
+*.egg-info/
+.pytest_cache/
+dist/
+*.whl
+benchmark/whole_body_figure8_v1/flight.lock

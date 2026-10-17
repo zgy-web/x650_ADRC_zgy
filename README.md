@@ -13,6 +13,45 @@
 
 当前版本已在一台全新的 Ubuntu 22.04 服务器上完成 clean-room 验证。验证内容包括 PX4 SITL、Gazebo Sim 8.15、ROS 2 Humble、基于 VirtualGL 的 NVIDIA GPU 渲染、已验证机械臂模型、可配置 N 连杆机械臂、公共 Vehicle/Arm API、rosbag 记录以及 PX4 ULog 归档。
 
+## PID + 前馈 + 末端协同闭环
+
+**`flyarm-pid-ff 1.0.0` 已接入本分支。** 它将当前已验证的控制器封装为独立 Python 包，并提供悬停、普通八字和快速八字场景。底层 PID 在 PX4 内执行；包根据实际机体与关节状态计算末端位置误差，联合输出飞机参考和两关节速度，同时计算机械臂运动引起的飞机侧惯性补偿。
+
+| 入口 | 用途 |
+|---|---|
+| [控制包 README](control_packages/pid_ff_wholebody_v1/README.md) | 安装、Python API、坐标系、控制参数与日志说明 |
+| [仿真启动器](simulations/pid_ff_wholebody_v1/launch.py) | 选择轨迹和 ON/OFF 模式，管理飞行锁及运行结果 |
+| [接入与验证说明](docs/PID_FF_WHOLEBODY_V1.md) | 算法范围、历史指令重放和真实服务器悬停证据 |
+| [2026-10-17 验证记录](docs/validation/pid_ff_wholebody_v1_20261017/) | 测试日志、重放结果、参数读回及运行元数据 |
+
+仅调用控制 API 时，需要 **Python ≥3.10、NumPy ≥1.23**。在已激活的 Python 环境中，从仓库根目录安装并运行示例：
+
+```bash
+python -m pip install ./control_packages/pid_ff_wholebody_v1
+python control_packages/pid_ff_wholebody_v1/examples/one_step.py
+```
+
+实际飞行需要先完成下方的平台安装与 `doctor` 检查。已有仿真环境可直接使用，无需重新安装；将 `AMSIM_VENV` 设为该环境的实际路径。以下使用已验证服务器的路径，从仓库根目录执行：
+
+```bash
+export AMSIM_VENV=/root/autodl-tmp/amsim-venv
+
+# 检查任务配置，不启动仿真
+python3 simulations/pid_ff_wholebody_v1/launch.py --dry-run
+
+# 悬停；普通八字 12 秒/圈；快速八字 8 秒/圈
+python3 simulations/pid_ff_wholebody_v1/launch.py --trajectory hover --mode ON
+python3 simulations/pid_ff_wholebody_v1/launch.py --trajectory normal --mode ON
+python3 simulations/pid_ff_wholebody_v1/launch.py --trajectory fast --mode ON
+
+# 同一普通八字的对照：保留相同 PID 和前馈，关闭末端协同反馈
+python3 simulations/pid_ff_wholebody_v1/launch.py --trajectory normal --mode OFF
+```
+
+这些命令逐次运行，启动器采用 headless 模式，每次结果写入独立的 `runs/pid_ff_wholebody_v1_*` 目录。`ON` 和 `OFF` 都保留底层飞行闭环。名义轨迹分配为飞机 80%、机械臂 20%；ON 模式的纠偏量根据实际误差和约束计算。
+
+本控制版本固定用于 `x500_underfold` 两自由度机械臂，使用 Gazebo 真值辅助反馈，控制末端位置并输出关节速度。原算法已完成四类实验 ON/OFF 的历史指令重放核对；新封装入口已完成一次真实 PX4/Gazebo 悬停接入验证。普通与快速八字入口已配置，本次封装没有重飞整套八字对比。详细范围和证据见上面的验证说明。
+
 ## 项目提供的能力
 
 - 固定 PX4 commit 的 PX4 SITL + Gazebo Harmonic 仿真运行环境。
@@ -25,6 +64,7 @@
 - 面向远程 Linux 服务器的 GPU Gazebo GUI。
 - Ubuntu 22.04 clean-host 安装脚本。
 - 已实现 Gazebo ↔ MAVLink PX4 HIL 软件后端，并保留可选 Micro-XRCE-DDS ROS 2 链路。
+- 可独立调用的 PID + 前馈 + 末端协同闭环控制包，以及悬停和八字仿真入口。
 
 ## 快速开始
 
@@ -338,6 +378,8 @@ virtualgl_ready: true
 
 ## 文档
 
+- [PID + 前馈控制包与调用接口](control_packages/pid_ff_wholebody_v1/README.md)
+- [末端协同闭环接入与验证](docs/PID_FF_WHOLEBODY_V1.md)
 - [详细安装指南](docs/INSTALLATION.md)
 - [可移植性设计](docs/PORTABILITY.md)
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)

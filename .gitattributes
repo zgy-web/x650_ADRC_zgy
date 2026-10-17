@@ -1,0 +1,8 @@
+# These frozen resources are checked against recorded SHA-256 values.
+# Preserve their bytes across Windows and Linux checkouts.
+control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/** -text whitespace=cr-at-eol
+simulations/pid_ff_wholebody_v1/*.py -text
+control_packages/pid_ff_wholebody_v1/tests/fixtures/legacy_v1/*.py -text
+control_packages/pid_ff_wholebody_v1/tests/fixtures/legacy_v1/*.json -text
+# Preserve captured tool output, including its original trailing blank lines.
+docs/validation/pid_ff_wholebody_v1_20261017/*.log -text -whitespace

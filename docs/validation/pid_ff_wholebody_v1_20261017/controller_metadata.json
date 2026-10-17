@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "phase": "complete",
+  "task": {
+    "schema_version": 1,
+    "controller": "flyarm_pid_ff",
+    "scenario": "pid_ff_wholebody_v1",
+    "model": "x500_underfold",
+    "mode": "compensated",
+    "trajectory": "hover",
+    "trajectory_parameters": null,
+    "duration_s": 8.0,
+    "hover_height_m": 2.5,
+    "control_period_s": 0.02,
+    "nominal_arm_share": 0.2,
+    "feedforward_enabled": true,
+    "simulation_only": true,
+    "external_disturbance": false
+  },
+  "controller_package": "flyarm_pid_ff",
+  "source_hashes": {
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/__init__.py": "b04a9d974e5f01f4c733f958fb7545b0b64c1aebb23819110803f172e9fc588d",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/__init__.py": "2e3ff1a44585cac59207732956d503b66afef27199070d1bd342d5cacdc96a72",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/braking.py": "a0868398cb9570b4721300f5d6b1e4967f9cdf1441b0ffe324ac721a5fcc8f55",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/control_adapter.py": "50f63d57ff8e9ea338098cdb00e6db1a5f1a2f4496f8c9d288040edb2cf19a03",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/controller.py": "9df9c826c26ac6843e2608fc3a87114fe92eace4e9e27c7ea8df92724d85fdeb",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/feedforward.py": "e27dc45d8cfd70e9bf9e3f11f58eb9645ca0682dc81f9323dbab0aeb6090f83d",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/kinematics.py": "142df986febcf79729478abf1941972f7e6099e1dbc0bd9f8048a166f8e6a973",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core/trajectory.py": "4dc551cfd211497f97d58d7f668ba630c617971eeee2717ce1b8ae7b513a7a09",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/api.py": "695acc9ee128b14c45ed473281df46dce1b6d829cd79e6c5ed8f03d3472c2c32",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/data/provenance.json": "6086afae72a83fcb4ef2c8f493147d10fe87a896aef6708b8fa2d2e51ac3b002",
+    "control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/data/selected_parameters.json": "935428d891b59e64b6a0190f0eac888fbf66cbb989578745adefd25eda395dd2",
+    "simulations/pid_ff_wholebody_v1/launch.py": "269c795ac525c1464b6ff5769e0ef37a25d8d41f16e0de493b88ad9070389d10",
+    "simulations/pid_ff_wholebody_v1/run_case.py": "96cb7dd65dd10e02718b6dce76aa339cc72c9b51891791570d5b073b60dff61f"
+  },
+  "model_sha256": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8",
+  "requested_parameters": {
+    "MPC_XY_P": 2.0,
+    "MPC_XY_VEL_P_ACC": 5.0,
+    "MPC_XY_VEL_I_ACC": 1.6,
+    "MPC_XY_VEL_D_ACC": 0.12,
+    "MPC_Z_P": 1.0,
+    "MPC_Z_VEL_P_ACC": 4.0,
+    "MPC_Z_VEL_I_ACC": 2.0,
+    "MPC_Z_VEL_D_ACC": 0.0,
+    "MC_ROLL_P": 8.0,
+    "MC_PITCH_P": 8.0,
+    "MC_YAW_P": 2.8,
+    "MC_ROLLRATE_P": 0.1875,
+    "MC_ROLLRATE_I": 0.25,
+    "MC_ROLLRATE_D": 0.00375,
+    "MC_ROLLRATE_K": 1.0,
+    "MC_ROLLRATE_FF": 0.0,
+    "MC_PITCHRATE_P": 0.1875,
+    "MC_PITCHRATE_I": 0.25,
+    "MC_PITCHRATE_D": 0.00375,
+    "MC_PITCHRATE_K": 1.0,
+    "MC_PITCHRATE_FF": 0.0,
+    "MC_YAWRATE_P": 0.2,
+    "MC_YAWRATE_I": 0.1,
+    "MC_YAWRATE_D": 0.0,
+    "MC_YAWRATE_K": 1.0,
+    "MC_YAWRATE_FF": 0.0
+  },
+  "simulation_only": true,
+  "feedback": "Gazebo truth-assisted ENU pose/velocity and measured joints; PX4 NED setpoint bridge",
+  "feedforward": "Relative arm translational inertia plus analytic trajectory acceleration; moment diagnostic only",
+  "joint_actuation": "Existing Gazebo joint velocity controller",
+  "external_disturbance": false,
+  "control_period_s": 0.02,
+  "native_recorder": false,
+  "truth_max_age_s": 0.25,
+  "model_compatibility_verified_before_takeoff": true,
+  "calibration": {
+    "SENS_BAR_AUTOCAL": 0.0,
+    "CAL_BARO0_OFF": 0.0
+  },
+  "verified_parameters": {
+    "MPC_XY_P": 2.0,
+    "MPC_XY_VEL_P_ACC": 5.0,
+    "MPC_XY_VEL_I_ACC": 1.600000023841858,
+    "MPC_XY_VEL_D_ACC": 0.11999999731779099,
+    "MPC_Z_P": 1.0,
+    "MPC_Z_VEL_P_ACC": 4.0,
+    "MPC_Z_VEL_I_ACC": 2.0,
+    "MPC_Z_VEL_D_ACC": 0.0,
+    "MC_ROLL_P": 8.0,
+    "MC_PITCH_P": 8.0,
+    "MC_YAW_P": 2.799999952316284,
+    "MC_ROLLRATE_P": 0.1875,
+    "MC_ROLLRATE_I": 0.25,
+    "MC_ROLLRATE_D": 0.0037499999161809683,
+    "MC_ROLLRATE_K": 1.0,
+    "MC_ROLLRATE_FF": 0.0,
+    "MC_PITCHRATE_P": 0.1875,
+    "MC_PITCHRATE_I": 0.25,
+    "MC_PITCHRATE_D": 0.0037499999161809683,
+    "MC_PITCHRATE_K": 1.0,
+    "MC_PITCHRATE_FF": 0.0,
+    "MC_YAWRATE_P": 0.20000000298023224,
+    "MC_YAWRATE_I": 0.10000000149011612,
+    "MC_YAWRATE_D": 0.0,
+    "MC_YAWRATE_K": 1.0,
+    "MC_YAWRATE_FF": 0.0
+  },
+  "parameters_verified": true,
+  "controller_details": {
+    "version": "1.0.0",
+    "pid_sha256": "935428d891b59e64b6a0190f0eac888fbf66cbb989578745adefd25eda395dd2",
+    "model": "x500_underfold",
+    "controller": {
+      "name": "servo_consistent_kinematic_whole_body_v1",
+      "mode": "compensated",
+      "decision_variables": "desired executed base XYZ velocity [m/s], desired executed q1/q2 velocity [rad/s]",
+      "objective": "||ub+Jw*uj-r||^2 + 4||v_measured+Jw*uj-r||^2 + 4||ub-ub_nom||^2 + ||0.02*(uj-uj_nom)||^2",
+      "r": "tip_v_target + clipped(2*(tip_target-tip_actual)) - omega_world cross (R*tip_body(q))",
+      "objective_weights": {
+        "whole_body_task": 1.0,
+        "current_measured_base_task": 4.0,
+        "base_nominal_restoration": 4.0,
+        "arm_regularizer_length_m_per_rad": 0.02
+      },
+      "weights_status": "Engineering choices; no optimum or closed-loop stability proof claimed",
+      "nominal_arm_share": 0.2,
+      "base_position_gain_s_inv": [
+        2.0,
+        2.0,
+        1.0
+      ],
+      "joint_position_gain_s_inv": 3.0,
+      "tip_gain_s_inv": 2.0,
+      "max_tip_correction_m_s": 0.2,
+      "base_setpoint_encoding": "p_ref=p_nom; v_ref=ub - Kpos*(p_nom-p_measured); PX4 outer position P restores exactly ub",
+      "joint_setpoint_encoding": "send qd_cmd=uj directly; q_ref=q_nom, qd_ref=uj-3*(q_nom-q) are diagnostic servo-equivalent fields",
+      "aircraft_acceleration_feedforward": "Only analytic nominal base acceleration, never differentiated feedback command",
+      "arm_qdd_for_force_feedforward": "Bounded difference of joint velocity COMMANDS, not derivative of noisy measured qd",
+      "velocity_limit": [
+        0.55,
+        0.35,
+        0.45,
+        0.45,
+        0.35
+      ],
+      "acceleration_limit": [
+        0.45,
+        0.3,
+        0.45,
+        0.6,
+        0.6
+      ],
+      "q_lower": [
+        -0.75,
+        -0.35
+      ],
+      "q_upper": [
+        0.45,
+        0.85
+      ],
+      "max_dt_s": 0.05,
+      "position_bound_semantics": "Measured joint position; conservative discrete stopping-distance envelope for velocity command",
+      "acceleration_bound_semantics": "Per-step commanded generalized velocity difference; not guarantee of actual physical acceleration",
+      "jerk_constraint": "Not applied; old constraint was on an integrated reference, not actual executed servo velocity",
+      "joint_position_limit_scope": "Command viability for measured-state servo; cannot guarantee against external impacts or model/servo tracking error",
+      "rank_scope": "3D endpoint position; 2-DOF arm spans body XZ only, aircraft supplies uncontrollable residual directions",
+      "feedforward_scope": "Same external arm-force feedforward model in both baseline and compensated modes",
+      "math_source_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/pid_ff_wholebody_v1/flyarm_pid_ff/_core"
+    },
+    "control_period_s": 0.02,
+    "motion_filter_tau_s": 0.12,
+    "feedforward": "Relative arm translational inertia; reaction moment diagnostic only",
+    "feedback": "Simulation truth-assisted PX4 encoding; caller supplies measured states",
+    "pid_execution": "PX4 position/velocity/attitude/rate loops with frozen 26 gains"
+  },
+  "reference_base_enu_m": [
+    -0.014591359113528947,
+    -0.026634229109521356,
+    2.797565433505062
+  ],
+  "reference_rotation": [
+    [
+      0.9996771836231055,
+      -0.025391476054476534,
+      0.0008952581474630848
+    ],
+    [
+      0.025388901672404877,
+      0.9996737889674946,
+      0.0027783670099543103
+    ],
+    [
+      -0.0009655129437822444,
+      -0.0027547404865051143,
+      0.9999957395857282
+    ]
+  ],
+  "reference_joint_position_rad": [
+    0.0,
+    0.0
+  ],
+  "reference_center_enu_m": [
+    -0.02461962872500548,
+    -0.027577825590655067,
+    2.547575967993784
+  ],
+  "yaw_ned_rad": 1.6411056518554688,
+  "t0_sim_s": 35.572,
+  "duration_s": 8.0,
+  "initial_speed_m_s": 0.00033225567526745306,
+  "initial_joint_error_rad": 8.892322788228042e-11,
+  "trajectory_finished": true,
+  "control_rows": 751,
+  "landed_and_disarmed": true
+}

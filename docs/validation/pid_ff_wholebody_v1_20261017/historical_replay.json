@@ -1,0 +1,301 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_215945_85989",
+      "mode": "baseline",
+      "experiment": "translation",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1578,
+        "hold": 366,
+        "task": 1212
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "513b601ea0838d21e9970765e62deb996abe85ce056c39516010c5573b433169",
+        "control_trace.csv": "4c15ecfd142975ff161ea8d0578d0bd2e19b8f7cae44f1c42b3c08b50f2c1582",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_220124_86755",
+      "mode": "compensated",
+      "experiment": "translation",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1581,
+        "hold": 367,
+        "task": 1214
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "e67e493cb2acf45fb1609bb501d0b0c69ea9444a49bfbd1ebf799d98b5b75f94",
+        "control_trace.csv": "20dbbd1396c0dd522c7b4f3ec65dd5813cc23f9af618e61ba84aa1539dc1c070",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_220938_90474",
+      "mode": "baseline",
+      "experiment": "pitch",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1580,
+        "hold": 366,
+        "task": 1214
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "5491f94d6f02ff1f49ca37d8ccdbdfb81e1206802783051e2b565ad7a0bdf4e1",
+        "control_trace.csv": "dc78c3aeab4d732b89cbc0683fabbac207afea86fe21e0b19161ea4e49508ce1",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_221117_91221",
+      "mode": "compensated",
+      "experiment": "pitch",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1581,
+        "hold": 368,
+        "task": 1213
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "699fd9b5941aa57cf4ac2bfee9262e82c6d47a8a80802e21224e5d116d8d0a76",
+        "control_trace.csv": "448f33c826fbe7598a60e28ff1bbf1f6b7123c904bef0c87cc15c6e5f9891fb5",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_222745_95632",
+      "mode": "baseline",
+      "experiment": "figure8normal",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1979,
+        "hold": 366,
+        "task": 1613
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "68f5a4e36700224692ebba26afcf238e29e66bf700d0562c35cc04be88a990d2",
+        "control_trace.csv": "5999411db2c5a4d75878dad78b7635cf2c0f54e230eb75f010cf5ffe7081a90d",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_222932_96404",
+      "mode": "compensated",
+      "experiment": "figure8normal",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1980,
+        "hold": 366,
+        "task": 1614
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "9082409578df7c5ce841c01d0a35da3edf3043f3a9c2c41c5d02561a9aff0069",
+        "control_trace.csv": "e070d02dfe173f3a15daa38dd06ebb344e9b4d41303b9af138fc6b2af40a1784",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_223831_100464",
+      "mode": "baseline",
+      "experiment": "figure8fast",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1581,
+        "hold": 367,
+        "task": 1214
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "cf5db4f8ebff0ab4bfd20df6e6b95491fb45bda01333c886aabe55fda35c5f61",
+        "control_trace.csv": "3b609d5a1c02166587c97edb6c8690c193f759c60757290b255e532243325ad9",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    },
+    {
+      "case": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/whole_body_closed_loop_v1_20261015_224009_101213",
+      "mode": "compensated",
+      "experiment": "figure8fast",
+      "replicate": 1,
+      "passed": true,
+      "samples": {
+        "all": 1583,
+        "hold": 368,
+        "task": 1215
+      },
+      "absolute_tolerance": 2e-10,
+      "max_abs_error_by_field": {
+        "position_reference": 0.0,
+        "velocity_feedforward": 0.0,
+        "nominal_acceleration": 0.0,
+        "arm_acceleration": 0.0,
+        "acceleration_feedforward": 0.0,
+        "base_velocity_target": 0.0,
+        "joint_velocity": 0.0,
+        "joint_reference": 0.0,
+        "joint_velocity_reference": 0.0,
+        "joint_acceleration_reference": 0.0,
+        "tip_position": 0.0,
+        "tip_target": 0.0,
+        "px4_position": 0.0,
+        "px4_velocity": 0.0,
+        "px4_acceleration": 0.0
+      },
+      "largest_failures": [],
+      "input_sha256": {
+        "metadata.yaml": "a5a35fd69d3e448ed012a6d44699119eade948b756236b0dfc3b1469b4e01fe5",
+        "control_trace.csv": "c8d7c5e295576eb74908d5c16886a40b5383ef80af5fd43455d8455b856418bb",
+        "model_snapshot.sdf": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+      },
+      "scope": "Actual recorded control inputs replayed chronologically, including hold filter history; command equivalence only, not a new simulation flight."
+    }
+  ]
+}

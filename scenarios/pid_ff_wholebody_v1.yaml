@@ -1,0 +1,13 @@
+schema_version: 1
+name: pid_ff_wholebody_v1
+module: simulations/pid_ff_wholebody_v1/run_case.py
+backend: px4_sitl
+model: x500_underfold
+vehicle:
+  takeoff_height_m: 2.5
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true
+visualization:
+  default: headless

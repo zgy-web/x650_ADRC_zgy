@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "host": "autodl-container-0a7a4692fe-bd3dfd6f",
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/pid_ff_wholebody_v1_20261017_201319_3094",
+  "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/pid_ff_launch_20261017T121300Z_3091",
+  "kind": "Real PX4 SITL/Gazebo integration hover, no injected disturbance; not a paired performance experiment",
+  "task_duration_s": 8.0,
+  "all_rows": 751,
+  "task_rows": 414,
+  "task_time_first_last_s": [
+    0.003999999999997783,
+    8.296
+  ],
+  "control_dt_min_max_s": [
+    0.01999999999999602,
+    0.02400000000000091
+  ],
+  "endpoint_error_rms_m": 0.0009646647965276223,
+  "endpoint_error_max_m": 0.001859618026649421,
+  "joint_command_abs_max_rad_s": [
+    0.03359000206234311,
+    0.0049655224089441225
+  ],
+  "all_26_pid_parameters_verified": true,
+  "landed_and_disarmed": true,
+  "runtime_closed": true,
+  "deployed_hashes_verified": 20,
+  "recorded_source_hashes_verified": 13,
+  "trace_sha256": "788cb2518f29c7d914fa47ccb9c920a785100f6e85fdac8f228b6803dd83f9ed",
+  "replay_cases": 8,
+  "replay_steps": 13443,
+  "replay_max_abs_error": 0.0
+}
