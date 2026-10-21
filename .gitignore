@@ -3,6 +3,7 @@ __pycache__/
 runs/
 build/
 .env
+.env.*
 .venv/
 generated/
 .amsim/
@@ -11,3 +12,7 @@ generated/
 dist/
 *.whl
 benchmark/whole_body_figure8_v1/flight.lock
+
+# Local experiment deliveries and exploratory outputs; sources belong in scripts/.
+artifacts/
+simulation_test_by_py/

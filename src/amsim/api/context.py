@@ -1,38 +1,17 @@
 from __future__ import annotations
 
-import json
-import os
-
 import rclpy
 
 from .arm import ArmAPI
 from .node import ApiNode
 from .vehicle import VehicleAPI
-from ..runtime.process import status as runtime_status
+from ..runtime.model_metadata import resolve_active_model
 
 
 class ScenarioContext:
     def __init__(self):
-        joints_env = os.environ.get("AMSIM_MODEL_JOINTS")
-        if joints_env is not None:
-            try:
-                joints = json.loads(joints_env)
-            except json.JSONDecodeError as exc:
-                raise RuntimeError("Invalid AMSIM_MODEL_JOINTS") from exc
-        else:
-            joints = None
-            state = runtime_status()
-            meta_path = state.get("runtime_meta") if state.get("running") else None
-            if meta_path:
-                try:
-                    meta = json.loads(open(meta_path).read())
-                    value = meta.get("joint_names")
-                    if isinstance(value, list) and value:
-                        joints = [str(x) for x in value]
-                except (OSError, json.JSONDecodeError):
-                    pass
-            if joints is None:
-                joints = ["arm_joint_1", "arm_joint_2"]
+        self.model = resolve_active_model()
+        joints = self.model["joint_names"]
 
         self._owns_rclpy = not rclpy.ok()
         if self._owns_rclpy:

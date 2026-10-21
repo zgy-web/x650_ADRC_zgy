@@ -151,6 +151,19 @@ def _snapshot_inputs(folder: Path, spec, model_spec) -> None:
     if not (folder / "model_snapshot.sdf").exists():
         shutil.copy2(model_spec.sdf_path, folder / "model_snapshot.sdf")
 
+    if model_spec.manifest_path:
+        shutil.copy2(model_spec.manifest_path, folder / "model_manifest.json")
+    if model_spec.source in {"urdf_import", "urdf_flight"}:
+        # The manifest carries hashes for all mesh/source assets. Keep small
+        # provenance files in each run without duplicating large mesh bundles.
+        for source_name, destination_name in (
+            ("flight_profile.yaml", "flight_profile.yaml"),
+            ("source_import_manifest.json", "source_import_manifest.json"),
+        ):
+            source_path = model_spec.sdf_path.parent / source_name
+            if source_path.is_file():
+                shutil.copy2(source_path, folder / destination_name)
+
     module_path = Path(spec.module)
     if module_path.suffix == ".py":
         if not module_path.is_absolute():
@@ -164,12 +177,13 @@ def run(name: str, headless: bool = False) -> Path:
     config_path = spec.config_path
     config = spec.config
     model_spec = resolve_model(str(config.get("model", "x500_underfold")))
-    install_model(model_spec)
+    selected_model_env = model_env(model_spec)
 
     if runtime_status().get("running"):
         raise RuntimeError(
             "An amsim runtime is already running; stop it before 'amsim run'."
         )
+    install_model(model_spec)
 
     env = os.environ.copy()
     prior_pp = env.get("PYTHONPATH", "")
@@ -178,7 +192,7 @@ def run(name: str, headless: bool = False) -> Path:
     )
     env["AMSIM_SCENARIO_CONFIG"] = str(config_path)
     env["AMSIM_SCENARIO_NAME"] = name
-    env.update(model_env(model_spec))
+    env.update(selected_model_env)
     _apply_builtin_compat(name, config, env)
 
     before = {
@@ -197,7 +211,7 @@ def run(name: str, headless: bool = False) -> Path:
     started_wall = time.time()
 
     try:
-        runtime_start(wait_s=75, env_overrides=model_env(model_spec))
+        runtime_start(wait_s=75, env_overrides=selected_model_env)
         runtime_owned = True
         _readiness(env)
 
@@ -291,6 +305,10 @@ def run(name: str, headless: bool = False) -> Path:
             result_path.write_text(json.dumps(result, indent=2))
 
     if folder is None:
+        if error_text is not None:
+            raise RuntimeError(
+                f"Scenario '{name}' platform failure before a result directory was created: {error_text}"
+            )
         raise RuntimeError("Scenario did not produce a result directory.")
 
     if marker is not None and bool((config.get("record") or {}).get("px4_ulog", True)):
@@ -308,6 +326,11 @@ def run(name: str, headless: bool = False) -> Path:
         "model_name": model_spec.model_name,
         "model_sha256": model_spec.sha256,
         "model_source": model_spec.source,
+        "model_manifest_sha256": _sha256(model_spec.manifest_path) if model_spec.manifest_path else None,
+        "model_total_mass_kg": model_spec.total_mass_kg,
+        "model_base_link": model_spec.base_link,
+        "model_controlled_joints": model_spec.joints,
+        "px4_sys_autostart": model_spec.px4_sys_autostart,
         "model_config": (
             str(model_spec.config_path)
             if model_spec.config_path

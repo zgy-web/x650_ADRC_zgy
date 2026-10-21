@@ -39,6 +39,10 @@ def start(
     xrce_baud: int = 921600,
     wait_s: float = 60.0,
 ) -> dict:
+    from ..modeling.manager import IMPORTED_SOURCES, resolve
+    spec = resolve(model)
+    if spec.source in IMPORTED_SOURCES:
+        raise RuntimeError("Imported URDF models are supported by preview/SITL only; HIL binding has not been validated")
     current = status()
     if current.get("running"):
         raise RuntimeError(f"HIL runtime already running pid={current['pid']}")

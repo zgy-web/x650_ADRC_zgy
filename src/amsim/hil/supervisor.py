@@ -11,7 +11,7 @@ import sys
 import time
 from pathlib import Path
 
-from ..modeling.manager import env_for, install, resolve
+from ..modeling.manager import IMPORTED_SOURCES, env_for, install, resolve
 from ..paths import PROJECT_ROOT, px4_dir, results_dir
 
 
@@ -97,7 +97,9 @@ def main() -> int:
     signal.signal(signal.SIGINT, signal.default_int_handler)
 
     spec = resolve(args.model)
-    install(spec)
+    if spec.source in IMPORTED_SOURCES:
+        raise RuntimeError("Imported URDF models are supported by preview/SITL only; HIL binding has not been validated")
+    install(spec, require_sitl_airframe=False)
     model_name = spec.model_name
     joints = list(spec.joints)
 
@@ -107,7 +109,7 @@ def main() -> int:
     world = _make_world(model_name, folder)
 
     env = os.environ.copy()
-    env.update(env_for(spec))
+    env.update(env_for(spec, require_sitl_airframe=False))
     models = px4_dir() / "Tools/simulation/gz/models"
     env["GZ_SIM_RESOURCE_PATH"] = (
         str(models)

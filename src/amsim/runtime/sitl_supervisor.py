@@ -1,4 +1,4 @@
-"""V3 underfold SITL supervisor: startup + dynamic Gazebo topic discovery.
+"""SITL supervisor: model-aware startup and dynamic Gazebo topic discovery.
 
 No arming or flight commands are sent here.
 """
@@ -7,14 +7,14 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import re
 import shutil
 import signal
 import socket
 import subprocess
 import time
 
-from ..paths import PROJECT_ROOT, px4_dir, results_dir, model_dir
+from ..paths import px4_dir, results_dir
+from .model_metadata import bridge_arguments, discover_model_topics as match_model_topics, model_from_env
 
 
 
@@ -30,23 +30,14 @@ def main():
     # always perform its own orderly child-process cleanup.
     signal.signal(signal.SIGINT, signal.default_int_handler)
 
-    here = PROJECT_ROOT
     px4 = px4_dir()
 
-    model_name = os.environ.get("AMSIM_MODEL_NAME", "x500_underfold")
-    expected_sha = os.environ.get(
-        "AMSIM_MODEL_SHA256",
-        "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8",
-    )
-    try:
-        joint_names = json.loads(
-            os.environ.get("AMSIM_MODEL_JOINTS", '["arm_joint_1","arm_joint_2"]')
-        )
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("Invalid AMSIM_MODEL_JOINTS JSON") from exc
-
-    if not isinstance(joint_names, list) or not joint_names:
-        raise RuntimeError("AMSIM_MODEL_JOINTS must be a non-empty JSON list")
+    model = model_from_env()
+    if not model["flight_ready"]:
+        raise RuntimeError("This imported model has no flight profile; use model-preview before configuring PX4")
+    model_name = model["model"]
+    expected_sha = model["model_sha256"]
+    joint_names = model["joint_names"]
 
     models = px4 / "Tools/simulation/gz/models"
     installed_model_dir = models / model_name
@@ -64,6 +55,15 @@ def main():
             f"expected={expected_sha}\n"
             f"actual={actual_sha}"
         )
+
+    if model_name.startswith("amsim_urdf_") or model["source"] == "urdf_flight":
+        # Also enforce the import contract for direct supervisor invocation;
+        # environment variables alone are not evidence of a flight binding.
+        from ..modeling.manager import env_for, resolve
+        installed = resolve(str(installed_model_dir / "import_manifest.json"))
+        installed_metadata = model_from_env(env_for(installed))
+        if installed_metadata != model:
+            raise RuntimeError("Installed URDF flight manifest conflicts with requested runtime model metadata")
 
     for cmd in ("MicroXRCEAgent", "ros2", "gz"):
         if not shutil.which(cmd):
@@ -99,7 +99,7 @@ def main():
     env = os.environ.copy()
 
     env.update(
-        PX4_SYS_AUTOSTART="4001",
+        PX4_SYS_AUTOSTART=model["px4_sys_autostart"],
         PX4_SIM_MODEL=model_name,
     )
 
@@ -164,44 +164,15 @@ def main():
     def discover_model_topics(timeout=60):
         deadline = time.monotonic() + timeout
         last_topics = []
-        escaped_model = re.escape(model_name)
 
         while time.monotonic() < deadline:
             ensure_children_alive()
             topics = gz_topics()
             last_topics = topics
 
-            instance_pattern = re.compile(
-                rf"^/model/({escaped_model}(?:_[0-9]+)?)/joint/"
-            )
-            instances = sorted({
-                match.group(1)
-                for topic in topics
-                if (match := instance_pattern.match(topic))
-            })
-
-            if len(instances) == 1:
-                instance = instances[0]
-                commands = {}
-                complete = True
-                for joint_name in joint_names:
-                    topic = f"/model/{instance}/joint/{joint_name}/cmd_vel"
-                    if topic not in topics:
-                        complete = False
-                        break
-                    commands[joint_name] = topic
-
-                states = [
-                    topic for topic in topics
-                    if topic.endswith(f"/model/{instance}/joint_state")
-                ]
-
-                if complete and len(states) == 1:
-                    return {
-                        "instance": instance,
-                        "joint_commands_gz": commands,
-                        "joint_state_gz": states[0],
-                    }
+            discovered = match_model_topics(topics, model_name, joint_names, model["base_link"])
+            if discovered is not None:
+                return discovered
 
             time.sleep(1)
 
@@ -248,53 +219,18 @@ def main():
 
         print(
             "Gazebo joint state: "
-            + discovered["joint_state_gz"],
+            + (discovered["joint_state_gz"] or "not required (no controlled arm joints)"),
             flush=True
         )
 
-        bridge_args = [
-            "ros2",
-            "run",
-            "ros_gz_bridge",
-            "parameter_bridge",
-        ]
-
-        for joint_name in joint_names:
-            bridge_args.append(
-                discovered["joint_commands_gz"][joint_name]
-                + "@std_msgs/msg/Float64]gz.msgs.Double"
-            )
-
-        bridge_args.extend([
-            discovered["joint_state_gz"]
-            + "@sensor_msgs/msg/JointState[gz.msgs.Model",
-            "/ground_truth/odometry"
-            + "@nav_msgs/msg/Odometry[gz.msgs.Odometry",
-            "/clock"
-            + "@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-            "--ros-args",
-        ])
-
-        for joint_name in joint_names:
-            bridge_args.extend([
-                "-r",
-                discovered["joint_commands_gz"][joint_name]
-                + f":=/arm/{joint_name}/cmd_vel",
-            ])
-
-        bridge_args.extend([
-            "-r",
-            discovered["joint_state_gz"] + ":=/arm/joint_states",
-        ])
+        bridge_args = bridge_arguments(discovered, joint_names)
 
         launch("bridge", bridge_args)
 
         runtime = {
-            "model": model_name,
-            "model_sha256": actual_sha,
-            "joint_names": joint_names,
+            **model,
             **discovered,
-            "ros_joint_state": "/arm/joint_states",
+            "ros_joint_state": "/arm/joint_states" if joint_names else None,
             "ros_joint_commands": {
                 joint_name: f"/arm/{joint_name}/cmd_vel"
                 for joint_name in joint_names

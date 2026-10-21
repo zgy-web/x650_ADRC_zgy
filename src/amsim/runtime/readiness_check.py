@@ -1,4 +1,4 @@
-"""V3 underfold integration check.
+"""Readiness check for the active model, including vehicles without an arm.
 
 READINESS CHECK ONLY:
 - no arming
@@ -9,12 +9,14 @@ READINESS CHECK ONLY:
 import hashlib
 import json
 import math
-import os
-from pathlib import Path
 import socket
 import time
 
-from ..paths import PROJECT_ROOT, px4_dir, results_dir, model_dir
+from ..paths import px4_dir, results_dir, model_dir
+from .model_metadata import (
+    REVIEWED_NAME, REVIEWED_SHA, initial_joint_values,
+    required_telemetry, resolve_active_model,
+)
 
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
@@ -33,9 +35,6 @@ from std_msgs.msg import Float64
 
 
 JOINT_TOPIC = "/arm/joint_states"
-CMD1_TOPIC = "/arm/arm_joint_1/cmd_vel"
-CMD2_TOPIC = "/arm/arm_joint_2/cmd_vel"
-
 PX4_POSITION = "/fmu/out/vehicle_local_position_v1"
 PX4_STATUS = "/fmu/out/vehicle_status_v1"
 PX4_LAND = "/fmu/out/vehicle_land_detected"
@@ -43,9 +42,10 @@ TRUTH = "/ground_truth/odometry"
 
 
 class Telemetry(Node):
-    def __init__(self):
-        super().__init__("underfold_v3_check")
+    def __init__(self, joint_names):
+        super().__init__("amsim_readiness_check")
 
+        self.joint_names = list(joint_names)
         self.data = {}
         self.received = {}
 
@@ -56,6 +56,8 @@ class Telemetry(Node):
             ("joints", JointState, JOINT_TOPIC),
             ("truth", Odometry, TRUTH),
         ):
+            if key == "joints" and not self.joint_names:
+                continue
             self.create_subscription(
                 typ,
                 topic,
@@ -63,17 +65,10 @@ class Telemetry(Node):
                 qos_profile_sensor_data,
             )
 
-        self.pub1 = self.create_publisher(
-            Float64,
-            CMD1_TOPIC,
-            10,
-        )
-
-        self.pub2 = self.create_publisher(
-            Float64,
-            CMD2_TOPIC,
-            10,
-        )
+        self.joint_publishers = {
+            name: self.create_publisher(Float64, f"/arm/{name}/cmd_vel", 10)
+            for name in self.joint_names
+        }
 
     def receive(self, key, msg):
         self.data[key] = msg
@@ -86,24 +81,18 @@ class Telemetry(Node):
             now - self.received.get(key, 0) < (
                 3 if key in ("status", "land") else 2
             )
-            for key in (
-                "position",
-                "status",
-                "land",
-                "joints",
-                "truth",
-            )
+            for key in required_telemetry(self.joint_names)
         )
 
     def zero(self):
         msg = Float64()
         msg.data = 0.0
-        self.pub1.publish(msg)
-        self.pub2.publish(msg)
+        for publisher in self.joint_publishers.values():
+            publisher.publish(msg)
 
 
 class Check:
-    def __init__(self):
+    def __init__(self, joint_names):
         # Same protection as v2: do not share QGC's UDP port silently.
         with socket.socket(
             socket.AF_INET,
@@ -121,7 +110,7 @@ class Check:
         self.last_heartbeat = 0.0
         self.gcs_heartbeat_time = 0.0
 
-        self.node = Telemetry()
+        self.node = Telemetry(joint_names)
 
         self.executor = SingleThreadedExecutor()
         self.executor.add_node(self.node)
@@ -192,28 +181,32 @@ class Check:
 
 
 def main():
-    here = PROJECT_ROOT
+    model_metadata = resolve_active_model()
+    if not model_metadata["flight_ready"]:
+        raise RuntimeError("Model has no flight profile; PX4 readiness is unavailable")
+    joint_names = model_metadata["joint_names"]
+    check_label = "underfold" if model_metadata["model"] == REVIEWED_NAME else model_metadata["model"]
 
     result_dir = (
         results_dir()
         / (
-            "check_underfold_"
+            "check_" + check_label + "_"
             + time.strftime("%Y%m%d_%H%M%S")
         )
     )
 
     result_dir.mkdir(parents=True, exist_ok=False)
 
-    expected_sha = "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+    expected_sha = model_metadata["model_sha256"]
 
-    bundled_model = model_dir() / "model.sdf"
-    if hashlib.sha256(bundled_model.read_bytes()).hexdigest() != expected_sha:
-        raise RuntimeError("Bundled reviewed model hash mismatch.")
+    if model_metadata["model"] == REVIEWED_NAME:
+        bundled_model = model_dir() / "model.sdf"
+        if hashlib.sha256(bundled_model.read_bytes()).hexdigest() != REVIEWED_SHA:
+            raise RuntimeError("Bundled reviewed model hash mismatch.")
 
     model = (
         px4_dir()
-        / "Tools/simulation/gz/models/"
-          "x500_underfold/model.sdf"
+        / "Tools/simulation/gz/models" / model_metadata["model"] / "model.sdf"
     )
 
     actual_sha = hashlib.sha256(
@@ -227,11 +220,12 @@ def main():
         "flight_commands_sent": False,
         "arm_motion_commands_sent": False,
         "model_sha256": actual_sha,
+        "model": model_metadata,
     }
 
     if actual_sha != expected_sha:
         raise RuntimeError(
-            "Installed model hash does not match reviewed model."
+            "Installed model hash does not match active runtime model."
         )
 
     rclpy.init()
@@ -239,7 +233,7 @@ def main():
     check = None
 
     try:
-        check = Check()
+        check = Check(joint_names)
 
         check.wait(
             lambda: check.target is not None,
@@ -250,7 +244,7 @@ def main():
         check.wait(
             lambda: check.node.fresh(),
             45,
-            "2/7 Waiting for PX4, joint and truth telemetry",
+            "2/7 Waiting for model telemetry: " + ", ".join(required_telemetry(joint_names)),
         )
 
         check.wait(
@@ -277,66 +271,18 @@ def main():
             )
 
         print(
-            "4/7 Checking reviewed underfold joint zero",
+            "4/7 Checking configured initial joint positions" if joint_names else "4/7 No controlled arm joints",
             flush=True,
         )
 
-        joints = check.node.data["joints"]
-
-        values = {}
-
-        for name in ("arm_joint_1", "arm_joint_2"):
-            if name not in joints.name:
-                raise RuntimeError(
-                    f"Missing joint feedback: {name}"
-                )
-
-            i = joints.name.index(name)
-
-            if (
-                i >= len(joints.position)
-                or i >= len(joints.velocity)
-            ):
-                raise RuntimeError(
-                    f"Incomplete JointState arrays: {name}"
-                )
-
-            q = joints.position[i]
-            v = joints.velocity[i]
-
-            if not (
-                math.isfinite(q)
-                and math.isfinite(v)
-            ):
-                raise RuntimeError(
-                    f"Nonfinite joint state: {name}"
-                )
-
-            if abs(q) > math.radians(0.4):
-                raise RuntimeError(
-                    f"{name} is not near new q=0: "
-                    f"{math.degrees(q):.4f} deg"
-                )
-
-            if abs(v) > 0.01:
-                raise RuntimeError(
-                    f"{name} moving too fast: "
-                    f"{v:.6f} rad/s"
-                )
-
-            values[name] = {
-                "q_rad": q,
-                "q_deg": math.degrees(q),
-                "velocity_rad_s": v,
-            }
+        values = initial_joint_values(
+            joint_names, model_metadata["initial_joint_positions"], check.node.data.get("joints")
+        )
 
         check.wait(
-            lambda:
-                check.node.pub1.get_subscription_count() > 0
-                and
-                check.node.pub2.get_subscription_count() > 0,
+            lambda: all(pub.get_subscription_count() > 0 for pub in check.node.joint_publishers.values()),
             15,
-            "5/7 Checking ROS-to-Gazebo command bridge",
+            "5/7 Checking ROS-to-Gazebo command bridge" if joint_names else "5/7 No arm command bridge required",
         )
 
         # Zero only. No arm motion command is issued.

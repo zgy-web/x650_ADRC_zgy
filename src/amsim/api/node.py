@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import json
 import math
-import os
 import time
 
 import rclpy
@@ -15,12 +13,13 @@ from sensor_msgs.msg import JointState
 from std_msgs.msg import Float64
 
 from .observation import GroundTruth, JointStateValue, Observation, VehicleEstimate
+from ..runtime.model_metadata import required_telemetry, validate_joint_names
 
 
 class ApiNode(Node):
     def __init__(self, joint_names: list[str]):
         super().__init__("amsim_public_api")
-        self.joint_names = list(joint_names)
+        self.joint_names = validate_joint_names(joint_names)
         self.data = {}
         self.received = {}
 
@@ -31,6 +30,8 @@ class ApiNode(Node):
             ("joints", JointState, "/arm/joint_states"),
             ("truth", Odometry, "/ground_truth/odometry"),
         ):
+            if key == "joints" and not self.joint_names:
+                continue
             self.create_subscription(
                 typ,
                 topic,
@@ -58,9 +59,7 @@ class ApiNode(Node):
         self._executor.spin_once(timeout_sec=timeout_sec)
 
     def wait_for_data(self, timeout_s: float = 45.0, require_truth: bool = True):
-        required = ["position", "status", "land", "joints"]
-        if require_truth:
-            required.append("truth")
+        required = required_telemetry(self.joint_names, require_truth)
         deadline = time.monotonic() + timeout_s
         while time.monotonic() < deadline:
             self.spin_once()
@@ -82,6 +81,8 @@ class ApiNode(Node):
             self.publish_velocity(joint, 0.0)
 
     def joint_values(self) -> dict[str, JointStateValue]:
+        if not self.joint_names:
+            return {}
         msg = self.data.get("joints")
         if msg is None:
             raise RuntimeError("No joint state available")

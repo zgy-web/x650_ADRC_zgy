@@ -8,7 +8,6 @@ from pathlib import Path
 
 
 BASE_TOPICS = [
-    "/arm/joint_states",
     "/fmu/out/vehicle_local_position_v1",
     "/fmu/out/vehicle_attitude",
     "/fmu/out/vehicle_odometry",
@@ -43,6 +42,8 @@ class RosbagRecorder:
     @property
     def required_topics(self) -> list[str]:
         topics = list(BASE_TOPICS)
+        if self.joint_names:
+            topics.insert(0, "/arm/joint_states")
         if self.include_ground_truth:
             topics.append("/ground_truth/odometry")
         return topics

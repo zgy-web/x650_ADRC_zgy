@@ -49,8 +49,9 @@ def cmd_start(args: argparse.Namespace) -> int:
     from .runtime.process import start
     from .modeling.manager import resolve, install, env_for
     spec = resolve(args.model)
+    model_env = env_for(spec)
     install(spec)
-    state = start(wait_s=args.wait, env_overrides=env_for(spec))
+    state = start(wait_s=args.wait, env_overrides=model_env)
     print(json.dumps(state, indent=2))
     return 0
 
@@ -166,6 +167,70 @@ def cmd_model_list(_: argparse.Namespace) -> int:
     print(json.dumps(inventory(), indent=2))
     return 0
 
+
+def _urdf_options(args: argparse.Namespace) -> dict:
+    packages = {}
+    for item in args.package:
+        name, separator, path = item.partition("=")
+        if not separator or not name or not path or name in packages:
+            raise ValueError("--package requires a unique NAME=PATH")
+        packages[name] = Path(path)
+    return {
+        "urdf_entry": args.urdf_entry,
+        "root_xyz": args.root_xyz,
+        "root_rpy": args.root_rpy,
+        "package_paths": packages,
+    }
+
+
+def cmd_model_inspect(args: argparse.Namespace) -> int:
+    from .modeling.urdf_importer import inspect_urdf
+    report = inspect_urdf(Path(args.source), **_urdf_options(args))
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0
+
+
+def cmd_model_import(args: argparse.Namespace) -> int:
+    from .modeling.urdf_importer import import_urdf
+    model = import_urdf(Path(args.source), args.name, **_urdf_options(args))
+    print(json.dumps({
+        "model_name": model.model_name, "directory": str(model.directory),
+        "manifest": str(model.manifest_path), "sdf": str(model.sdf_path),
+        "sha256": model.sha256, "total_mass_kg": model.total_mass_kg,
+        "flight_ready": False,
+        "next": "model-preview; bind an explicit flight profile before PX4 use",
+    }, indent=2))
+    return 0
+
+
+def cmd_model_bind_flight(args: argparse.Namespace) -> int:
+    from .modeling.manager import resolve
+    from .modeling.urdf_flight import bind_flight_profile
+    spec = resolve(args.model)
+    model = bind_flight_profile(spec.sdf_path.parent, Path(args.profile))
+    print(json.dumps({
+        "model_name": model.name, "directory": str(model.output_dir),
+        "manifest": str(model.manifest_path), "sha256": model.sha256,
+        "flight_ready": True, "flight_validated": False,
+        "px4_sys_autostart": model.px4_sys_autostart,
+    }, indent=2))
+    return 0
+
+
+def cmd_model_preview(args: argparse.Namespace) -> int:
+    from .modeling.manager import resolve
+    from .modeling.urdf_preview import build_preview, check_preview
+    spec = resolve(args.model)
+    world = build_preview(spec.sdf_path.parent, height=args.height, static=args.static)
+    if args.check:
+        result = check_preview(world, iterations=args.iterations)
+        print(json.dumps(result, indent=2))
+        return 0 if result.get("ok") else 2
+    metadata = json.loads((world.parent / "preview_manifest.json").read_text(encoding="utf-8"))
+    print(json.dumps({"world": str(world), "open_command": metadata["gui_command"],
+                      "px4_started": False}, indent=2))
+    return 0
+
 def cmd_hil_doctor(args: argparse.Namespace) -> int:
     from .hil.doctor import probe
     result = probe(args.mavlink, args.baud, args.timeout)
@@ -217,6 +282,8 @@ def cmd_model_build(args: argparse.Namespace) -> int:
         "sha256": spec.sha256,
         "joints": spec.joints,
         "total_arm_mass_kg": spec.total_arm_mass_kg,
+        "total_mass_kg": spec.total_mass_kg,
+        "flight_ready": spec.flight_ready,
     }
     print(json.dumps(payload, indent=2))
     if not ok:
@@ -293,6 +360,38 @@ def build_parser() -> argparse.ArgumentParser:
     mb = sp.add_parser("model-build", help="build and validate a configurable model")
     mb.add_argument("model")
     mb.set_defaults(func=cmd_model_build)
+
+    def urdf_arguments(parser):
+        parser.add_argument("source", help="self-contained .urdf or .zip")
+        parser.add_argument("--urdf-entry", help="URDF path inside a ZIP with multiple robots")
+        parser.add_argument("--root-xyz", nargs=3, type=float, default=(0., 0., 0.),
+                            metavar=("X", "Y", "Z"), help="root-frame translation in metres")
+        parser.add_argument("--root-rpy", nargs=3, type=float, default=(0., 0., 0.),
+                            metavar=("ROLL", "PITCH", "YAW"), help="root-frame rotation in radians")
+        parser.add_argument("--package", action="append", default=[], metavar="NAME=PATH",
+                            help="explicit local package:// resource mapping; repeatable")
+
+    mi = sp.add_parser("model-inspect", help="inspect URDF mass, joints, frames and local mesh resources")
+    urdf_arguments(mi)
+    mi.set_defaults(func=cmd_model_inspect)
+
+    imp = sp.add_parser("model-import", help="convert a URDF/ZIP into a portable Gazebo model")
+    urdf_arguments(imp)
+    imp.add_argument("--name", required=True)
+    imp.set_defaults(func=cmd_model_import)
+
+    bind = sp.add_parser("model-bind-flight", help="bind explicit propulsion/PX4 parameters to an imported model")
+    bind.add_argument("model")
+    bind.add_argument("profile")
+    bind.set_defaults(func=cmd_model_bind_flight)
+
+    preview = sp.add_parser("model-preview", help="prepare an isolated Gazebo world; optionally run a bounded physics check")
+    preview.add_argument("model")
+    preview.add_argument("--height", type=float, default=.5)
+    preview.add_argument("--static", action="store_true")
+    preview.add_argument("--check", action="store_true")
+    preview.add_argument("--iterations", type=int, default=100)
+    preview.set_defaults(func=cmd_model_preview)
 
     hd = sp.add_parser("hil-doctor", help="probe a real PX4 MAVLink HIL connection")
     hd.add_argument("--mavlink", required=True, help="serial device or pymavlink connection URL")
