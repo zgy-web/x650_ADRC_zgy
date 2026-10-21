@@ -13,6 +13,8 @@
 
 当前版本已在一台全新的 Ubuntu 22.04 服务器上完成 clean-room 验证。验证内容包括 PX4 SITL、Gazebo Sim 8.15、ROS 2 Humble、基于 VirtualGL 的 NVIDIA GPU 渲染、已验证机械臂模型、可配置 N 连杆机械臂、公共 Vehicle/Arm API、rosbag 记录以及 PX4 ULog 归档。
 
+这份源码包含平台、控制算法、数值配置、模型准备工具与测试。**用户自有 X650 的 CAD、URDF、网格及其压缩包不随源码提供**；生成模型、准备报告、飞行数据、视频、ULog、rosbag 和预编译插件也由实验者另行保存。下文中的模型输入与结果路径是本地运行约定，不是克隆后自动存在的附件。合成单元测试可以脱离私有模型运行；精确复现某次 X650 飞行则必须取得该次模型及哈希绑定的证据。
+
 ## PID + 前馈 + 末端协同闭环
 
 **`flyarm-pid-ff 1.0.0` 已接入本分支。** 它将当前已验证的控制器封装为独立 Python 包，并提供悬停、普通八字和快速八字场景。底层 PID 在 PX4 内执行；包根据实际机体与关节状态计算末端位置误差，联合输出飞机参考和两关节速度，同时计算机械臂运动引起的飞机侧惯性补偿。
@@ -22,7 +24,6 @@
 | [控制包 README](control_packages/pid_ff_wholebody_v1/README.md) | 安装、Python API、坐标系、控制参数与日志说明 |
 | [仿真启动器](simulations/pid_ff_wholebody_v1/launch.py) | 选择轨迹和 ON/OFF 模式，管理飞行锁及运行结果 |
 | [接入与验证说明](docs/PID_FF_WHOLEBODY_V1.md) | 算法范围、历史指令重放和真实服务器悬停证据 |
-| [2026-10-17 验证记录](docs/validation/pid_ff_wholebody_v1_20261017/) | 测试日志、重放结果、参数读回及运行元数据 |
 
 仅调用控制 API 时，需要 **Python ≥3.10、NumPy ≥1.23**。在已激活的 Python 环境中，从仓库根目录安装并运行示例：
 
@@ -52,11 +53,44 @@ python3 simulations/pid_ff_wholebody_v1/launch.py --trajectory normal --mode OFF
 
 本控制版本固定用于 `x500_underfold` 两自由度机械臂，使用 Gazebo 真值辅助反馈，控制末端位置并输出关节速度。原算法已完成四类实验 ON/OFF 的历史指令重放核对；新封装入口已完成一次真实 PX4/Gazebo 悬停接入验证。普通与快速八字入口已配置，本次封装没有重飞整套八字对比。详细范围和证据见上面的验证说明。
 
+## 导入自有 URDF 模型
+
+平台新增 `.urdf` / `.zip` 导入入口，保存原始模型及资源哈希，使用服务器已有的 `gz sdf` 转换为 Gazebo SDF。支持显式根坐标转换、`package://` 资源映射，以及无机械臂模型。URDF 的质量、惯量和关节限位按原文件保留。
+
+```bash
+# 先检查；可在不安装 Gazebo 的电脑上运行
+python -m amsim.cli model-inspect /path/to/robot.zip
+
+# 以下在已有 Gazebo 环境的服务器执行
+./scripts/amsim model-import /path/to/robot.zip --name my_robot
+./scripts/amsim model-preview amsim_urdf_my_robot --check --iterations 100
+./scripts/amsim model-preview amsim_urdf_my_robot --static
+```
+
+最后一条生成静态查看场景并返回 `open_command`；执行返回的完整命令即可打开 Gazebo，命令中的独立 `GZ_PARTITION` 必须保留。动态检查会在重力下加载原模型，无动力的机体会下落。
+
+导入完成后可检查模型外观和物理加载。进入 PX4 飞行前，需要额外提供明确的电机映射、转向、动力系数和已构建的 PX4 airframe；`model-bind-flight` 负责绑定并检查这些参数。未绑定的模型不能直接 `start` 或 `run`。现有 PID＋前馈包仍固定于原来的 `x500_underfold` 两关节模型。
+
+完整命令、支持范围、飞行配置模板和 X650 的坐标转换见 [URDF 导入说明](docs/URDF_IMPORT.md)。导入与物理加载检查、动力配置绑定、悬停闭环验收各自生成独立证据，前一项不会自动证明后一项已经通过。历史验证记录及原始日志单独归档，不作为本源码发布的附件。
+
+X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、无臂整机 3.02 kg**，包括仿真电机编号、五点推力拟合、质量／惯量守恒检查和 PX4 4999 airframe。反扭矩与响应时间仍有显式估计项。源码说明见 [X650 动力配置](configs/vehicles/x650_no_arm/README.md)、[无臂悬停协议](simulations/x650_hover_v1/README.md)和[实测状态回放方法](docs/X650_HOVER_REPLAY.md)。
+
+## X650 + 二连杆与精密定位接入
+
+[X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。
+
+独立物理记录器的 [源码构建入口](benchmark/whole_body_closed_loop_v1/README.md)随仓库提供；在目标 Gazebo 环境构建并把实际库路径写入任务。构建成功、插件可加载和完整飞行验收是不同步骤。
+
+通用 `model-import` 接受用户提供的 URDF/ZIP 与完整 mesh 资源；X650 预设则绑定特定源 URDF 哈希、二连杆构型、物理准备报告、airframe、世界文件和实际 PID 参数。`prepare_x650_flight.py` 会拒绝不匹配的源模型。换一台同名 X650 或改动几何，必须建立新的模型准备与证据版本，不能只改路径或移除哈希检查。
+
+精密模式使用理想 Gazebo EV 测量辅助 PX4 EKF，因此标记 `ground_truth_aided=true`；v2 上层控制的直接反馈来自 PX4 估计状态和实测关节，独立物理真值用于验收。它验证当前仿真测量条件下的闭环，不提供 GPS 或实机定位性能结论。原始结果按独立运行保存，源码不附带可直接充当 stage gate 的成功证书。
+
 ## 项目提供的能力
 
 - 固定 PX4 commit 的 PX4 SITL + Gazebo Harmonic 仿真运行环境。
 - 已验证的两连杆空中机械臂模型。
 - 可配置串联 N 连杆机械臂生成器。
+- 自有 URDF/ZIP 模型导入、资源归档、独立 Gazebo 预览与显式 PX4 动力配置绑定。
 - 稳定的公共实验 API：`ScenarioContext`、`VehicleAPI`、`ArmAPI` 和观测接口。
 - 明确区分 PX4 估计状态与可选的 Gazebo ground truth。
 - 场景自动发现和用户自定义场景模板。
@@ -380,6 +414,8 @@ virtualgl_ready: true
 
 - [PID + 前馈控制包与调用接口](control_packages/pid_ff_wholebody_v1/README.md)
 - [末端协同闭环接入与验证](docs/PID_FF_WHOLEBODY_V1.md)
+- [X650 PID/前馈与上层 MPC 控制包](control_packages/x650_wholebody_v1/README.md)
+- [X650 精密定位与分阶段实验协议](simulations/x650_wholebody_mpc_v1/README.md)
 - [详细安装指南](docs/INSTALLATION.md)
 - [可移植性设计](docs/PORTABILITY.md)
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)

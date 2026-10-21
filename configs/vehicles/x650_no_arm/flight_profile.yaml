@@ -1,0 +1,67 @@
+schema_version: 1
+type: px4_multicopter
+base_link: base_link
+body_frame: FLU
+px4_sys_autostart: 4999
+controlled_joints: []
+notes: 'X650 commissioning model: user-selected MN4014 KV330, T-MOTOR 15*5CF, 22.2
+  V table; kT fitted through origin, 6000 rpm cap. Simulation motor mapping authorized
+  by user, not claimed as real wiring. Gazebo8 reference KM/tau/drag estimates; see
+  preparation_report.json. https://store.tmotor.com/product/mn4014-kv330-motor-navigator-type.html'
+rotors:
+- motor_number: 0
+  joint: link_004_joint
+  link: link_004
+  turning_direction: ccw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M1, front_right, ccw viewed from above.
+- motor_number: 1
+  joint: link_002_joint
+  link: link_002
+  turning_direction: ccw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M2, rear_left, ccw viewed from above.
+- motor_number: 2
+  joint: link_003_joint
+  link: link_003
+  turning_direction: cw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M3, front_left, cw viewed from above.
+- motor_number: 3
+  joint: link_005_joint
+  link: link_005
+  turning_direction: cw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M4, rear_right, cw viewed from above.

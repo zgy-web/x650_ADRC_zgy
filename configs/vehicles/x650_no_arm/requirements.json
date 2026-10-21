@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "kind": "propulsion_evidence_record",
+  "vehicle": "x650_no_arm",
+  "date": "2026-10-17",
+  "flight_ready": true,
+  "flight_ready_scope": "Simulation commissioning only, using the documented approximate propulsion model; not physical aircraft flight approval or calibrated real-flight performance.",
+  "purpose": "Hardware evidence and explicit simulation assumptions for X650 commissioning; runnable parameters are in flight_profile.yaml and the 4999 airframe. One server PX4/Gazebo no-arm hover completed on 2026-10-17.",
+  "simulation_validation": {
+    "run": "x650_hover_v1_20261017_223001_11466",
+    "success": true,
+    "landing_confirmed": true,
+    "position_rmse_m": 0.03557869383748333,
+    "position_max_m": 0.05851678973938822,
+    "tilt_max_deg": 0.44662093369978956,
+    "record": "docs/validation/x650_hover_20261017/README.md"
+  },
+  "source": {
+    "archive": "x650机架无臂.zip",
+    "archive_sha256": "ca87917ab89a6ffa3ed17de059b7839282960ec1f98afd9d1369d9079d4c171c",
+    "urdf": "robot.urdf",
+    "urdf_sha256": "643f5c1d8a57eeffa822b044cba7b9ec6b1a0d72186b8e524fb0d081be3943bb",
+    "mass_provenance": "Original CAD totals 3.02 kg; user independently confirmed no-arm all-up mass 3.02 kg for this simulation on 2026-10-17. Not independently weighed by the agent; do not add battery mass again.",
+    "root_transform": {
+      "xyz_m": [
+        0.0,
+        0.0,
+        -0.17095298
+      ],
+      "rpy_rad": [
+        1.5707963267948966,
+        0.0,
+        0.0
+      ]
+    },
+    "manufacturer_table_screenshot": {
+      "filename": "e02204365c3eb4af25fd2069cda96721.png",
+      "sha256": "3c72e8ae1d8672b31923ef5623c84984b6726f229a306057dc76bd18ee74d046",
+      "selected_group": "MN4014 KV330, 22.2V, T-MOTOR 15*5CF"
+    }
+  },
+  "known_model": {
+    "total_declared_mass_kg": 3.02,
+    "base_declared_mass_kg": 2.3,
+    "each_rotor_link_declared_mass_kg": 0.18,
+    "nominal_zero_joint_com_in_root_flu_m": [
+      0.001651210684,
+      0.002125143399,
+      -0.063341221526
+    ],
+    "root_flu_definition": "+X assumed forward, +Y left, +Z up; physical forward direction still requires confirmation.",
+    "declared_mass_equal_share_hover_thrust_per_motor_n": 7.40402075,
+    "hover_thrust_note": "3.02 * 9.80665 / 4; equal-share approximation before small COM trim, using the user-confirmed all-up mass.",
+    "rotor_links": [
+      {
+        "link": "link_002",
+        "joint": "link_002_joint",
+        "position_assuming_x_forward": "rear_left",
+        "position_in_root_flu_m": [
+          -0.22990664,
+          0.22990664,
+          0.0
+        ],
+        "position_relative_com_frd_m": [
+          -0.231557850684,
+          -0.227781496601,
+          -0.063341221526
+        ],
+        "mesh_parts": [
+          "part_278",
+          "part_276"
+        ],
+        "px4_motor_number_one_based": null,
+        "physical_output_channel": null,
+        "turning_direction_viewed_from_above": null
+      },
+      {
+        "link": "link_003",
+        "joint": "link_003_joint",
+        "position_assuming_x_forward": "front_left",
+        "position_in_root_flu_m": [
+          0.22990664,
+          0.22990664,
+          0.0
+        ],
+        "position_relative_com_frd_m": [
+          0.228255429316,
+          -0.227781496601,
+          -0.063341221526
+        ],
+        "mesh_parts": [
+          "part_279",
+          "part_280"
+        ],
+        "px4_motor_number_one_based": null,
+        "physical_output_channel": null,
+        "turning_direction_viewed_from_above": null
+      },
+      {
+        "link": "link_004",
+        "joint": "link_004_joint",
+        "position_assuming_x_forward": "front_right",
+        "position_in_root_flu_m": [
+          0.22990664,
+          -0.22990664,
+          0.0
+        ],
+        "position_relative_com_frd_m": [
+          0.228255429316,
+          0.232031783399,
+          -0.063341221526
+        ],
+        "mesh_parts": [
+          "part_274",
+          "part_277"
+        ],
+        "px4_motor_number_one_based": null,
+        "physical_output_channel": null,
+        "turning_direction_viewed_from_above": null
+      },
+      {
+        "link": "link_005",
+        "joint": "link_005_joint",
+        "position_assuming_x_forward": "rear_right",
+        "position_in_root_flu_m": [
+          -0.22990664,
+          -0.22990664,
+          0.0
+        ],
+        "position_relative_com_frd_m": [
+          -0.231557850684,
+          0.232031783399,
+          -0.063341221526
+        ],
+        "mesh_parts": [
+          "part_273",
+          "part_275"
+        ],
+        "px4_motor_number_one_based": null,
+        "physical_output_channel": null,
+        "turning_direction_viewed_from_above": null
+      }
+    ],
+    "rotor_inertial_model_review": {
+      "status": "resolved_by_documented_simulation_approximation",
+      "finding": "Every 0.18 kg movable link includes a propeller mesh and a complete-looking motor mesh approximately 44.4 mm wide by 42.9 mm high. CAD does not distinguish the fixed stator from the spinning bell/propeller. Do not assume the full 0.18 kg physically rotates.",
+      "required_resolution": "Confirm the CAD grouping and real rotating mass/inertia, or explicitly document an approximate simulation-only inertial model. Preserve total vehicle mass and COM when splitting fixed and rotating parts.",
+      "resolution": "prepare_x650_flight.py uses 21g balanced axisymmetric propeller equivalents; fixes motor visuals and redistributes the remaining mass/inertia to base, preserving total mass, COM and zero-angle inertia. Bell inertia remains uncalibrated."
+    },
+    "source_joint_limits": {
+      "type": "revolute",
+      "angle_rad": [
+        -1.57,
+        1.57
+      ],
+      "velocity_rad_s": 5.0,
+      "effort_nm": 10.0,
+      "status": "CAD placeholders, not verified propulsion limits",
+      "required_resolution": "Create an auditable derived rotor model with continuous rotation and a justified speed limit. Do not hide the 5 rad/s limit by choosing an artificial slowdown factor.",
+      "resolution": "Derived continuous joints, physical speed ceiling 628.3185307179587rad/s and numerical slowdown 10. Original CAD retained unmodified."
+    },
+    "scope": "Original CAD properties before the documented fixed-motor / rotating-propeller redistribution."
+  },
+  "user_inputs": {
+    "motor": {
+      "manufacturer": "T-MOTOR",
+      "full_model": "MN4014 KV330",
+      "kv_rpm_per_volt": 330,
+      "rated_voltage_v": null,
+      "unit_mass_kg": null,
+      "all_four_identical": true,
+      "datasheet_or_product_url": "https://store.tmotor.com/product/mn4014-kv330-motor-navigator-type.html"
+    },
+    "propeller": {
+      "manufacturer": "T-MOTOR",
+      "full_model": "15*5CF",
+      "diameter_inch": 15,
+      "pitch_inch": 5,
+      "blade_count": 2,
+      "material": "carbon fibre",
+      "unit_mass_kg": 0.021,
+      "datasheet_or_product_url": "https://store.tmotor.com/product/polish-carbon-fiber-15x5-prop.html",
+      "mass_source": "Official P15*5 reference 21 +/-1.5g; not an installed propeller measurement"
+    },
+    "battery": {
+      "cell_count_s": 6,
+      "nominal_voltage_v": 22.2,
+      "capacity_mah": 30000,
+      "mass_kg": null,
+      "expected_loaded_hover_voltage_v": null
+    },
+    "esc": {
+      "full_model": null,
+      "firmware": null,
+      "protocol": null,
+      "current_rating_a": null,
+      "throttle_calibration_or_endpoints": null,
+      "user_description": "matching ESC; exact model unspecified"
+    },
+    "vehicle": {
+      "measured_no_arm_all_up_mass_kg": null,
+      "measurement_includes_battery_and_all_flight_hardware": null,
+      "urdf_mass_includes_battery": null,
+      "confirmed_forward_direction_in_imported_model": null,
+      "measured_com_in_root_flu_m": null,
+      "top_view_motor_output_and_cw_ccw_mapping_source": null,
+      "existing_px4_parameter_file": null,
+      "user_confirmed_all_up_mass_kg": 3.02,
+      "motor_mapping_status": "User authorized establishing simulation numbering; physical wiring unverified",
+      "simulation_all_up_mass_includes_battery": true,
+      "mass_interpretation": "Use supplied 3.02 kg as complete no-arm assembly; battery capacity does not add a second mass term."
+    },
+    "bench_data": {
+      "data_source": "https://store.tmotor.com/product/mn4014-kv330-motor-navigator-type.html",
+      "motor_propeller_and_voltage_match_installed_hardware": true,
+      "preferred_columns": [
+        "voltage_v",
+        "command_or_throttle",
+        "rpm",
+        "thrust_n",
+        "current_a",
+        "shaft_torque_nm_if_available"
+      ],
+      "samples": [
+        {
+          "rpm": 3900.0,
+          "thrust_gf": 830.0,
+          "current_a": 3.6,
+          "throttle_percent": 50
+        },
+        {
+          "rpm": 4600.0,
+          "thrust_gf": 1150.0,
+          "current_a": 5.9,
+          "throttle_percent": 65
+        },
+        {
+          "rpm": 5100.0,
+          "thrust_gf": 1430.0,
+          "current_a": 7.8,
+          "throttle_percent": 75
+        },
+        {
+          "rpm": 5600.0,
+          "thrust_gf": 1690.0,
+          "current_a": 10.1,
+          "throttle_percent": 85
+        },
+        {
+          "rpm": 6000.0,
+          "thrust_gf": 1920.0,
+          "current_a": 11.9,
+          "throttle_percent": 100
+        }
+      ],
+      "preferred_coverage": "Several points below, near and above approximately 755 gf per motor, plus the highest allowed continuous operating point. State original units if thrust is reported in gf or kgf.",
+      "optional_dynamic_data": "Command-step versus measured RPM or thrust, with sample times, for acceleration/deceleration response.",
+      "test_voltage_v": 22.2
+    }
+  },
+  "derived_configuration": {
+    "px4_sys_autostart": 4999,
+    "built_px4_airframe_path": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/etc/init.d-posix/airframes/4999_gz_x650_mn4014_v1",
+    "gazebo_motor_constant_n_per_rad_s_squared": 4.828453605732144e-05,
+    "gazebo_moment_constant_m": 0.016,
+    "maximum_loaded_rotor_speed_rad_s": 628.3185307179587,
+    "time_constant_up_s": 0.0125,
+    "time_constant_down_s": 0.025,
+    "rotor_drag_coefficient": 0.0001,
+    "rolling_moment_coefficient": 1e-06,
+    "rotor_velocity_slowdown_sim": 10,
+    "provenance": "See propulsion_fit.json and flight_profile.yaml; dynamics are Gazebo8 reference estimates, motor thrust is fitted from user-selected manufacturer table",
+    "derivation_notes": [
+      "Angular speed omega = RPM * 2*pi/60. Fit thrust T = kT * omega^2 from matching motor/propeller/voltage data.",
+      "Gazebo motor_constant = kT. Gazebo moment_constant = shaft aerodynamic torque Q / thrust T, in metres, not Q/omega^2.",
+      "Motor KV times voltage is an unloaded reference, not the maximum loaded rotor speed with the installed propeller.",
+      "Electrical voltage times current is not mechanical shaft power; it cannot determine Q without measured efficiency or torque.",
+      "PX4 rotor positions use FRD about the whole-vehicle COM: [x-cx, -(y-cy), -(z-cz)]. Gazebo rotor links remain in model FLU.",
+      "PX4 motor numbering shown to users is one-based; Gazebo actuator message indices and this platform's motor_number are zero-based.",
+      "Dynamic constants and drag coefficients may use explicit preliminary estimates for a labeled commissioning run; do not present such a run as a calibrated hardware performance result. Rotor mapping and maximum thrust must remain consistent and traceable."
+    ]
+  },
+  "references": [
+    "https://raw.githubusercontent.com/gazebosim/gz-sim/gz-sim8/src/systems/multicopter_motor_model/MulticopterMotorModel.cc",
+    "https://docs.px4.io/main/en/config/actuators#motor-position-coordinate-system",
+    "https://docs.px4.io/main/en/advanced_config/parameter_reference#CA_ROTOR0_KM"
+  ],
+  "simulation_motor_mapping": [
+    {
+      "motor_number": 0,
+      "px4_motor": 1,
+      "link": "link_004",
+      "position": "front_right",
+      "turning_direction_above": "ccw",
+      "position_flu_m": [
+        0.22990664,
+        -0.22990664,
+        2.7755575615628914e-17
+      ],
+      "position_com_frd_m": [
+        0.2282554293160265,
+        0.2320317833994361,
+        -0.06334122152627401
+      ],
+      "px4_km_sign": 1
+    },
+    {
+      "motor_number": 1,
+      "px4_motor": 2,
+      "link": "link_002",
+      "position": "rear_left",
+      "turning_direction_above": "ccw",
+      "position_flu_m": [
+        -0.22990664,
+        0.22990664,
+        -2.7755575615628914e-17
+      ],
+      "position_com_frd_m": [
+        -0.2315578506839735,
+        -0.2277814966005639,
+        -0.06334122152627396
+      ],
+      "px4_km_sign": 1
+    },
+    {
+      "motor_number": 2,
+      "px4_motor": 3,
+      "link": "link_003",
+      "position": "front_left",
+      "turning_direction_above": "cw",
+      "position_flu_m": [
+        0.22990664,
+        0.22990664,
+        -2.7755575615628914e-17
+      ],
+      "position_com_frd_m": [
+        0.2282554293160265,
+        -0.2277814966005639,
+        -0.06334122152627396
+      ],
+      "px4_km_sign": -1
+    },
+    {
+      "motor_number": 3,
+      "px4_motor": 4,
+      "link": "link_005",
+      "position": "rear_right",
+      "turning_direction_above": "cw",
+      "position_flu_m": [
+        -0.22990664,
+        -0.22990664,
+        2.7755575615628914e-17
+      ],
+      "position_com_frd_m": [
+        -0.2315578506839735,
+        0.2320317833994361,
+        -0.06334122152627401
+      ],
+      "px4_km_sign": -1
+    }
+  ],
+  "preparation_status": "Native Gazebo binding, PX4 airframe installation, runtime parameter readback and one no-arm hover/normal landing all completed on the server. Existing server PX4 build reused; no rebuild or dependency download. See simulation_validation for the exact run and remaining approximation scope."
+}

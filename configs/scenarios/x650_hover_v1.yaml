@@ -1,0 +1,28 @@
+schema_version: 1
+name: x650_hover_v1
+module: simulations/x650_hover_v1/run_case.py
+backend: px4_sitl
+model: amsim_urdf_x650_mn4014_v1_flight
+# Audited Linux derivation; one iyy last-bit difference from Windows is recorded
+# in docs/validation/urdf_x650_20261017/derived_platform_comparison.json.
+expected_urdf_sha256: be4030a3a5784ce8b074d816115c0356656c310873f2cbb3c39c3b18f65b2c43
+original_urdf_sha256: 643f5c1d8a57eeffa822b044cba7b9ec6b1a0d72186b8e524fb0d081be3943bb
+vehicle:
+  takeoff_height_m: 2.0
+timeline:
+  stable_required_s: 3.0
+  pre_hold_s: 5.0
+  experiment_hold_s: 20.0
+  post_hold_s: 5.0
+sampling:
+  rate_hz: 20.0
+acceptance:
+  position_rmse_m: 0.25
+  position_max_m: 0.50
+  tilt_max_deg: 15.0
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true
+visualization:
+  default: gui

@@ -1,0 +1,84 @@
+#!/bin/sh
+# AMSIM X650 commissioning v1; simulation only, not a hardware wiring map.
+# PX4 d6f12ad1c4f70ad3230afd7d86e971421e02fef4; see README.md.
+. ${R}etc/init.d/rc.mc_defaults
+
+PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
+PX4_GZ_WORLD=${PX4_GZ_WORLD:=default}
+PX4_SIM_MODEL=${PX4_SIM_MODEL:=amsim_urdf_x650_mn4014_v1_flight}
+# CAD landing gear extends 0.370 m below the model origin.
+PX4_GZ_MODEL_POSE=${PX4_GZ_MODEL_POSE:=0,0,0.5,0,0,0}
+
+# Physical/output contract is enforced on each launch. PID remains PX4 defaults
+# after the first airframe switch; subsequent tuning must be recorded per run.
+param set SIM_GZ_EN 1
+param set CA_AIRFRAME 0
+param set CA_ROTOR_COUNT 4
+param set CA_R_REV 0
+param set SIM_GZ_EC_REV 0
+param set CA_ROTOR0_AX 0
+param set CA_ROTOR0_AY 0
+param set CA_ROTOR0_AZ -1
+param set CA_ROTOR1_AX 0
+param set CA_ROTOR1_AY 0
+param set CA_ROTOR1_AZ -1
+param set CA_ROTOR2_AX 0
+param set CA_ROTOR2_AY 0
+param set CA_ROTOR2_AZ -1
+param set CA_ROTOR3_AX 0
+param set CA_ROTOR3_AY 0
+param set CA_ROTOR3_AZ -1
+param set THR_MDL_FAC 1
+param set MPC_THR_HOVER 0.3888125521
+
+# Positions are FRD relative to the whole-vehicle COM (metres).
+# CT is maximum thrust kT*628^2, with output u=1; KM is signed Q/T (metres).
+# Equal CT scaling cancels in normalized allocation, and prevents the pinned
+# allocator's <=0.05 effectiveness threshold from erasing the yaw axis.
+# M1 front-right, CCW viewed from above.
+param set CA_ROTOR0_PX 0.2282554293
+param set CA_ROTOR0_PY 0.2320317834
+param set CA_ROTOR0_PZ -0.0633412215
+param set CA_ROTOR0_CT 19.0426484684
+param set CA_ROTOR0_KM 0.016
+# M2 rear-left, CCW viewed from above.
+param set CA_ROTOR1_PX -0.2315578507
+param set CA_ROTOR1_PY -0.2277814966
+param set CA_ROTOR1_PZ -0.0633412215
+param set CA_ROTOR1_CT 19.0426484684
+param set CA_ROTOR1_KM 0.016
+# M3 front-left, CW viewed from above.
+param set CA_ROTOR2_PX 0.2282554293
+param set CA_ROTOR2_PY -0.2277814966
+param set CA_ROTOR2_PZ -0.0633412215
+param set CA_ROTOR2_CT 19.0426484684
+param set CA_ROTOR2_KM -0.016
+# M4 rear-right, CW viewed from above.
+param set CA_ROTOR3_PX -0.2315578507
+param set CA_ROTOR3_PY 0.2320317834
+param set CA_ROTOR3_PZ -0.0633412215
+param set CA_ROTOR3_CT 19.0426484684
+param set CA_ROTOR3_KM -0.016
+
+param set SIM_GZ_EC_FUNC1 101
+param set SIM_GZ_EC_FUNC2 102
+param set SIM_GZ_EC_FUNC3 103
+param set SIM_GZ_EC_FUNC4 104
+param set SIM_GZ_EC_FUNC5 0
+param set SIM_GZ_EC_FUNC6 0
+param set SIM_GZ_EC_FUNC7 0
+param set SIM_GZ_EC_FUNC8 0
+param set SIM_GZ_EC_DIS1 0
+param set SIM_GZ_EC_DIS2 0
+param set SIM_GZ_EC_DIS3 0
+param set SIM_GZ_EC_DIS4 0
+param set SIM_GZ_EC_MIN1 0
+param set SIM_GZ_EC_MIN2 0
+param set SIM_GZ_EC_MIN3 0
+param set SIM_GZ_EC_MIN4 0
+# PX4 accepts integer rad/s here; 628 is below the 628.3185 model limit.
+param set SIM_GZ_EC_MAX1 628
+param set SIM_GZ_EC_MAX2 628
+param set SIM_GZ_EC_MAX3 628
+param set SIM_GZ_EC_MAX4 628
+

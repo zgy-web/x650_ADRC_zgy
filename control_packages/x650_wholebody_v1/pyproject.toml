@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flyarm-x650-wholebody"
+version = "0.1.0.dev0"
+description = "Explicit X650 two-link control interfaces and simulation commissioning"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.21.5", "scipy>=1.8"]
+
+[tool.setuptools.packages.find]
+include = ["x650_wholebody*"]

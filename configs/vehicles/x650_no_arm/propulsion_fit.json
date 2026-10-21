@@ -1,0 +1,99 @@
+{
+  "source": {
+    "type": "user_selected_manufacturer_table",
+    "url": "https://store.tmotor.com/product/mn4014-kv330-motor-navigator-type.html",
+    "matched_official_table": true,
+    "motor": "MN4014 KV330",
+    "propeller": "T-MOTOR 15*5CF",
+    "test_voltage_v": 22.2,
+    "reported_battery": "6S 30000 mAh",
+    "esc_model": null
+  },
+  "samples": [
+    {
+      "rpm": 3900.0,
+      "thrust_gf": 830.0,
+      "current_a": 3.6,
+      "throttle_percent": 50
+    },
+    {
+      "rpm": 4600.0,
+      "thrust_gf": 1150.0,
+      "current_a": 5.9,
+      "throttle_percent": 65
+    },
+    {
+      "rpm": 5100.0,
+      "thrust_gf": 1430.0,
+      "current_a": 7.8,
+      "throttle_percent": 75
+    },
+    {
+      "rpm": 5600.0,
+      "thrust_gf": 1690.0,
+      "current_a": 10.1,
+      "throttle_percent": 85
+    },
+    {
+      "rpm": 6000.0,
+      "thrust_gf": 1920.0,
+      "current_a": 11.9,
+      "throttle_percent": 100
+    }
+  ],
+  "fit": {
+    "method": "unweighted least squares through origin: T=kT*omega^2",
+    "motor_constant": 4.828453605732144e-05,
+    "units": "N/(rad/s)^2",
+    "rmse_n": 0.16203688533090882,
+    "max_abs_relative_error_percent": 1.7915316366175165,
+    "predicted_thrust_n": [
+      8.053682655832668,
+      11.204202826917765,
+      13.772273890743437,
+      16.60509454877793,
+      19.0619707830359
+    ],
+    "residual_n": [
+      -0.08583684416733206,
+      -0.07344467308223557,
+      -0.25123560925656285,
+      0.031856048777932244,
+      0.23320278303589959
+    ]
+  },
+  "limits": {
+    "maximum_rpm": 6000.0,
+    "maximum_rad_s": 628.3185307179587,
+    "measured_maximum_thrust_n": 18.828768,
+    "model_maximum_thrust_n": 19.0619707830359,
+    "note": "Maximum is the highest selected KV330/15*5CF/22.2V table point, not KV400's 6700 rpm."
+  },
+  "hover_prediction": {
+    "all_up_mass_kg": 3.02,
+    "average_thrust_per_rotor_n": 7.40402075,
+    "rpm": 3739.3934605872546,
+    "normalized_rpm": 0.6232322434312091,
+    "normalized_thrust": 0.3884184292522979,
+    "below_lowest_measured_rpm": true,
+    "extrapolation_fraction_below_minimum": 0.04118116395198601,
+    "model_maximum_thrust_to_weight": 2.574543133612355
+  },
+  "preliminary_dynamics": {
+    "moment_constant_m": 0.016,
+    "time_constant_up_s": 0.0125,
+    "time_constant_down_s": 0.025,
+    "rotor_drag_coefficient": 0.0001,
+    "rolling_moment_coefficient": 1e-06,
+    "rotor_velocity_slowdown_sim": 10.0,
+    "source": "https://raw.githubusercontent.com/gazebosim/gz-sim/gz-sim8/src/systems/multicopter_motor_model/MulticopterMotorModel.cc",
+    "status": "Gazebo 8 reference defaults; NOT measured MN4014 parameters"
+  },
+  "limitations": [
+    "Hover RPM is extrapolated below the lowest measured 3900 rpm / 830 gf sample.",
+    "Fixed 22.2 V curve; battery voltage sag, discharge and endurance are not modeled.",
+    "Torque ratio, rotor response and aerodynamic drag use explicitly labeled reference estimates.",
+    "Manufacturer throttle is not equated with PX4 normalized thrust or speed.",
+    "The user confirmed 3.02 kg; no additional battery mass is added to the URDF."
+  ]
+}
