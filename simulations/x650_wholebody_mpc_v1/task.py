@@ -6,6 +6,7 @@ import math
 import os
 from pathlib import Path
 import sys
+import time
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG_ENV = "X650_WHOLEBODY_TASK_CONFIG"
@@ -28,6 +29,7 @@ from diagnostic_parameters import validate_profile, validate_pid_candidate, asse
 from research_condition import (validate_research_profile, condition_for_task, canonical_hash,
                                 is_upper_research, expected_gate_condition, UPPER_RESEARCH_STAGES,
                                 UPPER_RESEARCH_PROFILE_NAME)
+from response_protocol import validate_response_protocol, protocol_annotation
 
 
 def sha(path):
@@ -47,14 +49,17 @@ def source_files_for_task(cfg):
     return list(dict.fromkeys(sources))
 
 
-def build_task_config(stage="hover_folded", controller="pid_ff"):
+def build_task_config(stage="hover_folded", controller="pid_ff", *, response_probe_protocol=None):
     if stage not in STAGES or controller not in ("pid_ff", "mpc"):
         raise ValueError("Unsupported stage/controller")
     if stage in ("hover_folded", "joint_probe", "response_probe") and controller != "pid_ff":
         raise ValueError("Commissioning probes require pid_ff; MPC follows measured plant validation")
     period = 8. if stage == "fast" else 16. if stage == "small" else 12.
     trajectory = stage if stage in ("small", "normal", "fast") else "hover"
-    return {
+    protocol = validate_response_protocol(response_probe_protocol)
+    if protocol is not None and (stage != "response_probe" or controller != "pid_ff"):
+        raise ValueError("Frozen response protocol requires response_probe / pid_ff")
+    config = {
         "schema_version": 1, "scenario": "x650_wholebody_mpc_v1",
         "stage": stage, "controller": controller, "model": MODEL,
         "trajectory": trajectory,
@@ -75,6 +80,13 @@ def build_task_config(stage="hover_folded", controller="pid_ff"):
         "pid_tuning_candidate": None, "precision_test_profile": None,
         "research_profile": None,
     }
+    # Keep archived/default task keysets unchanged. The optional explicit field
+    # selects a separately hash-bound experiment rather than a new plant state.
+    if protocol is not None:
+        config.update(response_probe_protocol=protocol, duration_s=protocol["duration_s"])
+        if protocol["role"] == "holdout":
+            config.update(frozen_response_candidate=None, frozen_response_candidate_sha256=None)
+    return config
 
 
 def validate_task_config(value):
@@ -86,9 +98,15 @@ def validate_task_config(value):
     value.setdefault("pid_tuning_candidate", None)
     value.setdefault("precision_test_profile", None)
     value.setdefault("research_profile", None)
-    expected = build_task_config(value.get("stage"), value.get("controller"))
+    protocol = validate_response_protocol(value.get("response_probe_protocol"))
+    expected = build_task_config(value.get("stage"), value.get("controller"),
+                                 response_probe_protocol=protocol)
+    if "response_probe_protocol" in value and protocol is None:
+        expected["response_probe_protocol"] = None
     paths = {"preparation_report", "airframe_source", "native_recorder_library", "response_model", "pid_profile"}
     editable = paths | {"stage_evidence", "diagnostic_profile", "hover_reference_profile", "pid_tuning_candidate", "precision_test_profile", "research_profile"}
+    if protocol is not None and protocol["role"] == "holdout":
+        editable.update(("frozen_response_candidate", "frozen_response_candidate_sha256"))
     if set(value) != set(expected) or any(value[k] != expected[k] for k in expected if k not in editable):
         raise ValueError("Task presets changed: use a separately reviewed configuration version")
     for key in paths:
@@ -117,6 +135,15 @@ def validate_task_config(value):
                 or value["controller"] != "pid_ff" or reference is None):
             raise ValueError("Precision step protocol requires fixed-world hover_folded / pid_ff")
     value["research_profile"] = validate_research_profile(value["research_profile"], value)
+    if protocol is not None and not is_upper_research(value):
+        raise ValueError("Frozen response protocol requires precision_ev_upper_v2 estimated feedback")
+    if protocol is not None and protocol["role"] == "holdout":
+        path, digest = value["frozen_response_candidate"], value["frozen_response_candidate_sha256"]
+        if (path is None) != (digest is None):
+            raise ValueError("Holdout frozen candidate path and SHA-256 must be supplied together")
+        if path is not None and (not isinstance(path, str) or not Path(path).is_absolute()
+                or not isinstance(digest, str) or len(digest) != 64 or set(digest)-set("0123456789abcdef")):
+            raise ValueError("Holdout requires an absolute frozen candidate path and valid SHA-256")
     if is_upper_research(value) and value["stage"] == "tip_hold" and value["response_model"] is None:
         raise ValueError("Upper research tip_hold requires the identified response model")
     return dict(value)
@@ -244,10 +271,62 @@ def validate_upper_response_model(cfg, provenance):
             "operating_condition_sha256": canonical_hash(condition), "gate_role": "same_condition"}
 
 
+def validate_frozen_response_candidate(cfg):
+    """A holdout cannot fly before training parameters have been frozen on disk."""
+    from response_protocol import build_response_protocol
+    protocol = validate_response_protocol(cfg.get("response_probe_protocol"))
+    if protocol is None or protocol["role"] != "holdout":
+        return None
+    path = cfg.get("frozen_response_candidate")
+    if not isinstance(path, str) or not Path(path).is_absolute() or not Path(path).is_file():
+        raise ValueError("Holdout launch requires an existing frozen response candidate")
+    path = Path(path).resolve()
+    digest = sha(path)
+    if digest != cfg.get("frozen_response_candidate_sha256"):
+        raise ValueError("Holdout frozen response candidate SHA-256 changed")
+    candidate = json.loads(path.read_text(encoding="utf-8"))
+    if (candidate.get("kind") != "x650_frozen_response_candidate"
+            or candidate.get("schema_version") != 1
+            or candidate.get("training_passed") is not True
+            or candidate.get("identified") is not False
+            or candidate.get("eligible_as_stage_gate") is not False
+            or candidate.get("protocols") != {role: build_response_protocol(role) for role in ("train", "holdout")}):
+        raise ValueError("Holdout candidate is not the reviewed training-only parameter freeze")
+    created = candidate.get("created_unix")
+    if (isinstance(created, bool) or not isinstance(created, (int, float)) or not math.isfinite(created)
+            or not 0 < created <= time.time()):
+        raise ValueError("Holdout candidate creation time is invalid")
+    parameters = candidate.get("parameters")
+    if not isinstance(parameters, dict) or set(parameters) != {"x", "y", "z"}:
+        raise ValueError("Holdout candidate requires exactly the mixed-order axis parameters")
+    for axis in "xyz":
+        expected = {"tau_s"} if axis == "z" else {"wn_rad_s", "zeta"}
+        if not isinstance(parameters[axis], dict) or set(parameters[axis]) != expected:
+            raise ValueError("Holdout candidate has unreviewed parameter names")
+        for name, number in parameters[axis].items():
+            if isinstance(number, bool) or not isinstance(number, (int, float)) or not math.isfinite(number) or number <= 0:
+                raise ValueError("Holdout candidate parameters must be positive finite numbers")
+            fit = protocol["parameter_selection"]
+            bounds = (fit["z"]["tau_bounds_s"] if name == "tau_s" else
+                      fit["xy"]["wn_bounds_rad_s"] if name == "wn_rad_s" else fit["xy"]["zeta_bounds"])
+            if not bounds[0] < number < bounds[1]:
+                raise ValueError("Holdout candidate parameter is outside the frozen fit bounds")
+    identity = candidate.get("identity")
+    condition = condition_for_task(cfg)
+    if (not isinstance(identity, dict) or identity.get("operating_condition") != condition
+            or identity.get("operating_condition_sha256") != canonical_hash(condition)
+            or identity.get("pid_parameters_sha256") != condition["pid_parameters_sha256"]):
+        raise ValueError("Holdout candidate belongs to another operating condition")
+    return {"path": str(path), "sha256": digest, "created_unix": created,
+            "role": "training_only_parameter_freeze", "eligible_as_stage_gate": False,
+            "identity": identity}
+
+
 def preflight(cfg, *, check_airframe=True):
     from amsim.modeling.manager import ensure_flight_ready, resolve, validate_px4_airframe
     from x650_wholebody.model import ArmModel
     cfg = validate_task_config(cfg)
+    candidate_binding = validate_frozen_response_candidate(cfg)
     assert_no_pending_journal()
     from amsim.scenario_registry import get
     descriptor = get(cfg["scenario"])
@@ -295,6 +374,13 @@ def preflight(cfg, *, check_airframe=True):
     if condition is not None:
         provenance.update(operating_condition=condition, operating_condition_sha256=canonical_hash(condition),
                           pid_parameters_sha256=condition["pid_parameters_sha256"])
+    provenance.update(protocol_annotation(cfg))
+    if candidate_binding is not None:
+        if any(candidate_binding["identity"].get(key) != provenance[key] for key in
+               ("model_sha256", "source_urdf_sha256", "airframe_sha256",
+                "flight_profile_sha256", "preparation_report_sha256")):
+            raise ValueError("Holdout candidate belongs to another prepared physical model")
+        provenance["frozen_response_candidate_binding"] = candidate_binding
     if cfg["hover_reference_profile"] is not None:
         world_path = Path(cfg["hover_reference_profile"]["world_sdf"])
         if not world_path.is_file():

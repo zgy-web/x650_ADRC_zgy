@@ -32,6 +32,7 @@ from x650_wholebody.adapter import ControllerAdapter
 from x650_wholebody.baseline import BaselineController
 from x650_wholebody.model import ArmModel, tip_world
 from diagnostic_parameters import DiagnosticParameterSession, validate_profile, validate_pid_candidate, assert_no_pending_journal, PRECISION_PROFILE
+from response_protocol import validate_response_protocol, protocol_velocity, protocol_annotation
 
 STAGES = {"hover_folded", "joint_probe", "response_probe", "tip_hold", "small", "normal", "fast"}
 
@@ -100,7 +101,8 @@ def research_annotations(cfg, actual_pid=None):
         feedback_contract=condition.get("feedback_contract"),
         upper_command_interface=condition.get("control_interface"),
         upper_allocator_active=is_upper_research(cfg) and cfg["stage"] == "tip_hold",
-        truth_used_as_upper_feedback=False if is_upper_research(cfg) else None)
+        truth_used_as_upper_feedback=False if is_upper_research(cfg) else None,
+        **protocol_annotation(cfg))
 
 
 def formal_gate_evidence(cfg, model_sha256, source_urdf_sha256):
@@ -421,6 +423,7 @@ class ControlLoop:
         self.fixed_reference = None
         from research_condition import is_upper_research
         self.upper_research = is_upper_research(cfg)
+        self.response_protocol = validate_response_protocol(cfg.get("response_probe_protocol"))
         self.feedback_adapter, self.feedback_diagnostics, self.evaluation_state = None, None, None
         self.step_references = {}
         self.step_send_events, self.last_step_index = [], None
@@ -510,8 +513,12 @@ class ControlLoop:
             if self.upper_research and self.feedback_adapter is None:
                 raise RuntimeError("Upper PVA output requires validated PX4 estimated feedback")
             velocity = np.clip(1.5*(self.anchor-measured.position), -.12, .12)
-            if self.task_start is not None and self.cfg["stage"] == "response_probe" and not self.recovery and t < 14.:
-                velocity = response_probe_velocity(t, self.cfg["duration_s"])
+            if self.task_start is not None and self.cfg["stage"] == "response_probe" and not self.recovery:
+                if self.response_protocol is not None:
+                    if t < self.response_protocol["return_anchor_start_s"]:
+                        velocity = np.asarray(protocol_velocity(t, self.response_protocol), float)
+                elif t < 14.:
+                    velocity = response_probe_velocity(t, self.cfg["duration_s"])
             command = ControlCommand.from_executed_velocity(measured, velocity, joint,
                 nominal_position=self.anchor, acceleration_feedforward=np.zeros(3),
                 position_gains=[self.pid["MPC_XY_P"], self.pid["MPC_XY_P"], self.pid["MPC_Z_P"]],

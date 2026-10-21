@@ -418,6 +418,7 @@ virtualgl_ready: true
 - [X650 精密定位与分阶段实验协议](simulations/x650_wholebody_mpc_v1/README.md)
 - [X650 上层响应辨识结果重放与绘图](docs/X650_UPPER_RESPONSE_ANALYSIS.md)
 - [X650 水平响应链与二阶模型开发诊断](docs/X650_RESPONSE_DYNAMICS_DIAGNOSTICS.md)
+- [X650 新训练与独立验证的冻结响应协议](docs/X650_FORMAL_RESPONSE_PROTOCOL.md)
 - [详细安装指南](docs/INSTALLATION.md)
 - [可移植性设计](docs/PORTABILITY.md)
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)

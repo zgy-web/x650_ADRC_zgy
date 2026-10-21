@@ -45,6 +45,19 @@ def main(argv=None):
         out = ROOT/"runs"/("x650_wb_launch_"+stamp+"_"+str(os.getpid()))
         out.mkdir(parents=True, exist_ok=False)
         atomic_json(out/"task.json", cfg)
+        candidate_archive = None
+        binding = provenance.get("frozen_response_candidate_binding")
+        if binding is not None:
+            from task import sha
+            candidate = Path(binding["path"])
+            if sha(candidate) != binding["sha256"]:
+                raise RuntimeError("Frozen response candidate changed after preflight")
+            archived = out/"frozen_response_candidate.json"
+            archived.write_bytes(candidate.read_bytes())
+            if sha(archived) != binding["sha256"]:
+                raise RuntimeError("Frozen response candidate archive digest mismatch")
+            candidate_archive = {"path": str(archived), "sha256": binding["sha256"],
+                                 "source_path": binding["path"]}
         with zipfile.ZipFile(out/"controller_sources.zip", "w", zipfile.ZIP_DEFLATED) as archive:
             for relative, expected in provenance["source_files_sha256"].items():
                 from task import sha
@@ -61,6 +74,8 @@ def main(argv=None):
         before = set((ROOT/"runs").glob(cfg["scenario"]+"_*"))
         status = {"complete": False, "task": cfg, "provenance": provenance,
                   "command": command, "started_utc": datetime.now(timezone.utc).isoformat()}
+        if candidate_archive is not None:
+            status["frozen_response_candidate_archive"] = candidate_archive
         atomic_json(out/"launch.json", status)
         print("X650_LAUNCH", str(out), flush=True)
         try:
