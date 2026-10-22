@@ -19,6 +19,7 @@ from scipy.optimize import LinearConstraint, minimize, nnls
 from .baseline import BaselineController, nominal_reference
 from .model import (vector, rotation_matrix, tip_body, tip_world, joint_jacobian_body,
                     joint_centripetal_body, inverse_tip_body)
+from . import prediction_chain as chain
 
 
 class MpcSolveError(RuntimeError):
@@ -141,6 +142,7 @@ class MpcController(BaselineController):
 
     def __init__(self, model, pid_gains, *, trajectory=None, config=None):
         c = dict(config or {})
+        self.prediction_chain = chain.normalize(c.pop("prediction_chain")) if "prediction_chain" in c else None
         self.nodes = integer_setting(c.pop("nodes", 15), "nodes")
         self.node_dt = float(c.pop("node_dt_s", .04))
         self.mixed_response = "response_model" in c
@@ -153,6 +155,8 @@ class MpcController(BaselineController):
             self.response_model = None
             self.base_tau = vector(c.pop("base_time_constant_s", [.2, .2, .25]), 3, "base_time_constant_s").copy()
         self.state_size = 12 if self.mixed_response else 10
+        if self.prediction_chain is not None and not self.mixed_response:
+            raise ValueError("Prediction chain requires the accepted mixed base-response model")
         self.response_identified = bool(c.pop("response_identified", False))
         self.attitude_tau = float(c.pop("attitude_rate_decay_s", .15))
         self.max_iterations = integer_setting(c.pop("max_iterations", 100), "max_iterations")
@@ -182,14 +186,52 @@ class MpcController(BaselineController):
         self._plan, self._plan_t, self._plan_h = None, None, None
         self._previous_stamp = None
         self._horizon_cache = {}
+        self._joint_history, self._chain_clock_origin = [], None
+        self._history_primed = False
 
     def reset(self, p0, R0, q0):
         super().reset(p0, R0, q0)
         self._plan, self._plan_t, self._plan_h = None, None, None
         self._previous_stamp = None
+        self._joint_history, self._chain_clock_origin = [], None
+        self._history_primed = False
         # reset validates and copies these immutable task anchors once.
         self._nominal_tip_body0 = tip_body(self.q0, self.model)
         self._nominal_tip_world0 = self.p0+self.R0@self._nominal_tip_body0
+
+    def prime_command_history(self, history, start):
+        """Seed the new chain with commands actually sent before task enable.
+
+        ``history`` contains (absolute pre-solve simulation time, u5) pairs,
+        strictly ordered, and ``start`` is this task's absolute time origin.
+        This is called once after reset, never to overwrite a running plan.
+        The caller records a pair only after both command interfaces return.
+        """
+        if (self.prediction_chain is None or not self.initialized or self.step_count
+                or self._history_primed):
+            raise ValueError("Command history may only prime a reset prediction-chain controller once")
+        if (isinstance(start, (bool, np.bool_)) or not np.isscalar(start)
+                or not np.isfinite(start) or start < 0):
+            raise ValueError("Command history requires a finite nonnegative task origin")
+        checked = []
+        previous_time = -np.inf
+        for when, value in history:
+            if (isinstance(when, (bool, np.bool_)) or not np.isscalar(when)
+                    or not np.isfinite(when) or when < 0 or when <= previous_time
+                    or when > start+1e-9):
+                raise ValueError("Command history times must be finite, ordered and no later than task enable")
+            command = vector(value, 5, "primed command").copy()
+            if np.any(abs(command) > self.velocity_limit+1e-9):
+                raise ValueError("Primed command exceeds unchanged velocity limits")
+            checked.append((float(when)-float(start), command))
+            previous_time = float(when)
+        if not checked or checked[-1][0] < -.25:
+            raise ValueError("Command history must contain a recent actually sent command")
+        self._joint_history = [(when, command[3:].copy()) for when, command in checked if when >= -.75]
+        self.previous_command = checked[-1][1].copy()
+        self.last_t = checked[-1][0]
+        self._chain_clock_origin = float(start)
+        self._history_primed = True
 
     def _nominal(self, target, *, derivatives=True):
         """Same nominal geometry; preview omits acceleration terms it never uses."""
@@ -340,9 +382,27 @@ class MpcController(BaselineController):
             offset = A@offset
             offsets.append(offset.copy())
         offsets, jacobians = np.asarray(offsets), cached["jacobians"]
+        joint_prediction, chain_context, chain_outputs, guard = None, None, None, None
+        if self.prediction_chain is not None:
+            if state.control_time_s is None or state.joint_stamp_s is None:
+                raise ValueError("Prediction chain requires measured control/joint source timestamps")
+            clock_origin = state.control_time_s-t
+            if self._chain_clock_origin is not None and abs(clock_origin-self._chain_clock_origin) > 1e-8:
+                raise ValueError("Prediction-chain task/control time origin changed")
+            joint_prediction = chain.joint_prediction(t, times, h, state, self._joint_history,
+                                                       self.prediction_chain, self.velocity_limit[3:])
+            jacobians = jacobians.copy()
+            for i, (_, q, dq, Q, D) in enumerate(joint_prediction["nodes"]):
+                offsets[i, 6:8], offsets[i, 8:10] = q, dq
+                jacobians[i, 6:8], jacobians[i, 8:10] = Q, D
+            x0[6:8], x0[8:10] = joint_prediction["q_current"], joint_prediction["dq_current"]
         warm = self._warm_start(t, h)
         zwarm = warm.reshape(-1)/scale
         linearization = offsets+np.einsum("nij,j->ni", jacobians, zwarm)
+        if self.prediction_chain is not None:
+            chain_context = chain.attitude_context(state, times, self.prediction_chain)
+            chain_outputs = chain.endpoint_outputs(linearization, warm, chain_context, self.model,
+                                                   self.response_model["parameters"], jacobians=True)
         rows, rhs, constraints, lower, upper = [], [], [], [], []
 
         def cost(A, b, weight, step=1.):
@@ -364,7 +424,8 @@ class MpcController(BaselineController):
             predicted = future_targets[i]
             nominal = {key: preview[key][i] for key in ("p_nom", "v_nom", "q_nom", "qd_nom")}
             qlin = linearization[i, 6:8]
-            R = R0@rotation_increment(omega*self.attitude_tau*(1-cached["attitude_decay"][i]))
+            R = (chain_outputs["rotations"][i] if chain_outputs is not None else
+                 R0@rotation_increment(omega*self.attitude_tau*(1-cached["attitude_decay"][i])))
             rotations.append(R)
             wworld = R@(omega*cached["attitude_decay"][i])
             arm, J = tip_body(qlin, self.model), R@joint_jacobian_body(qlin, self.model)
@@ -373,6 +434,12 @@ class MpcController(BaselineController):
             po = o[:3]+R@arm+J@(o[6:8]-qlin)
             V = S[3:6]+J@S[8:10]+skew(wworld)@J@S[6:8]
             vo = o[3:6]+J@o[8:10]+skew(wworld)@(R@arm+J@(o[6:8]-qlin))
+            if chain_outputs is not None:
+                U = cached["inputs"][i]
+                px, pu, vx, vu = (chain_outputs[key][i] for key in ("px", "pu", "vx", "vu"))
+                P, V = px@S+pu@U, vx@S+vu@U
+                po = chain_outputs["position"][i]+px@(o-linearization[i])-pu@warm[i]
+                vo = chain_outputs["velocity"][i]+vx@(o-linearization[i])-vu@warm[i]
             cost(P, preview["target_p"][i]-po, self.weights["tip_position"], step)
             cost(V, preview["target_v"][i]-vo, self.weights["tip_velocity"], step)
             cost(S[:3], nominal["p_nom"]-o[:3], self.weights["base_position"], step)
@@ -395,7 +462,20 @@ class MpcController(BaselineController):
         constrain(S[6:8]+reserve[:, None]*S[8:10],
                   self.q_lower-o[6:8]-reserve*o[8:10],
                   self.q_upper-o[6:8]-reserve*o[8:10])
-        first_lo, first_hi = self._bounds(dt, np.asarray(state.q))
+        if joint_prediction is None:
+            first_lo, first_hi = self._bounds(dt, np.asarray(state.q))
+        else:
+            first_lo, first_hi, guard = chain.conservative_first_bounds(
+                self, dt, state, joint_prediction, self._joint_history, t, self.prediction_chain)
+            # Candidate protection for pending velocity commands. Bounds at
+            # every switch and node cover piecewise-linear q, and reserve uses
+            # the unchanged command braking schedule plus pipeline/age margin.
+            reserve = reserve+self.prediction_chain["joint_delay_guard_s"]+joint_prediction["measurement_age_s"]
+            for _, q, dq, Q, D in joint_prediction["events"]:
+                constrain(Q, self.q_lower-q, self.q_upper-q)
+                constrain(D, -self.velocity_limit[3:]-dq, self.velocity_limit[3:]-dq)
+                constrain(Q+reserve[:, None]*D,
+                          self.q_lower-q-reserve*dq, self.q_upper-q-reserve*dq)
         first = cached["inputs"][0]
         constrain(first, first_lo, first_hi)
         C, lo, hi = np.vstack(constraints), np.concatenate(lower), np.concatenate(upper)
@@ -404,7 +484,9 @@ class MpcController(BaselineController):
                 "C": C, "lo": lo, "hi": hi, "scale": scale, "warm": zwarm,
                 "h": h, "initial_state": x0.copy(), "offsets": offsets, "jacobians": jacobians,
                 "linearization": linearization, "rotations": rotations,
-                "targets": future_targets, "first_lower": first_lo, "first_upper": first_hi, "identity": cached["identity"]}
+                "targets": future_targets, "first_lower": first_lo, "first_upper": first_hi, "identity": cached["identity"],
+                **({"chain_context": chain_context, "joint_prediction": joint_prediction, "joint_guard": guard}
+                   if self.prediction_chain is not None else {})}
 
     @staticmethod
     def _quality(problem, z):
@@ -495,6 +577,10 @@ class MpcController(BaselineController):
         predicted = problem["offsets"]+np.einsum("nij,j->ni", problem["jacobians"], z)
         exact_tip = np.array([x[:3]+R@tip_body(x[6:8], self.model)
                               for x,R in zip(predicted, problem["rotations"])])
+        if self.prediction_chain is not None:
+            chain_result = chain.endpoint_outputs(predicted, plan, problem["chain_context"], self.model,
+                                                  self.response_model["parameters"])
+            exact_tip = chain_result["position"]
         predicted_errors = exact_tip-np.array([v.position for v in problem["targets"]])
         tip = tip_world(state.position, state.rotation, state.q, self.model)
         diagnostics.update(predicted_horizon_s=float(np.sum(problem["h"])), node_intervals_s=problem["h"].copy(),
@@ -514,6 +600,24 @@ class MpcController(BaselineController):
                                prediction_state_order=list(MIXED_STATE_ORDER),
                                measured_acceleration_enu=vector(state.acceleration_enu, 3, "acceleration_enu"),
                                initial_prediction_acceleration_xy=problem["initial_state"][10:12].copy())
+        if self.prediction_chain is not None:
+            diagnostics.update(prediction_chain=deepcopy(self.prediction_chain),
+                prediction_control_time_s=state.control_time_s, prediction_joint_stamp_s=state.joint_stamp_s,
+                prediction_joint_measurement_age_s=problem["joint_prediction"]["measurement_age_s"],
+                prediction_measured_joint_position=np.asarray(state.q).copy(),
+                prediction_measured_joint_velocity=np.asarray(state.dq).copy(),
+                prediction_initial_joint_position=problem["initial_state"][6:8].copy(),
+                prediction_initial_joint_velocity=problem["initial_state"][8:10].copy(),
+                prediction_joint_guard=problem["joint_guard"],
+                predicted_rotations_flu_to_enu=chain_result["rotations"],
+                prediction_attitude_initial_residual_rotvec=problem["chain_context"]["initial_residual_rotvec"],
+                joint_command_delay_compensated=True, joint_measurement_age_propagated=True,
+                command_delay_compensated=True, state_delay_compensated=True,
+                compensation_scope="joint_execution_and_joint_measurement_age_only",
+                base_command_delay_compensated=False)
+            self._joint_history.append((float(t), command[3:].copy()))
+            self._joint_history = [(when, value) for when, value in self._joint_history if when >= t-.75]
+            self._chain_clock_origin = state.control_time_s-t
         self._plan, self._plan_t, self._plan_h = plan.copy(), float(t), problem["h"].copy()
         self.previous_command, self.last_t, self._previous_stamp = command.copy(), float(t), stamp
         self.step_count += 1
@@ -553,4 +657,16 @@ class MpcController(BaselineController):
                           acceleration_initialization="Measured world ENU acceleration at every solve; no differencing or zero fallback")
         else:
             common["base_time_constant_s"] = self.base_tau.tolist()
+        if self.prediction_chain is not None:
+            common.update(prediction_chain=deepcopy(self.prediction_chain),
+                prediction_model="Unchanged accepted base response + timestamped delayed joint velocity + thrust-direction attitude output",
+                joint_time_constant_s=[0., 0.], joint_delay_identified=False,
+                joint_delay_origin="Pre-solve control consumption; development candidate, not actual dispatch/apply timestamp",
+                attitude_model="Predicted acceleration plus gravity defines thrust axis; measured rotation residual decays",
+                joint_command_delay_compensated=True, joint_measurement_age_propagated=True,
+                command_delay_compensated=True, state_delay_compensated=True,
+                compensation_scope="joint_execution_and_joint_measurement_age_only",
+                base_command_delay_compensated=False,
+                time_alignment="Measured joint source time propagated with recorded command history; independent native truth never used",
+                constraint_scope="Unchanged speed/slew/soft limits plus conservative pending-motion envelope and all switch/node reserves; no robust feasibility proof")
         return common

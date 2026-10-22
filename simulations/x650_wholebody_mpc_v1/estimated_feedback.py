@@ -115,7 +115,7 @@ class Px4EstimatedFeedback:
     """
     def __init__(self, reference, node=None, *, max_state_hold_s=.10,
                  max_flags_hold_s=1.25, max_joint_hold_s=.25, max_wall_age_s=4.,
-                 max_flags_wall_age_s=10., require_acceleration=False):
+                 max_flags_wall_age_s=10., require_acceleration=False, require_prediction_timing=False):
         # Pinned PX4 EKF2.cpp::PublishStatusFlags publishes every 1_s or
         # immediately on status change. DDS rate_limit=5 Hz is a ceiling,
         # not a 5 Hz source guarantee. 1.25 s = 1 s source period + 0.2 s
@@ -125,6 +125,9 @@ class Px4EstimatedFeedback:
         if type(require_acceleration) is not bool:
             raise ValueError("require_acceleration must be a boolean")
         self._require_acceleration = require_acceleration
+        if type(require_prediction_timing) is not bool or (require_prediction_timing and not require_acceleration):
+            raise ValueError("Prediction timing requires acceleration-enabled feedback")
+        self._require_prediction_timing = require_prediction_timing
         self._limits = {key: _finite(value, key) for key, value in (
             ("state", max_state_hold_s), ("flags", max_flags_hold_s),
             ("joint", max_joint_hold_s), ("wall", max_wall_age_s),
@@ -154,6 +157,8 @@ class Px4EstimatedFeedback:
                 acceleration_source="PX4 vehicle_local_position ax/ay/az: NED earth-fixed velocity derivative, mapped directly to ENU",
                 acceleration_stamp="position callback received_sim; independent of angular derivative stamp",
                 acceleration_fallback=False, acceleration_numerical_differentiation=False)
+        if self._require_prediction_timing:
+            result["prediction_timing"] = "control_time_s=/clock consumption; joint_stamp_s=actual JointState header"
         return result
 
     @staticmethod
@@ -276,6 +281,10 @@ class Px4EstimatedFeedback:
                      for key in TOPICS if key != "joints"}
         acceleration_args = ({"acceleration_enu": NED_TO_ENU @ acceleration_ned}
                              if self._require_acceleration else {})
+        if self._require_prediction_timing:
+            if joint_stamp > sim_s+1e-9:
+                raise RuntimeError("Prediction chain cannot propagate a future joint measurement backwards")
+            acceleration_args.update(control_time_s=sim_s, joint_stamp_s=joint_stamp)
         state = ControlState(position, rotation, NED_TO_ENU @ vn, FRD_TO_FLU @ rate,
                              q, dq, callbacks["angular_velocity"]["received_sim_s"], **acceleration_args)
         diagnostics = {"feedback_profile": "px4_estimated_raw_ev_world_v1",

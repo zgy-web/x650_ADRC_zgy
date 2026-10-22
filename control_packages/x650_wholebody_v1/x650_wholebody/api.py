@@ -46,6 +46,8 @@ class ControlState:
     dq: np.ndarray
     stamp_s: float
     acceleration_enu: np.ndarray | None = None
+    control_time_s: float | None = None
+    joint_stamp_s: float | None = None
 
     def __post_init__(self):
         for name, n in (("position", 3), ("velocity", 3), ("omega_body", 3), ("q", 2), ("dq", 2)):
@@ -55,6 +57,10 @@ class ControlState:
             object.__setattr__(self, "acceleration_enu", vector(self.acceleration_enu, 3, "acceleration_enu"))
         if not np.isfinite(self.stamp_s) or self.stamp_s < 0:
             raise ValueError("stamp_s must be a nonnegative simulation timestamp")
+        for name in ("control_time_s", "joint_stamp_s"):
+            value = getattr(self, name)
+            if value is not None and (isinstance(value, (bool, np.bool_)) or not np.isfinite(value) or value < 0):
+                raise ValueError(name+" must be a nonnegative finite simulation timestamp")
 
 
 @dataclass(frozen=True)
