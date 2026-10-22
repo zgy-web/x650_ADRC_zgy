@@ -9,7 +9,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from x650_wholebody.api import ControlState, EndpointTarget
 from x650_wholebody.model import tip_world
-from x650_wholebody.mpc import MpcSolveError
+from x650_wholebody.mpc import MpcController, MpcSolveError
 from x650_wholebody.ts20_mpc import Ts20MpcController, CHAIN_CONFIG
 from x650_wholebody.ts20_prediction import Ts20PredictionModel
 from test_model import example_model
@@ -34,6 +34,21 @@ def setup():
 
 
 class Ts20MpcTests(unittest.TestCase):
+    def test_constraint_view_is_explicit_ts20_opt_in_and_legacy_is_unchanged(self):
+        C = np.array([[1., 0.], [0., 1.], [1., 1.], [1., 0.]])
+        lo, hi = np.array([-.1, -.1, -1., -.2]), np.array([.1, .1, 1., .2])
+        original = (C.copy(), lo.copy(), hi.copy())
+        legacy = MpcController._solver_constraint_view(C, lo, hi)
+        for returned, supplied in zip(legacy[:3], (C, lo, hi)):
+            self.assertIs(returned, supplied)
+        self.assertEqual(legacy[3]["path"], "original_uncompressed_constraints")
+        ts20 = Ts20MpcController._solver_constraint_view(C, lo, hi)
+        self.assertEqual(ts20[3]["solver_rows"], 2)
+        self.assertEqual(ts20[3]["duplicate_rows_merged"], 1)
+        self.assertEqual(ts20[3]["box_implied_rows_omitted"], 1)
+        for supplied, before in zip((C, lo, hi), original):
+            np.testing.assert_array_equal(supplied, before)
+
     def test_hold_uses_new_chain_and_nonlinear_candidate(self):
         controller, predictor, state, target = setup()
         out = controller.step(0., .02, state, target)

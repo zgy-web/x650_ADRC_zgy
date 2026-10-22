@@ -394,6 +394,12 @@ class MpcController(BaselineController):
         """Optional actuator nonlinear check, before command/history mutation."""
         return predicted, {}
 
+    @staticmethod
+    def _solver_constraint_view(C, lo, hi):
+        """Preserve the archived solver rows unless an explicit subclass opts in."""
+        return C, lo, hi, {"original_rows": len(C), "solver_rows": len(C),
+                           "path": "original_uncompressed_constraints"}
+
     def _problem(self, t, dt, state, target):
         N, n = self.nodes, self.nodes*5
         cached = self._horizon(dt)
@@ -577,6 +583,8 @@ class MpcController(BaselineController):
         L = cholesky(H, lower=True, check_finite=False)
         center = -cho_solve((L,True),g,check_finite=False)
         exact_center = self.prediction_chain is not None and self._strictly_feasible_center(problem, center)
+        constraint_view = {"original_rows": len(problem["C"])+len(g),
+                           "solver_rows": 0, "path": "exact_interior_center"}
         if exact_center:
             # H is positive definite and H*center+g=0: an interior feasible
             # center is also the constrained global optimum. Quality/KKT and
@@ -587,6 +595,9 @@ class MpcController(BaselineController):
             transform = solve_triangular(L.T,problem["identity"],lower=False,check_finite=False)
             C = np.vstack((problem["C"],problem["identity"]))
             lo, hi = np.r_[problem["lo"],-np.ones(len(g))], np.r_[problem["hi"],np.ones(len(g))]
+            # Subclasses may provide an equivalent solver view; the original
+            # full problem remains authoritative for KKT/primal checks.
+            C, lo, hi, constraint_view = self._solver_constraint_view(C, lo, hi)
             shifted, matrix = C@center, C@transform
             row_scale = np.maximum(np.linalg.norm(matrix,axis=1),1e-12)
             linear = LinearConstraint(matrix/row_scale[:,None],(lo-shifted)/row_scale,(hi-shifted)/row_scale)
@@ -611,6 +622,7 @@ class MpcController(BaselineController):
                        "solver_status": int(result.status), "solver_message": str(result.message),
                        "solver_iterations": int(result.nit), "solve_ms": solve_ms,
                        "solve_budget_ms": self.solve_budget_ms, "solve_budget_exceeded": solve_ms > self.solve_budget_ms,
+                       "solver_constraint_view": constraint_view,
                        "accepted_optimum": accepted, "previous_plan_fallback": fallback, **quality}
         if not accepted and not fallback:
             diagnostics["compute_ms"] = (perf_counter()-begin)*1000

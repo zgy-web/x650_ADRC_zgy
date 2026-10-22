@@ -11,6 +11,7 @@ import numpy as np
 
 from .mpc import MpcController, MpcSolveError
 from .ts20_prediction import KIND
+from .qp_constraints import solver_constraint_view
 from . import prediction_chain as chain
 
 
@@ -53,6 +54,11 @@ class Ts20MpcController(MpcController):
         if value != CHAIN_CONFIG:
             raise ValueError("Invalid TS20 thrust/actuator chain configuration")
         return deepcopy(value)
+
+    @staticmethod
+    def _solver_constraint_view(C, lo, hi):
+        """Opt in to exact row proofs without altering archived MPC solvers."""
+        return solver_constraint_view(C, lo, hi)
 
     def _joint_prediction(self, t, times, h, state, warm):
         context = self.context_provider(state, t) if self._frozen_context is None else self._frozen_context

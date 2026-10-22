@@ -1,0 +1,55 @@
+{
+  "kind": "ts20_constraint_view_local_candidate_v1",
+  "status": "local_numpy_tests_passed_server_validation_pending",
+  "scope": "conditional simulation; TS20-only equivalent solver constraint view",
+  "server_deployed": false,
+  "new_timing_qualification": false,
+  "full_endpoint_hold_accepted": false,
+  "fast_figure8_enabled": false,
+  "source_sha256": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+    "control_packages/x650_wholebody_v1/x650_wholebody/mpc.py": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py": "633b101aeba41681fae3b814dab4180a94a6a04affe4c5eb6bc7d664aa8bccfa",
+    "control_packages/x650_wholebody_v1/tests/test_qp_constraints.py": "d6500b269fc584d8328b8319d9a7179831744df097a3c433881c9660d8fa6c5e",
+    "control_packages/x650_wholebody_v1/tests/test_ts20_mpc.py": "96155088f69a72ab1308d46821b7f676ca48dd58faf3b2111e413ffaee55c03e"
+  },
+  "local_validation": {
+    "date": "2026-10-22",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "command": "python -m unittest discover -s control_packages/x650_wholebody_v1/tests -p test_qp_constraints.py -v",
+    "tests": 7,
+    "passed": 7,
+    "elapsed_s": 0.272,
+    "py_compile_passed": true,
+    "scipy_available": false,
+    "controller_selection_test_executed": false,
+    "full_mpc_regression_executed": false
+  },
+  "unchanged": [
+    "legacy MpcController solver row objects and order",
+    "original full constraints for primal and KKT quality checks",
+    "H/g, solver, initial plan and whitening",
+    "nonlinear candidate and actual envelope checks",
+    "weights, motion limits, trust region and 50 ms deadline",
+    "prediction numerical core, physical plant, gains and bus/delay model"
+  ],
+  "prior_failure_retained": {
+    "summary": "incremental_runtime_timing_summary.json",
+    "matrix_passed": 29,
+    "matrix_total": 30,
+    "fixture": {
+      "position_deviation_m": 0.005,
+      "source_age_s": 0,
+      "mode": "moving_warm"
+    },
+    "wall_ms": 51.06359999626875
+  },
+  "required_before_new_quiet_hold": [
+    "server source/dependency identities and TS20-only hook regression",
+    "same failed fixture: row counts, full-C primal/KKT, objective, full plan and nonlinear bounds before/after",
+    "original complete 30-fixture timing matrix, with all failed records retained",
+    "appropriate package regression using compatible existing server SciPy"
+  ],
+  "hardware_qualification": false
+}
