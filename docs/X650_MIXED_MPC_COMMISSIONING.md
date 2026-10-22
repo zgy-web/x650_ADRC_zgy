@@ -1,8 +1,8 @@
 # X650 混合阶模型接入与上层 MPC 分阶段验证
 
-本版将已经通过新训练、独立验证的 **X/Y 二阶、Z 一阶基体速度响应模型**接入上层协同控制，使用 `precision_ev_mixed_mpc_v3` 工况和 `mixed_response_zero_ff_v1` 冻结协议。当前模型响应验收已经通过；**MPC 在新 X650＋二连杆上的末端保持、八字轨迹和性能对照仍须逐项完成真实仿真与独立审计**。实现代码、通过单元测试、预检成功均不能替代这些飞行验收。
+本版将已经通过新训练、独立验证的 **X/Y 二阶、Z 一阶基体速度响应模型**接入上层协同控制，使用 `precision_ev_mixed_mpc_v3` 工况和 **`mixed_response_prediction_chain_v2` 冻结协议**。新协议补齐关节指令时序与加速度驱动的姿态输出预测；已在新 X650＋二连杆上完成新的 PID／MPC 完整末端保持，结果见[预测链完整保持验收](X650_PREDICTION_CHAIN_RESULTS_20261022.md)。**小幅、普通及快速八字仍须各自完成新仿真与独立审计**，不能用保持证书替代轨迹性能验收。
 
-本页记录截至 2026-10-22 的模型接入状态。后续是否实际通过，以对应新运行目录的独立证书为准。旧模型开发记录和旧 v1/v2 证书保留原有版本与含义。
+本页的任务示例已更新为预测链协议。后续是否实际通过，以对应新运行目录的独立证书为准。此前 `mixed_response_zero_ff_v1` 的任务、通过／失败记录和证书保留原有版本与含义；`build_mixed_mpc_protocol()` 仍用于生成该历史协议，不能用于本轮任务。
 
 ## 已完成的正式响应实验
 
@@ -31,7 +31,7 @@
 
 本轮 MPC 位于 PX4 的位置、速度、姿态控制环之上，联合输出三轴逻辑基体速度与两个关节速度。它使用末端几何关系、当前基体与关节状态以及已辨识的闭环速度模型预测末端运动。它没有直接输出旋翼推力或关节力矩，也没有完成浮动基体全身动力学 NMPC 的验证。
 
-水平模型为 `v_dot = a`、`a_dot = wn² × (u − v) − 2 × zeta × wn × a`；垂向为 `v_dot = (u − v) / tau`。静态增益固定为 1，纯时延与偏置固定为 0。MPC 状态为 `[px, py, pz, vx, vy, vz, q1, q2, dq1, dq2, ax, ay]`，输入为 `[ux, uy, uz, dq1_cmd, dq2_cmd]`，采用精确零阶保持离散化。
+水平模型为 `v_dot = a`、`a_dot = wn² × (u − v) − 2 × zeta × wn × a`；垂向为 `v_dot = (u − v) / tau`。基体响应模型的静态增益固定为 1，纯时延与偏置固定为 0。MPC 状态为 `[px, py, pz, vx, vy, vz, q1, q2, dq1, dq2, ax, ay]`，输入为 `[ux, uy, uz, dq1_cmd, dq2_cmd]`，基体采用精确零阶保持离散化。新关节链另外使用源时间戳、已发命令历史和冻结的 24 ms 合成作用时间传播角度／角速度；姿态输出由预测加速度与衰减的实测姿态残差构造。该 24 ms 不是基体输入时延，也不是独立辨识的物理舵机时间常数。
 
 新反馈协议为 `px4_estimator_acceleration_receipt_enu_v2`，命令接口继续使用 `raw_ev_world_pva_v2`。每次控制使用实际 PX4 估计位置、速度、姿态、角速度、位置消息中配对的地固系加速度，以及实测关节状态；先按固定 NED／ENU 约定转换，再初始化预测。加速度来自所记录的位置回调，没有用 Gazebo 真值替换，也没有把持有的旧消息当作新样本。正式响应辨识中“整条记录一次初始化且 a0=0”的约定，不用于替代 MPC 运行中的实际加速度初始化。
 
@@ -57,14 +57,17 @@
 完整配置由 [`mixed_mpc_protocol.py`](../simulations/x650_wholebody_mpc_v1/mixed_mpc_protocol.py) 生成，不接受自由填写的 `mpc_config`。协议规范 JSON 的 SHA-256 为：
 
 ```text
-52f4758648836eb6654554d85201fb447132869b53392bb23ed90a08c89920d9
+943ee25af6ace870e8e47fe8eb561d953176833f8dda35e6ea95395d8625f6b6
 ```
+
+本轮必须调用 `build_prediction_chain_protocol()`，或复用已验收预测链任务中逐字段验证通过的协议。历史 `mixed_response_zero_ff_v1` 哈希 `52f4758648836eb6654554d85201fb447132869b53392bb23ed90a08c89920d9` 只标识旧实验，不能与本轮 `tip_hold` 证书混用。
 
 | 项目 | 固定值 |
 | --- | --- |
 | 控制周期 | 0.02 s |
 | MPC 节点 | 15；首段使用实际控制间隔，随后 14 段各 0.04 s；典型预测时长 0.58 s |
-| 姿态角速度外推衰减时间 | 0.15 s |
+| 姿态残差与航向角速度外推衰减时间 | 0.15 s |
+| 关节消费到作用候选时间／在途保护时间 | 0.024／0.05 s；保护另外计入反馈年龄 |
 | 目标权重：末端位置／速度 | 400／4 |
 | 目标权重：基体位置／关节姿态 | 0.25／0.02 |
 | 目标权重：名义输入／输入变化 | 0.01／0.01 |
@@ -109,25 +112,34 @@
 
 ## 任务生成和单次运行命令
 
-以下从服务器仓库根目录执行，使用现有环境，不重新安装依赖。`FORMAL_TASK` 应指向已接受的正式响应运行所归档的原任务，借用它的模型准备、PID、世界与物理准备证据路径；不会修改原任务。`EXTRA_GATES_JSON` 如有值，应指向只包含本次额外阶段证书映射的 JSON，例如 `{"pid_baseline":"/absolute/pid_tip_hold/audit/pid_baseline.json"}`。所有证书必须实际存在且通过哈希检查。
+以下从服务器仓库根目录执行，使用现有环境，不重新安装依赖。`SEED_TASK` 指向已通过预测链协议的 MPC 末端保持原任务，借用它的模型准备、PID、世界与物理准备证据路径；不会修改原任务。当前已验收保持记录及其证书为：
+
+- PID：`runs/x650_wholebody_mpc_v1_20261022_135417_11085/`；证书目录 `artifacts/x650_prediction_chains_20261022/pid_tip_hold_job/audit/`。
+- MPC：`runs/x650_wholebody_mpc_v1_20261022_140722_13130/`；证书目录 `artifacts/x650_prediction_chains_20261022/mpc_tip_hold_retry1_job/audit/`。
+
+下面示例先生成 PID `small`，`tip_hold` 绑定上述 MPC 的 `research_stage.json`。随后 MPC `small` 必须另外绑定**本轮 PID `small`** 新生成的 `pid_baseline.json`；不能使用 PID 末端保持基线。`EXTRA_GATES_JSON` 如有值，应指向只包含当前任务额外阶段证书映射的 JSON，例如 `{"pid_baseline":"/absolute/pid_small_prediction_chain_v2_job/audit/pid_baseline.json"}`。所有证书必须实际存在且通过哈希检查。
 
 ```bash
-export FORMAL_TASK="$PWD/runs/x650_wholebody_mpc_v1_20261022_121717_5093/controller_task.json"
+export SEED_TASK="$PWD/runs/x650_wholebody_mpc_v1_20261022_140722_13130/controller_task.json"
 export RESPONSE_ROOT="$PWD/artifacts/x650_formal_response_20261022/holdout_validation"
-export STAGE=tip_hold
+export TIP_HOLD_CERT="$PWD/artifacts/x650_prediction_chains_20261022/mpc_tip_hold_retry1_job/audit/research_stage.json"
+export STAGE=small
 export CONTROLLER=pid_ff
-export TASK_OUT="$PWD/artifacts/x650_mixed_mpc_20261022/tasks/pid_tip_hold.json"
+export TASK_OUT="$PWD/artifacts/x650_mixed_mpc_20261022/tasks/pid_small_prediction_chain_v2.json"
 export EXTRA_GATES_JSON=""
 
 PYTHONPATH="$PWD/src:$PWD/simulations/x650_wholebody_mpc_v1" /usr/bin/python3 - <<'PY'
 import json, os
 from pathlib import Path
 from task import build_task_config, validate_task_config
-from mixed_mpc_protocol import build_mixed_mpc_protocol
+from mixed_mpc_protocol import build_prediction_chain_protocol, validate_mixed_mpc_protocol
 
-seed = json.loads(Path(os.environ['FORMAL_TASK']).read_text())
+seed = json.loads(Path(os.environ['SEED_TASK']).read_text())
+protocol = build_prediction_chain_protocol()
+if validate_mixed_mpc_protocol(seed['mixed_mpc_protocol']) != protocol:
+    raise ValueError('Seed task does not use the accepted prediction-chain protocol')
 cfg = build_task_config(os.environ['STAGE'], os.environ['CONTROLLER'],
-                        mixed_mpc_protocol=build_mixed_mpc_protocol())
+                        mixed_mpc_protocol=protocol)
 for key in ('preparation_report', 'airframe_source', 'native_recorder_library',
             'pid_profile', 'hover_reference_profile'):
     cfg[key] = seed[key]
@@ -138,6 +150,7 @@ cfg['stage_evidence'] = {name: seed['stage_evidence'][name]
                          for name in ('native_ground', 'hover_folded', 'joint_probe')}
 cfg['stage_evidence']['response_identification'] = str(
     Path(os.environ['RESPONSE_ROOT'])/'response_identification.json')
+cfg['stage_evidence']['tip_hold'] = os.environ['TIP_HOLD_CERT']
 extra = os.environ.get('EXTRA_GATES_JSON')
 if extra:
     cfg['stage_evidence'].update(json.loads(Path(extra).read_text()))
@@ -164,7 +177,7 @@ PYTHONPATH="$PWD/src" /usr/bin/python3 simulations/x650_wholebody_mpc_v1/launch.
 env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   /usr/bin/python3 scripts/run_x650_mixed_mpc_stage.py \
   --task "$TASK_OUT" \
-  --output /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/x650_mixed_mpc_20261022/pid_tip_hold_job \
+  --output /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/x650_mixed_mpc_20261022/pid_small_prediction_chain_v2_job \
   --launch-python /root/autodl-tmp/amsim-venv/bin/python3 \
   --analysis-python /usr/bin/python3 \
   --pyulog-site /root/autodl-tmp/amsim-venv/lib/python3.10/site-packages
@@ -178,7 +191,9 @@ driver 每次只飞一个任务，要求恰好产生一个独立 run 与一个 l
 
 加速度来源按每条实际控制命令的消费时刻核验：完整位置／速度／加速度九字段须对应原始 ULog 发布帧，发布至消费年龄不超过 0.10 s，未来时钟边界不超过 0.008 s。位置回调的原始序号、墙钟回执、当时缓存的 `/clock` 和所有时效检查同时保留。DDS 与 `/clock` 异步到达，因此“回调时缓存的旧 `/clock`”不能作为发布帧因果判断的上界；它与原始发布时间的差值只作调度诊断，不用于拟合时间偏移。每次复用同一回调，仍重新检查发布帧在该次消费时刻的年龄。
 
-2026-10-22 首轮 v3 PID 末端保持完成了飞行与恢复，但因上述时钟判定问题以及首条记录的目标未初始化而未获验收。原始失败记录保留。修复后使用新 job 重新飞行，不补写旧 CSV，不将旧失败记录重新签发为通过。
+2026-10-22 历史 `mixed_response_zero_ff_v1` 的首轮 v3 PID 末端保持完成了飞行与恢复，但因上述时钟判定问题以及首条记录的目标未初始化而未获验收。原始失败记录保留。修复后使用新 job 重新飞行，不补写旧 CSV，不将旧失败记录重新签发为通过。该旧协议随后首次 MPC 保持的关节边界失败也保留，见[原始模型接入与 MPC 失败记录](X650_FORMAL_RESPONSE_AND_MPC_RESULTS_20261022.md)。
+
+新预测链协议首个 MPC 尝试 `..._135932_12083` 又在激活边界出现 64 ms 控制间隔并触发恢复。修复同步 I/O 交接后，使用新目录取得 `..._140722_13130` 的完整通过记录；未放宽 50 ms 限制，旧失败目录 `mpc_tip_hold_job/` 保留。后续八字按相同原则保留每一次尝试。
 
 单次 job 保存 `task.json`、`job_status.json`、`launch.log`、`audit.log` 和 `audit/`。物理与飞控原始文件仍位于独立 `runs/` 目录，启动目录保留控制源码 ZIP 和六项响应证据快照。起飞前执行完整模型证据校验，进入控制循环后只检查小型模型文件及实际 PID，避免在 Offboard 发送环中重复散列大型原始日志。
 
