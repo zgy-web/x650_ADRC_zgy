@@ -79,9 +79,9 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。
 
-新的 **`precision_ev_mixed_mpc_v3`** 已接入经全新训练与独立验证通过的 X/Y 二阶、Z 一阶基体速度响应模型，并固定同条件、零加速度前馈的 PID／MPC 对照流程。末端保持、小幅和普通八字按独立证书逐项推进；当前尚不能宣称新 X650 上的 MPC 飞行性能已通过。正式响应结果、冻结参数、证据绑定、运行命令及验收顺序见 [混合阶 MPC 分阶段验证说明](docs/X650_MIXED_MPC_COMMISSIONING.md)。
+新的 **`precision_ev_mixed_mpc_v3`** 已接入经全新训练与独立验证通过的 X/Y 二阶、Z 一阶基体速度响应模型，并固定同条件、零加速度前馈的 PID／MPC 对照流程。新版 `mixed_response_prediction_chain_v2` 补入关节源时间传播、已发送命令历史及水平加速度对预测姿态和末端几何的影响，已通过全新完整末端保持验收；小幅、普通和快速八字仍须逐项取得独立证书。正式响应参数、证据绑定、运行命令及顺序见 [混合阶 MPC 分阶段验证说明](docs/X650_MIXED_MPC_COMMISSIONING.md)。
 
-2026-10-22 实测进展：正式基体响应模型和 30 秒 PID 末端保持已通过；首次 MPC 末端保持约 14.5 秒后触发关节停车约束保护，已安全恢复，八字阶段尚未放行。完整范围、指标与失败诊断见 [本轮实验结果](docs/X650_FORMAL_RESPONSE_AND_MPC_RESULTS_20261022.md)。
+2026-10-22 最新服务器仿真结果：新 PID／MPC 的约 30 秒末端保持均通过完整物理、指令、反馈、着陆与参数恢复审计。末端三维位置误差 RMS 分别为 **3.849／3.205 mm**，峰值为 **4.661／4.418 mm**；本次单次对照 RMS 降低约 **16.7%**，不代表统计显著性或全面优越。原 MPC 失败及新版本启动边界失败记录均保留，下一步是尚未运行的小幅八字。新协议、修复、证据路径和范围见 [预测链与完整保持结果](docs/X650_PREDICTION_CHAIN_RESULTS_20261022.md)；早期响应验证和首次 MPC 失败见 [此前实验结果](docs/X650_FORMAL_RESPONSE_AND_MPC_RESULTS_20261022.md)。
 
 独立物理记录器的 [源码构建入口](benchmark/whole_body_closed_loop_v1/README.md)随仓库提供；在目标 Gazebo 环境构建并把实际库路径写入任务。构建成功、插件可加载和完整飞行验收是不同步骤。
 
