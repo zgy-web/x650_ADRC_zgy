@@ -13,7 +13,7 @@ from time import perf_counter
 from types import SimpleNamespace
 
 import numpy as np
-from scipy.linalg import cholesky, cho_solve, solve_triangular
+from scipy.linalg import cholesky, cho_solve, expm, solve_triangular
 from scipy.optimize import LinearConstraint, minimize, nnls
 
 from .baseline import BaselineController, nominal_reference
@@ -56,6 +56,71 @@ def response_matrices(h, base_tau):
     return A, B
 
 
+MIXED_RESPONSE_KIND = "xy_second_order_z_first_order_v1"
+MIXED_STATE_ORDER = ("px", "py", "pz", "vx", "vy", "vz", "q1", "q2", "dq1", "dq2", "ax", "ay")
+
+
+def normalize_response_model(value):
+    """Validate numerical structure only; flight admission owns evidence checks.
+
+    Positive frequency, damping and time constant give stable velocity poles.
+    No fit, inferred gain/delay or conversion from legacy time constants occurs.
+    """
+    if (not isinstance(value, dict) or set(value) != {"kind", "parameters"}
+            or value["kind"] != MIXED_RESPONSE_KIND):
+        raise ValueError("response_model must select the explicit mixed response kind and parameters")
+    parameters = value["parameters"]
+    if not isinstance(parameters, dict) or set(parameters) != {"x", "y", "z"}:
+        raise ValueError("Mixed response requires exactly x, y and z parameters")
+    result = {}
+    for axis, names in (("x", ("wn_rad_s", "zeta")), ("y", ("wn_rad_s", "zeta")), ("z", ("tau_s",))):
+        part = parameters[axis]
+        if not isinstance(part, dict) or set(part) != set(names):
+            raise ValueError("Invalid mixed response parameters for "+axis)
+        result[axis] = {}
+        for name in names:
+            number = part[name]
+            if (isinstance(number, (bool, np.bool_))
+                    or not isinstance(number, (int, float, np.integer, np.floating))):
+                raise ValueError("Mixed response parameter must be finite, real and positive: "+axis+"."+name)
+            try:
+                number = float(number)
+            except (ValueError, OverflowError) as exc:
+                raise ValueError("Mixed response parameter is outside finite float range") from exc
+            if not np.isfinite(number) or number <= 0:
+                raise ValueError("Mixed response parameter must be finite, real and positive: "+axis+"."+name)
+            result[axis][name] = number
+    return {"kind": MIXED_RESPONSE_KIND, "parameters": result}
+
+
+def mixed_response_matrices(h, response_model):
+    """Exact ZOH for [p3,v3,q2,dq2,ax,ay] and [v_cmd3,dq_cmd2]."""
+    response = normalize_response_model(response_model)["parameters"]
+    if (isinstance(h, (bool, np.bool_)) or not isinstance(h, (int, float, np.integer, np.floating))
+            or not np.isfinite(h) or h <= 0):
+        raise ValueError("Mixed response interval must be finite and positive")
+    A, B = np.eye(12), np.zeros((12, 5))
+    for axis, name in enumerate(("x", "y")):
+        wn, zeta = response[name]["wn_rad_s"], response[name]["zeta"]
+        # Augment constant input into [p,v,a,u] before exponentiation: p'=v,
+        # v'=a, a'=wn^2*(u-v)-2*zeta*wn*a. No acceleration-state reset.
+        generator = np.array([[0., 1., 0., 0.], [0., 0., 1., 0.],
+                              [0., -wn*wn, -2*zeta*wn, wn*wn], [0., 0., 0., 0.]])
+        transition = expm(float(h)*generator)
+        indices = [axis, 3+axis, 10+axis]
+        A[np.ix_(indices, indices)] = transition[:3, :3]
+        B[indices, axis] = transition[:3, 3]
+    tau = response["z"]["tau_s"]
+    alpha = np.exp(-h/tau)
+    integrated = tau*(1-alpha)
+    A[2, 5], A[5, 5] = integrated, alpha
+    B[2, 2], B[5, 2] = h-integrated, 1-alpha
+    A[6:8, 8:10] = 0.
+    A[8:10, 8:10] = 0.
+    B[6:8, 3:5], B[8:10, 3:5] = h*np.eye(2), np.eye(2)
+    return A, B
+
+
 def integer_setting(value, name):
     if isinstance(value, (bool, str)) or not np.isscalar(value) or not np.isfinite(value):
         raise ValueError(name+" must be an integer")
@@ -78,7 +143,16 @@ class MpcController(BaselineController):
         c = dict(config or {})
         self.nodes = integer_setting(c.pop("nodes", 15), "nodes")
         self.node_dt = float(c.pop("node_dt_s", .04))
-        self.base_tau = vector(c.pop("base_time_constant_s", [.2, .2, .25]), 3, "base_time_constant_s").copy()
+        self.mixed_response = "response_model" in c
+        if self.mixed_response:
+            if "base_time_constant_s" in c:
+                raise ValueError("response_model cannot be combined with base_time_constant_s")
+            self.response_model = normalize_response_model(c.pop("response_model"))
+            self.base_tau = None
+        else:
+            self.response_model = None
+            self.base_tau = vector(c.pop("base_time_constant_s", [.2, .2, .25]), 3, "base_time_constant_s").copy()
+        self.state_size = 12 if self.mixed_response else 10
         self.response_identified = bool(c.pop("response_identified", False))
         self.attitude_tau = float(c.pop("attitude_rate_decay_s", .15))
         self.max_iterations = integer_setting(c.pop("max_iterations", 100), "max_iterations")
@@ -99,7 +173,7 @@ class MpcController(BaselineController):
                 or any(not np.isfinite(v) or v <= 0 for v in (
                     self.node_dt, self.attitude_tau, self.ftol, self.feasibility_tolerance,
                     self.kkt_tolerance, self.solve_budget_ms))
-                or np.any(self.base_tau <= 0) or self.failure_policy not in ("raise", "shift")
+                or (self.base_tau is not None and np.any(self.base_tau <= 0)) or self.failure_policy not in ("raise", "shift")
                 or any(not np.isfinite(v) or v < 0 for v in self.weights.values())
                 or self.weights["tip_position"] <= 0 or self.weights["input_delta"] <= 0):
             raise ValueError("Invalid MPC horizon, response, weights or solver settings")
@@ -185,16 +259,29 @@ class MpcController(BaselineController):
         """Exact-key cache: changing first dt or parameters never reuses old data."""
         N, n = self.nodes, self.nodes*5
         h = np.r_[dt, np.full(N-1, self.node_dt)]
-        key = (N, h.tobytes(), self.base_tau.tobytes(), self.velocity_limit.tobytes(),
+        if self.mixed_response:
+            response = normalize_response_model(self.response_model)
+            p = response["parameters"]
+            response_key = (MIXED_RESPONSE_KIND, p["x"]["wn_rad_s"], p["x"]["zeta"],
+                            p["y"]["wn_rad_s"], p["y"]["zeta"], p["z"]["tau_s"])
+        else:
+            response_key = ("legacy_first_order", self.base_tau.tobytes())
+        key = (N, h.tobytes(), response_key, self.velocity_limit.tobytes(),
                self.acceleration_limit.tobytes(), self.max_dt, self.attitude_tau)
         cached = self._horizon_cache.get(key)
         if cached is not None:
             return cached
         scale = np.tile(self.velocity_limit, N)
-        transition, jacobian, jacobians, inputs, deltas = [], np.zeros((10, n)), [], [], []
+        transition, jacobian, jacobians, inputs, deltas = [], np.zeros((self.state_size, n)), [], [], []
         diagonal = np.diag(self.velocity_limit)
+        mixed_steps = {}
         for i, step in enumerate(h):
-            A, B = response_matrices(step, self.base_tau)
+            if self.mixed_response:
+                if step not in mixed_steps:
+                    mixed_steps[step] = mixed_response_matrices(step, response)
+                A, B = mixed_steps[step]
+            else:
+                A, B = response_matrices(step, self.base_tau)
             transition.append(A)
             jacobian = A@jacobian
             jacobian[:, i*5:(i+1)*5] += B
@@ -243,6 +330,11 @@ class MpcController(BaselineController):
         cached = self._horizon(dt)
         h, times, scale = cached["h"], cached["times"], cached["scale"]
         x0 = np.r_[state.position, state.velocity, state.q, state.dq]
+        if self.mixed_response:
+            acceleration = getattr(state, "acceleration_enu", None)
+            if acceleration is None:
+                raise ValueError("Mixed MPC requires measured acceleration_enu; no zero or differentiated fallback")
+            x0 = np.r_[x0, vector(acceleration, 3, "measured acceleration_enu")[:2]]
         offset, offsets = x0.copy(), []
         for A in cached["transitions"]:
             offset = A@offset
@@ -310,7 +402,7 @@ class MpcController(BaselineController):
         A, b = np.vstack(rows), np.concatenate(rhs)
         return {"A": A, "b": b, "H": 2*A.T@A, "g": -2*A.T@b,
                 "C": C, "lo": lo, "hi": hi, "scale": scale, "warm": zwarm,
-                "h": h, "offsets": offsets, "jacobians": jacobians,
+                "h": h, "initial_state": x0.copy(), "offsets": offsets, "jacobians": jacobians,
                 "linearization": linearization, "rotations": rotations,
                 "targets": future_targets, "first_lower": first_lo, "first_upper": first_hi, "identity": cached["identity"]}
 
@@ -415,6 +507,13 @@ class MpcController(BaselineController):
                            base_executed_velocity_target_world=command[:3].copy(),
                            command_delay_compensated=False, state_delay_compensated=False,
                            reference_preview="trajectory" if self.trajectory is not None else "current_target_constant_acceleration")
+        if self.mixed_response:
+            diagnostics.pop("prediction_time_constant_identified")
+            diagnostics.update(prediction_response_identified=self.response_identified,
+                               prediction_response_kind=MIXED_RESPONSE_KIND,
+                               prediction_state_order=list(MIXED_STATE_ORDER),
+                               measured_acceleration_enu=vector(state.acceleration_enu, 3, "acceleration_enu"),
+                               initial_prediction_acceleration_xy=problem["initial_state"][10:12].copy())
         self._plan, self._plan_t, self._plan_h = plan.copy(), float(t), problem["h"].copy()
         self.previous_command, self.last_t, self._previous_stamp = command.copy(), float(t), stamp
         self.step_count += 1
@@ -433,7 +532,7 @@ class MpcController(BaselineController):
         common.update(name="x650_hierarchical_wholebody_kinematic_mpc_v1", mode="mpc",
                       nodes=self.nodes, subsequent_node_dt_s=self.node_dt,
                       first_node_dt="Actual control interval; no doubled first-command acceleration allowance",
-                      base_time_constant_s=self.base_tau.tolist(), joint_time_constant_s=[0.,0.],
+                      joint_time_constant_s=[0.,0.],
                       response_identified=self.response_identified,
                       prediction_model="Exact ZOH closed-loop base first order + ideal joint velocity; not full rigid-body dynamics",
                       attitude_model="Measured body omega exponentially decays with attitude_rate_decay_s; not an optimized free pose",
@@ -447,4 +546,11 @@ class MpcController(BaselineController):
                       time_alignment="Caller must supply coherent measured state; no invented delay identification",
                       terminal_reserve="q_N + (vmax_joint/(2*amax_joint)+max_dt)*dq_N inside soft limits; conservative linear reserve",
                       scope="Finite-horizon endpoint-position MPC above PX4 PID; translational arm FF supplied by shared wrapper")
+        if self.mixed_response:
+            common.update(response_model=deepcopy(self.response_model), prediction_state_order=list(MIXED_STATE_ORDER),
+                          name="x650_hierarchical_wholebody_mixed_response_mpc_v1",
+                          prediction_model="Exact ZOH XY second-order velocity response + Z first order + ideal joint velocity; not full rigid-body dynamics",
+                          acceleration_initialization="Measured world ENU acceleration at every solve; no differencing or zero fallback")
+        else:
+            common["base_time_constant_s"] = self.base_tau.tolist()
         return common

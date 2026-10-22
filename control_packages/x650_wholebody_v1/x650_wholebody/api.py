@@ -1,6 +1,6 @@
 """Shared state and servo-consistent setpoint contract for the X650.
 
-Positions and linear velocities are world ENU. Rotation maps body FLU to
+Positions, linear velocities and optional measured accelerations are world ENU. Rotation maps body FLU to
 world ENU; angular velocity is body FLU. Joint coordinates are measured
 increments from the folded model home, in rad/rad/s. No controller or gains
 are selected by constructing these records.
@@ -45,11 +45,14 @@ class ControlState:
     q: np.ndarray
     dq: np.ndarray
     stamp_s: float
+    acceleration_enu: np.ndarray | None = None
 
     def __post_init__(self):
         for name, n in (("position", 3), ("velocity", 3), ("omega_body", 3), ("q", 2), ("dq", 2)):
             object.__setattr__(self, name, vector(getattr(self, name), n, name))
         object.__setattr__(self, "rotation", rotation(self.rotation))
+        if self.acceleration_enu is not None:
+            object.__setattr__(self, "acceleration_enu", vector(self.acceleration_enu, 3, "acceleration_enu"))
         if not np.isfinite(self.stamp_s) or self.stamp_s < 0:
             raise ValueError("stamp_s must be a nonnegative simulation timestamp")
 

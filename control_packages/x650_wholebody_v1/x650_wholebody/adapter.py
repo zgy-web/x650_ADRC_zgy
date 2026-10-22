@@ -32,8 +32,12 @@ class ControllerAdapter:
     """
     def __init__(self, allocator, model, pid_gains, *,
                  angular_acceleration_filter_tau_s=.12,
-                 arm_acceleration_limit=1., total_acceleration_limit=3.):
+                 arm_acceleration_limit=1., total_acceleration_limit=3.,
+                 acceleration_feedforward_policy="legacy"):
         self.allocator, self.model = allocator, model
+        if acceleration_feedforward_policy not in ("legacy", "zero"):
+            raise ValueError("acceleration_feedforward_policy must be legacy or zero")
+        self.acceleration_feedforward_policy = acceleration_feedforward_policy
         self.pid_gains = {str(k): float(v) for k, v in pid_gains.items()}
         if not all(np.isfinite(v) for v in self.pid_gains.values()):
             raise ValueError("PID readback values must be finite")
@@ -121,7 +125,13 @@ class ControllerAdapter:
             base_acceleration_world=nominal_acceleration,
             acceleration_limit=self.arm_acceleration_limit)
         combined = nominal_acceleration+ff["acceleration_world"]
-        acceleration, saturated = clip_norm(combined, self.total_acceleration_limit)
+        candidate_acceleration, candidate_saturated = clip_norm(combined, self.total_acceleration_limit)
+        acceleration, saturated = candidate_acceleration, candidate_saturated
+        if self.acceleration_feedforward_policy == "zero":
+            # Retain the physical calculation as diagnostics, but send neither
+            # nominal trajectory acceleration nor arm reaction compensation.
+            acceleration = np.zeros(3)
+            saturated = False
         diagnostic = deepcopy(allocation.get("diagnostics", {}))
         diagnostic.update(
             allocation=deepcopy(allocation), filtered_alpha_body=alpha.copy(),
@@ -129,7 +139,11 @@ class ControllerAdapter:
             nominal_acceleration_world=nominal_acceleration.copy(),
             arm_acceleration_world=ff["acceleration_world"].copy(),
             combined_acceleration_before_limit_world=combined,
+            candidate_acceleration_before_policy_world=candidate_acceleration.copy(),
+            candidate_acceleration_saturated=candidate_saturated,
             command_acceleration_world=acceleration.copy(),
+            acceleration_feedforward_policy=self.acceleration_feedforward_policy,
+            acceleration_feedforward_applied=self.acceleration_feedforward_policy == "legacy",
             acceleration_saturated=saturated,
             feedforward_joint_acceleration_source="allocation.qdd_ref: bounded difference of executed joint velocity commands",
             feedforward_angular_acceleration_source="same measured body omega at distinct state.stamp_s; first-order .12 s default filter",
@@ -151,6 +165,8 @@ class ControllerAdapter:
                 "angular_acceleration_filter_tau_s": self.angular_acceleration_filter_tau_s,
                 "arm_acceleration_norm_limit_m_s2": self.arm_acceleration_limit,
                 "total_acceleration_norm_limit_m_s2": self.total_acceleration_limit,
+                "acceleration_feedforward_policy": self.acceleration_feedforward_policy,
+                "acceleration_feedforward_applied": self.acceleration_feedforward_policy == "legacy",
                 "joint_acceleration_source": "allocator's bounded executed-command difference; never measured dq derivative",
                 "force_feedforward": "relative arm inertia and fixed COM angular transport",
                 "reaction_moment": "diagnostic only; not sent as aircraft or joint torque",
