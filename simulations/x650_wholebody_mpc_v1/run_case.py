@@ -92,6 +92,10 @@ def research_annotations(cfg, actual_pid=None):
             sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
         if actual_digest != condition["pid_parameters_sha256"]:
             raise RuntimeError("Research condition differs from all 42 actual PID parameters")
+    mixed = cfg.get("mixed_mpc_protocol") is not None
+    extra = ({"mixed_mpc_protocol": cfg["mixed_mpc_protocol"],
+              "mixed_mpc_protocol_sha256": hashlib.sha256(json.dumps(cfg["mixed_mpc_protocol"], sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest(),
+              "acceleration_feedforward_policy": "zero"} if mixed else {})
     return dict(research_profile=cfg["research_profile"], operating_condition=condition,
         operating_condition_sha256=digest, pid_parameters_sha256=condition["pid_parameters_sha256"],
         diagnostic_only=False, ground_truth_aided=True, eligible_as_stage_gate=False,
@@ -100,9 +104,9 @@ def research_annotations(cfg, actual_pid=None):
         control_feedback_contract=condition.get("feedback_contract", "PX4 EKF position loop; fixed raw-EV world target; measured joint position/velocity"),
         feedback_contract=condition.get("feedback_contract"),
         upper_command_interface=condition.get("control_interface"),
-        upper_allocator_active=is_upper_research(cfg) and cfg["stage"] == "tip_hold",
+        upper_allocator_active=is_upper_research(cfg) and (cfg["stage"] == "tip_hold" or mixed),
         truth_used_as_upper_feedback=False if is_upper_research(cfg) else None,
-        **protocol_annotation(cfg))
+        **protocol_annotation(cfg), **extra)
 
 
 def formal_gate_evidence(cfg, model_sha256, source_urdf_sha256):
@@ -193,8 +197,25 @@ class ConstantTarget:
         return self.center.copy(), np.zeros(3), np.zeros(3)
 
 
-def build_allocator(cfg, model, pid, trajectory):
+def build_allocator(cfg, model, pid, trajectory, *, accepted_response=None):
     name = cfg["controller"]
+    if cfg.get("mixed_mpc_protocol") is not None:
+        from accepted_response_model import load_accepted_response_model
+        from mixed_mpc_protocol import controller_config, baseline_config
+        binding = load_accepted_response_model(cfg) if accepted_response is None else accepted_response
+        # Full evidence hashing occurs before takeoff. During flight only
+        # recheck the small selected model, preserving the Offboard send loop.
+        if sha(resolved(cfg["response_model"])) != binding["binding"]["model"]["sha256"]:
+            raise RuntimeError("Accepted response model changed after runtime admission")
+        actual = {k: float(v) for k, v in pid.items() if k.startswith(("MC_", "MPC_"))}
+        from research_condition import canonical_hash
+        if canonical_hash(actual) != binding["model"]["pid_parameters_sha256"]:
+            raise RuntimeError("Mixed response model differs from actual flight PID readback")
+        if name == "pid_ff":
+            return BaselineController(model, pid, config=baseline_config(cfg["mixed_mpc_protocol"]))
+        from x650_wholebody.mpc import MpcController
+        return MpcController(model, pid, trajectory=trajectory,
+                             config=controller_config(cfg["mixed_mpc_protocol"], binding["model"]))
     if name in {"pid_ff", "pidff", "pid"}:
         return BaselineController(model, pid)
     if name != "mpc":
@@ -707,6 +728,12 @@ class ControlLoop:
                 row.update({prefix+axis: float(value) for axis, value in zip("ned", values)})
             for prefix, values in (("feedback_p", measured.position), ("feedback_v", measured.velocity), ("feedback_omega_", measured.omega_body)):
                 row.update({prefix+axis: float(value) if feedback is not None else math.nan for axis, value in zip("xyz", values)})
+            if self.cfg.get("mixed_mpc_protocol") is not None:
+                acceleration = measured.acceleration_enu if feedback is not None else [math.nan]*3
+                row.update({"feedback_a"+axis: float(value) for axis, value in zip("xyz", acceleration)})
+                source = {} if feedback is None else feedback["acceleration_source"]
+                row.update(feedback_acceleration_position_stamp_s=source.get("received_sim_s"),
+                           feedback_acceleration_position_sequence=source.get("callback_sequence"))
             self.feedback_stream.write(json.dumps(json_value({"sim_s": sim, "t_s": t,
                 "phase": self.recorder.phase, "feedback": feedback}), allow_nan=False)+"\n")
         if self.writer is None:
@@ -714,7 +741,10 @@ class ControlLoop:
             self.writer.writeheader()
         self.writer.writerow(row)
         if command is not None:
-            self.diagnostic.write(json.dumps(json_value({"sim_s": sim, "t_s": t, "diagnostics": command.diagnostics}), allow_nan=False)+"\n")
+            diagnostic_row = {"sim_s": sim, "t_s": t, "diagnostics": command.diagnostics}
+            if self.cfg.get("mixed_mpc_protocol") is not None:
+                diagnostic_row["phase"] = self.recorder.phase
+            self.diagnostic.write(json.dumps(json_value(diagnostic_row), allow_nan=False)+"\n")
         if self.rows % 50 == 0:
             self.control.flush()
             self.diagnostic.flush()
@@ -804,6 +834,16 @@ def execute(cfg, model_spec, provenance, out):
     report = json.loads(resolved(cfg["preparation_report"]).read_text(encoding="utf-8"))
     model_sha, source_sha = model_spec.sha256, report["derived_urdf_sha256"]
     gates = formal_gate_evidence(cfg, model_sha, source_sha)
+    accepted_response = None
+    if cfg.get("mixed_mpc_protocol") is not None:
+        from accepted_response_model import load_accepted_response_model
+        accepted_response = load_accepted_response_model(cfg)
+        if accepted_response["binding"] != provenance.get("accepted_response_binding"):
+            raise RuntimeError("Accepted response binding changed before runtime admission")
+        if cfg["controller"] == "mpc":
+            # Load SciPy before takeoff. Actual first-solve work remains inside
+            # the measured solve budget, with no hidden optimization warm-up.
+            from x650_wholebody.mpc import MpcController
     meta = dict(schema_version=1, complete=False, stage=cfg["stage"], controller=cfg["controller"],
                 task=cfg, model_sha256=model_sha, source_urdf_sha256=source_sha, physical_profile=model.metadata(),
                 provenance=provenance, stage_gates=gates, native_tip="Independent native Gazebo plugin only",
@@ -964,7 +1004,8 @@ def execute(cfg, model_spec, provenance, out):
                 meta["fixed_hover_reference"] = loop.fixed_reference.document
                 atomic_json(out/"hover_reference.json", loop.fixed_reference.document)
                 if upper_research:
-                    loop.feedback_adapter = Px4EstimatedFeedback(loop.fixed_reference, ctx.node)
+                    feedback_kwargs = {"require_acceleration": True} if cfg.get("mixed_mpc_protocol") is not None else {}
+                    loop.feedback_adapter = Px4EstimatedFeedback(loop.fixed_reference, ctx.node, **feedback_kwargs)
                     _, anchor_state, _ = loop.read()
                     loop.last, loop.next_control = None, loop.control_now()
                     meta["estimated_feedback"] = loop.feedback_adapter.document
@@ -997,8 +1038,10 @@ def execute(cfg, model_spec, provenance, out):
                 if cfg["stage"] not in {"response_probe", "hover_folded", "joint_probe"}:
                     center = tip_world(loop.anchor, anchor_state.rotation, np.zeros(2), model)
                     trajectory = ConstantTarget(center) if cfg["stage"] == "tip_hold" else FigureEight(center, **cfg["trajectory_parameters"])
-                    allocator = build_allocator(cfg, model, pid, trajectory)
-                    loop.controller = ControllerAdapter(allocator, model, pid)
+                    allocator_kwargs = {"accepted_response": accepted_response} if accepted_response is not None else {}
+                    allocator = build_allocator(cfg, model, pid, trajectory, **allocator_kwargs)
+                    adapter_kwargs = {"acceleration_feedforward_policy": "zero"} if cfg.get("mixed_mpc_protocol") is not None else {}
+                    loop.controller = ControllerAdapter(allocator, model, pid, **adapter_kwargs)
                     loop.controller.reset(loop.anchor, anchor_state.rotation, np.zeros(2))
                     loop.trajectory = trajectory
                     meta["controller_details"] = loop.controller.metadata()

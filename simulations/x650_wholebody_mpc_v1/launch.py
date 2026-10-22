@@ -58,6 +58,21 @@ def main(argv=None):
                 raise RuntimeError("Frozen response candidate archive digest mismatch")
             candidate_archive = {"path": str(archived), "sha256": binding["sha256"],
                                  "source_path": binding["path"]}
+        accepted_archive = None
+        accepted_binding = provenance.get("accepted_response_binding")
+        if accepted_binding is not None:
+            from task import sha
+            accepted_archive = {}
+            for key in ("model", "evidence", "preregistration", "source_archive", "candidate", "training_report"):
+                binding = accepted_binding[key]
+                source = Path(binding["path"])
+                if sha(source) != binding["sha256"]:
+                    raise RuntimeError("Accepted response changed after preflight: "+key)
+                archived = out/("accepted_response_"+key+(".zip" if key == "source_archive" else ".json"))
+                archived.write_bytes(source.read_bytes())
+                if sha(archived) != binding["sha256"]:
+                    raise RuntimeError("Accepted response archive checksum mismatch: "+key)
+                accepted_archive[key] = {"path": str(archived), "sha256": binding["sha256"], "source_path": str(source)}
         with zipfile.ZipFile(out/"controller_sources.zip", "w", zipfile.ZIP_DEFLATED) as archive:
             for relative, expected in provenance["source_files_sha256"].items():
                 from task import sha
@@ -76,6 +91,8 @@ def main(argv=None):
                   "command": command, "started_utc": datetime.now(timezone.utc).isoformat()}
         if candidate_archive is not None:
             status["frozen_response_candidate_archive"] = candidate_archive
+        if accepted_archive is not None:
+            status["accepted_response_archive"] = accepted_archive
         atomic_json(out/"launch.json", status)
         print("X650_LAUNCH", str(out), flush=True)
         try:

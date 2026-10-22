@@ -79,6 +79,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。
 
+新的 **`precision_ev_mixed_mpc_v3`** 已接入经全新训练与独立验证通过的 X/Y 二阶、Z 一阶基体速度响应模型，并固定同条件、零加速度前馈的 PID／MPC 对照流程。末端保持、小幅和普通八字按独立证书逐项推进；当前尚不能宣称新 X650 上的 MPC 飞行性能已通过。正式响应结果、冻结参数、证据绑定、运行命令及验收顺序见 [混合阶 MPC 分阶段验证说明](docs/X650_MIXED_MPC_COMMISSIONING.md)。
+
 独立物理记录器的 [源码构建入口](benchmark/whole_body_closed_loop_v1/README.md)随仓库提供；在目标 Gazebo 环境构建并把实际库路径写入任务。构建成功、插件可加载和完整飞行验收是不同步骤。
 
 通用 `model-import` 接受用户提供的 URDF/ZIP 与完整 mesh 资源；X650 预设则绑定特定源 URDF 哈希、二连杆构型、物理准备报告、airframe、世界文件和实际 PID 参数。`prepare_x650_flight.py` 会拒绝不匹配的源模型。换一台同名 X650 或改动几何，必须建立新的模型准备与证据版本，不能只改路径或移除哈希检查。
