@@ -147,6 +147,44 @@ class PredictionChainTests(unittest.TestCase):
         controller.reset(state.position, state.rotation, state.q)
         self.assertEqual(controller._joint_history, [])
 
+    def test_reduced_constraints_preserve_original_full_constraint_violation(self):
+        _, controller, state, target = setup()
+        controller.prime_command_history([(.98, [.01, -.01, 0., .04, -.03])], 1.)
+        state = replace(state, joint_stamp_s=.988, dq=[.035, -.025])
+        problem = controller._problem(0., .02, state, target)
+        self.assertTrue(np.all(np.any(problem["C"] != 0., axis=1)))
+        self.assertLess(len(problem["lo"]), 200)
+        # Reconstruct the removed full rows independently: node q, shorter
+        # terminal reserve, and event dq. The new q + larger reserve endpoints
+        # imply the shorter reserve by convexity; speed boxes imply future dq.
+        extra, lo, hi = [], [], []
+        for S, o in zip(problem["jacobians"], problem["offsets"]):
+            extra.append(S[6:8]); lo.append(controller.q_lower-o[6:8]); hi.append(controller.q_upper-o[6:8])
+        reserve = controller.velocity_limit[3:]/(2*controller.acceleration_limit[3:])+controller.max_dt
+        S, o = problem["jacobians"][-1], problem["offsets"][-1]
+        extra.append(S[6:8]+reserve[:, None]*S[8:10])
+        lo.append(controller.q_lower-o[6:8]-reserve*o[8:10])
+        hi.append(controller.q_upper-o[6:8]-reserve*o[8:10])
+        for _, _, dq, _, D in problem["joint_prediction"]["events"]:
+            extra.append(D); lo.append(-controller.velocity_limit[3:]-dq); hi.append(controller.velocity_limit[3:]-dq)
+        C = np.vstack([problem["C"], *extra])
+        lower, upper = np.concatenate([problem["lo"], *lo]), np.concatenate([problem["hi"], *hi])
+        out = controller.step(0., .02, state, target)
+        optimum = out["diagnostics"]["predicted_commands"].reshape(-1)/problem["scale"]
+        self.assertLessEqual(max(0., np.max(lower-C@optimum), np.max(C@optimum-upper)), controller.feasibility_tolerance)
+        for z in np.random.default_rng(7).uniform(-1., 1., (100, len(optimum))):
+            original = max(0., np.max(lower-C@z), np.max(C@z-upper))
+            reduced = max(0., np.max(problem["lo"]-problem["C"]@z), np.max(problem["C"]@z-problem["hi"]))
+            self.assertAlmostEqual(original, reduced, delta=1e-14)
+
+    def test_constant_pending_constraints_are_checked_before_removal(self):
+        _, controller, state, target = setup()
+        with self.assertRaisesRegex(ValueError, "velocity exceeds"):
+            controller._problem(0., .02, replace(state, dq=[0., .36]), target)
+        controller.previous_command[4] = .04
+        with self.assertRaisesRegex(ValueError, "constant prediction constraint"):
+            controller._problem(0., .02, replace(state, q=[0., .84], dq=[0., .04]), target)
+
 
 if __name__ == "__main__":
     unittest.main()

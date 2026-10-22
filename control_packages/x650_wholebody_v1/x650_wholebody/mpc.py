@@ -423,23 +423,24 @@ class MpcController(BaselineController):
         for i, (elapsed, step) in enumerate(zip(times, h)):
             predicted = future_targets[i]
             nominal = {key: preview[key][i] for key in ("p_nom", "v_nom", "q_nom", "qd_nom")}
-            qlin = linearization[i, 6:8]
-            R = (chain_outputs["rotations"][i] if chain_outputs is not None else
-                 R0@rotation_increment(omega*self.attitude_tau*(1-cached["attitude_decay"][i])))
-            rotations.append(R)
-            wworld = R@(omega*cached["attitude_decay"][i])
-            arm, J = tip_body(qlin, self.model), R@joint_jacobian_body(qlin, self.model)
             S, o = jacobians[i], offsets[i]
-            P = S[:3]+J@S[6:8]
-            po = o[:3]+R@arm+J@(o[6:8]-qlin)
-            V = S[3:6]+J@S[8:10]+skew(wworld)@J@S[6:8]
-            vo = o[3:6]+J@o[8:10]+skew(wworld)@(R@arm+J@(o[6:8]-qlin))
             if chain_outputs is not None:
+                R = chain_outputs["rotations"][i]
                 U = cached["inputs"][i]
                 px, pu, vx, vu = (chain_outputs[key][i] for key in ("px", "pu", "vx", "vu"))
                 P, V = px@S+pu@U, vx@S+vu@U
                 po = chain_outputs["position"][i]+px@(o-linearization[i])-pu@warm[i]
                 vo = chain_outputs["velocity"][i]+vx@(o-linearization[i])-vu@warm[i]
+            else:
+                qlin = linearization[i, 6:8]
+                R = R0@rotation_increment(omega*self.attitude_tau*(1-cached["attitude_decay"][i]))
+                wworld = R@(omega*cached["attitude_decay"][i])
+                arm, J = tip_body(qlin, self.model), R@joint_jacobian_body(qlin, self.model)
+                P = S[:3]+J@S[6:8]
+                po = o[:3]+R@arm+J@(o[6:8]-qlin)
+                V = S[3:6]+J@S[8:10]+skew(wworld)@J@S[6:8]
+                vo = o[3:6]+J@o[8:10]+skew(wworld)@(R@arm+J@(o[6:8]-qlin))
+            rotations.append(R)
             cost(P, preview["target_p"][i]-po, self.weights["tip_position"], step)
             cost(V, preview["target_v"][i]-vo, self.weights["tip_velocity"], step)
             cost(S[:3], nominal["p_nom"]-o[:3], self.weights["base_position"], step)
@@ -453,16 +454,17 @@ class MpcController(BaselineController):
             constrain(D, previous-self.acceleration_limit*step, previous+self.acceleration_limit*step)
             cost(D/(self.acceleration_limit*step)[:, None], previous/(self.acceleration_limit*step),
                  self.weights["input_delta"], step)
-            constrain(S[6:8], self.q_lower-o[6:8], self.q_upper-o[6:8])
+            if joint_prediction is None:
+                constrain(S[6:8], self.q_lower-o[6:8], self.q_upper-o[6:8])
         # This linear terminal reserve overbounds u^2/(2a)+max_dt*|u|
         # over the known speed interval. It is conservative, not a proof of
         # robust recursive feasibility against servo error or external forces.
         reserve = self.velocity_limit[3:]/(2*self.acceleration_limit[3:])+self.max_dt
-        S, o = jacobians[-1], offsets[-1]
-        constrain(S[6:8]+reserve[:, None]*S[8:10],
-                  self.q_lower-o[6:8]-reserve*o[8:10],
-                  self.q_upper-o[6:8]-reserve*o[8:10])
         if joint_prediction is None:
+            S, o = jacobians[-1], offsets[-1]
+            constrain(S[6:8]+reserve[:, None]*S[8:10],
+                      self.q_lower-o[6:8]-reserve*o[8:10],
+                      self.q_upper-o[6:8]-reserve*o[8:10])
             first_lo, first_hi = self._bounds(dt, np.asarray(state.q))
         else:
             first_lo, first_hi, guard = chain.conservative_first_bounds(
@@ -473,12 +475,23 @@ class MpcController(BaselineController):
             reserve = reserve+self.prediction_chain["joint_delay_guard_s"]+joint_prediction["measurement_age_s"]
             for _, q, dq, Q, D in joint_prediction["events"]:
                 constrain(Q, self.q_lower-q, self.q_upper-q)
-                constrain(D, -self.velocity_limit[3:]-dq, self.velocity_limit[3:]-dq)
+                # Future dq is exactly one speed-box-bounded input; adding
+                # another identical bound only duplicates solver work.
+                # Before its switch the measured/pending dq is a constant.
+                if not np.any(D) and np.any(abs(dq) > self.velocity_limit[3:]):
+                    raise ValueError("Measured/pending joint velocity exceeds unchanged speed limits")
                 constrain(Q+reserve[:, None]*D,
                           self.q_lower-q-reserve*dq, self.q_upper-q-reserve*dq)
         first = cached["inputs"][0]
         constrain(first, first_lo, first_hi)
         C, lo, hi = np.vstack(constraints), np.concatenate(lower), np.concatenate(upper)
+        if joint_prediction is not None:
+            variable = np.any(C != 0., axis=1)
+            # These rows concern measured/pending motion before any new input
+            # can act. Check constants before removing them from the solver.
+            if np.any(lo[~variable] > 0.) or np.any(hi[~variable] < 0.):
+                raise ValueError("Measured/pending joint motion violates a constant prediction constraint")
+            C, lo, hi = C[variable], lo[variable], hi[variable]
         A, b = np.vstack(rows), np.concatenate(rhs)
         return {"A": A, "b": b, "H": 2*A.T@A, "g": -2*A.T@b,
                 "C": C, "lo": lo, "hi": hi, "scale": scale, "warm": zwarm,
@@ -575,12 +588,13 @@ class MpcController(BaselineController):
         command = plan[0].copy()
         acceleration = (command-self.previous_command)/dt
         predicted = problem["offsets"]+np.einsum("nij,j->ni", problem["jacobians"], z)
-        exact_tip = np.array([x[:3]+R@tip_body(x[6:8], self.model)
-                              for x,R in zip(predicted, problem["rotations"])])
         if self.prediction_chain is not None:
             chain_result = chain.endpoint_outputs(predicted, plan, problem["chain_context"], self.model,
                                                   self.response_model["parameters"])
             exact_tip = chain_result["position"]
+        else:
+            exact_tip = np.array([x[:3]+R@tip_body(x[6:8], self.model)
+                                  for x,R in zip(predicted, problem["rotations"])])
         predicted_errors = exact_tip-np.array([v.position for v in problem["targets"]])
         tip = tip_world(state.position, state.rotation, state.q, self.model)
         diagnostics.update(predicted_horizon_s=float(np.sum(problem["h"])), node_intervals_s=problem["h"].copy(),
