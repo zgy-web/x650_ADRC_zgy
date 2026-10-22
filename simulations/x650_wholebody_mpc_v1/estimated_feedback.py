@@ -28,6 +28,8 @@ EV_FLAGS = {"cs_ev_pos": True, "cs_ev_vel": True, "cs_ev_hgt": True,
             "cs_gnss_pos": False, "cs_gnss_vel": False,
             "cs_gps_hgt": False, "cs_baro_hgt": False}
 EXTRA_RESETS = ("vxy_reset_counter", "vz_reset_counter", "quat_reset_counter")
+ACCELERATION_PROFILE = "px4_estimated_acceleration_raw_ev_world_v2"
+ACCELERATION_CONTRACT = "px4_estimator_acceleration_receipt_enu_v2"
 
 
 def _finite(value, name):
@@ -113,13 +115,16 @@ class Px4EstimatedFeedback:
     """
     def __init__(self, reference, node=None, *, max_state_hold_s=.10,
                  max_flags_hold_s=1.25, max_joint_hold_s=.25, max_wall_age_s=4.,
-                 max_flags_wall_age_s=10.):
+                 max_flags_wall_age_s=10., require_acceleration=False):
         # Pinned PX4 EKF2.cpp::PublishStatusFlags publishes every 1_s or
         # immediately on status change. DDS rate_limit=5 Hz is a ceiling,
         # not a 5 Hz source guarantee. 1.25 s = 1 s source period + 0.2 s
         # DDS rate-limit interval + 0.05 s check margin. The separate 10 s
         # wall bound permits slow SITL while all faster streams retain 4 s.
         self._document = _reference_document(reference)
+        if type(require_acceleration) is not bool:
+            raise ValueError("require_acceleration must be a boolean")
+        self._require_acceleration = require_acceleration
         self._limits = {key: _finite(value, key) for key, value in (
             ("state", max_state_hold_s), ("flags", max_flags_hold_s),
             ("joint", max_joint_hold_s), ("wall", max_wall_age_s),
@@ -133,7 +138,7 @@ class Px4EstimatedFeedback:
 
     @property
     def document(self):
-        return {"kind": "x650_px4_estimated_feedback", "schema_version": 1,
+        result = {"kind": "x650_px4_estimated_feedback", "schema_version": 1,
             "profile": "px4_estimated_raw_ev_world_v1", "frame_mode": "raw_ev_world",
             "state_source": "PX4 vehicle_local_position/vehicle_attitude/vehicle_angular_velocity and measured JointState",
             "clock_source": "ROS /clock receipt time; never Gazebo odometry time",
@@ -143,6 +148,13 @@ class Px4EstimatedFeedback:
             "truth_feedback": False, "truth_clock": False,
             "reference": deepcopy(self._document), "max_age_s": dict(self._limits),
             "extra_reset_counters_at_bind": deepcopy(self._extra_resets)}
+        if self._require_acceleration:
+            result.update(schema_version=2, profile=ACCELERATION_PROFILE,
+                feedback_contract=ACCELERATION_CONTRACT, acceleration_required=True,
+                acceleration_source="PX4 vehicle_local_position ax/ay/az: NED earth-fixed velocity derivative, mapped directly to ENU",
+                acceleration_stamp="position callback received_sim; independent of angular derivative stamp",
+                acceleration_fallback=False, acceleration_numerical_differentiation=False)
+        return result
 
     @staticmethod
     def _reset_snapshot(data):
@@ -223,6 +235,14 @@ class Px4EstimatedFeedback:
                 raise RuntimeError("PX4 estimator flags indicate dead reckoning: "+name)
         pn = _vector([p.x, p.y, p.z], 3, "PX4 NED position")
         vn = _vector([_field(p, name) for name in ("vx", "vy", "vz")], 3, "PX4 NED velocity")
+        # ax/ay/az are already earth-fixed velocity derivatives. They are not
+        # body accelerometer specific force: neither rotate by attitude nor add
+        # gravity. This optional input has no truth/differentiation fallback.
+        acceleration_ned = None
+        if self._require_acceleration:
+            acceleration_ned = _vector([_finite(_field(p, name), "PX4 "+name)
+                                        for name in ("ax", "ay", "az")],
+                                       3, "PX4 NED earth-fixed acceleration")
         quaternion = _vector(_field(attitude, "q"), 4, "PX4 attitude wxyz")
         if abs(np.linalg.norm(quaternion)-1.) > 1e-3:
             raise RuntimeError("PX4 attitude quaternion is not unit length")
@@ -254,8 +274,10 @@ class Px4EstimatedFeedback:
         raw_times = {key: {name: _integer(_field(node.data[key], name), key+" "+name)
                           for name in ("timestamp", "timestamp_sample")}
                      for key in TOPICS if key != "joints"}
+        acceleration_args = ({"acceleration_enu": NED_TO_ENU @ acceleration_ned}
+                             if self._require_acceleration else {})
         state = ControlState(position, rotation, NED_TO_ENU @ vn, FRD_TO_FLU @ rate,
-                             q, dq, callbacks["angular_velocity"]["received_sim_s"])
+                             q, dq, callbacks["angular_velocity"]["received_sim_s"], **acceleration_args)
         diagnostics = {"feedback_profile": "px4_estimated_raw_ev_world_v1",
             "snapshot_protocol": "latest_asynchronous_receipt_age_guarded",
             "truth_feedback": False, "truth_clock": False, "sim_time_s": sim_s,
@@ -270,6 +292,20 @@ class Px4EstimatedFeedback:
             "control_state": {"position_enu_m": state.position.tolist(),
                 "velocity_enu_m_s": state.velocity.tolist(), "rotation_flu_to_enu": state.rotation.tolist(),
                 "omega_flu_rad_s": state.omega_body.tolist(), "q_rad": q, "dq_rad_s": dq}}
+        if self._require_acceleration:
+            position_callback = callbacks["position"]
+            diagnostics.update(feedback_profile=ACCELERATION_PROFILE,
+                feedback_contract=ACCELERATION_CONTRACT,
+                acceleration_stamp_s=position_callback["received_sim_s"],
+                acceleration_source={"topic": "vehicle_local_position",
+                    "callback_sequence": position_callback["sequence"],
+                    "received_sim_s": position_callback["received_sim_s"],
+                    "received_wall_s": position_callback["received_wall_s"],
+                    **raw_times["position"], "quantity": "earth_fixed_velocity_derivative",
+                    "input_frame": "NED", "output_frame": "ENU",
+                    "numerical_differentiation": False, "truth_feedback": False})
+            diagnostics["px4_snapshot"]["acceleration_ned_m_s2"] = acceleration_ned.tolist()
+            diagnostics["control_state"]["acceleration_enu_m_s2"] = state.acceleration_enu.tolist()
         # Commit guard history only after the complete snapshot has passed.
         self._extra_resets = extra_resets
         self._last_callbacks = deepcopy(callbacks)
