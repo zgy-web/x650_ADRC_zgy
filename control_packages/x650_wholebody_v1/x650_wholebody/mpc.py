@@ -502,6 +502,15 @@ class MpcController(BaselineController):
                    if self.prediction_chain is not None else {})}
 
     @staticmethod
+    def _strictly_feasible_center(problem, center):
+        """A positive interior margin admits the exact unconstrained optimum."""
+        if not np.isfinite(center).all() or np.any(abs(center) > 1.-1e-10):
+            return False
+        value = problem["C"]@center
+        return bool(np.all(value >= problem["lo"]+1e-10)
+                    and np.all(value <= problem["hi"]-1e-10))
+
+    @staticmethod
     def _quality(problem, z):
         if not np.isfinite(z).all():
             return {"primal_violation": float("inf"), "kkt_stationarity_inf": float("inf"),
@@ -554,18 +563,26 @@ class MpcController(BaselineController):
         # avoiding dozens of BFGS iterations on the poorly conditioned horizon.
         L = cholesky(H, lower=True, check_finite=False)
         center = -cho_solve((L,True),g,check_finite=False)
-        transform = solve_triangular(L.T,problem["identity"],lower=False,check_finite=False)
-        C = np.vstack((problem["C"],problem["identity"]))
-        lo, hi = np.r_[problem["lo"],-np.ones(len(g))], np.r_[problem["hi"],np.ones(len(g))]
-        shifted, matrix = C@center, C@transform
-        row_scale = np.maximum(np.linalg.norm(matrix,axis=1),1e-12)
-        linear = LinearConstraint(matrix/row_scale[:,None],(lo-shifted)/row_scale,(hi-shifted)/row_scale)
-        initial = L.T@(np.clip(problem["warm"],-1.,1.)-center)
-        result = minimize(lambda y: .5*y@y, initial, jac=lambda y: y,
-                          method="SLSQP", constraints=[linear],
-                          options={"maxiter": self.max_iterations, "ftol": self.ftol, "disp": False})
+        exact_center = self.prediction_chain is not None and self._strictly_feasible_center(problem, center)
+        if exact_center:
+            # H is positive definite and H*center+g=0: an interior feasible
+            # center is also the constrained global optimum. Quality/KKT and
+            # the unchanged time budget still apply below.
+            result = SimpleNamespace(success=True, status=0, nit=0,
+                                     message="Exact unconstrained Cholesky optimum is strictly feasible")
+        else:
+            transform = solve_triangular(L.T,problem["identity"],lower=False,check_finite=False)
+            C = np.vstack((problem["C"],problem["identity"]))
+            lo, hi = np.r_[problem["lo"],-np.ones(len(g))], np.r_[problem["hi"],np.ones(len(g))]
+            shifted, matrix = C@center, C@transform
+            row_scale = np.maximum(np.linalg.norm(matrix,axis=1),1e-12)
+            linear = LinearConstraint(matrix/row_scale[:,None],(lo-shifted)/row_scale,(hi-shifted)/row_scale)
+            initial = L.T@(np.clip(problem["warm"],-1.,1.)-center)
+            result = minimize(lambda y: .5*y@y, initial, jac=lambda y: y,
+                              method="SLSQP", constraints=[linear],
+                              options={"maxiter": self.max_iterations, "ftol": self.ftol, "disp": False})
         solve_ms = (perf_counter()-solve_begin)*1000
-        z = center+transform@np.asarray(result.x,float)
+        z = center.copy() if exact_center else center+transform@np.asarray(result.x,float)
         quality = self._quality(problem, z)
         accepted = (bool(result.success) and np.isfinite(z).all()
                     and quality["primal_violation"] <= self.feasibility_tolerance
@@ -576,7 +593,8 @@ class MpcController(BaselineController):
             candidate_quality = self._quality(problem, candidate)
             if candidate_quality["primal_violation"] <= self.feasibility_tolerance:
                 z, quality, fallback = candidate.copy(), candidate_quality, True
-        diagnostics = {"solver": "scipy_slsqp_exact_hessian_whitened_convex_qp", "solver_success": bool(result.success),
+        diagnostics = {"solver": ("scipy_cholesky_exact_feasible_convex_qp" if exact_center else
+                                  "scipy_slsqp_exact_hessian_whitened_convex_qp"), "solver_success": bool(result.success),
                        "solver_status": int(result.status), "solver_message": str(result.message),
                        "solver_iterations": int(result.nit), "solve_ms": solve_ms,
                        "solve_budget_ms": self.solve_budget_ms, "solve_budget_exceeded": solve_ms > self.solve_budget_ms,
@@ -616,6 +634,8 @@ class MpcController(BaselineController):
                                initial_prediction_acceleration_xy=problem["initial_state"][10:12].copy())
         if self.prediction_chain is not None:
             diagnostics.update(prediction_chain=deepcopy(self.prediction_chain),
+                solve_method="exact_feasible_center" if exact_center else "slsqp",
+                exact_center_interior_margin=1e-10,
                 prediction_control_time_s=state.control_time_s, prediction_joint_stamp_s=state.joint_stamp_s,
                 prediction_joint_measurement_age_s=problem["joint_prediction"]["measurement_age_s"],
                 prediction_measured_joint_position=np.asarray(state.q).copy(),
@@ -673,6 +693,8 @@ class MpcController(BaselineController):
             common["base_time_constant_s"] = self.base_tau.tolist()
         if self.prediction_chain is not None:
             common.update(prediction_chain=deepcopy(self.prediction_chain),
+                solver="Exact Cholesky unconstrained optimum when strictly feasible; otherwise original SLSQP exact-Hessian-whitened QP; same quality gates",
+                exact_center_interior_margin=1e-10,
                 prediction_model="Unchanged accepted base response + timestamped delayed joint velocity + thrust-direction attitude output",
                 joint_time_constant_s=[0., 0.], joint_delay_identified=False,
                 joint_delay_origin="Pre-solve control consumption; development candidate, not actual dispatch/apply timestamp",

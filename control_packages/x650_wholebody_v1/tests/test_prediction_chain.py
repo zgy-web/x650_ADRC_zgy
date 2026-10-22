@@ -3,14 +3,16 @@ from dataclasses import replace
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
 PACKAGE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PACKAGE))
 from x650_wholebody import prediction_chain as chain
+from x650_wholebody import mpc as mpc_module
 from x650_wholebody.api import ControlState, EndpointTarget
-from x650_wholebody.mpc import MpcController
+from x650_wholebody.mpc import MpcController, MpcSolveError
 from x650_wholebody.model import tip_world
 from test_model import example_model
 from test_mixed_mpc import RESPONSE, GAINS
@@ -184,6 +186,47 @@ class PredictionChainTests(unittest.TestCase):
         controller.previous_command[4] = .04
         with self.assertRaisesRegex(ValueError, "constant prediction constraint"):
             controller._problem(0., .02, replace(state, q=[0., .84], dq=[0., .04]), target)
+
+    def test_exact_center_matches_forced_original_slsqp_without_running_optimizer(self):
+        for displacement in (0., .001, .005):
+            _, fast, state, target = setup()
+            _, original, _, _ = setup()
+            state = replace(state, position=state.position+[0., displacement, 0.])
+            with patch("x650_wholebody.mpc.minimize", side_effect=AssertionError("Interior optimum needs no SLSQP")):
+                exact = fast.step(0., .02, state, target)["diagnostics"]
+            with patch.object(original, "_strictly_feasible_center", return_value=False):
+                solved = original.step(0., .02, state, target)["diagnostics"]
+            self.assertEqual(exact["solver"], "scipy_cholesky_exact_feasible_convex_qp")
+            self.assertEqual(exact["solver_iterations"], 0)
+            self.assertEqual(exact["solve_method"], "exact_feasible_center")
+            self.assertEqual(solved["solve_method"], "slsqp")
+            self.assertTrue(exact["accepted_optimum"])
+            np.testing.assert_allclose(exact["predicted_commands"], solved["predicted_commands"], atol=1e-12, rtol=0.)
+            self.assertAlmostEqual(exact["objective"], solved["objective"], delta=1e-14)
+
+    def test_active_limits_use_original_solver_and_boundary_margin_is_not_relaxed(self):
+        _, controller, state, target = setup()
+        state = replace(state, position=state.position+[0., .05, 0.])
+        with patch("x650_wholebody.mpc.minimize", wraps=mpc_module.minimize) as solver:
+            result = controller.step(0., .02, state, target)["diagnostics"]
+        self.assertEqual(solver.call_count, 1)
+        self.assertEqual(result["solve_method"], "slsqp")
+        self.assertAlmostEqual(result["predicted_commands"][0, 1], -.006, delta=1e-10)
+        problem = {"C": np.eye(1), "lo": np.array([-.5]), "hi": np.array([.5])}
+        self.assertTrue(controller._strictly_feasible_center(problem, np.array([.5-2e-10])))
+        for value in (.5, .5-1e-11, .5+1e-11, float("nan")):
+            self.assertFalse(controller._strictly_feasible_center(problem, np.array([value])))
+
+    def test_exact_center_still_passes_through_original_quality_gate(self):
+        _, controller, state, target = setup()
+        rejected = {"primal_violation": 0., "kkt_stationarity_inf": 1.,
+                    "kkt_complementarity_inf": 0., "active_constraints": 0}
+        with patch.object(controller, "_quality", return_value=rejected) as quality:
+            with self.assertRaises(MpcSolveError) as failure:
+                controller.step(0., .02, state, target)
+        self.assertEqual(quality.call_count, 1)
+        self.assertFalse(failure.exception.diagnostics["accepted_optimum"])
+        self.assertEqual(controller.step_count, 0)
 
 
 if __name__ == "__main__":
