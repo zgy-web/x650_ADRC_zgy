@@ -419,6 +419,7 @@ virtualgl_ready: true
 - [X650 上层响应辨识结果重放与绘图](docs/X650_UPPER_RESPONSE_ANALYSIS.md)
 - [X650 水平响应链与二阶模型开发诊断](docs/X650_RESPONSE_DYNAMICS_DIAGNOSTICS.md)
 - [X650 新训练与独立验证的冻结响应协议](docs/X650_FORMAL_RESPONSE_PROTOCOL.md)
+- [X650 正式响应结果与连续预测对比图](docs/X650_FORMAL_RESPONSE_PLOTTING.md)
 - [详细安装指南](docs/INSTALLATION.md)
 - [可移植性设计](docs/PORTABILITY.md)
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)
