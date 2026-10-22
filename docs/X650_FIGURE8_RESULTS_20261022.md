@@ -1,6 +1,6 @@
 # 2026-10-22：X650 八字实验阶段结果
 
-**小幅和普通八字的 PID／MPC 共四组完整实验均已通过。普通八字 MPC 的末端三维 RMS 为 4.087 mm，相对同阶段 PID 的 15.965 mm 降低 74.402%；峰值由 51.437 mm 降至 8.595 mm。** 普通 MPC 首次 52 ms 时序中断记录完整保留；本次成绩来自等价 CPU 优化后的全新完整运行，不拼接失败记录。四组视频已渲染并通过完整解码验证，快速八字尚未开展。
+**小幅和普通八字的 PID／MPC 共四组完整实验均已通过。普通八字 MPC 的末端三维 RMS 为 4.087 mm，相对同阶段 PID 的 15.965 mm 降低 74.402%；峰值由 51.437 mm 降至 8.595 mm。** 普通 MPC 首次 52 ms 时序中断记录完整保留；本次成绩来自等价 CPU 优化后的全新完整运行，不拼接失败记录。四组原记录已按用户提供的参考样式重制为小幅、普通两个左右同步视频，快速八字尚未开展。
 
 本轮承接[预测链补齐与完整末端保持](X650_PREDICTION_CHAIN_RESULTS_20261022.md)，控制定义见[用于本轮八字的 MPC 公式与架构](X650_MPC_FORMULAS_AND_ARCHITECTURE.md)。本文数值来自已落地的 `accepted_results_summary_v3.json` revision 3；正式依据仍是各运行的完整 native／ULog 审计。倾角直接使用原审计的度数，没有再次作弧度到度的换算。
 
@@ -141,9 +141,11 @@ $$
 
 **图已生成：** `artifacts/x650_figure8_prediction_chain_20261022/small_comparison/` 和 `normal_comparison/` 分别包含小幅与普通整窗误差、关节／计算时序、绝对世界 XZ 轨迹与 Y 偏离图及 manifest，两阶段 `verify_pair` 均通过。各运行保留自身参考中心，没有平移叠齐。
 
-**四组视频已完成：** 小幅 PID、小幅 MPC、普通 PID、普通 MPC 均通过完整 FFmpeg 解码与源状态／FK 校验。回放保持既有 1440×900、24 fps、1 倍仿真时间、主视图＋机械臂近景＋误差曲线格式，并标明控制器／阶段；仅覆盖已审计测量窗口，不含起降，不虚构桨叶旋转。
+**新版采用左右同步对照：** 小幅、普通各一个视频，左 PID 协同分配、右上层 MPC。上方为实时末端三维误差、固定的完整窗口 RMSE 和机体 roll/pitch；三维场景显示完整黄色目标八字与逐渐延伸的实际末端轨迹；下方两条误差曲线使用共同纵轴。原始数据和正式成绩不变。两侧按预先声明的测量起点同步，使用一个共同固定世界相机，不平移轨迹或拟合相位。
 
-四个 MP4 分别为成果根目录下 `pid_small_video/x650_arm.mp4`、`mpc_small_video/x650_arm.mp4`、`pid_normal_video/x650_arm.mp4`、`mpc_normal_video/x650_arm.mp4`。每个目录保留五个代表帧、FK 校验和带来源哈希的 `replay_manifest.json`。指标、图、视频与本报告打包到 `X650_figure8_PID_MPC_20261022.zip`，解压后可在浏览器打开 `OPEN_RESULTS.html` 离线对照播放；媒体文件及逐项 SHA-256 见 `delivery_manifest.json`。
+两个 MP4 分别为成果根目录下 `paired_small_video/X650_small_PID_vs_MPC.mp4`、`paired_normal_video/X650_normal_PID_vs_MPC.mp4`。新版为 **1600×1320、24 fps、1 倍仿真时间**，每个目录保留五个代表帧与包含两侧源状态、FK、相机和哈希证据的 `replay_manifest.json`，完整视频通过 FFmpeg 解码。仅覆盖测量窗口，不含起降，不虚构桨叶旋转。
+
+指标、图、两个新版视频与本报告打包到 **`X650_figure8_PID_MPC_side_by_side_20261022.zip`**，解压后打开 `OPEN_RESULTS.html` 离线播放；逐项 SHA-256 见 `paired_delivery_manifest.json`，结果包检查见 `paired_delivery_verification.json`。初版四个单独 MP4 和包含旧视频的旧 ZIP 按用户要求删除；原始飞行日志、审计、绘图、输入和旧版来源清单保留，替换清单记于 `superseded_media_removal.json`。
 
 当前 Remote Desktop Commander 文件工具支持图像展示，不支持 MP4 内嵌播放。完整结果包保存在服务器上述成果目录，可经现有 AutoDL 文件界面下载。
 
@@ -169,4 +171,4 @@ python3 scripts/plot_x650_mixed_stage_comparison.py \
   --output artifacts/x650_figure8_prediction_chain_20261022/normal_comparison_rebuilt
 ```
 
-视频重建使用 [native 派生回放说明](X650_MIXED_NATIVE_REPLAY.md)：先以通过的审计、原始 run 生成 `native_replay.csv`／manifest，再调用 `render_x650_arm_replay.py`。这是原始物理状态的离屏展示，不运行新动力学；正式指标继续沿用原生时间加权审计。
+视频重建使用 [native 派生回放说明](X650_MIXED_NATIVE_REPLAY.md)：先以通过的审计、原始 run 生成 `native_replay.csv`／manifest，再调用 `render_x650_paired_figure8.py` 并传入对应 PID／MPC 两个输入目录。这是原始物理状态的离屏展示，不运行新动力学；正式指标继续沿用原生时间加权审计。
