@@ -6,7 +6,7 @@
 
 1. 用已有编译器构建数值加速器，记录实际库和源码哈希。
 2. 以固定上游资料为独立参考，完成全部 8 个预先定义的数值试验。
-3. 准备完整的独立 flight 模型和 airframe 4997，保留原机体/臂几何及惯性，只继承几何证据。
+3. 准备完整的独立 flight 模型与对应 airframe，保留原机体/臂几何及惯性，只继承几何证据。当前阻尼修正条件为 `x650_ts20_damped_hold_v1`／4996；原 4997 条件保留作历史记录。
 4. 冻结已有 42 个 PID 数值，显式绑定新模型，并使用同一原始世界的精密 EV 模式。
 5. 新地面稳定检查通过后，完成新悬停并审计 ULog、参数恢复、全时段实际输入和物理记录。
 6. 用该悬停证书准入新的空中关节探针；验证实际方向、运动、完整首态自由预测以及飞机稳定性。
@@ -35,7 +35,26 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 ## 场景配置和验收
 
-`task.build_task_config(stage)` 生成冻结的数值协议。调用者显式补齐绝对输入路径、已通过的当前 oracle 报告、相同库字节的 SHA256、原世界及 PID 资料；`tip_hold` 还需要匹配 PID 的旧基体响应先验，以及新 `hover_folded`、`joint_probe` 证书。配置由 `task.validate_task_config` 和 `task.preflight` 再次校验。
+当前条件调用 `task.build_damped_task_config(stage)`，生成 `x650_ts20_damped_hold_v1`／`amsim_urdf_x650_2link_ts20_damped_v1_flight`／4996 的冻结协议，有效 MIT 增益为 Kp = 6、Kd = 0.25，总线周期 5 ms。原 `task.build_task_config(stage)` 和 airframe 4997 示例只对应历史 Kd = 3276/32768 条件；它们的模型、oracle、悬停和关节探针证书不能用于新条件准入。
+
+调用者显式补齐绝对输入路径、已通过的当前 oracle 报告、相同库字节的 SHA256、原世界及 PID 资料；`tip_hold` 还需要匹配 PID 的旧基体响应先验，以及同一新条件的 `hover_folded`、`joint_probe` 证书。配置由 `task.validate_task_config` 和 `task.preflight` 再次校验。预测器的 Kp、Kd 和总线周期由哈希绑定的 plant manifest 显式读取，不能沿用构造器默认增益。
+
+新增益的独立数值验收沿用原 8 个夹具、相同初态、输入和误差门槛，显式选择独立增益协议与候选条件文件：
+
+```bash
+env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
+  scripts/validate_x650_ts20_prediction.py \
+  --source artifacts/ts20_integration_20261022/upstream_snapshot \
+  --manifest artifacts/ts20_integration_20261022/upstream_snapshot/source_manifest.json \
+  --native-library generated/ts20_prediction_build_fresh/libts20_prediction.so \
+  --native-sha256 ACTUAL_LIBRARY_SHA256 \
+  --gain-profile mit_kp6_kd025_v1 \
+  --operating-condition configs/actuators/ts20_50_24v_damped_v1_candidate.json \
+  --operating-condition-sha256 9d23be903984c38373e1ea0488fb3c36f09d89504e4b9c78ae85820a415dcb97 \
+  --output artifacts/ts20_prediction_oracle_damped_fresh
+```
+
+前面的无 `--gain-profile` 命令保留原始历史增益协议。Kd = 0.25 是仿真条件的阻尼候选，既没有改写约 20 V 台架摩擦参数，也不代表 24 V 真舵机的增益读回或带载验证。关节探针 0.2 rad/s 和发布前总计 50 ms 的验收门槛均保留。
 
 ```bash
 /usr/bin/python3 simulations/x650_ts20_hold_v1/launch.py \

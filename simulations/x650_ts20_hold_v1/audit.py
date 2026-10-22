@@ -258,7 +258,11 @@ def audit(folder, launch, output):
         commands = fixed.fixed_position_commands(ulog, native, reference, controls, window)
         flight = fixed.flight_sample_check(folder / "flight_samples.csv", window, target)
         if cfg["stage"] == "joint_probe":
-            result = fixed.joint_stage_check(folder, meta, window, target, controls)
+            bound_profile = shared.ArmModel.from_report(cfg["preparation_report"]).metadata()
+            fixed.require(task.canonical_hash(meta["physical_profile"]) == task.canonical_hash(bound_profile),
+                          "Native joint geometry differs from the hash-bound preparation report")
+            result = fixed.joint_stage_check(folder, meta, window, target, controls,
+                                            expected_profile_name=bound_profile["profile_name"])
             fixed.require(result["passed"] and actuator["new_joint_prediction_verified"], "New TS20 joint probe/prediction failed")
         else:
             position = precision.metrics(native["t"], native["position"] - target, "m")
@@ -269,6 +273,9 @@ def audit(folder, launch, output):
         if path.is_file() and path.suffix in (".json", ".jsonl", ".csv", ".ulg"):
             artifacts[str(path)] = task.sha(path)
     artifacts[str(Path(__file__).resolve())] = task.sha(__file__)
+    for module in (fixed, fixed.joint_audit, precision, upper, shared, task):
+        path = Path(module.__file__).resolve()
+        artifacts[str(path)] = task.sha(path)
     report = {"kind": "x650_ts20_conditional_stage_certificate_v1", "complete": True, "passed": True,
         "stage": cfg["stage"], "source_run_directory": str(folder), "window_sim_s": window,
         "ts20_operating_condition": identity, "full_window_ulog_verified": True,

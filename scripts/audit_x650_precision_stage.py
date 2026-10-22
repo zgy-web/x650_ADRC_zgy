@@ -243,7 +243,7 @@ def native_ground_check(folder, document):
             "sample_count": len(data["t"]), "maximum_native_interval_s": float(np.diff(data["t"]).max())}
 
 
-def joint_stage_check(folder, metadata, window, target, control_rows):
+def joint_stage_check(folder, metadata, window, target, control_rows, *, expected_profile_name="x650_2link_v2"):
     duration = float(metadata["requested_duration_s"])
     with (folder/"native_trace.csv").open(newline="", encoding="utf-8") as stream:
         data = joint_audit.native_arrays(list(csv.DictReader(stream)), window[0], duration, target)
@@ -261,7 +261,7 @@ def joint_stage_check(folder, metadata, window, target, control_rows):
         "tilt_at_most_15deg": whole["tilt_peak_deg"] <= 15.,
     }
     commands = joint_audit.control_audit(control_rows, window[0], duration)
-    geometry = joint_audit.native_tip_audit(data, metadata["physical_profile"])
+    geometry = joint_audit.native_tip_audit(data, metadata["physical_profile"], expected_profile_name=expected_profile_name)
     return {"passed": all(checks.values()), "criteria": checks, "segments": sections,
             "joint_command_audit": commands, "native_tip_geometry": geometry,
             "precision_hover_threshold_applied_to_joint_probe": False,

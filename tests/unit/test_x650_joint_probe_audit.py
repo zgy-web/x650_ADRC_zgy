@@ -88,9 +88,17 @@ class JointProbeAuditTests(unittest.TestCase):
         data["quaternion"] = np.tile([np.sqrt(.5), 0., 0., np.sqrt(.5)], (len(x), 1))
         data["tip"] = data["position"]+np.column_stack((np.full(len(x), -.04), x, z))
         self.assertLess(audit.native_tip_audit(data, profile)["maximum_error_m"], 1e-14)
+        profile["profile_name"] = "x650_2link_ts20_damped_v1"
+        with self.assertRaisesRegex(ValueError, "declared v2 geometry"):
+            audit.native_tip_audit(data, profile)
+        self.assertLess(audit.native_tip_audit(data, profile,
+            expected_profile_name="x650_2link_ts20_damped_v1")["maximum_error_m"], 1e-14)
+        with self.assertRaisesRegex(ValueError, "declared v2 geometry"):
+            audit.native_tip_audit(data, {**profile, "mount_body": [0., 0., -.19]},
+                expected_profile_name="x650_2link_ts20_damped_v1")
         data["q"] *= -1
         with self.assertRaisesRegex(ValueError, "axes/zero"):
-            audit.native_tip_audit(data, profile)
+            audit.native_tip_audit(data, profile, expected_profile_name="x650_2link_ts20_damped_v1")
 
 
 if __name__ == "__main__":

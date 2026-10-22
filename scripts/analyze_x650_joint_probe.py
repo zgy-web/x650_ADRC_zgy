@@ -72,9 +72,10 @@ def native_arrays(rows, begin, duration, anchor):
                 body_error=position-np.asarray(anchor))
 
 
-def native_tip_audit(data, profile):
+def native_tip_audit(data, profile, *, expected_profile_name="x650_2link_v2"):
     """Compare independently observed distal-link tip to the declared +Y FK."""
-    if (profile.get("profile_name") != "x650_2link_v2"
+    if (not isinstance(expected_profile_name, str) or not expected_profile_name
+            or profile.get("profile_name") != expected_profile_name
             or not np.allclose(profile["mount_body"], [0, 0, -.18], atol=1e-12, rtol=0)
             or not np.allclose(profile["elbow_offset_body_m"], [0, .04, 0], atol=1e-12, rtol=0)):
         raise ValueError("Native direction audit requires the declared v2 geometry")
