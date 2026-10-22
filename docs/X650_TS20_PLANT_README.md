@@ -286,7 +286,53 @@ scene, and identify the world through a read-only serialized ECS state response
 (`World` and `Name` components, plus the model's parent-world relationship).
 Record the verified world name/ID and model/link identities in the load
 evidence; a loader Boolean is only an acknowledgement. This requirement does
-not modify the historical loader or qualify an earlier experiment.
+not qualify an earlier experiment.
+
+A new opt-in implementation is supplied by `scripts/gz_world_entity_probe.cpp`
+and `benchmark/whole_body_closed_loop_v1/gz_world_entity_binding.py`. The C++
+client requests `/world/<actual-world>/state`, copies only identity components
+into its own ECM, and requires a unique `World+Name`, unique `Model+Name` whose
+`ParentEntity` is that world, and a unique `base_link` owned by that model. It
+never commands or changes the server. The Python wrapper binds the raw ECS
+snapshot, registered component type IDs, executable hash, runtime/meta hashes,
+PID start ticks and boot ID. It rejects stale/future evidence and verifies the
+same runtime again immediately before loading.
+
+`load_disturbance(..., binding=entity_binding_path)` then uses the verified
+world and actual entity ID. Omitting the new keyword preserves the historical
+loader's `default`/1 behavior, which is insufficient for new physical
+acceptance. The new acknowledgement manifest explicitly records
+`force_experiment_complete=false`; full native waveform/status and independent
+motion checks remain required. Existing `disturbance.cpp` and force-event
+semantics are unchanged. The source-recovery table above records the original
+loader hash; the opt-in wrapper change has a new source identity.
+
+At an idle server checkpoint on 2026-10-22, the helper was compiled in the
+separate `generated/gz_world_entity_probe_build_v1_20261022` directory. All six
+C++ `--self-test` checks and all seven synthetic Python guard tests passed.
+The build used g++ 11.4.0, gz-sim 8.15.0, gz-transport 13.6.0 and gz-msgs 10.4.0.
+The binary SHA256 is
+`12704f6820ce57642ea81e2e626b0ad06a80fb97ae8351d88283717465f21c96`.
+`build_manifest.json` records the exact commands, source hashes and test results;
+the same directory retains compilation and test logs. No live ECS query or
+disturbance load has used this opt-in path at this checkpoint. On a new build,
+use a **new** directory, not any binary bound to an experiment:
+
+```bash
+g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic scripts/gz_world_entity_probe.cpp \
+  -o /absolute/new-build/gz_world_entity_probe \
+  $(pkg-config --cflags --libs gz-sim8 gz-transport13 gz-msgs10)
+/absolute/new-build/gz_world_entity_probe --self-test
+```
+
+The live wrapper can then be called from the owning runner with its existing
+`pump` callback, or from its read-only CLI. It inherits the caller's GZ
+transport environment. The actual executable, native self-test, raw ECS
+response, runtime identity, task source archive and library hashes must be
+reviewed before using a verified binding to load the 1 N / 0.3 s schedule.
+The six C++ tests exercise synthetic ECS construction and identity rejection;
+the Python tests use mocked transport. Neither establishes live service
+compatibility, successful wrench application or disturbance recovery.
 
 ## Exact provenance and future builds
 
