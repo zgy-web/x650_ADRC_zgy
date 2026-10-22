@@ -35,6 +35,19 @@ def skew_batch(v):
     return out
 
 
+def _cross_rows(a, b):
+    """Cross products for the equal-shape N-by-3 float arrays used below.
+
+    Keep NumPy's three-component multiply/subtract order, without its generic
+    axis rearrangement and two-component/broadcasting dispatch on every call.
+    """
+    out = np.empty_like(a)
+    out[:, 0] = a[:, 1]*b[:, 2]-a[:, 2]*b[:, 1]
+    out[:, 1] = a[:, 2]*b[:, 0]-a[:, 0]*b[:, 2]
+    out[:, 2] = a[:, 0]*b[:, 1]-a[:, 1]*b[:, 0]
+    return out
+
+
 def thrust_rotation(acceleration, jerk, yaw, yaw_rate, gravity):
     """Exact normalized thrust direction and its analytic time derivative."""
     force = np.asarray(acceleration, float)+[0., 0., gravity]
@@ -45,14 +58,14 @@ def thrust_rotation(acceleration, jerk, yaw, yaw_rate, gravity):
     zd = (jerk-z*np.sum(z*jerk, axis=1)[:, None])/norm[:, None]
     xc = np.column_stack((np.cos(yaw), np.sin(yaw), np.zeros(len(yaw))))
     xcd = np.column_stack((-np.sin(yaw), np.cos(yaw), np.zeros(len(yaw))))*yaw_rate[:, None]
-    cross = np.cross(z, xc)
+    cross = _cross_rows(z, xc)
     cross_norm = np.linalg.norm(cross, axis=1)
     if np.any(cross_norm < .25):
         raise ValueError("Thrust direction is singular against heading")
     y = cross/cross_norm[:, None]
-    cd = np.cross(zd, xc)+np.cross(z, xcd)
+    cd = _cross_rows(zd, xc)+_cross_rows(z, xcd)
     yd = (cd-y*np.sum(y*cd, axis=1)[:, None])/cross_norm[:, None]
-    x, xd = np.cross(y, z), np.cross(yd, z)+np.cross(y, zd)
+    x, xd = _cross_rows(y, z), _cross_rows(yd, z)+_cross_rows(y, zd)
     return np.stack((x, y, z), axis=2), np.stack((xd, yd, zd), axis=2)
 
 
