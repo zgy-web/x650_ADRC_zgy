@@ -1,0 +1,53 @@
+{
+  "kind": "ts20_prediction_software_acceptance_v4",
+  "hardware_accessed": false,
+  "supply_24v_qualified": false,
+  "aerial_arm_load_qualified": false,
+  "oracle_pass": true,
+  "oracle_cases": 8,
+  "protocol_sha256": "1a95e9703bffd3c5bfac82766d7ecd9453266c4e6361f9219d1d55c61bc06db2",
+  "oracle_q_peak_rad": 0.00010316570684026916,
+  "oracle_dq_peak_rad_s": 0.015689441026111507,
+  "native_backend": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "abi": 1,
+    "cpp_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+    "binding": "explicit CLI native backend enabled before all frozen run_case calls",
+    "source_archive": "candidate_ts20_prediction_native.cpp"
+  },
+  "source_sha256": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "db6d8843fda0e6d87b8aa69ab43c8e22b8a644e39963ddccbfa137c3de0d460f",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py": "a303c6c837b23e8214207a4fdc2c7276f05e72c560ac436ad0a9f0f01f3d3564",
+    "scripts/validate_x650_ts20_prediction.py": "faa170540618c1a49d7b1aebc5d036d969eee9a86b7029a1009cd0ce44bacdbf"
+  },
+  "full_mpc_matrix": {
+    "cases": 30,
+    "passed": 30,
+    "max_wall_ms": 47.79516439884901,
+    "scope": "15-node software steps only, not real-time flight qualification",
+    "matrix_path": "oracle_validation_v3_native_retry1/full_mpc_trust002_matrix_v1.json"
+  },
+  "native_predict_and_candidate_timing": {
+    "hold": {
+      "total_median_ms": 9.029563050717115,
+      "total_max_ms": 14.277299866080284,
+      "total_p95_ms": 12.503108615055677,
+      "full_substep_envelope_collected": true,
+      "extrema_count": 0
+    },
+    "moving": {
+      "total_median_ms": 8.679179474711418,
+      "total_max_ms": 10.0556630641222,
+      "total_p95_ms": 9.736224776133895,
+      "full_substep_envelope_collected": true,
+      "extrema_count": 35
+    }
+  },
+  "unit_tests": {
+    "passed": 104,
+    "seconds": 2.925,
+    "native_equivalence_test_enabled": true
+  }
+}
