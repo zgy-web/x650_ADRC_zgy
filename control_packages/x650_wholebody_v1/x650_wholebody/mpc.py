@@ -142,7 +142,7 @@ class MpcController(BaselineController):
 
     def __init__(self, model, pid_gains, *, trajectory=None, config=None):
         c = dict(config or {})
-        self.prediction_chain = chain.normalize(c.pop("prediction_chain")) if "prediction_chain" in c else None
+        self.prediction_chain = self._normalize_prediction_chain(c.pop("prediction_chain")) if "prediction_chain" in c else None
         self.nodes = integer_setting(c.pop("nodes", 15), "nodes")
         self.node_dt = float(c.pop("node_dt_s", .04))
         self.mixed_response = "response_model" in c
@@ -188,6 +188,10 @@ class MpcController(BaselineController):
         self._horizon_cache = {}
         self._joint_history, self._chain_clock_origin = [], None
         self._history_primed = False
+
+    @staticmethod
+    def _normalize_prediction_chain(value):
+        return chain.normalize(value)
 
     def reset(self, p0, R0, q0):
         super().reset(p0, R0, q0)
@@ -367,6 +371,29 @@ class MpcController(BaselineController):
         indices = np.minimum(np.searchsorted(old_ends, sample_offsets, side="right"), self.nodes-1)
         return self._plan[indices].copy()
 
+    def _joint_prediction(self, t, times, h, state, warm):
+        """Legacy joint model; actuator-specific subclasses supply their own map."""
+        return chain.joint_prediction(t, times, h, state, self._joint_history,
+                                      self.prediction_chain, self.velocity_limit[3:])
+
+    def _joint_constraints(self, constrain, prediction, dt, state, t, warm):
+        """Protect the archived delayed ideal-velocity model without changes."""
+        first_lo, first_hi, guard = chain.conservative_first_bounds(
+            self, dt, state, prediction, self._joint_history, t, self.prediction_chain)
+        reserve = (self.velocity_limit[3:]/(2*self.acceleration_limit[3:])+self.max_dt
+                   +self.prediction_chain["joint_delay_guard_s"]+prediction["measurement_age_s"])
+        for _, q, dq, Q, D in prediction["events"]:
+            constrain(Q, self.q_lower-q, self.q_upper-q)
+            if not np.any(D) and np.any(abs(dq) > self.velocity_limit[3:]):
+                raise ValueError("Measured/pending joint velocity exceeds unchanged speed limits")
+            constrain(Q+reserve[:, None]*D,
+                      self.q_lower-q-reserve*dq, self.q_upper-q-reserve*dq)
+        return first_lo, first_hi, guard
+
+    def _validate_candidate(self, t, state, problem, plan, predicted):
+        """Optional actuator nonlinear check, before command/history mutation."""
+        return predicted, {}
+
     def _problem(self, t, dt, state, target):
         N, n = self.nodes, self.nodes*5
         cached = self._horizon(dt)
@@ -383,20 +410,19 @@ class MpcController(BaselineController):
             offsets.append(offset.copy())
         offsets, jacobians = np.asarray(offsets), cached["jacobians"]
         joint_prediction, chain_context, chain_outputs, guard = None, None, None, None
+        warm = self._warm_start(t, h)
         if self.prediction_chain is not None:
             if state.control_time_s is None or state.joint_stamp_s is None:
                 raise ValueError("Prediction chain requires measured control/joint source timestamps")
             clock_origin = state.control_time_s-t
             if self._chain_clock_origin is not None and abs(clock_origin-self._chain_clock_origin) > 1e-8:
                 raise ValueError("Prediction-chain task/control time origin changed")
-            joint_prediction = chain.joint_prediction(t, times, h, state, self._joint_history,
-                                                       self.prediction_chain, self.velocity_limit[3:])
+            joint_prediction = self._joint_prediction(t, times, h, state, warm)
             jacobians = jacobians.copy()
             for i, (_, q, dq, Q, D) in enumerate(joint_prediction["nodes"]):
                 offsets[i, 6:8], offsets[i, 8:10] = q, dq
                 jacobians[i, 6:8], jacobians[i, 8:10] = Q, D
             x0[6:8], x0[8:10] = joint_prediction["q_current"], joint_prediction["dq_current"]
-        warm = self._warm_start(t, h)
         zwarm = warm.reshape(-1)/scale
         linearization = offsets+np.einsum("nij,j->ni", jacobians, zwarm)
         if self.prediction_chain is not None:
@@ -467,21 +493,8 @@ class MpcController(BaselineController):
                       self.q_upper-o[6:8]-reserve*o[8:10])
             first_lo, first_hi = self._bounds(dt, np.asarray(state.q))
         else:
-            first_lo, first_hi, guard = chain.conservative_first_bounds(
-                self, dt, state, joint_prediction, self._joint_history, t, self.prediction_chain)
-            # Candidate protection for pending velocity commands. Bounds at
-            # every switch and node cover piecewise-linear q, and reserve uses
-            # the unchanged command braking schedule plus pipeline/age margin.
-            reserve = reserve+self.prediction_chain["joint_delay_guard_s"]+joint_prediction["measurement_age_s"]
-            for _, q, dq, Q, D in joint_prediction["events"]:
-                constrain(Q, self.q_lower-q, self.q_upper-q)
-                # Future dq is exactly one speed-box-bounded input; adding
-                # another identical bound only duplicates solver work.
-                # Before its switch the measured/pending dq is a constant.
-                if not np.any(D) and np.any(abs(dq) > self.velocity_limit[3:]):
-                    raise ValueError("Measured/pending joint velocity exceeds unchanged speed limits")
-                constrain(Q+reserve[:, None]*D,
-                          self.q_lower-q-reserve*dq, self.q_upper-q-reserve*dq)
+            first_lo, first_hi, guard = self._joint_constraints(
+                constrain, joint_prediction, dt, state, t, warm)
         first = cached["inputs"][0]
         constrain(first, first_lo, first_hi)
         C, lo, hi = np.vstack(constraints), np.concatenate(lower), np.concatenate(upper)
@@ -606,6 +619,8 @@ class MpcController(BaselineController):
         command = plan[0].copy()
         acceleration = (command-self.previous_command)/dt
         predicted = problem["offsets"]+np.einsum("nij,j->ni", problem["jacobians"], z)
+        predicted, actuator_diagnostics = self._validate_candidate(t, state, problem, plan, predicted)
+        diagnostics.update(actuator_diagnostics)
         if self.prediction_chain is not None:
             chain_result = chain.endpoint_outputs(predicted, plan, problem["chain_context"], self.model,
                                                   self.response_model["parameters"])

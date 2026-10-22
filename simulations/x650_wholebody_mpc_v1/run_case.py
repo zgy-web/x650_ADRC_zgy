@@ -540,8 +540,9 @@ def confirm_land_state_after_command(ctx, marker, *, landed, watchdog, sim_clock
 
 class ControlLoop:
     """Pump the existing ROS/MAVLink connection, then command measured joints."""
-    def __init__(self, ctx, cfg, model, recorder, pid, out):
+    def __init__(self, ctx, cfg, model, recorder, pid, out, *, extension=None):
         self.ctx, self.cfg, self.model, self.recorder, self.pid = ctx, cfg, model, recorder, pid
+        self.extension = extension
         self.original_pump = ctx.vehicle._pump
         self.last, self.next_control, self.last_truth, self.last_joint = None, -math.inf, None, None
         self.land_watchdog = LandReceiptWatchdog(ctx.node)
@@ -612,6 +613,8 @@ class ControlLoop:
                 raise RuntimeError("Recorder and estimated-feedback /clock progress differ by over 0.05 s")
             state, joint_stamp, self.feedback_diagnostics = self.feedback_adapter.read(self.ctx.node, clock_s)
             sim = clock_s
+        if self.extension is not None:
+            state, joint_stamp = self.extension.after_state_read(self, state, joint_stamp, sim)
         return sim, state, joint_stamp
 
     def pump(self):
@@ -620,6 +623,8 @@ class ControlLoop:
         for _ in range(32 if self.upper_research else 6):
             self.ctx.node.spin_once(timeout_sec=0.)
         sim = self.recorder.now()
+        if self.extension is not None:
+            self.extension.on_pump(self, sim)
         self.land_watchdog.observe(self.ctx.node, sim)
         if self.status_watchdog is not None:
             self.status_watchdog.observe(self.ctx.node, sim)
@@ -668,6 +673,8 @@ class ControlLoop:
             "compute_before": compute_before, "compute_after": compute_after}
         if np.any(abs(joint) > np.array([.45, .35])+1e-8):
             raise RuntimeError("Executed joint command exceeds common speed limits")
+        if self.extension is not None:
+            publication_context["pre_publish_guard"] = self.extension.before_publish(self, begin, sim, command)
         for name, value in zip(JOINTS, joint):
             self.execution_trace.publish("joint:"+name, {"joint": name, "velocity_rad_s": float(value)},
                 lambda name=name, value=value: self.ctx.arm.set_velocity(name, float(value)),
@@ -754,7 +761,7 @@ class ControlLoop:
                 row.update({prefix+axis: float(value) for axis, value in zip("ned", values)})
             for prefix, values in (("feedback_p", measured.position), ("feedback_v", measured.velocity), ("feedback_omega_", measured.omega_body)):
                 row.update({prefix+axis: float(value) if feedback is not None else math.nan for axis, value in zip("xyz", values)})
-            if self.cfg.get("mixed_mpc_protocol") is not None:
+            if self.cfg.get("mixed_mpc_protocol") is not None or self.extension is not None:
                 acceleration = measured.acceleration_enu if feedback is not None else [math.nan]*3
                 row.update({"feedback_a"+axis: float(value) for axis, value in zip("xyz", acceleration)})
                 source = {} if feedback is None else feedback["acceleration_source"]
@@ -768,7 +775,7 @@ class ControlLoop:
         self.writer.writerow(row)
         if command is not None:
             diagnostic_row = {"sim_s": sim, "t_s": t, "diagnostics": command.diagnostics}
-            if self.cfg.get("mixed_mpc_protocol") is not None:
+            if self.cfg.get("mixed_mpc_protocol") is not None or self.extension is not None:
                 diagnostic_row["phase"] = self.recorder.phase
             self.diagnostic.write(json.dumps(json_value(diagnostic_row), allow_nan=False)+"\n")
         if self.rows % 50 == 0:
@@ -872,11 +879,13 @@ def ground_gate(ctx, loop, native, cfg, model_sha256, source_sha256, out):
     return {"path": str(out/"native_ground.json"), "sha256": sha(out/"native_ground.json"), **metrics}
 
 
-def execute(cfg, model_spec, provenance, out):
+def execute(cfg, model_spec, provenance, out, *, extension=None):
     from amsim import ScenarioContext
     from amsim.modeling.manager import validate_px4_airframe
     from pymavlink import mavutil
     out = Path(out)
+    if extension is not None:
+        extension.validate_runtime(cfg, model_spec, provenance, out)
     assert_no_pending_journal()
     diagnostic_profile = validate_profile(cfg.get("diagnostic_profile"), cfg["stage"], cfg["controller"])
     pid_candidate = validate_pid_candidate(cfg.get("pid_tuning_candidate"), cfg["stage"], cfg["controller"])
@@ -901,7 +910,8 @@ def execute(cfg, model_spec, provenance, out):
     model = ArmModel.from_report(resolved(cfg["preparation_report"]))
     report = json.loads(resolved(cfg["preparation_report"]).read_text(encoding="utf-8"))
     model_sha, source_sha = model_spec.sha256, report["derived_urdf_sha256"]
-    gates = formal_gate_evidence(cfg, model_sha, source_sha)
+    gates = (formal_gate_evidence(cfg, model_sha, source_sha) if extension is None else
+             extension.stage_gates(cfg, model_sha, source_sha))
     accepted_response = None
     if cfg.get("mixed_mpc_protocol") is not None:
         from accepted_response_model import load_accepted_response_model
@@ -984,8 +994,11 @@ def execute(cfg, model_spec, provenance, out):
             capture = FlightRecorder(out, model_sha256=model_sha, source_urdf_sha256=source_sha)
             capture.target_body = target.copy()
             capture.attach(ctx)
-            loop = ControlLoop(ctx, cfg, model, capture, pid, out)
+            loop_kwargs = {} if extension is None else {"extension": extension}
+            loop = ControlLoop(ctx, cfg, model, capture, pid, out, **loop_kwargs)
             ctx.vehicle._pump = loop.pump
+            if extension is not None:
+                extension.on_loop_ready(ctx, loop, meta, out)
             native = NativeRecorder(out, resolved(cfg["native_recorder_library"]), active_runtime_instance(ROOT, model_sha))
             native.load(loop.pump)
             meta["native_ground"] = ground_gate(ctx, loop, native, cfg, model_sha, source_sha, out)
@@ -1075,6 +1088,8 @@ def execute(cfg, model_spec, provenance, out):
                     feedback_kwargs = {"require_acceleration": True} if cfg.get("mixed_mpc_protocol") is not None else {}
                     if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
                         feedback_kwargs["require_prediction_timing"] = True
+                    if extension is not None:
+                        feedback_kwargs.update(extension.feedback_kwargs(cfg))
                     loop.feedback_adapter = Px4EstimatedFeedback(loop.fixed_reference, ctx.node, **feedback_kwargs)
                     _, anchor_state, _ = loop.read()
                     loop.last, loop.next_control = None, loop.control_now()
@@ -1109,18 +1124,23 @@ def execute(cfg, model_spec, provenance, out):
                     center = tip_world(loop.anchor, anchor_state.rotation, np.zeros(2), model)
                     trajectory = ConstantTarget(center) if cfg["stage"] == "tip_hold" else FigureEight(center, **cfg["trajectory_parameters"])
                     allocator_kwargs = {"accepted_response": accepted_response} if accepted_response is not None else {}
-                    allocator = build_allocator(cfg, model, pid, trajectory, **allocator_kwargs)
+                    allocator = (build_allocator(cfg, model, pid, trajectory, **allocator_kwargs) if extension is None else
+                                 extension.build_allocator(cfg, model, pid, trajectory, loop))
                     adapter_kwargs = {"acceleration_feedforward_policy": "zero"} if cfg.get("mixed_mpc_protocol") is not None else {}
+                    if extension is not None:
+                        adapter_kwargs.update(extension.adapter_kwargs(cfg))
                     loop.controller = ControllerAdapter(allocator, model, pid, **adapter_kwargs)
                     loop.controller.reset(loop.anchor, anchor_state.rotation, np.zeros(2))
                     loop.trajectory = trajectory
                     meta["controller_details"] = loop.controller.metadata()
-                    if cfg.get("mixed_mpc_protocol") is not None:
+                    if cfg.get("mixed_mpc_protocol") is not None or extension is not None:
                         # ROS callbacks run before the first control step.
                         # Declare the existing t=0 target before marking any
                         # sample as measure, rather than leaving it blank.
                         capture.tip_target = trajectory.sample(0.)[0].copy()
-            if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
+            if extension is not None:
+                start = extension.activate(ctx, loop, cfg, meta, anchor_state.rotation)
+            elif "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
                 start = activate_prediction_chain(ctx, loop, cfg, meta, anchor_state.rotation)
             else:
                 capture.phase = "measure"
@@ -1296,6 +1316,9 @@ def execute(cfg, model_spec, provenance, out):
                 stage_evidence.update(research)
                 stage_evidence.update(aiding_confirmed=meta["aiding_confirmed"],
                     diagnostic_parameters_restored=meta.get("diagnostic_parameters_restored", False))
+            if extension is not None:
+                extension.finalize(meta, stage_evidence, out)
+                atomic_json(out/"controller_metadata.json", meta)
             atomic_json(out/"stage_result.json", stage_evidence)
             atomic_json(out/("diagnostic_result.json" if diagnostic_run else cfg["stage"]+".json"), stage_evidence)
     if error is not None:

@@ -4,6 +4,8 @@
 
 本 README 中 `precision_ev_upper_v2` 的接口及工况限制保留为历史版本说明，不能替代 v3 的任务门禁。新 `ts20.py` 是独立的离线 MIT 参考适配和外部模型加载模块，详见 [TS20 接入](../../docs/X650_TS20_INTEGRATION.md)；它不自动替换已冻结 MPC 的关节预测或 Gazebo 执行器。真机前和 NMPC 路线见 [验证框架](../../docs/X650_REAL_FLIGHT_READINESS_AND_NMPC.md)。
 
+TS20 新工况由显式的 `Ts20MpcController`、`Ts20PredictionModel` 和 `Ts20Runtime` 接入，[独立场景](../../simulations/x650_ts20_hold_v1/README.md)管理新的悬停、摆臂和末端保持。该入口使用实际积分参考、实际 MIT 包与测量年龄，名义关节响应保留静摩擦和换向；原生数值核只作计算加速。关节局部信赖域上限 0.02，发布前检查完整非线性候选包络，最多 3 次局部 QP 并限制总计算 50 ms；外层还要检查适配器及首条发布前的完整耗时。它仍是上层速度接口，机体响应使用旧先验，不能称为已验证的 24 V 带载全身动力学 NMPC。
+
 旧 `control_packages/pid_ff_wholebody_v1` 的冻结参数包和历史实验保持独立。旧 x500 的 PID 选择结果不能作为新 X650 + 臂已经充分整定的依据；本包要求调用者传入当前实验实际读回的 PX4 增益。
 
 ## 模型与坐标
