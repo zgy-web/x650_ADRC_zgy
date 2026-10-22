@@ -1,0 +1,119 @@
+{
+  "kind": "ts20_incremental_runtime_timing_evidence_v1",
+  "scope": "offline exact first actual quiet-v2 state; simulation conditional; no fresh flight acceptance",
+  "run_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261022_223143_11458",
+  "source_cutoff_s": 41.62,
+  "control_time_s": 41.62,
+  "all_final_contexts_equal": true,
+  "all_recorded_commands_and_states_exact": true,
+  "sequence": [
+    {
+      "name": "quiet_v2_timing_incremental_old",
+      "runtime_sha256": "c372c47d092487b998e00ff960b3da4ba28794ff48e6a7c06082e4a7bb4c68f1",
+      "context_ms": [
+        10.315772145986557,
+        10.106305591762066
+      ],
+      "first_step_ms": [
+        27.118812315165997,
+        28.493349440395832
+      ],
+      "buffer_max": [
+        9532,
+        7626,
+        1320
+      ],
+      "buffer_final": [
+        189,
+        151,
+        36
+      ]
+    },
+    {
+      "name": "quiet_v2_timing_incremental_new",
+      "runtime_sha256": "616d9fa1b2015136ab9a78f423d8695c5b0b66f33b461ecf800fa8848f727ee1",
+      "context_ms": [
+        0.12511014938354492,
+        0.30373409390449524
+      ],
+      "first_step_ms": [
+        19.42726317793131,
+        18.671964295208454
+      ],
+      "buffer_max": [
+        189,
+        151,
+        42
+      ],
+      "buffer_final": [
+        189,
+        151,
+        36
+      ]
+    },
+    {
+      "name": "quiet_v2_timing_incremental_old_after_new",
+      "runtime_sha256": "c372c47d092487b998e00ff960b3da4ba28794ff48e6a7c06082e4a7bb4c68f1",
+      "context_ms": [
+        9.381704032421112
+      ],
+      "first_step_ms": [
+        26.225879788398743
+      ],
+      "buffer_max": [
+        9532,
+        7626,
+        1320
+      ],
+      "buffer_final": [
+        189,
+        151,
+        36
+      ]
+    }
+  ],
+  "regression": {
+    "total": 109,
+    "pass": 108,
+    "optional_skip": 1
+  },
+  "matrix": {
+    "total": 30,
+    "passed": 29,
+    "max_ms": 51.06359999626875,
+    "failures": [
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0,
+        "mode": "moving_warm",
+        "pass": false,
+        "wall_ms": 51.06359999626875,
+        "exception": "MpcSolveError('TS20 total prepublication computation deadline exceeded')",
+        "q_error": null,
+        "dq_error": null,
+        "actual_bounds": null,
+        "subproblems": [
+          {
+            "subproblem": 1,
+            "passed": true,
+            "q_linearization_error_rad": 0.00011536385097442141,
+            "dq_linearization_error_rad_s": 0.0014003010275666153,
+            "actual_bounds_passed": true,
+            "elapsed_ms": 51.03472340852022
+          }
+        ]
+      }
+    ],
+    "failed_deadline_not_relaxed": true,
+    "file": "artifacts/ts20_chain_hold_damped_v1_20261022/incremental_runtime_full_mpc_matrix.json"
+  },
+  "native_and_prediction_core_unchanged": true,
+  "timing_not_realtime_qualification": true,
+  "harness_sha256": "d00c07b17cecac8e8da3a30654148e5b639f7ab876d56fd6c7412085bbabb09f",
+  "evidence_files": {
+    "artifacts/ts20_chain_hold_damped_v1_20261022/quiet_v2_timing_incremental_old/profile_summary.json": "ecdaa22ba41ab54f243404c320ac0ed3dac38dea5144f054c90c4ab4b85a4490",
+    "artifacts/ts20_chain_hold_damped_v1_20261022/quiet_v2_timing_incremental_new/profile_summary.json": "d590fa120e252329b2227dcc001d304def2bad577d0bb9c0f39097f646159a62",
+    "artifacts/ts20_chain_hold_damped_v1_20261022/quiet_v2_timing_incremental_old_after_new/profile_summary.json": "b2db34eee49a4c8302831c467aaa73d5c26ff1304a5235690165f2da8b3e0b2b"
+  }
+}
+

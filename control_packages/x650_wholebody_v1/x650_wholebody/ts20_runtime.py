@@ -159,6 +159,10 @@ class Ts20Runtime:
         if now is None or not np.isfinite(now):
             raise ValueError("TS20 measured state requires the actual control source clock")
         row = self._past_row(now)
+        # Keep the same history window during prestream/takeoff too. Waiting
+        # until the first MPC context would release tens of thousands of old
+        # dictionary/float objects inside that first timed control attempt.
+        self._trim_history(row["sim_s"])
         q = np.array([row[f"q{j}_physical"] for j in (1, 2)])
         dq = np.array([row[f"dq{j}_internal"] for j in (1, 2)])
         observed = replace(state, q=q, dq=dq, joint_stamp_s=row["sim_s"], control_time_s=now)
@@ -168,6 +172,19 @@ class Ts20Runtime:
         self._measured_snapshot = (float(now), dict(row))
         self.observation_count += 1
         return observed, row["sim_s"]
+
+    def _trim_history(self, source_time_s):
+        cutoff = source_time_s-.75
+        # One predecessor is needed to reconstruct the active packet or held
+        # consumed input. Future rows are retained; the cutoff always comes
+        # from the selected causal observation, never the last CSV row.
+        def trim(records, key):
+            past = [i for i, record in enumerate(records) if key(record) < cutoff]
+            if len(past) > 1:
+                del records[:past[-1]]
+        trim(self._rows, lambda record: record["sim_s"])
+        trim(self._packets, lambda record: record["send_s"])
+        trim(self._command_events, lambda record: record[0])
 
     def context(self, state, t):
         now = float(state.control_time_s)
@@ -182,16 +199,6 @@ class Ts20Runtime:
         # No CSV read here: new complete rows become eligible on the next
         # measured_state call, including their actual command/packet evidence.
         origin = now-float(t)
-        cutoff = min(row["sim_s"], now)-.75
-        # Retain one predecessor, necessary to reconstruct the active packet or
-        # consumed velocity at the beginning of a source interval.
-        def trim(records, key):
-            past = [i for i, r in enumerate(records) if key(r) < cutoff]
-            if len(past) > 1:
-                del records[:past[-1]]
-        trim(self._rows, lambda r: r["sim_s"])
-        trim(self._packets, lambda r: r["send_s"])
-        trim(self._command_events, lambda r: r[0])
         packet_history = []
         past_packets = [r for r in self._packets if r["send_s"] <= now+1e-10]
         active = [i for i, r in enumerate(past_packets)

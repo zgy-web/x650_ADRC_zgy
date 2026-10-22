@@ -1,0 +1,225 @@
+{
+  "kind": "x650_ts20_native_acceptance_summary_v1",
+  "status": "hover_and_joint_probe_passed; full_quiet_hold_not_yet_accepted",
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "hardware_or_loaded_24v_validation_claimed": false,
+  "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+  "airframe": 4996,
+  "effective_mit_gains": {
+    "kp": 6,
+    "kd": 0.25,
+    "bus_period_s": 0.005
+  },
+  "operating_condition": {
+    "kind": "x650_ts20_conditional_operating_condition_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+    "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+    "oracle_validation_sha256": "870e74d99efac8bc19dfd8e3fd8abbc07ddbcbbd051407ad6a89d3e979378ee4",
+    "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+    "qualification": {
+      "hardware_motor": "TS20-50",
+      "hardware_supply_v": 24,
+      "identified_supply_v": 20,
+      "supply_24v_qualified": false,
+      "actual_aerial_arm_load_qualified": false,
+      "physical_torque_scale_qualified": false
+    }
+  },
+  "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+  "hover": {
+    "passed": true,
+    "certificate_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_hold_damped_v1_20261022/hover_audit_v2/ts20_stage_certificate.json",
+    "certificate_sha256": "595e5427ccf7678711673792dd075851d915bdbcd7d3bf28af1be29e4f973aee",
+    "run_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261022_220552_8060",
+    "window_sim_s": [
+      41.752,
+      61.752
+    ],
+    "body_position": {
+      "unit": "m",
+      "sample_count": 5001,
+      "duration_s": 20.0,
+      "rmse_3d": 0.001725923351922461,
+      "rmse_xy": 0.0015729002061362937,
+      "rmse_z": 0.0007104902238931001,
+      "axis_rmse": [
+        0.0009052855472485921,
+        0.0012862632453764702,
+        0.0007104902238930998
+      ],
+      "peak_3d": 0.002716870207587423,
+      "peak_xy": 0.0025114469489768477,
+      "peak_abs_z": 0.002256530703026449,
+      "mean_vector": [
+        -0.00026275282785787843,
+        -0.0008587833257665513,
+        -0.0005581689584420686
+      ],
+      "mean_vector_norm": 0.0010574026836216532,
+      "centered_rms_3d": 0.0013640788032151915,
+      "sample_p95_3d": 0.0026678027027543278,
+      "coordinate_system": "world ENU",
+      "no_offset_or_phase_fit": true
+    },
+    "timing": {
+      "max_actual_send_interval_s": 0.02400000000000091,
+      "max_compute_ms": 2.536422573029995
+    },
+    "full_window_ulog_verified": true,
+    "exact_parameter_restore_verified": true
+  },
+  "joint_probe": {
+    "passed": true,
+    "certificate_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_hold_damped_v1_20261022/joint_probe_audit_v2/ts20_stage_certificate.json",
+    "certificate_sha256": "1c9107d5247b712c3fbfa1ba011d339435a4147a9406bbba89c61633fa790c94",
+    "run_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261022_221401_9241",
+    "window_sim_s": [
+      41.764,
+      71.772
+    ],
+    "q_tracking_rmse_rad": [
+      0.003276595923504215,
+      0.0035946017007160457
+    ],
+    "q_tracking_peak_rad": [
+      0.015963945355351367,
+      0.015925086048305642
+    ],
+    "joint_speed_peak_rad_s": [
+      0.10562856055041572,
+      0.10575281001623849
+    ],
+    "body_position_peak_m": 0.010001077697683452,
+    "tilt_peak_deg": 0.14406076537224763,
+    "actual_direction_correlation": [
+      0.9961352822720585,
+      0.9947123831294258
+    ],
+    "native_tip_geometry": {
+      "samples": 7501,
+      "maximum_error_m": 1.6584192605669474e-06,
+      "time_weighted_rms_m": 3.908279869702446e-08,
+      "tolerance_m": 0.0001,
+      "passed": true,
+      "semantics": "Independent native distal-link WorldPose tip versus +Y-axis FK of same-step base pose/q; no phase or offset fit"
+    },
+    "complete_first_state_free_prediction": {
+      "first_state_only": true,
+      "later_state_resets": false,
+      "q_peak_abs_rad": 6.237053802038428e-07,
+      "dq_peak_abs_rad_s": 4.974648848968255e-05,
+      "first_state_horizons": {
+        "20ms": {
+          "actual_horizon_s": 0.01999999999999602,
+          "q_abs_error_rad": [
+            4.011093568400879e-12,
+            4.813691667492929e-12
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "100ms": {
+          "actual_horizon_s": 0.09999999999999432,
+          "q_abs_error_rad": [
+            2.0042586479363827e-11,
+            2.406861243642504e-11
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "300ms": {
+          "actual_horizon_s": 0.29999999999999716,
+          "q_abs_error_rad": [
+            6.0117523514875e-11,
+            7.220752973325086e-11
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "600ms": {
+          "actual_horizon_s": 0.5999999999999943,
+          "q_abs_error_rad": [
+            1.202552109003155e-10,
+            1.4442643225809978e-10
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "complete_window_s": 30.008000000000003
+    },
+    "timing": {
+      "max_actual_send_interval_s": 0.02400000000000091,
+      "max_compute_ms": 2.731187269091606
+    },
+    "full_window_ulog_verified": true,
+    "exact_parameter_restore_verified": true
+  },
+  "failed_quiet_attempts": [
+    {
+      "evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_hold_damped_v1_20261022/quiet_v1_failure_evidence.json",
+      "evidence_sha256": "708f36e409f48a938880e7721be038174612d3eb73cd5d167b51465b3f43745f",
+      "run_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261022_222212_10301",
+      "error": "RuntimeError('TS20 MPC context differs from the measured joint snapshot')",
+      "measure_publications": 0,
+      "landed_and_disarmed": true,
+      "parameters_restored": true,
+      "runtime_closed": true,
+      "accepted_as_gate": false
+    },
+    {
+      "evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_hold_damped_v1_20261022/quiet_v2_timing_failure/failure_evidence.json",
+      "evidence_sha256": "dbe4616e3222713fc756c786bbda94846c913fb31b30230ade6ec18e1eb4ea53",
+      "run_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261022_223143_11458",
+      "error": "RuntimeError('Control interval 0.0560s exceeds 0.05s')",
+      "measure_publications": 1,
+      "landed_and_disarmed": true,
+      "parameters_restored": true,
+      "runtime_closed": true,
+      "accepted_as_gate": false
+    }
+  ],
+  "historical_failed_original_gain_probe": {
+    "effective_kd": 0.0999755859375,
+    "evidence": "artifacts/ts20_chain_hold_20261022/joint_probe_failed_v1_diagnostic/failure_evidence.json",
+    "peak_native_speed_rad_s": [
+      0.307232504,
+      0.306506143
+    ],
+    "original_gate_rad_s": 0.2,
+    "accepted_as_gate": false
+  },
+  "constraints_unchanged": {
+    "joint_probe_speed_limit_rad_s": 0.2,
+    "max_control_interval_s": 0.05,
+    "max_complete_computation_s": 0.05,
+    "tip_rms_limit_m": 0.05,
+    "tip_peak_limit_m": 0.1,
+    "tilt_limit_deg": 8
+  },
+  "notes": [
+    "Complete physical/native windows and actual MIT packet histories; no phase or offset fit.",
+    "The 20/100/300/600ms first-state probe checks occur during the declared initial quiet segment; the complete 30.008s free prediction includes actual motion.",
+    "Independent upstream oracle establishes numerical/model consistency; it does not qualify true 24V loaded actuator dynamics."
+  ]
+}

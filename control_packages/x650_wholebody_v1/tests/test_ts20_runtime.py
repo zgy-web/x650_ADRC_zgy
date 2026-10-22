@@ -128,6 +128,51 @@ class RuntimeTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "successful measured snapshot"):
             runtime.context(state, .012)
 
+    def test_prestream_history_is_bounded_before_any_mpc_context(self):
+        runtime = self.write(future=False)
+        state_path, packet_path = self.folder/"s.csv", self.folder/"p.csv"
+        with state_path.open(newline="") as stream:
+            old_states = list(csv.DictReader(stream))
+        with packet_path.open(newline="") as stream:
+            old_packets = list(csv.DictReader(stream))
+        state_template = {key: float(value) for key, value in old_states[-1].items()}
+        packet_template = {key: float(value) for key, value in old_packets[-1].items()}
+        runtime.measured_state(self.state)
+        last_packet = 3
+        with state_path.open("a", newline="") as state_stream, packet_path.open("a", newline="") as packet_stream:
+            state_writer = csv.DictWriter(state_stream, fieldnames=list(state_template))
+            packet_writer = csv.DictWriter(packet_stream, fieldnames=list(packet_template))
+            for i in range(4, 1004):
+                at = 10.+i*.004
+                send_index = int(np.floor((at-10.)/.005+1e-8))
+                active_index = int(np.floor((at-10.-self.predictor.delay_s)/.005+1e-8))
+                for index in range(last_packet+1, send_index+1):
+                    packet = dict(packet_template, send_s=10.+index*.005,
+                                  apply_s=10.+index*.005+self.predictor.delay_s, sequence=index)
+                    packet_writer.writerow(packet)
+                last_packet = max(last_packet, send_index)
+                packet_stream.flush()
+                row = dict(state_template, sim_s=at, interval_begin_s=at-.004)
+                for j in (1, 2):
+                    row[f"upper_sequence{j}"] = i-3
+                    row[f"receipt{j}_s"] = at-.004
+                for prefix, index in (("last_", send_index), ("active_", active_index)):
+                    send = 10.+index*.005
+                    row["last_send_sequence" if prefix == "last_" else "active_sequence"] = index
+                    row["last_send_s" if prefix == "last_" else "active_send_s"] = send
+                    row["last_send_apply_s" if prefix == "last_" else "active_apply_s"] = send+self.predictor.delay_s
+                state_writer.writerow(row)
+                state_stream.flush()
+                observed, _ = runtime.measured_state(replace(self.state, control_time_s=at))
+                # No MPC context has run throughout these four seconds.
+                self.assertLessEqual(len(runtime._rows), 190)
+                self.assertLessEqual(len(runtime._packets), 152)
+                self.assertLessEqual(len(runtime._command_events), 190)
+        context = runtime.context(observed, at-10.)
+        np.testing.assert_array_equal(context["reference_state"]["r"], [.03, .03])
+        self.assertGreaterEqual(len(context["packet_history"]), 1)
+        self.assertTrue(all(np.all(value == 0.) for _, value in context["command_history"]))
+
     def test_truncated_static_packet_stream_cannot_pass_from_held_zero(self):
         runtime = self.write(future=False)
         path = self.folder/"p.csv"
