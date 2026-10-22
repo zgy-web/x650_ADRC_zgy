@@ -33,6 +33,7 @@ from x650_wholebody.baseline import BaselineController
 from x650_wholebody.model import ArmModel, tip_world
 from diagnostic_parameters import DiagnosticParameterSession, validate_profile, validate_pid_candidate, assert_no_pending_journal, PRECISION_PROFILE
 from response_protocol import validate_response_protocol, protocol_velocity, protocol_annotation
+from execution_trace import ExecutionTrace, callback_clock_snapshot, evidence_value
 
 STAGES = {"hover_folded", "joint_probe", "response_probe", "tip_hold", "small", "normal", "fast"}
 
@@ -560,6 +561,7 @@ class ControlLoop:
         self.writer = None
         self.diagnostic = (out/"controller_diagnostics.jsonl").open("w", encoding="utf-8")
         self.feedback_stream = (out/"feedback_trace.jsonl").open("w", encoding="utf-8") if self.upper_research else None
+        self.execution_trace = ExecutionTrace(out)
 
     def disable_upper_feedback(self):
         """End the upper experiment before recovery; never substitute truth into it."""
@@ -631,6 +633,7 @@ class ControlLoop:
         if self.strict and dt > .05+1e-10:
             raise RuntimeError(f"Control interval {dt:.4f}s exceeds 0.05s")
         begin = time.perf_counter()
+        compute_before = callback_clock_snapshot(self.ctx.node)
         t = -1. if self.task_start is None else sim-self.task_start
         q_ref, qd_ref = np.zeros(2), np.zeros(2)
         command = None
@@ -640,7 +643,9 @@ class ControlLoop:
         if self.controller is not None and self.task_start is not None and not self.recovery:
             desired = EndpointTarget(*self.trajectory.sample(t))
             self.recorder.tip_target = desired.position.copy()
-            command = self.controller.step(t, dt, measured, desired)
+            command = self.execution_trace.controller_step(self.controller, t, dt, measured, desired,
+                feedback=self.feedback_diagnostics, phase=self.recorder.phase,
+                clock_snapshot=lambda: callback_clock_snapshot(self.ctx.node))
             joint = command.joint_velocity
         elif self.send_reference and self.anchor is not None and (self.fixed_reference is None or self.upper_research):
             if self.upper_research and self.feedback_adapter is None:
@@ -656,10 +661,16 @@ class ControlLoop:
                 nominal_position=self.anchor, acceleration_feedforward=np.zeros(3),
                 position_gains=[self.pid["MPC_XY_P"], self.pid["MPC_XY_P"], self.pid["MPC_Z_P"]],
                 diagnostics={"response_excitation": "commanded velocity pulse; no external force"})
+        compute_after = callback_clock_snapshot(self.ctx.node)
+        publication_context = {"sim_s": sim, "t_s": t, "phase": self.recorder.phase,
+            "control_dt_s": dt, "measured_joint_stamp_s": joint_stamp,
+            "compute_before": compute_before, "compute_after": compute_after}
         if np.any(abs(joint) > np.array([.45, .35])+1e-8):
             raise RuntimeError("Executed joint command exceeds common speed limits")
         for name, value in zip(JOINTS, joint):
-            self.ctx.arm.set_velocity(name, float(value))
+            self.execution_trace.publish("joint:"+name, {"joint": name, "velocity_rad_s": float(value)},
+                lambda name=name, value=value: self.ctx.arm.set_velocity(name, float(value)),
+                clock_snapshot=lambda: callback_clock_snapshot(self.ctx.node), context=publication_context)
         self.max_joint_cmd = np.maximum(self.max_joint_cmd, abs(joint))
         if self.send_reference and self.fixed_reference is not None and not self.upper_research:
             reference = self.fixed_reference
@@ -673,9 +684,11 @@ class ControlLoop:
             reference.check(self.ctx.node.data["position"])
             fixed_sp = reference.setpoint()
             self.recorder.target_body = np.asarray(reference.document["target_world_enu_m"], float)
-            self.ctx.vehicle.link.mav.set_position_target_local_ned_send(int(sim*1000)&0xffffffff,
-                *self.ctx.vehicle.target, fixed_sp["coordinate_frame"], fixed_sp["type_mask"],
-                *fixed_sp["position"], *fixed_sp["velocity"], *fixed_sp["acceleration"], fixed_sp["yaw"], fixed_sp["yaw_rate"])
+            self.execution_trace.publish("px4_pva", fixed_sp,
+                lambda: self.ctx.vehicle.link.mav.set_position_target_local_ned_send(int(sim*1000)&0xffffffff,
+                    *self.ctx.vehicle.target, fixed_sp["coordinate_frame"], fixed_sp["type_mask"],
+                    *fixed_sp["position"], *fixed_sp["velocity"], *fixed_sp["acceleration"], fixed_sp["yaw"], fixed_sp["yaw_rate"]),
+                clock_snapshot=lambda: callback_clock_snapshot(self.ctx.node), context=publication_context)
             if step_index != self.last_step_index:
                 self.step_send_events.append({"segment_index": step_index, "first_send_sim_s": sim,
                     "elapsed_s": t, "position_target_local_ned_m": fixed_sp["position"],
@@ -695,15 +708,22 @@ class ControlLoop:
             else:
                 estimate = self.ctx.node.data["position"]
                 sp = command.px4_setpoint([estimate.x, estimate.y, estimate.z], [estimate.vx, estimate.vy, estimate.vz])
-            self.ctx.vehicle.link.mav.set_position_target_local_ned_send(int(sim*1000)&0xffffffff,
-                *self.ctx.vehicle.target, mavutil.mavlink.MAV_FRAME_LOCAL_NED, sp.type_mask,
-                *sp.position, *sp.velocity, *sp.acceleration, self.yaw_ned, 0.)
+            self.execution_trace.publish("px4_pva", {"coordinate_frame": mavutil.mavlink.MAV_FRAME_LOCAL_NED,
+                "type_mask": sp.type_mask, "position": sp.position, "velocity": sp.velocity,
+                "acceleration": sp.acceleration, "yaw": self.yaw_ned, "yaw_rate": 0.},
+                lambda: self.ctx.vehicle.link.mav.set_position_target_local_ned_send(int(sim*1000)&0xffffffff,
+                    *self.ctx.vehicle.target, mavutil.mavlink.MAV_FRAME_LOCAL_NED, sp.type_mask,
+                    *sp.position, *sp.velocity, *sp.acceleration, self.yaw_ned, 0.),
+                clock_snapshot=lambda: callback_clock_snapshot(self.ctx.node), context=publication_context)
         truth = self.evaluation_state
         row = dict(sim_s=sim, t_s=t, phase=self.recorder.phase, truth_stamp_s=truth.stamp_s,
                    truth_age_s=sim-truth.stamp_s, joint_stamp_s=joint_stamp, joint_age_s=sim-joint_stamp,
                    control_dt_s=dt, q1=measured.q[0], q2=measured.q[1], qd1=measured.dq[0], qd2=measured.dq[1],
                    qd1_cmd=float(joint[0]), qd2_cmd=float(joint[1]),
                    **self.land_watchdog.diagnostics(self.ctx.node, sim))
+        for boundary, observed in (("before", compute_before), ("after", compute_after)):
+            for field in ("wall_monotonic_s", "processed_estimator_clock_s", "joint_header_stamp_s"):
+                row["compute_"+boundary+"_"+field] = observed[field]
         for prefix, values in (("base_p", truth.position), ("base_v", truth.velocity), ("body_w", truth.omega_body),
                                ("base_velocity_target_", np.zeros(3) if command is None else command.base_velocity_target),
                                ("command_acceleration_", np.zeros(3) if command is None else command.acceleration_feedforward)):
@@ -753,12 +773,13 @@ class ControlLoop:
         self.rows += 1
         self.last, self.next_control = sim, sim+self.cfg["control_period_s"]
 
-    def close(self):
+    def close(self, *, experiment_complete=None):
         self.ctx.vehicle._pump = self.original_pump
         self.control.close()
         self.diagnostic.close()
         if self.feedback_stream is not None:
             self.feedback_stream.close()
+        return self.execution_trace.close(experiment_complete=experiment_complete)
 
 
 def wait_sim(ctx, loop, duration, description):
@@ -1075,9 +1096,15 @@ def execute(cfg, model_spec, provenance, out):
             error = exc
             meta.update(error=repr(exc), traceback=traceback.format_exc(), phase="recovery")
             if hasattr(exc, "diagnostics"):
-                meta["failure_diagnostics"] = exc.diagnostics
+                # An infeasible solve may contain inf/NaN. Preserve it as an
+                # explicit marker so JSON logging cannot hide the real error.
+                meta["failure_diagnostics"] = evidence_value(exc.diagnostics)
             if loop is not None:
                 meta["telemetry_receipt_state_at_failure"] = loop.land_watchdog.diagnostics(ctx.node, capture.now())
+                if loop.execution_trace.first_failure is not None:
+                    meta["failure_control_snapshot"] = loop.execution_trace.first_failure
+                if loop.execution_trace.logging_error is not None:
+                    meta["execution_trace_logging_error"] = loop.execution_trace.logging_error
             atomic_json(out/"controller_metadata.json", meta)
         finally:
             if attempted_takeoff:
@@ -1158,7 +1185,12 @@ def execute(cfg, model_spec, provenance, out):
             if loop is not None:
                 if loop.step_references:
                     meta["position_step_send_events"] = loop.step_send_events
-                loop.close()
+                try:
+                    meta["control_execution_trace"] = loop.close(experiment_complete=error is None and meta["landed_and_disarmed"])
+                except BaseException as exc:
+                    meta["execution_trace_close_error"] = repr(exc)
+                    if error is None:
+                        error = exc
             if capture is not None:
                 try:
                     capture.check()
@@ -1186,6 +1218,8 @@ def execute(cfg, model_spec, provenance, out):
                 out/"flight_samples.csv", out/"flight_samples_manifest.json", out/"native_trace.csv",
                 out/"hover_reference.json",
                 out/"estimated_feedback.json", out/"feedback_trace.jsonl",
+                out/"control_execution_trace.jsonl", out/"control_execution_trace_manifest.json",
+                out/"control_failure_snapshot.json",
                 out/"position_step_probe.json",
                 out/"native_trace_manifest.json", out/"control_trace.csv", out/"px4_parameters_before.json",
                 out/"px4_parameters_after.json", out/"diagnostic_parameter_session.json",
