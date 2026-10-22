@@ -223,12 +223,17 @@ def active_runtime_instance(root, model_sha256):
     return runtime["instance"]
 
 
-def require_periodic_telemetry(node):
-    """Connection freshness for continuously streamed state topics, in wall time."""
+def require_periodic_telemetry(node, *, status_watchdog=None, sim_s=None):
+    """Keep fast wall-time guards; upper status has its own source-rate guard."""
     now = time.monotonic()
-    for key, timeout in (("truth", 2.), ("joints", 2.), ("position", 2.), ("status", 3.)):
+    topics = (("truth", 2.), ("joints", 2.), ("position", 2.))
+    if status_watchdog is None:
+        topics += (("status", 3.),)  # Preserve the legacy commissioning contract.
+    for key, timeout in topics:
         if now-node.received.get(key, 0.) > timeout:
             raise RuntimeError("Stale flight telemetry: "+key)
+    if status_watchdog is not None:
+        status_watchdog.check(sim_s, wall_now=now)
 
 
 def receipt_time(node, key):
@@ -343,6 +348,103 @@ class LandReceiptWatchdog:
                 "land_receipt_age_sim_s": None if self.observed_sim_s is None else float(sim_s)-self.observed_sim_s}
 
 
+class StatusReceiptWatchdog:
+    """Upper-research status liveness at the pinned source's simulation rate.
+
+    Commander publishes vehicle_status on change or every 500 ms of HRT;
+    the DDS 5 Hz rate_limit is a ceiling, not a wall-clock frequency promise.
+    Three source periods bound callback progress to 1.5 simulation seconds.
+    An independent 10 wall-second bound also rejects a stopped status stream.
+    Receipt tokens, never DDS epoch timestamps, establish callback progress.
+    """
+    SOURCE_PERIOD_SIM_S = .5
+    DDS_RATE_LIMIT_HZ = 5.
+    TIMEOUT_SIM_S = 1.5
+    TIMEOUT_WALL_S = 10.
+
+    def __init__(self, node):
+        self.receipt = node.received.get("status")
+        if self.receipt is not None:
+            self.receipt = self._receipt(self.receipt)
+        self.observed_sim_s, self.last_sim_s, self.sequence = None, None, 0
+
+    @staticmethod
+    def _receipt(value):
+        if isinstance(value, (bool, np.bool_)):
+            raise RuntimeError("Invalid status callback receipt")
+        try:
+            value = float(value)
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError("Missing/invalid status callback receipt") from exc
+        if not math.isfinite(value) or value <= 0:
+            raise RuntimeError("Missing/invalid status callback receipt")
+        return value
+
+    @classmethod
+    def contract(cls):
+        return {"source_period_sim_s": cls.SOURCE_PERIOD_SIM_S,
+                "dds_rate_limit_hz": cls.DDS_RATE_LIMIT_HZ,
+                "timeout_sim_s": cls.TIMEOUT_SIM_S, "timeout_wall_s": cls.TIMEOUT_WALL_S,
+                "timeout_basis": "Three 2 Hz source periods; separate 10 s wall bound as for low-rate estimator flags",
+                "source_contract": "PX4 d6f12ad1c4f70ad3230afd7d86e971421e02fef4 Commander.cpp: 2 Hz or status change; DDS vehicle_status ceiling 5 Hz",
+                "receipt_semantics": "New actual ApiNode callback token observed at every pump; initial cache is not liveness; DDS timestamps diagnostic only",
+                "clock_scope": "Recorder simulation time for safety supervision only; not upper-control state feedback",
+                "transport_age_claimed": False}
+
+    def observe(self, node, sim_s):
+        if isinstance(sim_s, (bool, np.bool_)):
+            raise RuntimeError("Status watchdog simulation clock regressed/invalid")
+        try:
+            sim_s = float(sim_s)
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError("Status watchdog simulation clock regressed/invalid") from exc
+        if (not math.isfinite(sim_s) or sim_s < 0
+                or (self.last_sim_s is not None and sim_s < self.last_sim_s-1e-9)):
+            raise RuntimeError("Status watchdog simulation clock regressed/invalid")
+        self.last_sim_s = sim_s
+        current = node.received.get("status")
+        if current is None:
+            if self.receipt is not None:
+                raise RuntimeError("Status callback receipt disappeared")
+            return
+        current = self._receipt(current)
+        if node.data.get("status") is None:
+            raise RuntimeError("Status callback receipt has no corresponding message")
+        if self.receipt is not None and current < self.receipt:
+            raise RuntimeError("Status callback receipt monotonic time regressed")
+        if self.receipt is None or current > self.receipt:
+            self.receipt, self.observed_sim_s = current, sim_s
+            self.sequence += 1
+
+    def check(self, sim_s, *, wall_now=None):
+        if self.observed_sim_s is None:
+            raise RuntimeError("No new status callback observed since control-loop initialization")
+        if isinstance(sim_s, (bool, np.bool_)):
+            raise RuntimeError("Invalid status watchdog simulation time")
+        try:
+            age = float(sim_s)-self.observed_sim_s
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError("Invalid status watchdog simulation time") from exc
+        if not math.isfinite(age) or age < -1e-9 or age > self.TIMEOUT_SIM_S+1e-9:
+            raise RuntimeError(f"Stale status receipt: {age:.4f} simulation seconds without a new callback")
+        wall_now = time.monotonic() if wall_now is None else wall_now
+        wall_age = self._receipt(wall_now)-self.receipt
+        if wall_age < -1e-6 or wall_age > self.TIMEOUT_WALL_S:
+            raise RuntimeError(f"Stale status receipt: {wall_age:.4f} wall seconds or future callback")
+        return max(0., age)
+
+    def diagnostics(self, sim_s, *, wall_now=None):
+        wall_now = time.monotonic() if wall_now is None else wall_now
+        return {"status_receipt_sequence": self.sequence,
+                "status_last_observed_sim_s": self.observed_sim_s,
+                "status_receipt_age_sim_s": None if self.observed_sim_s is None else float(sim_s)-self.observed_sim_s,
+                "status_receipt_age_wall_s": None if self.receipt is None else float(wall_now)-self.receipt,
+                "status_source_period_sim_s": self.SOURCE_PERIOD_SIM_S,
+                "status_dds_rate_limit_hz": self.DDS_RATE_LIMIT_HZ,
+                "status_receipt_timeout_sim_s": self.TIMEOUT_SIM_S,
+                "status_receipt_timeout_wall_s": self.TIMEOUT_WALL_S}
+
+
 def transition_marker(node):
     land_receipt, status_receipt = receipt_time(node, "land"), receipt_time(node, "status")
     if node.data.get("land") is None or node.data.get("status") is None:
@@ -387,12 +489,13 @@ def perform_nav_operation(ctx, nav_command, operation):
     return marker, marker_error
 
 
-def confirm_land_state_after_command(ctx, marker, *, landed, watchdog, sim_clock, timeout_s=180.):
+def confirm_land_state_after_command(ctx, marker, *, landed, watchdog, sim_clock, timeout_s=180., status_watchdog=None):
     """Require both callbacks after the actual NAV boundary, matching state."""
     accepted = {}
     def confirmed():
-        require_periodic_telemetry(ctx.node)
-        age = watchdog.check(sim_clock())
+        sim = sim_clock()
+        require_periodic_telemetry(ctx.node, status_watchdog=status_watchdog, sim_s=sim)
+        age = watchdog.check(sim)
         status = ctx.node.data["status"]
         land_receipt, status_receipt = receipt_time(ctx.node, "land"), receipt_time(ctx.node, "status")
         boundary = marker["command_boundary_wall_monotonic_s"]
@@ -406,6 +509,8 @@ def confirm_land_state_after_command(ctx, marker, *, landed, watchdog, sim_clock
                         landed=landed, armed=int(status.arming_state) == 2, land_receipt_age_sim_s=age,
                         requires_new_report_after_command=True,
                         new_report_semantics="actual ApiNode callback reception after actual NAV command send boundary")
+        if status_watchdog is not None:
+            accepted.update(status_watchdog.diagnostics(sim))
         return True
     ctx.vehicle.wait(confirmed, timeout_s, "post-command "+("landed/disarmed" if landed else "airborne/armed")+" state transition")
     return {"before": marker, "after": accepted}
@@ -423,6 +528,7 @@ class ControlLoop:
         self.fixed_reference = None
         from research_condition import is_upper_research
         self.upper_research = is_upper_research(cfg)
+        self.status_watchdog = StatusReceiptWatchdog(ctx.node) if self.upper_research else None
         self.response_protocol = validate_response_protocol(cfg.get("response_probe_protocol"))
         self.feedback_adapter, self.feedback_diagnostics, self.evaluation_state = None, None, None
         self.step_references = {}
@@ -452,9 +558,11 @@ class ControlLoop:
         state, joint_stamp = state_from_node(self.ctx.node)
         sim = self.recorder.now()
         self.land_watchdog.observe(self.ctx.node, sim)
+        if self.status_watchdog is not None:
+            self.status_watchdog.observe(self.ctx.node, sim)
         if self.strict:
             self.recorder.check()
-            require_periodic_telemetry(self.ctx.node)
+            require_periodic_telemetry(self.ctx.node, status_watchdog=self.status_watchdog, sim_s=sim)
             self.land_watchdog.check(sim)
             if not -.001 <= sim-state.stamp_s <= .25 or not -.001 <= sim-joint_stamp <= .25:
                 raise RuntimeError("Truth or joint measurement age exceeds 0.25 simulation seconds")
@@ -489,6 +597,10 @@ class ControlLoop:
             self.ctx.node.spin_once(timeout_sec=0.)
         sim = self.recorder.now()
         self.land_watchdog.observe(self.ctx.node, sim)
+        if self.status_watchdog is not None:
+            self.status_watchdog.observe(self.ctx.node, sim)
+            if self.strict:
+                self.status_watchdog.check(sim)
         if self.control_now() < self.next_control-1e-9:
             return
         sim, measured, joint_stamp = self.read()
@@ -581,6 +693,7 @@ class ControlLoop:
             row["fixed_position_target_"+axis] = value
         if self.upper_research:
             feedback = self.feedback_diagnostics
+            row.update(self.status_watchdog.diagnostics(self.recorder.now()))
             row.update(pva_sent=sp is not None, sent_coordinate_frame=1 if sp is not None else None,
                        sent_type_mask=None if sp is None else sp.type_mask,
                        sent_yaw_ned=None if sp is None else self.yaw_ned,
@@ -707,6 +820,9 @@ def execute(cfg, model_spec, provenance, out):
                     "transport_age_claimed": False,
                     "px4_timestamps": "DDS time-sync adjusted epoch; diagnostic only, may jump or regress in non-real-time SITL",
                     "transition_semantics": "new land and status callbacks after actual NAV send plus expected airborne/armed or landed/disarmed state"})
+    if upper_research:
+        meta["telemetry_freshness"]["continuous_topic_wall_timeout_s"].pop("status")
+        meta["telemetry_freshness"]["status_receipt_watchdog"] = StatusReceiptWatchdog.contract()
     meta.update(research)
     atomic_json(out/"controller_task.json", cfg)
     atomic_json(out/"controller_metadata.json", meta)
@@ -820,7 +936,7 @@ def execute(cfg, model_spec, provenance, out):
             if takeoff_marker is None:
                 raise RuntimeError("No actual NAV_TAKEOFF send observed; takeoff cannot be certified")
             meta["takeoff_state_transition"] = confirm_land_state_after_command(ctx, takeoff_marker, landed=False,
-                watchdog=loop.land_watchdog, sim_clock=capture.now)
+                watchdog=loop.land_watchdog, sim_clock=capture.now, status_watchdog=loop.status_watchdog)
             capture.phase = "settle"
             wait_sim(ctx, loop, 5., "post-takeoff settle")
             if upper_research:
@@ -949,7 +1065,7 @@ def execute(cfg, model_spec, provenance, out):
                     if landing_marker is None:
                         raise RuntimeError("NAV_LAND operation returned, but no actual command send marker permits landing certification")
                     meta["landing_state_transition"] = confirm_land_state_after_command(ctx, landing_marker, landed=True,
-                        watchdog=loop.land_watchdog, sim_clock=capture.now)
+                        watchdog=loop.land_watchdog, sim_clock=capture.now, status_watchdog=loop.status_watchdog)
                     meta["landed_and_disarmed"] = True
                     if capture is not None:
                         capture.phase = "landed"
