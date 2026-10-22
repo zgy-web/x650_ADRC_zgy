@@ -793,6 +793,47 @@ def wait_sim(ctx, loop, duration, description):
     ctx.vehicle.wait(lambda: loop.control_now()-start >= duration, max(45., duration*12.), description)
 
 
+def activate_prediction_chain(ctx, loop, cfg, meta, reference_rotation):
+    """Hand over immediately after an actual prestream publication completes.
+
+    The preparation/launch evidence already exists. Keep activation metadata in
+    memory for the existing completion/exception writers: synchronous metadata
+    writes or console flushing here could interrupt even the prestream. The
+    scheduler and actual previous send time remain intact, and an overlong
+    interval still fails the ordinary 50 ms guard.
+    """
+    if (loop.task_start is not None or loop.controller is None or loop.recovery
+            or not loop.send_reference or not loop.sent_command_history):
+        raise RuntimeError("Prediction-chain activation requires an inactive prepared controller and actual prestream history")
+    meta.update(phase="activation_prepared", reference_base_enu_m=loop.anchor,
+                reference_rotation=reference_rotation, requested_duration_s=cfg["duration_s"],
+                activation_metadata_persistence="Existing preparation/launch evidence retained; activation held in memory until completion or exception, with no synchronous handoff metadata or console writes")
+    previous_send = loop.sent_command_history[-1][0]
+    # A single pump can consume callbacks without reaching next_control. Wait
+    # for a new successfully published joint/PVA batch, not merely new /clock.
+    ctx.vehicle.wait(lambda: bool(loop.sent_command_history)
+        and loop.sent_command_history[-1][0] > previous_send, 8., "fresh actual prestream command before controller activation")
+    history = loop.sent_command_history
+    start = float(history[-1][0])
+    if (loop.last is None or abs(loop.last-start) > 1e-9
+            or abs(loop.control_now()-start) > 1e-9
+            or abs(loop.next_control-start-cfg["control_period_s"]) > 1e-9):
+        raise RuntimeError("Prediction-chain activation lost the actual send/scheduler boundary")
+    if cfg["controller"] == "mpc":
+        loop.controller.allocator.prime_command_history(history, start)
+    elif cfg["controller"] == "pid_ff":
+        loop.controller.allocator.previous_command = history[-1][1].copy()
+    else:
+        raise RuntimeError("Unknown prediction-chain comparison controller")
+    meta["activation_command_history"] = [
+        {"control_time_s": when, "task_time_s": when-start, "command": value.tolist()}
+        for when, value in history]
+    loop.task_start = start
+    loop.recorder.phase = "measure"
+    meta.update(phase="measure", task_start_sim_s=start)
+    return start
+
+
 def restore_folded(ctx, loop):
     loop.recovery, loop.controller, loop.task_start = True, None, None
     loop.recorder.phase = "restore_folded"
@@ -1080,32 +1121,16 @@ def execute(cfg, model_spec, provenance, out):
                         # sample as measure, rather than leaving it blank.
                         capture.tip_target = trajectory.sample(0.)[0].copy()
             if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
-                # Refresh the ordinary prestream after constructing the new
-                # controller. Keep its actual last command/time across enable;
-                # no startup gap is hidden by resetting dt to 20 ms.
-                loop.pump()
-            capture.phase = "measure"
-            start = loop.control_now()
-            loop.task_start = start
-            loop.last, loop.next_control = None, start
-            if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
-                history = loop.sent_command_history
-                if not history or history[-1][0] > start+1e-9:
-                    raise RuntimeError("Prediction-chain activation requires actual preceding sent commands")
-                if cfg["controller"] == "mpc":
-                    loop.controller.allocator.prime_command_history(history, start)
-                else:
-                    # Same actual prestream command and first-step slew basis
-                    # for the matched PID; do not invent a zero initial input.
-                    loop.controller.allocator.previous_command = history[-1][1].copy()
-                loop.last = history[-1][0]
-                meta["activation_command_history"] = [
-                    {"control_time_s": when, "task_time_s": when-start, "command": value.tolist()}
-                    for when, value in history]
-            meta.update(phase="measure", task_start_sim_s=start, reference_base_enu_m=loop.anchor,
-                        reference_rotation=anchor_state.rotation, requested_duration_s=cfg["duration_s"])
-            atomic_json(out/"controller_metadata.json", meta)
-            print("X650_STAGE_START", cfg["stage"], cfg["controller"], flush=True)
+                start = activate_prediction_chain(ctx, loop, cfg, meta, anchor_state.rotation)
+            else:
+                capture.phase = "measure"
+                start = loop.control_now()
+                loop.task_start = start
+                loop.last, loop.next_control = None, start
+                meta.update(phase="measure", task_start_sim_s=start, reference_base_enu_m=loop.anchor,
+                            reference_rotation=anchor_state.rotation, requested_duration_s=cfg["duration_s"])
+                atomic_json(out/"controller_metadata.json", meta)
+                print("X650_STAGE_START", cfg["stage"], cfg["controller"], flush=True)
             wait_sim(ctx, loop, cfg["duration_s"], "X650 "+cfg["stage"])
             task_window = (start, loop.control_now())
             meta["task_end_sim_s"] = task_window[1]
