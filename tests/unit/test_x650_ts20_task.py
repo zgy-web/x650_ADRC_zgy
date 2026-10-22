@@ -77,6 +77,41 @@ class Ts20TaskTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "base_response_prior"):
             task.validate_task_config(cfg)
 
+    def test_damped_is_a_separate_preset_with_unchanged_acceptance(self):
+        old = task.hold_protocol()
+        new = task.damped_hold_protocol()
+        for key in old:
+            if key != "kind":
+                self.assertEqual(old[key], new[key])
+        self.assertEqual(new["mit_gain_profile"]["kp"], 6.)
+        self.assertEqual(new["mit_gain_profile"]["kd"], .25)
+        self.assertEqual(new["joint_probe_velocity_max_rad_s"], .2)
+        cfg = task.build_damped_task_config()
+        cfg["ts20_inputs"]["oracle_validation"] = str(ROOT / "synthetic_damped_oracle.json")
+        cfg["ts20_inputs"]["native_library"] = str(ROOT / "synthetic_native.so")
+        cfg["ts20_inputs"]["native_library_sha256"] = "1" * 64
+        self.assertEqual(task.validate_task_config(cfg), cfg)
+        self.assertEqual(task.variant(cfg)["airframe"], 4996)
+        self.assertEqual(task.variant(self.config())["airframe"], 4997)
+        cfg["model"] = task.MODEL
+        with self.assertRaises(ValueError):
+            task.validate_task_config(cfg)
+
+    def test_predictor_uses_explicit_bound_gain_and_rejects_cross_variant(self):
+        cfg = task.build_damped_task_config()
+        cfg["ts20_inputs"]["native_library"] = str(ROOT / "synthetic_native.so")
+        cfg["ts20_inputs"]["native_library_sha256"] = "1" * 64
+        actual = {"parameters": {"kp": 6., "kd": .25, "bus_period_s": .005}}
+        with patch.object(task, "read", return_value=actual), \
+                patch("x650_wholebody.ts20_prediction.Ts20PredictionModel") as factory:
+            task.predictor_from_bound_plant(cfg, {"test": "motion"})
+            factory.assert_called_once_with({"test": "motion"}, kp=6., kd=.25, bus_period_s=.005)
+            factory.return_value.enable_native.assert_called_once()
+        actual["parameters"]["kd"] = 3276 / 32768
+        with patch.object(task, "read", return_value=actual):
+            with self.assertRaisesRegex(ValueError, "differs from selected variant"):
+                task.predictor_from_bound_plant(cfg, {})
+
 
 if __name__ == "__main__":
     unittest.main()

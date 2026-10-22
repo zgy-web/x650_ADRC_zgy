@@ -1,0 +1,48 @@
+{
+  "schema": "x650_ts20_candidate_profile_v1",
+  "status": "conditional_simulation_only",
+  "hardware_confirmed": {
+    "motor": "TS20-50",
+    "joints": 2,
+    "supply_v": 24,
+    "onboard": "NX orign; provisionally Jetson Orin NX; exact model pending",
+    "positioning": "motion capture; SDK and interface pending"
+  },
+  "upstream": {
+    "repository": "https://github.com/ZHUOZHUOO/TS20",
+    "commit": "a97ef4f227ab778f9efdf86ff93ee309d7d35a22",
+    "source_manifest_required": true,
+    "identified_supply_v": 20,
+    "model_kind": "frozen_conditional_interface_model",
+    "physical_torque_scale_identified": false,
+    "actual_load_validated": false,
+    "voltage_24v_validated": false
+  },
+  "mit_candidate": {
+    "bus_period_s": 0.005,
+    "position_reference": "exact integral of piecewise-held upper joint velocity",
+    "velocity_reference": "latest upper joint velocity sampled on bus grid",
+    "tau_ff": 0,
+    "kp": 6,
+    "kd": 0.25,
+    "gain_semantics": "Analytically selected effective simulation gains; not real servo readback or qualified 0x4B/0x4C encoding"
+  },
+  "formal_flight_enabled": false,
+  "profile_name": "ts20_50_24v_damped_v1",
+  "gain_selection": {
+    "kind": "positive_incremental_sliding_damping_margin_v1",
+    "frozen_before_new_plant_experiments": true,
+    "freeze_date": "2026-10-22",
+    "physical_parameters_changed": false,
+    "kp_unchanged": 6,
+    "selected_kd": 0.25,
+    "required_slope_ratio": 1.4,
+    "maximum_negative_stribeck_slope_normalized": 0.17155277699214136,
+    "normalized_b_plus_kd": 0.254194907941905,
+    "achieved_slope_ratio": 1.4817300681384447,
+    "minimum_incremental_sliding_damping_normalized": 0.08264213094976366,
+    "rationale": "Choose Kd so normalized b+Kd is at least 1.4 times the largest negative derivative of the frozen sliding friction branch; keep Kp and all physical interface parameters unchanged.",
+    "scope": "Conditional sliding-branch incremental damping criterion; not a proof of complete sampled-loop or loaded 24V hardware stability.",
+    "actual_hardware_gain_readback": false
+  }
+}

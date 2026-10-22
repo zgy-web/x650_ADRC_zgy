@@ -48,8 +48,7 @@ class Ts20Extension:
         self.loop = loop
         inputs = self.cfg["ts20_inputs"]
         frozen = FrozenTs20Model(inputs["source_dir"], task.read(inputs["source_manifest"]))
-        self.predictor = Ts20PredictionModel(frozen.metadata()["motion_model"])
-        self.predictor.enable_native(inputs["native_library"], expected_sha256=inputs["native_library_sha256"])
+        self.predictor = task.predictor_from_bound_plant(self.cfg, frozen.metadata()["motion_model"])
         self.runtime = Ts20Runtime(self.log_dir / "ts20_state.csv", self.log_dir / "ts20_packets.csv", self.predictor,
             physical_position_tolerance_rad=self.cfg["ts20_protocol"]["internal_physical_q_tolerance_rad"])
         # Force imports/backend setup before arming, never on the first airborne

@@ -6,6 +6,25 @@ joint velocity controllers with one TS20 free-motion I/O surrogate. The X650,
 arm URDF, rigid inertias, meshes, collision geometry, motor mapping and rotor
 parameters are preserved. Old flight certificates are not transferred.
 
+The subsequent damped candidate is a separate model,
+`amsim_urdf_x650_2link_ts20_damped_v1_flight`, with airframe **4996**. Its frozen
+profile is `configs/actuators/ts20_50_24v_damped_v1_candidate.json`: Kp remains 6,
+Kd is 0.25, and all published mechanical/friction parameters, 5 ms bus period,
+zero nominal torque feedforward and original acceptance limits remain fixed.
+It does not replace model/airframe 4997 or relabel its failed high-speed probe.
+The observed old joint-probe peak was approximately 0.307 rad/s, above the
+predeclared 0.2 rad/s small-probe gate; that failure is retained.
+
+The gain-selection criterion is
+`max_negative_friction_slope=sqrt(2)*delta/vs*exp(-0.5)=0.171552777` in normalized
+interface coordinates. With Kd 0.25, `b+Kd=0.254194908`, a ratio of 1.48173 that
+exceeds the predeclared 1.4 margin. This is a sliding-branch incremental-damping
+criterion, not a proof of overall sampled-loop or loaded-hardware stability.
+Offline replay of the original consumed upper commands, integrated reference
+and actual quantized MIT qref/dqref changed only Kd and gave joint speed peaks
+0.113014/0.112727 rad/s; reference-tracking RMS increased slightly, about
+0.09/0.13 mrad. New complete native flights remain separate acceptance steps.
+
 The user confirmed two TS20-50 servos and 24 V supply. The frozen upstream model
 was identified at approximately 20 V with a small bench output disk. It does
 not establish physical shaft-torque scale or the response of this loaded aerial
@@ -89,9 +108,46 @@ the optional helper makes this operation explicit and refuses overwrites:
   --preparation-dir generated/x650_2link_ts20_v1_20261022
 ```
 
-This optional helper was added for reproducibility; it was not used to replace
-the current server inputs after they were prepared. It does not issue a flight
-certificate.
+This optional helper was added for reproducibility. The legacy TS20 inputs
+predate it; the damped variant uses it to create its new world/PID files. It
+does not issue a flight certificate.
+
+To prepare the damped variant, use the same original ideal-joint source model,
+the new frozen candidate profile and separate output/preparation/airframe/log
+directories. Pass `--airframe-id 4996 --airframe-label
+gz_x650_2link_ts20_damped_v1`. `--airframe-label` defaults to the original
+`gz_x650_2link_ts20_v1` and only accepts a lowercase `gz_` identifier; unsafe
+path characters are rejected before any model preparation. For this gain-only
+change the parameterized, already validated `generated/ts20_interface_build_v2/
+libts20_interface.so` is reused through `--library`, without overwriting it.
+The two helper tools accept only the explicit legacy/4997 and damped/4996
+model-airframe pairs.
+
+The damped model outputs are:
+
+```text
+generated/imported_models/amsim_urdf_x650_2link_ts20_damped_v1_flight/
+generated/x650_2link_ts20_damped_v1_20261022/
+generated/x650_2link_ts20_damped_v1_airframe_20261022/
+artifacts/ts20_chain_hold_damped_v1_20261022/
+```
+
+On 2026-10-22, the damped SDF hash is
+`5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb`;
+the preparation report hash is
+`0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0`.
+The separate `4996_gz_x650_2link_ts20_damped_v1` airframe was installed in the
+PX4 source ROMFS and existing SITL build tree. The copied world retains source
+hash `21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248`;
+all 42 PID values remain unchanged and the rebound profile explicitly records
+`new_plant_tuned=false`. These identities describe prepared inputs, not passed
+flight stages.
+
+Runtime and audit predictors for each variant must obtain effective Kp, Kd and
+bus period from its hash-bound plant parameters and check them against that
+variant's frozen gain profile. They must not silently use the legacy default
+Kd. The damped variant requires its own eight-case oracle declaration and
+acceptance; the old-gain oracle cannot qualify changed MIT gains.
 
 ## Execution and observation contract
 
@@ -189,6 +245,17 @@ v3 used an archived helper with the same schedule. The new reusable wrapper
 adds manifest validation, process exclusion, source hashing and summary output;
 it has not been substituted for the historical evidence.
 
+The new damped model was checked independently using that reusable wrapper at
+`artifacts/ts20_chain_hold_damped_v1_20261022/native_ground_probe_v1`.
+`probe_analysis.json` reports 2,751 native 4 ms rows, 2,201 MIT packets and
+5 ms packet-grid error at most `9.95e-16 s`. Both joints physically moved in
+both directions. Maximum internal/physical q differences were `2.261e-9` and
+`2.800e-9 rad`, and actual speed ranges were `[-0.030061,0.030085]` and
+`[-0.030085,0.030085] rad/s`. The probe passed and its own Gazebo process exited
+cleanly. No PX4 or rotor command was used. This accepts the conditional
+interface and small-motion direction check only; fresh hover, airborne joint
+probe and full end-effector hold remain separate gates.
+
 ## Native observer and disturbance source recovery
 
 The required historical source files are now available locally under
@@ -210,6 +277,16 @@ id 1; a new disturbance integration must verify the actual world/entity, load
 result, full schedule, physics-step wrench enqueue log and independently
 observed motion. The C++ log measures an ECS wrench increment, not a contact
 force sensor or independent proof of physics consumption.
+
+Gazebo msgs10 `Scene` has a world name and model entries but no world entity-ID
+field. A successful `scene/info` response alone cannot establish that entity 1
+is the world. Before a new dynamic disturbance integration, bind the actual
+world/instance from runtime metadata, validate the unique live instance in the
+scene, and identify the world through a read-only serialized ECS state response
+(`World` and `Name` components, plus the model's parent-world relationship).
+Record the verified world name/ID and model/link identities in the load
+evidence; a loader Boolean is only an acknowledgement. This requirement does
+not modify the historical loader or qualify an earlier experiment.
 
 ## Exact provenance and future builds
 

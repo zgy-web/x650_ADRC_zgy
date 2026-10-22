@@ -1,0 +1,330 @@
+{
+  "schema": "x650_ts20_damped_software_acceptance_v1",
+  "scope": "20V normalized interface model with selected effective simulation gains; not 24V loaded hardware qualification",
+  "hardware_accessed": false,
+  "supply_24v_qualified": false,
+  "aerial_arm_load_qualified": false,
+  "gain_profile": "mit_kp6_kd025_v1",
+  "operating_condition": {
+    "profile_name": "ts20_50_24v_damped_v1",
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/configs/actuators/ts20_50_24v_damped_v1_candidate.json",
+    "sha256": "9d23be903984c38373e1ea0488fb3c36f09d89504e4b9c78ae85820a415dcb97",
+    "kp": 6,
+    "kd": 0.25,
+    "bus_period_s": 0.005
+  },
+  "damping_analysis": {
+    "max_negative_stribeck_slope": 0.17155277699214133,
+    "slope_max_at_abs_speed_rad_s": 0.1414213562373095,
+    "original_b_plus_kd": 0.104170493879405,
+    "candidate_b_plus_kd": 0.254194907941905,
+    "candidate_margin_ratio": 1.4817300681384449,
+    "interpretation": "sliding differential damping bound only; not proof of full UAV stability"
+  },
+  "offline_same_input_counterfactual": {
+    "window_start_s": 42.008,
+    "window_end_s": 72.012,
+    "duration_s": 30.003999999999998,
+    "samples": 7502,
+    "same_upper_velocity_and_integrated_r": true,
+    "first_state_only": true,
+    "later_observed_state_resets": false,
+    "bridge_reconstruction": [
+      {
+        "joint": 1,
+        "q_ref_peak_difference_rad": 0,
+        "dq_ref_peak_difference_rad_s": 0
+      },
+      {
+        "joint": 2,
+        "q_ref_peak_difference_rad": 0,
+        "dq_ref_peak_difference_rad_s": 0
+      }
+    ],
+    "results": {
+      "historical": [
+        {
+          "joint": 1,
+          "peak_abs_velocity_rad_s": 0.30761236853882873,
+          "small_probe_velocity_pass": false,
+          "r_tracking_rms_rad": 0.011418351749409238,
+          "r_tracking_peak_rad": 0.012838581740958074,
+          "vs_recorded_q_peak_rad": 0.000002711432253318935,
+          "vs_recorded_dq_peak_rad_s": 0.0003753848875294036,
+          "events": {
+            "velocity_zero": 49,
+            "release": 49,
+            "reversal": 4,
+            "stick_entry": 50
+          },
+          "modeled_stick_duration_s": 17.67251668071517,
+          "compute_s": 5.061729339882731
+        },
+        {
+          "joint": 2,
+          "peak_abs_velocity_rad_s": 0.30778925126037254,
+          "small_probe_velocity_pass": false,
+          "r_tracking_rms_rad": 0.00920211986930072,
+          "r_tracking_peak_rad": 0.012850705733585467,
+          "vs_recorded_q_peak_rad": 6.225944636159553e-7,
+          "vs_recorded_dq_peak_rad_s": 0.00008040843042619872,
+          "events": {
+            "velocity_zero": 56,
+            "release": 56,
+            "reversal": 5,
+            "stick_entry": 57
+          },
+          "modeled_stick_duration_s": 18.414438349066877,
+          "compute_s": 3.43003720510751
+        }
+      ],
+      "damped_candidate": [
+        {
+          "joint": 1,
+          "peak_abs_velocity_rad_s": 0.11301414839822425,
+          "small_probe_velocity_pass": true,
+          "r_tracking_rms_rad": 0.011508748515546976,
+          "r_tracking_peak_rad": 0.012636673986470755,
+          "vs_recorded_q_peak_rad": 0.0032499025422275396,
+          "vs_recorded_dq_peak_rad_s": 0.1954540116578682,
+          "events": {
+            "velocity_zero": 8,
+            "release": 8,
+            "reversal": 4,
+            "stick_entry": 9
+          },
+          "modeled_stick_duration_s": 16.338756666918826,
+          "compute_s": 4.098102199845016
+        },
+        {
+          "joint": 2,
+          "peak_abs_velocity_rad_s": 0.11272673987104036,
+          "small_probe_velocity_pass": true,
+          "r_tracking_rms_rad": 0.009330718496526126,
+          "r_tracking_peak_rad": 0.012623305865547812,
+          "vs_recorded_q_peak_rad": 0.0032462818128068394,
+          "vs_recorded_dq_peak_rad_s": 0.19506280324686226,
+          "events": {
+            "velocity_zero": 8,
+            "release": 8,
+            "reversal": 5,
+            "stick_entry": 9
+          },
+          "modeled_stick_duration_s": 16.977317794773782,
+          "compute_s": 4.065756420604885
+        }
+      ]
+    },
+    "open_loop_only_not_new_closed_loop_flight": true,
+    "source_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_hold_v1_20261022_214506_6382",
+    "measured_physical_interval_velocity_peak_rad_s": [
+      0.3072325040360395,
+      0.3065061425391029
+    ],
+    "measured_modeled_endpoint_velocity_peak_rad_s": [
+      0.30761267937780223,
+      0.30778954311790263
+    ],
+    "physical_internal_q_peak_difference_rad": [
+      1.383538760007998e-8,
+      1.680426743485815e-8
+    ]
+  },
+  "oracle": {
+    "cases": 8,
+    "passed": true,
+    "protocol_sha256": "4e6649919c6a95a663d8d6de5c87123ffaca2fe25720f860316f078634ae9e2f",
+    "historical_protocol_unchanged_sha256": "1a95e9703bffd3c5bfac82766d7ecd9453266c4e6361f9219d1d55c61bc06db2",
+    "q_peak_rad": 0.0000030785449043058133,
+    "dq_peak_rad_s": 0.0007907302047022238,
+    "gates": {
+      "q_peak_abs_rad": 0.0003,
+      "dq_peak_abs_rad_s": 0.03,
+      "initial_state_abs_tolerance": 1e-12,
+      "bridge_abs_tolerance": 1e-14,
+      "first_release": "first sampled motion after the first strictly superthreshold delayed packet"
+    },
+    "candidate_sha256": "1648f89052c69470e4f402297ece9042db78b54ead06fe0b230c42dad8be5f9f",
+    "validator_sha256": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+    "native_backend": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "abi": 1,
+      "cpp_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "binding": "explicit CLI native backend enabled before all frozen run_case calls",
+      "source_archive": "candidate_ts20_prediction_native.cpp"
+    }
+  },
+  "full_mpc_software_matrix": {
+    "cases": 30,
+    "passed": 30,
+    "max_wall_ms": 47.32559062540531,
+    "operating_condition_sha256": "9d23be903984c38373e1ea0488fb3c36f09d89504e4b9c78ae85820a415dcb97",
+    "gain": {
+      "kp": 6,
+      "kd": 0.25,
+      "bus_period_s": 0.005
+    },
+    "benchmark_script_sha256": "a2768dd7b87d04e714d34243caa0073025c9db77188971f1d18a00bc74006e61",
+    "fixtures": [
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0,
+        "mode": "moving_warm"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      }
+    ],
+    "scope": "15node first-call software steps, not flight hard realtime qualification"
+  },
+  "regression_log": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_prediction_chain_20261022/package_regression_gain_kd025_v1.log",
+  "regression_summary": [
+    "Ran 106 tests in 3.161s",
+    "OK",
+    "Ran 9 tests in 0.232s",
+    "OK"
+  ]
+}

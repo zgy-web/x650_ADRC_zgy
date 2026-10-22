@@ -28,6 +28,28 @@ class Ts20PredictionValidationTests(unittest.TestCase):
         self.assertEqual(validation.protocol()["gates"]["q_peak_abs_rad"], .0003)
         self.assertEqual(validation.protocol()["fixtures"][0]["dq0"], [0., 0.])
 
+    def test_new_gain_profile_preserves_inputs_and_numerical_gates(self):
+        old = validation.protocol()
+        new = validation.protocol_for_gain("mit_kp6_kd025_v1")
+        self.assertEqual(new["kd"], .25)
+        self.assertEqual(new["kp"], old["kp"])
+        self.assertEqual(new["fixtures"], old["fixtures"])
+        self.assertEqual(new["gates"], old["gates"])
+        self.assertEqual(new["q0_rad"], old["q0_rad"])
+        self.assertNotEqual(validation.digest(new), validation.digest(old))
+        for fixture in old["fixtures"]:
+            old_t, old_v = validation.fixture_inputs(fixture, old)
+            new_t, new_v = validation.fixture_inputs(fixture, new)
+            np.testing.assert_array_equal(old_t, new_t)
+            np.testing.assert_array_equal(old_v, new_v)
+            old_bus, old_mit = validation.independent_bridge(old_t, old_v, old["q0_rad"], old)
+            new_bus, new_mit = validation.independent_bridge(new_t, new_v, new["q0_rad"], new)
+            np.testing.assert_array_equal(old_bus, new_bus)
+            for key in ("q_ref", "dq_ref", "tau_ff", "kp"):
+                np.testing.assert_array_equal(old_mit[key], new_mit[key])
+        self.assertEqual(validation.digest(validation.protocol()),
+            "1a95e9703bffd3c5bfac82766d7ecd9453266c4e6361f9219d1d55c61bc06db2")
+
     def test_independent_nongrid_integral_and_prehistory(self):
         declaration = validation.protocol()
         declaration["bus_period_s"] = .005

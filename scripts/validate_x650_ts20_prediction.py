@@ -278,19 +278,45 @@ def run_case(spec, declaration, oracle, candidate, folder):
             "oracle_diagnostics": oracle_diag, "candidate_events": json_safe(prediction.get("events", []))}
 
 
+DAMPED_GAIN_PROFILE = "mit_kp6_kd025_v1"
+
+
+def protocol_for_gain(name):
+    """New explicit gain version; historical protocol() bytes stay unchanged.
+
+    Independent inputs, initial state and numerical gates are copied exactly.
+    This selects an effective simulation interface gain, not a hardware readback.
+    """
+    if name != DAMPED_GAIN_PROFILE:
+        raise ValueError("Unknown explicit TS20 gain protocol")
+    declaration = protocol()
+    declaration.update(gain_profile=name, kd=.25,
+        gain_selection={"kind": "positive_incremental_sliding_damping_margin_v1",
+            "required_slope_ratio": 1.4, "physical_parameters_changed": False,
+            "actual_hardware_gain_readback": False,
+            "scope": "conditional sliding differential damping; not complete UAV stability proof"})
+    return declaration
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ("source", "manifest", "output"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--native-library", type=Path)
     parser.add_argument("--native-sha256")
+    parser.add_argument("--gain-profile", choices=[DAMPED_GAIN_PROFILE])
+    parser.add_argument("--operating-condition", type=Path)
+    parser.add_argument("--operating-condition-sha256")
     args = parser.parse_args()
     if bool(args.native_library) != bool(args.native_sha256):
         parser.error("--native-library and --native-sha256 must be supplied together")
+    if (bool(args.gain_profile) != bool(args.operating_condition)
+            or bool(args.gain_profile) != bool(args.operating_condition_sha256)):
+        parser.error("New --gain-profile requires --operating-condition and its explicit SHA-256")
     if args.output.exists():
         raise ValueError("Use a new output directory; validation evidence is not overwritten")
     args.output.mkdir(parents=True)
-    declaration = protocol()
+    declaration = protocol_for_gain(args.gain_profile) if args.gain_profile else protocol()
     summary = {"complete": False, "pass": False, "protocol": declaration,
                "protocol_sha256": digest(declaration), "cases": [],
                "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
@@ -305,6 +331,23 @@ def main():
         from x650_wholebody.ts20_prediction import Ts20PredictionModel
         manifest = json.loads(args.manifest.read_text())
         oracle = FrozenTs20Model(args.source, manifest)
+        if args.gain_profile:
+            profile_bytes = args.operating_condition.read_bytes()
+            profile_sha256 = hashlib.sha256(profile_bytes).hexdigest()
+            if profile_sha256 != args.operating_condition_sha256:
+                raise ValueError("Explicit operating-condition identity mismatch")
+            profile = json.loads(profile_bytes)
+            gains = profile.get("mit_candidate", {})
+            if (profile.get("schema") != "x650_ts20_candidate_profile_v1"
+                    or profile.get("profile_name") != "ts20_50_24v_damped_v1"
+                    or gains.get("kp") != declaration["kp"] or gains.get("kd") != declaration["kd"]
+                    or gains.get("bus_period_s") != declaration["bus_period_s"] or gains.get("tau_ff") != 0):
+                raise ValueError("Operating condition differs from the frozen explicit gain protocol")
+            (args.output / "operating_condition.json").write_bytes(profile_bytes)
+            summary["gain_profile"] = args.gain_profile
+            summary["operating_condition"] = {"profile_name": profile["profile_name"],
+                "path": str(args.operating_condition.resolve()), "sha256": profile_sha256,
+                "kp": gains["kp"], "kd": gains["kd"], "bus_period_s": gains["bus_period_s"]}
         summary["model"] = oracle.metadata()
         summary["candidate_sha256"] = hashlib.sha256(
             (ROOT / "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py").read_bytes()).hexdigest()

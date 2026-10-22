@@ -123,6 +123,7 @@ class Ts20PredictionModel:
 
     def metadata(self):
         return {"kind": KIND, "bus_period_s": self.bus_period_s,
+                "effective_mit_kp": self.kp.tolist(), "effective_mit_kd": self.kd.tolist(),
                 "combined_interface_delay_s": self.delay_s,
                 "max_step_s": self.max_step_s,
                 "trust_radius_normalized": self.trust_radius_normalized,

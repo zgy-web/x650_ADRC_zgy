@@ -320,7 +320,10 @@ def complete_import(args, evidence):
     (destination / "import_manifest.json").write_text(json.dumps(imported, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     spec = resolve(str(destination / "import_manifest.json"))
     airframe_dir.mkdir(parents=True)
-    airframe_name = str(args.airframe_id) + "_gz_x650_2link_ts20_v1"
+    label = getattr(args, "airframe_label", "gz_x650_2link_ts20_v1")
+    if not isinstance(label, str) or re.fullmatch(r"gz_[a-z][a-z0-9_]{0,60}", label) is None:
+        raise ValueError("Airframe label must be a safe lowercase gz_ identifier")
+    airframe_name = str(args.airframe_id) + "_" + label
     airframe = airframe_dir / airframe_name
     content = airframe_source.read_text(encoding="utf-8").replace(old_spec.model_name, args.model_name)
     content = content.replace("# AMSIM X650 original two-link commissioning;", "# AMSIM X650 conditional TS20 two-link commissioning;")
@@ -368,9 +371,12 @@ def main():
     parser.add_argument("--source-airframe", type=Path)
     parser.add_argument("--airframe-dir", type=Path)
     parser.add_argument("--airframe-id", type=int)
+    parser.add_argument("--airframe-label", default="gz_x650_2link_ts20_v1")
     parser.add_argument("--px4-dir", type=Path)
     parser.add_argument("--install", action="store_true")
     args = parser.parse_args()
+    if re.fullmatch(r"gz_[a-z][a-z0-9_]{0,60}", args.airframe_label) is None:
+        parser.error("--airframe-label must be a safe lowercase gz_ identifier")
     if args.build == (args.library is not None):
         parser.error("Choose exactly one of --build and --library")
     if args.complete_import:

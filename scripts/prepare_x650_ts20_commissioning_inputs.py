@@ -17,6 +17,10 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+CONDITIONAL_PLANTS = {
+    "amsim_urdf_x650_2link_ts20_v1_flight": 4997,
+    "amsim_urdf_x650_2link_ts20_damped_v1_flight": 4996,
+}
 
 
 def sha(path):
@@ -35,8 +39,8 @@ def prepare(source_world, source_pid, model_manifest, preparation_dir):
     source_world, source_pid, model_manifest = [Path(p).resolve(strict=True) for p in (source_world, source_pid, model_manifest)]
     target = Path(preparation_dir).resolve(strict=True)
     model = resolve(str(model_manifest))
-    if model.model_name != "amsim_urdf_x650_2link_ts20_v1_flight" or model.px4_sys_autostart != 4997:
-        raise ValueError("Expected the separately installed 4997 TS20 conditional plant")
+    if CONDITIONAL_PLANTS.get(model.model_name) != model.px4_sys_autostart:
+        raise ValueError("Expected an explicitly paired TS20 conditional model/airframe")
     report_path = target / "preparation_report.json"
     report = json.loads(report_path.read_text(encoding="utf-8"))
     if report.get("conditional_actuator_plant", {}).get("sdf_sha256") != model.sha256:

@@ -22,6 +22,9 @@ CONFIG_ENV = "X650_TS20_TASK_CONFIG"
 MODEL = "amsim_urdf_x650_2link_ts20_v1_flight"
 STAGES = ("hover_folded", "joint_probe", "tip_hold")
 AIRFRAME = 4997
+DAMPED_SCENARIO = "x650_ts20_damped_hold_v1"
+DAMPED_MODEL = "amsim_urdf_x650_2link_ts20_damped_v1_flight"
+DAMPED_AIRFRAME = 4996
 
 
 def sha(path):
@@ -86,13 +89,62 @@ def build_task_config(stage="hover_folded", controller=None, *, disturbed=False)
     return cfg
 
 
+def damped_hold_protocol():
+    value = deepcopy(hold_protocol())
+    value.update(kind="x650_ts20_damped_conditional_hold_protocol_v1",
+                 mit_gain_profile={"name": "mit_kp6_kd025_v1", "kp": 6., "kd": .25,
+                                   "bus_period_s": .005, "gain_semantics": "candidate effective normalized MIT gains; not hardware readback"},
+                 joint_probe_velocity_max_rad_s=.2,
+                 gain_selection="b+Kd exceeds 1.4 times maximum negative Stribeck friction slope; fixed before new flights")
+    return value
+
+
+def build_damped_task_config(stage="hover_folded", controller=None, *, disturbed=False):
+    cfg = build_task_config(stage, controller, disturbed=disturbed)
+    cfg.update(scenario=DAMPED_SCENARIO, model=DAMPED_MODEL, ts20_protocol=damped_hold_protocol(),
+        preparation_report=str(ROOT / "generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json"),
+        airframe_source=str(ROOT / "generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1"),
+        pid_profile=str(ROOT / "generated/x650_2link_ts20_damped_v1_20261022/pid_profile.json"))
+    cfg["ts20_inputs"]["plant_manifest"] = str(ROOT / "generated/imported_models" / DAMPED_MODEL / "plant_manifest.json")
+    world = str(ROOT / "generated/x650_2link_ts20_damped_v1_20261022/world.sdf")
+    cfg["research_profile"]["world_sdf"] = world
+    cfg["hover_reference_profile"]["world_sdf"] = world
+    cfg["mpc_config"].pop("prediction_chain", None)
+    return cfg
+
+
+def variant(cfg):
+    if cfg.get("scenario") == "x650_ts20_hold_v1":
+        return {"model": MODEL, "airframe": AIRFRAME, "kp": 6., "kd": 3276 / 32768, "bus_period_s": .005,
+                "oracle_protocol": "historical_kp6_kd00999755859375_v1"}
+    if cfg.get("scenario") == DAMPED_SCENARIO:
+        return {"model": DAMPED_MODEL, "airframe": DAMPED_AIRFRAME, "kp": 6., "kd": .25, "bus_period_s": .005,
+                "oracle_protocol": "mit_kp6_kd025_v1"}
+    raise ValueError("Explicit historical or damped TS20 scenario required")
+
+
+def predictor_from_bound_plant(cfg, motion_model):
+    """Both runtime and audit use explicit hash-bound gains and bus period."""
+    from x650_wholebody.ts20_prediction import Ts20PredictionModel
+    actual = read(cfg["ts20_inputs"]["plant_manifest"])["parameters"]
+    selected = variant(cfg)
+    for key in ("kp", "kd", "bus_period_s"):
+        if actual[key] != selected[key]:
+            raise ValueError("Plant MIT gain/bus differs from selected variant: " + key)
+    model = Ts20PredictionModel(motion_model, kp=actual["kp"], kd=actual["kd"], bus_period_s=actual["bus_period_s"])
+    model.enable_native(cfg["ts20_inputs"]["native_library"], expected_sha256=cfg["ts20_inputs"]["native_library_sha256"])
+    return model
+
+
 def validate_task_config(value):
     if not isinstance(value, dict):
         raise ValueError("TS20 task object required")
     cfg = deepcopy(value)
     if type(cfg.get("disturbance_enabled")) is not bool:
         raise ValueError("disturbance_enabled must be a boolean")
-    expected = build_task_config(cfg.get("stage"), cfg.get("controller"), disturbed=cfg.get("disturbance_enabled", False))
+    selected = variant(cfg)
+    builder = build_damped_task_config if cfg["scenario"] == DAMPED_SCENARIO else build_task_config
+    expected = builder(cfg.get("stage"), cfg.get("controller"), disturbed=cfg.get("disturbance_enabled", False))
     paths = {"preparation_report", "airframe_source", "native_recorder_library", "pid_profile"}
     editable = paths | {"stage_evidence", "research_profile", "hover_reference_profile", "ts20_inputs"}
     if (set(cfg) != set(expected) or canonical_hash({k: cfg[k] for k in expected if k not in editable})
@@ -173,7 +225,7 @@ def validate_stage_gates(cfg, provenance):
 
 
 def source_files_for_task(cfg):
-    return list(dict.fromkeys([*original.source_files_for_task(cfg),
+    sources = list(dict.fromkeys([*original.source_files_for_task(cfg),
         *sorted(Path(__file__).parent.glob("*.py")),
         ROOT / "scripts/prepare_x650_ts20_plant.py",
         ROOT / "scripts/ts20_interface_system.cpp",
@@ -181,6 +233,9 @@ def source_files_for_task(cfg):
         ROOT / "benchmark/whole_body_closed_loop_v1/build_recorder.py",
         ROOT / "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
         ROOT / "scripts/validate_x650_ts20_prediction.py"]))
+    if cfg["scenario"] == DAMPED_SCENARIO:
+        sources.append(ROOT / "configs/actuators/ts20_50_24v_damped_v1_candidate.json")
+    return sources
 
 
 def preflight(cfg, *, check_airframe=True):
@@ -195,7 +250,9 @@ def preflight(cfg, *, check_airframe=True):
         raise ValueError("New TS20 platform-managed scenario registration required")
     model = resolve(cfg["model"])
     ensure_flight_ready(model)
-    if model.source != "urdf_flight" or model.px4_sys_autostart != AIRFRAME or model.joints != ["arm_joint_1", "arm_joint_2"]:
+    selected = variant(cfg)
+    if (model.model_name != selected["model"] or model.source != "urdf_flight"
+            or model.px4_sys_autostart != selected["airframe"] or model.joints != ["arm_joint_1", "arm_joint_2"]):
         raise ValueError("New conditional TS20 imported model and dedicated airframe required")
     report = read(cfg["preparation_report"])
     arm = ArmModel.from_report(cfg["preparation_report"])
@@ -215,6 +272,9 @@ def preflight(cfg, *, check_airframe=True):
     motor = FrozenTs20Model(inputs["source_dir"], read(inputs["source_manifest"]))
     oracle = read(inputs["oracle_validation"])
     from validate_x650_ts20_prediction import protocol as oracle_protocol, digest
+    if cfg["scenario"] == DAMPED_SCENARIO:
+        from validate_x650_ts20_prediction import protocol_for_gain
+        oracle_protocol = lambda: protocol_for_gain("mit_kp6_kd025_v1")
     core = ROOT / "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py"
     native = oracle.get("native_backend", {})
     if (oracle.get("complete") is not True or oracle.get("pass") is not True
@@ -232,16 +292,28 @@ def preflight(cfg, *, check_airframe=True):
     # Complete plant preparation has its own manifest.  Its exact checks are
     # performed by the preparation tool; binding the bytes prevents borrowing
     # a ground-only plugin experiment or an old ideal JointController model.
-    if (plant.get("schema") != "x650_ts20_conditional_plant_v1" or plant.get("model_name") != MODEL
+    if (plant.get("schema") != "x650_ts20_conditional_plant_v1" or plant.get("model_name") != selected["model"]
             or plant.get("model_sha256") != model.sha256
             or plant.get("preparation_report_sha256") != sha(cfg["preparation_report"])
             or plant.get("source_manifest_sha256") != sha(inputs["source_manifest"])
             or plant.get("native_validation", {}).get("passed") is not True
             or plant.get("prior_flight_gates_reused") is not False):
         raise ValueError("Complete imported TS20 flight-plant manifest required")
+    for key in ("kp", "kd", "bus_period_s"):
+        if plant["parameters"][key] != selected[key]:
+            raise ValueError("Actual plant gain/bus disagrees with the frozen scenario variant: " + key)
     if (not Path(plant["plugin_library"]).is_file() or sha(plant["plugin_library"]) != plant["plugin_library_sha256"]
             or sha(ROOT / "scripts/ts20_interface_system.cpp") != plant["plugin_source_sha256"]):
         raise ValueError("Current loaded-plant plugin source or library changed")
+    if cfg["scenario"] == DAMPED_SCENARIO:
+        profile = ROOT / "configs/actuators/ts20_50_24v_damped_v1_candidate.json"
+        binding = oracle.get("operating_condition", {})
+        if (oracle.get("gain_profile") != "mit_kp6_kd025_v1"
+                or binding.get("sha256") != sha(profile)
+                or binding.get("sha256") != plant["candidate_profile_sha256"]
+                or binding.get("profile_name") != "ts20_50_24v_damped_v1"
+                or any(binding.get(key) != selected[key] for key in ("kp", "kd", "bus_period_s"))):
+            raise ValueError("Damped gain-specific oracle does not bind the exact new candidate plant profile")
     profile, _, pid_hash = frozen_research_pid(cfg)
     if profile["model_sha256"] != model.sha256:
         raise ValueError("Frozen PID byte values must be explicitly rebound to this new plant")
@@ -250,7 +322,7 @@ def preflight(cfg, *, check_airframe=True):
         "source_urdf_sha256": source_sha, "total_mass_kg": model.total_mass_kg,
         "preparation_report_sha256": sha(cfg["preparation_report"]),
         "airframe_sha256": sha(cfg["airframe_source"]), "flight_profile_sha256": manifest["profile_sha256"],
-        "px4_sys_autostart": AIRFRAME, "native_recorder_sha256": sha(cfg["native_recorder_library"]),
+        "px4_sys_autostart": selected["airframe"], "native_recorder_sha256": sha(cfg["native_recorder_library"]),
         "stage": cfg["stage"], "controller": cfg["controller"],
         "operating_condition": base_condition, "operating_condition_sha256": canonical_hash(base_condition),
         "pid_parameters_sha256": pid_hash, "full_body_torque_nmpc": False,

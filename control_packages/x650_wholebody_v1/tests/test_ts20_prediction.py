@@ -125,6 +125,21 @@ class Ts20NominalTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 model.enable_native(__file__, expected_sha256=digest)
 
+    def test_effective_gain_metadata_is_explicit_and_default_remains_historical(self):
+        historical = Ts20PredictionModel(metadata())
+        damped = Ts20PredictionModel(metadata(), kp=6., kd=.25)
+        self.assertEqual(historical.metadata()["effective_mit_kd"], [3276/32768]*2)
+        self.assertEqual(damped.metadata()["effective_mit_kp"], [6.,6.])
+        self.assertEqual(damped.metadata()["effective_mit_kd"], [.25,.25])
+        self.assertEqual(historical.J, damped.J)
+        self.assertEqual(historical.Fs, damped.Fs)
+        self.assertEqual(historical.delay_s, damped.delay_s)
+        p=packet(-.005, q=(.05,-.05));p["kd"][:]=.25
+        result=damped.rollout(0.,[0.,0.],[0.,0.],[p],[0.,.1])
+        self.assertGreater(result["q"][-1,0],0.)
+        with self.assertRaisesRegex(ValueError, "gains differ"):
+            damped.rollout(0.,[0.,0.],[0.,0.],[packet(-.005)],[0.,.1])
+
 
 class Ts20PredictionContracts(unittest.TestCase):
     def test_nominal_interpolation_and_nonzero_breakaway_sensitivity(self):

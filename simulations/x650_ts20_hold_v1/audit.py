@@ -124,9 +124,7 @@ def actuator_check(folder, cfg, window):
                   and np.all(abs(vi) <= vmax + 2e-7) and np.all(abs(nv) <= vmax + 2e-7),
                   "Whole-window physical or endpoint joint limits exceeded")
     motion = FrozenTs20Model(cfg["ts20_inputs"]["source_dir"], task.read(cfg["ts20_inputs"]["source_manifest"]))
-    predictor = Ts20PredictionModel(motion.metadata()["motion_model"])
-    predictor.enable_native(cfg["ts20_inputs"]["native_library"],
-                            expected_sha256=cfg["ts20_inputs"]["native_library_sha256"])
+    predictor = task.predictor_from_bound_plant(cfg, motion.metadata()["motion_model"])
     packet_times = fields(packet_rows, ["send_s"]).ravel()
     apply_times = fields(packet_rows, ["apply_s"]).ravel()
     fixed.require(len(packet_times) >= 2 and np.all(np.diff(packet_times) > 0)

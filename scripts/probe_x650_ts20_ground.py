@@ -19,14 +19,18 @@ import xml.etree.ElementTree as ET
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+CONDITIONAL_PLANTS = {
+    "amsim_urdf_x650_2link_ts20_v1_flight": 4997,
+    "amsim_urdf_x650_2link_ts20_damped_v1_flight": 4996,
+}
 
 
 def probe(manifest, output):
     sys.path.insert(0, str(ROOT / "src"))
     from amsim.modeling.manager import resolve
     model = resolve(str(Path(manifest).resolve(strict=True)))
-    if model.model_name != "amsim_urdf_x650_2link_ts20_v1_flight":
-        raise ValueError("Explicit new conditional TS20 plant required")
+    if CONDITIONAL_PLANTS.get(model.model_name) != model.px4_sys_autostart:
+        raise ValueError("Explicitly paired TS20 conditional model/airframe required")
     for process in ("px4", "MicroXRCEAgent"):
         if subprocess.run(["pgrep", "-x", process], stdout=subprocess.DEVNULL).returncode == 0:
             raise RuntimeError("Existing " + process + " process; refuse probe")
