@@ -134,6 +134,69 @@ def audit_fixture():
 
 
 class MixedAccelerationAuditTests(unittest.TestCase):
+    @staticmethod
+    def timed_consumption(receipt_minus_publication, use_minus_publication):
+        ulog, native, _, window, control, feedback = audit_fixture()
+        local = audit.precision.dataset(ulog, 'vehicle_local_position')
+        source_t = np.asarray(local['timestamp'], float)*1e-6
+        # Unique synthetic payloads prevent adjacent near-static publications
+        # from serving as alternative tolerance witnesses.
+        local['ax'] = np.arange(len(source_t), dtype=float)
+        selected_control, selected_feedback = [], []
+        for original_index in (100, 101):
+            row, entry = deepcopy(control[original_index]), deepcopy(feedback[original_index])
+            index = int(np.argmin(abs(source_t-float(row['sim_s']))))
+            pub = source_t[index]
+            receipt, use = pub+receipt_minus_publication, pub+use_minus_publication
+            row['sim_s'], entry['sim_s'] = use, use
+            d = entry['feedback']
+            callback = d['callbacks']['position']
+            callback.update(received_sim_s=receipt, sim_age_s=use-receipt)
+            d['callbacks']['clock']['received_wall_s'] = callback['received_wall_s']+.001
+            d['acceleration_source']['received_sim_s'] = receipt
+            d['acceleration_stamp_s'] = receipt
+            row['feedback_acceleration_position_stamp_s'] = receipt
+            an = np.asarray([local[key][index] for key in ('ax', 'ay', 'az')])
+            d['px4_snapshot']['position_ned_m'] = [float(local[key][index]) for key in ('x', 'y', 'z')]
+            d['px4_snapshot']['velocity_ned_m_s'] = [float(local[key][index]) for key in ('vx', 'vy', 'vz')]
+            d['px4_snapshot']['acceleration_ned_m_s2'] = an.tolist()
+            d['control_state']['acceleration_enu_m_s2'] = (NED_TO_ENU@an).tolist()
+            row.update({f'feedback_a{axis}': float(value) for axis, value in zip('xyz', NED_TO_ENU@an)})
+            selected_control.append(row)
+            selected_feedback.append(entry)
+        window = [selected_control[0]['sim_s'], selected_control[-1]['sim_s']]
+        for row, entry in zip(selected_control, selected_feedback):
+            row['t_s'] = entry['t_s'] = row['sim_s']-window[0]
+        return ulog, native, window, selected_control, selected_feedback
+
+    def test_known_cached_clock_schedules_use_actual_consumption_time(self):
+        for receipt, publication, use in ((41.656, 41.688, 41.700), (44.636, 44.648, 44.664), (69.860, 69.872, 69.880)):
+            with self.subTest(receipt=receipt, publication=publication, use=use):
+                ulog, native, window, control, feedback = self.timed_consumption(receipt-publication, use-publication)
+                report = audit.audit_mixed_acceleration_feedback(control, feedback, ulog, native, window)
+                self.assertTrue(report['verified'])
+                np.testing.assert_allclose(report['consumption_age_range_s'], [use-publication]*2, atol=1e-9)
+                np.testing.assert_allclose(report['callback_cached_clock_minus_publication_range_s'], [receipt-publication]*2, atol=1e-9)
+                self.assertEqual(report['consumption_age_samples_checked'], 2)
+
+    def test_actual_future_or_stale_consumption_source_is_rejected(self):
+        for receipt, use in ((-.020, -.009), (.02, .101)):
+            with self.subTest(receipt=receipt, use=use):
+                ulog, native, window, control, feedback = self.timed_consumption(receipt, use)
+                with self.assertRaisesRegex(ValueError, 'bounded-causal'):
+                    audit.audit_mixed_acceleration_feedback(control, feedback, ulog, native, window)
+
+    def test_cached_publication_age_is_rechecked_at_every_held_use(self):
+        ulog, native, window, control, feedback = self.timed_consumption(.095, .095)
+        control[1], feedback[1] = deepcopy(control[0]), deepcopy(feedback[0])
+        control[1]['sim_s'] += .02
+        feedback[1]['sim_s'] += .02
+        control[1]['t_s'] += .02
+        feedback[1]['t_s'] += .02
+        feedback[1]['feedback']['callbacks']['position']['sim_age_s'] = .02
+        with self.assertRaisesRegex(ValueError, 'stale or future at actual control use'):
+            audit.audit_mixed_acceleration_feedback(control, feedback, ulog, native, window)
+
     def test_full_v3_feedback_guards_and_same_payload_ulog_matching(self):
         ulog, native, reference, window, control, feedback = audit_fixture()
         report, _ = audit.feedback_check_mixed(control, feedback, reference, window)

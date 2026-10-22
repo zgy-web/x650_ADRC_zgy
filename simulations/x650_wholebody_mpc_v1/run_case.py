@@ -841,8 +841,8 @@ def execute(cfg, model_spec, provenance, out):
         if accepted_response["binding"] != provenance.get("accepted_response_binding"):
             raise RuntimeError("Accepted response binding changed before runtime admission")
         if cfg["controller"] == "mpc":
-            # Load SciPy before takeoff. Actual first-solve work remains inside
-            # the measured solve budget, with no hidden optimization warm-up.
+            # Load SciPy before takeoff, without an unreported solve warm-up.
+            # solve_ms covers optimization; compute_ms also includes assembly.
             from x650_wholebody.mpc import MpcController
     meta = dict(schema_version=1, complete=False, stage=cfg["stage"], controller=cfg["controller"],
                 task=cfg, model_sha256=model_sha, source_urdf_sha256=source_sha, physical_profile=model.metadata(),
@@ -1045,6 +1045,11 @@ def execute(cfg, model_spec, provenance, out):
                     loop.controller.reset(loop.anchor, anchor_state.rotation, np.zeros(2))
                     loop.trajectory = trajectory
                     meta["controller_details"] = loop.controller.metadata()
+                    if cfg.get("mixed_mpc_protocol") is not None:
+                        # ROS callbacks run before the first control step.
+                        # Declare the existing t=0 target before marking any
+                        # sample as measure, rather than leaving it blank.
+                        capture.tip_target = trajectory.sample(0.)[0].copy()
             capture.phase = "measure"
             start = loop.control_now()
             loop.task_start = start

@@ -4,7 +4,7 @@
 The complete existing feedback safeguards are copied into a distinct v3 check;
 old audit functions and old evidence are not modified or relabeled. Raw DDS
 source timestamps remain diagnostic epochs. Matching to ULog uses the original
-bounded callback receipt window and the same complete position/velocity/accel
+bounded actual-consumption window and the same complete position/velocity/accel
 payload; no epoch offset, phase, velocity derivative or truth state is fitted.
 """
 from __future__ import annotations
@@ -20,9 +20,9 @@ from audit_x650_upper_stage import (selected_rows, vector, fields, require, fixe
                                   NED_TO_ENU, FRD_TO_FLU, rotation_matrix, precision)
 from simulations.x650_wholebody_mpc_v1.estimated_feedback import ACCELERATION_PROFILE, ACCELERATION_CONTRACT
 
-# Receipt bounds are the existing state contract and existing clock boundary.
+# Consumption bounds retain the existing state age and clock boundary limits.
 # Payload tolerance accommodates round-trip float32 text serialization only.
-ULOG_RECEIPT_MAX_AGE_S = .10
+ULOG_CONSUMPTION_MAX_AGE_S = .10
 CLOCK_BOUNDARY_S = .008
 PAYLOAD_TOLERANCE = 2e-5
 NATIVE_INTERPOLATION_MAX_GAP_S = .008
@@ -217,7 +217,9 @@ def audit_mixed_acceleration_feedback(control, feedback_lines, ulog, native_acce
 
     Call feedback_check_mixed as the full pose/rates/reset/fusion guard first.
     Matching uses unmodified ULog publication timestamps and complete p/v/a
-    payloads inside the already declared receipt-age/clock-boundary allowances.
+    payloads inside the existing age/clock-boundary allowances at every actual
+    control consumption. A position callback's cached /clock label may precede
+    its publication; callback receipt/wall/sequence guards remain independent.
     Raw DDS epochs are retained, never fitted or reinterpreted as simulation time.
     """
     samples = _acceleration_snapshots(control, feedback_lines, window)
@@ -228,28 +230,35 @@ def audit_mixed_acceleration_feedback(control, feedback_lines, ulog, native_acce
     require(len(publish_t) >= 2 and len(publish_t) == len(sample_t) == len(payload)
             and np.isfinite(publish_t).all() and np.all(np.diff(publish_t) >= 0)
             and publish_t.max() <= 1e7, 'ULog acceleration publication clock must be original HRT')
-    inside = (publish_t >= window[0]-ULOG_RECEIPT_MAX_AGE_S)&(publish_t <= window[1]+CLOCK_BOUNDARY_S)
+    inside = (publish_t >= window[0]-ULOG_CONSUMPTION_MAX_AGE_S)&(publish_t <= window[1]+CLOCK_BOUNDARY_S)
     require(np.isfinite(payload[inside]).all(), 'ULog acceleration/position/velocity payload is nonfinite')
-    matches, ages, sample_lags, raw_lags, max_residual = {}, [], [], [], 0.
+    matches, ages, cached_clock_lags, sample_lags, raw_lags, max_residual = {}, [], [], [], [], 0.
     for snapshot in samples:
         seq = snapshot['sequence']
         if seq not in matches:
-            receipt = snapshot['receipt']
-            candidate = np.flatnonzero((publish_t >= receipt-ULOG_RECEIPT_MAX_AGE_S-1e-9)
-                                      &(publish_t <= receipt+CLOCK_BOUNDARY_S+1e-9))
+            consumption = snapshot['sim_s']
+            candidate = np.flatnonzero((publish_t >= consumption-ULOG_CONSUMPTION_MAX_AGE_S-1e-9)
+                                      &(publish_t <= consumption+CLOCK_BOUNDARY_S+1e-9))
             if len(candidate):
                 residual = np.max(abs(payload[candidate]-snapshot['payload']), axis=1)
                 candidate = candidate[residual <= PAYLOAD_TOLERANCE]
-            require(len(candidate) > 0, 'Position callback acceleration has no bounded-causal same-payload ULog source')
+            require(len(candidate) > 0, 'Consumed position callback acceleration has no bounded-causal same-payload ULog source')
             # When stationary identical payloads may recur. Latest matching
             # publication is deterministic; this is a bounded source witness,
             # not a claim that a unique transport delay was identified.
             index = int(candidate[-1])
             matches[seq] = index
-            ages.append(float(receipt-publish_t[index]))
+            cached_clock_lags.append(float(snapshot['receipt']-publish_t[index]))
             sample_lags.append(float(publish_t[index]-sample_t[index]))
             raw_lags.append((snapshot['raw']['timestamp']-snapshot['raw']['timestamp_sample'])*1e-6)
             max_residual = max(max_residual, float(np.max(abs(payload[index]-snapshot['payload']))))
+        # Cache only publication identity. A held callback must pass the source
+        # age/causality bound again at every consumption, not just its first use.
+        index = matches[seq]
+        consumption_age = float(snapshot['sim_s']-publish_t[index])
+        require(-CLOCK_BOUNDARY_S-1e-9 <= consumption_age <= ULOG_CONSUMPTION_MAX_AGE_S+1e-9,
+                'Consumed acceleration ULog source is stale or future at actual control use')
+        ages.append(consumption_age)
     native_t = np.asarray(native_acceleration['t'], float)
     native_a = np.asarray(native_acceleration['acceleration'], float)
     require(native_a.shape == (len(native_t), 3) and len(native_t) >= 2
@@ -277,10 +286,13 @@ def audit_mixed_acceleration_feedback(control, feedback_lines, ulog, native_acce
     return {'verified': True, 'feedback_contract': ACCELERATION_CONTRACT,
         'measurement_snapshots': len(samples), 'distinct_position_callbacks': len(matches),
         'source_payload': 'vehicle_local_position x/y/z,vx/vy/vz,ax/ay/az from one publication',
-        'source_matching': 'Bounded original callback receipt window; identical static payloads may have multiple witnesses',
-        'ulog_receipt_max_age_s': ULOG_RECEIPT_MAX_AGE_S, 'clock_boundary_allowance_s': CLOCK_BOUNDARY_S,
+        'source_matching': 'Bounded original control consumption time on every use; identical static payloads may have multiple witnesses',
+        'ulog_consumption_max_age_s': ULOG_CONSUMPTION_MAX_AGE_S, 'clock_boundary_allowance_s': CLOCK_BOUNDARY_S,
         'payload_absolute_tolerance': PAYLOAD_TOLERANCE, 'maximum_matched_payload_difference': max_residual,
-        'matched_receipt_minus_publication_range_s': [min(ages), max(ages)],
+        'consumption_age_range_s': [min(ages), max(ages)],
+        'consumption_age_samples_checked': len(ages),
+        'callback_cached_clock_minus_publication_range_s': [min(cached_clock_lags), max(cached_clock_lags)],
+        'callback_cached_clock_lag_policy': 'diagnostic_only; asynchronous cached /clock labels may precede publication',
         'ulog_publication_minus_sample_range_s': [min(sample_lags), max(sample_lags)],
         'dds_raw_publication_minus_sample_range_s': [min(raw_lags), max(raw_lags)],
         'maximum_position_callback_hold_s': max(sample['age'] for sample in samples),
