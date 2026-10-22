@@ -62,6 +62,7 @@ class Ts20Runtime:
         self.bus_origin_s = None
         self.observation_count = 0
         self.max_position_disagreement_rad = 0.
+        self._measured_snapshot = None
 
     def _update(self):
         for row in self.states.read():
@@ -152,6 +153,8 @@ class Ts20Runtime:
         return row
 
     def measured_state(self, state, sim_s=None):
+        # A failed new read must not leave an old solve snapshot eligible.
+        self._measured_snapshot = None
         now = state.control_time_s if sim_s is None else float(sim_s)
         if now is None or not np.isfinite(now):
             raise ValueError("TS20 measured state requires the actual control source clock")
@@ -159,14 +162,25 @@ class Ts20Runtime:
         q = np.array([row[f"q{j}_physical"] for j in (1, 2)])
         dq = np.array([row[f"dq{j}_internal"] for j in (1, 2)])
         observed = replace(state, q=q, dq=dq, joint_stamp_s=row["sim_s"], control_time_s=now)
+        # The CSV writer can flush a later-but-still-past row between this
+        # observation and context(). Keep the exact q/dq/r observation and
+        # already-read histories together; do not select another row there.
+        self._measured_snapshot = (float(now), dict(row))
         self.observation_count += 1
         return observed, row["sim_s"]
 
     def context(self, state, t):
         now = float(state.control_time_s)
-        row = self._past_row(now)
-        if abs(row["sim_s"]-state.joint_stamp_s) > 1e-9:
+        if self._measured_snapshot is None:
+            raise RuntimeError("TS20 MPC context requires a successful measured snapshot")
+        observed_now, row = self._measured_snapshot
+        if (not np.isfinite(now) or abs(now-observed_now) > 1e-9
+                or state.joint_stamp_s is None or abs(row["sim_s"]-state.joint_stamp_s) > 1e-9
+                or not np.array_equal(state.q, [row[f"q{j}_physical"] for j in (1, 2)])
+                or not np.array_equal(state.dq, [row[f"dq{j}_internal"] for j in (1, 2)])):
             raise RuntimeError("TS20 MPC context differs from the measured joint snapshot")
+        # No CSV read here: new complete rows become eligible on the next
+        # measured_state call, including their actual command/packet evidence.
         origin = now-float(t)
         cutoff = min(row["sim_s"], now)-.75
         # Retain one predecessor, necessary to reconstruct the active packet or
@@ -210,6 +224,7 @@ class Ts20Runtime:
             "joint_position_source": "same-stamp physical Gazebo joint encoder",
             "joint_velocity_source": "conditional simulated servo endpoint speed report",
             "physical_interval_average_velocity_used_for_prediction": False,
+            "solve_snapshot_policy": "exact measured q/dq/r and already-read causal histories; refresh only on next observation",
             "future_rows_used_for_control": False, "source_age_limit_s": self.max_age_s,
             "position_consistency_limit_rad": self.physical_position_tolerance_rad,
             "max_position_disagreement_rad": self.max_position_disagreement_rad,

@@ -92,6 +92,42 @@ class RuntimeTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "differs"):
             runtime.context(replace(state, joint_stamp_s=10.008), .012)
 
+    def test_late_past_row_is_admitted_only_by_the_next_measurement(self):
+        runtime = self.write(future=False)
+        path = self.folder/"s.csv"
+        lines = path.read_text().splitlines(keepends=True)
+        # At observation time the 10.012 row is still buffered by the writer.
+        path.write_text("".join(lines[:-1]))
+        state, stamp = runtime.measured_state(self.state)
+        self.assertAlmostEqual(stamp, 10.008)
+        with path.open("a") as stream:
+            stream.write(lines[-1])
+        context = runtime.context(state, .012)
+        self.assertAlmostEqual(context["reference_state"]["time_s"], .008)
+        np.testing.assert_array_equal(context["reference_state"]["r"], [.02, .02])
+        # A fresh observation can now use it; the prior state cannot borrow
+        # the newer context even though the control clock has not changed.
+        later, newer_stamp = runtime.measured_state(self.state)
+        self.assertAlmostEqual(newer_stamp, 10.012)
+        newer = runtime.context(later, .012)
+        np.testing.assert_array_equal(newer["reference_state"]["r"], [.03, .03])
+        with self.assertRaisesRegex(RuntimeError, "differs"):
+            runtime.context(state, .012)
+
+    def test_context_rejects_unobserved_mutated_or_failed_snapshot(self):
+        runtime = self.write(future=False)
+        with self.assertRaisesRegex(RuntimeError, "successful measured snapshot"):
+            runtime.context(self.state, .012)
+        state, _ = runtime.measured_state(self.state)
+        for changed in (replace(state, control_time_s=10.016),
+                        replace(state, q=[.001, 0.]), replace(state, dq=[.235, .234])):
+            with self.assertRaisesRegex(RuntimeError, "differs"):
+                runtime.context(changed, .012)
+        with self.assertRaisesRegex(RuntimeError, "source age"):
+            runtime.measured_state(replace(self.state, control_time_s=10.10))
+        with self.assertRaisesRegex(RuntimeError, "successful measured snapshot"):
+            runtime.context(state, .012)
+
     def test_truncated_static_packet_stream_cannot_pass_from_held_zero(self):
         runtime = self.write(future=False)
         path = self.folder/"p.csv"
