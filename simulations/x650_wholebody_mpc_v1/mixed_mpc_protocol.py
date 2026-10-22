@@ -5,6 +5,7 @@ import json
 
 
 PROTOCOL_NAME = "mixed_response_zero_ff_v1"
+PREDICTION_CHAIN_PROTOCOL_NAME = "mixed_response_prediction_chain_v2"
 STAGES = ("tip_hold", "small", "normal", "fast")
 
 
@@ -46,10 +47,34 @@ def protocol_hash(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
 
 
+def build_prediction_chain_protocol():
+    """New, explicit development candidate; the original protocol is immutable.
+
+    Same physical/feedback operating condition and all comparison limits. The
+    joint delay is measured from state consumption to a native velocity change,
+    not a separately identified servo time constant. Fresh full-window flights
+    test this controller; old failed flights are development evidence only.
+    """
+    value = build_mixed_mpc_protocol()
+    value.update(schema_version=2, name=PREDICTION_CHAIN_PROTOCOL_NAME)
+    value["mpc_controller_config"]["prediction_chain"] = {
+        "kind": "delayed_joint_thrust_attitude_v1",
+        "joint_delay_s": .024, "joint_delay_guard_s": .05,
+        "gravity_m_s2": 9.8, "attitude_residual_decay_s": .15,
+    }
+    value["interpretation"] = (
+        "Accepted nominal base response unchanged; delayed joint command history and "
+        "acceleration-driven thrust attitude are a development candidate tested by fresh "
+        "complete endpoint holds. Not an independently identified physical servo, "
+        "moving-arm dynamics or torque-level NMPC model.")
+    return value
+
+
 def validate_mixed_mpc_protocol(value):
     if value is None:
         return None
-    expected = build_mixed_mpc_protocol()
+    expected = (build_prediction_chain_protocol() if isinstance(value, dict)
+                and value.get("name") == PREDICTION_CHAIN_PROTOCOL_NAME else build_mixed_mpc_protocol())
     if not isinstance(value, dict) or protocol_hash(value) != protocol_hash(expected):
         raise ValueError("Mixed MPC protocol differs from the frozen preset")
     return deepcopy(expected)

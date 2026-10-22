@@ -25,6 +25,10 @@ python3 scripts/analyze_x650_prediction_chains.py \
 
 固定末端误差被精确分解为：机体位置偏差、在 q0 下的姿态贡献、在 R0 下的关节几何贡献、姿态与关节交互项、独立 native tip 与 FK 的闭合残差。逐项之和应重建原末端误差；不通过平移目标消除任何偏差。
 
-旧 MPC 保存的每次预测使用原 `node_intervals_s` 投影到原时间轴。先按该版已声明的角速度衰减外推重建姿态，并验证与保存的 predicted tip 一致，再分解预测误差为基体位置、关节几何、姿态几何和 FK 残差。超出部分窗口的节点明确计数；不混入恢复数据。后续节点预测的未来命令会被闭环重新规划，故长时域误差并非纯粹动力学误差，各条重叠预测也不是独立统计样本。
+每次预测使用原 `node_intervals_s` 投影到原时间轴。旧 MPC 按原角速度衰减规则重建姿态；任务包含 `prediction_chain` 的新版必须读取每次原诊断保存的 `predicted_rotations_flu_to_enu`，并校验配置一致、矩阵有限、正交且行列式为 +1，以及 `predicted_tip = predicted_p + predicted_R * r(predicted_q)`。新协议缺失姿态、姿态不合法或与 FK 不一致都会拒绝，不能静默退回旧模型外推。报告的 `attitude_source` 区分两条路径。
+
+新版另读取原 `prediction_initial_joint_position`，在同一控制消费 `sim_s` 与 native q 比较，并并列报告原始反馈 q 的误差、传播前后 q 的差值。字段位于 `original_prediction_errors.prediction_initial_joint_position`；该时间是控制消费时刻，不是发送时刻或未来预测节点。旧版没有这个字段时明确报告 unavailable，不补零或用真值构造预测初值。该结果只衡量记录中的时间传播误差，不触发新的验收门槛或证书。
+
+随后分解预测误差为基体位置、关节几何、姿态几何和 FK 残差。超出部分窗口的节点明确计数；不混入恢复数据。后续节点预测的未来命令会被闭环重新规划，故长时域误差并非纯粹动力学误差，各条重叠预测也不是独立统计样本。
 
 可选 `--formal-train-audit /path/upper_stage_audit.json --formal-holdout-audit /path/upper_stage_audit.json` 读取已通过 formal response 审计绑定的原 run，另画速度指令、姿态与原始几何关系。该附加诊断不改变已经接受的参数或 HOLDOUT 身份。

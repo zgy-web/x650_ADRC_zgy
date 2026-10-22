@@ -206,6 +206,13 @@ def geometry_chain(native, model, anchor, reference_rotation, g):
 
 def prediction_errors(data, native, feedback, entries, model):
     buckets, excluded, maximum_rebuild = {}, 0, 0.
+    protocol = data["task"]["mixed_mpc_protocol"]
+    configuration = protocol["mpc_controller_config"]
+    configured_chain = configuration.get("prediction_chain")
+    chain_enabled = "prediction_chain" in configuration or protocol.get("name") == "mixed_response_prediction_chain_v2"
+    require(not chain_enabled or isinstance(configured_chain, dict) and configured_chain,
+            "Prediction-chain protocol requires its explicit original configuration")
+    initial_errors, raw_initial_errors, propagation_changes = [], [], []
     for row, entry in zip(feedback, entries):
         d = entry["diagnostics"]
         require(all(key in d for key in ("predicted_states", "predicted_tip_positions", "node_intervals_s")), "Original horizon diagnostics missing")
@@ -215,9 +222,27 @@ def prediction_errors(data, native, feedback, entries, model):
         require(pred.shape == (len(h), 12) and tip_pred.shape == (len(h), 3)
                 and np.isfinite(pred).all() and np.isfinite(tip_pred).all() and np.all(np.diff(np.r_[0., h]) > 0), "Invalid original mixed forecast")
         state = row["feedback"]["control_state"]
-        R0, omega = rotation_matrix(state["rotation_flu_to_enu"]), np.asarray(state["omega_flu_rad_s"], float)
-        tau = data["task"]["mixed_mpc_protocol"]["mpc_controller_config"]["attitude_rate_decay_s"]
-        Rp = np.asarray([R0@rotation_increment(omega*tau*(1-np.exp(-step/tau))) for step in h])
+        if chain_enabled:
+            require(d.get("prediction_chain") == configured_chain, "Saved prediction chain differs from original task configuration")
+            require("predicted_rotations_flu_to_enu" in d, "Prediction-chain forecast lacks saved rotations; legacy reconstruction is prohibited")
+            Rp = np.asarray(d["predicted_rotations_flu_to_enu"], float)
+            require(Rp.shape == (len(h), 3, 3) and np.isfinite(Rp).all()
+                    and np.allclose(np.swapaxes(Rp, 1, 2)@Rp, np.eye(3), atol=1e-8, rtol=0)
+                    and np.all(abs(np.linalg.det(Rp)-1.) <= 1e-8),
+                    "Saved prediction rotations must be proper finite FLU-to-ENU matrices")
+            initial_q = np.asarray(d.get("prediction_initial_joint_position"), float)
+            measured_q = np.asarray(state["q_rad"], float)
+            require(initial_q.shape == measured_q.shape == (2,) and np.isfinite(initial_q).all()
+                    and np.isfinite(measured_q).all(), "Prediction chain lacks finite original initial joint position")
+            actual_q = interpolate(native["t"], native["q"], [float(entry["sim_s"])])[0]
+            initial_errors.append(initial_q-actual_q)
+            raw_initial_errors.append(measured_q-actual_q)
+            propagation_changes.append(initial_q-measured_q)
+        else:
+            require(d.get("prediction_chain") is None, "Legacy task cannot relabel a saved prediction-chain forecast")
+            R0, omega = rotation_matrix(state["rotation_flu_to_enu"]), np.asarray(state["omega_flu_rad_s"], float)
+            tau = configuration["attitude_rate_decay_s"]
+            Rp = np.asarray([R0@rotation_increment(omega*tau*(1-np.exp(-step/tau))) for step in h])
         rp = np.asarray([tip_body(q, model) for q in pred[:, 6:8]])
         rebuilt = pred[:, :3]+np.einsum("nij,nj->ni", Rp, rp)
         maximum_rebuild = max(maximum_rebuild, float(np.max(abs(rebuilt-tip_pred))))
@@ -247,6 +272,15 @@ def prediction_errors(data, native, feedback, entries, model):
                            ("tip", "base", "joint_geometry", "attitude_geometry", "native_fk", "closure", "q_error")}})
     return {"available": True, "original_forecasts": len(entries), "unsupported_nodes_beyond_partial_end": excluded,
         "maximum_stored_tip_rebuild_error_m": maximum_rebuild, "by_node": summary,
+        "attitude_source": "original saved predicted_rotations_flu_to_enu" if chain_enabled else "original legacy angular-rate-decay reconstruction",
+        "prediction_initial_joint_position": {
+            "available": True, "source": "original diagnostics.prediction_initial_joint_position",
+            "comparison_time": "Original control consumption sim_s, not command dispatch or future prediction node",
+            "propagated_minus_native_at_control_rad": residual_summary(initial_errors),
+            "raw_feedback_minus_native_at_control_rad": residual_summary(raw_initial_errors),
+            "propagated_minus_raw_feedback_rad": residual_summary(propagation_changes),
+            "interpretation": "Diagnostic propagation error only; no parameter fit, threshold or certificate"
+        } if chain_enabled else {"available": False, "reason": "Legacy forecast has no declared propagated initial joint position"},
         "interpolation": "Native values at original forecast timestamps; bounded <=8ms interpolation, normalized quaternion interpolation, no time shift",
         "interpretation": "Overlapping issued forecasts, not independent observations. Later-node errors include future replanning different from the original predicted command sequence; not solely dynamics-model error."}
 

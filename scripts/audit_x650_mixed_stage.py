@@ -137,6 +137,8 @@ def mixed_solver_audit(folder, control, metadata, task, protocol, window):
                 and np.max(abs(vector(d["command_acceleration_world"], 3, "executed acceleration"))) <= 1e-12,
                 "Both comparison groups must execute zero acceleration FF")
         if task["controller"] == "mpc":
+            if "prediction_chain" in protocol["mpc_controller_config"]:
+                prediction_chain_use_audit(d, row, protocol)
             require(d.get("solver_success") is True and d.get("accepted_optimum") is True and d.get("previous_plan_fallback") is False,
                     "MPC returned an unaccepted optimum or fallback")
             for key in ("primal_violation", "kkt_stationarity_inf", "solve_ms"):
@@ -170,6 +172,32 @@ def mixed_solver_audit(folder, control, metadata, task, protocol, window):
             "passed": not any(x["solve_budget_exceeded"] for x in results)}
 
 
+def prediction_chain_use_audit(d, row, protocol):
+    """Check the paired input and output semantics; do not rerun the optimizer."""
+    require(d.get("prediction_chain") == protocol["mpc_controller_config"]["prediction_chain"],
+            "MPC did not use the frozen prediction chain")
+    now, stamp = float(row["sim_s"]), float(row["joint_stamp_s"])
+    for key, expected in (("prediction_control_time_s", now), ("prediction_joint_stamp_s", stamp),
+                          ("prediction_joint_measurement_age_s", now-stamp)):
+        require(isinstance(d.get(key), (int, float)) and np.isfinite(d[key]) and abs(d[key]-expected) <= 1e-9,
+                "Prediction chain time differs from actual consumed state: "+key)
+    for key, expected in (("prediction_measured_joint_position", [float(row["q1"]), float(row["q2"])]),
+                          ("prediction_measured_joint_velocity", [float(row["qd1"]), float(row["qd2"])])):
+        require(np.max(abs(vector(d.get(key), 2, key)-expected)) <= 1e-9,
+                "Prediction chain joint initialization differs from actual measured feedback")
+    for key in ("prediction_initial_joint_position", "prediction_initial_joint_velocity"):
+        vector(d.get(key), 2, key)
+    rotations = np.asarray(d.get("predicted_rotations_flu_to_enu"), float)
+    states = np.asarray(d.get("predicted_states"), float)
+    count = protocol["mpc_controller_config"]["nodes"]
+    require(rotations.shape == (count, 3, 3) and np.isfinite(rotations).all()
+            and states.shape == (count, 12) and np.isfinite(states).all(), "Missing chain forecast evidence")
+    for rotation in rotations:
+        require(np.allclose(rotation.T@rotation, np.eye(3), atol=1e-6, rtol=0)
+                and abs(np.linalg.det(rotation)-1) <= 1e-6, "Invalid predicted attitude rotation")
+    return True
+
+
 def mixed_stage_metrics(folder, metadata, task, protocol, window, physical, common_checks):
     require(metadata.get("folded_before_landing") is True
             and metadata["physical_profile"].get("source_report_sha256") ==
@@ -192,13 +220,62 @@ def mixed_stage_metrics(folder, metadata, task, protocol, window, physical, comm
         "physical_joint_limits": bool(np.all(physical["q"] >= model.joint_lower)
                                       and np.all(physical["q"] <= model.joint_upper)),
         "solver_quality_and_time_budget": solver["passed"]}
+    chain_limits = None
+    if "prediction_chain" in protocol["mpc_controller_config"]:
+        chain_limits = prediction_chain_limit_audit(control, window, physical, protocol)
+        checks.update(chain_limits["criteria"])
     return {"passed": all(checks.values()), "criteria": checks, "native_tip_error": tip_metrics,
             "native_tip_geometry": native_geometry, "solver": solver,
             "reference_center_world_enu_m": center.tolist(),
             "logged_target_audit": logged_target,
             "logged_target_maximum_hold_error_m": logged_target["maximum_hold_error_m"],
+            **({"prediction_chain_limits": chain_limits} if chain_limits is not None else {}),
             "scoring": "Full native measurement window; independently evaluated declared target; no fitted offset/phase",
             "scope": "Zero acceleration FF upper PID/MPC commissioning; no injected external disturbance or torque NMPC claim"}
+
+
+def prediction_chain_limit_audit(control, window, physical, protocol):
+    """Check actual physical limits and command slew, independent of QP flags."""
+    settings = protocol["common_controller_config"]
+    selected, times = selected_rows(control, window)
+    commands = np.column_stack((fields(selected, "base_velocity_target_", "xyz"),
+                                fields(selected, "qd", ("1_cmd", "2_cmd"))))
+    recorded_dt = np.asarray([float(row["control_dt_s"]) for row in selected])
+    require(np.isfinite(recorded_dt).all() and np.all(recorded_dt > 0)
+            and np.all(recorded_dt <= settings["max_dt_s"]+1e-10),
+            "Prediction chain recorded invalid control intervals")
+    # The preceding measured row is required; never invent a zero initial input.
+    previous = [row for row in control if float(row["sim_s"]) < times[0]-1e-9]
+    require(previous, "Prediction chain command audit requires the actual preceding command")
+    row = previous[-1]
+    initial = np.r_[fields([row], "base_velocity_target_", "xyz")[0],
+                    fields([row], "qd", ("1_cmd", "2_cmd"))[0]]
+    # The prediction-chain runner preserves the actual previous command time
+    # at activation. Every dt, including the first, must match that clock;
+    # slew is calculated independently from the original command timestamps.
+    dt = np.diff(np.r_[float(row["sim_s"]), times])
+    require(np.isfinite(dt).all() and np.all(dt > 0)
+            and np.all(dt <= settings["max_dt_s"]+1e-10),
+            "Prediction chain actual command intervals exceed the common limit")
+    require(np.all(abs(recorded_dt-dt) <= 1e-9),
+            "Prediction chain recorded control intervals differ from command timestamps")
+    delta = commands-np.vstack((initial, commands[:-1]))
+    rates = abs(delta)/dt[:, None]
+    q, dq = np.asarray(physical["q"]), np.asarray(physical["dq"])
+    checks = {
+        "native_joints_inside_common_soft_limits": bool(np.all(q >= np.asarray(settings["q_lower"])-1e-8)
+                                                       and np.all(q <= np.asarray(settings["q_upper"])+1e-8)),
+        "native_joint_velocity_inside_common_caps": bool(np.all(abs(dq) <= np.asarray(settings["velocity_limit"])[3:]+1e-8)),
+        "sent_command_slew_inside_common_caps": bool(np.all(abs(delta) <= dt[:, None]*np.asarray(settings["acceleration_limit"])+1e-8)),
+    }
+    return {"criteria": checks, "maximum_sent_command_slew": rates.max(axis=0).tolist(),
+            "maximum_actual_command_interval_s": float(dt.max()),
+            "maximum_recorded_control_interval_s": float(recorded_dt.max()),
+            "first_actual_command_interval_s": float(dt[0]),
+            "first_recorded_control_interval_s": float(recorded_dt[0]),
+            "native_q_min_rad": q.min(axis=0).tolist(), "native_q_max_rad": q.max(axis=0).tolist(),
+            "native_abs_dq_max_rad_s": abs(dq).max(axis=0).tolist(),
+            "semantics": "Command slew uses original command-row simulation times, not Gazebo application acknowledgements; this does not identify physical braking acceleration"}
 
 
 def analyze(folder, launch_dir, *, ulog_loader=None):
@@ -334,6 +411,11 @@ def analyze(folder, launch_dir, *, ulog_loader=None):
         "joint_commands_within_common_caps": bool(np.all(abs(joint_commands) <= velocity_limits[3:]+1e-8)),
         "base_commands_within_common_caps": bool(np.all(abs(base_commands) <= velocity_limits[:3]+1e-8))}
     stage_report = mixed_stage_metrics(folder, metadata, task, protocol, window, physical, common_checks)
+    chain_execution = None
+    if "prediction_chain" in protocol["mpc_controller_config"]:
+        from audit_x650_prediction_chain import audit_prediction_chain_execution
+        chain_execution = audit_prediction_chain_execution(folder, control, metadata, protocol, window)
+        artifacts.update(chain_execution["artifacts"])
     artifacts.update({str(path): precision.sha(path) for path in paths.values()})
     for source in (Path(__file__), Path(mixed_feedback.__file__), Path(upper.__file__), Path(fixed_audit.__file__), Path(precision.__file__), Path(joint_audit.__file__),
                    Path(task["pid_profile"]), Path(task["research_profile"]["world_sdf"])):
@@ -350,6 +432,7 @@ def analyze(folder, launch_dir, *, ulog_loader=None):
         "acceleration_feedforward": "zero", "controller_settings_audit": controller_details,
         "mixed_mpc_protocol": protocol, "mixed_mpc_protocol_sha256": protocol_hash(protocol),
         "accepted_response_binding": binding, "acceleration_feedback_audit": acceleration,
+        **({"prediction_chain_execution_audit": chain_execution} if chain_execution is not None else {}),
         "configuration": configuration, "parameter_session": parameters, "feedback_state_audit": feedback_report,
         "upper_command_audit": commands, "feedback_velocity_proxy": proxy, "flight_state_audit": flight,
         "ground_acceptance": ground_report, "stage_acceptance": stage_report, "position_native_world_enu": position,

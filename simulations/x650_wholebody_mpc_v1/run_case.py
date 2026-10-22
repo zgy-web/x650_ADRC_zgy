@@ -562,6 +562,7 @@ class ControlLoop:
         self.diagnostic = (out/"controller_diagnostics.jsonl").open("w", encoding="utf-8")
         self.feedback_stream = (out/"feedback_trace.jsonl").open("w", encoding="utf-8") if self.upper_research else None
         self.execution_trace = ExecutionTrace(out)
+        self.sent_command_history = []
 
     def disable_upper_feedback(self):
         """End the upper experiment before recovery; never substitute truth into it."""
@@ -715,6 +716,11 @@ class ControlLoop:
                     *self.ctx.vehicle.target, mavutil.mavlink.MAV_FRAME_LOCAL_NED, sp.type_mask,
                     *sp.position, *sp.velocity, *sp.acceleration, self.yaw_ned, 0.),
                 clock_snapshot=lambda: callback_clock_snapshot(self.ctx.node), context=publication_context)
+            # Append only after both joint publishes and the PVA send returned.
+            # Partial publication exceptions use ExecutionTrace and recovery.
+            self.sent_command_history.append((float(sim), np.r_[command.base_velocity_target, joint].copy()))
+            self.sent_command_history = [(when, value) for when, value in self.sent_command_history
+                                         if when >= sim-.75]
         truth = self.evaluation_state
         row = dict(sim_s=sim, t_s=t, phase=self.recorder.phase, truth_stamp_s=truth.stamp_s,
                    truth_age_s=sim-truth.stamp_s, joint_stamp_s=joint_stamp, joint_age_s=sim-joint_stamp,
@@ -1026,6 +1032,8 @@ def execute(cfg, model_spec, provenance, out):
                 atomic_json(out/"hover_reference.json", loop.fixed_reference.document)
                 if upper_research:
                     feedback_kwargs = {"require_acceleration": True} if cfg.get("mixed_mpc_protocol") is not None else {}
+                    if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
+                        feedback_kwargs["require_prediction_timing"] = True
                     loop.feedback_adapter = Px4EstimatedFeedback(loop.fixed_reference, ctx.node, **feedback_kwargs)
                     _, anchor_state, _ = loop.read()
                     loop.last, loop.next_control = None, loop.control_now()
@@ -1071,10 +1079,29 @@ def execute(cfg, model_spec, provenance, out):
                         # Declare the existing t=0 target before marking any
                         # sample as measure, rather than leaving it blank.
                         capture.tip_target = trajectory.sample(0.)[0].copy()
+            if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
+                # Refresh the ordinary prestream after constructing the new
+                # controller. Keep its actual last command/time across enable;
+                # no startup gap is hidden by resetting dt to 20 ms.
+                loop.pump()
             capture.phase = "measure"
             start = loop.control_now()
             loop.task_start = start
             loop.last, loop.next_control = None, start
+            if "prediction_chain" in (cfg.get("mixed_mpc_protocol") or {}).get("mpc_controller_config", {}):
+                history = loop.sent_command_history
+                if not history or history[-1][0] > start+1e-9:
+                    raise RuntimeError("Prediction-chain activation requires actual preceding sent commands")
+                if cfg["controller"] == "mpc":
+                    loop.controller.allocator.prime_command_history(history, start)
+                else:
+                    # Same actual prestream command and first-step slew basis
+                    # for the matched PID; do not invent a zero initial input.
+                    loop.controller.allocator.previous_command = history[-1][1].copy()
+                loop.last = history[-1][0]
+                meta["activation_command_history"] = [
+                    {"control_time_s": when, "task_time_s": when-start, "command": value.tolist()}
+                    for when, value in history]
             meta.update(phase="measure", task_start_sim_s=start, reference_base_enu_m=loop.anchor,
                         reference_rotation=anchor_state.rotation, requested_duration_s=cfg["duration_s"])
             atomic_json(out/"controller_metadata.json", meta)

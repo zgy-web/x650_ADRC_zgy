@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from test_x650_mpc_failure_plot import FailurePlotTests
 from test_x650_mixed_stage_comparison_plot import write_csv, write_json
 import analyze_x650_prediction_chains as chains
+from mixed_mpc_protocol import build_prediction_chain_protocol
 
 
 class DiagnosticTests(unittest.TestCase):
@@ -88,6 +89,57 @@ class DiagnosticTests(unittest.TestCase):
         self.assertTrue(report['experiment_complete'])
         self.assertFalse(report['eligible_as_stage_gate'])
         self.assertEqual(report['partial_window_sim_s'], [10., 10.2])
+
+    def enable_chain_fixture(self, folder):
+        meta = chains.read(folder/'controller_metadata.json')
+        task = meta['task']
+        task['mixed_mpc_protocol'] = build_prediction_chain_protocol()
+        write_json(folder/'controller_task.json', task)
+        write_json(folder/'controller_metadata.json', meta)
+        config = task['mixed_mpc_protocol']['mpc_controller_config']['prediction_chain']
+        model = chains.ArmModel(**meta['physical_profile'])
+        path = folder/'controller_diagnostics.jsonl'
+        entries = [json.loads(line) for line in path.read_text().splitlines()]
+        for entry in entries:
+            d = entry['diagnostics']
+            rotations = np.asarray([chains.rotation_increment(np.array([0., .02*(j+1), 0.])) for j in range(3)])
+            predicted = np.asarray(d['predicted_states'])
+            d.update(prediction_chain=config, predicted_rotations_flu_to_enu=rotations.tolist(),
+                     prediction_initial_joint_position=[.001, -.002])
+            d['predicted_tip_positions'] = [
+                (x[:3]+R@chains.tip_body(x[6:8], model)).tolist() for x, R in zip(predicted, rotations)]
+        path.write_text('\n'.join(json.dumps(row) for row in entries), encoding='utf-8')
+        return path, entries
+
+    def test_new_chain_uses_saved_rotations_and_reports_initial_joint_propagation(self):
+        folder, _ = self.make_fixture()
+        self.enable_chain_fixture(folder)
+        # A saved rotation really differs from legacy omega=0 reconstruction.
+        with patch.object(chains, 'rotation_increment', side_effect=AssertionError('no legacy reconstruction')):
+            report, *_ = chains.analyze(folder, gravity=9.80665)
+        forecast = report['original_prediction_errors']
+        self.assertEqual(forecast['attitude_source'], 'original saved predicted_rotations_flu_to_enu')
+        self.assertLess(forecast['maximum_stored_tip_rebuild_error_m'], 1e-12)
+        initial = forecast['prediction_initial_joint_position']
+        self.assertTrue(initial['available'])
+        np.testing.assert_allclose(initial['propagated_minus_native_at_control_rad']['axis_mean'], [.001, -.002])
+        np.testing.assert_allclose(initial['raw_feedback_minus_native_at_control_rad']['axis_rms'], [0., 0.])
+        self.assertFalse(report['eligible_as_stage_gate'])
+
+    def test_new_chain_rejects_missing_improper_or_fk_inconsistent_rotations(self):
+        for fault in ('missing', 'improper', 'proper_but_wrong', 'missing_initial_q', 'config_mismatch'):
+            with self.subTest(fault=fault):
+                folder, _ = self.make_fixture()
+                path, entries = self.enable_chain_fixture(folder)
+                d = entries[0]['diagnostics']
+                if fault == 'missing': del d['predicted_rotations_flu_to_enu']
+                elif fault == 'improper': d['predicted_rotations_flu_to_enu'][0][0][0] *= 1.1
+                elif fault == 'proper_but_wrong': d['predicted_rotations_flu_to_enu'][0] = np.eye(3).tolist()
+                elif fault == 'missing_initial_q': del d['prediction_initial_joint_position']
+                else: d['prediction_chain'] = {**d['prediction_chain'], 'joint_delay_s': .025}
+                path.write_text('\n'.join(json.dumps(row) for row in entries), encoding='utf-8')
+                with self.assertRaises(ValueError):
+                    chains.analyze(folder, gravity=9.80665)
 
 
 if __name__ == '__main__': unittest.main()
