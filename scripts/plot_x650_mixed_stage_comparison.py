@@ -186,6 +186,43 @@ def figures(runs, output):
     fig.suptitle("Native joints and original commands | joint commands are velocities, not angle references\n"
                  "Optimizer solve_ms excludes part of setup/KKT; compute_ms is the separately logged control span", fontsize=12)
     save(fig, "mixed_stage_joints_solver")
+    if runs[0]["task"].get("trajectory_parameters") is not None:
+        fig, axes = plt.subplots(2, len(runs), figsize=(15, 7), squeeze=False,
+                                 gridspec_kw={"height_ratios": [1.5, 1]}, constrained_layout=True)
+        y_extent_mm = max(1e-3, 1100*max(float(np.max(abs(run["physical"]["tip"][:, 1]-run["target"][:, 1])))
+                                      for run in runs))
+        for column, run in enumerate(runs):
+            data, reference = run["physical"], run["target"]
+            color, label = COLORS[run["controller"]], LABELS[run["controller"]]
+            center = np.asarray(run["report"]["stage_acceptance"]["reference_center_world_enu_m"], float)
+            path_ax, y_ax = axes[:, column]
+            path_ax.plot(reference[:, 0], reference[:, 2], color="#444444", ls="--", lw=1.7,
+                         label="Declared reference", zorder=3)
+            path_ax.plot(data["tip"][:, 0], data["tip"][:, 2], color=color, lw=1.25,
+                         label="Actual native tip", zorder=2)
+            path_ax.scatter([center[0]], [center[2]], marker="+", s=75, color="#222222",
+                            label="Pre-bound center", zorder=4)
+            path_ax.set_aspect("equal", adjustable="box")
+            path_ax.ticklabel_format(axis="both", style="plain", useOffset=False)
+            path_ax.set_xlabel("Absolute world ENU X (m)")
+            path_ax.set_ylabel("Absolute world ENU Z (m)")
+            path_ax.set_title(label+"\nPre-bound center ENU (m): "
+                              +", ".join(f"{value:.6f}" for value in center), fontsize=10, pad=32)
+            path_ax.grid(True, alpha=.25)
+            path_ax.legend(fontsize=8, loc="lower center", bbox_to_anchor=(.5, 1.01), ncol=3)
+            y_ax.plot(data["t"], 1000*(data["tip"][:, 1]-reference[:, 1]), color=color,
+                      label="Native Y minus this run's declared Y")
+            y_ax.axhline(0., color="#444444", ls="--", lw=1., label="Declared XZ plane")
+            y_ax.set_xlabel("Time since this run's declared measurement start (s)")
+            y_ax.set_ylabel("Y departure (mm)")
+            y_ax.set_ylim(-y_extent_mm, y_extent_mm)
+            y_ax.grid(True, alpha=.25)
+            y_ax.legend(fontsize=8, loc="best")
+        fig.suptitle(runs[0]["report"]["stage"]+": native XZ paths | FULL MEASUREMENT WINDOW\n"
+                     "Absolute ENU coordinates; equal X/Z scale in each panel; each original center retained\n"
+                     "Includes initial hold, smooth start/stop, both cycles and final hold; no translation or phase fit",
+                     fontsize=12)
+        save(fig, "mixed_stage_paths")
     return files
 
 

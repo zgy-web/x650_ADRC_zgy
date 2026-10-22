@@ -211,6 +211,25 @@ def verify_recording(csv_path, source, data, manifest_path=None):
             "model_identity_source": "finalized manifest" if row_hashes == {None} else "manifest and every CSV row"}
 
 
+def native_display_identity(capture):
+    """Label only the native-derived manifest already verified by the caller."""
+    metadata = capture.get("metadata", {})
+    if metadata.get("kind") != "x650_mixed_native_derived_replay_input":
+        return None
+    controllers = {"pid_ff": "PID BASELINE", "mpc": "UPPER MPC"}
+    stages = {"tip_hold": "TIP HOLD", "small": "SMALL", "normal": "NORMAL", "fast": "FAST"}
+    controller, stage = metadata.get("controller"), metadata.get("stage")
+    if (metadata.get("complete") is not True or metadata.get("derived_from_native_physics") is not True
+            or metadata.get("original_flight_recorder_capture") is not False
+            or controller not in controllers or stage not in stages):
+        raise ValueError("Native replay display identity is missing or inconsistent")
+    return {"source": "verified_capture_manifest_controller_and_stage",
+            "capture_manifest_path": capture["path"], "capture_manifest_sha256": capture["sha256"],
+            "controller": controller, "stage": stage,
+            "controller_label": controllers[controller], "stage_label": stages[stage],
+            "label": controllers[controller]+" / "+stages[stage]}
+
+
 def sample_state(data, elapsed, gap_limit=.25):
     p, quat, index, gap = sample_pose(data, elapsed, gap_limit)
     if gap or index == len(data["elapsed"])-1:
@@ -417,6 +436,7 @@ def render(args):
     data = load_samples(csv_path)
     capture = ({"synthetic_test": True, "experiment_result": False} if args.synthetic_test
                else verify_recording(csv_path, source, data, args.capture_manifest))
+    display_identity = native_display_identity(capture)
     if args.joint_probe and args.synthetic_test:
         raise ValueError("Joint-probe mode requires real completed recording metadata")
     joint_context = joint_probe_context(data, csv_path, capture, args.controller_metadata) if args.joint_probe else None
@@ -431,6 +451,8 @@ def render(args):
               "joint_interpolation": "piecewise linear measured joint angles; no smoothing",
               "gap_policy": "gaps >0.25s hold previous base pose and both joints", "rotor_angles": "unlogged: never animated"}
     record["display_mode"] = "joint_probe" if joint_context is not None else "endpoint"
+    if display_identity is not None:
+        record["display_identity"] = display_identity
     if joint_context is not None: record["joint_reference"] = joint_context["metadata"]
     (output/"fk_audit.json").write_text(json.dumps(fk_audit, indent=2)+"\n", encoding="utf-8")
     if args.audit_only:
@@ -502,7 +524,10 @@ def render(args):
             canvas.paste(Image.fromarray(renderer.render().copy()).resize((410, 346)), (24, 484))
             draw = ImageDraw.Draw(canvas)
             draw.rectangle((0, 0, 1440, 80), fill=BG)
-            draw.text((24, 13), "X650 + TWO-LINK ARM  |  RECORDED STATE", font=find_font(27, True), fill=FG)
+            title = "X650 + TWO-LINK ARM  |  RECORDED STATE"
+            if display_identity is not None:
+                title += "  |  "+display_identity["label"]
+            draw.text((24, 13), title, font=find_font(27, True), fill=FG)
             draw.text((24, 51), "Gazebo SITL  /  3.495 kg  /  +Y 40 mm elbow offset  /  base + measured joint replay", font=find_font(16), fill=MUTED)
             draw.rounded_rectangle((24, 100, 365, 184), radius=10, fill=PANEL)
             draw.text((40, 111), f"{data['phase'][index].upper()}    {now:5.2f} s  |  1x", font=find_font(18, True), fill=GREEN)
