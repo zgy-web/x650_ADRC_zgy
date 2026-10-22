@@ -197,6 +197,14 @@ local characteristic: lambda^2 + d_incremental/Jbar*lambda + Kp/Jbar = 0
 
 当前服务器 Remote 连接离线，此候选尚未部署，也没有新的耗时或保持成绩。恢复后必须先对同一个失败工况检查精简前后行数、原完整约束质量、目标函数、完整计划和非线性后验，再跑原 30 工况矩阵及包回归。通过后才启动全新的安静末端保持；既有两次失败和 29/30 记录保留，快速八字仍未准入。
 
+原完整矩阵脚本在服务器 `artifacts/ts20_prediction_chain_20261022/benchmark_gain_kd025_matrix_v1.py`；本轮仅更改输出位置的执行副本为 `artifacts/ts20_chain_hold_damped_v1_20261022/benchmark_incremental_runtime_matrix.py`。恢复连接后先读取并归档这两个版本及其 SHA，再以同一冻结工况重跑；本地单工况 profiler 不能代替完整矩阵。目前本地只有矩阵的精简结果，不另行猜测或重写其余工况。
+
+结果工具 `scripts/plot_x650_ts20_commissioning_results.py` 要求完整通过的实际阶段证书，逐文件核对原始 CSV 与证书 SHA。保持图严格使用证书中的名义 30 s 评分区间，另外保留实际回调结束时刻，避免多纳入一个回调的尾部样本；关节图每次从绑定的实际首态和 MIT 包重新自由推演，不接收外部预测数组替代计算。图中分别标明物理区间平均 dq 与模型端点 dq，后者不当作独立实测速度。6 项合成回归通过；该工具尚未用本轮服务器数据生成正式图，合成测试不构成实验成绩。
+
+`scripts/profile_x650_ts20_actual_step.py` 用于原 quiet v2 首个真实状态的离线回放；`scripts/profile_x650_ts20_matrix_fixture.py` 用于单个 `+5 mm / age=0 / moving_warm` 软件工况定位。它们不启动飞行，不代替完整矩阵或实时验收。当前工具将新输出与原失败记录分开，并记录实际加载代码及库的身份；历史报告中的 harness SHA 指向当时归档的执行版本，不能用本地后来修订的工具 SHA 覆写。服务器恢复后仍须验证当前工具的实际数据读取与结果，不把本地语法或合成检查当成重放通过。
+
+两个诊断工具的语法检查和 `--help` 均通过，且 `--help` 无需 SciPy。7 项离线保护检查确认：已有空／非空输出目录均拒绝，原 marker 和 prefix 不被覆盖，增量读取遵循给定时钟并拒绝已消费行中的非有限数。矩阵单工况工具必须显式提供 `--native-sha256`；实际回放工具支持 `--historical-source-archive` 附加旧执行归档身份。当前版本尚未完成实际数据重放或服务器数值验收。
+
 ## 10. 真机条件仍需补齐
 
 仍需完成两类物理证据：
