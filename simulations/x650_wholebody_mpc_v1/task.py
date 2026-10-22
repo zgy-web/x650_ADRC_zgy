@@ -28,8 +28,12 @@ for folder in (Path(__file__).resolve().parent, ROOT/"src", ROOT/"control_packag
 from diagnostic_parameters import validate_profile, validate_pid_candidate, assert_no_pending_journal, PRECISION_PROFILE
 from research_condition import (validate_research_profile, condition_for_task, canonical_hash,
                                 is_upper_research, expected_gate_condition, UPPER_RESEARCH_STAGES,
-                                UPPER_RESEARCH_PROFILE_NAME)
+                                UPPER_RESEARCH_PROFILE_NAME, is_mixed_mpc_research,
+                                MIXED_MPC_PROFILE_NAME, MIXED_MPC_STAGES)
 from response_protocol import validate_response_protocol, protocol_annotation
+from mixed_mpc_protocol import (validate_mixed_mpc_protocol, protocol_hash as mixed_protocol_hash,
+                                protocol_annotation as mixed_protocol_annotation, controller_config)
+from accepted_response_model import load_accepted_response_model
 
 
 def sha(path):
@@ -49,7 +53,7 @@ def source_files_for_task(cfg):
     return list(dict.fromkeys(sources))
 
 
-def build_task_config(stage="hover_folded", controller="pid_ff", *, response_probe_protocol=None):
+def build_task_config(stage="hover_folded", controller="pid_ff", *, response_probe_protocol=None, mixed_mpc_protocol=None):
     if stage not in STAGES or controller not in ("pid_ff", "mpc"):
         raise ValueError("Unsupported stage/controller")
     if stage in ("hover_folded", "joint_probe", "response_probe") and controller != "pid_ff":
@@ -57,6 +61,9 @@ def build_task_config(stage="hover_folded", controller="pid_ff", *, response_pro
     period = 8. if stage == "fast" else 16. if stage == "small" else 12.
     trajectory = stage if stage in ("small", "normal", "fast") else "hover"
     protocol = validate_response_protocol(response_probe_protocol)
+    mixed_protocol = validate_mixed_mpc_protocol(mixed_mpc_protocol)
+    if mixed_protocol is not None and (stage not in MIXED_MPC_STAGES or protocol is not None):
+        raise ValueError("Frozen mixed MPC protocol requires a comparison stage and excludes response excitation")
     if protocol is not None and (stage != "response_probe" or controller != "pid_ff"):
         raise ValueError("Frozen response protocol requires response_probe / pid_ff")
     config = {
@@ -86,6 +93,8 @@ def build_task_config(stage="hover_folded", controller="pid_ff", *, response_pro
         config.update(response_probe_protocol=protocol, duration_s=protocol["duration_s"])
         if protocol["role"] == "holdout":
             config.update(frozen_response_candidate=None, frozen_response_candidate_sha256=None)
+    if mixed_protocol is not None:
+        config.update(mixed_mpc_protocol=mixed_protocol, feedforward_enabled=False)
     return config
 
 
@@ -99,10 +108,13 @@ def validate_task_config(value):
     value.setdefault("precision_test_profile", None)
     value.setdefault("research_profile", None)
     protocol = validate_response_protocol(value.get("response_probe_protocol"))
+    mixed_protocol = validate_mixed_mpc_protocol(value.get("mixed_mpc_protocol"))
     expected = build_task_config(value.get("stage"), value.get("controller"),
-                                 response_probe_protocol=protocol)
+                                 response_probe_protocol=protocol, mixed_mpc_protocol=mixed_protocol)
     if "response_probe_protocol" in value and protocol is None:
         expected["response_probe_protocol"] = None
+    if "mixed_mpc_protocol" in value and mixed_protocol is None:
+        expected["mixed_mpc_protocol"] = None
     paths = {"preparation_report", "airframe_source", "native_recorder_library", "response_model", "pid_profile"}
     editable = paths | {"stage_evidence", "diagnostic_profile", "hover_reference_profile", "pid_tuning_candidate", "precision_test_profile", "research_profile"}
     if protocol is not None and protocol["role"] == "holdout":
@@ -119,8 +131,9 @@ def validate_task_config(value):
     value["diagnostic_profile"] = validate_profile(value["diagnostic_profile"], value["stage"], value["controller"])
     reference = value["hover_reference_profile"]
     if reference is not None:
-        reference_stages = UPPER_RESEARCH_STAGES if is_upper_research(value) else ("hover_folded", "joint_probe")
-        if (value["stage"] not in reference_stages or value["controller"] != "pid_ff"
+        mixed = is_mixed_mpc_research(value)
+        reference_stages = MIXED_MPC_STAGES if mixed else UPPER_RESEARCH_STAGES if is_upper_research(value) else ("hover_folded", "joint_probe")
+        if (value["stage"] not in reference_stages or (value["controller"] != "pid_ff" and not mixed)
                 or not isinstance(reference, dict) or set(reference) != {"name", "world_sdf"}
                 or reference["name"] != "fixed_world_position_v1"
                 or not isinstance(reference["world_sdf"], str) or not Path(reference["world_sdf"]).is_absolute()):
@@ -135,8 +148,12 @@ def validate_task_config(value):
                 or value["controller"] != "pid_ff" or reference is None):
             raise ValueError("Precision step protocol requires fixed-world hover_folded / pid_ff")
     value["research_profile"] = validate_research_profile(value["research_profile"], value)
-    if protocol is not None and not is_upper_research(value):
+    if protocol is not None and (value["research_profile"] or {}).get("name") != UPPER_RESEARCH_PROFILE_NAME:
         raise ValueError("Frozen response protocol requires precision_ev_upper_v2 estimated feedback")
+    if (mixed_protocol is not None) != is_mixed_mpc_research(value):
+        raise ValueError("Mixed MPC comparison requires both the v3 research profile and its frozen protocol")
+    if is_mixed_mpc_research(value) and value["response_model"] is None:
+        raise ValueError("Mixed MPC comparison requires the accepted response model for both controllers")
     if protocol is not None and protocol["role"] == "holdout":
         path, digest = value["frozen_response_candidate"], value["frozen_response_candidate_sha256"]
         if (path is None) != (digest is None):
@@ -156,6 +173,17 @@ def selected_task_config():
 
 def required_gates(cfg):
     stage = cfg["stage"]
+    if is_mixed_mpc_research(cfg):
+        gates = {"native_ground", "hover_folded", "joint_probe", "response_identification"}
+        if cfg["controller"] == "mpc":
+            gates.add("pid_baseline")
+        if stage in ("small", "normal", "fast"):
+            gates.add("tip_hold")
+        if stage in ("normal", "fast"):
+            gates.add("small")
+        if stage == "fast":
+            gates.add("normal")
+        return sorted(gates)
     gates = set()
     if stage != "hover_folded":
         gates.update(("native_ground", "hover_folded"))
@@ -213,22 +241,40 @@ def validate_stage_gates(cfg, provenance):
                 or data.get("pid_parameters_sha256") != expected_condition["pid_parameters_sha256"]):
             raise ValueError("Research evidence has a different or missing operating condition: "+gate)
         upper_certificate = (expected_condition is not None
-                             and expected_condition["research_profile"] == UPPER_RESEARCH_PROFILE_NAME)
+                             and expected_condition["research_profile"] in (UPPER_RESEARCH_PROFILE_NAME, MIXED_MPC_PROFILE_NAME))
         if upper_certificate and any(data.get(name) is not True
                                      for name in ("upper_command_verified", "feedback_contract_verified")):
             raise ValueError("Upper research evidence lacks verified command/feedback contracts: "+gate)
         files = data.get("artifacts")
         if not isinstance(files, dict) or not files:
             raise ValueError("Native evidence must include hashed raw artifacts: "+gate)
-        for name, digest in files.items():
-            artifact = Path(name)
-            if not artifact.is_absolute():
-                artifact = path.parent/artifact
-            if not artifact.is_file() or sha(artifact) != digest:
-                raise ValueError("Native evidence artifact mismatch: "+str(artifact))
+        if is_mixed_mpc_research(cfg) and gate == "response_identification":
+            accepted = provenance.get("accepted_response_binding")
+            if accepted is None:
+                accepted = load_accepted_response_model(cfg)["binding"]
+            if accepted["evidence"] != {"path": str(path.resolve()), "sha256": sha(path)}:
+                raise ValueError("Response gate differs from the accepted-model certificate binding")
+        else:
+            for name, digest in files.items():
+                artifact = Path(name)
+                if not artifact.is_absolute():
+                    artifact = path.parent/artifact
+                if not artifact.is_file() or sha(artifact) != digest:
+                    raise ValueError("Native evidence artifact mismatch: "+str(artifact))
+        mixed_certificate = expected_condition is not None and expected_condition["research_profile"] == MIXED_MPC_PROFILE_NAME
+        if mixed_certificate:
+            if (data.get("mixed_mpc_protocol") != cfg["mixed_mpc_protocol"]
+                    or data.get("mixed_mpc_protocol_sha256") != mixed_protocol_hash(cfg["mixed_mpc_protocol"])
+                    or data.get("controller") not in ("pid_ff", "mpc")
+                    or data.get("acceleration_feedforward") != "zero"):
+                raise ValueError("Mixed MPC gate lacks the matching frozen comparison protocol: "+gate)
+            if gate == "pid_baseline" and (data.get("source_stage") != cfg["stage"] or data["controller"] != "pid_ff"):
+                raise ValueError("PID baseline must match this exact trajectory stage")
+            if gate in ("small", "normal") and data["controller"] != cfg["controller"]:
+                raise ValueError("Trajectory progression requires the same controller: "+gate)
         if condition is not None:
             names = {Path(name).name for name in files}
-            audit_name = "upper_stage_audit.json" if upper_certificate else "precision_stage_audit.json"
+            audit_name = "mixed_mpc_stage_audit.json" if mixed_certificate else "upper_stage_audit.json" if upper_certificate else "precision_stage_audit.json"
             if (not {"stage_result.json", "controller_metadata.json", audit_name} <= names
                     or not any(Path(name).suffix == ".ulg" for name in files)):
                 raise ValueError("Research evidence requires hashed full ULog, original stage/metadata and independent audit: "+gate)
@@ -242,6 +288,8 @@ def validate_stage_gates(cfg, provenance):
 
 def validate_upper_response_model(cfg, provenance):
     """Bind selected v2 response bytes to the same-condition certified result."""
+    if is_mixed_mpc_research(cfg):
+        return load_accepted_response_model(cfg)["binding"]
     if not is_upper_research(cfg) or cfg["stage"] != "tip_hold":
         return None
     path = cfg.get("response_model")
@@ -375,6 +423,7 @@ def preflight(cfg, *, check_airframe=True):
         provenance.update(operating_condition=condition, operating_condition_sha256=canonical_hash(condition),
                           pid_parameters_sha256=condition["pid_parameters_sha256"])
     provenance.update(protocol_annotation(cfg))
+    provenance.update(mixed_protocol_annotation(cfg))
     if candidate_binding is not None:
         if any(candidate_binding["identity"].get(key) != provenance[key] for key in
                ("model_sha256", "source_urdf_sha256", "airframe_sha256",
@@ -388,8 +437,15 @@ def preflight(cfg, *, check_airframe=True):
         provenance["hover_world_sdf_sha256"] = sha(world_path)
     sources = source_files_for_task(cfg)
     provenance["source_files_sha256"] = {p.relative_to(ROOT).as_posix(): sha(p) for p in sources}
+    accepted_response = None
+    if is_mixed_mpc_research(cfg):
+        accepted_response = load_accepted_response_model(cfg)
+        if any(accepted_response["model"].get(key) != provenance[key] for key in
+               ("model_sha256", "source_urdf_sha256", "airframe_sha256", "flight_profile_sha256", "preparation_report_sha256")):
+            raise ValueError("Accepted response belongs to another prepared physical model")
+        provenance["accepted_response_binding"] = accepted_response["binding"]
     provenance["stage_gates"] = validate_stage_gates(cfg, provenance)
-    if is_upper_research(cfg) and cfg["stage"] == "tip_hold":
+    if is_upper_research(cfg) and not is_mixed_mpc_research(cfg) and cfg["stage"] == "tip_hold":
         provenance["response_model_binding"] = validate_upper_response_model(cfg, provenance)
     for key in ("pid_profile", "response_model"):
         path = cfg[key]
@@ -421,7 +477,9 @@ def preflight(cfg, *, check_airframe=True):
         pid_digest = hashlib.sha256(json.dumps(params, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
         if response.get("pid_parameters_sha256") != pid_digest:
             raise ValueError("Identified response belongs to different PID parameters")
-        MpcController(arm, profile.get("parameters", profile.get("pid_gains", {})),
-                      config={"base_time_constant_s": response["base_time_constant_s"],
-                              "response_identified": True, "failure_policy": "raise"})
+        selected_config = (controller_config(cfg["mixed_mpc_protocol"], accepted_response["model"])
+                           if is_mixed_mpc_research(cfg) else
+                           {"base_time_constant_s": response["base_time_constant_s"],
+                            "response_identified": True, "failure_policy": "raise"})
+        MpcController(arm, profile.get("parameters", profile.get("pid_gains", {})), config=selected_config)
     return model, provenance

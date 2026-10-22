@@ -22,12 +22,19 @@ RESEARCH_STAGES = ("hover_folded", "joint_probe")
 RESEARCH_PID_CANDIDATE = "velocity_high"
 UPPER_RESEARCH_PROFILE_NAME = "precision_ev_upper_v2"
 UPPER_RESEARCH_STAGES = ("response_probe", "tip_hold")
+MIXED_MPC_PROFILE_NAME = "precision_ev_mixed_mpc_v3"
+MIXED_MPC_STAGES = ("tip_hold", "small", "normal", "fast")
 PREPARATION_GATES = ("native_ground", "hover_folded", "joint_probe")
 
 
 def is_upper_research(cfg):
     value = cfg.get("research_profile")
-    return isinstance(value, dict) and value.get("name") == UPPER_RESEARCH_PROFILE_NAME
+    return isinstance(value, dict) and value.get("name") in (UPPER_RESEARCH_PROFILE_NAME, MIXED_MPC_PROFILE_NAME)
+
+
+def is_mixed_mpc_research(cfg):
+    value = cfg.get("research_profile")
+    return isinstance(value, dict) and value.get("name") == MIXED_MPC_PROFILE_NAME
 
 
 def _protocol_fields(name):
@@ -40,6 +47,11 @@ def _protocol_fields(name):
                 "scope": "simulation_truth_aided_ev_upper_control",
                 "control_interface": "raw_ev_world_pva_v2",
                 "feedback_contract": "px4_estimator_receipt_enu_v1"}
+    if name == MIXED_MPC_PROFILE_NAME:
+        return {"schema_version": 3, "research_profile": MIXED_MPC_PROFILE_NAME,
+                "scope": "simulation_truth_aided_ev_mixed_mpc",
+                "control_interface": "raw_ev_world_pva_v2",
+                "feedback_contract": "px4_estimator_acceleration_receipt_enu_v2"}
     raise ValueError("Unknown research operating-condition version")
 
 
@@ -81,11 +93,12 @@ def validate_research_profile(value, cfg):
     if value is None:
         return None
     if (not isinstance(value, dict) or set(value) != {"name", "world_sdf"}
-            or value.get("name") not in (RESEARCH_PROFILE_NAME, UPPER_RESEARCH_PROFILE_NAME)
+            or value.get("name") not in (RESEARCH_PROFILE_NAME, UPPER_RESEARCH_PROFILE_NAME, MIXED_MPC_PROFILE_NAME)
             or not isinstance(value.get("world_sdf"), str) or not Path(value["world_sdf"]).is_absolute()):
         raise ValueError("Research profile requires the reviewed name and an absolute world SDF")
-    stages = UPPER_RESEARCH_STAGES if value["name"] == UPPER_RESEARCH_PROFILE_NAME else RESEARCH_STAGES
-    if cfg.get("stage") not in stages or cfg.get("controller") != "pid_ff":
+    mixed = value["name"] == MIXED_MPC_PROFILE_NAME
+    stages = MIXED_MPC_STAGES if mixed else UPPER_RESEARCH_STAGES if value["name"] == UPPER_RESEARCH_PROFILE_NAME else RESEARCH_STAGES
+    if cfg.get("stage") not in stages or cfg.get("controller") not in (("pid_ff", "mpc") if mixed else ("pid_ff",)):
         raise ValueError("Research profile permits only its reviewed commissioning stages with pid_ff; eight-figure/MPC stages are not enabled")
     if any(cfg.get(name) is not None for name in
            ("diagnostic_profile", "pid_tuning_candidate", "precision_test_profile")):
@@ -156,6 +169,17 @@ def expected_gate_condition(condition, gate, stage):
     stage. A preparation certificate remains a v1 certificate in provenance.
     """
     condition = validate_operating_condition(condition)
+    if condition["research_profile"] == MIXED_MPC_PROFILE_NAME:
+        if stage not in MIXED_MPC_STAGES:
+            raise ValueError("Mixed MPC gates are limited to reviewed comparison stages")
+        if gate in PREPARATION_GATES or gate == "response_identification":
+            source_name = RESEARCH_PROFILE_NAME if gate in PREPARATION_GATES else UPPER_RESEARCH_PROFILE_NAME
+            mapped = {key: value for key, value in condition.items() if key not in _protocol_fields(MIXED_MPC_PROFILE_NAME)}
+            mapped.update(_protocol_fields(source_name))
+            return validate_operating_condition(mapped), "preparation_only" if gate in PREPARATION_GATES else "nominal_response_only"
+        if gate in ("pid_baseline", "tip_hold", "small", "normal"):
+            return condition, "same_condition"
+        raise ValueError("No reviewed mixed MPC gate mapping for "+gate)
     if condition["research_profile"] != UPPER_RESEARCH_PROFILE_NAME:
         return condition, "same_condition"
     if stage not in UPPER_RESEARCH_STAGES:
