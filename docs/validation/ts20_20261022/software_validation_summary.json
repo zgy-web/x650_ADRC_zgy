@@ -1,0 +1,136 @@
+{
+  "complete": true,
+  "smoke": {
+    "complete": true,
+    "kind": "synthetic_interface_smoke_only",
+    "hardware_validation": false,
+    "command_velocity_rad_s": [
+      0.2,
+      -0.2
+    ],
+    "duration_s": 1,
+    "results": {
+      "pure_velocity": {
+        "final_q": [
+          0,
+          0
+        ],
+        "final_dq": [
+          0,
+          0
+        ],
+        "max_abs_q": [
+          0,
+          0
+        ]
+      },
+      "integrated_position_and_velocity": {
+        "final_q": [
+          0.1918334048636113,
+          -0.19190384179505574
+        ],
+        "final_dq": [
+          0.10016699107656697,
+          -0.08461701397858166
+        ],
+        "max_abs_q": [
+          0.1918334048636113,
+          0.19190384179505574
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "stage": "small",
+      "source_run": "x650_wholebody_mpc_v1_20261022_151357_16552",
+      "joint_difference_rad": {
+        "dimension": 2,
+        "rms_norm": 0.013000474785873095,
+        "peak_norm": 0.01755505770841386,
+        "axis_rms": [
+          0.00822749119091829,
+          0.010065820054098116
+        ]
+      },
+      "tip_change_vs_original_m": {
+        "dimension": 3,
+        "rms_norm": 0.0027971699827081063,
+        "peak_norm": 0.0037488898777185806,
+        "axis_rms": [
+          0.0012020152104987231,
+          0.00011542043965596836,
+          0.0025230928377692756
+        ]
+      },
+      "conditional_tip_error_vs_original_reference_m": {
+        "dimension": 3,
+        "rms_norm": 0.0031504206067315163,
+        "peak_norm": 0.005728995405223305,
+        "axis_rms": [
+          0.0014808122063434744,
+          0.0008564170744114788,
+          0.002645542478116579
+        ]
+      }
+    },
+    {
+      "stage": "normal",
+      "source_run": "x650_wholebody_mpc_v1_20261022_154759_20284",
+      "joint_difference_rad": {
+        "dimension": 2,
+        "rms_norm": 0.01468071451184846,
+        "peak_norm": 0.017834053201606123,
+        "axis_rms": [
+          0.01035251919226559,
+          0.010409069360522627
+        ]
+      },
+      "tip_change_vs_original_m": {
+        "dimension": 3,
+        "rms_norm": 0.002988394587593599,
+        "peak_norm": 0.003754007029627889,
+        "axis_rms": [
+          0.0014768448346910521,
+          0.00014401686704630995,
+          0.0025939719904831708
+        ]
+      },
+      "conditional_tip_error_vs_original_reference_m": {
+        "dimension": 3,
+        "rms_norm": 0.0037002692837506995,
+        "peak_norm": 0.008504986146606401,
+        "axis_rms": [
+          0.002246722800385173,
+          0.0016148349796617175,
+          0.002456936592376623
+        ]
+      }
+    }
+  ],
+  "generator_sha256": "a9e26866a49efc38a2cae90fa2660719c15968bf4d0adb7f892b2781bc94f03a",
+  "adapter_sha256": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+  "kind": "ts20_interface_software_validation_summary",
+  "date": "2026-10-22",
+  "host": "autodl-container-f7df47aece-2f3fc803",
+  "upstream_commit": "a97ef4f227ab778f9efdf86ff93ee309d7d35a22",
+  "confirmed_motor": "TS20-50",
+  "requested_hardware_supply_v": 24,
+  "source_identification_supply_v": 20,
+  "new_closed_loop_flight": false,
+  "hardware_accessed": false,
+  "physical_load_validated": false,
+  "supply_24v_validated": false,
+  "tests": {
+    "count": 11,
+    "passed": true,
+    "log_sha256": "add621e08278bcc09f3f6bc6213a7468fb9e2b505407e195f16aadfc3afaccd3"
+  },
+  "output_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/conditional_replay_v3",
+  "initial_attempt_failure": "amsim venv NumPy/SciPy ABI mismatch; retained replay.log; used existing system Python without downloads",
+  "runtime": {
+    "python": "/usr/bin/python3",
+    "numpy": "1.21.5",
+    "scipy": "1.8.0"
+  }
+}

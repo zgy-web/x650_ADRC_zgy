@@ -77,6 +77,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 ## X650 + 二连杆与精密定位接入
 
+真机前开发路线已整理为 [执行器、动捕、Orin 与 NMPC 验证框架](docs/X650_REAL_FLIGHT_READINESS_AND_NMPC.md)。用户确认采用 TS20-50／24 V；新增 [TS20 条件模型及 MIT 接入](docs/X650_TS20_INTEGRATION.md)、纯离线调用模块与旧 MPC 命令敏感性重放。该模型来自约 20 V 台架，未标定的力矩尺度不写入 URDF；24 V 带载整机闭环仍需新证据。历史八字继续按原协议解释。
+
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。
 
 新的 **`precision_ev_mixed_mpc_v3`** 已接入经全新训练与独立验证通过的 X/Y 二阶、Z 一阶基体速度响应模型，并固定同条件、零加速度前馈的 PID／MPC 对照流程。新版 `mixed_response_prediction_chain_v2` 补入关节源时间传播、已发送命令历史及水平加速度对预测姿态和末端几何的影响，已通过全新完整末端保持、小幅和普通 PID／MPC 八字验收；后续快速阶段仍需完整验收。正式响应参数、证据绑定、运行命令及顺序见 [混合阶 MPC 分阶段验证说明](docs/X650_MIXED_MPC_COMMISSIONING.md)。

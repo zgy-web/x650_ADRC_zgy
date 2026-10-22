@@ -1,6 +1,8 @@
 # X650 + 二连杆：PID/前馈与上层全身 MPC，0.1.0.dev0
 
-本包提供 X650 组合模型的显式运动学/质量参数、PID 协同基线、上层全身运动学 MPC，以及共用的前馈与 PX4 参考编码。**MPC 当前是离线数值实现和接口，不能据此声称原生 MPC 八字、跟踪优于 PID 或 50 Hz 实时性能已经验证。** 当前精密上层场景 `precision_ev_upper_v2` 只允许 `pid_ff` 的 `response_probe` 和 `tip_hold`；MPC/八字需另行建立协议和验收。PX4 仍执行级联 PID，机械臂使用 Gazebo 关节速度接口。后续全身动力学 NMPC 是独立阶段。
+本包提供 X650 组合模型的显式运动学/质量参数、PID 协同基线、上层全身 MPC，以及共用的前馈与 PX4 参考编码。后续 `precision_ev_mixed_mpc_v3` 协议已在服务器完成保持、小幅与普通八字，见 [阶段结果](../../docs/X650_FIGURE8_RESULTS_20261022.md)；这不表示真机或严格 50 Hz 整环已验收。PX4 仍执行级联 PID，历史实验机械臂使用 Gazebo 关节速度接口。
+
+本 README 中 `precision_ev_upper_v2` 的接口及工况限制保留为历史版本说明，不能替代 v3 的任务门禁。新 `ts20.py` 是独立的离线 MIT 参考适配和外部模型加载模块，详见 [TS20 接入](../../docs/X650_TS20_INTEGRATION.md)；它不自动替换已冻结 MPC 的关节预测或 Gazebo 执行器。真机前和 NMPC 路线见 [验证框架](../../docs/X650_REAL_FLIGHT_READINESS_AND_NMPC.md)。
 
 旧 `control_packages/pid_ff_wholebody_v1` 的冻结参数包和历史实验保持独立。旧 x500 的 PID 选择结果不能作为新 X650 + 臂已经充分整定的依据；本包要求调用者传入当前实验实际读回的 PX4 增益。
 

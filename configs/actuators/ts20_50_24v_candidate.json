@@ -1,0 +1,31 @@
+{
+  "schema": "x650_ts20_candidate_profile_v1",
+  "status": "conditional_simulation_only",
+  "hardware_confirmed": {
+    "motor": "TS20-50",
+    "joints": 2,
+    "supply_v": 24,
+    "onboard": "NX orign; provisionally Jetson Orin NX; exact model pending",
+    "positioning": "motion capture; SDK and interface pending"
+  },
+  "upstream": {
+    "repository": "https://github.com/ZHUOZHUOO/TS20",
+    "commit": "a97ef4f227ab778f9efdf86ff93ee309d7d35a22",
+    "source_manifest_required": true,
+    "identified_supply_v": 20,
+    "model_kind": "frozen_conditional_interface_model",
+    "physical_torque_scale_identified": false,
+    "actual_load_validated": false,
+    "voltage_24v_validated": false
+  },
+  "mit_candidate": {
+    "bus_period_s": 0.005,
+    "position_reference": "exact integral of piecewise-held upper joint velocity",
+    "velocity_reference": "latest upper joint velocity sampled on bus grid",
+    "tau_ff": 0,
+    "kp": 6,
+    "kd": 0.0999755859375,
+    "gain_semantics": "historical effective values; device 0x4B/0x4C not yet read"
+  },
+  "formal_flight_enabled": false
+}
