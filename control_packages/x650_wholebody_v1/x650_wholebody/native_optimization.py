@@ -33,6 +33,7 @@ class NativeOptimization:
         ip = ct.POINTER(ct.c_int)
         text = ct.POINTER(ct.c_char)
         signatures = {
+            "x650_joint_sensitivity": [i,i,i,p,p,ip,p,text,i],
             "x650_assemble": [i,p,i,p,i,ip,text,i],
             "x650_solve": [i,i,p,p,p,p,p,i,p,p,ip,text,i],
             "x650_endpoint": [i,p,p,p,p,p,p,text,i],
@@ -65,6 +66,39 @@ class NativeOptimization:
         p = controller.response_model["parameters"]
         return array([p["x"]["wn_rad_s"], p["x"]["zeta"], p["y"]["wn_rad_s"],
                       p["y"]["zeta"], p["z"]["tau_s"]], (5,))
+
+    def joint_sensitivities(self, predictor, start, boundaries, queries, sends, P, V):
+        """Same cached transitions/packet indices as the reference recurrence."""
+        bounds, queries, sends = array(boundaries), array(queries), array(sends)
+        if (bounds.ndim != 1 or queries.ndim != 1 or sends.ndim != 1
+                or len(bounds)==0 or len(queries)==0 or len(sends)==0
+                or np.any(np.diff(bounds)<=0) or np.any(np.diff(queries)<=0)
+                or np.any(np.diff(sends)<=0) or bounds[0]<start):
+            raise ValueError("Joint sensitivity ordered time contract")
+        P,V = array(P),array(V)
+        if P.ndim!=3 or P.shape!=V.shape or P.shape[:2]!=(len(sends),2):
+            raise ValueError("Joint packet sensitivity shape")
+        n=P.shape[2]
+        durations=np.diff(np.r_[start,bounds])
+        transitions=np.empty((len(bounds),2,2,3))
+        for index,duration in enumerate(durations):
+            A,B=(predictor._transition(duration) if duration>0 else
+                 (np.broadcast_to(np.eye(2),(2,2,2)),np.zeros((2,2))))
+            transitions[index,:,:,:2]=A
+            transitions[index,:,:,2]=B
+        # A held packet changes only after reaching its application boundary.
+        starts=np.r_[start,bounds[:-1]]
+        indices=np.maximum(0,np.searchsorted(sends,starts+1e-11,side="right")-1)
+        forces = predictor.kp[None,:,None]*P+predictor.kd[None,:,None]*V
+        query_index=np.searchsorted(bounds,queries).astype(np.int32)
+        if np.any(query_index>=len(bounds)) or np.any(abs(bounds[query_index]-queries)>1e-9):
+            raise ValueError("Joint query coverage")
+        output=np.empty((len(queries),2,2,n))
+        self.call("x650_joint_sensitivity",n,len(bounds),len(queries),
+                  transitions,array(forces[indices]),query_index,output)
+        if not np.isfinite(output).all():
+            raise ValueError("Nonfinite joint sensitivity output")
+        return list(output)
 
     def assemble(self, controller, t, dt, state, target):
         c = controller

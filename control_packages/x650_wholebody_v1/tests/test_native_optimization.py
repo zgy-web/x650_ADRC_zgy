@@ -10,6 +10,7 @@ import numpy as np
 from test_ts20_mpc import setup
 from x650_wholebody.native_optimization import NativeOptimization
 from x650_wholebody.native_mpc import NativeTs20MpcController
+from x650_wholebody.native_joint_prediction import NativeJointMatrices
 from x650_wholebody.mpc import MpcController,MpcSolveError
 
 LIB=os.environ.get("X650_NATIVE_OPTIMIZATION_LIBRARY")
@@ -72,6 +73,49 @@ class NativeGates(unittest.TestCase):
 
     def test_bounded_active_set(self):
         with self.assertRaises(ValueError):self.native.solve(self.problem(),1)
+
+    def test_joint_recurrence_matches_reference_at_packet_boundaries(self):
+        _,p,_,_=setup()
+        rng=np.random.default_rng(20261023)
+        start=-.008
+        bounds=np.array([start,0.,.002,.005,.01,.013,.02,.025])
+        queries=bounds[[0,1,3,5,7]]
+        sends=np.array([-.02,.005,.013,.022])
+        for n in (5,75,300):
+            P,V=rng.normal(size=(2,len(sends),2,n))
+            expected=[];S=np.zeros((2,2,n));cursor=start
+            index=max(0,int(np.searchsorted(sends,start+1e-11,side='right')-1))
+            for end in bounds:
+                if end>cursor:
+                    A,B=p._transition(end-cursor)
+                    force=p.kp[:,None]*P[index]+p.kd[:,None]*V[index]
+                    S=np.einsum('jik,jkn->jin',A,S)+B[:,:,None]*force[:,None,:]
+                if len(expected)<len(queries) and abs(queries[len(expected)]-end)<1e-9:
+                    expected.append(S.copy())
+                cursor=end;index=max(0,int(np.searchsorted(sends,end+1e-11,side='right')-1))
+            actual=self.native.joint_sensitivities(p,start,bounds,queries,sends,P,V)
+            np.testing.assert_allclose(actual,expected,atol=1e-12,rtol=1e-12)
+
+    def test_joint_recurrence_rejects_bad_times_and_shapes(self):
+        _,p,_,_=setup();P=np.zeros((2,2,5))
+        for bounds,queries,sends,positions in (
+            ([0.,.01],[.005],[-.02,0.],P),
+            ([0.,.01],[0.,0.],[-.02,0.],P),
+            ([0.,0.],[0.],[-.02,0.],P),
+            ([0.,.01],[0.],[0.,-.02],P),
+            ([0.,.01],[0.],[-.02,0.],np.zeros((2,3,5))),
+        ):
+            with self.assertRaises(ValueError):
+                self.native.joint_sensitivities(p,0.,bounds,queries,sends,positions,P)
+
+    def test_joint_matrix_kernel_preserves_complete_problem(self):
+        c,p,s,t=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        a=c._problem(0.,.02,s,t)
+        c.actuator_predictor=NativeJointMatrices(p,self.native)
+        b=c._problem(0.,.02,s,t)
+        for key in ('A','b','H','g','C','lo','hi','offsets','jacobians'):
+            np.testing.assert_allclose(a[key],b[key],atol=1e-9,rtol=1e-9,err_msg=key)
 
     def candidate_case(self):
         c,_,_,_=setup();N=c.nodes

@@ -93,6 +93,34 @@ class UpperLoopTests(unittest.TestCase):
         # Truth remains available to safety/joint-home recovery, with no PVA.
         self.assertIs(self.loop.read()[1],self.truth)
 
+    def test_ts20_normal_restore_clears_stale_feedback_and_keeps_recovery_outputs(self):
+        self.loop.read()
+        self.assertIsNotNone(self.loop.feedback_diagnostics)
+        self.assertIsNone(self.truth.acceleration_enu)
+        self.loop.extension = NS(
+            select_joint_observation=lambda *args: None,
+            after_state_read=lambda loop,state,joint_stamp,sim: (state,joint_stamp),
+            on_pump=lambda *args: None,
+            before_publish=lambda *args: {"active":False,"reason":"recovery"})
+        self.loop.recovery=True
+        self.loop.task_start=None
+        self.capture.phase='restore_folded'
+        joint=[]
+        self.ctx.arm.set_velocity=lambda *args: joint.append(args)
+        with patch.object(self.loop.feedback_adapter,'read',side_effect=AssertionError('Inactive estimator read')), \
+                patch.dict(sys.modules,{'pymavlink':NS(mavutil=NS(mavlink=NS(MAV_FRAME_LOCAL_NED=1)))}):
+            self.loop.pump()
+        self.assertIsNone(self.loop.feedback_diagnostics)
+        self.assertEqual(len(joint),2)
+        self.assertEqual(len(self.sent),1)  # Existing recovery hold behavior.
+        self.loop.control.flush();self.loop.feedback_stream.flush()
+        with (self.path/'control_trace.csv').open() as stream:
+            row=next(csv.DictReader(stream))
+        self.assertEqual(row['phase'],'restore_folded')
+        self.assertTrue(np.isnan(float(row['feedback_ax'])))
+        self.assertTrue(np.isnan(float(row['feedback_px'])))
+        self.assertIsNone(json.loads((self.path/'feedback_trace.jsonl').read_text())['feedback'])
+
     def test_unbound_upper_loop_cannot_publish(self):
         self.loop.feedback_adapter=None
         with patch.dict(sys.modules,{'pymavlink':NS(mavutil=NS(mavlink=NS(MAV_FRAME_LOCAL_NED=1)))}):

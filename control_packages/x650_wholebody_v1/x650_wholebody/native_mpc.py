@@ -14,6 +14,7 @@ from .mpc import MpcController, MpcSolveError, MIXED_RESPONSE_KIND, MIXED_STATE_
 from .model import vector, rotation_matrix, tip_world, tip_body
 from .ts20_mpc import Ts20MpcController, CANDIDATE_POLICY, RELINEARIZATION_POLICY, CHAIN_CONFIG
 from .native_optimization import NativeOptimization
+from .native_joint_prediction import NativeJointMatrices
 
 
 class NativeMpcStep(MpcController):
@@ -134,6 +135,7 @@ class NativeTs20MpcController(Ts20MpcController, NativeMpcStep):
     def __init__(self, *args, native_library, native_sha256, **kwargs):
         self.native_optimization = NativeOptimization(native_library,native_sha256)
         super().__init__(*args, **kwargs)
+        self.actuator_predictor = NativeJointMatrices(self.actuator_predictor, self.native_optimization)
         if self.failure_policy != "raise":
             raise ValueError("Native TS20 requires reject-without-fallback")
         if (CANDIDATE_POLICY != {"q_linearization_error_max_rad":.006,
@@ -165,7 +167,9 @@ class NativeTs20MpcController(Ts20MpcController, NativeMpcStep):
             "ts20_candidate_policy": deepcopy(CANDIDATE_POLICY),
             "ts20_candidate_q_linearization_error_rad": q_error,
             "ts20_candidate_dq_linearization_error_rad_s": dq_error,
-            "ts20_candidate_envelope": deepcopy(envelope),
+            # candidate_rollout owns this new envelope; it has no future
+            # writers. Transfer it instead of copying every extremum dict.
+            "ts20_candidate_envelope": envelope,
             "ts20_candidate_actual_bounds_passed": bool(bounds_ok),
             "ts20_bus_period_s": self.actuator_predictor.bus_period_s,
             "ts20_combined_interface_delay_s": self.actuator_predictor.delay_s,

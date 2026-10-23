@@ -93,6 +93,33 @@ static std::pair<Vec,Vec> bounds(double dt,const V2& q,const Vec& vl,const Vec& 
 }
 
 extern "C" int x650_optimization_abi(){return 1;}
+// Frozen sliding-branch sensitivity recurrence. The reference predictor supplies
+// its exact cached A/B transitions and already validated packet sensitivities.
+// Layout: transition[boundary][joint][state][A0,A1,B], S[joint][state][column].
+extern "C" int x650_joint_sensitivity(int n,int nb,int nq,const double* transitions,
+ const double* forcing,const int* query_index,double* output,char* error,int es){
+ try {
+  require(n>0&&n<=300&&nb>0&&nb<=5000&&nq>0&&nq<=nb,
+          "joint sensitivity shape");
+  require(transitions&&forcing&&query_index&&output,"joint sensitivity pointers");
+  Mat S=Mat::Zero(4,n),next(4,n);int query=0;
+  for(int b=0;b<nb;b++){
+   for(int j=0;j<2;j++){
+    const double* a=transitions+b*12+j*6;
+    Eigen::Map<const Vec> force(forcing+(b*2+j)*n,n);
+    require(force.allFinite(),"nonfinite joint forcing sensitivity");
+    for(int k=0;k<6;k++)require(std::isfinite(a[k]),"nonfinite joint transition");
+    for(int s=0;s<2;s++)
+     next.row(2*j+s)=a[3*s]*S.row(2*j)+a[3*s+1]*S.row(2*j+1)+a[3*s+2]*force.transpose();
+   }
+   S.swap(next);
+   if(query<nq&&query_index[query]==b){
+    std::copy(S.data(),S.data()+4*n,output+query*4*n);query++;
+   }
+  }
+  require(query==nq,"joint query coverage/order");return 0;
+ }catch(const std::exception& e){std::snprintf(error,es,"%s",e.what());return 1;}
+}
 extern "C" int x650_assemble(int N,const double* data,int length,double* output,int capacity,int* shape,char* error,int es){
  try {require(N>=2&&N<=60&&data&&output&&shape,"assembly contract");int n=5*N;Reader r{data,length};
   double dt=r.scalar(),node_dt=r.scalar(),maxdt=r.scalar(),age=r.scalar(),trust=r.scalar();

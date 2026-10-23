@@ -9,6 +9,11 @@ PX4 PID, not torque-level whole-body NMPC or a standalone C++ ROS executor.
 
 - Exact ZOH base response propagation, thrust-direction attitude/endpoint output
   and output Jacobians, nominal arm allocation, cost/constraint assembly, H and g.
+- Joint sliding-branch sensitivity matrix recurrence, using the reference
+  predictor's exact cached A/B transitions and actual delayed packet indices.
+  The explicit `NativeJointMatrices` adapter keeps the original plant/oracle
+  predictor unchanged. Quantization, nonlinear event rollout and the optional
+  event-local relinearization use the same frozen definitions.
 - Cholesky whitening of the strictly convex QP, an interior-optimum fast path,
   bounded Goldfarb–Idnani active-set solution, and KKT/primal checks against all
   original constraint rows and normalized input bounds.
@@ -89,11 +94,12 @@ primal violation `2e-7`, KKT stationarity `0.002`, and the original 50 ms deadli
 5. Fresh hover/probe certificates and a **new complete 30 s quiet endpoint hold**
    are required before the fast figure-eight stage. A partial hold is not a pass.
 
-On the 2026-10-23 server, the first admitted source set passed **328 regression
-tests, 30/30 frozen cases and 388/388 recorded calls**. The recorded comparisons
+On the 2026-10-23 server, the final source set passed **332 regression tests,
+30/30 frozen cases and 388/388 recorded calls**. The recorded comparisons
 had maximum normalized-plan difference `7.36e-13` and matrix difference
-`4.16e-11`. Instrumented native calls reached `27.70 ms`, versus `36.54 ms` for
-the reference in that replay. These are observed software timings, not a
+`4.16e-11`. Instrumented native calls reached `24.98 ms`, versus `33.57 ms` for
+the reference in that replay. The fresh uninstrumented frozen cases reached
+`14.10 ms`. These are observed software timings, not a
 worst-case or sustained-rate guarantee. The independent physical hold result
 is reported separately under `docs/validation/native_numerics_20261023`.
 
@@ -103,6 +109,17 @@ actions are outside a live control callback. The verifier now uses bounded
 retention, one-time library loading, and restores instrumented methods without
 creating controller ownership cycles. No GC disable, explicit collection,
 deadline widening, PID retuning or deletion of failed evidence was used.
+
+The first physical native run stopped at a 52 ms interval after 25.916 s; the
+previous controller step overlapped a 27.4 ms natural generation-2 collection.
+The subsequent joint-matrix adapter and ownership transfer of its freshly
+allocated candidate envelope reduce remaining Python overhead without changing
+collection policy. A later run completed the 30 s measurement but failed while
+recording the normal arm-fold transition. `ControlLoop.read()` now clears an
+inactive estimator diagnostic when the TS20 recovery path selects physical
+safety feedback; the recovery hold outputs are preserved. A regression pumps
+that exact transition with absent acceleration and checks that stale estimator
+values are not recorded. Neither failed run is promoted to a stage certificate.
 
 The TS20-50 plant is still a conditional model based on the supplied bench
 identification, rather than qualification of the actual 24 V loaded aerial arm.

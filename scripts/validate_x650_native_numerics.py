@@ -21,6 +21,7 @@ sys.path[:0] = [str(ROOT/"scripts"),str(ROOT/"control_packages/x650_wholebody_v1
 from profile_x650_ts20_matrix_fixture import plain, file_identity
 from x650_wholebody.native_mpc import NativeTs20MpcController
 from x650_wholebody.native_optimization import NativeOptimization
+from x650_wholebody.native_joint_prediction import NativeJointMatrices
 from x650_wholebody.mpc import MpcController
 
 PROTOCOL_PATH = ROOT/"control_packages/x650_wholebody_v1/native/validation_protocol.json"
@@ -54,12 +55,19 @@ def promote(c, native):
     # Verification only: start from byte-identical reference memory/config.
     c.__class__ = NativeTs20MpcController
     c.native_optimization = native
+    if not isinstance(c.actuator_predictor,NativeJointMatrices):
+        c.actuator_predictor = NativeJointMatrices(c.actuator_predictor,native)
     return c
 
 
 def matrices(c,native,t,dt,state,target):
     a = c._problem(t,dt,state,target)
-    b = native.assemble(c,t,dt,state,target)
+    previous = c.actuator_predictor
+    c.actuator_predictor = NativeJointMatrices(previous,native)
+    try:
+        b = native.assemble(c,t,dt,state,target)
+    finally:
+        c.actuator_predictor = previous
     errors = {}
     for key in ("A","b","H","g","C","lo","hi","offsets","jacobians",
                 "linearization","rotations","first_lower","first_upper"):
@@ -77,6 +85,7 @@ def pair(build,native,t=0.,dt=.02):
     promote(nc,native)
     captures = []
     for controller,predictor in ((c,p),(nc,npredictor)):
+        predictor = controller.actuator_predictor
         cap = {"problems":[],"candidate_packets":[],"candidates":[]}
         old_problem,old_candidate = controller._problem,controller._validate_candidate
         overrides = {name:controller.__dict__.get(name) for name in ("_problem","_validate_candidate")}

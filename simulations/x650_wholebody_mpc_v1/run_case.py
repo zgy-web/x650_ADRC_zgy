@@ -655,6 +655,11 @@ class ControlLoop:
                 state, joint_stamp, self.feedback_diagnostics = self.feedback_adapter.read(
                     self.ctx.node, clock_s, joint_observation=joint_observation)
             sim = clock_s
+        else:
+            # A TS20 recovery read intentionally uses physical safety feedback.
+            # Do not label it with the last active estimator snapshot: that
+            # stale snapshot also made the acceleration recorder iterate None.
+            self.feedback_diagnostics = None
         if self.extension is not None:
             if joint_observation is None:
                 state, joint_stamp = self.extension.after_state_read(self, state, joint_stamp, sim)
