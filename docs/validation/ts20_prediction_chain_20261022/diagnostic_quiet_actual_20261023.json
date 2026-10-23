@@ -1,0 +1,157 @@
+{
+  "kind": "ts20_observer_quiet_failed_episode_v1",
+  "accepted_as_gate": false,
+  "complete_30s_hold": false,
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767",
+  "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T051239Z_8759",
+  "error": "RuntimeError('Prediction chain cannot propagate a future joint measurement backwards')",
+  "phase": "PX4 estimated-feedback read before TS20 causal actuator substitution and before allocator",
+  "failed_allocator_invoked": false,
+  "failed_read_returned": false,
+  "exact_failed_msgstamp_minus_clock_s": null,
+  "guard_relation": "ROS JointState.header.stamp > estimator /clock+1e-9; numeric failed pair was not serialized",
+  "measure_publications": 386,
+  "partial_window_sim_s": [
+    41.48,
+    54.5
+  ],
+  "partial_endpoint": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.01999999999999602,
+      13.04
+    ],
+    "sample_count": 3256,
+    "duration_s": 13.020000000000003,
+    "position_rmse_m": 0.003566553514067177,
+    "position_max_m": 0.0045374817501260805,
+    "axis_rmse_m": [
+      0.003361312239448437,
+      0.000957207833130207,
+      0.0007110816843606999
+    ]
+  },
+  "partial_body_position": {
+    "unit": "m",
+    "sample_count": 3256,
+    "duration_s": 13.020000000000003,
+    "rmse_3d": 0.002645908467982721,
+    "rmse_xy": 0.0023948641202443726,
+    "rmse_z": 0.001124925538206337,
+    "axis_rmse": [
+      0.00233355113415516,
+      0.0005384359374308315,
+      0.0011249255382063366
+    ],
+    "peak_3d": 0.007587743665146182,
+    "peak_xy": 0.0072311836273176175,
+    "peak_abs_z": 0.002298659886973198,
+    "mean_vector": [
+      0.0012741256993400861,
+      -0.00018920293380521007,
+      -0.0010534776205323665
+    ],
+    "mean_vector_norm": 0.0016640339975018236,
+    "centered_rms_3d": 0.002057139391509668,
+    "sample_p95_3d": 0.005764741526281028,
+    "coordinate_system": "world ENU",
+    "no_offset_or_phase_fit": true
+  },
+  "partial_tilt_peak_deg": 0.06430894101065386,
+  "timing": {
+    "max_successful_compute_ms": 33.4808062762022,
+    "max_actual_send_interval_s": 0.044000000000004036,
+    "last_mpc_observation": {
+      "inner_allocator_compute_ms": 16.9227197766304,
+      "inner_allocator_thread_cpu_ms": 17.108608000000913,
+      "outer_thread_cpu_ms": 17.392917000002228,
+      "gc_collection_count_before": [
+        715,
+        65,
+        3
+      ],
+      "gc_collection_count_after": [
+        715,
+        65,
+        3
+      ],
+      "gc_collection_count_delta": [
+        0,
+        0,
+        0
+      ],
+      "gc_policy_changed": false,
+      "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+      "outer_compute_ms": 17.398936673998833
+    }
+  },
+  "observer_manifest": {
+    "file": "loop_timing_evidence.json",
+    "sha256": "19a383e627bf61d88d1b8e5b1a52369fcd9e01baf653c5fe6c74963da2fef8b7",
+    "complete": true,
+    "interval_failure_recorded": false,
+    "observations_valid": true
+  },
+  "gc_per_generation": [
+    {
+      "completed": 320,
+      "max_wall_s": 0.0002871565520763397,
+      "max_thread_cpu_s": 0.000285430000005249
+    },
+    {
+      "completed": 29,
+      "max_wall_s": 0.0006564315408468246,
+      "max_thread_cpu_s": 0.0006562099999998239
+    },
+    {
+      "completed": 1,
+      "max_wall_s": 0.025323905050754547,
+      "max_thread_cpu_s": 0.025325291999998
+    }
+  ],
+  "retained_gc_gen2_events": [
+    {
+      "generation": 2,
+      "start_wall_monotonic_s": 14780045.45492824,
+      "stop_wall_monotonic_s": 14780045.480251586,
+      "start_perf_counter_s": 14780045.45492858,
+      "stop_perf_counter_s": 14780045.480252486,
+      "start_thread_cpu_s": 45.11928811,
+      "stop_thread_cpu_s": 45.144613402,
+      "start_thread_ident": 139965827281344,
+      "stop_thread_ident": 139965827281344,
+      "wall_s": 0.025323905050754547,
+      "thread_cpu_s": 0.025325291999998,
+      "collected": 8,
+      "uncollectable": 0
+    }
+  ],
+  "GC_causation_claimed": false,
+  "landed_and_disarmed": true,
+  "runtime_closed": true,
+  "pending_journal": false,
+  "full_source_three_archives_verified": true,
+  "platform_provenance_sha256": "3a968fba57655a72d8068ba508fbadca42b9c98c0e9bd227d359ea82ce880397",
+  "observer_sources": {
+    "simulations/x650_ts20_hold_v1/loop_timing.py": "6a5e03183359d25774fea242886a03e7e8619420b87ea84973be66269ae6ffb3",
+    "simulations/x650_ts20_hold_v1/run_case.py": "7488963128c5c455037cd1d53dbd8ae8c086784ebe46015ff1716200452b8b58"
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "failure_evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_loop_observer_20261023/diagnostic_quiet_failure_v1/failure_evidence.json",
+  "failure_evidence_sha256": "48344e505a095f867253d8b33266afa51b9fca3a17ee0e412b83064397eea182",
+  "available_failure_timeline_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_loop_observer_20261023/diagnostic_quiet_failure_v1/available_failure_timeline.json",
+  "available_failure_timeline_sha256": "a6e49d6c2d87f7c161ea940322aedab15330a0c35fd416943982742ed5e54e1c",
+  "partial_ulog_verified": true,
+  "typed_restore_verified": true,
+  "synchronous_storage_save_verified": true,
+  "PID42_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02"
+}

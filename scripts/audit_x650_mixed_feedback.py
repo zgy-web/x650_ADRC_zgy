@@ -27,18 +27,97 @@ CLOCK_BOUNDARY_S = .008
 PAYLOAD_TOLERANCE = 2e-5
 NATIVE_INTERPOLATION_MAX_GAP_S = .008
 ULOG_NATIVE_HOLD_MAX_AGE_S = .024
+TS20_JOINT_PROVIDER_KIND = "ts20_physical_q_endpoint_dq_v1"
+TS20_JOINT_SOURCE_MAX_AGE_S = .025
 
 
-def feedback_check_mixed(control, feedback_lines, reference, window):
+def _provider_records(kind, state_records, execution_records, window, sample_count):
+    """External evidence is required; a diagnostic declaration is insufficient."""
+    require(kind == TS20_JOINT_PROVIDER_KIND, "Unreviewed expected joint provider kind")
+    require(isinstance(state_records, (list, tuple)) and len(state_records) >= 2
+            and isinstance(execution_records, (list, tuple)),
+            "Causal joint provider needs actual actuator and execution records")
+    source_times = np.asarray([float(row["sim_s"]) for row in state_records])
+    require(np.isfinite(source_times).all() and np.all(np.diff(source_times) > 0),
+            "Provider actuator source timestamps are not unique and increasing")
+    execution = [entry for entry in execution_records if entry.get("event") == "controller_step_returned"
+                 and entry.get("phase") == "measure"
+                 and window[0]-1e-9 <= float(entry["t_s"])+window[0] <= window[1]+1e-9]
+    require(len(execution) == sample_count, "Every provider control needs one successful execution snapshot")
+    return source_times, execution
+
+
+def _check_provider_joint(diagnostic, state, row, now, task_time, source_times,
+                          state_records, execution, previous_generation):
+    observation = diagnostic.get("joint_observation", {})
+    generation = observation.get("generation")
+    require(observation.get("source_kind") == TS20_JOINT_PROVIDER_KIND
+            and type(generation) is int and generation >= 1
+            and (previous_generation is None or generation > previous_generation)
+            and observation.get("preselected_once") is True
+            and observation.get("projection_applied") is False,
+            "Causal joint observation kind/generation/selection contract changed")
+    clock, stamp, limit = (float(observation[key]) for key in
+                           ("control_time_s", "source_stamp_s", "source_age_limit_s"))
+    require(np.isfinite([clock, stamp, limit]).all() and abs(clock-now) <= 1e-9
+            and stamp <= clock and 0 <= clock-stamp <= TS20_JOINT_SOURCE_MAX_AGE_S+1e-10
+            and abs(limit-TS20_JOINT_SOURCE_MAX_AGE_S) <= 1e-12
+            and abs(stamp-float(diagnostic["joint_stamp_s"])) <= 1e-9
+            and abs(stamp-float(row["joint_stamp_s"])) <= 1e-9,
+            "Provider joint stamp is future/stale or differs from the paired control clock")
+    index = int(np.argmin(abs(source_times-stamp)))
+    require(abs(source_times[index]-stamp) <= 1e-9,
+            "Provider observation has no actual same-stamp actuator row")
+    source = state_records[index]
+    q = vector([float(source[f"q{j}_physical"]) for j in (1, 2)], 2, "physical actuator q")
+    dq = vector([float(source[f"dq{j}_internal"]) for j in (1, 2)], 2, "actuator endpoint dq")
+    internal_q = vector([float(source[f"q{j}_internal"]) for j in (1, 2)], 2, "internal actuator q")
+    require(np.max(abs(q-internal_q)) <= 1e-4
+            and np.max(abs(vector(state["q_rad"], 2, "provider control q")-q)) <= 1e-9
+            and np.max(abs(vector(state["dq_rad_s"], 2, "provider control dq")-dq)) <= 1e-9,
+            "Provider control joints are not the actual physical-q/endpoint-dq source row")
+    raw_ros = diagnostic.get("raw_ros_joint_diagnostic")
+    require(isinstance(raw_ros, dict) and raw_ros.get("used_for_control") is False,
+            "Raw ROS joints must remain an independent diagnostic")
+    require(abs(float(execution["t_s"])-task_time) <= 1e-9
+            and execution.get("feedback_snapshot") == diagnostic
+            and abs(float(execution["compute_before"]["processed_estimator_clock_s"])-now) <= 1e-9,
+            "Execution did not consume the same provider feedback snapshot and clock")
+    actual = execution["state"]
+    require(abs(float(actual["control_time_s"])-now) <= 1e-9
+            and abs(float(actual["joint_stamp_s"])-stamp) <= 1e-9
+            and abs(float(actual["stamp_s"])-float(diagnostic["state_stamp_s"])) <= 1e-9,
+            "Execution provider state timestamps differ from the selected observation")
+    for actual_key, feedback_key, shape in (("position", "position_enu_m", (3,)),
+            ("velocity", "velocity_enu_m_s", (3,)), ("rotation", "rotation_flu_to_enu", (3, 3)),
+            ("omega_body", "omega_flu_rad_s", (3,)), ("acceleration_enu", "acceleration_enu_m_s2", (3,)),
+            ("q", "q_rad", (2,)), ("dq", "dq_rad_s", (2,))):
+        value, expected = np.asarray(actual[actual_key], float), np.asarray(state[feedback_key], float)
+        require(value.shape == expected.shape == shape and np.isfinite(value).all()
+                and np.isfinite(expected).all() and np.max(abs(value-expected)) <= 1e-9,
+                "Execution state differs from paired provider feedback: "+actual_key)
+    return generation
+
+
+def feedback_check_mixed(control, feedback_lines, reference, window, *, expected_joint_provider_kind=None,
+                         joint_provider_records=None, execution_records=None):
     selected, times = selected_rows(control, window)
     entries = [entry for entry in feedback_lines if entry.get("phase") == "measure"
                and window[0]-1e-9 <= float(entry["sim_s"]) <= window[1]+1e-9]
     require(len(entries) == len(selected), "Every control row needs exactly one feedback snapshot")
+    provider = expected_joint_provider_kind is not None
+    if provider:
+        source_times, executions = _provider_records(expected_joint_provider_kind, joint_provider_records,
+                                                     execution_records, window, len(selected))
+    else:
+        require(joint_provider_records is None and execution_records is None,
+                "Provider evidence requires an explicitly expected provider kind")
+    provider_generation, generation_range = None, []
     prior, maximum_age, snapshots = {}, {}, []
     prior_joint_stamp, joint_age_range = None, [float("inf"), -float("inf")]
     bound = reference["px4_reference_at_bind"]
     first_extra = None
-    for row, entry, now in zip(selected, entries, times):
+    for sample_index, (row, entry, now) in enumerate(zip(selected, entries, times)):
         require(abs(float(entry["sim_s"])-now) <= 1e-9 and abs(float(entry["t_s"])-float(row["t_s"])) <= 1e-9,
                 "Feedback/control snapshot pairing changed")
         diagnostic = entry.get("feedback")
@@ -48,7 +127,10 @@ def feedback_check_mixed(control, feedback_lines, reference, window):
                 and diagnostic.get("snapshot_protocol") == "latest_asynchronous_receipt_age_guarded"
                 and abs(float(diagnostic["sim_time_s"])-now) <= 1e-8, "Upper feedback is not the reviewed PX4 receipt snapshot")
         callback_map = diagnostic["callbacks"]
-        require(set(callback_map) == {"position", "attitude", "angular_velocity", "estimator_flags", "joints", "clock"},
+        expected_callbacks = {"position", "attitude", "angular_velocity", "estimator_flags", "clock"}
+        if not provider:
+            expected_callbacks.add("joints")
+        require(set(callback_map) == expected_callbacks,
                 "Missing independently aged estimator callbacks")
         for name, callback in callback_map.items():
             seq = callback["sequence"]
@@ -80,6 +162,10 @@ def feedback_check_mixed(control, feedback_lines, reference, window):
         joint_age_range = [min(joint_age_range[0], joint_age), max(joint_age_range[1], joint_age)]
         require(int(float(row["feedback_snapshot_sequence"])) == callback_map["position"]["sequence"], "Control used another feedback sequence")
         snapshot, state = diagnostic["px4_snapshot"], diagnostic["control_state"]
+        if provider:
+            provider_generation = _check_provider_joint(diagnostic, state, row, now, float(row["t_s"]),
+                source_times, joint_provider_records, executions[sample_index], provider_generation)
+            generation_range.append(provider_generation)
         require(np.max(abs(vector(state["q_rad"], 2, "measured joints")-fields([row], "q", "12")[0])) <= 1e-9
                 and np.max(abs(vector(state["dq_rad_s"], 2, "measured joint rates")-fields([row], "qd", "12")[0])) <= 1e-9,
                 "Controller joint feedback differs from the paired snapshot")
@@ -125,11 +211,19 @@ def feedback_check_mixed(control, feedback_lines, reference, window):
                     and all(isinstance(value, int) and not isinstance(value, bool) and value >= 0
                             for value in raw_times.values()), "Raw PX4 diagnostic timestamps invalid")
         snapshots.append(snapshot)
-    return {"verified": True, "feedback_contract": ACCELERATION_CONTRACT, "sample_count": len(selected),
+    report = {"verified": True, "feedback_contract": ACCELERATION_CONTRACT, "sample_count": len(selected),
             "maximum_callback_receipt_age_s": maximum_age, "extra_reset_counters": first_extra,
             "joint_source_age_range_s": joint_age_range,
             "truth_feedback": False, "truth_clock": False,
-            "timestamp_semantics": "Asynchronous held PX4 callbacks; individual simulation receipt ages; DDS epochs are diagnostic only"}, snapshots
+            "timestamp_semantics": "Asynchronous held PX4 callbacks; individual simulation receipt ages; DDS epochs are diagnostic only"}
+    if provider:
+        report["joint_provider"] = {"kind": expected_joint_provider_kind, "verified": True,
+            "source_age_limit_s": TS20_JOINT_SOURCE_MAX_AGE_S,
+            "generation_range": [generation_range[0], generation_range[-1]],
+            "same_round_serialized_snapshot_binding": True, "physical_q_endpoint_dq_verified": True,
+            "opaque_python_object_identity_audited_offline": False,
+            "opaque_identity_scope": "Runtime identity guards are source/test evidence; offline audit verifies serialized values and actual actuator rows"}
+    return report, snapshots
 
 
 def load_native_acceleration(path, window):

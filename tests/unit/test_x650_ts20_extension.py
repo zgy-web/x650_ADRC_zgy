@@ -18,9 +18,10 @@ class Ts20ExtensionTests(unittest.TestCase):
         extension = Ts20Extension({}, {})
         def failed(*args):
             raise RuntimeError("missing/stale actuator log")
-        extension.runtime = SimpleNamespace(measured_state=failed)
+        extension.runtime = SimpleNamespace(measured_state=failed, invalidate_observation=Mock())
         physical = object()
         self.assertEqual(extension.after_state_read(SimpleNamespace(recovery=True), physical, 12., 12.), (physical, 12.))
+        extension.runtime.invalidate_observation.assert_called_once()
         with self.assertRaisesRegex(RuntimeError, "actuator log"):
             extension.after_state_read(SimpleNamespace(recovery=False), physical, 12., 12.)
 
@@ -45,8 +46,10 @@ class Ts20ExtensionTests(unittest.TestCase):
         loop.extension = extension
         loop.original_pump = lambda: None
         loop.upper_research = False
-        loop.ctx = SimpleNamespace(node=SimpleNamespace(spin_once=lambda **kwargs: None))
-        loop.recorder = SimpleNamespace(now=lambda: 10., phase="measure")
+        loop.ctx = SimpleNamespace(node=SimpleNamespace(spin_once=lambda **kwargs: None,
+            sim_time_s=lambda: 10., estimator_clock_s=10.))
+        loop.recorder = SimpleNamespace(now=lambda: 10., clock_s=10., phase="measure")
+        loop.feedback_adapter = None
         loop.land_watchdog = SimpleNamespace(observe=lambda *args: None)
         loop.status_watchdog = None
         loop.control_now = lambda: 10.

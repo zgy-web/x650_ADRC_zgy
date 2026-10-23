@@ -86,6 +86,18 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 运行时使用同时间戳的物理 q 和条件模拟的舵机端点速度回报；Gazebo 区间平均速度另作审计。接触或约束导致内部与物理位置差超过 0.1 mrad 时，实验拒绝继续，并进入独立恢复/降落流程。最新发送包、当前生效包及完整包流必须与每个观测的序号、时间和内容一致；静止情况下缺失的零输入记录也不能通过。
 
+## 因果关节入口与当前验证状态
+
+后续的[实际诊断保持](../../docs/validation/ts20_prediction_chain_20261022/diagnostic_quiet_actual_20261023.json)在 386 次 measure 发布后被旧 `EstimatedFeedback.read` 的未来 ROS JointState 保护拒绝，TS20 替换尚未发生，失败轮也未调用 allocator。独立 native partial 窗仅 13.020 s，不能作为完整 30 s 保持通过。一次 25.323905 ms 自然 generation 2 GC callback 区间位于最后一次 measure PVA 返回与首次恢复发布之间；[时段证据](../../docs/validation/ts20_prediction_chain_20261022/gc_gen2_timeline_overlap_v1.json)没有失败 read 的精确边界，不能据此确认 GC 引发该异常，也不能归因另一轮历史 56 ms 失败。
+
+新版只在 upper PX4 estimated feedback 活跃时，先以固定 estimator `/clock` 调用一次 `select_joint_observation`。它选择不在未来、年龄不超过 25 ms 的完整 TS20 记录，并冻结同源 q／端点 dq／r、已读包、消费历史和总线原点。公开数值不可变，generation 与 runtime 持有的 opaque 对象身份共同绑定本轮；新选择开始即撤销旧 token，选择失败也不能沿用旧快照。`after_state_read` 只绑定该次观测，不二次读 CSV，也不先投影 q/dq 后再次传播。机体位置、姿态、速度、角速度和加速度仍由 PX4 提供，独立 truth 仅用于监督和验收。
+
+新 upper 路径的 `feedback_snapshot.control_state` 关节值就是实际 TS20 观测，原 ROS 值单独记在 `raw_ros_joint_diagnostic`；历史旧 run 的该快照则在 TS20 替换前读取，须按实际源码身份解释。上层调度与任务计时不由原 ROS joint header 推进，非 upper 悬停／关节 commissioning 保持原时钟入口。默认 legacy 的未来测量保护、实际 TS20 的未来／过龄／序号／缺包／物理失配保护不变；恢复禁用实验、使观测失效，不靠 TS20 日志读取才能降落。
+
+循环 observer 仍不主动 collect／disable GC 或改阈值；新版以三代各两个完整峰值事件、共固定 6 槽补足最近 64 个事件环的长期峰值时段记录。11 项 observer 及 provider／默认／恢复路径组成的 42 项本地合并回归保留为开发证据；随后[服务器 fresh 软件证明](../../docs/validation/ts20_prediction_chain_20261022/causal_joint_software_acceptance_20261023.json)绑定 86 项实际源，新执行 288 项测试（124 package＋134 interface／audit＋30 shared-loop）全部通过、0 skip，显式提供 native 测试库。原 30 个矩阵夹具重新运行全部通过，最大 26.684829965 ms；full/view 的矩阵、计划、状态、编码包和非线性输出等价，独立 timing 全部保留，最大 full／view 分别为 37.344370／26.682980 ms。证明 JSON 原始字节 SHA 为 `dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201`。
+
+首个 `software_v1` 保留 248 项、0 failure／4 个同源 ImportError 的失败输出，缺失的是服务器部署中已有跟踪的 `test_x650_precision_stage_audit.py` helper，没有飞行。补齐该文件精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`），不改控制或 driver，在全新 `software_v2` 重跑上述软件验收；不继承旧测试／矩阵成绩。新版 fresh folded hover 已启动但尚无证书，新的完整保持和快速轨迹尚未运行；软件通过不能升级旧飞行证书，旧记录和源码归档保持原身份。更完整的机制与边界见 TS20 接入[第 6 节](../../docs/X650_TS20_INTEGRATION.md#6-新预测链和单独的仿真工况)和[第 11 节](../../docs/X650_TS20_INTEGRATION.md#11-循环层时序诊断)。
+
 ## 结果解释
 
 本场景验证的是来自约 20 V 台架模型的条件闭环。用户实际选型为 TS20-50／24 V；实际臂加载、轴端力矩比例和真舵机传感器仍待标定。原始质量和惯性没有被命令归一化参数替换。

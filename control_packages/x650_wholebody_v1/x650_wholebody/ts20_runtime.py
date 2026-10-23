@@ -7,9 +7,22 @@ feedback. No future q or native end-effector position is read by this adapter.
 from __future__ import annotations
 
 import csv
-from dataclasses import replace
+from dataclasses import dataclass, replace
 from pathlib import Path
+from types import MappingProxyType
 import numpy as np
+
+
+@dataclass(frozen=True)
+class CausalJointObservation:
+    """Immutable values; runtime binds only its own current object identity."""
+    q: tuple
+    dq: tuple
+    source_stamp_s: float
+    control_time_s: float
+    source_age_limit_s: float
+    generation: int
+    source_kind: str = "ts20_physical_q_endpoint_dq_v1"
 
 
 class _CsvTail:
@@ -63,9 +76,18 @@ class Ts20Runtime:
         self.observation_count = 0
         self.max_position_disagreement_rad = 0.
         self._measured_snapshot = None
+        self._selected_observation = None
+        self._selection_generation = 0
+        self._last_observation_time = None
+
+    def invalidate_observation(self):
+        """No I/O: recovery/failing selections cannot reuse a prior solve token."""
+        self._measured_snapshot = None
+        self._selected_observation = None
 
     def _update(self):
         for row in self.states.read():
+            row = MappingProxyType(dict(row))
             at = row["sim_s"]
             if at <= self._last_row_time:
                 raise RuntimeError("TS20 state source clock did not increase")
@@ -80,7 +102,7 @@ class Ts20Runtime:
                 raise RuntimeError("TS20 consumed-command sequence is invalid or regressed")
             u = np.array([row[f"u{j}"] for j in (1, 2)])
             if self._last_sequences is None:
-                self._command_events.append((row["interval_begin_s"], u.copy(), at))
+                self._command_events.append((row["interval_begin_s"], tuple(u), at))
             else:
                 changes = sorted(set(row[f"receipt{j+1}_s"] for j in range(2)
                                      if seq[j] != self._last_sequences[j]))
@@ -92,11 +114,12 @@ class Ts20Runtime:
                     if when < self._command_events[-1][0]-1e-10:
                         raise RuntimeError("TS20 consumed-command clock regressed")
                     if abs(when-self._command_events[-1][0]) < 1e-10:
-                        self._command_events[-1] = (when, value.copy(), at)
+                        self._command_events[-1] = (when, tuple(value), at)
                     else:
-                        self._command_events.append((when, value.copy(), at))
+                        self._command_events.append((when, tuple(value), at))
             self._last_sequences, self._last_u = seq, u.copy()
         for row in self.packets.read():
+            row = MappingProxyType(dict(row))
             send = row["send_s"]
             if send <= self._last_packet_time:
                 raise RuntimeError("TS20 actual MIT send clock did not increase")
@@ -152,26 +175,59 @@ class Ts20Runtime:
             raise RuntimeError("TS20 actually sent MIT packet stream is stale")
         return row
 
-    def measured_state(self, state, sim_s=None):
-        # A failed new read must not leave an old solve snapshot eligible.
-        self._measured_snapshot = None
-        now = state.control_time_s if sim_s is None else float(sim_s)
-        if now is None or not np.isfinite(now):
+    def select_joint_observation(self, now):
+        """Select once at the control clock, before any ROS joint interpretation.
+
+        Snapshot tuples own references to immutable-by-construction internal
+        records; appending/trimming the live caches cannot change these tuples.
+        No mutable row/history object is exposed in the public observation.
+        """
+        self.invalidate_observation()
+        if now is None or isinstance(now, (bool, np.bool_)) or not np.isfinite(now):
             raise ValueError("TS20 measured state requires the actual control source clock")
+        now = float(now)
+        if self._last_observation_time is not None and now < self._last_observation_time-1e-9:
+            raise RuntimeError("TS20 observation control clock regressed")
         row = self._past_row(now)
         # Keep the same history window during prestream/takeoff too. Waiting
         # until the first MPC context would release tens of thousands of old
         # dictionary/float objects inside that first timed control attempt.
         self._trim_history(row["sim_s"])
-        q = np.array([row[f"q{j}_physical"] for j in (1, 2)])
-        dq = np.array([row[f"dq{j}_internal"] for j in (1, 2)])
-        observed = replace(state, q=q, dq=dq, joint_stamp_s=row["sim_s"], control_time_s=now)
+        self._selection_generation += 1
+        observation = CausalJointObservation(
+            tuple(row[f"q{j}_physical"] for j in (1, 2)),
+            tuple(row[f"dq{j}_internal"] for j in (1, 2)),
+            row["sim_s"], now, self.max_age_s, self._selection_generation)
+        self._selected_observation = observation
+        self._selected_snapshot = (row, tuple(self._packets), tuple(self._command_events), self.bus_origin_s)
+        self._last_observation_time = now
+        return observation
+
+    def measured_state(self, state, sim_s=None, *, observation=None):
+        """Bind the selected object without another CSV read; old API selects once."""
+        self._measured_snapshot = None
+        now = state.control_time_s if sim_s is None else float(sim_s)
+        explicit = observation is not None
+        if observation is None:
+            observation = self.select_joint_observation(now)
+        if observation is not self._selected_observation or observation is None:
+            raise RuntimeError("TS20 joint observation token is not the current selection")
+        if now is None or not np.isfinite(now) or abs(float(now)-observation.control_time_s) > 1e-9:
+            raise RuntimeError("TS20 joint observation control clock differs from selection")
+        q, dq = np.asarray(observation.q), np.asarray(observation.dq)
+        if explicit and (state.control_time_s is None
+                or abs(state.control_time_s-observation.control_time_s) > 1e-9
+                or state.joint_stamp_s is None
+                or abs(state.joint_stamp_s-observation.source_stamp_s) > 1e-9
+                or not np.array_equal(state.q, q) or not np.array_equal(state.dq, dq)):
+            raise RuntimeError("TS20 adapter state differs from the selected joint observation")
+        observed = replace(state, q=q, dq=dq, joint_stamp_s=observation.source_stamp_s, control_time_s=now)
         # The CSV writer can flush a later-but-still-past row between this
         # observation and context(). Keep the exact q/dq/r observation and
         # already-read histories together; do not select another row there.
-        self._measured_snapshot = (float(now), dict(row))
+        self._measured_snapshot = (observation, *self._selected_snapshot)
         self.observation_count += 1
-        return observed, row["sim_s"]
+        return observed, observation.source_stamp_s
 
     def _trim_history(self, source_time_s):
         cutoff = source_time_s-.75
@@ -190,8 +246,9 @@ class Ts20Runtime:
         now = float(state.control_time_s)
         if self._measured_snapshot is None:
             raise RuntimeError("TS20 MPC context requires a successful measured snapshot")
-        observed_now, row = self._measured_snapshot
-        if (not np.isfinite(now) or abs(now-observed_now) > 1e-9
+        observation, row, packets, commands, bus_origin = self._measured_snapshot
+        if (observation is not self._selected_observation
+                or not np.isfinite(now) or abs(now-observation.control_time_s) > 1e-9
                 or state.joint_stamp_s is None or abs(row["sim_s"]-state.joint_stamp_s) > 1e-9
                 or not np.array_equal(state.q, [row[f"q{j}_physical"] for j in (1, 2)])
                 or not np.array_equal(state.dq, [row[f"dq{j}_internal"] for j in (1, 2)])):
@@ -200,7 +257,7 @@ class Ts20Runtime:
         # measured_state call, including their actual command/packet evidence.
         origin = now-float(t)
         packet_history = []
-        past_packets = [r for r in self._packets if r["send_s"] <= now+1e-10]
+        past_packets = [r for r in packets if r["send_s"] <= now+1e-10]
         active = [i for i, r in enumerate(past_packets)
                   if r["apply_s"] <= state.joint_stamp_s+1e-10]
         if active:
@@ -213,18 +270,18 @@ class Ts20Runtime:
                                 ("tau_ff", "tau"), ("kp", "kp"), ("kd", "kd")):
                 packet[name] = np.array([raw[f"{short}{j}"] for j in (1, 2)])
             packet_history.append(packet)
-        causal_commands = [(when, value) for when, value, available in self._command_events
+        causal_commands = [(when, value) for when, value, available in commands
                            if when <= now+1e-10 and available <= now+1e-10]
         prior = [i for i, (when, _) in enumerate(causal_commands) if when <= row["sim_s"]+1e-10]
         if prior:
             causal_commands = causal_commands[prior[-1]:]
-        history = [(when-origin, value.copy()) for when, value in causal_commands]
-        if not history or not packet_history or self.bus_origin_s is None:
+        history = [(when-origin, np.asarray(value).copy()) for when, value in causal_commands]
+        if not history or not packet_history or bus_origin is None:
             raise RuntimeError("TS20 actual command or MIT packet history is missing")
         return {"reference_state": {"time_s": row["sim_s"]-origin,
                     "r": np.array([row["r1"], row["r2"]])},
                 "packet_history": packet_history, "command_history": history,
-                "bus_origin_s": self.bus_origin_s-origin}
+                "bus_origin_s": bus_origin-origin}
 
     def metadata(self):
         return {"state_csv": str(self.states.path), "packet_csv": str(self.packets.path),
@@ -232,6 +289,7 @@ class Ts20Runtime:
             "joint_velocity_source": "conditional simulated servo endpoint speed report",
             "physical_interval_average_velocity_used_for_prediction": False,
             "solve_snapshot_policy": "exact measured q/dq/r and already-read causal histories; refresh only on next observation",
+            "joint_provider_binding": "one preselected immutable observation; opaque object identity binds unchanged q/dq/clock; no second CSV read or projection",
             "future_rows_used_for_control": False, "source_age_limit_s": self.max_age_s,
             "position_consistency_limit_rad": self.physical_position_tolerance_rad,
             "max_position_disagreement_rad": self.max_position_disagreement_rad,

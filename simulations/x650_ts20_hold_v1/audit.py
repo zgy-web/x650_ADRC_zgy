@@ -21,6 +21,7 @@ for directory in (ROOT, ROOT / "scripts", ROOT / "simulations/x650_wholebody_mpc
 from simulations.x650_ts20_hold_v1 import task
 import audit_x650_precision_stage as fixed
 import audit_x650_upper_stage as upper
+import audit_x650_mixed_feedback as mixed_feedback
 import analyze_x650_hover_precision as precision
 from research_condition import condition_for_task, frozen_research_pid, canonical_hash
 from simulations.x650_wholebody_mpc_v1 import run_case as shared
@@ -87,6 +88,108 @@ def packet_state_binding(states, packets, *, bus_period_s=.005):
                               "TS20 active delayed packet does not cover full state window")
     return {"verified": True, "state_rows": len(states), "packet_rows": len(packets),
             "last_and_active_sequence_fields_verified": True, "tail_packet_coverage_required": True}
+
+
+def causal_reference_binding(states, feedback, diagnostics, window):
+    """Reconstruct r using only the selected row's already-consumed input.
+
+    This verifies serialized same-round values. Python object identity is a
+    runtime-only guard, never an inference from a generation label.
+    """
+    times = fields(states, ["sim_s"]).ravel()
+    fixed.require(len(times) >= 2 and np.all(np.diff(times) > 0), "Reference source clock is not increasing")
+    entries = [entry for entry in feedback if entry.get("phase") == "measure"
+               and window[0]-1e-9 <= float(entry["sim_s"]) <= window[1]+1e-9]
+    solves = [entry for entry in diagnostics if entry.get("phase") == "measure"
+              and window[0]-1e-9 <= float(entry["sim_s"]) <= window[1]+1e-9]
+    fixed.require(len(entries) == len(solves) and len(entries) >= 2,
+                  "Every provider observation requires its own MPC reference record")
+    maximum, selected = 0., {}
+    for entry, solve in zip(entries, solves):
+        now = float(entry["sim_s"])
+        stamp = float(entry["feedback"]["joint_observation"]["source_stamp_s"])
+        index = int(np.argmin(abs(times-stamp)))
+        fixed.require(abs(times[index]-stamp) <= 1e-9 and stamp <= now
+                      and now-stamp <= .025+1e-10
+                      and abs(float(solve["sim_s"])-now) <= 1e-9
+                      and abs(float(solve["t_s"])-float(entry["t_s"])) <= 1e-9,
+                      "MPC reference record differs from its causal provider round")
+        row = states[index]
+        selected[index] = row
+        for j in (1, 2):
+            sequence, receipt = float(row[f"upper_sequence{j}"]), float(row[f"receipt{j}_s"])
+            fixed.require(np.isfinite([sequence, receipt]).all() and sequence >= 0
+                          and sequence == int(sequence) and receipt <= stamp+1e-9,
+                          "Selected reference source declares invalid or future consumed-command evidence")
+        # Runtime selects the latest *already read* row <= now. Its frozen
+        # history excludes command events whose declaring row is still future.
+        # Thus no later command is known after this selected source stamp.
+        # Postflight rows with earlier simulation times may have arrived late;
+        # they must not be used to revise the original observation's history.
+        expected = fields([row], ["r1", "r2"])[0] + (now-stamp)*fields([row], ["u1", "u2"])[0]
+        actual = np.asarray(solve["diagnostics"]["ts20_reference_state_rad"], float)
+        fixed.require(actual.shape == (2,) and np.isfinite([expected, actual]).all(),
+                      "MPC reference state is missing or nonfinite")
+        error = float(abs(expected-actual).max())
+        maximum = max(maximum, error)
+        fixed.require(error <= 1e-9, "MPC reference does not use the selected actual source/receipt history")
+    return {"verified": True, "rounds": len(entries), "maximum_reference_difference_rad": maximum,
+            "postflight_later_rows_used_to_revise_history": False,
+            "selected_source_rows": len(selected),
+            "reference_reconstruction": "selected r plus held already-consumed u through control clock",
+            "opaque_python_object_identity_audited_offline": False}, list(selected.values())
+
+
+def causal_feedback_check(folder, meta, controls, reference, window, ulog, diagnostics):
+    """Opt in explicitly, binding hashes and actual files before any claim."""
+    feedback_document = task.read(folder / "estimated_feedback.json")
+    fixed.require(feedback_document == meta.get("estimated_feedback")
+                  and feedback_document.get("kind") == "x650_px4_estimated_feedback"
+                  and feedback_document.get("schema_version") == 2
+                  and feedback_document.get("profile") == mixed_feedback.ACCELERATION_PROFILE
+                  and feedback_document.get("feedback_contract") == mixed_feedback.ACCELERATION_CONTRACT
+                  and feedback_document.get("frame_mode") == "raw_ev_world"
+                  and feedback_document.get("truth_feedback") is False and feedback_document.get("truth_clock") is False
+                  and feedback_document.get("reference") == reference
+                  and feedback_document.get("max_age_s") == {"state": .10, "flags": 1.25, "joint": .25, "wall": 4., "flags_wall": 10.}
+                  and feedback_document.get("joint_input_source_kind") == mixed_feedback.TS20_JOINT_PROVIDER_KIND,
+                  "Executed feedback declaration differs from the frozen PX4/causal-joint contract")
+    capture = task.read(folder / "ts20_recording_manifest.json")
+    fixed.require(capture.get("complete") is True, "Incomplete causal-joint source capture")
+    for name in ("ts20_state.csv", "ts20_packets.csv"):
+        fixed.require(capture["captures"][name]["sha256"] == task.sha(folder / name),
+                      "Causal-joint source bytes changed")
+    execution_manifest = task.read(folder / "control_execution_trace_manifest.json")
+    fixed.require(execution_manifest.get("recording_closed") is True
+                  and execution_manifest.get("experiment_complete") is True
+                  and execution_manifest.get("recording_error") is None
+                  and execution_manifest.get("failure_count") == 0
+                  and execution_manifest.get("sha256") == task.sha(folder / "control_execution_trace.jsonl"),
+                  "Execution trace must be complete, successful and byte-bound")
+    feedback = [json.loads(line) for line in (folder / "feedback_trace.jsonl").read_text().splitlines() if line.strip()]
+    execution = [json.loads(line) for line in (folder / "control_execution_trace.jsonl").read_text().splitlines() if line.strip()]
+    states, packets = rows(folder / "ts20_state.csv"), rows(folder / "ts20_packets.csv")
+    report, snapshots = mixed_feedback.feedback_check_mixed(controls, feedback, reference, window,
+        expected_joint_provider_kind=mixed_feedback.TS20_JOINT_PROVIDER_KIND,
+        joint_provider_records=states, execution_records=execution)
+    fixed.require(snapshots[0]["extra_reset_counters"] == feedback_document.get("extra_reset_counters_at_bind"),
+                  "Estimator velocity/quaternion counters changed since feedback binding")
+    native_t = precision.native_states(folder / "native_trace.csv", window)["t"]
+    for topic, keys in (("vehicle_local_position", ("vxy_reset_counter", "vz_reset_counter")),
+                         ("vehicle_attitude", ("quat_reset_counter",))):
+        dataset = precision.dataset(ulog, topic)
+        held = precision.resample(precision.stamp(dataset), precision.fields(dataset, keys), native_t, .024, hold=True)
+        for index, key in enumerate(keys):
+            fixed.require(np.all(held[:, index] == snapshots[0]["extra_reset_counters"][key]),
+                          "Full ULog velocity/quaternion reset changed: "+key)
+    acceleration = mixed_feedback.audit_mixed_acceleration_feedback(controls, feedback, ulog,
+        mixed_feedback.load_native_acceleration(folder / "native_trace.csv", window), window)
+    reference_report, selected_sources = causal_reference_binding(states, feedback, diagnostics, window)
+    packets_report = packet_state_binding(selected_sources, packets)
+    return {"feedback": report, "acceleration": acceleration,
+            "reference_state_binding": reference_report, "selected_source_packet_binding": packets_report,
+            "source_capture_manifest_sha256": task.sha(folder / "ts20_recording_manifest.json"),
+            "execution_manifest_sha256": task.sha(folder / "control_execution_trace_manifest.json")}
 
 
 def actuator_check(folder, cfg, window):
@@ -249,11 +352,12 @@ def audit(folder, launch, output):
         fixed.require(endpoint["position_rmse_m"] <= p["tip_rms_max_m"] and endpoint["position_max_m"] <= p["tip_peak_max_m"]
                       and float(native["tilt"].max()) <= p["tilt_max_deg"], "TS20 endpoint-hold physical envelope failed")
         diag = [json.loads(line) for line in (folder / "controller_diagnostics.jsonl").read_text().splitlines() if line.strip()]
+        causal_feedback = causal_feedback_check(folder, meta, controls, reference, window, ulog, diag)
         diag = [row["diagnostics"] for row in diag if row.get("phase") == "measure"]
         fixed.require(len(diag) == len(selected) and all(row.get("accepted_optimum") is True
                       and row.get("previous_plan_fallback", False) is False and row.get("ts20_nonlinear_check_passed") is True
                       and row.get("solve_budget_exceeded", False) is False for row in diag), "MPC solution/candidate acceptance missing")
-        result = {"endpoint": endpoint, "solver_solves": len(diag)}
+        result = {"endpoint": endpoint, "solver_solves": len(diag), "causal_feedback": causal_feedback}
     else:
         commands = fixed.fixed_position_commands(ulog, native, reference, controls, window)
         flight = fixed.flight_sample_check(folder / "flight_samples.csv", window, target)
@@ -273,7 +377,7 @@ def audit(folder, launch, output):
         if path.is_file() and path.suffix in (".json", ".jsonl", ".csv", ".ulg"):
             artifacts[str(path)] = task.sha(path)
     artifacts[str(Path(__file__).resolve())] = task.sha(__file__)
-    for module in (fixed, fixed.joint_audit, precision, upper, shared, task):
+    for module in (fixed, fixed.joint_audit, precision, upper, mixed_feedback, shared, task):
         path = Path(module.__file__).resolve()
         artifacts[str(path)] = task.sha(path)
     report = {"kind": "x650_ts20_conditional_stage_certificate_v1", "complete": True, "passed": True,

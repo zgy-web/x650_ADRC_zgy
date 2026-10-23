@@ -1,5 +1,6 @@
 """Bounded timing evidence preserves existing dispatch/scheduler semantics."""
 from io import StringIO
+from collections import deque
 import ast
 import gc
 import json
@@ -268,6 +269,51 @@ class LoopTimingTests(unittest.TestCase):
         self.assertGreater(observer.gc_callback_errors, 0)
         self.assertGreater(observer.observation_errors, 0)
         observer.close()
+
+    def test_generation_peak_events_survive_recent_ring_eviction_in_fixed_slots(self):
+        # Isolate callback bookkeeping without registering a real callback or
+        # requesting collection. Deliberately give wall and CPU different peaks.
+        observer = LoopTimingObserver.__new__(LoopTimingObserver)
+        observer._gc_registered = True
+        observer.gc_callback_errors = observer.gc_unpaired_stops = 0
+        observer.gc_active, observer.gc_events = {}, deque(maxlen=64)
+        observer.gc_summary = [{"completed": 0, "max_wall_s": 0., "max_thread_cpu_s": 0.,
+            "max_wall_event": None, "max_thread_cpu_event": None} for _ in range(3)]
+        def deliver(generation, start, wall, cpu):
+            with patch("simulations.x650_ts20_hold_v1.loop_timing.time.monotonic",
+                       side_effect=[start, start+wall]), \
+                 patch("simulations.x650_ts20_hold_v1.loop_timing.time.perf_counter",
+                       side_effect=[start, start+wall]), \
+                 patch("simulations.x650_ts20_hold_v1.loop_timing.time.thread_time",
+                       side_effect=[start, start+cpu]), \
+                 patch("simulations.x650_ts20_hold_v1.loop_timing.threading.get_ident", return_value=37):
+                observer.on_gc("start", {"generation": generation})
+                observer.on_gc("stop", {"generation": generation, "collected": 8, "uncollectable": 0})
+        for generation in range(3):
+            deliver(generation, 10.+generation, .025, .002)
+            deliver(generation, 20.+generation, .005, .007)
+        for index in range(70):
+            deliver(index % 3, 100.+index, .001, .0005)
+        snapshot = observer.gc_snapshot()
+        self.assertEqual(len(snapshot["completed_events"]), 64)
+        self.assertEqual(len(snapshot["per_generation"]), 3)
+        self.assertTrue(all(event["start_wall_monotonic_s"] >= 100.
+                            for event in snapshot["completed_events"]))
+        for generation, summary in enumerate(snapshot["per_generation"]):
+            wall, cpu = summary["max_wall_event"], summary["max_thread_cpu_event"]
+            self.assertEqual(wall["generation"], generation)
+            self.assertEqual(wall["start_wall_monotonic_s"], 10.+generation)
+            self.assertAlmostEqual(wall["wall_s"], .025)
+            self.assertEqual(cpu["start_wall_monotonic_s"], 20.+generation)
+            self.assertAlmostEqual(cpu["thread_cpu_s"], .007)
+            self.assertEqual(cpu["stop_thread_ident"], 37)
+            self.assertEqual(wall["collected"], 8)
+        self.assertEqual(sum(item["completed"] for item in snapshot["per_generation"]), 76)
+        self.assertEqual(observer.gc_callback_errors, 0)
+        self.assertEqual(observer.gc_active, {})
+        snapshot["per_generation"][2]["max_wall_event"]["start_wall_monotonic_s"] = -1.
+        self.assertEqual(observer.gc_snapshot()["per_generation"][2]["max_wall_event"]
+                         ["start_wall_monotonic_s"], 12.)
 
     def test_postflight_file_error_still_removes_callback_and_restores_methods(self):
         loop, observer, _, _, original = self.make_loop([.02])

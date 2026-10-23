@@ -245,10 +245,10 @@ def active_runtime_instance(root, model_sha256):
     return runtime["instance"]
 
 
-def require_periodic_telemetry(node, *, status_watchdog=None, sim_s=None):
+def require_periodic_telemetry(node, *, status_watchdog=None, sim_s=None, require_ros_joints=True):
     """Keep fast wall-time guards; upper status has its own source-rate guard."""
     now = time.monotonic()
-    topics = (("truth", 2.), ("joints", 2.), ("position", 2.))
+    topics = (("truth", 2.), ("joints", 2.), ("position", 2.)) if require_ros_joints else (("truth", 2.), ("position", 2.))
     if status_watchdog is None:
         topics += (("status", 3.),)  # Preserve the legacy commissioning contract.
     for key, timeout in topics:
@@ -579,15 +579,46 @@ class ControlLoop:
             return float(value)
         return self.recorder.now()
 
+    def monitor_now(self):
+        """TS20 safety clock excludes unused ROS joint source stamps.
+
+        The upper control clock remains estimator /clock. Raw ROS joints are
+        independently recorded; recording faults remain evidence faults.
+        """
+        if self.feedback_adapter is not None and not self.recovery and callable(
+                getattr(self.extension, "select_joint_observation", None)):
+            clocks = [float(self.recorder.clock_s), float(self.ctx.node.sim_time_s())]
+            clocks.append(float(self.ctx.node.estimator_clock_s))
+            if not np.isfinite(clocks).all():
+                raise RuntimeError("TS20 physical monitor clock is nonfinite")
+            return max(clocks)
+        return self.recorder.now()
+
     def read(self):
-        state, joint_stamp = state_from_node(self.ctx.node)
-        sim = self.recorder.now()
+        joint_observation = None
+        selector = getattr(self.extension, "select_joint_observation", None)
+        feedback_active = self.feedback_adapter is not None and not (self.recovery and callable(selector))
+        if feedback_active and callable(selector):
+            # Freeze the existing estimator /clock before choosing any joints.
+            # The selector is opt-in; legacy/default reads remain unchanged.
+            clock_s = self.ctx.node.estimator_clock_s
+            joint_observation = selector(self, clock_s)
+            if joint_observation is None:
+                raise RuntimeError("Configured causal joint provider returned no observation")
+            state, joint_stamp = state_from_node(self.ctx.node, joint_observation=joint_observation)
+            # ROS JointState stamps must not advance this provider's control or
+            # audit clock. Truth remains an independent body safety observation.
+            sim = max(float(clock_s), float(state.stamp_s), self.monitor_now())
+        else:
+            state, joint_stamp = state_from_node(self.ctx.node)
+            sim = self.recorder.now()
         self.land_watchdog.observe(self.ctx.node, sim)
         if self.status_watchdog is not None:
             self.status_watchdog.observe(self.ctx.node, sim)
         if self.strict:
             self.recorder.check()
-            require_periodic_telemetry(self.ctx.node, status_watchdog=self.status_watchdog, sim_s=sim)
+            require_periodic_telemetry(self.ctx.node, status_watchdog=self.status_watchdog, sim_s=sim,
+                                       require_ros_joints=joint_observation is None)
             self.land_watchdog.check(sim)
             if not -.001 <= sim-state.stamp_s <= .25 or not -.001 <= sim-joint_stamp <= .25:
                 raise RuntimeError("Truth or joint measurement age exceeds 0.25 simulation seconds")
@@ -607,14 +638,22 @@ class ControlLoop:
                 raise RuntimeError("Task aircraft position exceeded 1.5 m hover envelope")
         self.last_truth, self.last_joint = state.stamp_s, joint_stamp
         self.evaluation_state = state
-        if self.feedback_adapter is not None:
+        if feedback_active:
             clock_s = self.ctx.node.estimator_clock_s
             if clock_s is None or abs(sim-clock_s) > .05+1e-9:
                 raise RuntimeError("Recorder and estimated-feedback /clock progress differ by over 0.05 s")
-            state, joint_stamp, self.feedback_diagnostics = self.feedback_adapter.read(self.ctx.node, clock_s)
+            if joint_observation is None:
+                state, joint_stamp, self.feedback_diagnostics = self.feedback_adapter.read(self.ctx.node, clock_s)
+            else:
+                state, joint_stamp, self.feedback_diagnostics = self.feedback_adapter.read(
+                    self.ctx.node, clock_s, joint_observation=joint_observation)
             sim = clock_s
         if self.extension is not None:
-            state, joint_stamp = self.extension.after_state_read(self, state, joint_stamp, sim)
+            if joint_observation is None:
+                state, joint_stamp = self.extension.after_state_read(self, state, joint_stamp, sim)
+            else:
+                state, joint_stamp = self.extension.after_state_read(
+                    self, state, joint_stamp, sim, joint_observation=joint_observation)
         return sim, state, joint_stamp
 
     def pump(self):
@@ -622,7 +661,7 @@ class ControlLoop:
         self.original_pump()
         for _ in range(32 if self.upper_research else 6):
             self.ctx.node.spin_once(timeout_sec=0.)
-        sim = self.recorder.now()
+        sim = self.monitor_now()
         if self.extension is not None:
             self.extension.on_pump(self, sim)
         self.land_watchdog.observe(self.ctx.node, sim)
@@ -747,7 +786,7 @@ class ControlLoop:
             row["fixed_position_target_"+axis] = value
         if self.upper_research:
             feedback = self.feedback_diagnostics
-            row.update(self.status_watchdog.diagnostics(self.recorder.now()))
+            row.update(self.status_watchdog.diagnostics(self.monitor_now()))
             row.update(pva_sent=sp is not None, sent_coordinate_frame=1 if sp is not None else None,
                        sent_type_mask=None if sp is None else sp.type_mask,
                        sent_yaw_ned=None if sp is None else self.yaw_ned,

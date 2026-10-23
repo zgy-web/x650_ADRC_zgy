@@ -71,6 +71,39 @@ def _vector(value, n, name):
     return array.copy()
 
 
+def _ros_joint_values(joints):
+    names = list(_field(joints, "name"))
+    if len(names) != len(set(names)) or any(name not in names for name in JOINTS):
+        raise RuntimeError("Joint feedback names are missing or duplicated")
+    q, dq = [], []
+    for name in JOINTS:
+        index = names.index(name)
+        if index >= len(joints.position) or index >= len(joints.velocity):
+            raise RuntimeError("Incomplete measured joint feedback: "+name)
+        q.append(_finite(joints.position[index], name+" position"))
+        dq.append(_finite(joints.velocity[index], name+" velocity"))
+    stamp = joints.header.stamp
+    sec = _integer(stamp.sec, "joint header sec")
+    nanosec = _integer(stamp.nanosec, "joint header nanosec", maximum=999999999)
+    return q, dq, sec+nanosec*1e-9
+
+
+def _raw_ros_joint_diagnostic(node, sim_s, wall_now):
+    """Independent evidence only; never supplies control values or timestamps."""
+    report = {"used_for_control": False}
+    try:
+        q, dq, stamp = _ros_joint_values(node.data["joints"])
+        report.update(q_rad=q, dq_rad_s=dq, header_stamp_s=stamp,
+                      source_age_s=sim_s-stamp)
+        report.update(callback_sequence=_integer(node.callback_sequences.get("joints"), "raw joint sequence"),
+                      received_sim_s=_finite(node.received_sim.get("joints"), "raw joint received_sim"),
+                      received_wall_s=_finite(node.received.get("joints"), "raw joint received_wall"))
+        report["wall_age_s"] = wall_now-report["received_wall_s"]
+    except Exception as error:
+        report["diagnostic_error"] = repr(error)
+    return report
+
+
 def _reference_document(reference):
     document = deepcopy(reference if isinstance(reference, dict) else reference.document)
     if document.get("frame_mode") != "raw_ev_world":
@@ -115,7 +148,8 @@ class Px4EstimatedFeedback:
     """
     def __init__(self, reference, node=None, *, max_state_hold_s=.10,
                  max_flags_hold_s=1.25, max_joint_hold_s=.25, max_wall_age_s=4.,
-                 max_flags_wall_age_s=10., require_acceleration=False, require_prediction_timing=False):
+                 max_flags_wall_age_s=10., require_acceleration=False, require_prediction_timing=False,
+                 joint_source_kind=None):
         # Pinned PX4 EKF2.cpp::PublishStatusFlags publishes every 1_s or
         # immediately on status change. DDS rate_limit=5 Hz is a ceiling,
         # not a 5 Hz source guarantee. 1.25 s = 1 s source period + 0.2 s
@@ -128,6 +162,10 @@ class Px4EstimatedFeedback:
         if type(require_prediction_timing) is not bool or (require_prediction_timing and not require_acceleration):
             raise ValueError("Prediction timing requires acceleration-enabled feedback")
         self._require_prediction_timing = require_prediction_timing
+        if joint_source_kind is not None and (not isinstance(joint_source_kind, str)
+                or not joint_source_kind or not require_prediction_timing):
+            raise ValueError("Declared causal joint source requires prediction timing and a nonempty kind")
+        self._joint_source_kind = joint_source_kind
         self._limits = {key: _finite(value, key) for key, value in (
             ("state", max_state_hold_s), ("flags", max_flags_hold_s),
             ("joint", max_joint_hold_s), ("wall", max_wall_age_s),
@@ -159,6 +197,11 @@ class Px4EstimatedFeedback:
                 acceleration_fallback=False, acceleration_numerical_differentiation=False)
         if self._require_prediction_timing:
             result["prediction_timing"] = "control_time_s=/clock consumption; joint_stamp_s=actual JointState header"
+        if self._joint_source_kind is not None:
+            result.update(joint_input_source_kind=self._joint_source_kind,
+                state_source="PX4 body position/attitude/rates/acceleration and explicitly selected causal joint provider",
+                prediction_timing="control_time_s=/clock consumption; joint_stamp_s=causal provider source stamp, no projection",
+                ros_joint_state_role="independent diagnostic only")
         return result
 
     @staticmethod
@@ -184,7 +227,7 @@ class Px4EstimatedFeedback:
             raise RuntimeError("PX4 estimated feedback is dead reckoning")
         return snapshot
 
-    def read(self, node, sim_s, *, wall_now=None):
+    def read(self, node, sim_s, *, wall_now=None, joint_observation=None):
         """Return (ControlState, joint header stamp, immutable-value diagnostics)."""
         from x650_wholebody.api import ControlState
         from x650_wholebody.model import rotation_matrix
@@ -199,13 +242,19 @@ class Px4EstimatedFeedback:
             raise RuntimeError("Feedback simulation time must be the current estimator /clock time")
         if self._last_sim_s is not None and sim_s < self._last_sim_s-1e-9:
             raise RuntimeError("Estimator feedback simulation clock regressed")
-        missing = [key for key in TOPICS if key not in node.data]
+        if self._joint_source_kind is not None and joint_observation is None:
+            raise RuntimeError("Declared causal joint provider observation is missing")
+        if joint_observation is not None and (self._joint_source_kind is None
+                or _field(joint_observation, "source_kind") != self._joint_source_kind):
+            raise RuntimeError("Causal joint observation differs from the declared source kind")
+        control_topics = TOPICS if joint_observation is None else TOPICS[:-1]
+        missing = [key for key in control_topics if key not in node.data]
         if missing:
             raise RuntimeError("Missing PX4 estimated feedback streams: "+", ".join(missing))
 
         # SingleThreadedExecutor cannot replace a callback while this read runs.
         callbacks = {}
-        for key in (*TOPICS, "clock"):
+        for key in (*control_topics, "clock"):
             seq = _integer(node.callback_sequences.get(key), key+" callback sequence", minimum=1)
             received_sim = _finite(node.received_sim.get(key), key+" received_sim")
             received_wall = _finite(node.received.get(key), key+" received_wall")
@@ -226,7 +275,7 @@ class Px4EstimatedFeedback:
                 "received_wall_s": received_wall, "sim_age_s": sim_age, "wall_age_s": wall_age,
                 "new_callback": prior is None or seq > prior["sequence"]}
 
-        p, attitude, angular, flags, joints = (node.data[key] for key in TOPICS)
+        p, attitude, angular, flags = (node.data[key] for key in TOPICS[:-1])
         origin = self._check_position(p)
         extra_resets = self._reset_snapshot(node.data)
         if self._extra_resets is not None and extra_resets != self._extra_resets:
@@ -255,20 +304,19 @@ class Px4EstimatedFeedback:
         position = NED_TO_ENU @ pn
         position[2] += self._document["px4_reference_at_bind"]["ref_alt"]
         rotation = NED_TO_ENU @ rotation_matrix(quaternion) @ FRD_TO_FLU
-        names = list(_field(joints, "name"))
-        if len(names) != len(set(names)) or any(name not in names for name in JOINTS):
-            raise RuntimeError("Joint feedback names are missing or duplicated")
-        q, dq = [], []
-        for name in JOINTS:
-            index = names.index(name)
-            if index >= len(joints.position) or index >= len(joints.velocity):
-                raise RuntimeError("Incomplete measured joint feedback: "+name)
-            q.append(_finite(joints.position[index], name+" position"))
-            dq.append(_finite(joints.velocity[index], name+" velocity"))
-        stamp = joints.header.stamp
-        sec = _integer(stamp.sec, "joint header sec")
-        nanosec = _integer(stamp.nanosec, "joint header nanosec", maximum=999999999)
-        joint_stamp = sec+nanosec*1e-9
+        if joint_observation is None:
+            q, dq, joint_stamp = _ros_joint_values(node.data["joints"])
+        else:
+            if not self._require_prediction_timing:
+                raise RuntimeError("Explicit causal joint input requires prediction timing")
+            q = _vector(_field(joint_observation, "q"), 2, "causal joint position").tolist()
+            dq = _vector(_field(joint_observation, "dq"), 2, "causal joint endpoint velocity").tolist()
+            joint_stamp = _finite(_field(joint_observation, "source_stamp_s"), "causal joint source stamp")
+            observed_now = _finite(_field(joint_observation, "control_time_s"), "causal joint control clock")
+            age_limit = _finite(_field(joint_observation, "source_age_limit_s"), "causal joint age limit")
+            if (joint_stamp < 0 or abs(observed_now-sim_s) > 1e-9 or age_limit <= 0
+                    or not 0 <= sim_s-joint_stamp+1e-10 <= min(age_limit, self._limits["joint"])+1e-10):
+                raise RuntimeError("Causal joint observation is future, stale or at a different control clock")
         if self._last_joint_stamp is not None and joint_stamp < self._last_joint_stamp-1e-9:
             raise RuntimeError("Joint source timestamp regressed")
         # JointState carries a real Gazebo simulation timestamp. Cross-topic
@@ -301,6 +349,14 @@ class Px4EstimatedFeedback:
             "control_state": {"position_enu_m": state.position.tolist(),
                 "velocity_enu_m_s": state.velocity.tolist(), "rotation_flu_to_enu": state.rotation.tolist(),
                 "omega_flu_rad_s": state.omega_body.tolist(), "q_rad": q, "dq_rad_s": dq}}
+        if joint_observation is not None:
+            diagnostics["joint_observation"] = {
+                "source_kind": str(_field(joint_observation, "source_kind")),
+                "generation": _integer(_field(joint_observation, "generation"), "joint observation generation", minimum=1),
+                "control_time_s": observed_now, "source_stamp_s": joint_stamp,
+                "source_age_limit_s": age_limit, "preselected_once": True,
+                "projection_applied": False}
+            diagnostics["raw_ros_joint_diagnostic"] = _raw_ros_joint_diagnostic(node, sim_s, wall_now)
         if self._require_acceleration:
             position_callback = callbacks["position"]
             diagnostics.update(feedback_profile=ACCELERATION_PROFILE,

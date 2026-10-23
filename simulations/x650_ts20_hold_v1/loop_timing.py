@@ -1,9 +1,11 @@
 """Opt-in TS20 pump evidence without changing scheduling or dispatch policy.
 
 Three due/read cycles and 64 completed pumps of scalar counters are retained.
-Natural GC observation has a separate 64-event bound. Ordinary calls add no
-files, flushes, callback draining or collection-policy changes. A rejected
-control interval is copied after rejection, before the existing recovery path.
+Natural GC observation has a separate 64-event bound, plus three generation
+summaries retaining their wall and CPU peak events after ring eviction.
+Ordinary calls add no files, flushes, callback draining or collection-policy
+changes. A rejected control interval is copied after rejection, before the
+existing recovery path.
 """
 from collections import deque
 import hashlib
@@ -54,7 +56,8 @@ class LoopTimingObserver:
         self.pump_calls, self.read_calls, self.closed = 0, 0, False
         self.observation_errors, self.gc_callback_errors, self.gc_unpaired_stops = 0, 0, 0
         self.gc_events, self.gc_active = deque(maxlen=64), {}
-        self.gc_summary = [{"completed": 0, "max_wall_s": 0., "max_thread_cpu_s": 0.}
+        self.gc_summary = [{"completed": 0, "max_wall_s": 0., "max_thread_cpu_s": 0.,
+                            "max_wall_event": None, "max_thread_cpu_event": None}
                            for _ in range(3)]
         self._gc_callback, self._gc_registered = self.on_gc, False
         self.original = {"pump": loop.pump, "original_pump": loop.original_pump,
@@ -92,17 +95,22 @@ class LoopTimingObserver:
                     self.gc_unpaired_stops += 1
                     return
                 wall, cpu = stamp[1]-start[1], stamp[2]-start[2]
-                self.gc_events.append({"generation": generation,
+                event = {"generation": generation,
                     "start_wall_monotonic_s": start[0], "stop_wall_monotonic_s": stamp[0],
                     "start_perf_counter_s": start[1], "stop_perf_counter_s": stamp[1],
                     "start_thread_cpu_s": start[2], "stop_thread_cpu_s": stamp[2],
                     "start_thread_ident": start[3], "stop_thread_ident": stamp[3],
                     "wall_s": wall, "thread_cpu_s": cpu,
-                    "collected": info.get("collected"), "uncollectable": info.get("uncollectable")})
+                    "collected": info.get("collected"), "uncollectable": info.get("uncollectable")}
+                self.gc_events.append(event)
                 summary = self.gc_summary[generation]
                 summary["completed"] += 1
-                summary["max_wall_s"] = max(summary["max_wall_s"], wall)
-                summary["max_thread_cpu_s"] = max(summary["max_thread_cpu_s"], cpu)
+                # The two maxima can belong to different collections. Keep
+                # their full timestamps in fixed slots, never an event list.
+                if summary["max_wall_event"] is None or wall > summary["max_wall_s"]:
+                    summary["max_wall_s"], summary["max_wall_event"] = wall, event
+                if summary["max_thread_cpu_event"] is None or cpu > summary["max_thread_cpu_s"]:
+                    summary["max_thread_cpu_s"], summary["max_thread_cpu_event"] = cpu, event
         except BaseException:
             # A diagnostics callback must never replace a live safety error.
             self.gc_callback_errors += 1
@@ -117,7 +125,11 @@ class LoopTimingObserver:
 
     def gc_snapshot(self):
         return {"completed_events": list(self.gc_events),
-                "per_generation": [dict(value) for value in self.gc_summary],
+                "per_generation": [{**value,
+                    "max_wall_event": None if value["max_wall_event"] is None else dict(value["max_wall_event"]),
+                    "max_thread_cpu_event": (None if value["max_thread_cpu_event"] is None
+                                             else dict(value["max_thread_cpu_event"]))}
+                    for value in self.gc_summary],
                 "active_generations": sorted(self.gc_active),
                 "unpaired_stops": self.gc_unpaired_stops,
                 "callback_errors": self.gc_callback_errors,
@@ -257,6 +269,7 @@ class LoopTimingObserver:
                 "normal_path_extra_flushes": 0, "gc_policy_changed": False,
                 "natural_gc_callback_registered": self._gc_registered,
                 "max_completed_gc_events": 64, "active_collection_requested": False,
+                "retained_gc_generation_summaries": 3, "peak_event_slots_per_generation": 2,
                 "scheduler_or_deadline_changed": False,
                 "json_conversion_and_encoding_separately_measured": False}
 

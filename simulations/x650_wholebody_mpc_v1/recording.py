@@ -48,7 +48,7 @@ def seconds(stamp):
     return float(stamp.sec)+float(stamp.nanosec)*1e-9
 
 
-def state_from_node(node):
+def state_from_node(node, *, joint_observation=None):
     """Pose ENU, Odometry child-FLU twist rotated once, measured joint q/dq."""
     from x650_wholebody.api import ControlState
     from x650_wholebody.model import rotation_matrix
@@ -56,12 +56,17 @@ def state_from_node(node):
     p, quat = truth.pose.pose.position, truth.pose.pose.orientation
     R = rotation_matrix([quat.w, quat.x, quat.y, quat.z])
     linear, angular = truth.twist.twist.linear, truth.twist.twist.angular
-    joints = node.joint_values()
+    joints = node.joint_values() if joint_observation is None else None
+    q = [joints[j].position_rad for j in JOINTS] if joints is not None else joint_observation.q
+    dq = [joints[j].velocity_rad_s for j in JOINTS] if joints is not None else joint_observation.dq
+    timing = {} if joint_observation is None else {
+        "control_time_s": joint_observation.control_time_s,
+        "joint_stamp_s": joint_observation.source_stamp_s}
     state = ControlState([p.x, p.y, p.z], R, R@np.array([linear.x, linear.y, linear.z]),
                          [angular.x, angular.y, angular.z],
-                         [joints[j].position_rad for j in JOINTS],
-                         [joints[j].velocity_rad_s for j in JOINTS], seconds(truth.header.stamp))
-    return state, seconds(node.data["joints"].header.stamp)
+                         q, dq, seconds(truth.header.stamp), **timing)
+    return state, (seconds(node.data["joints"].header.stamp) if joint_observation is None
+                   else joint_observation.source_stamp_s)
 
 
 class FlightRecorder:

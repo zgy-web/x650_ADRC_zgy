@@ -60,6 +60,8 @@ class Ts20Extension:
         meta.update(ts20_operating_condition=self.provenance["ts20_operating_condition"],
                     ts20_operating_condition_sha256=self.provenance["ts20_operating_condition_sha256"],
                     conditional_actuator_plant=True, base_response_is_prior=True,
+                    causal_joint_provider="while upper estimated feedback is active: one estimator-clock selection; physical q and modeled endpoint dq; same opaque observation binds MPC context",
+                    raw_ros_joint_role="while causal upper provider is active: independent recording diagnostic, not upper joint/control or physical-monitor clock; recorder health faults still reject evidence. Non-upper commissioning retains its original physical-feedback clock.",
                     upper_computation_and_ros_transport_delay_compensated=False,
                     future_upper_command_timing_assumption="new upper velocity is modeled at current control snapshot time; actual future compute/ROS consumption lag is not predicted",
                     supply_24v_qualified=False, aerial_arm_load_qualified=False,
@@ -72,14 +74,27 @@ class Ts20Extension:
         self.loop_timing = LoopTimingObserver(loop, out)
         meta["ts20_loop_timing"] = self.loop_timing.metadata()
 
-    def after_state_read(self, loop, state, joint_stamp, sim):
+    def select_joint_observation(self, loop, sim):
+        if loop.recovery:
+            if self.runtime is not None:
+                self.runtime.invalidate_observation()
+            return None
+        if self.runtime is None:
+            raise RuntimeError("TS20 measured-state source was not installed before loop entry")
+        return self.runtime.select_joint_observation(sim)
+
+    def after_state_read(self, loop, state, joint_stamp, sim, *, joint_observation=None):
         if loop.recovery:
             # The experiment is already disabled. Recovery must retain physical
             # joint feedback and NAV_LAND even after an actuator-log fault.
+            if self.runtime is not None:
+                self.runtime.invalidate_observation()
             return state, joint_stamp
         if self.runtime is None:
             raise RuntimeError("TS20 measured-state source was not installed before loop entry")
-        return self.runtime.measured_state(state, sim)
+        if joint_observation is None:
+            return self.runtime.measured_state(state, sim)
+        return self.runtime.measured_state(state, sim, observation=joint_observation)
 
     def on_pump(self, loop, sim):
         if self.loop_timing is not None:
@@ -103,7 +118,8 @@ class Ts20Extension:
         return guard
 
     def feedback_kwargs(self, cfg):
-        return {"require_acceleration": True, "require_prediction_timing": True}
+        return {"require_acceleration": True, "require_prediction_timing": True,
+                "joint_source_kind": "ts20_physical_q_endpoint_dq_v1"}
 
     def adapter_kwargs(self, cfg):
         return {"acceleration_feedforward_policy": "zero"}

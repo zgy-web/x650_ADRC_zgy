@@ -135,7 +135,11 @@ QP 的局部映射为 `q_i = qbar_i + Q_i*z`、`dq_i = dqbar_i + D_i*z`，其中
 
 新增 `ts20_runtime.py` 只读取当前控制时刻之前的完整记录：物理关节 q 与同时间戳的条件舵机端点角速度回报进入预测；Gazebo 的 4 ms 区间平均角速度另作审计。两种速度有不同时间定义，不能直接当作同一个量比较。这个模拟回报接口尚未验证真舵机的速度估计/滤波特性。内部自由模型 q 与实际物理 q 不一致时，新实验拒绝继续用自由运动假设。
 
-末端反馈由 PX4 估计位置／姿态与上述物理关节 q 重建，`q_ref` 和积分参考 r 不替代反馈 q。共享 `feedback_snapshot.control_state` 中的关节字段仍是 TS20 替换前的 ROS JointState 诊断，时间戳及速度定义可能不同；复核最终控制输入应读 `control_execution_trace.jsonl` 的 `state` 和 MPC 的 `prediction_measured_joint_*` 字段。独立 native 末端真值用于效果验收，不把这个旧诊断快照当成最终 TS20 观测。
+末端反馈由 PX4 估计位置／姿态与上述物理关节 q 重建，`q_ref` 和积分参考 r 不替代反馈 q。历史旧运行的 `feedback_snapshot.control_state` 关节字段是在 TS20 替换前读取的 ROS JointState，不能当成最终 TS20 观测。新的上层因果 provider 路径直接用已选择的 TS20 物理 q／条件端点 dq 构造状态，因此该路径的 `feedback_snapshot.control_state` 与实际交给控制器的关节观测一致；原 ROS JointState 单独进入 `raw_ros_joint_diagnostic`，不供控制使用。复核具体运行仍应按其源码身份读取 `control_execution_trace.jsonl` 的 `state` 和 MPC 的 `prediction_measured_joint_*`，独立 native 末端真值继续用于效果验收。
+
+新的因果入口只在上层 PX4 estimated feedback 活跃时启用：每轮先以固定的 estimator `/clock` 调用一次 `select_joint_observation`，只接受不晚于该时刻、源年龄不超过 25 ms 的完整实际记录。q、端点 dq、r、已读 MIT 包、消费指令历史和总线原点来自同一个私有快照；缓存中的 row／packet 复制后不可变包装，指令值与历史快照使用不可变 tuple，后续补写、裁剪或同时间戳事件替换不能改写本轮证据。公开观测保留不可变数值和 generation，绑定时还校验 runtime 持有的 opaque 对象身份；新选择开始即撤销旧 token，选择失败也不能沿用旧快照。对外 context 重新生成普通字典与独立数组，兼容 MPC 的冻结复制。
+
+状态构造与 `after_state_read` 传递同一观测，不再二次读 CSV／选择，也不先把源时刻 q/dq 投影到现在后再由预测器重复传播。机体 p／R／v／角速度／加速度保持 PX4 来源，truth 仅作独立物理监督和验收。上层调度、任务计时使用 estimator `/clock`，物理监督时钟不再由未用于控制的原 ROS joint header 推进；非上层的悬停／关节 commissioning 保持原来的物理反馈入口和时钟。默认 legacy 分支的未来测量保护不变，真实 TS20 未来／过龄、序号、缺包与内部／物理 q 不一致仍拒绝；恢复先禁用上层实验并使 token 失效，不依赖失败的 TS20 日志读取。此修改在本地只读审查与 42 项合并回归之后，已完成第 11 节所述的新版服务器软件验收。新悬停已启动但尚无证书，新的完整保持和快速轨迹尚未运行，软件证明不等于取得新的飞行阶段准入。
 
 过去输入使用插件实际消费和实际发包的时间。对尚未发布的候选输入，当前预测仍假设它从当前控制快照时刻开始进入上层接口；计算和 ROS 传输耗时尚未独立补偿，明确标记 `upper_computation_and_ros_transport_delay_compensated=False`。3.346 ms 只在 MIT 发包之后应用一次，不能当作已覆盖整条上层管线的证据。新日志会记录控制快照到插件消费的间隔，后续按这一口径评估需要的补偿。
 
@@ -242,11 +246,19 @@ v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，�
 
 [离线分项结果](validation/ts20_prediction_chain_20261022/loop_serialization_analysis_20261023.json) 保留 v4 最后 20 个成功周期。19 个可计算的“前次 PVA 本地返回→下次 compute_before”wall gap 为 9.368–12.068 ms，期间仿真时钟与 wall 推进同量级；缺失的失败轮边界仍未知。真实历史 JSON 树及重新生成的 NumPy 诊断树分开测量，primitive 转换候选只节省约 0.35–1.1 ms，未部署该候选。直接改用 `JSONEncoder.default` 有 7 类语义反例，也没有替换生产 helper。这些离线测量不还原历史耗时，不足以宣称修复 56 ms。
 
-新增 TS20 专用 `loop_timing.py`，只由该场景 extension 显式安装；共享控制循环、调度、发布函数与原 50 ms guard 字节不变。它委托原方法各一次，观察原 pump、callback drain、read、发布 trace 返回和原有文件 write／flush；普通路径不新增磁盘写入或 flush。最近 3 个 due/read 循环、64 个全部 pump 循环保留在有界标量环中，避免漏掉未到控制时刻的等待。真正本地 send 返回的 wall 时间引用原 ExecutionTrace；wrapper 的 CPU 时间明确属于包含 trace 写入的较晚边界，不冒充精确 send CPU 时刻。
+该次循环诊断使用 TS20 专用 `loop_timing.py`，只由该场景 extension 显式安装；观测包装本身不改变原调度、发布操作或 50 ms guard。它委托原方法各一次，观察原 pump、callback drain、read、发布 trace 返回和原有文件 write／flush；普通路径不新增磁盘写入或 flush。最近 3 个 due/read 循环、64 个全部 pump 循环保留在有界标量环中，避免漏掉未到控制时刻的等待。真正本地 send 返回的 wall 时间引用原 ExecutionTrace；wrapper 的 CPU 时间明确属于包含 trace 写入的较晚边界，不冒充精确 send CPU 时刻。后续因果 provider 对共享状态入口有显式修改，不能把观测版当时的源码不变描述沿用到新版 provider。
 
-自然 GC 观测只注册自己的唯一 callback，记录 start／stop 区间、线程和 generation／collected，保留最近 64 个完成事件和各代计数／最大值；没有主动 collect、disable 或阈值调整，也不扫描堆。区间包含间隔中的其他 callback，不等于 collector 独占 CPU 成本。收尾先移除自身 callback，并保留原有其他 callback 和 GC 配置。
+自然 GC 观测只注册自己的唯一 callback，记录 start／stop 区间、线程和 generation／collected，保留最近 64 个完成事件和各代计数／最大值；没有主动 collect、disable 或阈值调整，也不扫描堆。区间包含间隔中的其他 callback，不等于 collector 独占 CPU 成本。收尾先移除自身 callback，并保留原有其他 callback 和 GC 配置。新版 observer 另为三代各保留 wall／当前线程 CPU 峰值的完整事件，共固定 6 槽，使最近事件环驱逐旧项后仍能核查峰值时段；11 项 observer 测试先在本地通过，随后纳入下面的服务器 fresh 回归。
 
-新的控制间隔拒绝会在失败之后保存该轮实际 `read` 返回的状态、反馈、last／next／current dt、循环段和 GC 区间，并明确 allocator 未调用、指令未发布；原异常保持有效。观察文件失败或观察计数不完整会拒绝新观测阶段的完整性，同时继续封存执行器日志，不遮蔽原控制错误。10 项 observer 测试与 4 项既有 extension 测试在服务器通过，原软件证明的 34 项源及新条件的前序证书按原校验通过。当前只启动一次固定 30 s 的诊断保持，须等待实际记录和审计，不能以观察测试代替闭环通过。
+观测版的 10 项 observer 测试与 4 项既有 extension 测试曾在服务器通过，原软件证明的 34 项源及前序证书按原校验通过；随后实际诊断保持失败，见 [完整精简记录](validation/ts20_prediction_chain_20261022/diagnostic_quiet_actual_20261023.json)。386 次 measure 发布之后，`EstimatedFeedback.read` 在 TS20 替换前读取了源时间晚于当前 estimator `/clock` 的 ROS JointState，触发禁止未来关节测量反向传播的保护；该失败轮未返回 read 状态、未调用 allocator。失败的具体 header／clock 数值对没有序列化，因此只报告保护条件，不重建缺失现场。独立 native partial 窗为任务 0.020–13.040 s，共 13.020 s、3256 点；末端 RMS 3.56655 mm／峰值 4.53748 mm 仅是这段部分记录，不能作完整 30 s 保持通过。着陆／解除锁定、typed 参数恢复、同步保存和 42 项 PID 已核过，原始记录及失败身份保留。
+
+[GC 时段核对](validation/ts20_prediction_chain_20261022/gc_gen2_timeline_overlap_v1.json) 记录到一次 generation 2 callback 区间，wall 长 25.323905 ms，位于最后一次 measure PVA 本地返回之后、首次 `restore_folded` joint 发布之前；它与已记录的 controller compute／step 或本地发布操作区间没有重叠。失败 read 本身没有精确边界，不能把该 GC 区间定位为 read 内耗时，更不能据时间相邻断言它导致 ROS 消息先后交错；历史 56 ms 控制间隔失败也是另一次运行，不能借这条记录归因。
+
+读内失败促成第 6 节的因果关节 provider：在解释 ROS JointState 之前选择真实可用的 TS20 源观测，而不是放宽未来／25 ms 年龄或原时序门槛。provider、默认／恢复路径及峰值保留 observer 的 42 项本地合并回归保留为开发证据；随后已取得[服务器 fresh 软件证明](validation/ts20_prediction_chain_20261022/causal_joint_software_acceptance_20261023.json)，该 JSON 保持服务器原始字节，SHA 为 `dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201`，绑定 86 项实际源码。新执行的 288 项测试由 124 项 package、134 项 interface／audit、30 项 shared-loop 组成，全部通过、0 skip，显式提供 native 测试库。原 30 个矩阵夹具重新运行 30/30 通过，最大 26.684829965 ms；full/view 的矩阵、计划、状态、编码包及非线性输出比较一致，记录的差值均为零。独立 timing 的全部 full/view 记录一并保留，最大值分别 37.344370／26.682980 ms，不以较快记录替代完整结果。
+
+首次 `software_v1` 仅完成 248 项、0 failure／4 个同源 ImportError，原因是服务器未带齐已跟踪的 `test_x650_precision_stage_audit.py` 辅助文件；该次没有飞行，失败输出保留。补齐既有 helper 的精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`）后，保持控制源码和 driver 不变，在全新 `software_v2` 目录重新执行上述回归与矩阵，没有继承旧 package／matrix 成绩。证明区分静态 before、实际导入后的来源观测和最终 after，并归档实际源；未改变的预测器／数值核、物理条件和 oracle 身份继续逐项核验。
+
+现在仅启动了新版 fresh folded hover，尚无该轮通过证书；新的完整末端保持和快速轨迹尚未运行，旧工况的 full-window 证书没有升级为新版证书。观察文件失败或观察计数不完整仍拒绝新观测阶段完整性，并继续封存执行器日志，不遮蔽原控制错误。
 
 ## 12. 真机条件仍需补齐
 

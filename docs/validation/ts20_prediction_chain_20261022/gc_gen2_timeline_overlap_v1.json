@@ -1,0 +1,78 @@
+{
+  "kind": "ts20_natural_gen2_recorded_timeline_overlap_v1",
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767",
+  "gc_event": {
+    "generation": 2,
+    "start_wall_monotonic_s": 14780045.45492824,
+    "stop_wall_monotonic_s": 14780045.480251586,
+    "start_perf_counter_s": 14780045.45492858,
+    "stop_perf_counter_s": 14780045.480252486,
+    "start_thread_cpu_s": 45.11928811,
+    "stop_thread_cpu_s": 45.144613402,
+    "start_thread_ident": 139965827281344,
+    "stop_thread_ident": 139965827281344,
+    "wall_s": 0.025323905050754547,
+    "thread_cpu_s": 0.025325291999998,
+    "collected": 8,
+    "uncollectable": 0
+  },
+  "preceding_control_row": {
+    "row_index": 1703,
+    "phase": "measure",
+    "sim_s": 54.5,
+    "t_s": 13.04,
+    "compute_before_wall_s": 14780045.430936752,
+    "compute_after_wall_s": 14780045.452043245,
+    "compute_ms": 22.31709286570549,
+    "control_dt_s": 0.031999999999996476
+  },
+  "following_control_row": {
+    "row_index": 1704,
+    "phase": "restore_folded",
+    "sim_s": 54.584,
+    "t_s": -1.0,
+    "compute_before_wall_s": 14780045.510984885,
+    "compute_after_wall_s": 14780045.511033216,
+    "compute_ms": 0.6200969219207764,
+    "control_dt_s": 0.08400000000000318
+  },
+  "overlapping_recorded_controller_compute_intervals": [],
+  "overlapping_actual_controller_step_events": [],
+  "overlapping_local_publication_operation_events": [],
+  "preceding_publication": {
+    "sequence": 4388,
+    "channel": "px4_pva",
+    "sim_s": 54.5,
+    "t_s": 13.04,
+    "phase": "measure",
+    "wall_before_s": 14780045.45283853,
+    "wall_after_s": 14780045.452971598
+  },
+  "following_publication": {
+    "sequence": 4389,
+    "channel": "joint:arm_joint_1",
+    "sim_s": 54.584,
+    "t_s": -1.0,
+    "phase": "restore_folded",
+    "wall_before_s": 14780045.511070037,
+    "wall_after_s": 14780045.511171324
+  },
+  "retained_recent_pump_wall_range_s": [
+    14780064.04364246,
+    14780064.763982736
+  ],
+  "overlapping_retained_pump_records": [],
+  "phase_claim": "Bracketed by recorded preceding/following control phases only; no missing failed-read timestamp is reconstructed.",
+  "causation_claimed": false,
+  "limits": [
+    "GC callback interval includes collection and intervening callbacks.",
+    "No timestamp was captured for the read-internal future-joint exception, so temporal proximity alone does not establish cause.",
+    "Historical56ms failure is a different run without these GC event boundaries."
+  ],
+  "inputs_sha256": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767/loop_timing_evidence.json": "19a383e627bf61d88d1b8e5b1a52369fcd9e01baf653c5fe6c74963da2fef8b7",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767/control_trace.csv": "44f03e160d8a5fa6b9858d19e383d2f4980564aa600e98c1c4f98f0f46446ccb",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767/control_execution_trace.jsonl": "cd20314901e99a6bbc5f116ecbb0bf1f4aa800e6e8048d688ad3a704b2ada12f",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_131310_8767/controller_metadata.json": "6567447f3b6ccdcf99aac9189aa038d18de957fc2bc326341eba5dd0d5b95ea7"
+  }
+}
