@@ -71,6 +71,17 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 实际运行应复用服务器已有兼容的 NumPy/SciPy、ROS 和数据盘模块环境。新 launcher 配置本次进程的依赖顺序并在起飞前记录实际 Python、NumPy、SciPy 路径，不全局修改原虚拟环境。运行进程、参数恢复与着陆由平台生命周期管理。
 
+2026-10-23 的 FFI 生命周期修正采用新的 `launch_chain_v4.py`，支持相同的悬停、关节探针和安静保持阶段。它额外要求显式的软件证明及 SHA，逐文件核对实际部署与新 oracle，并归档本次实际平台来源；不改变 task／审计或控制参数。使用未占用的输出和对应阶段的完整 task 配置，例如先进行只读准入检查：
+
+```bash
+/usr/bin/python3 simulations/x650_ts20_hold_v1/launch_chain_v4.py \
+  --task /absolute/path/to/new_stage_task.json \
+  --software-proof /absolute/path/to/reviewed_software_acceptance.json \
+  --software-sha256 REVIEWED_SOFTWARE_SHA256 --dry-run
+```
+
+检查通过后，去掉 `--dry-run` 执行该阶段。应先取得同一新条件的悬停与关节证书，再运行保持；不能直接沿用修正前的旧证书。[软件结果与边界](../../docs/X650_TS20_INTEGRATION.md#10-ffi-生命周期修正与新的实际阶段准入)说明了本次修正没有改变数值输出，历史 53.14 ms 超时仍未确立原因。`launch_quiet_v3.py` 保持历史字节，用于解释对应失败档案。
+
 新证书 kind 为 `x650_ts20_conditional_stage_certificate_v1`。审计包括整个声明窗口、独立 native 末端与关节物理状态、ULog 中实际飞控命令/状态/参数、MIT 包完整性与单次延迟、真实消费历史、全时段关节约束以及计算/发送时序。关节整段自由预测只从首态初始化，分块时携带上块的预测终态，不用后续真实状态重置。
 
 运行时使用同时间戳的物理 q 和条件模拟的舵机端点速度回报；Gazebo 区间平均速度另作审计。接触或约束导致内部与物理位置差超过 0.1 mrad 时，实验拒绝继续，并进入独立恢复/降落流程。最新发送包、当前生效包及完整包流必须与每个观测的序号、时间和内容一致；静止情况下缺失的零输入记录也不能通过。

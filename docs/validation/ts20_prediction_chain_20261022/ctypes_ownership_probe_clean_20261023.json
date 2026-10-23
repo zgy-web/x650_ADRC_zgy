@@ -1,0 +1,94 @@
+{
+  "kind": "ctypes_ownership_probe_v2",
+  "numpy": "1.21.5",
+  "before": {
+    "enabled": true,
+    "threshold": [
+      700,
+      10,
+      10
+    ],
+    "count": [
+      404,
+      4,
+      4
+    ]
+  },
+  "after": {
+    "enabled": true,
+    "threshold": [
+      700,
+      10,
+      10
+    ],
+    "count": [
+      1,
+      0,
+      0
+    ]
+  },
+  "rows": [
+    {
+      "style": "data_as",
+      "array_tracked": false,
+      "pointer_tracked": true,
+      "pointer_has_arr_owner": true,
+      "objects_type": "dict",
+      "objects_entries": {
+        "139901700293440": "c_void_p"
+      },
+      "pointer_address_matches_without_cast": true,
+      "first_values": [
+        0.0,
+        1.0,
+        2.0
+      ],
+      "immediately_after_release": {
+        "array_alive": false,
+        "pointer_alive": false,
+        "internal_alive": [
+          true
+        ]
+      },
+      "explicit_gc_diagnostic": {
+        "collected": 2,
+        "wall_ms": 2.5214,
+        "array_alive": false,
+        "pointer_alive": false,
+        "internal_alive": [
+          false
+        ]
+      }
+    },
+    {
+      "style": "integer_cast",
+      "array_tracked": false,
+      "pointer_tracked": true,
+      "pointer_has_arr_owner": false,
+      "objects_type": "NoneType",
+      "objects_entries": null,
+      "pointer_address_matches_without_cast": true,
+      "first_values": [
+        0.0,
+        1.0,
+        2.0
+      ],
+      "immediately_after_release": {
+        "array_alive": false,
+        "pointer_alive": false,
+        "internal_alive": []
+      },
+      "explicit_gc_diagnostic": {
+        "collected": 0,
+        "wall_ms": 1.837269,
+        "array_alive": false,
+        "pointer_alive": false,
+        "internal_alive": []
+      }
+    }
+  ],
+  "address_check_does_not_call_cast_on_pointer": true,
+  "v1_address_check_contaminated_pointer_objects_not_used": true,
+  "only_explicit_gc_in_isolated_diagnostic_not_control": true,
+  "historical_failure_cause_established": false
+}

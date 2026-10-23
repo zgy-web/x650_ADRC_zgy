@@ -1,0 +1,97 @@
+{
+  "kind": "ffi_full_native_outputs_bitwise_v1",
+  "pass": true,
+  "old_source_sha256": "1648f89052c69470e4f402297ece9042db78b54ead06fe0b230c42dad8be5f9f",
+  "new_source_sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+  "rows": [
+    {
+      "name": "hold",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "small_positive_step",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "small_negative_step",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "opposed_step",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "reversal",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "low_amplitude_sine",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "phase_shifted_sine",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    },
+    {
+      "name": "nonbus_aligned_pulses",
+      "exact": {
+        "time_s": true,
+        "q": true,
+        "dq": true,
+        "modes": true,
+        "events": true,
+        "envelope": true
+      }
+    }
+  ],
+  "comparison_includes_all_nonlinear_envelope_events_and_bounds": true
+}

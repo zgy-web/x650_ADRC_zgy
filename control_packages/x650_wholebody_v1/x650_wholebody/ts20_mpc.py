@@ -6,7 +6,8 @@ The base response is an explicitly reused prior. This does not identify a
 from __future__ import annotations
 
 from copy import deepcopy
-from time import perf_counter
+import gc
+from time import perf_counter, thread_time
 import numpy as np
 
 from .mpc import MpcController, MpcSolveError
@@ -27,6 +28,37 @@ CANDIDATE_POLICY = {
 RELINEARIZATION_POLICY = {"max_subproblems": 3, "total_deadline_ms": 50.,
                          "max_joint_trust_radius_normalized": .02,
                          "radius_basis": ".58 s * .45 rad/s * .02 = 5.22 mrad, within 6 mrad local q budget"}
+
+
+def _collection_counts():
+    return [generation["collections"] for generation in gc.get_stats()]
+
+
+def _timing_observation(begin, cpu_begin, collections_before, inner_cpu_begin,
+                        inner_compute_ms):
+    """Observe counters without collecting, registering callbacks or changing GC.
+
+    Collection deltas do not measure collection duration or establish the cause
+    of a delayed step. Thread CPU time excludes descheduling and blocking.
+    These observations happen before the authoritative wall deadline sample.
+    """
+    inner_cpu_end = thread_time()
+    collections_after = _collection_counts()
+    cpu_end = thread_time()
+    observed = {
+        "inner_allocator_compute_ms": inner_compute_ms,
+        "inner_allocator_thread_cpu_ms": (inner_cpu_end-inner_cpu_begin)*1000,
+        "outer_thread_cpu_ms": (cpu_end-cpu_begin)*1000,
+        "gc_collection_count_before": collections_before,
+        "gc_collection_count_after": collections_after,
+        "gc_collection_count_delta": [after-before for before, after in
+                                      zip(collections_before, collections_after)],
+        "gc_policy_changed": False,
+        "scope": ("outer MPC before rejection-only evidence copies; last inner allocator call CPU time; "
+                  "process-wide GC collection counts"),
+    }
+    observed["outer_compute_ms"] = (perf_counter()-begin)*1000
+    return observed
 
 
 class Ts20MpcController(MpcController):
@@ -154,35 +186,46 @@ class Ts20MpcController(MpcController):
         State is rolled back on rejection or total prepublication deadline.
         """
         begin = perf_counter()
+        cpu_begin = thread_time()
+        collections_before = _collection_counts()
         committed_names = ("_plan", "_plan_t", "_plan_h", "previous_command", "last_t", "_previous_stamp",
                            "step_count", "_joint_history", "_chain_clock_origin")
         saved = {name: deepcopy(getattr(self, name)) for name in committed_names}
-        self._frozen_context = deepcopy(self.context_provider(state, t))
         self._linearization_plan = None
         attempts = []
+        out, timing = None, None
         deadline = RELINEARIZATION_POLICY["total_deadline_ms"]
         try:
+            self._frozen_context = deepcopy(self.context_provider(state, t))
             for iteration in range(RELINEARIZATION_POLICY["max_subproblems"]):
+                out = None
+                inner_cpu_begin = thread_time()
                 try:
                     out = super().step(t, dt, state, target)
                 except MpcSolveError as exc:
                     diagnostic = exc.diagnostics
+                    timing = _timing_observation(begin, cpu_begin, collections_before,
+                                                 inner_cpu_begin, diagnostic.get("compute_ms"))
+                    elapsed = timing["outer_compute_ms"]
                     attempts.append({"subproblem": iteration+1,
                         "q_linearization_error_rad": diagnostic.get("ts20_candidate_q_linearization_error_rad"),
                         "dq_linearization_error_rad_s": diagnostic.get("ts20_candidate_dq_linearization_error_rad_s"),
                         "actual_bounds_passed": diagnostic.get("ts20_candidate_actual_bounds_passed"),
-                        "elapsed_ms": (perf_counter()-begin)*1000, "passed": False})
+                        "elapsed_ms": elapsed, "passed": False})
                     retry = (diagnostic.get("ts20_candidate_actual_bounds_passed") is True
                              and "ts20_rejected_candidate_plan" in diagnostic
                              and iteration+1 < RELINEARIZATION_POLICY["max_subproblems"]
                              and (perf_counter()-begin)*1000 < deadline)
                     if not retry:
                         diagnostic.update(ts20_relinearization_attempts=attempts,
-                                          ts20_total_compute_ms=(perf_counter()-begin)*1000)
+                                          ts20_total_compute_ms=elapsed,
+                                          ts20_timing_observation=timing)
                         raise
                     self._linearization_plan = diagnostic["ts20_rejected_candidate_plan"].copy()
                     continue
-                elapsed = (perf_counter()-begin)*1000
+                timing = _timing_observation(begin, cpu_begin, collections_before,
+                                             inner_cpu_begin, out["diagnostics"].get("compute_ms"))
+                elapsed = timing["outer_compute_ms"]
                 attempts.append({"subproblem": iteration+1, "passed": True,
                     "q_linearization_error_rad": out["diagnostics"]["ts20_candidate_q_linearization_error_rad"],
                     "dq_linearization_error_rad_s": out["diagnostics"]["ts20_candidate_dq_linearization_error_rad_s"],
@@ -191,6 +234,7 @@ class Ts20MpcController(MpcController):
                     raise MpcSolveError("TS20 total prepublication computation deadline exceeded",
                         {"accepted_optimum": False, "ts20_nonlinear_check_passed": True,
                          "ts20_command_accepted": False, "ts20_total_compute_ms": elapsed,
+                         "ts20_timing_observation": timing,
                          "ts20_relinearization_attempts": attempts,
                          "ts20_relinearization_policy": deepcopy(RELINEARIZATION_POLICY)})
                 out["diagnostics"].update(compensation_scope="ts20_reference_bus_event_response_and_source_age",
@@ -198,12 +242,34 @@ class Ts20MpcController(MpcController):
                     prediction_response_identified=False, base_response_is_prior=True,
                     ts20_command_accepted=True, ts20_relinearization_attempts=attempts,
                     ts20_relinearization_policy=deepcopy(RELINEARIZATION_POLICY),
-                    compute_ms=elapsed, ts20_total_compute_ms=elapsed)
+                    compute_ms=elapsed, ts20_total_compute_ms=elapsed,
+                    ts20_timing_observation=timing)
                 return out
             raise RuntimeError("Unreachable TS20 relinearization exit")
-        except BaseException:
-            for name, value in saved.items():
-                setattr(self, name, value)
+        except BaseException as error:
+            # Exact replay evidence is copied only after final rejection. It
+            # neither warms a subsequent solve nor contributes a command.
+            # Preserve a returned inner optimum even when the outer deadline
+            # rejects it; its accepted flag must not promote the outer result.
+            try:
+                if isinstance(error, MpcSolveError):
+                    error.diagnostics.update(accepted_optimum=False, ts20_command_accepted=False)
+                    try:
+                        error.diagnostics["ts20_failure_replay"] = {
+                            "frozen_context": deepcopy(self._frozen_context),
+                            "memory_before": deepcopy(saved),
+                            "inner_allocator_diagnostics": (None if out is None else
+                                                            deepcopy(out["diagnostics"])),
+                            "copied_after_final_rejection": True,
+                            "command_dispatched": False,
+                        }
+                    except Exception as recording_error:
+                        # A diagnostics-copy error must not replace the original
+                        # safety rejection or prevent transactional rollback.
+                        error.diagnostics["ts20_failure_replay_error"] = repr(recording_error)
+            finally:
+                for name, value in saved.items():
+                    setattr(self, name, value)
             raise
         finally:
             self._frozen_context, self._linearization_plan = None, None

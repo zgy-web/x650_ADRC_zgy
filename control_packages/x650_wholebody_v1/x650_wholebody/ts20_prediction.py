@@ -29,6 +29,21 @@ from .ts20 import POSITION_STEP_RAD, VELOCITY_STEP_RAD_S, quantize_half_away
 KIND = "ts20_event_mit_reference_prediction_v1"
 
 
+def _borrow_native_pointer(array, pointer_type):
+    """Borrow a synchronous-call pointer without ctypes owner-dictionary cycles.
+
+    The caller must keep the ndarray in a local strong-reference tuple until
+    the native function returns. Do not cast an existing ctypes pointer here:
+    that would introduce the owner-dictionary relationship being avoided.
+    """
+    element = pointer_type._type_
+    expected = np.dtype(np.float64 if element is ctypes.c_double else np.int32)
+    if (element not in (ctypes.c_double, ctypes.c_int) or not isinstance(array, np.ndarray)
+            or array.dtype != expected or not array.flags.c_contiguous):
+        raise ValueError("Native borrowed pointer requires the matching contiguous ndarray dtype")
+    return ctypes.cast(int(array.ctypes.data), pointer_type)
+
+
 def _finite(value, name, shape=None):
     raw = np.asarray(value)
     if raw.dtype.kind not in "fiu" or not np.isfinite(raw).all():
@@ -367,11 +382,17 @@ class Ts20PredictionModel:
         extrema = np.empty((4096, 5)); event_count, substeps = ctypes.c_int(), ctypes.c_int()
         error = ctypes.create_string_buffer(512)
         dp, ip = ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_int)
-        double = lambda a: a.ctypes.data_as(dp)
+        double = lambda a: _borrow_native_pointer(a, dp)
+        integer = lambda a: _borrow_native_pointer(a, ip)
+        # ctypes.CDLL calls are synchronous. These references include every
+        # ndarray passed below, including both integer output arrays.
+        owners = (parameters, gains, initial, knots, forcing, boundaries,
+                  states, modes, zeros, envelope, extrema)
         code = self._native.ts20_prediction_batch(double(parameters), double(gains), self.max_step_s, start,
             double(initial), double(knots), double(forcing), len(packets), double(boundaries), len(boundaries),
-            int(track_extrema), double(states), modes.ctypes.data_as(ip), zeros.ctypes.data_as(ip),
+            int(track_extrema), double(states), integer(modes), integer(zeros),
             double(envelope), double(extrema), len(extrema), ctypes.byref(event_count), ctypes.byref(substeps), error, len(error))
+        del owners  # Only after the synchronous native return.
         if code:
             raise ValueError("TS20 numerical accelerator rejected propagation: "+error.value.decode(errors="replace"))
         indices = np.searchsorted(boundaries, times)
@@ -577,17 +598,21 @@ class Ts20PredictionModel:
         extrema = np.empty((4096, 5)); event_count, substeps = ctypes.c_int(), ctypes.c_int()
         error = ctypes.create_string_buffer(512)
         dp, ip = ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_int)
-        double = lambda a: a.ctypes.data_as(dp)
+        double = lambda a: _borrow_native_pointer(a, dp)
+        integer = lambda a: _borrow_native_pointer(a, ip)
         epsilon = .0001
         for column in np.flatnonzero(np.any(forcing_jacobian != 0., axis=(0, 1))):
             pair = []
             for sign in (1., -1.):
                 perturbed = np.ascontiguousarray(forcing+sign*epsilon*forcing_jacobian[:, :, column])
+                owners = (parameters, gains, initial, knots, perturbed, boundaries,
+                          states, modes, zeros, envelope, extrema)
                 code = self._native.ts20_prediction_batch(double(parameters), double(gains), self.max_step_s,
                     start, double(initial), double(knots), double(perturbed), len(packets), double(boundaries),
-                    len(boundaries), 0, double(states), modes.ctypes.data_as(ip), zeros.ctypes.data_as(ip),
+                    len(boundaries), 0, double(states), integer(modes), integer(zeros),
                     double(envelope), double(extrema), len(extrema), ctypes.byref(event_count),
                     ctypes.byref(substeps), error, len(error))
+                del owners
                 if code:
                     raise ValueError("TS20 native event derivative failed: "+error.value.decode(errors="replace"))
                 pair.append(states[query_index].copy())

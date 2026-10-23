@@ -1,0 +1,148 @@
+{
+  "kind": "ffi_only_oracle_bitwise_comparison_v1",
+  "old_candidate_sha256": "1648f89052c69470e4f402297ece9042db78b54ead06fe0b230c42dad8be5f9f",
+  "new_candidate_sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+  "new_oracle_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+  "protocol_unchanged": true,
+  "protocol_sha256": "4e6649919c6a95a663d8d6de5c87123ffaca2fe25720f860316f078634ae9e2f",
+  "pass": true,
+  "rows": [
+    {
+      "name": "hold",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 0.0,
+      "dq_peak_abs_rad_s": 0.0
+    },
+    {
+      "name": "small_positive_step",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 1.0797028876519121e-07,
+      "dq_peak_abs_rad_s": 1.0986164847511665e-05
+    },
+    {
+      "name": "small_negative_step",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 1.0976582121013934e-07,
+      "dq_peak_abs_rad_s": 1.1339751986631785e-05
+    },
+    {
+      "name": "opposed_step",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 3.0785449043058133e-06,
+      "dq_peak_abs_rad_s": 0.0007581027418579467
+    },
+    {
+      "name": "reversal",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 3.0785449043058133e-06,
+      "dq_peak_abs_rad_s": 0.0007907302047022238
+    },
+    {
+      "name": "low_amplitude_sine",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 2.454534936413566e-09,
+      "dq_peak_abs_rad_s": 2.398901724877736e-07
+    },
+    {
+      "name": "phase_shifted_sine",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 2.6352602819912363e-06,
+      "dq_peak_abs_rad_s": 0.00026326469793572227
+    },
+    {
+      "name": "nonbus_aligned_pulses",
+      "npz_exact": {
+        "time_s": true,
+        "oracle_q": true,
+        "oracle_dq": true,
+        "candidate_q": true,
+        "candidate_dq": true,
+        "source_times": true,
+        "source_velocity": true
+      },
+      "encoded_inputs_exact": true,
+      "candidate_events_exact": true,
+      "q_peak_abs_rad": 2.2227781531491964e-06,
+      "dq_peak_abs_rad_s": 0.00023988567990416987
+    }
+  ],
+  "native_backend": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "abi": 1,
+    "cpp_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+    "binding": "explicit CLI native backend enabled before all frozen run_case calls",
+    "source_archive": "candidate_ts20_prediction_native.cpp"
+  },
+  "native_kernel_unchanged": true
+}
