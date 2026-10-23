@@ -74,6 +74,39 @@ class NativeGates(unittest.TestCase):
     def test_bounded_active_set(self):
         with self.assertRaises(ValueError):self.native.solve(self.problem(),1)
 
+    def test_per_row_precision_survives_dimension_and_row_scaling(self):
+        # In the original 75-variable/230-row solver, 6.54e-8 normalized
+        # violation was below m*eps*n*n*100, although 5x that in original
+        # row units exceeded the unchanged 2e-7 acceptance gate.
+        for n in (5,75):
+            for factor in (.005,5.,5000.):
+                for sign in (-1.,1.):
+                    with self.subTest(n=n,factor=factor,sign=sign):
+                        C=np.zeros((230,n));C[:,0]=sign*factor
+                        bound=6.541115840363876e-8
+                        p={"H":np.eye(n),"g":np.zeros(n),"C":C,
+                           "lo":np.full(230,factor*bound),
+                           "hi":np.full(230,10.*factor)}
+                        z,q,center=self.native.solve(p,100)
+                        expected=np.zeros(n);expected[0]=sign*bound
+                        np.testing.assert_allclose(z,expected,atol=1e-13,rtol=0)
+                        self.assertFalse(center)
+                        self.assertLess(q["primal_violation"],1e-10)
+
+    def test_recorded_near_active_row_is_actually_converged(self):
+        fixture=Path(__file__).resolve().parents[1]/"native/regressions/hold16_round1416_qp.npz"
+        with np.load(fixture) as saved:
+            p={key:saved[key] for key in ("H","g","C","lo","hi")}
+            old=saved["solution"]
+            original=MpcController._quality(p,old)
+            self.assertAlmostEqual(original["primal_violation"],3.270557920181938e-7,places=14)
+            z,q,_=self.native.solve(p,int(saved["max_iterations"]))
+        # Recompute against all original rows, independently of the C++ report.
+        independent=MpcController._quality(p,z)
+        self.assertLess(independent["primal_violation"],1e-10)
+        self.assertLess(independent["kkt_stationarity_inf"],1e-8)
+        self.assertLess(q["primal_violation"],1e-10)
+
     def test_joint_recurrence_matches_reference_at_packet_boundaries(self):
         _,p,_,_=setup()
         rng=np.random.default_rng(20261023)

@@ -69,7 +69,8 @@ namespace quadprogpp {
 double solve_quadprog(Matrix<double>& G, Vector<double>& g0, 
                       const Matrix<double>& CE, const Vector<double>& ce0,  
                       const Matrix<double>& CI, const Vector<double>& ci0, 
-                      Vector<double>& x, unsigned int max_iterations = 100);
+                      Vector<double>& x, unsigned int max_iterations = 100,
+                      const Vector<double>* inequality_tolerances = nullptr);
 
 }  // namespace quadprogpp
 

@@ -52,7 +52,8 @@ void print_vector(const char* name, const Vector<T>& v, int n = -1);
 double solve_quadprog(Matrix<double>& G, Vector<double>& g0, 
                       const Matrix<double>& CE, const Vector<double>& ce0,  
                       const Matrix<double>& CI, const Vector<double>& ci0, 
-                      Vector<double>& x, unsigned int max_iterations)
+                      Vector<double>& x, unsigned int max_iterations,
+                      const Vector<double>* inequality_tolerances)
 {
   std::ostringstream msg;
   unsigned int n = G.ncols(), p = CE.ncols(), m = CI.ncols();
@@ -81,12 +82,21 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
     msg << "The vector ci0 is incompatible (incorrect dimension " << ci0.size() << ", expecting " << m << ")";
     throw std::logic_error(msg.str());
   }
+  if (inequality_tolerances)
+  {
+    if (inequality_tolerances->size() != m)
+      throw std::logic_error("Inequality tolerance dimension");
+    for (unsigned int row = 0; row < m; ++row)
+      if (!std::isfinite((*inequality_tolerances)[row]) || (*inequality_tolerances)[row] <= 0)
+        throw std::logic_error("Inequality tolerance must be finite and positive");
+  }
   x.resize(n);
   unsigned int i, j, k, l; /* indices */
   int ip; // this is the index of the constraint to be added to the active set
   Matrix<double> R(n, n), J(n, n);
   Vector<double> s(m + p), z(n), r(m + p), d(n), np(n), u(m + p), x_old(n), u_old(m + p);
   double f_value, psi, c1, c2, sum, ss, R_norm;
+  bool row_feasible, aggregate_feasible;
   double inf;
   if (std::numeric_limits<double>::has_infinity)
     inf = std::numeric_limits<double>::infinity();
@@ -229,6 +239,7 @@ l1:	iter++;
   /* compute s[x] = ci^T * x + ci0 for all elements of K \ A */
   ss = 0.0;
   psi = 0.0; /* this value will contain the sum of all infeasibilities */
+  row_feasible = true;
   ip = 0; /* ip will be the index of the chosen violated constraint */
   for (i = 0; i < m; i++)
   {
@@ -237,15 +248,23 @@ l1:	iter++;
     for (j = 0; j < n; j++)
       sum += CI[j][i] * x[j];
     sum += ci0[i];
+    if (inequality_tolerances && !std::isfinite(sum))
+      throw std::runtime_error("QP inequality residual is nonfinite");
     s[i] = sum;
     psi += std::min(0.0, sum);
+    if (inequality_tolerances && sum < -(*inequality_tolerances)[i])
+      row_feasible = false;
   }
 #ifdef TRACE_SOLVER
   print_vector("s", s, m);
 #endif
   
   
-  if (fabs(psi) <= m * std::numeric_limits<double>::epsilon() * c1 * c2* 100.0)
+  // Project extension: normalization must not hide a violation in the caller's
+  // original units. The optional per-row tolerances are transformed alongside
+  // each inequality; they supplement, never loosen, the upstream sum test.
+  aggregate_feasible = fabs(psi) <= m * std::numeric_limits<double>::epsilon() * c1 * c2* 100.0;
+  if (row_feasible && aggregate_feasible)
   {
     /* numerically there are not infeasibilities anymore */
     return f_value;
@@ -272,6 +291,8 @@ l2: /* Step 2: check for feasibility and determine a new S-pair */
     }
   if (ss >= 0.0)
   {
+    if (inequality_tolerances && (!row_feasible || !aggregate_feasible))
+      throw std::runtime_error("QP inequality precision not reached");
     return f_value;
   }
   

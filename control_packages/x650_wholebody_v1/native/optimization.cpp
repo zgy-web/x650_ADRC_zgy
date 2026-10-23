@@ -214,11 +214,16 @@ extern "C" int x650_solve(int n,int m,const double* hp,const double* gp,const do
   if(!interior){*mode=1;Mat T=factor.matrixU().solve(Mat::Identity(n,n)),M(2*m+2*n,n);Vec b(2*m+2*n);
    M<<C*T,-C*T,T,-T;b<<hi-value,value-lo,Vec::Ones(n)-center,Vec::Ones(n)+center;
    // Exact duplicate inequalities are harmless; retain all for quality.
-   std::vector<int> keep;for(int i=0;i<M.rows();i++){double norm=M.row(i).norm();if(norm<1e-14){require(b[i]>=0,"constant QP infeasible");continue;}M.row(i)/=norm;b[i]/=norm;keep.push_back(i);}
-   quadprogpp::Matrix<double> G(n,n),CE(n,0),CI(n,keep.size());quadprogpp::Vector<double> g0(n),ce0(0),ci0(keep.size()),y(n);
+   // A sum-of-normalized-residuals test alone grows with problem dimensions
+   // and can accept a materially violated original row. Retain its scale so
+   // the active-set solver also converges to 1e-10 in EACH original inequality
+   // (well inside the unchanged external 2e-7 feasibility gate).
+   std::vector<int> keep;Vec row_tolerance(M.rows());
+   for(int i=0;i<M.rows();i++){double norm=M.row(i).norm();if(norm<1e-14){require(b[i]>=0,"constant QP infeasible");continue;}M.row(i)/=norm;b[i]/=norm;row_tolerance[i]=1e-10/norm;keep.push_back(i);}
+   quadprogpp::Matrix<double> G(n,n),CE(n,0),CI(n,keep.size());quadprogpp::Vector<double> g0(n),ce0(0),ci0(keep.size()),tolerances(keep.size()),y(n);
    for(int i=0;i<n;i++){g0[i]=0;for(int j=0;j<n;j++)G[i][j]=i==j?1:0;}
-   for(int j=0;j<int(keep.size());j++){ci0[j]=b[keep[j]];for(int i=0;i<n;i++)CI[i][j]=-M(keep[j],i);}
-   double objective=quadprogpp::solve_quadprog(G,g0,CE,ce0,CI,ci0,y,max_iterations);require(std::isfinite(objective),"QP infeasible");Vec solution(n);for(int i=0;i<n;i++)solution[i]=y[i];z=center+T*solution;
+   for(int j=0;j<int(keep.size());j++){ci0[j]=b[keep[j]];tolerances[j]=row_tolerance[keep[j]];for(int i=0;i<n;i++)CI[i][j]=-M(keep[j],i);}
+   double objective=quadprogpp::solve_quadprog(G,g0,CE,ce0,CI,ci0,y,max_iterations,&tolerances);require(std::isfinite(objective),"QP infeasible");Vec solution(n);for(int i=0;i<n;i++)solution[i]=y[i];z=center+T*solution;
   }
   require(z.allFinite(),"nonfinite solution");Vec q=quality(H,g,C,lo,hi,z);Eigen::Map<Vec>(zp,n)=z;Eigen::Map<Vec>(quality_out,4)=q;return 0;
  }catch(const std::exception& e){std::snprintf(error,es,"%s",e.what());return 1;}
