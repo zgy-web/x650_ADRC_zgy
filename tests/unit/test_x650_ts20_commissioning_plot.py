@@ -2,12 +2,14 @@
 
 Fixtures are temporary toy CSVs. The joint test mocks numerical propagation
 to verify the recomputation path; it is not a predictor/oracle validation.
-No figure, certificate, NPZ or actual experimental result is produced.
+Temporary certificate-shaped JSONs are synthetic identity fixtures only.
+No figure, NPZ or actual experimental result is produced.
 """
 from contextlib import contextmanager, redirect_stderr
 import csv
 import importlib.util
 import io
+import json
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
@@ -39,6 +41,142 @@ def write_csv(path, rows):
     with path.open("x", newline="", encoding="utf-8") as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader(); writer.writerows(rows)
+
+
+def write_json(path, value):
+    path.write_text(json.dumps(value), encoding="utf-8")
+
+
+def oracle_fixture(folder):
+    source = folder/"synthetic_prediction.py"
+    source.write_text("# SYNTHETIC source identity only; never executed.\n", encoding="utf-8")
+    oracle = folder/"synthetic_oracle.json"
+    write_json(oracle, {"complete": True, "pass": True, "candidate_sha256": plot.sha(source)})
+    cfg = {"ts20_inputs": {"oracle_validation": str(oracle)}}
+    cert = {"ts20_operating_condition": {"oracle_validation_sha256": plot.sha(oracle)}}
+    return source, oracle, cfg, cert
+
+
+def recorded_prior():
+    return {"path": "/synthetic/old_model_prior.json", "sha256": "a"*64,
+            "source_model_sha256": "b"*64, "new_plant_identified": False}
+
+
+class SyntheticPlotSourceProvenance(unittest.TestCase):
+    def test_actual_imported_module_source_is_bound_to_the_hash_bound_oracle(self):
+        with synthetic_space() as folder:
+            source, oracle, cfg, cert = oracle_fixture(folder)
+            with patch.object(plot.importlib, "import_module", return_value=SimpleNamespace(__file__=str(source))) as imported:
+                binding = plot.predictor_source_binding(cfg, cert)
+            imported.assert_called_once_with("x650_wholebody.ts20_prediction")
+            self.assertEqual(binding["path"], str(source.resolve()))
+            self.assertEqual(binding["sha256"], plot.sha(source))
+            self.assertEqual(binding["oracle_candidate_sha256"], plot.sha(source))
+            self.assertEqual(binding["oracle_validation_sha256"], plot.sha(oracle))
+            self.assertTrue(binding["matches_accepted_oracle"])
+
+    def test_changed_imported_source_cannot_reuse_an_accepted_candidate_identity(self):
+        with synthetic_space() as folder:
+            source, oracle, cfg, cert = oracle_fixture(folder)
+            source.write_text("# SYNTHETIC different bytes.\n", encoding="utf-8")
+            with patch.object(plot.importlib, "import_module", return_value=SimpleNamespace(__file__=str(source))):
+                with self.assertRaisesRegex(ValueError, "prediction source differs"):
+                    plot.predictor_source_binding(cfg, cert)
+
+    def test_replaced_oracle_is_rejected_before_importing_predictor(self):
+        with synthetic_space() as folder:
+            source, oracle, cfg, cert = oracle_fixture(folder)
+            write_json(oracle, {"complete": True, "pass": True, "candidate_sha256": "d"*64})
+            with patch.object(plot.importlib, "import_module") as imported:
+                with self.assertRaisesRegex(ValueError, "Oracle validation differs"):
+                    plot.predictor_source_binding(cfg, cert)
+                imported.assert_not_called()
+
+    def test_incomplete_or_failed_oracle_is_rejected_even_with_matching_file_hash(self):
+        with synthetic_space() as folder:
+            source, oracle, cfg, cert = oracle_fixture(folder)
+            for field in ("complete", "pass"):
+                with self.subTest(field=field):
+                    doc = {"complete": True, "pass": True, "candidate_sha256": plot.sha(source)}
+                    doc[field] = False
+                    write_json(oracle, doc)
+                    cert["ts20_operating_condition"]["oracle_validation_sha256"] = plot.sha(oracle)
+                    with self.assertRaisesRegex(ValueError, "Complete accepted predictor oracle"):
+                        plot.predictor_source_binding(cfg, cert)
+
+    def test_recorded_prior_preserves_identity_and_does_not_reopen_old_absolute_path(self):
+        prior = recorded_prior()
+        meta = {"base_response_is_prior": True,
+                "provenance": {"base_response_is_prior": True, "base_response_prior": prior}}
+        binding = plot.base_prior_binding(meta, "tip_hold")
+        for key, value in prior.items():
+            self.assertEqual(binding[key], value)
+        self.assertEqual(binding["status"], "recorded")
+        self.assertFalse(binding["new_plant_identified"])
+        caption = plot.base_prior_caption({"base_response_prior": binding})
+        self.assertIn(prior["source_model_sha256"][:12], caption)
+        self.assertIn(prior["sha256"][:12], caption)
+        self.assertIn("new-plant identification: no", caption)
+
+    def test_joint_probe_missing_prior_is_explicitly_unknown_and_hold_refuses(self):
+        meta = {"provenance": {"base_response_is_prior": True}}
+        binding = plot.base_prior_binding(meta, "joint_probe")
+        self.assertEqual(binding["status"], "unknown")
+        self.assertIsNone(binding["sha256"])
+        self.assertIsNone(binding["source_model_sha256"])
+        self.assertIsNone(binding["new_plant_identified"])
+        self.assertIn("unknown", plot.base_prior_caption({"base_response_prior": binding}))
+        with self.assertRaisesRegex(ValueError, "hold lacks recorded"):
+            plot.base_prior_binding(meta, "tip_hold")
+
+    def test_incomplete_or_conflicting_prior_metadata_is_not_invented(self):
+        prior = recorded_prior()
+        meta = {"base_response_is_prior": True,
+                "provenance": {"base_response_prior": prior}}
+        prior.pop("source_model_sha256")
+        with self.assertRaisesRegex(ValueError, "identity is incomplete"):
+            plot.base_prior_binding(meta, "tip_hold")
+        meta["provenance"]["base_response_prior"] = recorded_prior()
+        meta["provenance"]["base_response_is_prior"] = False
+        with self.assertRaisesRegex(ValueError, "flags are invalid or inconsistent"):
+            plot.base_prior_binding(meta, "tip_hold")
+        meta["provenance"]["base_response_is_prior"] = True
+        meta["provenance"]["base_response_prior"]["new_plant_identified"] = True
+        with self.assertRaisesRegex(ValueError, "not new-plant identification"):
+            plot.base_prior_binding(meta, "tip_hold")
+
+    def test_bound_run_exports_both_source_and_prior_identity_into_manifest_metadata(self):
+        with synthetic_space() as folder:
+            source, oracle, cfg, cert = oracle_fixture(folder)
+            cfg.update(stage="tip_hold", scenario="x650_ts20_damped_hold_v1", duration_s=30.)
+            meta = {"task": cfg, "complete": True, "landed_and_disarmed": True,
+                    "diagnostic_parameters_restored": True, "diagnostic_restore_pending": False,
+                    "ts20_operating_condition": cert["ts20_operating_condition"],
+                    "task_start_sim_s": 17., "task_end_sim_s": 47.,
+                    "base_response_is_prior": True,
+                    "provenance": {"base_response_prior": recorded_prior()}}
+            write_json(folder/"controller_task.json", cfg)
+            write_json(folder/"controller_metadata.json", meta)
+            files = ("stage_result.json", "native_trace.csv", "flight_samples.csv",
+                     "ts20_state.csv", "ts20_packets.csv")
+            for name in files:
+                (folder/name).write_text("SYNTHETIC identity fixture only\n", encoding="utf-8")
+            names = ("controller_task.json", "controller_metadata.json", *files)
+            source_dir = "/synthetic/"+folder.name
+            cert.update(kind="x650_ts20_conditional_stage_certificate_v1", complete=True,
+                        passed=True, stage="tip_hold", actuator_log_verified=True,
+                        full_window_ulog_verified=True, new_joint_prediction_verified=True,
+                        window_sim_s=[17.,47.], source_run_directory=source_dir,
+                        qualification={"supply_24v_qualified": False, "actual_aerial_arm_load_qualified": False},
+                        artifacts={source_dir+"/"+name: plot.sha(folder/name) for name in names})
+            cert_path = folder/"synthetic_certificate.json"
+            write_json(cert_path, cert)
+            with patch.object(plot.importlib, "import_module", return_value=SimpleNamespace(__file__=str(source))):
+                _, _, _, _, binding = plot.bound_run(folder, cert_path)
+            self.assertEqual(binding["prediction_source"]["sha256"], plot.sha(source))
+            self.assertEqual(binding["base_response_prior"]["source_model_sha256"], "b"*64)
+            self.assertFalse(binding["hardware_24v_loaded_qualified"])
+            self.assertEqual(binding["actual_task_window_sim_s"], [17.,47.])
 
 
 def hold_fixture(folder, actual_duration):

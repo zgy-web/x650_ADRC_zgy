@@ -1,0 +1,154 @@
+{
+  "kind": "x650_ts20_actual_v4_joint_probe_plot_local_delivery_v1",
+  "actual_experiment": true,
+  "stage": "joint_probe",
+  "stage_passed": true,
+  "complete_mpc_hold_accepted": false,
+  "source_run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_123911_6123",
+  "server_output_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/joint_probe_plot_v1",
+  "certificate_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/joint_probe_audit_v1/ts20_stage_certificate.json",
+  "certificate_sha256": "5fe8bb02f6870d515f8c0a255a9f79208abecf9441c8cde1d914c429a4e063f2",
+  "condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee",
+  "operating_condition": {
+    "kind": "x650_ts20_conditional_operating_condition_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+    "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+    "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+    "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+    "qualification": {
+      "hardware_motor": "TS20-50",
+      "hardware_supply_v": 24,
+      "identified_supply_v": 20,
+      "supply_24v_qualified": false,
+      "actual_aerial_arm_load_qualified": false,
+      "physical_torque_scale_qualified": false
+    }
+  },
+  "plot_script_sha256": "a8895ee87607b4e8679526b1ae042e53a6d16c54966884f4fd0a1114ed87c40a",
+  "prediction_source": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+    "sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+    "oracle_validation_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_ffi_pointer_validation_20261023/oracle_v1/validation_summary.json",
+    "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+    "oracle_candidate_sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+    "matches_accepted_oracle": true
+  },
+  "base_response_prior": {
+    "status": "unknown",
+    "base_response_is_prior": true,
+    "path": null,
+    "sha256": null,
+    "source_model_sha256": null,
+    "new_plant_identified": null,
+    "metadata_source": "controller_metadata.json.provenance.base_response_prior",
+    "reason": "Prior identity was not recorded for this stage"
+  },
+  "files": [
+    {
+      "local_path": "artifacts/ts20_chain_v4_delivery_20261023/joint_probe_certified_actual.png",
+      "bytes": 325966,
+      "sha256": "a41dd18f99c96611dff9bfdd995890a549c5639e6986237a225e39a0758e310b"
+    },
+    {
+      "local_path": "artifacts/ts20_chain_v4_delivery_20261023/joint_probe_certified_actual.npz",
+      "bytes": 494654,
+      "sha256": "57411b94586b915c1a3b2d06b70634cb1454a55c6fd5faeb71bac89683a94de7"
+    },
+    {
+      "local_path": "artifacts/ts20_chain_v4_delivery_20261023/joint_probe_certified_actual_manifest.json",
+      "bytes": 4557,
+      "sha256": "fedd40cc1ecce4b2262f8fd48e8d4330f5b93b1043ca7f38bec7906d98e3ef83"
+    },
+    {
+      "local_path": "artifacts/ts20_chain_v4_delivery_20261023/delivery_manifest.json",
+      "bytes": 2393,
+      "sha256": "90e773513411c72bd532dc6cbbb3df9cf8edd8511a74a0fb5223539f786bce9d"
+    }
+  ],
+  "byte_preserving_transfer": {
+    "manifests_and_npz": "ZIP_STORED plus base64 transport, member raw bytes SHA verified locally",
+    "transport_zip_sha256": "95dd914c85dff6f217fe1bec754ec53d5f6ff07e89259001512049581b17b8c0",
+    "png": "Root transferred separately and raw SHA matches original server PNG",
+    "all_four_local_files_match_server_raw_sha256": true
+  },
+  "ts20_state_forecast_trace": {
+    "samples": 7502,
+    "source_file": "ts20_state.csv",
+    "source_sha256": "e2b82fe3174bc764409c3cd82dadaf43e8cc9c0ab6194fb485eb3bbf172b7104",
+    "window_sim_s": [
+      41.576,
+      71.58
+    ],
+    "duration_s": 30.004,
+    "physical_q_source": "TS20 plugin same-stamp physical Gazebo joint position",
+    "endpoint_dq_source": "Conditional simulated servo endpoint speed report",
+    "physical_interval_dq_source": "Actual Gazebo joint interval-average speed",
+    "first_state_only": true,
+    "later_measured_state_resets": false,
+    "q_peak_prediction_error_rad_per_joint": [
+      5.994428317473988e-07,
+      6.092869706264548e-07
+    ],
+    "dq_peak_prediction_error_rad_s_per_joint": [
+      4.4199787110579813e-05,
+      5.195253886251805e-05
+    ]
+  },
+  "independent_native_fk_trace": {
+    "samples": 7501,
+    "source_file": "native_trace.csv",
+    "source_sha256": "485ec4b867c27c9b26c75cc6670e83f1f9508e33754082b8d23151c21b37828b",
+    "reported_metric": {
+      "samples": 7501,
+      "maximum_error_m": 1.2170809796964346e-06,
+      "time_weighted_rms_m": 2.9389905439233e-08,
+      "tolerance_m": 0.0001,
+      "passed": true,
+      "semantics": "Independent native distal-link WorldPose tip versus +Y-axis FK of same-step base pose/q; no phase or offset fit"
+    },
+    "count_evidence_path": "docs/validation/ts20_prediction_chain_20261022/chain_v4_actual_20261023.json",
+    "count_evidence_sha256": "08bfa8670cff59af6fdf69fcba395ccb5d826364dd42bee4c26fd08a66c3b352"
+  },
+  "sample_semantics_note": "7502 TS20 state/forecast rows and 7501 independent native FK rows are distinct recorded data selections. Counts must not be interchanged or merged by row index; no resampling or equality of their sample selections is claimed.",
+  "environment": {
+    "python": "/usr/bin/python3",
+    "numpy": "1.21.5",
+    "scipy": "1.8.0",
+    "matplotlib": "3.5.1",
+    "fallback_used": false
+  },
+  "qa": {
+    "width_px": 2160,
+    "height_px": 1600,
+    "actual_png_visually_inspected": true,
+    "six_panels_visible": true,
+    "no_clipped_title_labels_legends_or_footer": true,
+    "position_unit": "rad",
+    "prediction_error_unit": "mrad",
+    "velocity_unit": "rad/s",
+    "nominal_20v_and_24v_not_qualified_visible": true,
+    "endpoint_dq_and_physical_interval_dq_labels_distinct": true,
+    "unrecorded_base_prior_explicitly_unknown": true
+  },
+  "single_actual_forecast_execution": true,
+  "cli_elapsed_s": 2.446,
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "scope_notes": [
+    "This delivery records actual accepted joint-probe simulation and predictor consistency only.",
+    "Small forecast error is conditional-plant numerical consistency, not actual 24V loaded motor accuracy or q-reference tracking accuracy.",
+    "Quiet v4 failed its next-control-interval guard and has no accepted 30-second MPC hold or certified plot.",
+    "The executed plot script raw SHA is retained. Its synthetic-only validation header has not been rewritten retrospectively; this archive records subsequent actual server data/PNG QA."
+  ]
+}

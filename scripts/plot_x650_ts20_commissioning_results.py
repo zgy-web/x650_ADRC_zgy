@@ -13,6 +13,8 @@ Example after actual flights/certificates exist (not run during preparation):
     --certificate AUDIT/ts20_stage_certificate.json --output NEW_OUTPUT
 Use --export-only to prepare numeric NPZ without importing Matplotlib.
 External forecast arrays are not accepted as a substitute for recomputation.
+The imported predictor source must match the accepted, hash-bound oracle.
+Base-response prior identity comes only from the certified run metadata.
 
 Tool validation currently covers synthetic regression fixtures only. It has
 not yet been verified against actual server-stage data or produced actual
@@ -27,6 +29,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import importlib
 import json
 from pathlib import Path
 import sys
@@ -67,6 +70,68 @@ def window_rows(path, window, stamp="sim_s"):
     require(t[0] <= window[0]+.008+1e-9 and t[-1] >= window[1]-.008-1e-9
             and np.diff(t).max() <= .008+1e-9, "Actual data omit part of the certified <=8ms whole window")
     return t, rows
+
+
+def predictor_source_binding(cfg, cert):
+    """Identify the module actually imported for this plot's propagation."""
+    oracle_path = Path(cfg["ts20_inputs"]["oracle_validation"])
+    oracle_sha = sha(oracle_path)
+    require(oracle_sha == cert["ts20_operating_condition"]["oracle_validation_sha256"],
+            "Oracle validation differs from the accepted actual run")
+    oracle = read(oracle_path)
+    require(oracle.get("complete") is True and oracle.get("pass") is True,
+            "Complete accepted predictor oracle is required for plotting")
+    sys.path.insert(0, str(ROOT/"control_packages/x650_wholebody_v1"))
+    module = importlib.import_module("x650_wholebody.ts20_prediction")
+    source = Path(module.__file__).resolve(strict=True)
+    source_sha = sha(source)
+    require(source_sha == oracle.get("candidate_sha256"),
+            "Imported TS20 prediction source differs from the accepted oracle candidate")
+    return {"path": str(source), "sha256": source_sha,
+            "oracle_validation_path": str(oracle_path.resolve()),
+            "oracle_validation_sha256": oracle_sha,
+            "oracle_candidate_sha256": oracle["candidate_sha256"],
+            "matches_accepted_oracle": True}
+
+
+def base_prior_binding(meta, stage):
+    """Copy recorded provenance, without reopening or inventing a prior model."""
+    provenance = meta.get("provenance", {})
+    require(isinstance(provenance, dict), "Recorded run provenance must be a mapping")
+    declarations = [value for value in (meta.get("base_response_is_prior"),
+                    provenance.get("base_response_is_prior")) if value is not None]
+    require(all(type(value) is bool for value in declarations)
+            and (not declarations or all(value == declarations[0] for value in declarations)),
+            "Recorded base-response prior flags are invalid or inconsistent")
+    is_prior = declarations[0] if declarations else None
+    prior = provenance.get("base_response_prior")
+    if prior is None:
+        require(stage != "tip_hold", "Endpoint hold lacks recorded base-response prior identity")
+        return {"status": "unknown", "base_response_is_prior": is_prior,
+                "path": None, "sha256": None, "source_model_sha256": None,
+                "new_plant_identified": None,
+                "metadata_source": "controller_metadata.json.provenance.base_response_prior",
+                "reason": "Prior identity was not recorded for this stage"}
+    require(isinstance(prior, dict), "Recorded base-response prior must be a mapping")
+    def digest(value):
+        return isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
+    require(isinstance(prior.get("path"), str) and bool(prior["path"])
+            and digest(prior.get("sha256")) and digest(prior.get("source_model_sha256"))
+            and type(prior.get("new_plant_identified")) is bool,
+            "Recorded base-response prior identity is incomplete")
+    require(is_prior is True and prior["new_plant_identified"] is False,
+            "Expected the recorded base-response prior, not new-plant identification")
+    return {"status": "recorded", "base_response_is_prior": is_prior,
+            **{key: prior[key] for key in ("path", "sha256", "source_model_sha256", "new_plant_identified")},
+            "metadata_source": "controller_metadata.json.provenance.base_response_prior"}
+
+
+def base_prior_caption(binding):
+    prior = binding["base_response_prior"]
+    if prior["status"] == "unknown":
+        return "Base-response prior identity: unknown in recorded metadata for this stage"
+    return ("Base response: prior from model "+prior["source_model_sha256"][:12]
+            +" | prior "+prior["sha256"][:12]+" | new-plant identification: no")
 
 
 def bound_run(folder, certificate):
@@ -111,6 +176,8 @@ def bound_run(folder, certificate):
         "window_sim_s": window.tolist(), "actual_task_window_sim_s": window.tolist(),
         "actual_task_end_sim_s": float(window[1]),
         "operating_condition": cert["ts20_operating_condition"],
+        "prediction_source": predictor_source_binding(cfg, cert),
+        "base_response_prior": base_prior_binding(meta, stage),
         "profile": {"name": PROFILE_NAME, "sha256": PROFILE_SHA256, "kp": 6., "kd": .25, "bus_period_s": .005},
         "simulation_conditional": True, "hardware_24v_loaded_qualified": False,
         "display_scope": "actual certified simulation; model originated at nominal 20V bench condition"}
@@ -252,8 +319,9 @@ def draw(data, binding, output):
         ax.set_xlim(0.,binding["window_sim_s"][1]-binding["window_sim_s"][0]);ax.axhline(0.,color="#94a3b8",linewidth=.6)
     fig.suptitle(title,fontweight="bold",fontsize=16,y=.99)
     fig.text(.5,.955,"Certified native simulation | effective Kp=6, Kd=0.25 | nominal-20V model; 24V loaded hardware not qualified",ha="center",fontsize=9)
+    fig.text(.5,.933,base_prior_caption(binding),ha="center",fontsize=9)
     fig.text(.5,.008,binding["source_run_id"]+" | complete certified measurement interval",ha="center",fontsize=8,color="#64748b")
-    fig.tight_layout(rect=(0.,.045,1.,.94))
+    fig.tight_layout(rect=(0.,.045,1.,.91))
     path=output/(binding["stage"]+"_certified_actual.png")
     require(not path.exists(),"Figure already exists; use a fresh output directory")
     fig.savefig(path,dpi=160,facecolor="white");plt.close(fig)

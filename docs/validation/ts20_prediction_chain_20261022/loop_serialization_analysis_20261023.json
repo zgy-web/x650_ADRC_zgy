@@ -1,0 +1,787 @@
+{
+  "kind": "ts20_loop_serialization_and_available_timing_v1",
+  "no_flight": true,
+  "software_cpu_stage_ended": true,
+  "production_source_changed": false,
+  "original_v4_timeline": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/quiet_failure_v1/available_failure_timeline.json",
+    "sha256": "8c1829f26c4bad5709ccd83f70db6799a17e7605494320ffec3499401594651f",
+    "bytes": 2522651
+  },
+  "v4_diagnostic_jsonl": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_124322_7048/controller_diagnostics.jsonl",
+    "sha256": "7a4b4eaa04c21d712dbaee34001bf84a96c3757ea6418e65da7ff270ffd73166",
+    "bytes": 31671654
+  },
+  "reference_recording_source": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/recording.py",
+    "sha256": "ce8555b9ec783c96cd3b51ddd2628fa3258c545c3caef58c1c17ea2a807e54e8",
+    "bytes": 25153
+  },
+  "harnesses": {
+    "raw": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/profile_x650_loop_serialization.py",
+      "sha256": "05683e431aacb9c72bcb863c603ff014ea5812ecedb0813f1b2258b7d3d2fdd3",
+      "bytes": 9908
+    },
+    "live_numpy": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/profile_x650_loop_serialization_live.py",
+      "sha256": "bac09bbd440a3bb7c43ec552ef26b03a27cb745e78bd27f846d2c5b0d2eafee4",
+      "bytes": 4626
+    },
+    "reconstruction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/profile_x650_ts20_late_warm.py",
+      "sha256": "beeb553f41b7b6da3aa77c9822eb5c560ba9fce01455eaade5946c7dc23a2eb2",
+      "bytes": 10893
+    }
+  },
+  "semantic_probe": {
+    "case_count": 21,
+    "primitive_fast_all_exact": true,
+    "direct_default_all_exact": false,
+    "direct_default_counterexamples": [
+      {
+        "case": "bool_none_keys",
+        "reference": {
+          "returned": true,
+          "text": "{\"True\": \"yes\", \"None\": \"missing\", \"False\": \"no\"}"
+        },
+        "direct_default": {
+          "returned": true,
+          "text": "{\"true\": \"yes\", \"null\": \"missing\", \"false\": \"no\"}"
+        }
+      },
+      {
+        "case": "tuple_key",
+        "reference": {
+          "returned": true,
+          "text": "{\"(1, 2)\": \"tuple\"}"
+        },
+        "direct_default": {
+          "returned": false,
+          "error_type": "TypeError",
+          "error": "keys must be str, int, float, bool or None, not tuple"
+        }
+      },
+      {
+        "case": "numpy_key",
+        "reference": {
+          "returned": true,
+          "text": "{\"2\": \"numpy\"}"
+        },
+        "direct_default": {
+          "returned": false,
+          "error_type": "TypeError",
+          "error": "keys must be str, int, float, bool or None, not numpy.int64"
+        }
+      },
+      {
+        "case": "key_collision",
+        "reference": {
+          "returned": true,
+          "text": "{\"True\": \"second\", \"None\": \"second\"}"
+        },
+        "direct_default": {
+          "returned": true,
+          "text": "{\"true\": \"first\", \"True\": \"second\", \"null\": \"first\", \"None\": \"second\"}"
+        }
+      },
+      {
+        "case": "nan_key",
+        "reference": {
+          "returned": true,
+          "text": "{\"nan\": \"key\"}"
+        },
+        "direct_default": {
+          "returned": false,
+          "error_type": "ValueError",
+          "error": "Out of range float values are not JSON compliant"
+        }
+      },
+      {
+        "case": "object_array_numpy",
+        "reference": {
+          "returned": false,
+          "error_type": "TypeError",
+          "error": "Object of type int64 is not JSON serializable"
+        },
+        "direct_default": {
+          "returned": true,
+          "text": "[3]"
+        }
+      },
+      {
+        "case": "longdouble",
+        "reference": {
+          "returned": false,
+          "error_type": "TypeError",
+          "error": "Object of type float128 is not JSON serializable"
+        },
+        "direct_default": {
+          "returned": false,
+          "error_type": "RecursionError",
+          "error": "maximum recursion depth exceeded while calling a Python object"
+        }
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "scope": "decoded_v4_JSONL",
+      "label": "raw_jsonl_line_763",
+      "t_s": 18.200000000000003,
+      "type_counts": null,
+      "variants": [
+        {
+          "variant": "reference",
+          "conversion": {
+            "wall_ms": 2.290925,
+            "thread_cpu_ms": 2.278111
+          },
+          "encoding": {
+            "wall_ms": 1.755297,
+            "thread_cpu_ms": 1.755501
+          },
+          "write": {
+            "wall_ms": 0.617339,
+            "thread_cpu_ms": 0.61755
+          },
+          "flush": {
+            "wall_ms": 0.00135,
+            "thread_cpu_ms": 0.00128
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "primitive_fast",
+          "conversion": {
+            "wall_ms": 1.205328,
+            "thread_cpu_ms": 1.205601
+          },
+          "encoding": {
+            "wall_ms": 1.694145,
+            "thread_cpu_ms": 1.69438
+          },
+          "write": {
+            "wall_ms": 0.04557,
+            "thread_cpu_ms": 0.04546
+          },
+          "flush": {
+            "wall_ms": 0.00102,
+            "thread_cpu_ms": 0.000969
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "direct_default_not_universal",
+          "conversion": {
+            "wall_ms": 0.00136,
+            "thread_cpu_ms": 0.00114
+          },
+          "encoding": {
+            "wall_ms": 1.699755,
+            "thread_cpu_ms": 1.70023
+          },
+          "write": {
+            "wall_ms": 0.032371,
+            "thread_cpu_ms": 0.032251
+          },
+          "flush": {
+            "wall_ms": 0.00092,
+            "thread_cpu_ms": 0.000889
+          },
+          "exact_reference_bytes": true
+        }
+      ]
+    },
+    {
+      "scope": "decoded_v4_JSONL",
+      "label": "raw_jsonl_line_764",
+      "t_s": 18.232,
+      "type_counts": null,
+      "variants": [
+        {
+          "variant": "reference",
+          "conversion": {
+            "wall_ms": 2.208913,
+            "thread_cpu_ms": 2.20883
+          },
+          "encoding": {
+            "wall_ms": 1.680006,
+            "thread_cpu_ms": 1.680291
+          },
+          "write": {
+            "wall_ms": 0.030441,
+            "thread_cpu_ms": 0.03033
+          },
+          "flush": {
+            "wall_ms": 0.0011,
+            "thread_cpu_ms": 0.00108
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "primitive_fast",
+          "conversion": {
+            "wall_ms": 1.243479,
+            "thread_cpu_ms": 1.243501
+          },
+          "encoding": {
+            "wall_ms": 1.683166,
+            "thread_cpu_ms": 1.683551
+          },
+          "write": {
+            "wall_ms": 0.04467,
+            "thread_cpu_ms": 0.04454
+          },
+          "flush": {
+            "wall_ms": 0.00097,
+            "thread_cpu_ms": 0.00094
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "direct_default_not_universal",
+          "conversion": {
+            "wall_ms": 0.0012,
+            "thread_cpu_ms": 0.00108
+          },
+          "encoding": {
+            "wall_ms": 1.674816,
+            "thread_cpu_ms": 1.67515
+          },
+          "write": {
+            "wall_ms": 0.032561,
+            "thread_cpu_ms": 0.032451
+          },
+          "flush": {
+            "wall_ms": 0.00097,
+            "thread_cpu_ms": 0.00094
+          },
+          "exact_reference_bytes": true
+        }
+      ]
+    },
+    {
+      "scope": "decoded_v4_JSONL",
+      "label": "raw_jsonl_line_765",
+      "t_s": 18.264000000000003,
+      "type_counts": null,
+      "variants": [
+        {
+          "variant": "reference",
+          "conversion": {
+            "wall_ms": 2.281195,
+            "thread_cpu_ms": 2.281301
+          },
+          "encoding": {
+            "wall_ms": 1.682936,
+            "thread_cpu_ms": 1.68319
+          },
+          "write": {
+            "wall_ms": 0.041801,
+            "thread_cpu_ms": 0.041611
+          },
+          "flush": {
+            "wall_ms": 0.00099,
+            "thread_cpu_ms": 0.000971
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "primitive_fast",
+          "conversion": {
+            "wall_ms": 1.127778,
+            "thread_cpu_ms": 1.128201
+          },
+          "encoding": {
+            "wall_ms": 1.681466,
+            "thread_cpu_ms": 1.681431
+          },
+          "write": {
+            "wall_ms": 0.03119,
+            "thread_cpu_ms": 0.03129
+          },
+          "flush": {
+            "wall_ms": 0.00101,
+            "thread_cpu_ms": 0.00097
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "direct_default_not_universal",
+          "conversion": {
+            "wall_ms": 0.0012,
+            "thread_cpu_ms": 0.00106
+          },
+          "encoding": {
+            "wall_ms": 1.704846,
+            "thread_cpu_ms": 1.704941
+          },
+          "write": {
+            "wall_ms": 0.0302,
+            "thread_cpu_ms": 0.03016
+          },
+          "flush": {
+            "wall_ms": 0.00093,
+            "thread_cpu_ms": 0.00092
+          },
+          "exact_reference_bytes": true
+        }
+      ]
+    },
+    {
+      "scope": "reconstructed_v3_live_NumPy",
+      "label": "live_v3_pending_packet_omitted",
+      "t_s": null,
+      "type_counts": {
+        "builtins.dict": 133,
+        "builtins.float": 412,
+        "builtins.str": 151,
+        "builtins.bool": 27,
+        "builtins.int": 139,
+        "numpy.ndarray": 25,
+        "builtins.list": 8
+      },
+      "variants": [
+        {
+          "variant": "reference",
+          "conversion": {
+            "wall_ms": 0.746941,
+            "thread_cpu_ms": 0.746161
+          },
+          "encoding": {
+            "wall_ms": 0.860682,
+            "thread_cpu_ms": 0.8612
+          },
+          "write": {
+            "wall_ms": 0.020441,
+            "thread_cpu_ms": 0.02029
+          },
+          "flush": {
+            "wall_ms": 0.001311,
+            "thread_cpu_ms": 0.00128
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "primitive_fast",
+          "conversion": {
+            "wall_ms": 0.350845,
+            "thread_cpu_ms": 0.35102
+          },
+          "encoding": {
+            "wall_ms": 0.830962,
+            "thread_cpu_ms": 0.831041
+          },
+          "write": {
+            "wall_ms": 0.01867,
+            "thread_cpu_ms": 0.01843
+          },
+          "flush": {
+            "wall_ms": 0.00099,
+            "thread_cpu_ms": 0.00094
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "direct_default_not_universal",
+          "conversion": {
+            "wall_ms": 0.00109,
+            "thread_cpu_ms": 0.00096
+          },
+          "encoding": {
+            "wall_ms": 0.864732,
+            "thread_cpu_ms": 0.86491
+          },
+          "write": {
+            "wall_ms": 0.02055,
+            "thread_cpu_ms": 0.02045
+          },
+          "flush": {
+            "wall_ms": 0.00101,
+            "thread_cpu_ms": 0.00099
+          },
+          "exact_reference_bytes": true
+        }
+      ]
+    },
+    {
+      "scope": "reconstructed_v3_live_NumPy",
+      "label": "live_v3_pending_packet_included",
+      "t_s": null,
+      "type_counts": {
+        "builtins.dict": 134,
+        "builtins.float": 415,
+        "builtins.str": 152,
+        "builtins.bool": 27,
+        "builtins.int": 140,
+        "numpy.ndarray": 25,
+        "builtins.list": 8
+      },
+      "variants": [
+        {
+          "variant": "reference",
+          "conversion": {
+            "wall_ms": 0.69551,
+            "thread_cpu_ms": 0.69538
+          },
+          "encoding": {
+            "wall_ms": 0.836372,
+            "thread_cpu_ms": 0.83668
+          },
+          "write": {
+            "wall_ms": 0.01968,
+            "thread_cpu_ms": 0.01944
+          },
+          "flush": {
+            "wall_ms": 0.00101,
+            "thread_cpu_ms": 0.00097
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "primitive_fast",
+          "conversion": {
+            "wall_ms": 0.353514,
+            "thread_cpu_ms": 0.353829
+          },
+          "encoding": {
+            "wall_ms": 0.835892,
+            "thread_cpu_ms": 0.835991
+          },
+          "write": {
+            "wall_ms": 0.02049,
+            "thread_cpu_ms": 0.02037
+          },
+          "flush": {
+            "wall_ms": 0.00096,
+            "thread_cpu_ms": 0.00093
+          },
+          "exact_reference_bytes": true
+        },
+        {
+          "variant": "direct_default_not_universal",
+          "conversion": {
+            "wall_ms": 0.00116,
+            "thread_cpu_ms": 0.00102
+          },
+          "encoding": {
+            "wall_ms": 0.873112,
+            "thread_cpu_ms": 0.87332
+          },
+          "write": {
+            "wall_ms": 0.01799,
+            "thread_cpu_ms": 0.017851
+          },
+          "flush": {
+            "wall_ms": 0.001,
+            "thread_cpu_ms": 0.00096
+          },
+          "exact_reference_bytes": true
+        }
+      ]
+    }
+  ],
+  "success_timing_table": [
+    {
+      "t_s": 17.656,
+      "sim_s": 59.132,
+      "control_dt_ms": 27.999999999998693,
+      "whole_compute_ms": 19.442051649093628,
+      "previous_pva_to_compute_before_wall_ms": null,
+      "snapshot_to_snapshot_wall_ms": null,
+      "clock_sequence": 10730,
+      "clock_received_wall_s": 14778263.107457012,
+      "clock_wall_age_s": 0.0015223752707242966
+    },
+    {
+      "t_s": 17.683999999999997,
+      "sim_s": 59.16,
+      "control_dt_ms": 27.999999999998693,
+      "whole_compute_ms": 20.01713216304779,
+      "previous_pva_to_compute_before_wall_ms": 9.433720260858536,
+      "snapshot_to_snapshot_wall_ms": 28.605472296476364,
+      "clock_sequence": 10736,
+      "clock_received_wall_s": 14778263.135363959,
+      "clock_wall_age_s": 0.0022247619926929474,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 27.90694683790207
+    },
+    {
+      "t_s": 17.712000000000003,
+      "sim_s": 59.188,
+      "control_dt_ms": 28.000000000005798,
+      "whole_compute_ms": 25.110410526394844,
+      "previous_pva_to_compute_before_wall_ms": 9.3680489808321,
+      "snapshot_to_snapshot_wall_ms": 29.11592461168766,
+      "clock_sequence": 10742,
+      "clock_received_wall_s": 14778263.164655356,
+      "clock_wall_age_s": 0.0020536184310913086,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 29.29139696061611
+    },
+    {
+      "t_s": 17.747999999999998,
+      "sim_s": 59.224,
+      "control_dt_ms": 35.99999999999426,
+      "whole_compute_ms": 21.385934203863144,
+      "previous_pva_to_compute_before_wall_ms": 9.877288714051247,
+      "snapshot_to_snapshot_wall_ms": 34.71548296511173,
+      "clock_sequence": 10748,
+      "clock_received_wall_s": 14778263.199479084,
+      "clock_wall_age_s": 0.001841571182012558,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 34.82372872531414
+    },
+    {
+      "t_s": 17.78,
+      "sim_s": 59.256,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 20.402591675519943,
+      "previous_pva_to_compute_before_wall_ms": 9.764816612005234,
+      "snapshot_to_snapshot_wall_ms": 30.86804412305355,
+      "clock_sequence": 10754,
+      "clock_received_wall_s": 14778263.231539024,
+      "clock_wall_age_s": 0.0007041580975055695,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.059939578175545
+    },
+    {
+      "t_s": 17.808,
+      "sim_s": 59.284,
+      "control_dt_ms": 27.999999999998693,
+      "whole_compute_ms": 20.67095786333084,
+      "previous_pva_to_compute_before_wall_ms": 9.513240307569504,
+      "snapshot_to_snapshot_wall_ms": 29.637888073921204,
+      "clock_sequence": 10760,
+      "clock_received_wall_s": 14778263.260538649,
+      "clock_wall_age_s": 0.001394718885421753,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 28.999624773859978
+    },
+    {
+      "t_s": 17.840000000000003,
+      "sim_s": 59.316,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 20.891956984996796,
+      "previous_pva_to_compute_before_wall_ms": 10.593494400382042,
+      "snapshot_to_snapshot_wall_ms": 30.985476449131966,
+      "clock_sequence": 10766,
+      "clock_received_wall_s": 14778263.291592436,
+      "clock_wall_age_s": 0.0012609399855136871,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.05378709733486
+    },
+    {
+      "t_s": 17.872,
+      "sim_s": 59.348,
+      "control_dt_ms": 31.999999999996476,
+      "whole_compute_ms": 20.964454859495163,
+      "previous_pva_to_compute_before_wall_ms": 10.422181338071823,
+      "snapshot_to_snapshot_wall_ms": 31.042398884892464,
+      "clock_sequence": 10772,
+      "clock_received_wall_s": 14778263.323472984,
+      "clock_wall_age_s": 0.00042616017162799835,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.88054822385311
+    },
+    {
+      "t_s": 17.9,
+      "sim_s": 59.376,
+      "control_dt_ms": 27.999999999998693,
+      "whole_compute_ms": 20.918214693665504,
+      "previous_pva_to_compute_before_wall_ms": 10.657135397195816,
+      "snapshot_to_snapshot_wall_ms": 31.349796801805496,
+      "clock_sequence": 10778,
+      "clock_received_wall_s": 14778263.35259502,
+      "clock_wall_age_s": 0.002664659172296524,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 29.122035950422287
+    },
+    {
+      "t_s": 17.932000000000002,
+      "sim_s": 59.408,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 21.424315869808197,
+      "previous_pva_to_compute_before_wall_ms": 9.955089539289474,
+      "snapshot_to_snapshot_wall_ms": 30.600206926465034,
+      "clock_sequence": 10784,
+      "clock_received_wall_s": 14778263.384340243,
+      "clock_wall_age_s": 0.0015243571251630783,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.745223328471184
+    },
+    {
+      "t_s": 17.964,
+      "sim_s": 59.44,
+      "control_dt_ms": 31.999999999996476,
+      "whole_compute_ms": 21.638430655002594,
+      "previous_pva_to_compute_before_wall_ms": 10.843418538570404,
+      "snapshot_to_snapshot_wall_ms": 31.993672251701355,
+      "clock_sequence": 10790,
+      "clock_received_wall_s": 14778263.415424604,
+      "clock_wall_age_s": 0.0023709163069725037,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.08436055481434
+    },
+    {
+      "t_s": 17.996000000000002,
+      "sim_s": 59.472,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 27.69211307168007,
+      "previous_pva_to_compute_before_wall_ms": 10.677626356482506,
+      "snapshot_to_snapshot_wall_ms": 32.0478118956089,
+      "clock_sequence": 10796,
+      "clock_received_wall_s": 14778263.447776971,
+      "clock_wall_age_s": 0.0020749885588884354,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.35236741602421
+    },
+    {
+      "t_s": 18.036,
+      "sim_s": 59.512,
+      "control_dt_ms": 39.99999999999915,
+      "whole_compute_ms": 21.933138370513916,
+      "previous_pva_to_compute_before_wall_ms": 10.706061497330666,
+      "snapshot_to_snapshot_wall_ms": 38.12084533274174,
+      "clock_sequence": 10802,
+      "clock_received_wall_s": 14778263.487426052,
+      "clock_wall_age_s": 0.00048222020268440247,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 39.649080485105515
+    },
+    {
+      "t_s": 18.067999999999998,
+      "sim_s": 59.544,
+      "control_dt_ms": 31.999999999996476,
+      "whole_compute_ms": 21.970169618725777,
+      "previous_pva_to_compute_before_wall_ms": 11.157939210534096,
+      "snapshot_to_snapshot_wall_ms": 32.82066807150841,
+      "clock_sequence": 10808,
+      "clock_received_wall_s": 14778263.519587316,
+      "clock_wall_age_s": 0.0012399088591337204,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.16126374900341
+    },
+    {
+      "t_s": 18.1,
+      "sim_s": 59.576,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 22.03614078462124,
+      "previous_pva_to_compute_before_wall_ms": 10.806431993842125,
+      "snapshot_to_snapshot_wall_ms": 32.497262582182884,
+      "clock_sequence": 10814,
+      "clock_received_wall_s": 14778263.551520277,
+      "clock_wall_age_s": 0.0018337219953536987,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.93296119570732
+    },
+    {
+      "t_s": 18.131999999999998,
+      "sim_s": 59.608,
+      "control_dt_ms": 31.999999999996476,
+      "whole_compute_ms": 22.275395691394806,
+      "previous_pva_to_compute_before_wall_ms": 10.290740057826042,
+      "snapshot_to_snapshot_wall_ms": 32.04973228275776,
+      "clock_sequence": 10820,
+      "clock_received_wall_s": 14778263.584313016,
+      "clock_wall_age_s": 0.0010694041848182678,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.79273957014084
+    },
+    {
+      "t_s": 18.164,
+      "sim_s": 59.64,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 22.169291973114014,
+      "previous_pva_to_compute_before_wall_ms": 11.22375950217247,
+      "snapshot_to_snapshot_wall_ms": 33.222148194909096,
+      "clock_sequence": 10826,
+      "clock_received_wall_s": 14778263.6164555,
+      "clock_wall_age_s": 0.002137068659067154,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.142482697963715
+    },
+    {
+      "t_s": 18.200000000000003,
+      "sim_s": 59.676,
+      "control_dt_ms": 36.000000000001364,
+      "whole_compute_ms": 22.10571989417076,
+      "previous_pva_to_compute_before_wall_ms": 11.438064277172089,
+      "snapshot_to_snapshot_wall_ms": 33.33703242242336,
+      "clock_sequence": 10833,
+      "clock_received_wall_s": 14778263.65145438,
+      "clock_wall_age_s": 0.000424310564994812,
+      "clock_sequence_delta": 7,
+      "clock_receipt_wall_progress_ms": 34.998880699276924
+    },
+    {
+      "t_s": 18.232,
+      "sim_s": 59.708,
+      "control_dt_ms": 31.999999999996476,
+      "whole_compute_ms": 22.20139279961586,
+      "previous_pva_to_compute_before_wall_ms": 10.64414530992508,
+      "snapshot_to_snapshot_wall_ms": 32.479891553521156,
+      "clock_sequence": 10839,
+      "clock_received_wall_s": 14778263.68340484,
+      "clock_wall_age_s": 0.0009998809546232224,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 31.950460746884346
+    },
+    {
+      "t_s": 18.264000000000003,
+      "sim_s": 59.74,
+      "control_dt_ms": 32.00000000000358,
+      "whole_compute_ms": 22.23806455731392,
+      "previous_pva_to_compute_before_wall_ms": 12.068359181284904,
+      "snapshot_to_snapshot_wall_ms": 33.99526700377464,
+      "clock_sequence": 10845,
+      "clock_received_wall_s": 14778263.716049485,
+      "clock_wall_age_s": 0.0023313723504543304,
+      "clock_sequence_delta": 6,
+      "clock_receipt_wall_progress_ms": 32.644644379615784
+    }
+  ],
+  "maximum_available_success_pva_to_next_compute_before_wall_ms": 12.068359181284904,
+  "failed_control_interval_s": 0.056,
+  "failure_before_allocator": true,
+  "failed_guard_exact_wall_and_feedback_recorded": false,
+  "historical_duration_or_cause_established": false,
+  "candidate_production_change_recommended_now": false,
+  "limits": [
+    "Raw v4 JSONL records are already decoded JSON, not the historical live NumPy/container tree.",
+    "The NumPy supplement is a fresh reconstruction of a separate v3 fixture using source-verified motion and committed memory, not missing v4 failed-state data.",
+    "These are one offline sample per selected tree and variant. No sample is discarded. File writes use fresh files and flush only, not fsync; first-write cold effects are retained.",
+    "Clock sequences and wall intervals are available only for the successful windows. Held clock jumps do not establish a callback backlog or scheduling cause. Failed-pump checkpoint wall/thread timestamps do not exist.",
+    "Primitive conversion preserves branches/keys/ndarray.tolist/generic.item semantics and passes the finite probes; direct JSONEncoder.default is not a universally equivalent replacement.",
+    "Estimated saving is small; new opt-in loop checkpoint evidence is needed before another repair is selected."
+  ],
+  "environment": {
+    "hostname": "autodl-container-f64b45a5b8-51661812",
+    "python": "/usr/bin/python3",
+    "process_env": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "PYTHONPATH": "unset (profile calls)"
+    },
+    "affinity_or_gc_policy_changed": false
+  },
+  "reports": {
+    "raw_v4_profile": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_loop_serialization_20261023/raw_v4_v1/profile_summary.json",
+      "sha256": "d1448cd60c9e4b36062a081943b556f8f89402f07a3e26b956c9158a28229495",
+      "bytes": 21743
+    },
+    "live_v3_profile": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_loop_serialization_20261023/live_v3_v1/profile_summary.json",
+      "sha256": "e0d23ed714a30f306939b72f447227d6c069fec24d3b97cd25d8bf25afe06f73",
+      "bytes": 20008
+    },
+    "available_timing_detail": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_loop_serialization_20261023/available_loop_tail_analysis.json",
+      "sha256": "e10e592559aba7c1dafd07baccdb5884a8a62a75aaeb6df35e7064e12e9afee4",
+      "bytes": 19090
+    }
+  }
+}

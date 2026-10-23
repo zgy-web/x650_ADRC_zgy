@@ -236,7 +236,19 @@ local characteristic: lambda^2 + d_incremental/Jbar*lambda + Kp/Jbar = 0
 
 v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，下一轮进入 MPC 之前的控制间隔达到 56 ms，原 50 ms guard 拒绝继续。最后一次 MPC outer wall／thread 为 17.40108／17.39479 ms，期间 GC collection delta 为零；这些量没有覆盖发布后的尾部日志与下一次反馈读取，不能据此确定历史间隔超限的原因。已执行的 18.244 s 仅作 partial 诊断，独立原生末端 RMS 3.23693 mm、峰值 4.89980 mm。降落／解除锁定、typed 参数恢复／同步保存、42 项 PID 及全部来源档案均核过。该 guard 位于 `ExecutionTrace.controller_step` 之前，本次失败轮的精确反馈快照尚未被记录；保留的 20 轮成功快照与邻近物理行不冒充缺失现场。后续需补齐循环层计时及拒绝快照后继续定位，不能把部分窗口当作完整验收。
 
-## 11. 真机条件仍需补齐
+已用该次通过的关节证书生成实际图表，并完成原始文件回传与可视检查，详见 [实际图表交付清单](validation/ts20_prediction_chain_20261022/joint_probe_plot_delivery_v4_20261023.json)。一次系统 Python CLI 在 2.446 s 内完成完整自由预测复算与 PNG，使用现成 NumPy 1.21.5／SciPy 1.8.0／Matplotlib 3.5.1，未安装依赖。PNG、NPZ 与两个 manifest 的本地／服务器原始字节 SHA 一致。7502 个 `ts20_state.csv` 物理 q／模型端点 dq 点与 7501 个独立 `native_trace.csv` FK 点分别保留来源，不按行号混同；保持失败没有生成 certified 图。绘图源码绑定实际导入预测器和 oracle，另显式标记基体响应先验身份是否记录；14 项合成守卫及实际数据复算／图像检查都已完成。
+
+## 11. 循环层时序诊断
+
+[离线分项结果](validation/ts20_prediction_chain_20261022/loop_serialization_analysis_20261023.json) 保留 v4 最后 20 个成功周期。19 个可计算的“前次 PVA 本地返回→下次 compute_before”wall gap 为 9.368–12.068 ms，期间仿真时钟与 wall 推进同量级；缺失的失败轮边界仍未知。真实历史 JSON 树及重新生成的 NumPy 诊断树分开测量，primitive 转换候选只节省约 0.35–1.1 ms，未部署该候选。直接改用 `JSONEncoder.default` 有 7 类语义反例，也没有替换生产 helper。这些离线测量不还原历史耗时，不足以宣称修复 56 ms。
+
+新增 TS20 专用 `loop_timing.py`，只由该场景 extension 显式安装；共享控制循环、调度、发布函数与原 50 ms guard 字节不变。它委托原方法各一次，观察原 pump、callback drain、read、发布 trace 返回和原有文件 write／flush；普通路径不新增磁盘写入或 flush。最近 3 个 due/read 循环、64 个全部 pump 循环保留在有界标量环中，避免漏掉未到控制时刻的等待。真正本地 send 返回的 wall 时间引用原 ExecutionTrace；wrapper 的 CPU 时间明确属于包含 trace 写入的较晚边界，不冒充精确 send CPU 时刻。
+
+自然 GC 观测只注册自己的唯一 callback，记录 start／stop 区间、线程和 generation／collected，保留最近 64 个完成事件和各代计数／最大值；没有主动 collect、disable 或阈值调整，也不扫描堆。区间包含间隔中的其他 callback，不等于 collector 独占 CPU 成本。收尾先移除自身 callback，并保留原有其他 callback 和 GC 配置。
+
+新的控制间隔拒绝会在失败之后保存该轮实际 `read` 返回的状态、反馈、last／next／current dt、循环段和 GC 区间，并明确 allocator 未调用、指令未发布；原异常保持有效。观察文件失败或观察计数不完整会拒绝新观测阶段的完整性，同时继续封存执行器日志，不遮蔽原控制错误。10 项 observer 测试与 4 项既有 extension 测试在服务器通过，原软件证明的 34 项源及新条件的前序证书按原校验通过。当前只启动一次固定 30 s 的诊断保持，须等待实际记录和审计，不能以观察测试代替闭环通过。
+
+## 12. 真机条件仍需补齐
 
 仍需完成两类物理证据：
 

@@ -14,6 +14,7 @@ for directory in (ROOT, ROOT / "src", ROOT / "control_packages/x650_wholebody_v1
     if str(directory) not in sys.path:
         sys.path.insert(0, str(directory))
 from simulations.x650_ts20_hold_v1 import task
+from simulations.x650_ts20_hold_v1.loop_timing import LoopTimingObserver
 from simulations.x650_wholebody_mpc_v1 import run_case as shared
 from x650_wholebody.ts20 import FrozenTs20Model
 from x650_wholebody.ts20_prediction import Ts20PredictionModel
@@ -26,6 +27,7 @@ class Ts20Extension:
         self.cfg, self.provenance = cfg, provenance
         self.runtime, self.predictor, self.loop = None, None, None
         self.disturbance = None
+        self.loop_timing = None
 
     def validate_runtime(self, cfg, model, provenance, out):
         _, checked = task.preflight(cfg)
@@ -67,6 +69,8 @@ class Ts20Extension:
             "numpy_version": numpy.__version__, "numpy_path": numpy.__file__,
             "scipy_version": scipy.__version__, "scipy_path": scipy.__file__,
             "before_arming": True, "new_download": False}
+        self.loop_timing = LoopTimingObserver(loop, out)
+        meta["ts20_loop_timing"] = self.loop_timing.metadata()
 
     def after_state_read(self, loop, state, joint_stamp, sim):
         if loop.recovery:
@@ -78,7 +82,8 @@ class Ts20Extension:
         return self.runtime.measured_state(state, sim)
 
     def on_pump(self, loop, sim):
-        pass
+        if self.loop_timing is not None:
+            self.loop_timing.after_drain(sim)
 
     def before_publish(self, loop, begin, sim, command):
         if loop.recovery:
@@ -167,6 +172,20 @@ class Ts20Extension:
             ts20_operating_condition=self.provenance["ts20_operating_condition"],
             ts20_operating_condition_sha256=self.provenance["ts20_operating_condition_sha256"],
             supply_24v_qualified=False, aerial_arm_load_qualified=False, base_response_is_prior=True)
+        if self.loop_timing is not None:
+            try:
+                meta["ts20_loop_timing_evidence"] = self.loop_timing.close()
+                if (meta["ts20_loop_timing_evidence"].get("complete") is not True
+                        or meta["ts20_loop_timing_evidence"].get("observations_valid") is not True):
+                    raise RuntimeError("TS20 loop timing evidence is incomplete or invalid")
+                stage["artifacts"]["loop_timing_evidence.json"] = task.sha(Path(out) / "loop_timing_evidence.json")
+            except Exception as timing_error:
+                # A postflight observer I/O error must not replace the original
+                # control error or block closing/capturing the actuator logs.
+                meta["ts20_loop_timing_evidence_error"] = repr(timing_error)
+                meta["ts20_loop_timing_evidence"] = {"complete": False}
+                meta["complete"] = False
+                stage.update(success=False, complete=False, passed=False)
         if self.runtime is not None:
             meta["ts20_actuator"] = self.runtime.close()
         end = meta.get("native_recording", {}).get("time_last_s")
