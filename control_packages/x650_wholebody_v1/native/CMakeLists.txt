@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(x650_optimization LANGUAGES CXX)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+add_library(x650_optimization SHARED optimization.cpp vendor/quadprogpp/QuadProg++.cc)
+target_link_libraries(x650_optimization PRIVATE Eigen3::Eigen)
+target_compile_features(x650_optimization PRIVATE cxx_std_17)
+target_compile_options(x650_optimization PRIVATE -Wall -Wextra)

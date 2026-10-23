@@ -140,6 +140,7 @@ def validate_task_config(value):
     if not isinstance(value, dict):
         raise ValueError("TS20 task object required")
     cfg = deepcopy(value)
+    native_backend = cfg.pop("numerical_backend", None)
     if type(cfg.get("disturbance_enabled")) is not bool:
         raise ValueError("disturbance_enabled must be a boolean")
     selected = variant(cfg)
@@ -172,6 +173,11 @@ def validate_task_config(value):
         raise ValueError("Explicit same-world raw-EV research configuration required")
     if not isinstance(cfg["stage_evidence"], dict):
         raise ValueError("stage_evidence must map new TS20 stage certificates to paths")
+    if native_backend is not None:
+        from x650_wholebody.native_qualification import validate_binding
+        if cfg["stage"] != "tip_hold" or cfg["controller"] != "mpc" or cfg["disturbance_enabled"]:
+            raise ValueError("Native numerical backend is qualified for quiet tip hold only")
+        cfg["numerical_backend"] = deepcopy(validate_binding(native_backend))
     return cfg
 
 
@@ -235,6 +241,9 @@ def source_files_for_task(cfg):
         ROOT / "scripts/validate_x650_ts20_prediction.py"]))
     if cfg["scenario"] == DAMPED_SCENARIO:
         sources.append(ROOT / "configs/actuators/ts20_50_24v_damped_v1_candidate.json")
+    if "numerical_backend" in cfg:
+        native = ROOT / "control_packages/x650_wholebody_v1/native"
+        sources.extend(sorted(p for p in native.rglob("*") if p.is_file()))
     return sources
 
 
@@ -338,5 +347,8 @@ def preflight(cfg, *, check_airframe=True):
         provenance["base_response_prior"] = {"path": inputs["base_response_prior"], "sha256": sha(inputs["base_response_prior"]),
             "source_model_sha256": prior.get("model_sha256"), "new_plant_identified": False}
     sources = source_files_for_task(cfg)
+    if "numerical_backend" in cfg:
+        from x650_wholebody.native_qualification import verify_backend
+        provenance["numerical_backend"] = verify_backend(ROOT, cfg["numerical_backend"])
     provenance["source_files_sha256"] = {p.relative_to(ROOT).as_posix(): sha(p) for p in sources}
     return model, provenance

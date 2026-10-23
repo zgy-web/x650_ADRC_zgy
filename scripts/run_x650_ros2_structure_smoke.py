@@ -226,6 +226,8 @@ def main(argv=None):
     node = None
     report = {"kind": "x650_ros2_structure_smoke_v1", "complete": False, "passed": False,
         "case": args.case, "synthetic_software_fixture_only": True, "native_mpc": False,
+        "native_numerical_kernels": "numerical_backend" in cfg,
+        "numerical_backend": cfg.get("numerical_backend", {"kind": "python_reference"}),
         "flight_started": False, "actuator_publishers_present": None, "hard_realtime_qualified": False,
         "task_configuration_sha256": args.task_config_sha256,
         "session_id": session, "epoch": 1, "domain_id": args.domain_id,
@@ -316,6 +318,15 @@ def main(argv=None):
                     raise RuntimeError("Installed worker is stale: " + name)
         report["actual_worker_sources"] = startup["loaded_module_sources"]
         report["actually_loaded_native_library"] = startup["actually_loaded_native_library"]
+        optimization = startup.get("actually_loaded_native_optimization")
+        if "numerical_backend" in cfg:
+            selected = cfg["numerical_backend"]
+            if (not optimization or Path(optimization["path"]).resolve() != Path(selected["library"]).resolve()
+                    or optimization["sha256"] != selected["library_sha256"]):
+                raise RuntimeError("Worker did not load the selected native optimization library")
+        elif optimization is not None:
+            raise RuntimeError("Unselected native optimization appeared in reference process")
+        report["actually_loaded_native_optimization"] = optimization
         if args.case == "worker_timeout":
             os.killpg(processes["reference"].pid, signal.SIGINT)
             processes["reference"].wait(timeout=10.)

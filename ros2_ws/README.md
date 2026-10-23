@@ -162,6 +162,21 @@ maintenance path; do not treat a Remote outage as a ROS controller failure.
 
 ## Next integration boundary
 
+The explicit `cpp_numerics_v1` task binding now selects the
+[native numerical backend](../control_packages/x650_wholebody_v1/NATIVE_NUMERICS.md)
+inside the existing worker. C++ performs matrix assembly, QP solution, full-row
+quality checks and nonlinear candidate acceptance. Python still prepares the
+observed context/MIT packets and owns the transactional lifecycle; the worker
+is not yet a standalone C++ executor. Startup provenance records the actually
+loaded optimization library, and the smoke driver checks it against the task's
+pinned identity. Existing tasks continue to use the archived reference backend.
+
+The first admitted implementation passed 328 regressions, all 30 frozen cases
+and all 388 recorded calls. Finite software checks do not certify the new
+complete live hold; its separate current-run evidence is required before
+trajectory stages. The original work breakdown below remains relevant to a
+fully native live ROS executor and command commit/acknowledgement integration.
+
 Move prediction assembly, QP execution and nonlinear candidate checks into the
 native controller behind this interface. Qualify it against the frozen 30
 software cases and source-bound recorded inputs before connecting a live

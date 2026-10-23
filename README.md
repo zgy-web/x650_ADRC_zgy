@@ -440,6 +440,7 @@ virtualgl_ready: true
 - [可移植性设计](docs/PORTABILITY.md)
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)
 - [公共 API](docs/PUBLIC_API.md)
+- [X650 / TS20 上层 MPC 的 C++ 数值后端与验证方法](control_packages/x650_wholebody_v1/NATIVE_NUMERICS.md)
 - [自定义场景](docs/CUSTOM_SCENARIOS.md)
 - [数据记录](docs/RECORDING.md)
 - [可配置机械臂模型](docs/CONFIGURABLE_MODELS.md)

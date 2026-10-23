@@ -1,0 +1,18 @@
+{
+  "kind": "native_numerics_equivalence_v1",
+  "matrix_absolute_tolerance": 1e-9,
+  "matrix_relative_tolerance": 1e-9,
+  "normalized_plan_peak_max": 1e-7,
+  "predicted_state_peak_max": 1e-7,
+  "objective_relative_scale_max": 1e-8,
+  "candidate_classification_equal": true,
+  "actual_mit_packets_required_equal": true,
+  "original_full_constraint_primal_max": 2e-7,
+  "original_full_constraint_stationarity_max": 0.002,
+  "original_total_controller_deadline_ms": 50.0,
+  "frozen_matrix_case_count": 30,
+  "previous_recordings_must_be_replayed": true,
+  "preserve_pid_weights_limits_and_candidate_policy": true,
+  "hold_after_software_acceptance_only": true,
+  "fast_figure_eight_after_full_hold_only": true
+}

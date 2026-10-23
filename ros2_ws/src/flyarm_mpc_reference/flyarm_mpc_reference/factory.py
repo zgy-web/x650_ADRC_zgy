@@ -74,8 +74,14 @@ def create_engine(repo_root, task_config, task_config_sha256, initialization_man
     q0 = vector(initialization["anchor_q"], 2, "anchor q")
     center = vector(initialization["target_position_enu"], 3, "hold target")
     context = SnapshotContext()
-    allocator = Ts20MpcController(model, pid, trajectory=ConstantTarget(center), config=config,
-                                  predictor=predictor, context_provider=context)
+    controller, options = Ts20MpcController, {}
+    if "numerical_backend" in cfg:
+        from x650_wholebody.native_mpc import NativeTs20MpcController
+        controller = NativeTs20MpcController
+        options = {"native_library": cfg["numerical_backend"]["library"],
+                   "native_sha256": cfg["numerical_backend"]["library_sha256"]}
+    allocator = controller(model, pid, trajectory=ConstantTarget(center), config=config,
+                           predictor=predictor, context_provider=context, **options)
     adapter = ControllerAdapter(allocator, model, pid, acceleration_feedforward_policy="zero")
     adapter.reset(p0, R0, q0)
     sent = initialization["published_prestream_history"]
@@ -96,4 +102,5 @@ def create_engine(repo_root, task_config, task_config_sha256, initialization_man
                   "synthetic_software_fixture_only": initialization["synthetic_software_fixture_only"],
                   "historical_reproduction_claimed": False,
                   "physical_flight_qualification": False, "native_predictor": predictor.metadata()["native_accelerator"],
-                  "scope": "offline/shadow Python reference; same numerical core, no real-time or flight claim"})
+                  "numerical_backend": cfg.get("numerical_backend", {"kind": "python_reference"}),
+                  "scope": "offline/shadow process; explicitly selected numerical backend; no real-time or flight claim"})

@@ -41,6 +41,13 @@ def write_startup_metadata(path, engine):
     if (Path(declared_native["path"]).resolve(strict=True) != Path(actual_native["path"])
             or declared_native["sha256"] != actual_native["sha256"]):
         raise ValueError("Actually loaded native predictor differs from its identity")
+    optimization = getattr(engine.adapter.allocator, "native_optimization", None)
+    actual_optimization = None
+    if optimization is not None:
+        actual_optimization = _identity(optimization.lib._name)
+        if (Path(optimization.receipt["path"]).resolve(strict=True) != Path(actual_optimization["path"])
+                or optimization.receipt["sha256"] != actual_optimization["sha256"]):
+            raise ValueError("Actually loaded native optimization differs from its identity")
     dependencies = {}
     for name in ("numpy", "scipy"):
         module = sys.modules.get(name)
@@ -54,6 +61,8 @@ def write_startup_metadata(path, engine):
         "python": {"executable": sys.executable, "version": sys.version},
         "dependencies": dependencies, "engine": metadata,
         "loaded_module_sources": sources, "actually_loaded_native_library": actual_native,
+        "actually_loaded_native_optimization": actual_optimization,
+        "native_numerical_kernels": actual_optimization is not None,
         "native_mpc": False, "actuator_dispatch": False}
     # Never replace a previous startup report or a failed attempt's evidence.
     with path.open("x", encoding="utf-8") as stream:

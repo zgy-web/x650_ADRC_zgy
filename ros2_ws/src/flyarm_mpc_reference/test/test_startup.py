@@ -41,6 +41,16 @@ class StartupTests(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 write_startup_metadata(output, fake)
             self.assertEqual(output.read_bytes(), raw)
+            fake.adapter.allocator.native_optimization = NS(lib=NS(_name=str(native)),
+                receipt={"path":str(native),"sha256":sha})
+            selected = write_startup_metadata(directory/"native_startup.json", fake)
+            self.assertEqual(selected["actually_loaded_native_optimization"]["sha256"],sha)
+            self.assertTrue(selected["native_numerical_kernels"])
+            self.assertFalse(selected["native_mpc"])
+            fake.adapter.allocator.native_optimization.receipt["sha256"] = "0"*64
+            with self.assertRaisesRegex(ValueError,"optimization differs"):
+                write_startup_metadata(directory/"invalid_startup.json",fake)
+            self.assertFalse((directory/"invalid_startup.json").exists())
 
 
 if __name__ == "__main__":

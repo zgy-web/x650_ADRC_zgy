@@ -138,8 +138,16 @@ class Ts20Extension:
         config.pop("prediction_chain", None)
         config.update(response_identified=False,
                       response_model={"kind": "xy_second_order_z_first_order_v1", "parameters": prior["parameters"]})
-        return Ts20MpcController(model, pid, trajectory=trajectory, config=config,
-                                 predictor=self.predictor, context_provider=self.runtime.context)
+        controller, options = Ts20MpcController, {}
+        if "numerical_backend" in cfg:
+            from x650_wholebody.native_mpc import NativeTs20MpcController
+            from x650_wholebody.native_qualification import verify_backend
+            verify_backend(task.ROOT, cfg["numerical_backend"])
+            controller = NativeTs20MpcController
+            options = {"native_library": cfg["numerical_backend"]["library"],
+                       "native_sha256": cfg["numerical_backend"]["library_sha256"]}
+        return controller(model, pid, trajectory=trajectory, config=config,
+                          predictor=self.predictor, context_provider=self.runtime.context, **options)
 
     def activate(self, ctx, loop, cfg, meta, rotation):
         if cfg["stage"] == "tip_hold":
