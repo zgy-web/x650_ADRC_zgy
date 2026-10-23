@@ -135,6 +135,8 @@ QP 的局部映射为 `q_i = qbar_i + Q_i*z`、`dq_i = dqbar_i + D_i*z`，其中
 
 新增 `ts20_runtime.py` 只读取当前控制时刻之前的完整记录：物理关节 q 与同时间戳的条件舵机端点角速度回报进入预测；Gazebo 的 4 ms 区间平均角速度另作审计。两种速度有不同时间定义，不能直接当作同一个量比较。这个模拟回报接口尚未验证真舵机的速度估计/滤波特性。内部自由模型 q 与实际物理 q 不一致时，新实验拒绝继续用自由运动假设。
 
+末端反馈由 PX4 估计位置／姿态与上述物理关节 q 重建，`q_ref` 和积分参考 r 不替代反馈 q。共享 `feedback_snapshot.control_state` 中的关节字段仍是 TS20 替换前的 ROS JointState 诊断，时间戳及速度定义可能不同；复核最终控制输入应读 `control_execution_trace.jsonl` 的 `state` 和 MPC 的 `prediction_measured_joint_*` 字段。独立 native 末端真值用于效果验收，不把这个旧诊断快照当成最终 TS20 观测。
+
 过去输入使用插件实际消费和实际发包的时间。对尚未发布的候选输入，当前预测仍假设它从当前控制快照时刻开始进入上层接口；计算和 ROS 传输耗时尚未独立补偿，明确标记 `upper_computation_and_ros_transport_delay_compensated=False`。3.346 ms 只在 MIT 发包之后应用一次，不能当作已覆盖整条上层管线的证据。新日志会记录控制快照到插件消费的间隔，后续按这一口径评估需要的补偿。
 
 新机型为 `amsim_urdf_x650_2link_ts20_v1_flight`，单独使用 PX4 airframe 4997。原质量、惯性和碰撞几何保持不变；原两路理想 JointController 替换为 TS20 条件响应插件。物理施加采用每个物理步的预测位移除以步长，保留 Gazebo 连杆对机体的惯性反作用，但不提供可信的轴端力矩限制、带载响应或接触动力学。发生接触时必须检查实际 q，不能用内部自由运动 q 替代它。
@@ -200,6 +202,10 @@ local characteristic: lambda^2 + d_incremental/Jbar*lambda + Kp/Jbar = 0
 同一个原失败工况中，原完整约束视图和精简视图的 H／g／A／b／C／lo／hi 逐值相同；75 个归一化计划量、180 个预测状态、目标函数、完整非线性 q／dq 和编码后 MIT 包均为零差异。求解器约束由 305 行减为 130 行，合并 35 条精确重复行，省去 140 条被保留单变量约束严格蕴含的行。两侧原 full C 检查及非线性包络均通过，primal violation 为 2.776e-17，KKT stationarity 为 4.261e-17。
 
 同容器、fresh controller 的交错计时中，原视图整步为 29.788／29.236／30.169 ms，精简视图为 26.435／35.830／26.217 ms；35.830 ms 的较慢记录完整保留。对应 QP 求解约由 9.25–9.89 ms 降为 6.65–6.74 ms。不能把旧容器 51.064 ms 与新容器成绩之差全部归因于算法：新容器配额为 18 核，环境和全部计时另行记录。证据、部署身份和原失败 SHA 见 [服务器软件验收摘要](validation/ts20_prediction_chain_20261022/qp_view_software_acceptance_20261023.json)。本地 JSON 是服务器摘要的格式化副本；服务器原文件 SHA 为 `da4a4d50748f10527ad8648c1f30cd448bc76005db73e59162ec287fa44c8197`，不声称字节相同。
+
+软件通过后已执行全新的 quiet v3，但完整 30 s 验收仍未通过：第 589 次成功发布之后，在 t=19.808 s、dt=0.040 s 的第一子问题中，非线性一致性和实际约束通过，内部总耗时却达到 53.140568 ms，故原 50 ms 保护拒绝生成／发布新指令。先前成功发布周期的最大计算耗时 32.759283 ms，最大间隔 44 ms。已执行发布覆盖的 19.744 s、4937 个 native 点仅作 partial 诊断，末端三维 RMS 3.04747 mm、峰值 4.78237 mm、最大倾角 0.111107 度，不能替代完整窗口成绩。落地、解除锁定、typed 参数恢复与同步保存、42 项 PID、运行时关闭均独立核验；正式审计拒绝，未发放通过证书。详见 [quiet v3 失败记录](validation/ts20_prediction_chain_20261022/quiet_v3_failure_summary.json)。
+
+`simulations/x650_ts20_hold_v1/launch_quiet_v3.py` 保留原 task／控制生命周期／审计，在本次独立平台来源旁证中封存实际 scripts/amsim、场景 YAML、launcher 和 src/amsim Python 文件及 git HEAD／diff。38 个平台源和 47 个控制源的开始／结束范围及字节一致，archive 与 run 绑定通过；3 项 Linux 来源变更／归档篡改守卫测试通过。该旁证只描述新运行，不给旧档案补写历史来源。失败重放包保存了前轮暖启动计划与状态，但当时 CSV cursor 和完整缓存没有序列化，待执行包是否已读有歧义，不能把事后上下文 reconstruction 称为精确重放，也不能仅因重放较快就断言历史超时来自调度。
 
 原完整矩阵脚本在服务器 `artifacts/ts20_prediction_chain_20261022/benchmark_gain_kd025_matrix_v1.py`；先前仅更改输出位置的执行副本为 `artifacts/ts20_chain_hold_damped_v1_20261022/benchmark_incremental_runtime_matrix.py`。本轮 `scripts/validate_x650_ts20_qp_view.py` 先固定原脚本及历史失败 SHA，从原 AST 提取同一失败工况进行等价检查；再运行原脚本的全部语句，仅将唯一结果写入重定向到新目录，原结果保持原 SHA。本地单工况 profiler 不能代替这个完整矩阵。
 
