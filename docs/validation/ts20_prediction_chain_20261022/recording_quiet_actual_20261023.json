@@ -1,0 +1,523 @@
+{
+  "kind": "ts20_recording_quiet_failed_episode_v1",
+  "accepted_as_gate": false,
+  "complete_30s_hold": false,
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_150052_16591",
+  "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T070021Z_16585",
+  "error": "RuntimeError('Control interval 0.0560s exceeds 0.05s')",
+  "failure_phase": "unchanged dt guard after causal read, before allocator and dispatch",
+  "failure_control_time_s": 54.592,
+  "failure_task_time_s": 13.128,
+  "failed_dt_s": 0.055999999999997385,
+  "failed_allocator_invoked": false,
+  "failed_command_published": false,
+  "exact_failure_snapshot_available": true,
+  "measure_publications": 388,
+  "accepted_mpc_progress": {
+    "accepted_mpc_diagnostic_rows": 388,
+    "successful_mpc_execution_returns": 388,
+    "accepted_calls_after_first_with_prior_committed_plan_expected_by_source": 387,
+    "warm_memory_identity_directly_logged": false,
+    "total_relinearization_subproblems_recorded": 388,
+    "last_relinearization_attempts": [
+      {
+        "subproblem": 1,
+        "passed": true,
+        "q_linearization_error_rad": 8.627095229535309e-05,
+        "dq_linearization_error_rad_s": 0.0012218472568593986,
+        "actual_bounds_passed": true,
+        "elapsed_ms": 42.532963678240776
+      }
+    ]
+  },
+  "partial_window_sim_s": [
+    41.484,
+    54.536
+  ],
+  "partial_endpoint": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.020000000000003126,
+      13.072000000000003
+    ],
+    "sample_count": 3264,
+    "duration_s": 13.052,
+    "position_rmse_m": 0.0034114136598050637,
+    "position_max_m": 0.005119051341892692,
+    "axis_rmse_m": [
+      0.0032606309658296598,
+      0.0006847730664529383,
+      0.0007328811025247862
+    ]
+  },
+  "partial_body_position": {
+    "unit": "m",
+    "sample_count": 3264,
+    "duration_s": 13.052,
+    "rmse_3d": 0.004806745169399142,
+    "rmse_xy": 0.004486369051131595,
+    "rmse_z": 0.001725483080354768,
+    "axis_rmse": [
+      0.004478564448231329,
+      0.0002645141697335179,
+      0.0017254830803547661
+    ],
+    "peak_3d": 0.008767952169108134,
+    "peak_xy": 0.00847069991224562,
+    "peak_abs_z": 0.0027676822020468173,
+    "mean_vector": [
+      -0.00321801192715988,
+      6.818925781158127e-05,
+      -0.0016094729815212738
+    ],
+    "mean_vector_norm": 0.0035987016848401197,
+    "centered_rms_3d": 0.0031865569674918437,
+    "sample_p95_3d": 0.008624757788109772,
+    "coordinate_system": "world ENU",
+    "no_offset_or_phase_fit": true
+  },
+  "partial_tilt_peak_deg": 0.0718695640205477,
+  "timing": {
+    "max_successful_compute_ms": 49.05007779598236,
+    "max_successful_send_interval_s": 0.044000000000004036,
+    "last_mpc_observation": {
+      "inner_allocator_compute_ms": 41.89000092446804,
+      "inner_allocator_thread_cpu_ms": 42.235728000001416,
+      "outer_thread_cpu_ms": 42.52849800000291,
+      "gc_collection_count_before": [
+        605,
+        55,
+        3
+      ],
+      "gc_collection_count_after": [
+        605,
+        55,
+        4
+      ],
+      "gc_collection_count_delta": [
+        0,
+        0,
+        1
+      ],
+      "gc_policy_changed": false,
+      "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+      "outer_compute_ms": 42.532963678240776
+    },
+    "last_successful_diagnostic_tree": {
+      "last_json_line_bytes_without_newline": 92899,
+      "outer_candidate_envelope_events": 217,
+      "allocation_diagnostics_candidate_envelope_events": 217,
+      "serialized_event_values_equal": true,
+      "python_object_alias_identity_not_recoverable_from_json": true
+    },
+    "last_actual_pva_returned_wall_s": 14786508.917247215,
+    "last_pva_trace_returned_to_next_read_wall_ms": 11.76317036151886,
+    "diagnostic_conversion_encoding_gap": {
+      "pump_sequence": 4215,
+      "begin": "control_write_exit",
+      "end": "diagnostic_write_begin",
+      "begin_wall_s": 14786508.918010797,
+      "end_wall_s": 14786508.921747284,
+      "wall_ms": 3.7364866584539413,
+      "thread_cpu_ms": 3.736891999999159,
+      "clock_begin_s": 54.536,
+      "clock_end_s": 54.536,
+      "overlapping_gc": []
+    },
+    "controller_adapter_returned_trace_gap": {
+      "pump_sequence": 4215,
+      "begin": "read_returned",
+      "end": "joint1_publish_trace_entry",
+      "begin_wall_s": 14786508.868484642,
+      "end_wall_s": 14786508.916298216,
+      "wall_ms": 47.813573852181435,
+      "thread_cpu_ms": 47.814512000002196,
+      "clock_begin_s": 54.536,
+      "clock_end_s": 54.536,
+      "overlapping_gc": [
+        {
+          "generation": 2,
+          "overlap_wall_ms": 23.70264381170273
+        }
+      ]
+    },
+    "exact_segments": [
+      {
+        "pump_sequence": 4215,
+        "begin": "pump_entry",
+        "end": "original_pump_entry",
+        "begin_wall_s": 14786508.860792669,
+        "end_wall_s": 14786508.860800236,
+        "wall_ms": 0.007567927241325378,
+        "thread_cpu_ms": 0.007549999999412194,
+        "clock_begin_s": 54.504,
+        "clock_end_s": 54.504,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "original_pump_entry",
+        "end": "original_pump_exit",
+        "begin_wall_s": 14786508.860800236,
+        "end_wall_s": 14786508.861811133,
+        "wall_ms": 1.0108966380357742,
+        "thread_cpu_ms": 1.011480999999037,
+        "clock_begin_s": 54.504,
+        "clock_end_s": 54.504,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "original_pump_exit",
+        "end": "after_shared_drain",
+        "begin_wall_s": 14786508.861811133,
+        "end_wall_s": 14786508.866721023,
+        "wall_ms": 4.90988977253437,
+        "thread_cpu_ms": 4.66317100000424,
+        "clock_begin_s": 54.504,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "after_shared_drain",
+        "end": "read_entry",
+        "begin_wall_s": 14786508.866721023,
+        "end_wall_s": 14786508.866740722,
+        "wall_ms": 0.0196993350982666,
+        "thread_cpu_ms": 0.018769999996948172,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "read_entry",
+        "end": "read_returned",
+        "begin_wall_s": 14786508.866740722,
+        "end_wall_s": 14786508.868484642,
+        "wall_ms": 1.7439201474189758,
+        "thread_cpu_ms": 1.7448999999984949,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "read_returned",
+        "end": "joint1_publish_trace_entry",
+        "begin_wall_s": 14786508.868484642,
+        "end_wall_s": 14786508.916298216,
+        "wall_ms": 47.813573852181435,
+        "thread_cpu_ms": 47.814512000002196,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": [
+          {
+            "generation": 2,
+            "overlap_wall_ms": 23.70264381170273
+          }
+        ]
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "joint1_publish_trace_entry",
+        "end": "joint1_publish_trace_returned",
+        "begin_wall_s": 14786508.916298216,
+        "end_wall_s": 14786508.91666144,
+        "wall_ms": 0.36322325468063354,
+        "thread_cpu_ms": 0.3625599999992346,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "joint1_publish_trace_returned",
+        "end": "joint2_publish_trace_entry",
+        "begin_wall_s": 14786508.91666144,
+        "end_wall_s": 14786508.91666952,
+        "wall_ms": 0.008080154657363892,
+        "thread_cpu_ms": 0.007920000001604421,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "joint2_publish_trace_entry",
+        "end": "joint2_publish_trace_returned",
+        "begin_wall_s": 14786508.91666952,
+        "end_wall_s": 14786508.916894084,
+        "wall_ms": 0.22456422448158264,
+        "thread_cpu_ms": 0.22459999999568936,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "joint2_publish_trace_returned",
+        "end": "pva_publish_trace_entry",
+        "begin_wall_s": 14786508.916894084,
+        "end_wall_s": 14786508.91709624,
+        "wall_ms": 0.20215660333633423,
+        "thread_cpu_ms": 0.20236000000295462,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "pva_publish_trace_entry",
+        "end": "pva_publish_trace_returned",
+        "begin_wall_s": 14786508.91709624,
+        "end_wall_s": 14786508.917451313,
+        "wall_ms": 0.3550723195075989,
+        "thread_cpu_ms": 0.3548700000024496,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "pva_publish_trace_returned",
+        "end": "feedback_stream_write_begin",
+        "begin_wall_s": 14786508.917451313,
+        "end_wall_s": 14786508.917877171,
+        "wall_ms": 0.42585842311382294,
+        "thread_cpu_ms": 0.42601999999902773,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "feedback_stream_write_begin",
+        "end": "feedback_stream_write_exit",
+        "begin_wall_s": 14786508.917877171,
+        "end_wall_s": 14786508.91790064,
+        "wall_ms": 0.02346932888031006,
+        "thread_cpu_ms": 0.023239999997315408,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "feedback_stream_write_exit",
+        "end": "control_write_begin",
+        "begin_wall_s": 14786508.91790064,
+        "end_wall_s": 14786508.918005908,
+        "wall_ms": 0.10526739060878754,
+        "thread_cpu_ms": 0.10543100000148797,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "control_write_begin",
+        "end": "control_write_exit",
+        "begin_wall_s": 14786508.918005908,
+        "end_wall_s": 14786508.918010797,
+        "wall_ms": 0.004889443516731262,
+        "thread_cpu_ms": 0.004809000003547226,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "control_write_exit",
+        "end": "diagnostic_write_begin",
+        "begin_wall_s": 14786508.918010797,
+        "end_wall_s": 14786508.921747284,
+        "wall_ms": 3.7364866584539413,
+        "thread_cpu_ms": 3.736891999999159,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "diagnostic_write_begin",
+        "end": "diagnostic_write_exit",
+        "begin_wall_s": 14786508.921747284,
+        "end_wall_s": 14786508.921814932,
+        "wall_ms": 0.0676475465297699,
+        "thread_cpu_ms": 0.06712999999791691,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4215,
+        "begin": "diagnostic_write_exit",
+        "end": "pump_exit",
+        "begin_wall_s": 14786508.921814932,
+        "end_wall_s": 14786508.9218856,
+        "wall_ms": 0.07066875696182251,
+        "thread_cpu_ms": 0.07106999999706431,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "pump_entry",
+        "end": "original_pump_entry",
+        "begin_wall_s": 14786508.92190639,
+        "end_wall_s": 14786508.92191585,
+        "wall_ms": 0.00946037471294403,
+        "thread_cpu_ms": 0.009349999999130887,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "original_pump_entry",
+        "end": "original_pump_exit",
+        "begin_wall_s": 14786508.92191585,
+        "end_wall_s": 14786508.92322829,
+        "wall_ms": 1.3124402612447739,
+        "thread_cpu_ms": 1.3130110000005857,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.536,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "original_pump_exit",
+        "end": "after_shared_drain",
+        "begin_wall_s": 14786508.92322829,
+        "end_wall_s": 14786508.927058132,
+        "wall_ms": 3.829842433333397,
+        "thread_cpu_ms": 3.8305120000003967,
+        "clock_begin_s": 54.536,
+        "clock_end_s": 54.592,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "after_shared_drain",
+        "end": "read_entry",
+        "begin_wall_s": 14786508.927058132,
+        "end_wall_s": 14786508.927083543,
+        "wall_ms": 0.025410205125808716,
+        "thread_cpu_ms": 0.024379999999268875,
+        "clock_begin_s": 54.592,
+        "clock_end_s": 54.592,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "read_entry",
+        "end": "read_returned",
+        "begin_wall_s": 14786508.927083543,
+        "end_wall_s": 14786508.929214483,
+        "wall_ms": 2.130940556526184,
+        "thread_cpu_ms": 2.132160999998689,
+        "clock_begin_s": 54.592,
+        "clock_end_s": 54.592,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 4216,
+        "begin": "read_returned",
+        "end": "interval_rejection_observed",
+        "begin_wall_s": 14786508.929214483,
+        "end_wall_s": 14786508.929232305,
+        "wall_ms": 0.017821788787841797,
+        "thread_cpu_ms": 0.016868999999530843,
+        "clock_begin_s": 54.592,
+        "clock_end_s": 54.592,
+        "overlapping_gc": []
+      }
+    ]
+  },
+  "overlapping_natural_gc_events": [
+    {
+      "generation": 2,
+      "start_wall_monotonic_s": 14786508.88527126,
+      "stop_wall_monotonic_s": 14786508.908973904,
+      "start_perf_counter_s": 14786508.88527156,
+      "stop_perf_counter_s": 14786508.908974431,
+      "start_thread_cpu_s": 45.905104471,
+      "stop_thread_cpu_s": 45.928808451,
+      "start_thread_ident": 140329778753984,
+      "stop_thread_ident": 140329778753984,
+      "wall_s": 0.023702871054410934,
+      "thread_cpu_s": 0.023703980000000513,
+      "collected": 9,
+      "uncollectable": 0
+    }
+  ],
+  "finding": "Natural generation-2 collection interval lies wholly inside the previous accepted controller/adapter/returned-trace calculation gap, before the first joint publication. Diagnostic pre-write tail is separately measured. The next pump drains the advanced simulation clock and rejects 56ms interval before allocator. Collector-specific trigger stack/causal intervention was not recorded.",
+  "gc_event_durations_include_intervening_callbacks": true,
+  "gc_specific_trigger_stack_identified": false,
+  "historical_53_56ms_failures_causally_explained": false,
+  "partial_ulog_verified": true,
+  "partial_causal_feedback_verified": true,
+  "landed_and_disarmed": true,
+  "runtime_closed": true,
+  "pending_journal": false,
+  "typed_restore_verified": true,
+  "synchronous_storage_save_verified": true,
+  "PID42_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+  "source_verification": {
+    "failed_episode_sources_verified": true,
+    "does_not_certify_complete_flight": true,
+    "before_after_source_scope_and_bytes_equal": true,
+    "live_sources_still_equal": true,
+    "archives": [
+      {
+        "file": "controller_sources.zip",
+        "sha256": "f99b73cee5ff193665e338f72a6787ef46ad0933dda5f963c0cbd64dabd8f084",
+        "source_files": 50
+      },
+      {
+        "file": "platform_sources.zip",
+        "sha256": "e395793e4acaf09db6d49e971769d0e455812fe20eb25537bd250524c2649b1e",
+        "source_files": 38
+      },
+      {
+        "file": "software_sources.zip",
+        "sha256": "33f797319fc2a7dd752928fc07b0e019b1d0d126969bdba1be9ae853b29cb2c5",
+        "source_files": 89
+      }
+    ],
+    "software_acceptance_sha256": "c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3",
+    "platform_provenance_sha256": "349501ae5b8d0e465bed978717ab3dde269d0f25d75d9924dcd715c42a46b349",
+    "native_library": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "bytes": 25112,
+      "cpp_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "cpp_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "abi": 1
+    }
+  },
+  "observer_manifest": {
+    "file": "loop_timing_evidence.json",
+    "sha256": "a4e17d2f26d05ef0f97cd878a3cf3d9178ae90f4591de5e6337af64d52970460",
+    "complete": true,
+    "interval_failure_recorded": true,
+    "observations_valid": true
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "failure_evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_recording_chain_20261023/quiet_failure_v1/failure_evidence.json",
+  "failure_evidence_sha256": "392889481ace0d41616187c81b2b72e3f221a463f2e80eda2c0b357610ba4f43",
+  "timeline_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_recording_chain_20261023/quiet_failure_v1/timeline.json",
+  "timeline_sha256": "3d8cc4942596ea07e5617427425bcbd77cb274c47d72fa4466f16e48314000f2"
+}

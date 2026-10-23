@@ -8,3 +8,5 @@ control_packages/pid_ff_wholebody_v1/tests/fixtures/legacy_v1/*.json -text
 docs/validation/pid_ff_wholebody_v1_20261017/*.log -text -whitespace
 # Preserve original server source bytes, including recorded mixed trailing EOLs.
 docs/validation/ts20_prediction_chain_20261022/server_executed_software_v2/** -text -whitespace
+# Keep the byte identity of this captured server failure report.
+docs/validation/ts20_prediction_chain_20261022/recording_quiet_actual_20261023.json -text

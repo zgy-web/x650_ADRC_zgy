@@ -270,7 +270,17 @@ v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，�
 
 服务器真实末尾 20 条 decoded 诊断记录的 100 对 AB／BA 样本逐字节相同，旧／新编码中位数为 5.169196／3.617654 ms；另一个新生成 NumPy inner-allocation 样本的 5 对中位数为 2.292931／1.725961 ms。独立 tracemalloc 该 NumPy 样本峰值为 356115／296315 B，tracemalloc 不混作普通计时。全部 raw 计时、自然 GC、类型与分配结果见[完整离线观测](validation/ts20_prediction_chain_20261022/recording_serialization_observation_20261023.json)，由原报告 SHA `f41579662b059b549c8e9ad03182af51522122ad5780391055da1f09753efc01` 绑定。decoded JSON 不恢复历史 NumPy 类型／alias／heap；新 NumPy 样本不代表完整 adapter heap，离线节省不保证消除真实 gen2 停顿。
 
-新[记录路径软件证明](validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)原字节 SHA 为 `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，绑定 89 项实际源；317 项测试（124 package、149 interface／audit、44 shared-loop）全部通过、0 skip，原 30 工况重新全部通过，最大 26.608396 ms，full/view 比较差值均为零。新的 folded hover 已通过完整 20 s 验收，三维 RMS 1.76454 mm／峰值 2.71331 mm；新的关节探针正在运行，完整末端保持仍须取得当前代码的实际证据，快速轨迹保持关闭。此前失败及证书保留各自原始身份。
+新[记录路径软件证明](validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)原字节 SHA 为 `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，绑定 89 项实际源；317 项测试（124 package、149 interface／audit、44 shared-loop）全部通过、0 skip，原 30 工况重新全部通过，最大 26.608396 ms，full/view 比较差值均为零。诊断序列化和 recorder 在线聚合已随提交 `0c2b801` 推送，实际阶段继续使用该软件证明核对来源。
+
+这条新链的 folded hover 与关节探针均已通过正式审计和平台来源核验：悬停覆盖完整 20 s，机体三维 RMS 1.76454 mm／峰值 2.71331 mm；关节探针覆盖 30.004 s，通过证书 SHA 为 `5e83d14ec6be0a3f3c728c3c2d2d8b41606c034320a0d01a2f7152eee6034521`。探针从本次实际首态及真实 MIT 包序列作整段自由预测，不用后续真实状态重置，预测与条件 plant 观测的 q 峰差为 6.0931239e-7 rad、端点 dq 峰差为 5.1953794e-5 rad/s；它们是预测一致性误差，不是 q_ref 跟踪误差，也不是整机末端定位精度。该阶段记录的最大发布间隔为 20 ms、最大计算耗时为 1.974365 ms，不能作为保持阶段 MPC 求解耗时。
+
+随后新版 quiet 再次触发原 50 ms 控制间隔保护，见[本次失败记录](validation/ts20_prediction_chain_20261022/recording_quiet_actual_20261023.json)（原字节 SHA `c9cef8e8fb231fea953274a555bbf442c861a0c043d70e5270d26b5c161b7e5c`）。388 次 MPC 求解返回并发布后，任务 t=13.128 s 的下一轮因 dt=56 ms 拒绝继续，未调用该轮 allocator 或发布被拒指令。独立物理 partial 窗仅长 13.052 s，末端 RMS 3.411414 mm／峰值 5.119051 mm，不能认证完整 30 s 保持。已安全着陆、解除锁定、恢复参数并关闭 runtime；此前失败及证书保留各自原始身份，快速轨迹未运行。
+
+### 后续路线：ROS2 原生 C++ 控制运行时
+
+按用户选择，下一阶段转向 ROS2 原生运行时。现平台已经由 `rclpy.SingleThreadedExecutor` 接收 PX4 遥测和处理关节接口，服务器已有 ROS2 Humble、rclcpp、Eigen、colcon 和 px4_msgs。飞机 PVA、解锁、Offboard 与降落当前仍经 pymavlink／MAVLink；初期保留该监督及发送网关和 PX4 底层 PID，将上层 MPC 计算迁入独立 C++ 节点，并把记录器移出计算回路。DDS `TrajectorySetpoint` 输出属于后续单独验收的传输迁移，不能把当前接口写成已经全部经 ROS2 输出。
+
+原生节点须保持同源时钟、因果快照、25 ms 源年龄、机体 PX4 状态及关节物理 q／条件端点 dq 的契约，以及 ENU／NED、关节轴向和 PVA type-mask／NaN 语义。现 TS20 native 预测核可以复用，但矩阵组装、QP、非线性后验检查和提交／回滚仍在 Python，必须真正移植并通过冻结 30 工况与实际记录回放的数值、约束、编码和拒绝行为等价检查，再重新取得物理阶段证据；只包一层 ROS2 不构成实时性改善证明。执行器与内存／调度边界参考 ROS2 Humble 官方的[Executor 说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Intermediate/About-Executors.rst)和[实时编程说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Real-Time-Programming.rst)。本路线尚未实现 C++ 控制节点，也未实施 GC 延后策略或新增飞行，不宣称已具备硬实时保证。
 
 ## 12. 真机条件仍需补齐
 

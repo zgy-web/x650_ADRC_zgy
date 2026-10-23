@@ -100,7 +100,11 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 本轮保持的[精确失败记录](../../docs/validation/ts20_prediction_chain_20261022/causal_quiet_actual_20261023.json)保存了失败轮状态与循环边界。31.200 ms 自然 gen2 callback 区间完全位于 35.103 ms 的诊断转换／编码间隙，实际 write 仅 0.071 ms；下一轮在 allocator 之前拒绝 64 ms。安全收尾、部分 ULog／因果输入及源码档案核验通过，不等于保持通过。诊断序列化和记录在线聚合随后完成服务器软件验收，未改 GC 策略或控制／模型／50 ms 门槛。
 
-记录路径修正的[服务器证明](../../docs/validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)为 SHA `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，89 项来源绑定、317 项测试全过／0 skip、原 30 工况全过，最大 26.608396 ms。直接编码仅用于严格支持域，其他输入回原 helper；未启用 hook 的场景保持原路径。在线统计与旧 recorder 的 CSV／manifest 对照一致。真实 decoded 诊断 100 对样本逐字节一致，编码中位数由 5.169196 降至 3.617654 ms；独立新 NumPy 样本与历史 decoded 数据分开观测，不声称还原历史 heap 或保证保持成功。新一轮 folded hover 已通过完整 20 s 验收，RMS 1.76454 mm／峰值 2.71331 mm；新的关节探针正在运行，完整保持仍待验收，快速轨迹未运行。
+记录路径修正的[服务器证明](../../docs/validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)为 SHA `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，89 项来源绑定、317 项测试全过／0 skip、原 30 工况全过，最大 26.608396 ms。直接编码仅用于严格支持域，其他输入回原 helper；未启用 hook 的场景保持原路径。在线统计与旧 recorder 的 CSV／manifest 对照一致。真实 decoded 诊断 100 对样本逐字节一致，编码中位数由 5.169196 降至 3.617654 ms；独立新 NumPy 样本与历史 decoded 数据分开观测，不声称还原历史 heap 或保证保持成功。上述记录路径改动已随提交 `0c2b801` 推送。
+
+该软件证明下的新 folded hover 和关节探针均已通过正式审计及平台来源核验。悬停覆盖完整 20 s，机体三维 RMS 1.76454 mm／峰值 2.71331 mm；探针覆盖 30.004 s，证书 SHA 为 `5e83d14ec6be0a3f3c728c3c2d2d8b41606c034320a0d01a2f7152eee6034521`。以本次实际首态和真实 MIT 包作整段自由预测，q 峰差为 6.0931239e-7 rad、条件端点 dq 峰差为 5.1953794e-5 rad/s；这验证预测链一致性，不是 q_ref 跟踪或末端精度成绩。探针最大发布间隔 20 ms、最大计算耗时 1.974365 ms，只描述该探针阶段。
+
+随后 quiet 的[实际失败记录](../../docs/validation/ts20_prediction_chain_20261022/recording_quiet_actual_20261023.json)表明，388 次 MPC 求解返回并发布之后，任务 t=13.128 s 的下一轮在 56 ms 控制间隔保护处拒绝，未调用该轮 allocator、未发布被拒指令。独立物理 partial 窗长 13.052 s，末端 RMS 3.411414 mm／峰值 5.119051 mm，不能作完整 30 s 通过；着陆、解除锁定、参数恢复及 runtime 关闭已核验。下一阶段按[ROS2 原生 C++ 路线](../../docs/X650_TS20_INTEGRATION.md#后续路线ros2-原生-c-控制运行时)推进，初期保留当前 MAVLink 监督／PVA 网关及 PX4 底层 PID；尚未实现原生 MPC 或 GC 延后策略，也未新增飞行或运行快速轨迹。
 
 ## 结果解释
 
