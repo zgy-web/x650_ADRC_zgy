@@ -1,0 +1,98 @@
+Starting >>> flyarm_control_interfaces
+Finished <<< flyarm_control_interfaces [0.43s]
+Starting >>> flyarm_control_gateway
+Starting >>> flyarm_control_recorder
+Finished <<< flyarm_control_recorder [0.89s]
+Starting >>> flyarm_mpc_reference
+Finished <<< flyarm_mpc_reference [0.90s]
+Finished <<< flyarm_control_gateway [28.6s]
+
+Summary: 4 packages finished [29.3s]
+{
+  "case": "healthy",
+  "passed": false,
+  "protocol_complete": false,
+  "error": null,
+  "analysis_error": null,
+  "checks": {
+    "complete_run": true,
+    "clean_shutdown": true,
+    "frozen_sources": true,
+    "no_stale_output": true,
+    "periodic_dispatch": true,
+    "no_output_after_fault": true,
+    "complete_tick_observation": true,
+    "no_gate_rejection": true,
+    "no_output_fault": true,
+    "complete_recording": true,
+    "direct_equivalence": true,
+    "all_accepted_candidates_recorded": false
+  },
+  "timing": {
+    "dispatch_interval_ms": {
+      "count": 149,
+      "min": 19.940691,
+      "median": 19.99992,
+      "p99": 20.054438320000003,
+      "max": 20.059757
+    },
+    "dispatch_lateness_ms": {
+      "count": 150,
+      "min": 0.000685,
+      "median": 0.056418499999999996,
+      "p99": 0.09492744999999995,
+      "max": 0.111399
+    },
+    "valid_command_age_ms": {
+      "count": 149,
+      "min": 20.105006,
+      "median": 20.250201,
+      "p99": 20.881512880000002,
+      "max": 20.884452
+    },
+    "valid_ticks": 149,
+    "repeated_valid_ticks": 0,
+    "fault_ticks": 0,
+    "first_fault": null,
+    "accepted_candidates": 149,
+    "gate_rejections": []
+  },
+  "recording": {
+    "complete": true,
+    "attempts": 150,
+    "sent": 150,
+    "dropped": 0,
+    "persisted": 150,
+    "first_error": null,
+    "offer_ms": {
+      "count": 150,
+      "min": 0.296031,
+      "median": 0.381363,
+      "p99": 0.4167360899999999,
+      "max": 0.432127
+    },
+    "max_packet_bytes": 39752,
+    "records_sha256": "f6d73bf8ddaa13e677e9917adebd1e20f23519af652b1f305c9270626827cbc9"
+  },
+  "equivalence": {
+    "pairs": 150,
+    "max_command_absolute_error": 0.0,
+    "rejected_recorded_sequences": [],
+    "worker_compute_ms": {
+      "count": 150,
+      "min": 12.710142,
+      "median": 14.085884,
+      "p99": 14.5772797,
+      "max": 14.813438
+    },
+    "solver_ms": {
+      "count": 150,
+      "min": 0.21231360733509064,
+      "median": 0.2241889014840126,
+      "p99": 1.7931706458330148,
+      "max": 1.9524507224559784
+    },
+    "same_numeric_snapshot_and_context": true,
+    "transport_wall_clock_rebased": true
+  }
+}

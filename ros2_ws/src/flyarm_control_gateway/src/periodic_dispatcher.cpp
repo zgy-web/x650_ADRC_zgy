@@ -1,0 +1,94 @@
+#include "flyarm_control_gateway/runtime_wire.hpp"
+#include "flyarm_control_gateway/periodic_gate.hpp"
+#include <flyarm_control_interfaces/msg/accepted_command.hpp>
+#include <flyarm_control_interfaces/msg/ingress_status.hpp>
+#include <flyarm_control_interfaces/msg/dispatch_tick.hpp>
+#include <flyarm_control_interfaces/msg/runtime_stop.hpp>
+#include <rclcpp/wait_set.hpp>
+namespace wire=flyarm_runtime_wire;
+
+class PeriodicDispatcher final: public rclcpp::Node {
+ public:
+  PeriodicDispatcher(): Node("isolated_periodic_dispatcher") {
+    session_=declare_parameter<std::int64_t>("expected_session_id",0);
+    epoch_=declare_parameter<std::int64_t>("expected_epoch",0);
+    hash_=wire::parse_hash(declare_parameter<std::string>("configuration_sha256",""));
+    if(!session_ || !epoch_) throw std::invalid_argument("Explicit epoch required");
+    const std::string p="/flyarm/isolated/v1"; const auto qos=rclcpp::QoS(1).best_effort();
+    ticks_=create_publisher<msg::DispatchTick>(p+"/dispatch",rclcpp::QoS(256).best_effort());
+    // Never added to an Executor: a bounded wait-set loop takes queued input
+    // BEFORE the output slot. A timer must not overtake a queued candidate.
+    source_=create_subscription<msg::IngressStatus>(p+"/source_status",qos,[](msg::IngressStatus::SharedPtr){});
+    accepted_=create_subscription<msg::AcceptedCommand>(p+"/accepted",qos,[](msg::AcceptedCommand::SharedPtr){});
+    events_=create_subscription<msg::GateEvent>(p+"/event",rclcpp::QoS(256).best_effort(),[](msg::GateEvent::SharedPtr){});
+    stop_=create_subscription<msg::RuntimeStop>(p+"/stop",rclcpp::QoS(1).reliable(),[](msg::RuntimeStop::SharedPtr){});
+    RCLCPP_INFO(get_logger(),"READY independent absolute 20 ms wait-set publisher; no PX4/arm publishers");
+  }
+  void run() {
+    rclcpp::WaitSet wait;
+    wait.add_subscription(stop_); wait.add_subscription(source_);
+    wait.add_subscription(accepted_); wait.add_subscription(events_);
+    due_=wire::monotonic_ns()+fcg::PeriodicGate::PERIOD_NS;
+    while(rclcpp::ok()) {
+      drain();
+      auto now=wire::monotonic_ns();
+      if(now>=due_) {
+        // Second bounded take closes the ready-input race after the wakeup.
+        // It does not wait for a future candidate or extend a command lease.
+        drain(); now=wire::monotonic_ns(); publish_tick(now);
+        due_+=fcg::PeriodicGate::PERIOD_NS;
+        while(due_<=now) due_+=fcg::PeriodicGate::PERIOD_NS;
+      }
+      now=wire::monotonic_ns();
+      const auto remaining=now<due_ ? due_-now : 0;
+      const auto result=wait.wait(std::chrono::nanoseconds(remaining));
+      (void)result;
+    }
+  }
+ private:
+  void drain() {
+    rclcpp::MessageInfo info;
+    msg::RuntimeStop stop;
+    if(stop_->take(stop,info) && stop.session_id==session_ && stop.epoch==epoch_) gate_.stop();
+    msg::IngressStatus s;
+    if(source_->take(s,info)) {
+      if(s.session_id!=session_ || s.epoch!=epoch_ || s.faulted) gate_.reject();
+      else gate_.source(s.source_sequence,s.received_monotonic_ns,s.source_issued_monotonic_ns,wire::monotonic_ns());
+    }
+    msg::AcceptedCommand a;
+    if(accepted_->take(a,info)) {
+      auto &c=a.proposal;
+      if(c.session_id!=session_ || c.epoch!=epoch_ || c.configuration_sha256!=hash_ ||
+         !c.replay_only || c.status!=0 || !c.accepted_optimum || !c.nonlinear_check_passed) gate_.reject();
+      else if(gate_.accept(c.sequence,a.issued_monotonic_ns,wire::monotonic_ns())) command_=c;
+    }
+    msg::GateEvent e;
+    for(int i=0;i<16 && events_->take(e,info);++i)
+      if(e.session_id!=session_ || e.epoch!=epoch_ || !e.accepted) gate_.reject();
+  }
+  void publish_tick(std::uint64_t now) {
+    auto t=gate_.tick(due_,now);
+    msg::DispatchTick out; out.session_id=session_;out.epoch=epoch_;out.sequence=t.sequence;
+    out.scheduled_monotonic_ns=t.scheduled;out.actual_monotonic_ns=t.actual;
+    out.source_sequence=t.source_sequence;out.source_received_monotonic_ns=t.source_received;
+    out.command_sequence=t.command_sequence;out.command_issued_monotonic_ns=t.issued;
+    out.command_age_ns=t.age;out.status=t.status;out.reason=t.reason;out.output_valid=t.valid;out.repeated=t.repeated;
+    if(t.valid) out.command=command_;
+    ticks_->publish(out);
+  }
+  std::uint64_t session_{},epoch_{},due_{};fcg::Hash hash_{};fcg::PeriodicGate gate_;
+  msg::ControlProposal command_;
+  rclcpp::Publisher<msg::DispatchTick>::SharedPtr ticks_;
+  rclcpp::Subscription<msg::IngressStatus>::SharedPtr source_;
+  rclcpp::Subscription<msg::AcceptedCommand>::SharedPtr accepted_;
+  rclcpp::Subscription<msg::GateEvent>::SharedPtr events_;
+  rclcpp::Subscription<msg::RuntimeStop>::SharedPtr stop_;
+};
+int main(int argc,char **argv) {
+  rclcpp::init(argc,argv);
+  try {std::make_shared<PeriodicDispatcher>()->run();rclcpp::shutdown();return 0;}
+  catch(const std::exception &e) {
+    if(!rclcpp::ok()) return 0;
+    std::cerr<<e.what()<<'\n';rclcpp::shutdown();return 1;
+  }
+}

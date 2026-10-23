@@ -1,0 +1,124 @@
+Starting >>> flyarm_control_interfaces
+Finished <<< flyarm_control_interfaces [0.92s]
+Starting >>> flyarm_control_gateway
+Starting >>> flyarm_control_recorder
+Finished <<< flyarm_control_recorder [1.13s]
+Starting >>> flyarm_mpc_reference
+Finished <<< flyarm_mpc_reference [0.91s]
+Finished <<< flyarm_control_gateway [27.6s]
+
+Summary: 4 packages finished [28.8s]
+Internal ctest changing into directory: /root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/build/flyarm_control_gateway
+Test project /root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/build/flyarm_control_gateway
+    Start 1: shadow_gate_synthetic
+1/2 Test #1: shadow_gate_synthetic ............   Passed    0.01 sec
+    Start 2: periodic_gate_contract
+2/2 Test #2: periodic_gate_contract ...........   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.02 sec
+test_full_recorder_queue_is_visible_and_never_waits (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_mutation_after_offer_cannot_rewrite_recorded_state (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_oversized_row_cannot_silently_truncate (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_receiver_disappearance_is_evidence_failure (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.016s
+
+OK
+{
+  "case": "healthy",
+  "passed": false,
+  "protocol_complete": false,
+  "error": null,
+  "analysis_error": null,
+  "checks": {
+    "complete_run": true,
+    "clean_shutdown": true,
+    "frozen_sources": true,
+    "no_stale_output": false,
+    "periodic_dispatch": true,
+    "no_output_after_fault": true,
+    "complete_tick_observation": true,
+    "no_gate_rejection": false,
+    "no_output_fault": false,
+    "complete_recording": true,
+    "direct_equivalence": true,
+    "all_accepted_candidates_recorded": true
+  },
+  "timing": {
+    "dispatch_interval_ms": {
+      "count": 149,
+      "min": 19.956496,
+      "median": 19.999555,
+      "p99": 20.04048348,
+      "max": 20.044704
+    },
+    "dispatch_lateness_ms": {
+      "count": 150,
+      "min": -0.035965,
+      "median": 0.0048045,
+      "p99": 0.08521256,
+      "max": 0.086251
+    },
+    "valid_command_age_ms": {
+      "count": 0
+    },
+    "valid_ticks": 0,
+    "repeated_valid_ticks": 0,
+    "fault_ticks": 149,
+    "first_fault": {
+      "sequence": 48,
+      "scheduled_monotonic_ns": 14803862143578393,
+      "actual_monotonic_ns": 14803862143663878,
+      "source_sequence": 2,
+      "source_received_monotonic_ns": 14803862125313421,
+      "command_sequence": 0,
+      "command_issued_monotonic_ns": 0,
+      "command_age_ns": 0,
+      "status": 3,
+      "reason": 4,
+      "output_valid": false,
+      "repeated": false
+    },
+    "accepted_candidates": 0,
+    "gate_rejections": [
+      {
+        "sequence": 1,
+        "snapshot_sequence": 1,
+        "proposal_sequence": 0,
+        "accepted": false,
+        "reason": 15,
+        "received_monotonic_ns": 14803862130180464,
+        "roundtrip_ns": 0
+      }
+    ]
+  },
+  "recording": {
+    "complete": true,
+    "attempts": 0,
+    "sent": 0,
+    "dropped": 0,
+    "persisted": 0,
+    "first_error": null,
+    "offer_ms": {
+      "count": 0
+    },
+    "max_packet_bytes": 0,
+    "records_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "equivalence": {
+    "pairs": 0,
+    "max_command_absolute_error": 0.0,
+    "rejected_recorded_sequences": [],
+    "worker_compute_ms": {
+      "count": 0
+    },
+    "solver_ms": {
+      "count": 0
+    },
+    "same_numeric_snapshot_and_context": true,
+    "transport_wall_clock_rebased": true
+  }
+}

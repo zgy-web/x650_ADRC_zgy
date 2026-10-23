@@ -5,6 +5,16 @@ its gateway and recorder. The first phase is **offline and shadow only**. It
 does not start PX4/Gazebo, arm a vehicle, or publish `/fmu/in/*` or `/arm/*`.
 Existing simulation scenarios and their frozen numerical sources are unchanged.
 
+An additional opt-in execution path now separates a C++ latest-state receiver,
+the frozen Python/C++ worker, a C++ 20 ms output process, and a nonblocking
+diagnostic recorder. It retains original snapshot age on repeated outputs and
+waits for a shadow-output receipt before advancing to another candidate. It is
+still a typed **software contract test**, with no actuator publishers. Its
+registered sustained/fault-injection tests and live-adapter prerequisites are
+described in [the execution and hardware migration method](../docs/X650_EXECUTION_ISOLATION_AND_TEST_METHOD.md).
+Run it with `scripts/run_x650_isolated_runtime.py`; keep these results separate
+from the older phase-one smoke test and from actual Gazebo endpoint-hold evidence.
+
 ## Implemented process boundaries
 
 ```mermaid

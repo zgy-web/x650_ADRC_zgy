@@ -8,6 +8,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/GateEvent.msg"
   "msg/DrainRequest.msg"
   "msg/RecordingReceipt.msg"
+  "msg/IngressStatus.msg"
+  "msg/DispatchTick.msg"
+  "msg/RuntimeStop.msg"
+  "msg/AcceptedCommand.msg"
 )
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()

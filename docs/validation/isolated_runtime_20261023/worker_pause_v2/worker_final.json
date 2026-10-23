@@ -1,0 +1,73 @@
+{
+  "engine": {
+    "repo_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+    "task_config": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/quiet_task_cpp_v5.json",
+      "sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1"
+    },
+    "initialization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/initialization.json",
+      "sha256": "39118925b9dca9912e012e0ba372d898723021b589f737866edfc0b055994e37"
+    },
+    "synthetic_software_fixture_only": true,
+    "historical_reproduction_claimed": false,
+    "physical_flight_qualification": false,
+    "native_predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "abi": 1
+    },
+    "numerical_backend": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+      "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+      "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+    },
+    "scope": "offline/shadow process; explicitly selected numerical backend; no real-time or flight claim",
+    "implementation": "existing_python_scipy_reference_mpc",
+    "native_mpc": false,
+    "replay_only": true,
+    "actuator_dispatch": false,
+    "requests": 93,
+    "accepted": 92,
+    "faulted": true,
+    "last_error": "TimeoutError: Snapshot exceeded the unchanged 50 ms age limit",
+    "outer_deadline_s": 0.05,
+    "configuration_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1"
+  },
+  "gc_enabled_before": true,
+  "gc_enabled_after": true,
+  "gc_events": [
+    {
+      "generation": 0,
+      "start_ns": 14805525911758174,
+      "end_ns": 14805525911800224,
+      "collected": 33
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805525923346948,
+      "end_ns": 14805525923376728,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805526160044344,
+      "end_ns": 14805526160093774,
+      "collected": 0
+    },
+    {
+      "generation": 1,
+      "start_ns": 14805526880628504,
+      "end_ns": 14805526880855247,
+      "collected": 17
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805527499549017,
+      "end_ns": 14805527499608388,
+      "collected": 0
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "engine": {
+    "repo_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+    "task_config": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/quiet_task_cpp_v5.json",
+      "sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1"
+    },
+    "initialization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/initialization.json",
+      "sha256": "39118925b9dca9912e012e0ba372d898723021b589f737866edfc0b055994e37"
+    },
+    "synthetic_software_fixture_only": true,
+    "historical_reproduction_claimed": false,
+    "physical_flight_qualification": false,
+    "native_predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "abi": 1
+    },
+    "numerical_backend": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+      "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+      "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+    },
+    "scope": "offline/shadow process; explicitly selected numerical backend; no real-time or flight claim",
+    "implementation": "existing_python_scipy_reference_mpc",
+    "native_mpc": false,
+    "replay_only": true,
+    "actuator_dispatch": false,
+    "requests": 1405,
+    "accepted": 1405,
+    "faulted": false,
+    "last_error": null,
+    "outer_deadline_s": 0.05,
+    "configuration_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1"
+  },
+  "gc_enabled_before": true,
+  "gc_enabled_after": true,
+  "gc_events": [
+    {
+      "generation": 0,
+      "start_ns": 14805376007814108,
+      "end_ns": 14805376007855419,
+      "collected": 33
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805376019378145,
+      "end_ns": 14805376019409695,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805376254141032,
+      "end_ns": 14805376254184522,
+      "collected": 0
+    },
+    {
+      "generation": 1,
+      "start_ns": 14805376991707090,
+      "end_ns": 14805376991909993,
+      "collected": 17
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805377594629230,
+      "end_ns": 14805377594685911,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805378152537483,
+      "end_ns": 14805378152594944,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805378713532944,
+      "end_ns": 14805378713589225,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805379352514233,
+      "end_ns": 14805379352573664,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805380169699678,
+      "end_ns": 14805380169758929,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805380891398835,
+      "end_ns": 14805380891460686,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805381591519977,
+      "end_ns": 14805381591580278,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805382191543118,
+      "end_ns": 14805382191594419,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805382791496488,
+      "end_ns": 14805382791557629,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805383568845430,
+      "end_ns": 14805383568908481,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805384330670472,
+      "end_ns": 14805384330741593,
+      "collected": 0
+    },
+    {
+      "generation": 1,
+      "start_ns": 14805385071049643,
+      "end_ns": 14805385071131194,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805385691870478,
+      "end_ns": 14805385691919349,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805386252877439,
+      "end_ns": 14805386252932530,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805386809670963,
+      "end_ns": 14805386809732064,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805387534663996,
+      "end_ns": 14805387534725727,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805388294936950,
+      "end_ns": 14805388295021691,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805389011869011,
+      "end_ns": 14805389011950853,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805389693396553,
+      "end_ns": 14805389693460145,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805390312346445,
+      "end_ns": 14805390312405375,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805390913201928,
+      "end_ns": 14805390913274360,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805391891530848,
+      "end_ns": 14805391891586209,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805392611430619,
+      "end_ns": 14805392611506661,
+      "collected": 0
+    },
+    {
+      "generation": 1,
+      "start_ns": 14805393329583742,
+      "end_ns": 14805393329644453,
+      "collected": 0
+    },
+    {
+      "generation": 2,
+      "start_ns": 14805393930973530,
+      "end_ns": 14805393942399964,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805394070750245,
+      "end_ns": 14805394070813736,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805394612022488,
+      "end_ns": 14805394612076159,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805395233948735,
+      "end_ns": 14805395234018437,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805396070810420,
+      "end_ns": 14805396070874641,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805396791151679,
+      "end_ns": 14805396791199390,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805397494599311,
+      "end_ns": 14805397494678102,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805398112114618,
+      "end_ns": 14805398112218050,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805398732900866,
+      "end_ns": 14805398732961357,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805399508845807,
+      "end_ns": 14805399508936678,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805400272695116,
+      "end_ns": 14805400272773128,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805400992957914,
+      "end_ns": 14805400993017024,
+      "collected": 0
+    },
+    {
+      "generation": 1,
+      "start_ns": 14805401631913927,
+      "end_ns": 14805401632014538,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805402189058402,
+      "end_ns": 14805402189143844,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805402749132349,
+      "end_ns": 14805402749185859,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805403372121973,
+      "end_ns": 14805403372190824,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805404171902683,
+      "end_ns": 14805404171964044,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805404893033037,
+      "end_ns": 14805404893121688,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 14805405594525492,
+      "end_ns": 14805405594615653,
+      "collected": 0
+    }
+  ]
+}

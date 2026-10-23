@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "cases": [
+    {
+      "case": "worker_pause",
+      "exit_code": 0
+    },
+    {
+      "case": "worker_short_pause",
+      "exit_code": 0
+    },
+    {
+      "case": "source_pause",
+      "exit_code": 0
+    },
+    {
+      "case": "recorder_pause",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "synthetic_software_fixture_only": true,
+  "task_origin_sim_s": 10.0,
+  "anchor_position_enu": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "anchor_rotation_row_major": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "anchor_q": [
+    0.0,
+    0.0
+  ],
+  "target_position_enu": [
+    -0.009807621135331623,
+    0.04,
+    1.67
+  ],
+  "published_prestream_history": [
+    {
+      "control_time_s": 9.98,
+      "command": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "control_time_s": 10.0,
+      "command": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

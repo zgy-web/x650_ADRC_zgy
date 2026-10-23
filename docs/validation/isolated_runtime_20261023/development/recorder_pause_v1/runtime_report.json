@@ -1,0 +1,204 @@
+{
+  "kind": "x650_isolated_runtime_v1",
+  "case": "recorder_pause",
+  "passed": true,
+  "complete": true,
+  "protocol_complete": true,
+  "commissioning": false,
+  "flight_started": false,
+  "physical_hold_qualified": false,
+  "hard_realtime_qualified": false,
+  "session_id": 508912174,
+  "frozen_task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+  "protocol_sha256": "d7e6c6f894247877f541fa77dbc24b94b3be09f3221c07544d69146f306a2e2a",
+  "native_core": {
+    "binding": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+      "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+      "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+    },
+    "matrix_cases": 30,
+    "recorded_calls": 388,
+    "native_tests": 332,
+    "no_hardware_qualification": true
+  },
+  "publication_scope": "typed shadow output; not actuator application",
+  "sources": {
+    "ros2_ws/src/flyarm_control_recorder/setup.py": "1508a80ef2f1d6d3182201f908e9d3fc5418277591e407c6058000d3587cda40",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/__init__.py": "c2effba0146b830c74a5d7a98f3492a19ebbf96e838dac8674461d4b84242271",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/core.py": "2c2d53edae10a2f2105d2960c2832355e2d1cc4fdd53ebe6c1847e9c472d27b1",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/recorder_node.py": "4ea54b35af23db64bf8f11a0d5c9b151870cf446c19a6b125025ee70e035d3f0",
+    "ros2_ws/src/flyarm_control_recorder/test/test_core.py": "76cad0ab59991a3303e08067c9efe776878e7c88a08e41df73fecd94032355e3",
+    "ros2_ws/src/flyarm_control_recorder/test/test_node_lifecycle.py": "098af5fb1e2776fec46bd708f2fa3886687f699d9914503e69d90d5592869044",
+    "ros2_ws/src/flyarm_mpc_reference/setup.py": "c1e5bd2c92034803debfe08dab656108b78b6fccd4af2f1348849a909df14564",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/__init__.py": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py": "78fba51f53a03fee0eb6d15bb72a271c64986cf950db985eafc1fd5da5b78ecb",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/node.py": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/startup.py": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py": "7e02d1773b55dea019518bb291cf5712cdba24fa465f8e4399b28eca4154e6f7",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py": "4d9402a3e35c1e1c63fc5893767e6c6f073d4c370aad6062e9eeec161b967c84",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_engine.py": "d0c52b39a18be2a399704ba492181ab1a24b06eeff1e03eaaf84fd5eef510591",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_node_cleanup.py": "668a3824f26d9cb22542e31265f56e6ca2910bdb0c706599bd8d4a11644b673f",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_startup.py": "f5f3aead2bcd6b48b2399d05a0136b4297a76fc437de1ee28a81db4e8bd80728",
+    "ros2_ws/src/flyarm_control_gateway/src/shadow_gateway.cpp": "48db5636e83c1ec9af95a8bbdb02f118745817ea4cad9d74d2e52dcaeead3daf",
+    "ros2_ws/src/flyarm_control_gateway/src/periodic_dispatcher.cpp": "445c86df204c6af68b3c1f8660de09bb1fd9a2d003b5dee77c665ea6f5cffa0e",
+    "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp": "f3c6583477553547edddb88d45fac80aaa4ddde08935a38b959fb106df26c655",
+    "ros2_ws/src/flyarm_control_gateway/test/test_shadow_gate.cpp": "b1c2594a901bf0d74ffa294346f564d6a2a61b62eebc50159dc8117b9fbe8b8a",
+    "ros2_ws/src/flyarm_control_gateway/test/test_periodic_gate.cpp": "d9430b98c39eb928f3b932680864016d52d4caa5791a1feec4a54881dd1425c6",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp": "3a632bb157cf1e141a8efe5fbbdc217ea2f63501a95e290ec7a030352a874938",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp": "b398f61f09cf71267fcd1fae028eee4b105f473e2b93eba1308d54c57920845f",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/runtime_wire.hpp": "9c833bea082b601a3fededaec21e814a9e99d2d76e3e2c20a824029abf0fa235",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlProposal.msg": "b8875418e1b0d33a845fd0a96e0b5182dc9dcde1de3ac6baea3e13fce8024e82",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlSnapshot.msg": "2fd53a0988f9aed466ae697dd69828cbc521e058409249ed78e9fdffa13c7fa2",
+    "ros2_ws/src/flyarm_control_interfaces/msg/DrainRequest.msg": "360b25d979a456e93ac49a900aaa0309982e7a3d10342a1979ef1a88a19e2ca4",
+    "ros2_ws/src/flyarm_control_interfaces/msg/GateEvent.msg": "6e0a19d7f6b81d223e468657bcf1f0e79ef8950ae7a4ea35674eb55704683b6f",
+    "ros2_ws/src/flyarm_control_interfaces/msg/RecordingReceipt.msg": "af3951a8317becd1c2f1ffddb1a1d684e09e7f23ab9ff9adeb40397cfce35bff",
+    "ros2_ws/src/flyarm_control_interfaces/msg/AcceptedCommand.msg": "d3b4613f062f60769c8e246236ec25478e27521edf39115b118728e729b1c2f8",
+    "ros2_ws/src/flyarm_control_interfaces/msg/DispatchTick.msg": "002cc35bf3ea91d50301c264a82df1c4fecda68215bfdabfd5afe0377a0be68d",
+    "ros2_ws/src/flyarm_control_interfaces/msg/IngressStatus.msg": "0c515508e10df18d19ab60aa1f250bce72a53775c588839e6908fc257f161c83",
+    "ros2_ws/src/flyarm_control_interfaces/msg/RuntimeStop.msg": "ae96be9037d1d953186c7b6e431d5363dcc3934af7176c5cacc60f6581b8b5a1",
+    "scripts/run_x650_isolated_runtime.py": "3c3222384b9a1decf35f88fbaa412a59cd25a60a1739e68bf8eb7854eb4de12c",
+    "scripts/x650_isolated_state_fixture.py": "fd99abf8451ca4c2b537f42bec04fa4bbc3caa7e873716680eb333e1dda5f97d",
+    "scripts/x650_isolated_diagnostic_recorder.py": "34e641b09485916147efffbce87814d85b752f9465388efaeb0397022fec4239",
+    "configs/experiments/x650_isolated_runtime_v1.json": "d7e6c6f894247877f541fa77dbc24b94b3be09f3221c07544d69146f306a2e2a"
+  },
+  "executables": {
+    "state_ingress": {
+      "path": "/root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+      "sha256": "36452166de4a1e8296d39e7e1eb2e22a7ac7f38d38834d9d6ef08aca074b5346"
+    },
+    "periodic_dispatcher": {
+      "path": "/root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/periodic_dispatcher",
+      "sha256": "0a5c72add2b36cb956294e647274204cf6b1aaf3f744ec2de4d7558b4c1d1d96"
+    },
+    "isolated_node": {
+      "path": "/root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/install/flyarm_mpc_reference/lib/flyarm_mpc_reference/isolated_node",
+      "sha256": "d605d2242216e5e28389292e8f3fd0032821f08733b624a2fe4f174f5c2905a5"
+    }
+  },
+  "actual_processes": [
+    {
+      "pid": 38408,
+      "group": 38408,
+      "owner": "recorder",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 38409,
+      "group": 38409,
+      "owner": "ingress",
+      "executable": "/root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+      "sha256": "36452166de4a1e8296d39e7e1eb2e22a7ac7f38d38834d9d6ef08aca074b5346"
+    },
+    {
+      "pid": 38421,
+      "group": 38421,
+      "owner": "dispatcher",
+      "executable": "/root/autodl-tmp/flyarm_ros2_isolated_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/periodic_dispatcher",
+      "sha256": "0a5c72add2b36cb956294e647274204cf6b1aaf3f744ec2de4d7558b4c1d1d96"
+    },
+    {
+      "pid": 38422,
+      "group": 38422,
+      "owner": "worker",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 38423,
+      "group": 38423,
+      "owner": "source",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    }
+  ],
+  "actuator_topics": [],
+  "window": {
+    "start_ns": 14804638345589389,
+    "end_ns": 14804644346522574,
+    "duration_s": 6
+  },
+  "injection": {
+    "owner": "recorder",
+    "stop_ns": 14804640346021123,
+    "requested_ms": 1000,
+    "resume_ns": 14804641346402888,
+    "dispatch_ticks_during_pause": 50,
+    "state_receipts_during_pause": 200
+  },
+  "stop_requested_ns": 14804644346546926,
+  "cleanup_errors": [],
+  "remaining_owned_processes": [],
+  "native_core_unchanged": true,
+  "sources_unchanged": true,
+  "recording": {
+    "complete": false,
+    "attempts": 296,
+    "sent": 257,
+    "dropped": 39,
+    "persisted": 257,
+    "first_error": {
+      "sequence": 109,
+      "error": "BlockingIOError(11, 'Resource temporarily unavailable')"
+    },
+    "offer_ms": {
+      "count": 296,
+      "min": 0.294449,
+      "median": 0.37285599999999997,
+      "p99": 0.6173975500000001,
+      "max": 0.888294
+    },
+    "max_packet_bytes": 39752,
+    "records_sha256": "c66abc8f1534cda0c7231f0d98521b4b22731b929c2a482eff66a3cc85174c77"
+  },
+  "actually_loaded_native_optimization": {
+    "path": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+    "sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+    "bytes": 331104
+  },
+  "timing": {
+    "dispatch_interval_ms": {
+      "count": 299,
+      "min": 19.9598,
+      "median": 20.001777,
+      "p99": 20.03881372,
+      "max": 20.049056
+    },
+    "dispatch_lateness_ms": {
+      "count": 300,
+      "min": 0.167228,
+      "median": 0.471095,
+      "p99": 0.729421,
+      "max": 0.740345
+    },
+    "valid_command_age_ms": {
+      "count": 298,
+      "min": 18.573055,
+      "median": 28.922166500000003,
+      "p99": 38.860044599999995,
+      "max": 43.995719
+    },
+    "valid_ticks": 298,
+    "repeated_valid_ticks": 6,
+    "fault_ticks": 0,
+    "first_fault": null,
+    "accepted_candidates": 295,
+    "gate_rejections": []
+  },
+  "checks": {
+    "complete_run": true,
+    "clean_shutdown": true,
+    "frozen_sources": true,
+    "no_stale_output": true,
+    "periodic_dispatch": true,
+    "no_output_after_fault": true,
+    "complete_tick_observation": true,
+    "injection_observed": true,
+    "log_loss_visible": true,
+    "control_independent": true
+  }
+}

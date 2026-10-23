@@ -1,0 +1,77 @@
+test_changed_gain_target_rotation_or_nonfinite_state_is_rejected (test_engine.ReferenceEngineTests) ... ok
+test_context_identity_and_task_time_are_bound (test_engine.ReferenceEngineTests) ... ok
+test_expired_snapshot_has_deadline_status_and_future_issue_is_input_error (test_engine.ReferenceEngineTests) ... ok
+test_future_and_stale_state_joint_and_wrong_interval_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_history_count_padding_future_order_and_reference_anchor_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_identity_wrong_order_and_live_output_requests_are_rejected_before_solver (test_engine.ReferenceEngineTests) ... ok
+test_input_file_hash_is_checked_before_json_or_configuration_loading (test_engine.ReferenceEngineTests) ... ok
+test_monotonic_sequential_messages_keep_controller_memory_without_reset (test_engine.ReferenceEngineTests) ... ok
+test_outer_deadline_covers_conversion_adapter_and_clears_output (test_engine.ReferenceEngineTests) ... ok
+test_rejection_latches_and_does_not_run_next_controller (test_engine.ReferenceEngineTests) ... ok
+test_solver_failure_or_missing_quality_never_returns_a_fallback (test_engine.ReferenceEngineTests) ... ok
+test_valid_snapshot_calls_same_step_once_with_causal_owned_context (test_engine.ReferenceEngineTests) ... ok
+test_constructor_failure_still_shuts_down_owned_context (test_node_cleanup.CleanupTests) ... ok
+test_executor_failure_still_destroys_node_and_closes_context (test_node_cleanup.CleanupTests) ... ok
+test_external_shutdown_is_not_repeated (test_node_cleanup.CleanupTests) ... ok
+test_installed_sources_and_loaded_identity_are_recorded_without_overwrite (test_startup.StartupTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.090s
+
+OK
+test_cross_topic_arrival_and_pending_drain_do_not_block_or_finish_early (test_core.RecorderTests) ... ok
+test_durable_rows_closed_file_and_final_manifest_receipt (test_core.RecorderTests) ... ok
+test_metadata_configuration_and_capacity_rejections (test_core.RecorderTests) ... ok
+test_missing_duplicate_and_reordered_sequence_fail_closed (test_core.RecorderTests) ... ok
+test_missing_records_drain_timeout_and_wrong_final_counts_fail (test_core.RecorderTests) ... ok
+test_no_overwrite_and_fixed_capacity_bound (test_core.RecorderTests) ... ok
+test_source_or_data_tamper_cannot_receive_complete_final_receipt (test_core.RecorderTests) ... ok
+test_write_fsync_failure_never_returns_a_success_receipt (test_core.RecorderTests) ... ok
+test_zero_identity_and_empty_snapshot_drain_cannot_complete (test_core.RecorderTests) ... ok
+test_sigint_and_external_shutdown_close_cleanly (test_node_lifecycle.NodeLifecycleTests) ... ok
+test_unexpected_spin_failure_is_not_masked (test_node_lifecycle.NodeLifecycleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.047s
+
+OK
+test_full_recorder_queue_is_visible_and_never_waits (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_mutation_after_offer_cannot_rewrite_recorded_state (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_oversized_row_cannot_silently_truncate (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+test_receiver_disappearance_is_evidence_failure (test_x650_isolated_diagnostics.DiagnosticIsolationTest) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.017s
+
+OK
+test_already_exited_does_not_signal (test_x650_ros2_structure_smoke.CleanupTests) ... ok
+test_escalation_has_finite_kill_fallback (test_x650_ros2_structure_smoke.CleanupTests) ... ok
+test_exit_race_is_reaped_without_hiding_cleanup (test_x650_ros2_structure_smoke.CleanupTests) ... ok
+test_exited_cli_does_not_leave_its_live_node_behind (test_x650_ros2_structure_smoke.CleanupTests) ... ok
+test_unreapable_group_returns_error_instead_of_escaping (test_x650_ros2_structure_smoke.CleanupTests) ... ok
+test_linux_stat_handles_parenthesized_names_and_ignores_zombies (test_x650_ros2_structure_smoke.ProcessGroupTests) ... ok
+test_existing_failure_evidence_is_never_overwritten (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_invalid_sequence_shape_type_and_uint64_range_are_refused (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_nonfinite_and_unsupported_values_fail_before_opening_output (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_python_large_uint64_values_do_not_pass_through_float (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_ros_uint64_sequences_become_lossless_python_integers (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_success_keeps_original_json_format_and_one_final_newline (test_x650_ros2_structure_smoke.ReportTests) ... ok
+test_unconverted_numpy_uint64_failure_leaves_no_partial_file (test_x650_ros2_structure_smoke.ReportTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.013s
+
+OK
+test_expected_field_change_extra_missing_and_config_reject (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_file_hash_mismatch_and_missing_or_unterminated_line_reject (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_numpy_sequences_compare_every_numeric_element_without_ambiguous_truth (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_payload_hash_decoder_failure_and_decoded_identity_reject (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_positive_byte_hash_and_every_decoded_field_and_receipt_identity (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_rehashed_sequence_metadata_type_and_final_count_reject (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_rehashed_session_and_source_archive_are_still_cross_bound (test_x650_ros2_recording_verify.VerifierTests) ... ok
+test_row_chain_sources_session_binding_and_incomplete_reject (test_x650_ros2_recording_verify.VerifierTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.082s
+
+OK

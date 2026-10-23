@@ -1,0 +1,539 @@
+{
+  "kind": "x650_isolated_runtime_summary_v1",
+  "software_contract_passed": true,
+  "checks": {
+    "healthy": true,
+    "worker_pause": true,
+    "worker_short_pause": true,
+    "source_pause": true,
+    "recorder_pause": true
+  },
+  "physical_hold_qualified": false,
+  "hardware_qualified": false,
+  "scope": "same-host typed ROS software process/recording contracts only; no plant or actuators",
+  "cases": [
+    {
+      "case": "healthy",
+      "contract_passed": true,
+      "accepted": 1405,
+      "unique_shadow_output": 1405,
+      "interval_max_ms": 20.077071,
+      "valid_command_age_max_ms": 43.064204,
+      "fault": null,
+      "recording_complete": true,
+      "diagnostic_dropped": 0,
+      "gc": {
+        "0": {
+          "count": 42,
+          "max_ms": 0.103432
+        },
+        "1": {
+          "count": 4,
+          "max_ms": 0.202903
+        },
+        "2": {
+          "count": 1,
+          "max_ms": 11.426434
+        }
+      },
+      "injection": null,
+      "equivalence": {
+        "pairs": 1405,
+        "max_command_absolute_error": 0.0,
+        "rejected_recorded_sequences": [],
+        "worker_compute_ms": {
+          "count": 1405,
+          "min": 11.741067,
+          "median": 13.835274,
+          "p99": 17.046744720000017,
+          "max": 26.106801
+        },
+        "solver_ms": {
+          "count": 1405,
+          "min": 0.2129431813955307,
+          "median": 0.22381357848644257,
+          "p99": 0.3004112094640734,
+          "max": 2.009635791182518
+        },
+        "same_numeric_snapshot_and_context": true,
+        "transport_wall_clock_rebased": true
+      }
+    },
+    {
+      "case": "worker_pause",
+      "contract_passed": true,
+      "accepted": 92,
+      "unique_shadow_output": 92,
+      "interval_max_ms": 20.064533,
+      "valid_command_age_max_ms": 40.111758,
+      "fault": {
+        "sequence": 148,
+        "scheduled_monotonic_ns": 14805527925161240,
+        "actual_monotonic_ns": 14805527925228420,
+        "source_sequence": 407,
+        "source_received_monotonic_ns": 14805527920123495,
+        "command_sequence": 92,
+        "command_issued_monotonic_ns": 14805527865121578,
+        "command_age_ns": 60106842,
+        "status": 3,
+        "reason": 1,
+        "output_valid": false,
+        "repeated": false
+      },
+      "recording_complete": true,
+      "diagnostic_dropped": 0,
+      "gc": {
+        "0": {
+          "count": 4,
+          "max_ms": 0.059371
+        },
+        "1": {
+          "count": 1,
+          "max_ms": 0.226743
+        },
+        "2": {
+          "count": 0,
+          "max_ms": 0.0
+        }
+      },
+      "injection": {
+        "owner": "worker",
+        "stop_ns": 14805527880254819,
+        "requested_ms": 100,
+        "resume_ns": 14805527980500750,
+        "dispatch_ticks_during_pause": 5,
+        "state_receipts_during_pause": 20
+      },
+      "equivalence": {
+        "pairs": 92,
+        "max_command_absolute_error": 0.0,
+        "rejected_recorded_sequences": [
+          93
+        ],
+        "worker_compute_ms": {
+          "count": 92,
+          "min": 12.536325,
+          "median": 13.417294,
+          "p99": 14.62881544,
+          "max": 15.065721
+        },
+        "solver_ms": {
+          "count": 92,
+          "min": 0.22110529243946075,
+          "median": 0.22440124303102493,
+          "p99": 1.9217199645936494,
+          "max": 2.0269714295864105
+        },
+        "same_numeric_snapshot_and_context": true,
+        "transport_wall_clock_rebased": true
+      }
+    },
+    {
+      "case": "worker_short_pause",
+      "contract_passed": true,
+      "accepted": 93,
+      "unique_shadow_output": 93,
+      "interval_max_ms": 20.024426,
+      "valid_command_age_max_ms": 41.881261,
+      "fault": {
+        "sequence": 146,
+        "scheduled_monotonic_ns": 14805538844224464,
+        "actual_monotonic_ns": 14805538844297426,
+        "source_sequence": 405,
+        "source_received_monotonic_ns": 14805538842704310,
+        "command_sequence": 93,
+        "command_issued_monotonic_ns": 14805538782416449,
+        "command_age_ns": 61880977,
+        "status": 3,
+        "reason": 1,
+        "output_valid": false,
+        "repeated": false
+      },
+      "recording_complete": true,
+      "diagnostic_dropped": 0,
+      "gc": {
+        "0": {
+          "count": 4,
+          "max_ms": 0.064211
+        },
+        "1": {
+          "count": 1,
+          "max_ms": 0.224493
+        },
+        "2": {
+          "count": 0,
+          "max_ms": 0.0
+        }
+      },
+      "injection": {
+        "owner": "worker",
+        "stop_ns": 14805538812450238,
+        "requested_ms": 25,
+        "resume_ns": 14805538837895630,
+        "dispatch_ticks_during_pause": 1,
+        "state_receipts_during_pause": 6
+      },
+      "equivalence": {
+        "pairs": 94,
+        "max_command_absolute_error": 0.0,
+        "rejected_recorded_sequences": [],
+        "worker_compute_ms": {
+          "count": 94,
+          "min": 12.387089,
+          "median": 13.3587585,
+          "p99": 17.314870799999834,
+          "max": 39.888891
+        },
+        "solver_ms": {
+          "count": 94,
+          "min": 0.21889247000217438,
+          "median": 0.22387132048606873,
+          "p99": 1.854827534407376,
+          "max": 2.028200775384903
+        },
+        "same_numeric_snapshot_and_context": true,
+        "transport_wall_clock_rebased": true
+      }
+    },
+    {
+      "case": "source_pause",
+      "contract_passed": true,
+      "accepted": 94,
+      "unique_shadow_output": 94,
+      "interval_max_ms": 20.056,
+      "valid_command_age_max_ms": 38.103638,
+      "fault": {
+        "sequence": 147,
+        "scheduled_monotonic_ns": 14805549926194039,
+        "actual_monotonic_ns": 14805549926312632,
+        "source_sequence": 399,
+        "source_received_monotonic_ns": 14805549883424697,
+        "command_sequence": 94,
+        "command_issued_monotonic_ns": 14805549883269475,
+        "command_age_ns": 43043157,
+        "status": 3,
+        "reason": 2,
+        "output_valid": false,
+        "repeated": false
+      },
+      "recording_complete": true,
+      "diagnostic_dropped": 0,
+      "gc": {
+        "0": {
+          "count": 4,
+          "max_ms": 0.07496
+        },
+        "1": {
+          "count": 1,
+          "max_ms": 0.202702
+        },
+        "2": {
+          "count": 0,
+          "max_ms": 0.0
+        }
+      },
+      "injection": {
+        "owner": "source",
+        "stop_ns": 14805549883695090,
+        "requested_ms": 120,
+        "resume_ns": 14805550004506377,
+        "dispatch_ticks_during_pause": 6,
+        "state_receipts_during_pause": 0
+      },
+      "equivalence": {
+        "pairs": 94,
+        "max_command_absolute_error": 0.0,
+        "rejected_recorded_sequences": [],
+        "worker_compute_ms": {
+          "count": 94,
+          "min": 12.718317,
+          "median": 13.426309,
+          "p99": 15.581153509999998,
+          "max": 15.940778
+        },
+        "solver_ms": {
+          "count": 94,
+          "min": 0.22048130631446838,
+          "median": 0.2262517809867859,
+          "p99": 1.96434823796153,
+          "max": 2.063171938061714
+        },
+        "same_numeric_snapshot_and_context": true,
+        "transport_wall_clock_rebased": true
+      }
+    },
+    {
+      "case": "recorder_pause",
+      "contract_passed": true,
+      "accepted": 280,
+      "unique_shadow_output": 279,
+      "interval_max_ms": 20.052663,
+      "valid_command_age_max_ms": 38.86961,
+      "fault": null,
+      "recording_complete": false,
+      "diagnostic_dropped": 36,
+      "gc": {
+        "0": {
+          "count": 10,
+          "max_ms": 0.06151
+        },
+        "1": {
+          "count": 1,
+          "max_ms": 0.204711
+        },
+        "2": {
+          "count": 0,
+          "max_ms": 0.0
+        }
+      },
+      "injection": {
+        "owner": "recorder",
+        "stop_ns": 14805560804899328,
+        "requested_ms": 1000,
+        "resume_ns": 14805561805563923,
+        "dispatch_ticks_during_pause": 50,
+        "state_receipts_during_pause": 200
+      },
+      "equivalence": {}
+    }
+  ],
+  "evidence": {
+    "healthy": {
+      "runtime_report.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/runtime_report.json",
+        "sha256": "9b8b65cff9632ade81a305786bc03a23e0eeb334305913161183a1159e189dc5",
+        "bytes": 27174
+      },
+      "dispatch_ticks.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/dispatch_ticks.json",
+        "sha256": "857eb271198d0827e58f77b30d175eb682463df0e01cbf3e8f42cb845bf235fc",
+        "bytes": 627766
+      },
+      "ingress_receipts.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/ingress_receipts.json",
+        "sha256": "1a1b7903b6288ccb04b4788f55e1954a9bcb66bbce9543b958ca67e4a26fe0a9",
+        "bytes": 958736
+      },
+      "gate_events.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/gate_events.json",
+        "sha256": "c037e2a1ea897ede8e0a55688fe223c1ae57a539e79b2a99ffebfdada50adf17",
+        "bytes": 290327
+      },
+      "worker_startup.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/worker_startup.json",
+        "sha256": "eecbb9392c81f8ae3feca856f25d683b87fe9d39fe2c5d0ca1ae351fb98f6267",
+        "bytes": 17392
+      },
+      "worker_final.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/worker_final.json",
+        "sha256": "fbfd259c533853070e73aad8951fc5933f534350957f4db76cc2755e79ebbdc5",
+        "bytes": 8006
+      },
+      "diagnostic_sender.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/diagnostic_sender.json",
+        "sha256": "ff06ae597d318dd55529f521b650746d3b6812c4c74a03314bd9791a4ea2236f",
+        "bytes": 17081
+      },
+      "recording/manifest.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/recording/manifest.json",
+        "sha256": "31fed1d6790c2387c2e3c76194b8f68726319000ddb5ddbd7e227b4460849ac2",
+        "bytes": 368
+      },
+      "recording/diagnostics.jsonl": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/healthy_v4/recording/diagnostics.jsonl",
+        "sha256": "d9cdeb7a7a6d88d18edc0e6739b4ba09dfb365874e3fd75f7f2aacf86d925678",
+        "bytes": 94650642
+      }
+    },
+    "worker_pause": {
+      "runtime_report.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/runtime_report.json",
+        "sha256": "7249c9a4de7a9f987cb59a5b76a49a07f04ed199cc7e90295d12e6e79462466d",
+        "bytes": 12742
+      },
+      "dispatch_ticks.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/dispatch_ticks.json",
+        "sha256": "041646ab7a85db166024986dd19e4cffa26852bab84a3d790e4fd66d30e84d3d",
+        "bytes": 140287
+      },
+      "ingress_receipts.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/ingress_receipts.json",
+        "sha256": "58c5fc0ef52baf97465d0a3dedb2fbf9dda3895fc87860bf3a3ed3f7ab9228bf",
+        "bytes": 189945
+      },
+      "gate_events.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/gate_events.json",
+        "sha256": "77da3ad5c77f120bf99f86ea5144b108e47d553dba7c7f4622cd0275c6fdeb31",
+        "bytes": 18652
+      },
+      "worker_startup.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/worker_startup.json",
+        "sha256": "a6a9e31cb6db4f1d2e91bf716423d413b065e3421cb994d5fa6583d62b25243f",
+        "bytes": 17397
+      },
+      "worker_final.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/worker_final.json",
+        "sha256": "1755c8f7413243484b56e884e634484e747ed05f4e8bb4ee7d5fe16a9ba40af3",
+        "bytes": 2647
+      },
+      "diagnostic_sender.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/diagnostic_sender.json",
+        "sha256": "797e91cf7287c743d9a54f2cd90d134762deeeb55fc1c1bb1b6d42acf12254aa",
+        "bytes": 1335
+      },
+      "recording/manifest.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/recording/manifest.json",
+        "sha256": "cdf41a69c32b95368a26c49aad539e2fe063c7ded078b2a3b1cd3be3afe7635f",
+        "bytes": 363
+      },
+      "recording/diagnostics.jsonl": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_pause_v2/recording/diagnostics.jsonl",
+        "sha256": "228b9f86152a3f9e83559a49a8d217a1a7bf1c4a2bff2df15010db8ac9a1f851",
+        "bytes": 6141016
+      }
+    },
+    "worker_short_pause": {
+      "runtime_report.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/runtime_report.json",
+        "sha256": "f30454e40bdf26a522af99abd684a7842e1cdded3c3a5fef00aa42ac375f8879",
+        "bytes": 12672
+      },
+      "dispatch_ticks.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/dispatch_ticks.json",
+        "sha256": "09fe5ef95d65a4a0ba1d92f962f1026fb152716eef10bb6e29c8a6d3cac217f6",
+        "bytes": 139968
+      },
+      "ingress_receipts.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/ingress_receipts.json",
+        "sha256": "09583ecc903ace6d79dae00d4c48bc360c718d9fd81c195812c88c6dd72f14f9",
+        "bytes": 189783
+      },
+      "gate_events.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/gate_events.json",
+        "sha256": "0775ec51432fd7e3a57859ffe0d7e0e8332e5e631f94414c25c064ff1eda5d07",
+        "bytes": 18855
+      },
+      "worker_startup.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/worker_startup.json",
+        "sha256": "3cffcd8a98d457c339a17d6bd0bdb3983d688426da29b6b124f78b0c0dff9911",
+        "bytes": 17403
+      },
+      "worker_final.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/worker_final.json",
+        "sha256": "48a1b67e411087a0f0273a4fe22ccd1f638d799c48e3e6fbf16c49a16b0c706b",
+        "bytes": 2595
+      },
+      "diagnostic_sender.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/diagnostic_sender.json",
+        "sha256": "4e5c4b2502c1a434dfbabecaf574bd188d846d1e7c92277a41c1b54e595c4c1a",
+        "bytes": 1345
+      },
+      "recording/manifest.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/recording/manifest.json",
+        "sha256": "7b1edc1fda6c6814e743f0fd81ebdddffc11e10b3243b7a113ff8e55247bf205",
+        "bytes": 363
+      },
+      "recording/diagnostics.jsonl": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/worker_short_pause_v2/recording/diagnostics.jsonl",
+        "sha256": "8c147cde1b62f0ff930d455fdce66587537e0282ea86596b6778527ee781aadb",
+        "bytes": 6263379
+      }
+    },
+    "source_pause": {
+      "runtime_report.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/runtime_report.json",
+        "sha256": "4f01d47c494308b3c5a69db8b4a9133334ee5ed72ac56ed868877177eee46ed2",
+        "bytes": 12698
+      },
+      "dispatch_ticks.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/dispatch_ticks.json",
+        "sha256": "529cc9cbb79ef96bf0b9c9a24ddb6fb4d73f0750f17d49ae5ace676895617123",
+        "bytes": 138841
+      },
+      "ingress_receipts.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/ingress_receipts.json",
+        "sha256": "d6fd5c63de42dc4299f61acfcf430a8aff0cb8c176b7e9e809e3aa28b8e131e2",
+        "bytes": 186120
+      },
+      "gate_events.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/gate_events.json",
+        "sha256": "e8cf93b040aba996cb2172720d5f9efaaab993d3b0e42799915dd7194cf1e4e2",
+        "bytes": 19058
+      },
+      "worker_startup.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/worker_startup.json",
+        "sha256": "4b3f8f958fdc5a8623fc0d465ffe50ba53ac2988d5522a0d2bb0282edc34686d",
+        "bytes": 17397
+      },
+      "worker_final.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/worker_final.json",
+        "sha256": "f10ac4f3e73009e7ba80119ae67e324ff0d8d9b1b5711098a6805a5e856412b9",
+        "bytes": 2589
+      },
+      "diagnostic_sender.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/diagnostic_sender.json",
+        "sha256": "7dd33ac8cdc4bda94836c4851b97dd58ac6f2d324702d19efe7408112ba1a73f",
+        "bytes": 1345
+      },
+      "recording/manifest.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/recording/manifest.json",
+        "sha256": "64519c9aef46580a6f593be0da746a3979a70fbdec2bfaa0d2ac127644a11047",
+        "bytes": 363
+      },
+      "recording/diagnostics.jsonl": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/source_pause_v2/recording/diagnostics.jsonl",
+        "sha256": "7bdb81585900cbe1976911768830e2983ff900085a36ef8f78e88392b37c5cf9",
+        "bytes": 6277290
+      }
+    },
+    "recorder_pause": {
+      "runtime_report.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/runtime_report.json",
+        "sha256": "f229f791caddd4571becd89db68d0858b69b79decb1782284acd600eda451a21",
+        "bytes": 10922
+      },
+      "dispatch_ticks.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/dispatch_ticks.json",
+        "sha256": "d41270b27ca8a9161f7d7187a288f46a9170fc00bbad5463300391aa03109a3d",
+        "bytes": 139611
+      },
+      "ingress_receipts.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/ingress_receipts.json",
+        "sha256": "e66156a2ce5f100dced8785ea3f26dc6af08cd69f8b2cff788f69debce5da7af",
+        "bytes": 190736
+      },
+      "gate_events.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/gate_events.json",
+        "sha256": "75ecb511dac3ec3690a927258f285f0c21ffd1acbf5cfc5b6aa0ff5ec83576eb",
+        "bytes": 57359
+      },
+      "worker_startup.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/worker_startup.json",
+        "sha256": "0c01555341a2ede940158a363e1abd0e1148a992335a9cd238fea19d21981ff9",
+        "bytes": 17399
+      },
+      "worker_final.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/worker_final.json",
+        "sha256": "238307ab0c48a86ba06b93d7083e30dec168913afafaa2fbccf0c2b4bad808bf",
+        "bytes": 3367
+      },
+      "diagnostic_sender.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/diagnostic_sender.json",
+        "sha256": "8fcd62d6e86af2b7074f1bbafe540919e8b36efc46cba40b13482d238977243c",
+        "bytes": 3674
+      },
+      "recording/manifest.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/recording/manifest.json",
+        "sha256": "71faec7885ecb58d54c797a929b3ed378a4a1b3b5d9044dfe7e71ce46fe11772",
+        "bytes": 402
+      },
+      "recording/diagnostics.jsonl": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_runtime_20261023/recorder_pause_v2/recording/diagnostics.jsonl",
+        "sha256": "e2be96446cc1cb2fad5a69ac530473483a292eb95e236aa1ee4ce2fa6f2813bf",
+        "bytes": 16104103
+      }
+    }
+  },
+  "frozen_task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+  "native_library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef"
+}

@@ -7,4 +7,5 @@ setup(name=package_name, version="0.1.0", packages=[package_name],
       install_requires=["setuptools"], zip_safe=True,
       maintainer="Flyarm maintainers", maintainer_email="maintainer@example.invalid",
       description="Offline/shadow Python reference MPC process", license="Apache-2.0",
-      entry_points={"console_scripts": ["reference_node = flyarm_mpc_reference.node:main"]})
+      entry_points={"console_scripts": ["reference_node = flyarm_mpc_reference.node:main",
+                                        "isolated_node = flyarm_mpc_reference.isolated_node:main"]})

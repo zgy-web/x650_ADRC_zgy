@@ -18,3 +18,11 @@ tests/unit/test_x650_ros2_structure_smoke.py -text whitespace=cr-at-eol
 tests/unit/test_x650_ros2_recording_verify.py -text whitespace=cr-at-eol
 docs/validation/ros2_structure_20261023/*.json -text whitespace=cr-at-eol
 docs/validation/ros2_structure_20261023/report_repair_server/** -text
+# Frozen runtime test inputs and exact executed evidence are cross-host hashes.
+configs/experiments/x650_isolated_runtime_v1.json -text
+scripts/run_x650_isolated_runtime.py -text
+scripts/x650_isolated_state_fixture.py -text
+scripts/x650_isolated_diagnostic_recorder.py -text
+scripts/report_x650_isolated_runtime.py -text
+tests/unit/test_x650_isolated_diagnostics.py -text
+docs/validation/isolated_runtime_20261023/** -text -whitespace

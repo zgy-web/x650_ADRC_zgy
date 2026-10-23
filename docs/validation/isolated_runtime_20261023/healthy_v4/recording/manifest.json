@@ -1,0 +1,13 @@
+{
+  "kind": "isolated_diagnostics_v1",
+  "rows": 1405,
+  "last_sequence": 1405,
+  "gaps": [],
+  "error": null,
+  "records_sha256": "d9cdeb7a7a6d88d18edc0e6739b4ba09dfb365874e3fd75f7f2aacf86d925678",
+  "bytes": 94650642,
+  "started_ns": 14805374964723142,
+  "ended_ns": 14805406826579179,
+  "drained_and_fsynced": true,
+  "requires_sender_count_reconciliation": true
+}
