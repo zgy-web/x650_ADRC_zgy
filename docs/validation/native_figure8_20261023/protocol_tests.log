@@ -1,0 +1,10 @@
+test_fast_requires_normal_certificate (test_x650_ts20_figure8_task.FrozenTrajectoryTaskTests) ... ok
+test_normal_changes_only_reference_and_declared_protocol (test_x650_ts20_figure8_task.FrozenTrajectoryTaskTests) ... ok
+test_rejects_omitted_hold_gate (test_x650_ts20_figure8_task.FrozenTrajectoryTaskTests) ... ok
+test_rejects_unknown_stage (test_x650_ts20_figure8_task.FrozenTrajectoryTaskTests) ... ok
+test_rejects_weight_limit_backend_and_trajectory_changes (test_x650_ts20_figure8_task.FrozenTrajectoryTaskTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+OK

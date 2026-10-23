@@ -1,0 +1,27 @@
+{
+  "kind": "x650_frozen_native_figure8_v1",
+  "stages": [
+    "normal",
+    "fast"
+  ],
+  "baseline_task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+  "hold_certificate_sha256": "3a02609b58ef462590b76138131003fdeaed93aa6bea3528a3761e14e4564602",
+  "amplitude_x_m": 0.25,
+  "amplitude_z_m": 0.1,
+  "cycles": 2,
+  "start_s": 2.0,
+  "ramp_s": 2.0,
+  "normal_period_s": 12.0,
+  "fast_period_s": 8.0,
+  "tail_hold_s": 4.0,
+  "tip_rms_max_m": 0.05,
+  "tip_peak_max_m": 0.1,
+  "tilt_max_deg": 8.0,
+  "max_control_interval_s": 0.05,
+  "max_compute_s": 0.05,
+  "no_previous_plan_fallback": true,
+  "full_window_required": true,
+  "target_alignment": "same world frame and timestamp; no fitted translation or phase",
+  "controller_parameters": "exact complete-hold task values; no retuning",
+  "trajectory_authority": "this explicit protocol; retained ts20_protocol describes prior hold admission"
+}

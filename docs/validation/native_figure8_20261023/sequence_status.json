@@ -1,0 +1,9 @@
+{
+  "complete": false,
+  "phase": "normal",
+  "stages": [],
+  "started_unix": 1792753283.5397415,
+  "error": "RuntimeError('normal_launch.log failed: 1')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_figure8_20261023/sequence_driver_v1.py\", line 20, in <module>\n    run(['/usr/bin/python3','simulations/x650_ts20_figure8_v1/launch.py','--task',str(config),'--software-proof',str(proof),'--software-sha256',proof_sha],stage+'_launch.log')\n  File \"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_figure8_20261023/sequence_driver_v1.py\", line 12, in run\n    if p.returncode:raise RuntimeError(name+' failed: '+str(p.returncode))\nRuntimeError: normal_launch.log failed: 1\n",
+  "finished_unix": 1792753416.5497978
+}

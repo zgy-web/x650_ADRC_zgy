@@ -1,0 +1,159 @@
+{
+  "kind": "native_figure8_failed_attempt_presentation_v1",
+  "report_complete": true,
+  "experiment_passed": false,
+  "partial_measurement_only": true,
+  "stage": "normal",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917",
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_launch_20261023T110124Z_32913",
+  "planned_duration_s": 32.0,
+  "rejected_at_s": 14.340000000000003,
+  "rejected_interval_ms": 51.9999999999996,
+  "partial_metrics": {
+    "start_s": 0.0,
+    "end_s": 14.340000000000003,
+    "samples": 3586,
+    "rms_m": 0.00425376418130256,
+    "peak_m": 0.00807429112783769
+  },
+  "partial_tracking_metrics": {
+    "start_s": 2.0,
+    "end_s": 14.340000000000003,
+    "samples": 3086,
+    "rms_m": 0.004289330291313962,
+    "peak_m": 0.00807429112783769
+  },
+  "completed_control_updates": 509,
+  "returned_candidates_all_accepted": true,
+  "timing": {
+    "compute_wall_ms": {
+      "count": 509,
+      "min": 13.036038726568222,
+      "median": 17.322802916169167,
+      "p95": 19.96775008738041,
+      "p99": 21.261955276131637,
+      "max": 44.423703104257584
+    },
+    "qp_wall_ms": {
+      "count": 509,
+      "min": 0.21512620151042938,
+      "median": 0.24667195975780487,
+      "p95": 2.6474591344594947,
+      "p99": 3.05130735039711,
+      "max": 3.2872892916202545
+    },
+    "accepted_update_interval_sim_ms": {
+      "count": 508,
+      "min": 19.99999999999602,
+      "median": 27.999999999998693,
+      "p95": 32.00000000000358,
+      "p99": 32.00000000000358,
+      "max": 36.000000000001364
+    }
+  },
+  "last_returned_compute_ms": 44.423703104257584,
+  "last_returned_qp_ms": 2.2307150065898895,
+  "gc_overlapping_last_compute": [
+    {
+      "generation": 2,
+      "start_wall_monotonic_s": 14800971.980858872,
+      "stop_wall_monotonic_s": 14800972.005643968,
+      "start_perf_counter_s": 14800971.980859272,
+      "stop_perf_counter_s": 14800972.005644828,
+      "start_thread_cpu_s": 46.975355792,
+      "stop_thread_cpu_s": 47.000137973,
+      "start_thread_ident": 140505110725056,
+      "stop_thread_ident": 140505110725056,
+      "wall_s": 0.02478555589914322,
+      "thread_cpu_s": 0.02478218099999907,
+      "collected": 41,
+      "uncollectable": 0
+    }
+  ],
+  "actual_joint_q_min_rad": [
+    -0.254968301296838,
+    -0.13037083143522638
+  ],
+  "actual_joint_q_max_rad": [
+    -7.7153858439633e-09,
+    0.1098541401907804
+  ],
+  "actual_joint_speed_peak_rad_s": [
+    0.14981837171779785,
+    0.09167856507597183
+  ],
+  "landed_disarmed_restored": true,
+  "runtime_closed": true,
+  "frozen_sources_unchanged": true,
+  "fast_figure8_started": false,
+  "trajectory_parameters": {
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 12.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0
+  },
+  "numerical_backend": {
+    "kind": "cpp_numerics_v1",
+    "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+    "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+    "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+    "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+  },
+  "inputs": {
+    "controller_metadata.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/controller_metadata.json",
+      "sha256": "da231a301c7f789a82315a46efd9844241fa01995c7c226083be4d3d984621ec",
+      "bytes": 2159808
+    },
+    "controller_task.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/controller_task.json",
+      "sha256": "98252829a938999a553b82490e9388ce7cbcdddd04694e86b45118cf0535c646",
+      "bytes": 8069
+    },
+    "stage_result.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/stage_result.json",
+      "sha256": "9f2c7b4bb249a5a2c51856aae70ef1070fb4860d088d8b74a2211795ae849d7e",
+      "bytes": 7570
+    },
+    "native_trace.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/native_trace.csv",
+      "sha256": "244956294034a402c171acbe00752976ffb69d114f455e310a01907663399fe6",
+      "bytes": 9651406
+    },
+    "native_trace_manifest.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/native_trace_manifest.json",
+      "sha256": "c8e30245a5be62c369e4aa3d2bb5e5ab222f354bccc7655a2251022ff2404ba7",
+      "bytes": 1062
+    },
+    "control_trace.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/control_trace.csv",
+      "sha256": "e0a291c24643da7383bfb3003cd222b5ccbbde8c52e145a7f81f029af3512bca",
+      "bytes": 2258021
+    },
+    "controller_diagnostics.jsonl": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/controller_diagnostics.jsonl",
+      "sha256": "e9aa4fccb68c69a018649db8bc847afc964981b560cf9d59f110e7fef7a58042",
+      "bytes": 38649684
+    },
+    "control_failure_snapshot.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/control_failure_snapshot.json",
+      "sha256": "72b5d65008881fe754c1b088f73e3f6fd93cd32ddd9a2c385313d9dacf9d77a2",
+      "bytes": 1118640
+    },
+    "loop_timing_evidence.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/loop_timing_evidence.json",
+      "sha256": "844f4a46759b581e6628da06ed1ac713f284c001eddae17756602551e8a1020a",
+      "bytes": 740438
+    },
+    "px4.ulg": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_figure8_v1_20261023_190155_32917/px4.ulg",
+      "sha256": "57598b0adc6feedb621503ed1592540b22a9d386d644afbad4c002884f35b035",
+      "bytes": 17402068
+    }
+  },
+  "time_or_position_fit": false,
+  "new_physics_run": false,
+  "limitation": "Partial interval before a real rejected update. No full-window pass or performance claim."
+}

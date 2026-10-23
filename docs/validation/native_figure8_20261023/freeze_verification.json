@@ -1,0 +1,34 @@
+{
+  "verified": true,
+  "backend": {
+    "binding": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+      "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+      "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+    },
+    "matrix_cases": 30,
+    "recorded_calls": 388,
+    "native_tests": 332,
+    "no_hardware_qualification": true
+  },
+  "frozen_task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+  "changed_baseline_fields": [
+    "duration_s",
+    "scenario",
+    "stage",
+    "trajectory",
+    "trajectory_parameters"
+  ],
+  "mpc_config_unchanged": true,
+  "numerical_backend_unchanged": true,
+  "actual_px4_pid_values_verified": true,
+  "pid_parameter_count": 42,
+  "pid_max_absolute_difference": 0.0,
+  "platform_source_unchanged": true,
+  "runtime_closed": true,
+  "fast_started": false,
+  "partial_max_tilt_deg": 0.6407937716174256,
+  "experiment_passed": false
+}
