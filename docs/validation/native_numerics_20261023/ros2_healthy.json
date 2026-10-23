@@ -1,0 +1,1250 @@
+{
+  "kind": "x650_ros2_structure_smoke_v1",
+  "complete": true,
+  "passed": true,
+  "case": "healthy",
+  "synthetic_software_fixture_only": true,
+  "native_mpc": false,
+  "native_numerical_kernels": true,
+  "numerical_backend": {
+    "kind": "cpp_numerics_v1",
+    "library": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+    "library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+    "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/software_v4/native_acceptance.json",
+    "software_proof_sha256": "9802b6f94eec7273e160ac7507b6b5056f9db75bd6f5c9bc36be93586b8f7b6e"
+  },
+  "flight_started": false,
+  "actuator_publishers_present": false,
+  "hard_realtime_qualified": false,
+  "task_configuration_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+  "session_id": 1805503480,
+  "epoch": 1,
+  "domain_id": 197,
+  "controller_process_separate_from_recorder": true,
+  "sources": {
+    "ros2_ws/src/flyarm_control_gateway/CMakeLists.txt": "f202eb848996726520f311bc5a971d0e70ae6df46e4dcdccdab1b62924d7fdd3",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp": "3a632bb157cf1e141a8efe5fbbdc217ea2f63501a95e290ec7a030352a874938",
+    "ros2_ws/src/flyarm_control_gateway/package.xml": "29786fda118bcb98ec36620ee4594c734b98631745cd498c6261f4e5a41118f6",
+    "ros2_ws/src/flyarm_control_gateway/src/shadow_gateway.cpp": "48db5636e83c1ec9af95a8bbdb02f118745817ea4cad9d74d2e52dcaeead3daf",
+    "ros2_ws/src/flyarm_control_gateway/test/test_shadow_gate.cpp": "b1c2594a901bf0d74ffa294346f564d6a2a61b62eebc50159dc8117b9fbe8b8a",
+    "ros2_ws/src/flyarm_control_interfaces/CMakeLists.txt": "424de83a5118420a09c96c431a60a9bb75b5bff806ff6d6a3a3789805b8bf036",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlProposal.msg": "b8875418e1b0d33a845fd0a96e0b5182dc9dcde1de3ac6baea3e13fce8024e82",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlSnapshot.msg": "2fd53a0988f9aed466ae697dd69828cbc521e058409249ed78e9fdffa13c7fa2",
+    "ros2_ws/src/flyarm_control_interfaces/msg/DrainRequest.msg": "360b25d979a456e93ac49a900aaa0309982e7a3d10342a1979ef1a88a19e2ca4",
+    "ros2_ws/src/flyarm_control_interfaces/msg/GateEvent.msg": "6e0a19d7f6b81d223e468657bcf1f0e79ef8950ae7a4ea35674eb55704683b6f",
+    "ros2_ws/src/flyarm_control_interfaces/msg/RecordingReceipt.msg": "af3951a8317becd1c2f1ffddb1a1d684e09e7f23ab9ff9adeb40397cfce35bff",
+    "ros2_ws/src/flyarm_control_interfaces/package.xml": "b3784d51f00f4d26aac79e30027064a8673ac49d678efc25543d9e83c0eb96d5",
+    "ros2_ws/src/flyarm_control_recorder/README.md": "09bf5b3ae0f5bb6302e2b3d21d736a92f7d819657c8af33a7877a93c3a07db08",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/__init__.py": "c2effba0146b830c74a5d7a98f3492a19ebbf96e838dac8674461d4b84242271",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/core.py": "2c2d53edae10a2f2105d2960c2832355e2d1cc4fdd53ebe6c1847e9c472d27b1",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/recorder_node.py": "4ea54b35af23db64bf8f11a0d5c9b151870cf446c19a6b125025ee70e035d3f0",
+    "ros2_ws/src/flyarm_control_recorder/package.xml": "8621e0c098c8c22ba0bce657ffb347a90a62ae0320c2ce9d29d5ce499daab7e9",
+    "ros2_ws/src/flyarm_control_recorder/resource/flyarm_control_recorder": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "ros2_ws/src/flyarm_control_recorder/setup.cfg": "c50904a2ec5314b9cc52063870d24e03afd6101f5d207f2a594047890857b294",
+    "ros2_ws/src/flyarm_control_recorder/setup.py": "1508a80ef2f1d6d3182201f908e9d3fc5418277591e407c6058000d3587cda40",
+    "ros2_ws/src/flyarm_control_recorder/test/test_core.py": "76cad0ab59991a3303e08067c9efe776878e7c88a08e41df73fecd94032355e3",
+    "ros2_ws/src/flyarm_control_recorder/test/test_node_lifecycle.py": "098af5fb1e2776fec46bd708f2fa3886687f699d9914503e69d90d5592869044",
+    "ros2_ws/src/flyarm_mpc_reference/README.md": "30580f63ea23731509779f89d8a503ee9633ce04b49172f9336a34659528e7d3",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/__init__.py": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py": "78fba51f53a03fee0eb6d15bb72a271c64986cf950db985eafc1fd5da5b78ecb",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/node.py": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/startup.py": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039",
+    "ros2_ws/src/flyarm_mpc_reference/package.xml": "86035ecbdf66a35e147ed2f0576d532de499967805a0a9a8196cca0f015f5883",
+    "ros2_ws/src/flyarm_mpc_reference/resource/flyarm_mpc_reference": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "ros2_ws/src/flyarm_mpc_reference/setup.cfg": "538775e44dccb88abfa0e32b3abf7df6641b9bc8cc8930af646c62cd440b8ec2",
+    "ros2_ws/src/flyarm_mpc_reference/setup.py": "666606ca03161de23116ac12693a6ca7de92345281f22ee6c6b32ed778358bb9",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_engine.py": "d0c52b39a18be2a399704ba492181ab1a24b06eeff1e03eaaf84fd5eef510591",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_node_cleanup.py": "668a3824f26d9cb22542e31265f56e6ca2910bdb0c706599bd8d4a11644b673f",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_startup.py": "f5f3aead2bcd6b48b2399d05a0136b4297a76fc437de1ee28a81db4e8bd80728",
+    "scripts/run_x650_ros2_structure_smoke.py": "762c8207273e87947f854dc72171a514a01dfbb05ad4927c68c1f2771cc56e70"
+  },
+  "installed_gateway": {
+    "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/shadow_gateway",
+    "sha256": "f65dbaed53ad61ff38f252615ca6843b4d6467714e765f164f5398b7490f28bc"
+  },
+  "actual_process_executables": [
+    {
+      "pid": 31891,
+      "group": 31891,
+      "owner": "recorder",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 31892,
+      "group": 31892,
+      "owner": "gateway",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 31893,
+      "group": 31893,
+      "owner": "reference",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 31894,
+      "group": 31891,
+      "owner": "recorder",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 31895,
+      "group": 31893,
+      "owner": "reference",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 31896,
+      "group": 31892,
+      "owner": "gateway",
+      "executable": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/shadow_gateway",
+      "sha256": "f65dbaed53ad61ff38f252615ca6843b4d6467714e765f164f5398b7490f28bc"
+    }
+  ],
+  "observed_topics": {
+    "/flyarm/offline/v1/admitted/snapshot": [
+      "flyarm_control_interfaces/msg/ControlSnapshot"
+    ],
+    "/flyarm/offline/v1/input/snapshot": [
+      "flyarm_control_interfaces/msg/ControlSnapshot"
+    ],
+    "/flyarm/offline/v1/output/gate_event": [
+      "flyarm_control_interfaces/msg/GateEvent"
+    ],
+    "/flyarm/offline/v1/output/proposal": [
+      "flyarm_control_interfaces/msg/ControlProposal"
+    ],
+    "/flyarm/offline/v1/output/shadow_command": [
+      "flyarm_control_interfaces/msg/ControlProposal"
+    ],
+    "/flyarm/offline/v1/recorder/input/drain": [
+      "flyarm_control_interfaces/msg/DrainRequest"
+    ],
+    "/flyarm/offline/v1/recorder/output/receipt": [
+      "flyarm_control_interfaces/msg/RecordingReceipt"
+    ],
+    "/parameter_events": [
+      "rcl_interfaces/msg/ParameterEvent"
+    ],
+    "/rosout": [
+      "rcl_interfaces/msg/Log"
+    ]
+  },
+  "reference_startup": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/ros2_healthy_v4/reference_startup.json",
+    "sha256": "bb4ec895e171f3eeaf24e7a563e9d5c147c99af50d766e4047d4855d313b2120"
+  },
+  "actual_worker_sources": {
+    "_x650_ts20_c1ce10524b5b4fb4a5b0fdb1ab64e9a0": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/__init__.py",
+      "sha256": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+      "bytes": 273
+    },
+    "_x650_ts20_c1ce10524b5b4fb4a5b0fdb1ab64e9a0.mechanics": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/mechanics.py",
+      "sha256": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+      "bytes": 12918
+    },
+    "_x650_ts20_c1ce10524b5b4fb4a5b0fdb1ab64e9a0.observers": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/observers.py",
+      "sha256": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+      "bytes": 10599
+    },
+    "_x650_ts20_c1ce10524b5b4fb4a5b0fdb1ab64e9a0.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/runtime.py",
+      "sha256": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+      "bytes": 5350
+    },
+    "_x650_ts20_e8e52739d93246d3b33cf819c121bec6": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/__init__.py",
+      "sha256": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+      "bytes": 273
+    },
+    "_x650_ts20_e8e52739d93246d3b33cf819c121bec6.mechanics": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/mechanics.py",
+      "sha256": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+      "bytes": 12918
+    },
+    "_x650_ts20_e8e52739d93246d3b33cf819c121bec6.observers": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/observers.py",
+      "sha256": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+      "bytes": 10599
+    },
+    "_x650_ts20_e8e52739d93246d3b33cf819c121bec6.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/runtime.py",
+      "sha256": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+      "bytes": 5350
+    },
+    "accepted_response_model": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/accepted_response_model.py",
+      "sha256": "ee2ef5f24133706376cc9dbbe708353f3717bb9a06f511abbd05a106da0be72b",
+      "bytes": 24077
+    },
+    "amsim": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/__init__.py",
+      "sha256": "954e7079f600eec312837acdfc5f5fd6b7d4a17c8cf178ee7a3342f11603f8b7",
+      "bytes": 261
+    },
+    "amsim.modeling": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "amsim.modeling.generator": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/generator.py",
+      "sha256": "f4a11dcd4dbd344455d3b9c891d63ee17181f078a35386bae09e07fc5dc46890",
+      "bytes": 12115
+    },
+    "amsim.modeling.manager": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/manager.py",
+      "sha256": "1c50bc945bee55fb997fd53e916168598b451b1798f156d920daa2bf9cf57044",
+      "bytes": 19485
+    },
+    "amsim.paths": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/paths.py",
+      "sha256": "b9c4c30e03f51a5f83d28d3e5039568ba1d5972802a07b41636825cb52dc4bca",
+      "bytes": 828
+    },
+    "amsim.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/runtime/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "amsim.runtime.model_metadata": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/runtime/model_metadata.py",
+      "sha256": "2ba07a93178a77fccc1f0fe446a819c93b9999fe82b0c4c3c9ddce262b538275",
+      "bytes": 10526
+    },
+    "amsim.scenario_registry": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/scenario_registry.py",
+      "sha256": "4668e59b219fdb47b5615e2ebc0dbf8976c820bb323efd180d962bc12aeddc46",
+      "bytes": 3665
+    },
+    "diagnostic_parameters": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/diagnostic_parameters.py",
+      "sha256": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+      "bytes": 30227
+    },
+    "execution_trace": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/execution_trace.py",
+      "sha256": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+      "bytes": 8930
+    },
+    "flyarm_mpc_reference.engine": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/engine.py",
+      "sha256": "78fba51f53a03fee0eb6d15bb72a271c64986cf950db985eafc1fd5da5b78ecb",
+      "bytes": 14074
+    },
+    "flyarm_mpc_reference.factory": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/factory.py",
+      "sha256": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+      "bytes": 6468
+    },
+    "flyarm_mpc_reference.node": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/node.py",
+      "sha256": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+      "bytes": 2978
+    },
+    "flyarm_mpc_reference.startup": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/startup.py",
+      "sha256": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039",
+      "bytes": 3586
+    },
+    "hover_reference": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/hover_reference.py",
+      "sha256": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+      "bytes": 13595
+    },
+    "mixed_mpc_protocol": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/mixed_mpc_protocol.py",
+      "sha256": "ea482a2b07233aa04f2df41d805132c1ed425352ba40b66989a422b7ce10c5e5",
+      "bytes": 4991
+    },
+    "recording": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/recording.py",
+      "sha256": "2378a55ae2db2f586843c99dcb3341a01875f0a9fae06b56e91d13a151803e38",
+      "bytes": 26186
+    },
+    "research_condition": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/research_condition.py",
+      "sha256": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "bytes": 10883
+    },
+    "response_protocol": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/response_protocol.py",
+      "sha256": "a43b91a4a6c786f98e92b60bc4f62d2b9cf92157831a0f7231cfddaae8ea54f5",
+      "bytes": 6468
+    },
+    "simulations.x650_ts20_hold_v1.task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/task.py",
+      "sha256": "7044528ad0772c625ede60976916d13da0ec97caaf39cbfdb687310b783a8116",
+      "bytes": 22295
+    },
+    "simulations.x650_wholebody_mpc_v1.research_condition": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/research_condition.py",
+      "sha256": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "bytes": 10883
+    },
+    "simulations.x650_wholebody_mpc_v1.run_case": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+      "sha256": "64433d5a635dbf21412ae8af8b05cbd673cbfcb22ddf267dae8380d71deb5cce",
+      "bytes": 86945
+    },
+    "simulations.x650_wholebody_mpc_v1.task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/task.py",
+      "sha256": "43b7195f996085b6fedd1107595894d29c66eb0ec8c80217e923ec353b5f544f",
+      "bytes": 31832
+    },
+    "validate_x650_ts20_prediction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/validate_x650_ts20_prediction.py",
+      "sha256": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+      "bytes": 20364
+    },
+    "x650_wholebody": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/__init__.py",
+      "sha256": "ddf24a56592a5f46aac941f7af3a17d923d931de84eff08e3c2eb6bf762430db",
+      "bytes": 272
+    },
+    "x650_wholebody.adapter": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+      "sha256": "b41f7012b3b5d6849f9cb8a285d80b7a46a56800f98177fe18e44b029fb45469",
+      "bytes": 10484
+    },
+    "x650_wholebody.api": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/api.py",
+      "sha256": "cc3eb5db0455120f51a3edb499cef56f88773673b9b53a14ae1e715e1e10ae76",
+      "bytes": 5305
+    },
+    "x650_wholebody.baseline": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/baseline.py",
+      "sha256": "d6ee21d254ee0fb6f089705dfa7b2cca36d14fe0c01b9ea9a76592355c8766c4",
+      "bytes": 15194
+    },
+    "x650_wholebody.feedforward": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+      "sha256": "3897d73898895eba8c5652670f8a7bff1a599736a1d94c31db6784fa2d0e8631",
+      "bytes": 3968
+    },
+    "x650_wholebody.model": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/model.py",
+      "sha256": "266bf543c8546b5bd82738e0283c87853a1796d43f70a24c69f8ad9908276e5f",
+      "bytes": 11599
+    },
+    "x650_wholebody.mpc": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/mpc.py",
+      "sha256": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+      "bytes": 45468
+    },
+    "x650_wholebody.native_joint_prediction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+      "sha256": "cda86d49638c8a84640df56a27c796bdf231ea289ec2430a96987e09b9060e91",
+      "bytes": 9933
+    },
+    "x650_wholebody.native_mpc": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+      "sha256": "02be5ce82f9db3772a4a4b1a056fbaebf583a653517dac45c59cdff6ad2895c7",
+      "bytes": 13331
+    },
+    "x650_wholebody.native_optimization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+      "sha256": "7484a1dc3ceab97b33a136283a4395c6a3b33e649230c062c312b33233e905a1",
+      "bytes": 11192
+    },
+    "x650_wholebody.native_qualification": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py",
+      "sha256": "1772b757107020a426153c1864d8ba1eecdf7038e66e9422de9726907ae1aaa4",
+      "bytes": 3701
+    },
+    "x650_wholebody.prediction_chain": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/prediction_chain.py",
+      "sha256": "3df989b72ba0013c58d0d022347309a10244ee74cd4fa56655db5ccbddda2ac5",
+      "bytes": 10485
+    },
+    "x650_wholebody.qp_constraints": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py",
+      "sha256": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+      "bytes": 4020
+    },
+    "x650_wholebody.ts20": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20.py",
+      "sha256": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+      "bytes": 13684
+    },
+    "x650_wholebody.ts20_mpc": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+      "sha256": "bd5558186381e622d36039f8b58314b5f63b709a0c5fc65a6f9e6e7d828fa830",
+      "bytes": 16885
+    },
+    "x650_wholebody.ts20_prediction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+      "sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+      "bytes": 38016
+    }
+  },
+  "actually_loaded_native_library": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "bytes": 25112
+  },
+  "actually_loaded_native_optimization": {
+    "path": "/root/autodl-tmp/x650_native_optimization_build_v2/libx650_optimization.so",
+    "sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef",
+    "bytes": 331104
+  },
+  "recording_verification": {
+    "passed": true,
+    "schema_version": 1,
+    "session_id": 1805503480,
+    "epoch": 1,
+    "replay_only": true,
+    "counts": [
+      50,
+      50,
+      50
+    ],
+    "record_count": 150,
+    "cdr_bytes": 398400,
+    "decoded_verified": true,
+    "expected_messages_verified": true,
+    "records_sha256": "9c4859b99ac069ba5ad615c7de8d23d5001d73b496f5b397faae3623b583a595",
+    "sources_archive_sha256": "a590aa5f7948f8216a8efbeb4fd8cc36c452f4a5d0e6f1af8902637c64ff340b",
+    "row_receipts": [
+      {
+        "stream": 0,
+        "sequence": 1,
+        "sha256": "206b216708e0493d395548b6499dbde65e6aca46ab0ed0c980ebe403b4dcd0f5"
+      },
+      {
+        "stream": 1,
+        "sequence": 1,
+        "sha256": "8bcecfcbc3683fe8faa7a0edaaf9c1475dead109725793e0ba224682daa38bb8"
+      },
+      {
+        "stream": 2,
+        "sequence": 1,
+        "sha256": "b7caf9df5729ecc4d9af93be6a0dce1a636ae210d9613605e62e21491a412c21"
+      },
+      {
+        "stream": 0,
+        "sequence": 2,
+        "sha256": "a0a6ce9ea3d29c139d6de648c5cfcceaac2dee06359114a5fb5c06b3ab1e105f"
+      },
+      {
+        "stream": 1,
+        "sequence": 2,
+        "sha256": "576c766e08b324deea8e0a0c9faadc03a814a8e687a9a81c32fefd5ac23a3c2f"
+      },
+      {
+        "stream": 2,
+        "sequence": 2,
+        "sha256": "1f9fdf719adc72798c1719a5d55f4e984846a94ae65161ab71aa7a60435265ff"
+      },
+      {
+        "stream": 0,
+        "sequence": 3,
+        "sha256": "c4f01bfa1727d20a78999003e4649360b4db4358b6d7f2c9635d28a74a81e947"
+      },
+      {
+        "stream": 1,
+        "sequence": 3,
+        "sha256": "aef9c7afa20b20500b53d66e915fc26966f4309f7be9bb7ce08fb753f325e7fc"
+      },
+      {
+        "stream": 0,
+        "sequence": 4,
+        "sha256": "6288ab1eb026f8dc2ca8a578be57c7e508dfa69351891e07fbce1a7cfc1b118e"
+      },
+      {
+        "stream": 2,
+        "sequence": 3,
+        "sha256": "0060105f74fee0a913bd7cf9a3289f2a8eda5ebb4ec31d12893528b2d6b2e1e2"
+      },
+      {
+        "stream": 1,
+        "sequence": 4,
+        "sha256": "fa4b581b36f22c1331c8a23173b587cfd8c6f02abd2e545732edefb249266a85"
+      },
+      {
+        "stream": 2,
+        "sequence": 4,
+        "sha256": "361fb21c9f977068c34728fe4edfe943b53233ad6e6c54317105bcf88fc40e1c"
+      },
+      {
+        "stream": 0,
+        "sequence": 5,
+        "sha256": "9722cc5bab9f708fdd6ef47405ab841fb4dec3443900b4ea9cf67cb40c8ecb72"
+      },
+      {
+        "stream": 1,
+        "sequence": 5,
+        "sha256": "f2e02071f09c0381f4eb19d722ec6217f72573b461e74ddfa16f856695615420"
+      },
+      {
+        "stream": 2,
+        "sequence": 5,
+        "sha256": "ebdffde902a077132fdc59bd78ead57f977ab7d2757da12b2f3d2a26b0321ef8"
+      },
+      {
+        "stream": 0,
+        "sequence": 6,
+        "sha256": "e668176c1e872cd6e0230d9ef69a01983c5451299991d6d8da2a6171a8a0e53e"
+      },
+      {
+        "stream": 1,
+        "sequence": 6,
+        "sha256": "9365a219dd8af11c7ee46d41ae574bf667c8e33a37a888e69c81a2a80aa33f6e"
+      },
+      {
+        "stream": 2,
+        "sequence": 6,
+        "sha256": "3de37514a00f5833bec8d2983a8bfe14bbb57d4d1a381686d192f4a3ba36ea37"
+      },
+      {
+        "stream": 0,
+        "sequence": 7,
+        "sha256": "0f75f6fbeeb1624b6f0eec14db2be2844a32a8a03f6e92d80de869c2b71da3d4"
+      },
+      {
+        "stream": 1,
+        "sequence": 7,
+        "sha256": "1f8c1af0e64f65b0c5b775966368775e63f079c9691c385f56933862cb923cf1"
+      },
+      {
+        "stream": 2,
+        "sequence": 7,
+        "sha256": "4047091ce2cc598bc468c05c53ddba65834dcc14c55f4b608ed5b77d51d216ff"
+      },
+      {
+        "stream": 0,
+        "sequence": 8,
+        "sha256": "7f4134441fc5a9197180740f50a214ef3229b163a695494189be9be559848a36"
+      },
+      {
+        "stream": 1,
+        "sequence": 8,
+        "sha256": "0399907948eb3f717f9a00754edf49c51c83b32fe7b655d025206fef91202fad"
+      },
+      {
+        "stream": 2,
+        "sequence": 8,
+        "sha256": "cf95bbf7e4f9beedb1479eb3847ae772fba19a2730abcf5eb751b4a1beedd606"
+      },
+      {
+        "stream": 0,
+        "sequence": 9,
+        "sha256": "2c81785aac97e0583a10a046362758c9ae7fefb187a68807b58ffac3da7068b4"
+      },
+      {
+        "stream": 1,
+        "sequence": 9,
+        "sha256": "73c936fc6d4f0867d21d440bed7ccac957902a7c3c30769bbe22339f1c9f16e6"
+      },
+      {
+        "stream": 2,
+        "sequence": 9,
+        "sha256": "7b94c7d5b2a1a3067b8e6f6562758f16fc0b6e2d0c6cb68c17c9bf80ec43e17a"
+      },
+      {
+        "stream": 0,
+        "sequence": 10,
+        "sha256": "fbae8a9aa98f9f73d61f06c1591526509d41bb0002087e3577d3f2dd49ec4fde"
+      },
+      {
+        "stream": 1,
+        "sequence": 10,
+        "sha256": "5901043b2e65d259e6e78bc6fe1a8c624b4e29b59dd78d79b712f8644d20f440"
+      },
+      {
+        "stream": 0,
+        "sequence": 11,
+        "sha256": "066648b85033273e888ad647443861eedb88ed8b91462326be5b1e30ddc8da8d"
+      },
+      {
+        "stream": 2,
+        "sequence": 10,
+        "sha256": "fed70d8f118666d91f68443f79ff98538871bb6bda2859139155ed7358db5f4c"
+      },
+      {
+        "stream": 1,
+        "sequence": 11,
+        "sha256": "4588bf3086574859e446762b7121a0b69e14548303a70d9b85504e0b549da473"
+      },
+      {
+        "stream": 0,
+        "sequence": 12,
+        "sha256": "3a7af115ec4a5c01133267aa74a7878778400fa3cc4d3d09284c59cda30b7812"
+      },
+      {
+        "stream": 2,
+        "sequence": 11,
+        "sha256": "3379a215096babc3c281f1b224f2a2726b6f284f900389ceb82a100f5f1cc684"
+      },
+      {
+        "stream": 1,
+        "sequence": 12,
+        "sha256": "c4eb649c63af4e55b76510bdc268d61ebf3b3afd25a2fb9962b80de63027f980"
+      },
+      {
+        "stream": 2,
+        "sequence": 12,
+        "sha256": "24521cdb2d575100e93883e60c0d1cb3142ebc3360a60043d63287c507e04662"
+      },
+      {
+        "stream": 0,
+        "sequence": 13,
+        "sha256": "67eab12f95bb9314e7004bb40d5734f7cf62ebbbc53b474ce51d5349bc6728ea"
+      },
+      {
+        "stream": 1,
+        "sequence": 13,
+        "sha256": "65ff468cd4ed0acaab530d7aae4555b49a103b698986460b4f08778445fed1eb"
+      },
+      {
+        "stream": 2,
+        "sequence": 13,
+        "sha256": "a0f4f3c707386bfd0481a0698f179f913f35edf985463ae29f122106865da639"
+      },
+      {
+        "stream": 0,
+        "sequence": 14,
+        "sha256": "92bbfc82107e900784e0cf247b0ab5ce76532ba1ed75ed15b646b03f5da704d8"
+      },
+      {
+        "stream": 1,
+        "sequence": 14,
+        "sha256": "a182d40d31314916c19d8019a8c6ab6f8afd14df1661252f0445c30429e4c3f7"
+      },
+      {
+        "stream": 0,
+        "sequence": 15,
+        "sha256": "ff263e9b20937afcb4d430096cf4fc73885711aa4c22a83ff8793b2b876f98bc"
+      },
+      {
+        "stream": 2,
+        "sequence": 14,
+        "sha256": "493da6117085050afc198fe16c3d6b73235aadfeac4b0ee44a3d26ca4a5b7894"
+      },
+      {
+        "stream": 1,
+        "sequence": 15,
+        "sha256": "e4fabb8681c04274c8ce9e3e481f444318e16bcfc8d19fa424efd952e3e10c13"
+      },
+      {
+        "stream": 0,
+        "sequence": 16,
+        "sha256": "3aef6c19e475d810a1620d1f0011e824100118363bb75128c22d4900f87a4486"
+      },
+      {
+        "stream": 2,
+        "sequence": 15,
+        "sha256": "6b7ea74981707a289d75fa56f560fe196fd1b7960123ad406f91d717b5fb28a3"
+      },
+      {
+        "stream": 1,
+        "sequence": 16,
+        "sha256": "3311341bfaf08886085149c69869c6319dd2c5222d282784b3c4709c953844a0"
+      },
+      {
+        "stream": 0,
+        "sequence": 17,
+        "sha256": "492d309a171ab4d9d586cc4ee5392b599200cecfda8704113e22d2cb18dd22a9"
+      },
+      {
+        "stream": 2,
+        "sequence": 16,
+        "sha256": "95e6d2da0548ecc2204a11b9a852c25f1ab554ca61032ba45e0c28249a77f60f"
+      },
+      {
+        "stream": 1,
+        "sequence": 17,
+        "sha256": "88437da01c27f272b2cab5008272de9dc70ad2d0b6ac205d047f55d24ee2912c"
+      },
+      {
+        "stream": 0,
+        "sequence": 18,
+        "sha256": "a159a56b4ef5f41238ce3289f41d43d4e9595fad1398ba1070055eb195ddb19b"
+      },
+      {
+        "stream": 2,
+        "sequence": 17,
+        "sha256": "0c33d183c65cddb97bf8f03d6f87257d2ccfda356954d3610e90e7bad08bb276"
+      },
+      {
+        "stream": 1,
+        "sequence": 18,
+        "sha256": "43a678456e063fbd3ba866004b1f1d3d66ab0c346d3c72710a30f9432d207261"
+      },
+      {
+        "stream": 2,
+        "sequence": 18,
+        "sha256": "c047f025f9c900d9fa3f168fb501bfc6b3caee7936c53bbf512fe3772bc9251d"
+      },
+      {
+        "stream": 0,
+        "sequence": 19,
+        "sha256": "16432fb4e29045bbdddd4ad2fd54671424dc0aac559c86812a5fe71f58daf851"
+      },
+      {
+        "stream": 1,
+        "sequence": 19,
+        "sha256": "41dd4d4e2d7fc1ae7d7ba49534f94427cb91e9d9dd445c646330ec0a63755f41"
+      },
+      {
+        "stream": 0,
+        "sequence": 20,
+        "sha256": "3f6f6a3369b4dafc82785980b1843c5a2a4d2aba4b47935bf07cca6727fddad0"
+      },
+      {
+        "stream": 2,
+        "sequence": 19,
+        "sha256": "392d9ca224c3407e73898dedc6b5150ae37a5c0927422a1d5b7acdc3e715df70"
+      },
+      {
+        "stream": 1,
+        "sequence": 20,
+        "sha256": "8aa1221605470f019dd556c029c47afa704ccc3d27c0b83231efdb5d6ae1264c"
+      },
+      {
+        "stream": 0,
+        "sequence": 21,
+        "sha256": "d8ce9e47f9687c79eea3ebb9eecc2b17ec496f29f07c18d48b114594dc8e24d3"
+      },
+      {
+        "stream": 2,
+        "sequence": 20,
+        "sha256": "796e7a5816aa527b98b6023b4fc978855c2137e460ced0ea1b6903e2d4b43829"
+      },
+      {
+        "stream": 1,
+        "sequence": 21,
+        "sha256": "9f05097cac8e476b8a5b5e00771e7b1f539328f394d071e961941da8ece0cb84"
+      },
+      {
+        "stream": 2,
+        "sequence": 21,
+        "sha256": "c4ce74021dc81dc3ee8256209e1aa12736939ed576eccfa495f845d64fb78c46"
+      },
+      {
+        "stream": 0,
+        "sequence": 22,
+        "sha256": "ae65412f13271e8e5c36cc93411e4c5091ae4af2983cd4b0b108e6f3866b7885"
+      },
+      {
+        "stream": 1,
+        "sequence": 22,
+        "sha256": "ec4f75aa82fcd347df536de9907d11e751089eb4f156033986904f08bddae9ee"
+      },
+      {
+        "stream": 0,
+        "sequence": 23,
+        "sha256": "c4f05ac9679419aff640eedb915bd97b27452c58fb14a26378ba8d16ca8dce6b"
+      },
+      {
+        "stream": 2,
+        "sequence": 22,
+        "sha256": "d0d02f5ef359325511c4dd416858ff09d67fc133ae0dc9203d65bc3b27ad575f"
+      },
+      {
+        "stream": 1,
+        "sequence": 23,
+        "sha256": "1a35d33c12b87e6a323f6d0e791a4146ce7140f133f3babe21d51e2e3a842915"
+      },
+      {
+        "stream": 0,
+        "sequence": 24,
+        "sha256": "fd6843dcc1f84ce65302d45d6af48cf404e8183cb2fb8071b712af721d6434cf"
+      },
+      {
+        "stream": 2,
+        "sequence": 23,
+        "sha256": "3c03442219b476341a847b365b693e12bb57d750011c92b1b7b94a2b681be5a5"
+      },
+      {
+        "stream": 1,
+        "sequence": 24,
+        "sha256": "4a8ef5e4a7a7565439b491ead1cb4556fddb089e51c8ed2dfc413a15a51f7505"
+      },
+      {
+        "stream": 0,
+        "sequence": 25,
+        "sha256": "6d167ff5855c20ed7c1c12dd241bc1697ce49175f36c6603607f0851b0071a71"
+      },
+      {
+        "stream": 2,
+        "sequence": 24,
+        "sha256": "4888611ea103238eadd55dc424dd544a9d244bbb8f9c1c07b66f8a44b1c2d26c"
+      },
+      {
+        "stream": 1,
+        "sequence": 25,
+        "sha256": "c08bfb43fae9d15f14b4fe15cce0d11b720f165e1002e4ac19d07cbd582382ba"
+      },
+      {
+        "stream": 0,
+        "sequence": 26,
+        "sha256": "04db629ba6f10b36e99113f69f25714344335ae13304fd3e943a97c0df0be2d5"
+      },
+      {
+        "stream": 2,
+        "sequence": 25,
+        "sha256": "23290e9f8568a4d8f45565edafbbf1226b7a3ee3378ed86b39a7bc0223f204fc"
+      },
+      {
+        "stream": 1,
+        "sequence": 26,
+        "sha256": "1798a96b3ebb672f0ff74f4f904a53d80d5f67d1c423749bfe3e0e8fc197fa8b"
+      },
+      {
+        "stream": 0,
+        "sequence": 27,
+        "sha256": "06bdcf38d19d448af31c77e8acf9be7656a9c31325758390dee60500d70cee59"
+      },
+      {
+        "stream": 2,
+        "sequence": 26,
+        "sha256": "d04456508578d6fc75166c9a18b9dcd3da620783ad857e380a3ee04622508b24"
+      },
+      {
+        "stream": 1,
+        "sequence": 27,
+        "sha256": "122b4cef726a4973a6a009f9c74bac3dd639bf8326a6c16eb5844efd42f6e588"
+      },
+      {
+        "stream": 0,
+        "sequence": 28,
+        "sha256": "a891f9db85c3a82a0d2d5cc7f35a96a62257a861e5e34167baf3e5e6f6878f0a"
+      },
+      {
+        "stream": 2,
+        "sequence": 27,
+        "sha256": "c5e9372d6b5c4a053883ea156f51502da5c0881a9d3ce652a8db42979de43922"
+      },
+      {
+        "stream": 1,
+        "sequence": 28,
+        "sha256": "e7994c32dbc40ba0fa817a8180de9b350dd9584283dfde52eaa8d7487b141945"
+      },
+      {
+        "stream": 0,
+        "sequence": 29,
+        "sha256": "25ca4f9b928d226ea58452122560a2c5c94e1c5714756b775ad167c268dc71b3"
+      },
+      {
+        "stream": 2,
+        "sequence": 28,
+        "sha256": "8461d8d9cc49039be0f4638ceaa063406bfaf45367f641608d14a098761f7a6c"
+      },
+      {
+        "stream": 1,
+        "sequence": 29,
+        "sha256": "30cb345e4a39498a01dfd53c68bfc4ef5bc7a5555dfcaae8e9bd4f9409e7f56c"
+      },
+      {
+        "stream": 0,
+        "sequence": 30,
+        "sha256": "7653f3818f16d6dfa5f85413aba68e49855556be7cc0a0fb91851a9bcbf97a80"
+      },
+      {
+        "stream": 2,
+        "sequence": 29,
+        "sha256": "e48296b751136e9ecef31b55c1b1be544c0cfccd06dfa8d182269cb3eec3b6fa"
+      },
+      {
+        "stream": 1,
+        "sequence": 30,
+        "sha256": "6380accf7770da0cbe28c0b2de6eebd895f5468a4fe76ce3e5f75f60d09abf3e"
+      },
+      {
+        "stream": 0,
+        "sequence": 31,
+        "sha256": "ad0d6a192f14adc2274529940591e890fc98867d970c9d27f65639c1b4ac57db"
+      },
+      {
+        "stream": 2,
+        "sequence": 30,
+        "sha256": "15d92404adf6e1b64a5d83dfdf4d61949dc611926579e0cc98713fc79f9fb58a"
+      },
+      {
+        "stream": 1,
+        "sequence": 31,
+        "sha256": "fe82eff506520e1d8b6c582b708b12880967398c19eedbfe8567dbb2dc3ef170"
+      },
+      {
+        "stream": 0,
+        "sequence": 32,
+        "sha256": "24a3f8f0ab54f8397c4bc061a28de44ff91a05d2bd4f170e3fac088845bee39f"
+      },
+      {
+        "stream": 2,
+        "sequence": 31,
+        "sha256": "57263f3ce465e7b41e4754207ed6859d82e575d7551b996e983ebaff5a4e2f76"
+      },
+      {
+        "stream": 1,
+        "sequence": 32,
+        "sha256": "26757c6cc0f09a8f3886a5299624758c41c298cd7baabbf5c52a7c2dee7e7572"
+      },
+      {
+        "stream": 0,
+        "sequence": 33,
+        "sha256": "7e96b719dfc44baffc90246cf7a46030db05db40f5fcf461355a4c612a6b9d48"
+      },
+      {
+        "stream": 2,
+        "sequence": 32,
+        "sha256": "8ea57c09a5ac1897037592f9da711433898798fdd39f885585a6d6913225de53"
+      },
+      {
+        "stream": 1,
+        "sequence": 33,
+        "sha256": "c212b88d95c5d9f00ef524a24b657bd7db02ec2210ebbcc9d4b8628412fb6b2e"
+      },
+      {
+        "stream": 0,
+        "sequence": 34,
+        "sha256": "f483da39b5d851822f48db3dc36d470674916e7f33d51ecf76c03998f608b353"
+      },
+      {
+        "stream": 2,
+        "sequence": 33,
+        "sha256": "534f4eb28eaed11035ca8fc13f6a1fc4791a6ce231443fec9712887b5e02947a"
+      },
+      {
+        "stream": 1,
+        "sequence": 34,
+        "sha256": "aa836f3a7ad830e168236d9c996a02c9519875e4ea9b9830358c5d31e10b8f4f"
+      },
+      {
+        "stream": 0,
+        "sequence": 35,
+        "sha256": "0afa7bf430c1fa434c3471adf6fc4480f16341cd4f6f29bc25ad2bb4271d4903"
+      },
+      {
+        "stream": 2,
+        "sequence": 34,
+        "sha256": "02fb67ae3099ca84cd6365a1df1daf610d22c1f81e108d4e3d97cb8c211c6ff7"
+      },
+      {
+        "stream": 1,
+        "sequence": 35,
+        "sha256": "280f3fcd7a4799ed6686e3de6a96edad550e23223ca49da75b0c5c8b51a39c31"
+      },
+      {
+        "stream": 0,
+        "sequence": 36,
+        "sha256": "88a98c5df5ec80b94525ed6e6e52b17e78c4b417ea23233620c50c49abab5b36"
+      },
+      {
+        "stream": 2,
+        "sequence": 35,
+        "sha256": "303741b98d7965f0a4f90e286753235de7b9c67e07f1eee4ec682d8d20b5e180"
+      },
+      {
+        "stream": 1,
+        "sequence": 36,
+        "sha256": "99e9a94255760676d7be49ab138d592042de508afb60b9820ece5527ef9a6ccb"
+      },
+      {
+        "stream": 2,
+        "sequence": 36,
+        "sha256": "928343465392425b10b34b94f9c32b666d9768796988ab07b254f0a5171fd254"
+      },
+      {
+        "stream": 0,
+        "sequence": 37,
+        "sha256": "1a8495777d093d2f77ae09a7d3b69d4cb73f768a933f0f0abce62dc87579bd16"
+      },
+      {
+        "stream": 1,
+        "sequence": 37,
+        "sha256": "5887daf952cfbda0b27d73e83675b773afc05dc59adedbd3d790113171e27f18"
+      },
+      {
+        "stream": 2,
+        "sequence": 37,
+        "sha256": "22fb4185b1a8527dfeaca18c48577016e6988f85ad6f85b344f06cc05efc107d"
+      },
+      {
+        "stream": 0,
+        "sequence": 38,
+        "sha256": "43ac9decb120840fd3b9381f75e06e964d8748666ad55679ce176f2670012b26"
+      },
+      {
+        "stream": 1,
+        "sequence": 38,
+        "sha256": "0c28f1a9b2b42925cc2d7aa9c2cc9953db5455dbf81173abafbc9b5c261650e7"
+      },
+      {
+        "stream": 2,
+        "sequence": 38,
+        "sha256": "ca7c5d8bd871b5908b0b6b1425b71f6b8b74be6127d9deede26431fd57259e74"
+      },
+      {
+        "stream": 0,
+        "sequence": 39,
+        "sha256": "3d4fe253ad99debf9597746d5983bb5ef6c49582d9f6b03cbc80e1eac73e7107"
+      },
+      {
+        "stream": 1,
+        "sequence": 39,
+        "sha256": "c7afe947e2ac30cab69cedb63e8ff1e3f60de39e7b1d7d0a506240e7e23aa14a"
+      },
+      {
+        "stream": 2,
+        "sequence": 39,
+        "sha256": "9829828dbaf805da5c14b89b207f7890b0fd4da54952c0491ec8d25983ae1302"
+      },
+      {
+        "stream": 0,
+        "sequence": 40,
+        "sha256": "887efef745b16f47aa0727a2207c6573e4d3000e46840b685dfb8a85f5e8a00f"
+      },
+      {
+        "stream": 1,
+        "sequence": 40,
+        "sha256": "2da6f20281cb85121cc506eadd14c898e490cac2ddf9b5274d568f05e12ab221"
+      },
+      {
+        "stream": 2,
+        "sequence": 40,
+        "sha256": "e957d762ca629d6a5e3565d3fcbd50b2d7e17fa3d8be186c11396e39aee89916"
+      },
+      {
+        "stream": 0,
+        "sequence": 41,
+        "sha256": "4a3c8c18254de706d3b1d5f5f6e04f95ee6b37f8a47ce346b1950272e824c621"
+      },
+      {
+        "stream": 1,
+        "sequence": 41,
+        "sha256": "9eaec8c998e85e268ebb4275c7b054a1251ca10757bb65c7928f42423ef0f53c"
+      },
+      {
+        "stream": 2,
+        "sequence": 41,
+        "sha256": "8ff84b143ec99ef0bacf6e941e4e5711b1c6bdda94bdb838d5a80a4dca4de2b6"
+      },
+      {
+        "stream": 0,
+        "sequence": 42,
+        "sha256": "136446347c37c9dd132c0267e61c907acf348b98f0018341810b069f6e1ab09f"
+      },
+      {
+        "stream": 1,
+        "sequence": 42,
+        "sha256": "a70859d3d1136f1ef405a8fbee9db542b473f589b12e98d811393bf00813f916"
+      },
+      {
+        "stream": 2,
+        "sequence": 42,
+        "sha256": "4aa87895c65d9145fed3aeb1f85cd8e4dc7981ec522faa31df45feb6a02be478"
+      },
+      {
+        "stream": 0,
+        "sequence": 43,
+        "sha256": "c9d1d09eac032087ddf97713a78bf4d2fc7a73358857318cf2cf9733da19d14e"
+      },
+      {
+        "stream": 1,
+        "sequence": 43,
+        "sha256": "c60473ad19a0f1d7bef2b932f2b7e0edf585d13b13b3102b7426c5f39af932ab"
+      },
+      {
+        "stream": 2,
+        "sequence": 43,
+        "sha256": "34686c7944494b2fb1c77b7948faed3a217bd993c5b5f7e5535a8dea6b42c0cd"
+      },
+      {
+        "stream": 0,
+        "sequence": 44,
+        "sha256": "9549f91ab26f90b18601aa7d0f026e264b2c90bc9579383fc5d63ecbc35a7af6"
+      },
+      {
+        "stream": 1,
+        "sequence": 44,
+        "sha256": "cefc8fbde8d19b65f4d1079b60839d1766b83cdd00a00c332c8a7cfeef29a2da"
+      },
+      {
+        "stream": 2,
+        "sequence": 44,
+        "sha256": "1d44afb5746c99d6e711dd26ee20ff63a12f801c6f65a80cf4cf88bc061f0dc4"
+      },
+      {
+        "stream": 0,
+        "sequence": 45,
+        "sha256": "dbf28bc587bc6d0bd7ce62ee8a9b89ccb0bb65783f0d5b41889da980b36f254d"
+      },
+      {
+        "stream": 1,
+        "sequence": 45,
+        "sha256": "10953ae138712174f46e53dd005d168cb0ba10f3dff053a46accb4fe86aafc2f"
+      },
+      {
+        "stream": 2,
+        "sequence": 45,
+        "sha256": "c6a3ffbff87e71975b60a03589c05da8e36d547ff31cd552761b80bb95a86f3e"
+      },
+      {
+        "stream": 0,
+        "sequence": 46,
+        "sha256": "471a529383045d92391f4fbac29d1584ad6fae0f595d4d07d703b8cb4aea6182"
+      },
+      {
+        "stream": 1,
+        "sequence": 46,
+        "sha256": "beaf74f548b2f28077a9d593cfe47bee3ae98282b938adbc8a74e2c9f5384f08"
+      },
+      {
+        "stream": 2,
+        "sequence": 46,
+        "sha256": "20af763cd160a096c921e41e82128af985ab7b5d4e27a77be75c32fcba3164c3"
+      },
+      {
+        "stream": 0,
+        "sequence": 47,
+        "sha256": "716b258e3f73d73f414e39bb3077a438db74030a5f7df3f4292bb12e40fc72b1"
+      },
+      {
+        "stream": 1,
+        "sequence": 47,
+        "sha256": "ac3396d38b911ed2508334fe11ac5d1e41557983f54d97cac50b057ee42d161f"
+      },
+      {
+        "stream": 2,
+        "sequence": 47,
+        "sha256": "47f03d781c54c8f4add98c14e6224a61c05106ac337546c3b2a7aadc5e4403fb"
+      },
+      {
+        "stream": 0,
+        "sequence": 48,
+        "sha256": "63bae964ca2d01ca531e25aa00c52c041b8740e7f4241507a2a16b9cd67863c2"
+      },
+      {
+        "stream": 1,
+        "sequence": 48,
+        "sha256": "d251b255672634dd23b6dc56c7c5f9782f347c167c3bb1fcf8f5e4cd7ec61eca"
+      },
+      {
+        "stream": 2,
+        "sequence": 48,
+        "sha256": "be2c733476a6bc80969c18cd6208c4214d2359818966f218ed80129a004dc2e2"
+      },
+      {
+        "stream": 0,
+        "sequence": 49,
+        "sha256": "106ae0d4cb3ea3d46f3f8d206b32b749574591fed0a3305c65bd0d48e4be6363"
+      },
+      {
+        "stream": 1,
+        "sequence": 49,
+        "sha256": "08ebeeddcddb4b4ec35cb12983dd1c94b9bd06a08d931063b8378b35b6d8f724"
+      },
+      {
+        "stream": 2,
+        "sequence": 49,
+        "sha256": "41a3819d8601aeb83c6c3d71689aba03551a60518d91762e56914c09fc8272dc"
+      },
+      {
+        "stream": 0,
+        "sequence": 50,
+        "sha256": "6c9f572af84b50c404d843015ad3b79ad167fca99a9defedbf0790a0dcda0df7"
+      },
+      {
+        "stream": 1,
+        "sequence": 50,
+        "sha256": "c7717f75758ac47c1afd8a14c46af51328bd2e104ef084199bc18f776552679e"
+      },
+      {
+        "stream": 2,
+        "sequence": 50,
+        "sha256": "18f63f9c4090bf900ee1da324fabde6bae241eca9bd26953b982d521e9a2981c"
+      }
+    ],
+    "final_receipt": {
+      "stream": 255,
+      "sequence": 150,
+      "sha256": "f7c6854c29bcef2650aaf57f1c4596abacad85868305a396cdc03da777cbb578"
+    },
+    "scope": "archived bytes/decoded values; caller must match actual DDS receipts"
+  },
+  "expected_stream_counts": [
+    50,
+    50,
+    50
+  ],
+  "accepted_shadow_commands": 50,
+  "proposals": 50,
+  "gate_decisions": 50,
+  "decision_roundtrip_ns": [
+    13354684,
+    12197703,
+    12029781,
+    12149285,
+    12104328,
+    12047321,
+    12167594,
+    12156255,
+    12071609,
+    12059290,
+    12249480,
+    12090348,
+    12143475,
+    12163054,
+    12076628,
+    12229122,
+    12129096,
+    12077339,
+    12061079,
+    11954345,
+    12045420,
+    13565083,
+    12029262,
+    11995303,
+    12162624,
+    12207192,
+    12063830,
+    12118697,
+    12102557,
+    12156894,
+    12149505,
+    12174954,
+    12112958,
+    12129106,
+    12093618,
+    12158865,
+    12168844,
+    12257080,
+    12196434,
+    12276949,
+    12188294,
+    12271270,
+    13195053,
+    12131987,
+    12158536,
+    12203363,
+    12226182,
+    12174185,
+    12168604,
+    12255181
+  ],
+  "recorder_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/native_numerics_20261023/ros2_healthy_v4/recording/recording_manifest.json",
+    "sha256": "f7c6854c29bcef2650aaf57f1c4596abacad85868305a396cdc03da777cbb578"
+  },
+  "command_equivalence_scope": "same Python core direct vs ROS node; not native port equivalence",
+  "source_contract": "synthetic fixed-state hold; not replay of historical read availability",
+  "actual_ros_messages": "installed generated types; separate OS processes; local isolated DDS domain",
+  "process_exit_codes": {
+    "reference": 0,
+    "gateway": 0,
+    "recorder": 0
+  },
+  "remaining_owned_processes": [],
+  "cleanup_errors": []
+}

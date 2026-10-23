@@ -103,6 +103,14 @@ the reference in that replay. The fresh uninstrumented frozen cases reached
 worst-case or sustained-rate guarantee. The independent physical hold result
 is reported separately under `docs/validation/native_numerics_20261023`.
 
+The final new **30 s complete endpoint hold passed** with 7,501 independent
+native tip samples and 1,205 accepted control updates. Tip RMS/peak were
+3.047/4.598 mm; recorded computation peaked at 20.333 ms, QP solve at 2.188 ms,
+and the simulation-clock update interval at 32 ms. Arm fold, landing, disarm,
+parameter restoration and full ULog/source audit all completed. See the
+[validation report](../../docs/validation/native_numerics_20261023/README.md)
+for clock definitions, retained failed attempts and reproduction commands.
+
 Early replay attempts are retained: the verifier initially retained full
 diagnostic graphs and repeatedly constructed dynamic-library objects; those
 actions are outside a live control callback. The verifier now uses bounded

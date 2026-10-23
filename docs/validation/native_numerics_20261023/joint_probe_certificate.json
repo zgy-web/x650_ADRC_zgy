@@ -1,0 +1,1000 @@
+{
+  "kind": "x650_ts20_conditional_stage_certificate_v1",
+  "complete": true,
+  "passed": true,
+  "stage": "joint_probe",
+  "source_run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996",
+  "window_sim_s": [
+    41.624,
+    71.628
+  ],
+  "ts20_operating_condition": {
+    "kind": "x650_ts20_conditional_operating_condition_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+    "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+    "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+    "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+    "qualification": {
+      "hardware_motor": "TS20-50",
+      "hardware_supply_v": 24,
+      "identified_supply_v": 20,
+      "supply_24v_qualified": false,
+      "actual_aerial_arm_load_qualified": false,
+      "physical_torque_scale_qualified": false
+    }
+  },
+  "full_window_ulog_verified": true,
+  "parameter_restore_verified": true,
+  "native_ground_verified": true,
+  "actuator_log_verified": true,
+  "new_joint_prediction_verified": true,
+  "actuator": {
+    "verified": true,
+    "samples": 7502,
+    "internal_physical_q_peak_rad": 1.6760275233450318e-08,
+    "state_packet_binding": {
+      "verified": true,
+      "state_rows": 7502,
+      "packet_rows": 15377,
+      "last_and_active_sequence_fields_verified": true,
+      "tail_packet_coverage_required": true
+    },
+    "native_plugin_q_peak_rad": 0.0,
+    "bus_period_s": 0.005,
+    "single_combined_delay_s": 0.003346379092576424,
+    "control_snapshot_to_plugin_consumption_lag": {
+      "joints": [
+        {
+          "joint": 1,
+          "matched_command_events": 1502,
+          "minimum_s": -1.4210854715202004e-14,
+          "median_s": 0.0,
+          "p95_s": 7.105427357601002e-15,
+          "maximum_s": 0.012000000000000455
+        },
+        {
+          "joint": 2,
+          "matched_command_events": 1502,
+          "minimum_s": -1.4210854715202004e-14,
+          "median_s": 0.0,
+          "p95_s": 7.105427357601002e-15,
+          "maximum_s": 0.012000000000000455
+        }
+      ],
+      "matching": "latest preceding equal-valued actual command within 250ms; repeated identical commands can be ambiguous",
+      "anchor": "control snapshot sim_s before calculation, not an independent wire publication timestamp",
+      "upper_computation_and_ros_transport_delay_compensated": false
+    },
+    "new_joint_prediction_verified": true,
+    "prediction": {
+      "first_state_only": true,
+      "later_state_resets": false,
+      "q_peak_abs_rad": 6.194076441756735e-07,
+      "dq_peak_abs_rad_s": 5.720278748534702e-05,
+      "first_state_horizons": {
+        "20ms": {
+          "actual_horizon_s": 0.01999999999999602,
+          "q_abs_error_rad": [
+            4.0141955315347255e-12,
+            4.815652543399075e-12
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "100ms": {
+          "actual_horizon_s": 0.09999999999999432,
+          "q_abs_error_rad": [
+            2.0041899695400305e-11,
+            2.4067103976398452e-11
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "300ms": {
+          "actual_horizon_s": 0.29999999999999716,
+          "q_abs_error_rad": [
+            6.011822062391041e-11,
+            7.21975779160998e-11
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        },
+        "600ms": {
+          "actual_horizon_s": 0.5999999999999943,
+          "q_abs_error_rad": [
+            1.2023654083482281e-10,
+            1.4440648277158482e-10
+          ],
+          "dq_abs_error_rad_s": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "complete_window_s": 30.003999999999998
+    }
+  },
+  "configuration": {
+    "verified": true,
+    "analysis_window_sim_s": [
+      41.624,
+      71.628
+    ],
+    "scope": "Entire declared research stage; 20 s hover or 30 s joint probe; no omitted tail",
+    "native_sample_window_sim_s": [
+      41.624,
+      71.628
+    ],
+    "native_sample_count": 7502,
+    "native_max_interval_s": 0.0040000000000048885,
+    "reference_state_gate": {
+      "origin_and_reset_stable": true,
+      "origin_records_cover_entire_window_with_max_hold_s": 0.024,
+      "ref_timestamp": "not used as clock or equality gate; DDS may translate it",
+      "fusion_flags_entire_window": {
+        "cs_ev_pos": 1,
+        "cs_ev_vel": 1,
+        "cs_ev_hgt": 1,
+        "cs_gnss_pos": 0,
+        "cs_gps_hgt": 0,
+        "cs_baro_hgt": 0
+      }
+    },
+    "effective_parameters": {
+      "source": "ULog initial parameters plus every parameter change through window start; no after-restore substitution",
+      "parameters_at_measurement_start": {
+        "EKF2_ABIAS_INIT": 0.20000000298023224,
+        "EKF2_ABL_ACCLIM": 25.0,
+        "EKF2_ABL_GYRLIM": 3.0,
+        "EKF2_ABL_LIM": 0.4000000059604645,
+        "EKF2_ABL_TAU": 0.5,
+        "EKF2_ACC_B_NOISE": 0.003000000026077032,
+        "EKF2_ACC_NOISE": 0.3499999940395355,
+        "EKF2_AGP_CTRL": 0.0,
+        "EKF2_AGP_DELAY": 0.0,
+        "EKF2_AGP_GATE": 3.0,
+        "EKF2_AGP_MODE": 0.0,
+        "EKF2_AGP_NOISE": 0.8999999761581421,
+        "EKF2_ANGERR_INIT": 0.10000000149011612,
+        "EKF2_ARSP_THR": 0.0,
+        "EKF2_ASPD_MAX": 20.0,
+        "EKF2_ASP_DELAY": 100.0,
+        "EKF2_AVEL_DELAY": 5.0,
+        "EKF2_BARO_CTRL": 0.0,
+        "EKF2_BARO_DELAY": 0.0,
+        "EKF2_BARO_GATE": 5.0,
+        "EKF2_BARO_NOISE": 3.5,
+        "EKF2_BCOEF_X": 100.0,
+        "EKF2_BCOEF_Y": 100.0,
+        "EKF2_BETA_GATE": 5.0,
+        "EKF2_BETA_NOISE": 0.30000001192092896,
+        "EKF2_DECL_TYPE": 3.0,
+        "EKF2_DELAY_MAX": 200.0,
+        "EKF2_DRAG_CTRL": 0.0,
+        "EKF2_DRAG_NOISE": 2.5,
+        "EKF2_EAS_NOISE": 1.399999976158142,
+        "EKF2_EN": 1.0,
+        "EKF2_EVA_NOISE": 0.10000000149011612,
+        "EKF2_EVP_GATE": 5.0,
+        "EKF2_EVP_NOISE": 0.009999999776482582,
+        "EKF2_EVV_GATE": 3.0,
+        "EKF2_EVV_NOISE": 0.009999999776482582,
+        "EKF2_EV_CTRL": 7.0,
+        "EKF2_EV_DELAY": 0.0,
+        "EKF2_EV_NOISE_MD": 1.0,
+        "EKF2_EV_POS_X": 0.0,
+        "EKF2_EV_POS_Y": 0.0,
+        "EKF2_EV_POS_Z": 0.0,
+        "EKF2_EV_QMIN": 0.0,
+        "EKF2_FUSE_BETA": 0.0,
+        "EKF2_GBIAS_INIT": 0.10000000149011612,
+        "EKF2_GND_EFF_DZ": 4.0,
+        "EKF2_GND_MAX_HGT": 0.5,
+        "EKF2_GPS_CHECK": 2047.0,
+        "EKF2_GPS_CTRL": 0.0,
+        "EKF2_GPS_DELAY": 110.0,
+        "EKF2_GPS_MODE": 0.0,
+        "EKF2_GPS_POS_X": 0.0,
+        "EKF2_GPS_POS_Y": 0.0,
+        "EKF2_GPS_POS_Z": 0.0,
+        "EKF2_GPS_P_GATE": 5.0,
+        "EKF2_GPS_P_NOISE": 0.5,
+        "EKF2_GPS_V_GATE": 5.0,
+        "EKF2_GPS_V_NOISE": 0.30000001192092896,
+        "EKF2_GPS_YAW_OFF": 0.0,
+        "EKF2_GRAV_NOISE": 1.0,
+        "EKF2_GSF_TAS": 15.0,
+        "EKF2_GYR_B_LIM": 0.15000000596046448,
+        "EKF2_GYR_B_NOISE": 0.0010000000474974513,
+        "EKF2_GYR_NOISE": 0.014999999664723873,
+        "EKF2_HDG_GATE": 2.5999999046325684,
+        "EKF2_HEAD_NOISE": 0.30000001192092896,
+        "EKF2_HGT_REF": 3.0,
+        "EKF2_IMU_CTRL": 7.0,
+        "EKF2_IMU_POS_X": 0.0,
+        "EKF2_IMU_POS_Y": 0.0,
+        "EKF2_IMU_POS_Z": 0.0,
+        "EKF2_LOG_VERBOSE": 1.0,
+        "EKF2_MAG_ACCLIM": 0.5,
+        "EKF2_MAG_B_NOISE": 9.999999747378752e-05,
+        "EKF2_MAG_CHECK": 1.0,
+        "EKF2_MAG_CHK_INC": 20.0,
+        "EKF2_MAG_CHK_STR": 0.20000000298023224,
+        "EKF2_MAG_DECL": 3.4057650566101074,
+        "EKF2_MAG_DELAY": 0.0,
+        "EKF2_MAG_E_NOISE": 0.0010000000474974513,
+        "EKF2_MAG_GATE": 3.0,
+        "EKF2_MAG_NOISE": 0.05000000074505806,
+        "EKF2_MAG_TYPE": 0.0,
+        "EKF2_MCOEF": 0.15000000596046448,
+        "EKF2_MIN_RNG": 0.009999999776482582,
+        "EKF2_NOAID_NOISE": 10.0,
+        "EKF2_NOAID_TOUT": 5000000.0,
+        "EKF2_OF_CTRL": 1.0,
+        "EKF2_OF_DELAY": 20.0,
+        "EKF2_OF_GATE": 3.0,
+        "EKF2_OF_GYR_SRC": 0.0,
+        "EKF2_OF_N_MAX": 0.5,
+        "EKF2_OF_N_MIN": 0.15000000596046448,
+        "EKF2_OF_POS_X": 0.0,
+        "EKF2_OF_POS_Y": 0.0,
+        "EKF2_OF_POS_Z": 0.0,
+        "EKF2_OF_QMIN": 1.0,
+        "EKF2_OF_QMIN_GND": 0.0,
+        "EKF2_PCOEF_XN": 0.0,
+        "EKF2_PCOEF_XP": 0.0,
+        "EKF2_PCOEF_YN": 0.0,
+        "EKF2_PCOEF_YP": 0.0,
+        "EKF2_PCOEF_Z": 0.0,
+        "EKF2_PREDICT_US": 10000.0,
+        "EKF2_REQ_EPH": 3.0,
+        "EKF2_REQ_EPV": 5.0,
+        "EKF2_REQ_FIX": 3.0,
+        "EKF2_REQ_GPS_H": 0.5,
+        "EKF2_REQ_HDRIFT": 0.10000000149011612,
+        "EKF2_REQ_NSATS": 6.0,
+        "EKF2_REQ_PDOP": 2.5,
+        "EKF2_REQ_SACC": 0.5,
+        "EKF2_REQ_VDRIFT": 0.20000000298023224,
+        "EKF2_RNG_A_HMAX": 5.0,
+        "EKF2_RNG_A_VMAX": 1.0,
+        "EKF2_RNG_CTRL": 1.0,
+        "EKF2_RNG_DELAY": 5.0,
+        "EKF2_RNG_FOG": 1.0,
+        "EKF2_RNG_GATE": 5.0,
+        "EKF2_RNG_K_GATE": 1.0,
+        "EKF2_RNG_NOISE": 0.10000000149011612,
+        "EKF2_RNG_PITCH": 0.0,
+        "EKF2_RNG_POS_X": 0.0,
+        "EKF2_RNG_POS_Y": 0.0,
+        "EKF2_RNG_POS_Z": 0.0,
+        "EKF2_RNG_QLTY_T": 1.0,
+        "EKF2_RNG_SFE": 0.05000000074505806,
+        "EKF2_SYNT_MAG_Z": 0.0,
+        "EKF2_TAS_GATE": 5.0,
+        "EKF2_TAU_POS": 0.25,
+        "EKF2_TAU_VEL": 0.25,
+        "EKF2_TERR_GRAD": 0.5,
+        "EKF2_TERR_NOISE": 5.0,
+        "EKF2_VEL_LIM": 100.0,
+        "EKF2_WIND_NSD": 0.05000000074505806,
+        "MC_ACRO_EXPO": 0.0,
+        "MC_ACRO_EXPO_Y": 0.0,
+        "MC_ACRO_P_MAX": 100.0,
+        "MC_ACRO_R_MAX": 100.0,
+        "MC_ACRO_SUPEXPO": 0.0,
+        "MC_ACRO_SUPEXPOY": 0.0,
+        "MC_ACRO_Y_MAX": 100.0,
+        "MC_AIRMODE": 0.0,
+        "MC_AT_APPLY": 1.0,
+        "MC_AT_EN": 1.0,
+        "MC_AT_RISE_TIME": 0.14000000059604645,
+        "MC_AT_START": 0.0,
+        "MC_AT_SYSID_AMP": 0.699999988079071,
+        "MC_BAT_SCALE_EN": 0.0,
+        "MC_MAN_TILT_TAU": 0.0,
+        "MC_ORBIT_RAD_MAX": 1000.0,
+        "MC_ORBIT_YAW_MOD": 0.0,
+        "MC_PITCHRATE_D": 0.003000000026077032,
+        "MC_PITCHRATE_FF": 0.0,
+        "MC_PITCHRATE_I": 0.20000000298023224,
+        "MC_PITCHRATE_K": 1.0,
+        "MC_PITCHRATE_MAX": 220.0,
+        "MC_PITCHRATE_P": 0.15000000596046448,
+        "MC_PITCH_P": 4.0,
+        "MC_PR_INT_LIM": 0.30000001192092896,
+        "MC_ROLLRATE_D": 0.003000000026077032,
+        "MC_ROLLRATE_FF": 0.0,
+        "MC_ROLLRATE_I": 0.20000000298023224,
+        "MC_ROLLRATE_K": 1.0,
+        "MC_ROLLRATE_MAX": 220.0,
+        "MC_ROLLRATE_P": 0.15000000596046448,
+        "MC_ROLL_P": 4.0,
+        "MC_RR_INT_LIM": 0.30000001192092896,
+        "MC_SLOW_DEF_HVEL": 3.0,
+        "MC_SLOW_DEF_VVEL": 1.0,
+        "MC_SLOW_DEF_YAWR": 45.0,
+        "MC_SLOW_MAP_HVEL": 0.0,
+        "MC_SLOW_MAP_PTCH": 0.0,
+        "MC_SLOW_MAP_VVEL": 0.0,
+        "MC_SLOW_MAP_YAWR": 0.0,
+        "MC_SLOW_MIN_HVEL": 0.30000001192092896,
+        "MC_SLOW_MIN_VVEL": 0.30000001192092896,
+        "MC_SLOW_MIN_YAWR": 3.0,
+        "MC_YAWRATE_D": 0.0,
+        "MC_YAWRATE_FF": 0.0,
+        "MC_YAWRATE_I": 0.10000000149011612,
+        "MC_YAWRATE_K": 1.0,
+        "MC_YAWRATE_MAX": 200.0,
+        "MC_YAWRATE_P": 0.20000000298023224,
+        "MC_YAW_P": 2.799999952316284,
+        "MC_YAW_TQ_CUTOFF": 2.0,
+        "MC_YAW_WEIGHT": 0.4000000059604645,
+        "MC_YR_INT_LIM": 0.30000001192092896,
+        "MPC_ACC_DECOUPLE": 1.0,
+        "MPC_ACC_DOWN_MAX": 3.0,
+        "MPC_ACC_HOR": 3.0,
+        "MPC_ACC_HOR_MAX": 5.0,
+        "MPC_ACC_UP_MAX": 4.0,
+        "MPC_ALT_MODE": 2.0,
+        "MPC_HOLD_MAX_XY": 0.800000011920929,
+        "MPC_HOLD_MAX_Z": 0.6000000238418579,
+        "MPC_JERK_AUTO": 4.0,
+        "MPC_JERK_MAX": 8.0,
+        "MPC_LAND_ALT1": 10.0,
+        "MPC_LAND_ALT2": 5.0,
+        "MPC_LAND_ALT3": 1.0,
+        "MPC_LAND_CRWL": 0.30000001192092896,
+        "MPC_LAND_RADIUS": 1000.0,
+        "MPC_LAND_RC_HELP": 0.0,
+        "MPC_LAND_SPEED": 0.699999988079071,
+        "MPC_MANTHR_MIN": 0.07999999821186066,
+        "MPC_MAN_TILT_MAX": 35.0,
+        "MPC_MAN_Y_MAX": 150.0,
+        "MPC_MAN_Y_TAU": 0.07999999821186066,
+        "MPC_POS_MODE": 4.0,
+        "MPC_THR_CURVE": 0.0,
+        "MPC_THR_HOVER": 0.4499668478965759,
+        "MPC_THR_MAX": 1.0,
+        "MPC_THR_MIN": 0.11999999731779099,
+        "MPC_THR_XY_MARG": 0.30000001192092896,
+        "MPC_TILTMAX_AIR": 45.0,
+        "MPC_TILTMAX_LND": 12.0,
+        "MPC_TKO_RAMP_T": 3.0,
+        "MPC_TKO_SPEED": 1.5,
+        "MPC_USE_HTE": 1.0,
+        "MPC_VELD_LP": 5.0,
+        "MPC_VEL_LP": 0.0,
+        "MPC_VEL_MANUAL": 10.0,
+        "MPC_VEL_MAN_BACK": -1.0,
+        "MPC_VEL_MAN_SIDE": -1.0,
+        "MPC_VEL_NF_BW": 5.0,
+        "MPC_VEL_NF_FRQ": 0.0,
+        "MPC_XY_CRUISE": 5.0,
+        "MPC_XY_ERR_MAX": 2.0,
+        "MPC_XY_P": 0.949999988079071,
+        "MPC_XY_TRAJ_P": 0.5,
+        "MPC_XY_VEL_ALL": -10.0,
+        "MPC_XY_VEL_D_ACC": 0.20000000298023224,
+        "MPC_XY_VEL_I_ACC": 0.4000000059604645,
+        "MPC_XY_VEL_MAX": 12.0,
+        "MPC_XY_VEL_P_ACC": 2.200000047683716,
+        "MPC_YAWRAUTO_ACC": 20.0,
+        "MPC_YAWRAUTO_MAX": 60.0,
+        "MPC_YAW_MODE": 0.0,
+        "MPC_Z_P": 1.0,
+        "MPC_Z_VEL_ALL": -3.0,
+        "MPC_Z_VEL_D_ACC": 0.0,
+        "MPC_Z_VEL_I_ACC": 2.0,
+        "MPC_Z_VEL_MAX_DN": 1.5,
+        "MPC_Z_VEL_MAX_UP": 3.0,
+        "MPC_Z_VEL_P_ACC": 4.800000190734863,
+        "MPC_Z_V_AUTO_DN": 1.5,
+        "MPC_Z_V_AUTO_UP": 3.0
+      },
+      "parameter_changes_in_window": []
+    },
+    "required_raw_ev_body_origin_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3,
+      "EKF2_EV_DELAY": 0,
+      "EKF2_EV_POS_X": 0,
+      "EKF2_EV_POS_Y": 0,
+      "EKF2_EV_POS_Z": 0,
+      "EKF2_IMU_POS_X": 0,
+      "EKF2_IMU_POS_Y": 0,
+      "EKF2_IMU_POS_Z": 0
+    },
+    "control_estimation_parameters_unchanged_entire_window": true,
+    "position_setpoint_constancy_checked_here": false,
+    "constant_target_check_scope": "Primary stationary-hover window only; appended steps are intentionally changing targets",
+    "step_received_target_audit": "Separate from this guard; native response plus sent-target evidence alone does not certify PX4 received every step",
+    "fusion_flags_entire_window": {
+      "cs_ev_pos": 1,
+      "cs_ev_vel": 1,
+      "cs_ev_hgt": 1,
+      "cs_gnss_pos": 0,
+      "cs_gnss_vel": 0,
+      "cs_gps_hgt": 0,
+      "cs_baro_hgt": 0
+    },
+    "all_applied_parameters_match_ulog": true
+  },
+  "parameters": {
+    "verified": true,
+    "applied_control_42": {
+      "MC_ROLL_P": 4.0,
+      "MC_PITCH_P": 4.0,
+      "MC_YAW_P": 2.799999952316284,
+      "MC_AIRMODE": 0.0,
+      "MC_ROLLRATE_P": 0.15000000596046448,
+      "MC_ROLLRATE_I": 0.20000000298023224,
+      "MC_ROLLRATE_D": 0.003000000026077032,
+      "MC_ROLLRATE_FF": 0.0,
+      "MC_ROLLRATE_K": 1.0,
+      "MC_PITCHRATE_P": 0.15000000596046448,
+      "MC_PITCHRATE_I": 0.20000000298023224,
+      "MC_PITCHRATE_D": 0.003000000026077032,
+      "MC_PITCHRATE_FF": 0.0,
+      "MC_PITCHRATE_K": 1.0,
+      "MC_YAWRATE_P": 0.20000000298023224,
+      "MC_YAWRATE_I": 0.10000000149011612,
+      "MC_YAWRATE_D": 0.0,
+      "MC_YAWRATE_FF": 0.0,
+      "MC_YAWRATE_K": 1.0,
+      "MPC_XY_P": 0.949999988079071,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.200000047683716,
+      "MPC_XY_VEL_I_ACC": 0.4000000059604645,
+      "MPC_XY_VEL_D_ACC": 0.20000000298023224,
+      "MPC_Z_VEL_P_ACC": 4.800000190734863,
+      "MPC_Z_VEL_I_ACC": 2.0,
+      "MPC_Z_VEL_D_ACC": 0.0,
+      "MPC_THR_MIN": 0.11999999731779099,
+      "MPC_THR_MAX": 1.0,
+      "MPC_THR_HOVER": 0.4499668478965759,
+      "MPC_USE_HTE": 1.0,
+      "MPC_TILTMAX_AIR": 45.0,
+      "MPC_TILTMAX_LND": 12.0,
+      "MPC_XY_VEL_MAX": 12.0,
+      "MPC_Z_VEL_MAX_UP": 3.0,
+      "MPC_Z_VEL_MAX_DN": 1.5,
+      "MPC_ACC_HOR_MAX": 5.0,
+      "MPC_ACC_UP_MAX": 4.0,
+      "MPC_ACC_DOWN_MAX": 3.0,
+      "MPC_JERK_MAX": 8.0,
+      "MPC_TKO_SPEED": 1.5,
+      "MPC_LAND_SPEED": 0.699999988079071
+    },
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "exact_typed_restore_verified": true,
+    "synchronous_storage_save_verified": true,
+    "write_allowlist": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3,
+      "MPC_XY_P": 0.95,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.2,
+      "MPC_Z_VEL_P_ACC": 4.8
+    },
+    "write_attempt_count": 22,
+    "all_other_recorded_parameters_protected": true
+  },
+  "commands": {
+    "verified": true,
+    "type_mask": 2552,
+    "position_only_plus_yaw": true,
+    "control_max_interval_s": 0.020000000000010232,
+    "sent_rows": 1500,
+    "received_target_max_error_m": 9.510201959296193e-09,
+    "received_target_axis_range_m": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "flight": {
+    "verified": true,
+    "sample_count": 600,
+    "max_interval_s": 0.060000000000002274,
+    "armed_airborne_offboard_without_failsafe": true
+  },
+  "ground": {
+    "passed": true,
+    "interval_sim_s": [
+      14.0,
+      19.0
+    ],
+    "criteria": {
+      "tilt_at_most_2deg": true,
+      "speed_at_most_003m_s": true,
+      "folded_q_at_most_001rad": true,
+      "joint_speed_at_most_002rad_s": true
+    },
+    "sample_count": 1251,
+    "maximum_native_interval_s": 0.004000000000001336
+  },
+  "result": {
+    "passed": true,
+    "criteria": {
+      "both_joints_move_both_directions": true,
+      "command_sign_is_correct": true,
+      "q_tracking_rmse_at_most_002rad": true,
+      "q_tracking_peak_at_most_005rad": true,
+      "q_amplitude_within_small_probe": true,
+      "joint_speeds_at_most_02rad_s": true,
+      "body_displacement_at_most_03m": true,
+      "tilt_at_most_15deg": true
+    },
+    "segments": {
+      "whole": {
+        "sample_count": 7501,
+        "actual_interval_task_s": [
+          0.0,
+          29.999999999999993
+        ],
+        "q_tracking_rmse_rad": [
+          0.0032056570842359383,
+          0.0035269321473217997
+        ],
+        "q_tracking_peak_rad": [
+          0.015611887848459682,
+          0.015596906284486928
+        ],
+        "q_tracking_rmse_deg": [
+          0.1836706214929327,
+          0.2020783266705518
+        ],
+        "q_tracking_peak_deg": [
+          0.8944952839483151,
+          0.8936369035621711
+        ],
+        "dq_tracking_rmse_rad_s": [
+          0.011084128389819202,
+          0.012000419577139364
+        ],
+        "dq_tracking_peak_rad_s": [
+          0.054039147078535694,
+          0.05384327240855827
+        ],
+        "q_reference_minmax_rad": [
+          [
+            -0.08,
+            0.07999988787201111
+          ],
+          [
+            -0.07999988787201111,
+            0.07999988787201111
+          ]
+        ],
+        "q_actual_minmax_rad": [
+          [
+            -0.08028388277942611,
+            0.08018443926338138
+          ],
+          [
+            -0.08026296164937442,
+            0.08018358886066873
+          ]
+        ],
+        "sign_cosine": [
+          0.9962662135087522,
+          0.9948515823730575
+        ],
+        "velocity_sign_cosine": [
+          0.9416549421283075,
+          0.9337898679938805
+        ],
+        "body_anchor_axis_rmse_m": [
+          0.004501699210770482,
+          0.0009663010033046769,
+          0.000795724101981986
+        ],
+        "body_anchor_axis_peak_m": [
+          0.009308143576135504,
+          0.0029182900597436536,
+          0.0019704912195193103
+        ],
+        "body_anchor_rmse_m": 0.0046724950786185175,
+        "body_anchor_peak_m": 0.009344678545265793,
+        "tilt_rms_deg": 0.05180358661755018,
+        "tilt_peak_deg": 0.1579555007956686,
+        "joint_speed_abs_max_rad_s": [
+          0.10416293508875646,
+          0.103345627904802
+        ],
+        "sign_agreement_fraction_above_5pct_reference": [
+          0.9901143033673154,
+          1.0
+        ],
+        "inactive_joint_cross_talk": {},
+        "declared_interval_task_s": [
+          0.0,
+          30.0
+        ]
+      },
+      "J1_only": {
+        "sample_count": 2167,
+        "actual_interval_task_s": [
+          2.0,
+          10.663999999999994
+        ],
+        "q_tracking_rmse_rad": [
+          0.004383548931543386,
+          1.0939917573587729e-08
+        ],
+        "q_tracking_peak_rad": [
+          0.015611887848459682,
+          1.1964453510571063e-08
+        ],
+        "q_tracking_rmse_deg": [
+          0.2511588530665174,
+          6.268111051875771e-07
+        ],
+        "q_tracking_peak_deg": [
+          0.8944952839483151,
+          6.855126903362034e-07
+        ],
+        "dq_tracking_rmse_rad_s": [
+          0.01566663983310688,
+          2.4042457714033676e-10
+        ],
+        "dq_tracking_peak_rad_s": [
+          0.054039147078535694,
+          2.4406476839544666e-10
+        ],
+        "q_reference_minmax_rad": [
+          [
+            -0.08,
+            0.07999988787201111
+          ],
+          [
+            -0.0,
+            -0.0
+          ]
+        ],
+        "q_actual_minmax_rad": [
+          [
+            -0.08028388277942611,
+            0.08018443926338138
+          ],
+          [
+            9.881420985546744e-09,
+            1.1964453510571063e-08
+          ]
+        ],
+        "sign_cosine": [
+          0.9967112403168757,
+          null
+        ],
+        "velocity_sign_cosine": [
+          0.9475987596528952,
+          null
+        ],
+        "body_anchor_axis_rmse_m": [
+          0.005518113526398336,
+          0.0004090621114887482,
+          0.0010169888072211
+        ],
+        "body_anchor_axis_peak_m": [
+          0.009308143576135504,
+          0.0011123562774549723,
+          0.0014342977186641015
+        ],
+        "body_anchor_rmse_m": 0.005625937693868377,
+        "body_anchor_peak_m": 0.009344678545265793,
+        "tilt_rms_deg": 0.06585074288781767,
+        "tilt_peak_deg": 0.1579555007956686,
+        "joint_speed_abs_max_rad_s": [
+          0.10416293508875646,
+          2.4406476839544666e-10
+        ],
+        "sign_agreement_fraction_above_5pct_reference": [
+          0.9805589307411907,
+          null
+        ],
+        "inactive_joint_cross_talk": {
+          "q2": {
+            "position_rms_rad": 1.093991757358773e-08,
+            "position_peak_rad": 1.1964453510571063e-08,
+            "position_rms_deg": 6.268111051875772e-07,
+            "position_peak_deg": 6.855126903362034e-07,
+            "velocity_rms_rad_s": 2.404245771403365e-10,
+            "velocity_peak_rad_s": 2.4406476839544666e-10
+          }
+        },
+        "declared_interval_task_s": [
+          2.0,
+          10.666666666666666
+        ]
+      },
+      "J2_only": {
+        "sample_count": 2167,
+        "actual_interval_task_s": [
+          10.668,
+          19.332
+        ],
+        "q_tracking_rmse_rad": [
+          3.950573714953689e-06,
+          0.00438837458019223
+        ],
+        "q_tracking_peak_rad": [
+          3.951434091159954e-06,
+          0.015596906284486928
+        ],
+        "q_tracking_rmse_deg": [
+          0.0002263512005221651,
+          0.2514353423675092
+        ],
+        "q_tracking_peak_deg": [
+          0.00022640049644757755,
+          0.8936369035621711
+        ],
+        "dq_tracking_rmse_rad_s": [
+          2.0060770951538254e-10,
+          0.015678762795360908
+        ],
+        "dq_tracking_peak_rad_s": [
+          2.1002105610179456e-10,
+          0.05384327240855827
+        ],
+        "q_reference_minmax_rad": [
+          [
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.07999988787201111,
+            0.07999988787201111
+          ]
+        ],
+        "q_actual_minmax_rad": [
+          [
+            3.949696594127256e-06,
+            3.951434091159954e-06
+          ],
+          [
+            -0.08026296164937442,
+            0.08018358886066873
+          ]
+        ],
+        "sign_cosine": [
+          null,
+          0.9967013924440423
+        ],
+        "velocity_sign_cosine": [
+          null,
+          0.9475208085025311
+        ],
+        "body_anchor_axis_rmse_m": [
+          0.003308699713392018,
+          0.0012916681413237745,
+          0.0004737661296496313
+        ],
+        "body_anchor_axis_peak_m": [
+          0.008352718904154923,
+          0.0029182900597436536,
+          0.0013014137445046536
+        ],
+        "body_anchor_rmse_m": 0.00358334407032236,
+        "body_anchor_peak_m": 0.008448614123944475,
+        "tilt_rms_deg": 0.032276598842036285,
+        "tilt_peak_deg": 0.08029564878164606,
+        "joint_speed_abs_max_rad_s": [
+          2.1002105610179456e-10,
+          0.103345627904802
+        ],
+        "sign_agreement_fraction_above_5pct_reference": [
+          null,
+          1.0
+        ],
+        "inactive_joint_cross_talk": {
+          "q1": {
+            "position_rms_rad": 3.950573714953689e-06,
+            "position_peak_rad": 3.951434091159954e-06,
+            "position_rms_deg": 0.0002263512005221651,
+            "position_peak_deg": 0.00022640049644757755,
+            "velocity_rms_rad_s": 2.006077095153825e-10,
+            "velocity_peak_rad_s": 2.1002105610179456e-10
+          }
+        },
+        "declared_interval_task_s": [
+          10.666666666666666,
+          19.333333333333332
+        ]
+      },
+      "both": {
+        "sample_count": 2167,
+        "actual_interval_task_s": [
+          19.336,
+          27.999999999999993
+        ],
+        "q_tracking_rmse_rad": [
+          0.004045610391909026,
+          0.004879990365465538
+        ],
+        "q_tracking_peak_rad": [
+          0.014836374636377214,
+          0.014836367842928945
+        ],
+        "q_tracking_rmse_deg": [
+          0.2317964010106541,
+          0.27960285200567947
+        ],
+        "q_tracking_peak_deg": [
+          0.8500616499393557,
+          0.8500612607034416
+        ],
+        "dq_tracking_rmse_rad_s": [
+          0.013414943862188776,
+          0.015900386324035485
+        ],
+        "dq_tracking_peak_rad_s": [
+          0.044042866840236006,
+          0.04421932170060722
+        ],
+        "q_reference_minmax_rad": [
+          [
+            -0.05999991590400833,
+            0.06
+          ],
+          [
+            -0.06,
+            0.05999991590400833
+          ]
+        ],
+        "q_actual_minmax_rad": [
+          [
+            -0.06022371668186446,
+            0.0602772496348021
+          ],
+          [
+            -0.05989319117791271,
+            0.06022374992659549
+          ]
+        ],
+        "sign_cosine": [
+          0.9955982140753672,
+          0.9915935567055311
+        ],
+        "velocity_sign_cosine": [
+          0.9311726644455761,
+          0.9113597830909953
+        ],
+        "body_anchor_axis_rmse_m": [
+          0.0046285923950726655,
+          0.0009137368858978847,
+          0.0005479849538056409
+        ],
+        "body_anchor_axis_peak_m": [
+          0.008289764439542342,
+          0.0017963242546785673,
+          0.0011267989567889103
+        ],
+        "body_anchor_rmse_m": 0.004749638951117468,
+        "body_anchor_peak_m": 0.008318073228812705,
+        "tilt_rms_deg": 0.05734196847516981,
+        "tilt_peak_deg": 0.11333478016587496,
+        "joint_speed_abs_max_rad_s": [
+          0.08917628055016455,
+          0.08918085992886052
+        ],
+        "sign_agreement_fraction_above_5pct_reference": [
+          1.0,
+          1.0
+        ],
+        "inactive_joint_cross_talk": {},
+        "declared_interval_task_s": [
+          19.333333333333332,
+          28.0
+        ]
+      }
+    },
+    "joint_command_audit": {
+      "sample_count": 1500,
+      "max_command_reconstruction_error_rad_s": 2.7755575615628914e-17,
+      "maximum_control_interval_s": 0.020000000000010232,
+      "law": "qd_cmd = clip(qd_reference + 3*(q_reference - ROS measured q), +/-0.15 rad/s)",
+      "semantics": "Command-law audit only; main tracking metrics use independent native physics states"
+    },
+    "native_tip_geometry": {
+      "samples": 7501,
+      "maximum_error_m": 1.805887031540167e-06,
+      "time_weighted_rms_m": 2.8456259063651406e-08,
+      "tolerance_m": 0.0001,
+      "passed": true,
+      "semantics": "Independent native distal-link WorldPose tip versus +Y-axis FK of same-step base pose/q; no phase or offset fit"
+    },
+    "precision_hover_threshold_applied_to_joint_probe": false,
+    "scope": "Original small joint-direction/tracking/body-stability envelope; no claim of external-force rejection or whole-body endpoint compensation"
+  },
+  "timing": {
+    "max_actual_send_interval_s": 0.020000000000010232,
+    "max_compute_ms": 2.5480352342128754
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "artifacts": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T102119Z_29992/launch.json": "c93aa83b432329c801f869950d897028e698f9ae9bc42bdd8139e50104a01e13",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T102119Z_29992/task.json": "76f686185a3b77224f03009c2c6ab0da34b3c1e6eeb684e878c9686f930babfa",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T102119Z_29992/controller_sources.zip": "befd5f611ac78b67a3aa1c30cac76d5ef5cb54c90acb93a49d55a65f71fdbfe6",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/flight_samples.csv": "b38de2c35bda2a9864525c332cdcfe03b0fea01536d006c0c9be2038fa8cff08",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/flight_samples_manifest.json": "02a4594000093c40f73043c1bd5e6b2690cbae6a990b604948c0d9d975555659",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_trace.csv": "9dc4880dd8073b62fb3960434204cdaf45da373d37bd67a37e6cfaf7fdeb1b9b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/hover_reference.json": "4d7702024f335cf11fe1aa364d5c326436df2e769bf96982844850b805ec5dc4",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/control_execution_trace.jsonl": "89e2d8c8a59c5850ff2e6253f2583dbeb939d15a0cdd050b59ac963db7c91b1b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/control_execution_trace_manifest.json": "b9d7eb7f0985f751fdcbf862ea4331919eca9fe3579634c115348d10823c43e2",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_trace_manifest.json": "d147f3ed62b0dedb1dbba629b92a73fa453352c4743296190bb992805570576d",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/control_trace.csv": "a55f91a3ef4f894a0d96c7234bd4cdeb2f350df829eb6430be74c3143a824070",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/px4_parameters_before.json": "0a670b0c8d7b38fed70fb85fef995d36a5474eeba44c81ffd9dba835c52b3512",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/px4_parameters_after.json": "b35e5f0c032b0ae43c574614bb268d37a53c6cc8ec763ab917014cdf0ce067ad",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_parameter_session.json": "d8e33511256b73cf4ea5ca753ca03e029501e97f71c82c4806c90f862997a4e4",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_parameters_before.json": "2e4007d902fd02bc5cdf2f08e8d40e3af139ddc974ae6c7cb7ad75be45a1d3e0",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_parameters_applied.json": "7107af0c794c4911d8ed685d7935113518b72053f239521815bdad61bb298d5c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_parameters_restored.json": "d7716abd25d3f4b4b4dcf014796c4b79de94cbea049d663f33fa65a7464773b6",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_restore_journal_completed.json": "180be946126e4fe826070b478992b4ebaf1d8d4e9a3cf2deb7143b6dedd46336",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry.json": "ab2fa4190ccb16e559caee261bf975171e3556ba9fd872dccfaf098fc9bed189",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_001.log": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_plugin.xml": "772d7dbffcbb54f07b5e51c619c775fa111f8d72a309eeade3d4a5c0b2072bb3",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_002.log": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_003.log": "1be67b372901a2cc9e846b1c4526af6b2a56d54389c83896a1771cb8d902c416",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_004.log": "aa1e1fd1c61527e18328a66d5bf3822d96e95487f902ec5563d547ae9dd1fc8b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_005.log": "f090be9682d20983eaa4f482f56dbe6614d1c2b1f900ed18503f9193c90eff8d",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_006.log": "ea3fa209f049e9853464bac7eb1506873065e426e621379b67613a802c4d9680",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_007.log": "0314256e99c1f779b59f1be515db9ba3b3bae9740d97ff1cc72b068b66f508b5",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_008.log": "d1ed2af31b0c5451b1f0b03e569b0d00cd7eee24f3ce96e8a84eac6aca1eab26",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_odometry_009.log": "860a841510ff3559a1558224f4d69a8856c6080acaa30e73f0dc792b1f0c315c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/diagnostic_parameter_storage_save.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/loop_timing_evidence.json": "0e0d74ff51bebc3273f8fd2201751c80586d21bf8515eac265d3e8427b82a545",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/ts20_state.csv": "536ae974f27b7b26e63147494b1072ab61f279663f5a039fdd3877d8351cb4a0",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/ts20_packets.csv": "49eacca836af3928e5006c382e7c69a6dfe02f3362ac9b1c7499c49748895353",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/ts20_recording_manifest.json": "ff9c868dfae032ffb52d18f0239e894c460cb3fd39fdc98b343220822a190e29",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/model_manifest.json": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/source_import_manifest.json": "9d82b606534f321323dabcc9c8cf24d8dc4c0ceb3134475afe4b56169495178c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/controller_task.json": "76f686185a3b77224f03009c2c6ab0da34b3c1e6eeb684e878c9686f930babfa",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/controller_metadata.json": "1069bdcdd9cf14899f94cc1cf897e0b4e7430afb22941027f45fde24c1e5cbae",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/controller_diagnostics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_stream.csv": "b5ce74d0d0dc701e34b8f29e8fe1df4c55c4a80cb725039b67c3358baa3757fd",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_ground.csv": "1d8c66158a4fe112855185a4255f75180cca7494a991a3a6bf5f935b3c18dcc7",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_ground_manifest.json": "6f96f14a18ea8c4e859046277e0d1b56f10180854128da26d042f83aefcc295c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/native_ground.json": "afdfcad07431c4c223109f298c3b3cea6d1309adad9c9956596ab5721046ec7f",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/stage_result.json": "0ef286f84d30f5e9b1d1cf6247a23c37e309d8e4df7186ae105e00207e0f6ee2",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/joint_probe.json": "0ef286f84d30f5e9b1d1cf6247a23c37e309d8e4df7186ae105e00207e0f6ee2",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/result.json": "7dc3a06e4ad7b4427c110e6aaf52d6e57f8a1c78f489fa4a508f2dad63494166",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/px4.ulg": "fe3034c14f6a17d4d3f7c657bf984da9e11ab8e9746fbd4dca310550c52e0a7a",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996/run_manifest.json": "9d376247e964c549039e7a4fbbd633146ed2731f10bcb08f29ee76a626632d62",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/audit.py": "79c8af6339e04e241b0a6b23c9396c55d3e0ebfc930b5ebb0da4cfdbba0d34b9",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_precision_stage.py": "bc33ed5b3e8425b943aa180ce76b094aa348e05c927fc8191f5925212314c2bc",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/analyze_x650_joint_probe.py": "036d0743fd5f3ccd83719b78ff855bb0ca203c5b7d054333dcd6a5b373355798",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/analyze_x650_hover_precision.py": "1489eb52a97c6d6ebfd42b1e1485893534896209b13979e192cdd490183a6137",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_upper_stage.py": "55bf85df12493aeb8667b89dad081024024fd3732ac9fd59fbcc626aaa82804e",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_mixed_feedback.py": "a0418b10be072dfb48087eba780e8b0de37a082d4352e3e2ba74198a1f7c65e6",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py": "64433d5a635dbf21412ae8af8b05cbd673cbfcb22ddf267dae8380d71deb5cce",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/task.py": "7044528ad0772c625ede60976916d13da0ec97caaf39cbfdb687310b783a8116"
+  }
+}

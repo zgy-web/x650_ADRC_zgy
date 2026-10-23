@@ -1,0 +1,44 @@
+[
+  {
+    "verified": true,
+    "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_181924_29129",
+    "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T101852Z_29125",
+    "source_unchanged": true,
+    "platform_source_files": 38,
+    "controller_source_files": 47,
+    "platform_provenance_sha256": "5bdd8639550acb57e5c1e905d4fa515933c099cc52dc2f0a49d2b6f30833fb79",
+    "platform_source_manifest_sha256": "c5bbc82bb17230a0fb5df7740cc404cf33506a7d923cbe692ef56af42a6b449a",
+    "platform_source_archive_sha256": "0107a3c709253847e4e1cec1bb01dbbe9ca3b3617ce44d2d889815d1f4a2eab4",
+    "git_head_before": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "git_head_after": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "software_acceptance_sha256": "f12af2fadef68e8650972d909b0c6c3f164954b2910b7a37ea57a8d893842430"
+  },
+  {
+    "verified": true,
+    "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182151_29996",
+    "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T102119Z_29992",
+    "source_unchanged": true,
+    "platform_source_files": 38,
+    "controller_source_files": 47,
+    "platform_provenance_sha256": "504fad3c9e5f9f202eb45e745f09091c20d0e797196717f21c8fca3f706e0f55",
+    "platform_source_manifest_sha256": "97aed83a84ce9c3dbc491e5bd9b0daf36b5b71f274a510a23e524730fd4e46be",
+    "platform_source_archive_sha256": "1e515b6efb079e66c26c701676766549d3fc4da2185a68fa91eb1d32d23ecf28",
+    "git_head_before": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "git_head_after": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "software_acceptance_sha256": "f12af2fadef68e8650972d909b0c6c3f164954b2910b7a37ea57a8d893842430"
+  },
+  {
+    "verified": true,
+    "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_182434_30924",
+    "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T102402Z_30920",
+    "source_unchanged": true,
+    "platform_source_files": 38,
+    "controller_source_files": 62,
+    "platform_provenance_sha256": "fa270abc49c542ac6341f78f30e1e78932b568577202a3394bd7eb92e3617dcb",
+    "platform_source_manifest_sha256": "fb183aca3df243eb8c32598a62adb21f037f49a5b2d619005d08272337692098",
+    "platform_source_archive_sha256": "3a4c7c7adb63106adcb2462ac3dbd9cd1ec979c6a9c0f67dd9058ce4481b4bc7",
+    "git_head_before": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "git_head_after": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+    "software_acceptance_sha256": "f12af2fadef68e8650972d909b0c6c3f164954b2910b7a37ea57a8d893842430"
+  }
+]
