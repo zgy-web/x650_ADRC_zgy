@@ -60,6 +60,52 @@ def engine(clock=None):
 
 
 class ReferenceEngineTests(unittest.TestCase):
+    def test_prearm_template_is_replaced_before_any_solve(self):
+        class Constant:
+            def __init__(self, target): self.target=np.asarray(target)
+        worker,adapter=engine()
+        worker.simulation_live=worker.live_reference_deferred=True
+        adapter.reset=Mock();adapter.allocator=NS(prime_command_history=Mock(),trajectory=Constant([9.,9.,9.]))
+        start=NS(session_id=7,epoch=1,configuration_sha256=list(range(32)),origin_s=10.,
+            history_count=2,history_time_s=[9.98,10.]+[0.]*62,
+            history_command=[.01,-.02,.03,.04,-.05]*2+[0.]*310,
+            target_position_enu=[0.,0.,1.6],anchor_position_enu=[0.,0.,2.],
+            anchor_rotation_row_major=np.eye(3).reshape(-1),anchor_q=[0.,0.])
+        worker.begin_live(start)
+        self.assertEqual(adapter.calls,[])
+        np.testing.assert_array_equal(adapter.allocator.trajectory.target,start.target_position_enu)
+        self.assertFalse(worker.live_reference_deferred)
+        s=snapshot();s.replay_only=False
+        self.assertEqual(worker.process(s,NS).status,0)
+
+    def test_live_handoff_is_explicit_one_shot_and_primes_actual_history(self):
+        worker,adapter=engine()
+        worker.simulation_live=True
+        adapter.reset=Mock();adapter.allocator=NS(prime_command_history=Mock())
+        start=NS(session_id=7,epoch=1,configuration_sha256=list(range(32)),origin_s=10.,
+            history_count=2,history_time_s=[9.98,10.]+[0.]*62,
+            history_command=[.01,-.02,.03,.04,-.05]*2+[0.]*310,
+            target_position_enu=[0.,0.,1.6],anchor_position_enu=[0.,0.,2.],
+            anchor_rotation_row_major=np.eye(3).reshape(-1),anchor_q=[0.,0.])
+        worker.begin_live(start)
+        self.assertTrue(worker.live_started)
+        adapter.reset.assert_called_once()
+        history,origin=adapter.allocator.prime_command_history.call_args.args
+        self.assertEqual(origin,10.)
+        np.testing.assert_array_equal(history[-1][1],[.01,-.02,.03,.04,-.05])
+        with self.assertRaises(ValueError):worker.begin_live(start)
+        s=snapshot();s.replay_only=False
+        result=worker.process(s,NS)
+        self.assertEqual(result.status,0)
+        self.assertFalse(result.replay_only)
+
+    def test_live_mode_cannot_solve_before_handoff_or_accept_shadow_input(self):
+        for replay in (True,False):
+            worker,adapter=engine();worker.simulation_live=True
+            s=snapshot();s.replay_only=replay
+            self.assertNotEqual(worker.process(s,NS).status,0)
+            self.assertEqual(adapter.calls,[])
+
     def test_valid_snapshot_calls_same_step_once_with_causal_owned_context(self):
         worker, adapter = engine()
         message = snapshot()

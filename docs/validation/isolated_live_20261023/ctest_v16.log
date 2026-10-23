@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /root/autodl-tmp/flyarm_ros2_live_v1_20261023/build/flyarm_control_gateway
+Test project /root/autodl-tmp/flyarm_ros2_live_v1_20261023/build/flyarm_control_gateway
+    Start 1: shadow_gate_synthetic
+1/4 Test #1: shadow_gate_synthetic ............   Passed    0.01 sec
+    Start 2: periodic_gate_contract
+2/4 Test #2: periodic_gate_contract ...........   Passed    0.00 sec
+    Start 3: consumption_csv_contract
+3/4 Test #3: consumption_csv_contract .........   Passed    0.00 sec
+    Start 4: actual_source_cadence
+4/4 Test #4: actual_source_cadence ............   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.02 sec

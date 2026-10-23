@@ -1,0 +1,68 @@
+{
+  "kind": "x650_isolated_validation_figure_v1",
+  "complete": true,
+  "stage": "tip_hold",
+  "full_window_task_s": [
+    0.0,
+    30.0
+  ],
+  "metrics": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.0,
+      30.0
+    ],
+    "sample_count": 7501,
+    "duration_s": 30.000000000000007,
+    "position_rmse_m": 0.00282782018566082,
+    "position_max_m": 0.004890753035084454,
+    "axis_rmse_m": [
+      0.0026775576578801767,
+      0.0007665766831777327,
+      0.0004895019713609395
+    ]
+  },
+  "metric_match_verified_before_write": true,
+  "inputs": {
+    "native_trace": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_231132_61450/native_trace.csv",
+      "sha256": "935df731b60c0e13e9c07baa88c3d3041a692b829f868b6c258f806a553651c5"
+    },
+    "live_start": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_231132_61450/isolated_live/live_start.json",
+      "sha256": "011fd0a2b4be81994004863d9cd16d333b140a3351e639ba1ad638c2d98e1aa9"
+    },
+    "task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_231132_61450/controller_task.json",
+      "sha256": "54caa94fe3198afe9fa5a63c6e6f1360faf467d3ede09594e7994da9e98eceab"
+    },
+    "report": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/hold_v15_audit_v2/report.json",
+      "sha256": "f5340d2b510f719ae975edf348677dbae2424a912d5cbc8995f2484e3769e621"
+    }
+  },
+  "coordinate_frame": "world ENU",
+  "no_offset_or_phase_fit": true,
+  "resampled": false,
+  "hardware_qualified": false,
+  "renderer": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_isolated_validation.py",
+    "sha256": "b61146a930e6134dade2896a884bffa5b4217217883f76f520edf18468c6f7b3"
+  },
+  "outputs": {
+    "endpoint_chart_data.csv": {
+      "bytes": 1777082,
+      "sha256": "a96d7321c2d3ed3c0c5325514fe64970d36aaec239e2f0f6762a841c997962d5"
+    },
+    "endpoint_validation.pdf": {
+      "bytes": 376831,
+      "sha256": "7df2149cb2dba348f0374955ab6607553931cc6665a95492f2a05b770558552e"
+    },
+    "endpoint_validation.png": {
+      "bytes": 350946,
+      "sha256": "7048d8f9d4d70236730d75d9a34fa9bcd413e2293e85cf567317c12f2dc140b3"
+    }
+  }
+}

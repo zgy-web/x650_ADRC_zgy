@@ -84,6 +84,16 @@ void run(const char * name, const std::function<void()> & test, unsigned & passe
 int main() {
   unsigned passed=0;
   try {
+    run("live_mode_never_implicitly_accepts_shadow_or_live_identity", [] {
+      auto cfg=config();cfg.replay_only=false;
+      fcg::ShadowGate live(cfg);
+      rejected(live.admit(snapshot(),RECEIPT).event,fcg::Reason::REPLAY_REQUIRED);
+      fcg::ShadowGate valid(cfg);auto s=snapshot();s.replay_only=false;
+      require(valid.admit(s,RECEIPT).forward,"explicit live snapshot rejected");
+      auto p=proposal(s);p.replay_only=false;
+      auto e=valid.propose(p,RETURN);
+      require(e && e->accepted && !e->replay_only,"live event incorrectly labelled shadow");
+    },passed);
     run("explicit_configuration_required", [] {
       for (unsigned which=0; which<5; ++which) {
         auto cfg=config();

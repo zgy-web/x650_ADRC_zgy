@@ -1,14 +1,22 @@
 #include "flyarm_control_gateway/runtime_wire.hpp"
+#include "flyarm_control_gateway/admission_cadence.hpp"
 #include <flyarm_control_interfaces/msg/accepted_command.hpp>
 #include <flyarm_control_interfaces/msg/ingress_status.hpp>
 #include <flyarm_control_interfaces/msg/runtime_stop.hpp>
 #include <flyarm_control_interfaces/msg/dispatch_tick.hpp>
+#include <flyarm_control_interfaces/msg/live_start.hpp>
+#include <flyarm_control_interfaces/msg/execution_receipt.hpp>
+#include <flyarm_control_interfaces/msg/actuator_send.hpp>
+#include <fstream>
 
 namespace wire=flyarm_runtime_wire;
 class StateIngress final : public rclcpp::Node {
  public:
   StateIngress(): Node("isolated_state_ingress") {
     fcg::Config config;
+    live_=declare_parameter<bool>("simulation_live",false);
+    ready_file_=declare_parameter<std::string>("ready_file","");
+    config.replay_only=!live_;
     config.session_id=declare_parameter<std::int64_t>("expected_session_id",0);
     config.epoch=declare_parameter<std::int64_t>("expected_epoch",0);
     config.configuration_sha256=wire::parse_hash(declare_parameter<std::string>("configuration_sha256",""));
@@ -25,12 +33,12 @@ class StateIngress final : public rclcpp::Node {
     events_=create_publisher<msg::GateEvent>(p+"/event",rclcpp::QoS(256).best_effort());
     status_=create_publisher<msg::IngressStatus>(p+"/source_status",latest);
     states_=create_subscription<msg::ControlSnapshot>(p+"/source",latest,[this](msg::ControlSnapshot::SharedPtr s) {
-      if(stopped_) return; // keep receiving state after a control fault for recovery/diagnosis
+      if(stopped_ || (live_ && !started_)) return;
       auto now=wire::monotonic_ns();
       // Source identity, chronology and wall ages are never rewritten to make
       // an old sample look new. Superseded unadmitted STATE samples are allowed.
       if(s->session_id!=config_.session_id || s->epoch!=config_.epoch ||
-         s->configuration_sha256!=config_.configuration_sha256 || !s->replay_only ||
+         s->configuration_sha256!=config_.configuration_sha256 || s->replay_only==live_ ||
          s->schema_version!=1 || s->sequence<=source_sequence_ ||
          !std::isfinite(s->control_time_s) || s->control_time_s<=source_time_ ||
          !s->issued_monotonic_ns || s->issued_monotonic_ns>now ||
@@ -57,7 +65,7 @@ class StateIngress final : public rclcpp::Node {
     dispatch_=create_subscription<msg::DispatchTick>(p+"/dispatch",rclcpp::QoS(1).best_effort(),[this](msg::DispatchTick::SharedPtr d) {
       if(d->session_id!=config_.session_id || d->epoch!=config_.epoch) return;
       if(d->status==3) {output_fault_=true;return;}
-      if(d->output_valid && awaiting_output_sequence_ && d->command_sequence==awaiting_output_sequence_) {
+      if(!live_ && d->output_valid && awaiting_output_sequence_ && d->command_sequence==awaiting_output_sequence_) {
         // An accepted candidate may not yet have reached a periodic output
         // slot. Do not let the worker advance its command history using an
         // overwritten/never-output candidate. This ACK means shadow output;
@@ -65,10 +73,38 @@ class StateIngress final : public rclcpp::Node {
         awaiting_output_sequence_=0; admit_latest(wire::monotonic_ns());
       }
     });
+    start_=create_subscription<msg::LiveStart>(p+"/live_start",rclcpp::QoS(1).reliable(),[this](msg::LiveStart::SharedPtr s) {
+      if(!live_ || stopped_ || started_ || s->session_id!=config_.session_id || s->epoch!=config_.epoch ||
+         s->configuration_sha256!=config_.configuration_sha256 || !std::isfinite(s->origin_s)) return;
+      last_control_=s->origin_s; started_=true;
+    });
+    consumed_=create_subscription<msg::ExecutionReceipt>(p+"/consumed",rclcpp::QoS(64).best_effort(),[this](msg::ExecutionReceipt::SharedPtr r) {
+      if(!live_ || r->session_id!=config_.session_id || r->epoch!=config_.epoch) return;
+      if(r->failed) {output_fault_=true;publish_source(wire::monotonic_ns());return;}
+    });
+    sent_=create_subscription<msg::ActuatorSend>(p+"/actuator_send",rclcpp::QoS(64).best_effort(),[this](msg::ActuatorSend::SharedPtr s) {
+      if(!live_ || s->session_id!=config_.session_id || s->epoch!=config_.epoch || stopped_ || output_fault_) return;
+      // A plan may advance only after the independent writer actually sent
+      // it. Joint consumption is checked asynchronously by that writer BEFORE
+      // its next output. Do not serialize state sampling/optimization behind
+      // a physical receipt: source context still uses only real consumed
+      // commands and MIT packets, never this notification as a measurement.
+      if(!s->stop_zero && s->command_sequence==awaiting_output_sequence_) {
+        const auto now=wire::monotonic_ns();
+        if(!s->sent_monotonic_ns || s->sent_monotonic_ns>now || now-s->sent_monotonic_ns>25'000'000 ||
+           !std::isfinite(s->sim_s)) {output_fault_=true;publish_source(now);return;}
+        awaiting_output_sequence_=0;admit_latest(wire::monotonic_ns());
+      }
+    });
     stop_=create_subscription<msg::RuntimeStop>(p+"/stop",rclcpp::QoS(1).reliable(),[this](msg::RuntimeStop::SharedPtr s) {
       if(s->session_id==config_.session_id && s->epoch==config_.epoch) stopped_=true;
     });
     timer_=create_wall_timer(std::chrono::milliseconds(1),[this] {
+      if(!ready_written_ && !ready_file_.empty() && admitted_->get_subscription_count()>=1 &&
+         accepted_->get_subscription_count()>=1 && status_->get_subscription_count()>=1 &&
+         events_->get_subscription_count()>=2 && consumed_->get_publisher_count()>=1 && sent_->get_publisher_count()>=1) {
+        std::ofstream f(ready_file_);f<<"actual DDS endpoints matched\n";f.close();ready_written_=true;
+      }
       if(stopped_ || output_fault_) return;
       auto now=wire::monotonic_ns();
       if(awaiting_output_sequence_ && now-pending_issued_>50'000'000) {
@@ -76,18 +112,26 @@ class StateIngress final : public rclcpp::Node {
       }
       if (invalid_source_) { publish_source(now); return; }
       if(auto e=gate_->poll(now)) events_->publish(wire::to_ros(*e));
-      admit_latest(now);
+      // Live data arrive asynchronously. The timer must not select a held
+      // sample immediately before the next sensor callback; keep the actual
+      // source timestamp and admit at new-state/consumption boundaries.
+      if(!live_) admit_latest(now);
     });
-    RCLCPP_INFO(get_logger(),"READY isolated C++ state receiver; simulation-contract shadow only");
+    RCLCPP_INFO(get_logger(),"READY isolated C++ state receiver; simulation_live=%d",live_);
   }
  private:
   void admit_latest(std::uint64_t now) {
-    if(stopped_ || output_fault_ || invalid_source_ || awaiting_output_sequence_ || !next_admission_ || now<next_admission_ ||
+    if(stopped_ || output_fault_ || invalid_source_ || awaiting_output_sequence_ || !next_admission_ ||
+       !fcg::admission_due(live_,now,next_admission_,latest_.control_time_s,last_control_) ||
        gate_->latched() || gate_->pending() || !have_latest_ || latest_.control_time_s<=last_control_) return;
+    // Use the latest already received causal observation, including one
+    // sampled before the send notification. Requiring another sensor frame
+    // serializes reception behind actuation. Original issue/source stamps,
+    // chronology, joint age and the 50 ms complete lease remain unchanged.
     auto s=latest_;
-    // Do not lose a complete period just because the previous result crossed
-    // a timer edge. Dispatch as soon as idle AND the 20 ms minimum spacing has
-    // elapsed; no catch-up burst, no artificial dt, no old-state queue.
+    // Select one actual latest state only. Live control cadence follows the
+    // frozen 20 ms physical source clock; shadow fixtures use wall cadence.
+    // Both paths retain independent wall-age checks and actual model dt.
     s.sequence=gate_->next_sequence(); s.dt_s=s.control_time_s-last_control_;
     auto a=gate_->admit(wire::from_ros(s),now);
     if(a.event) events_->publish(wire::to_ros(*a.event));
@@ -103,6 +147,11 @@ class StateIngress final : public rclcpp::Node {
     s.faulted=invalid_source_ || output_fault_ || gate_->latched(); status_->publish(s);
   }
   fcg::Config config_; std::unique_ptr<fcg::ShadowGate> gate_;
+  bool live_{},started_{};
+  std::string ready_file_;bool ready_written_{};
+  rclcpp::Subscription<msg::LiveStart>::SharedPtr start_;
+  rclcpp::Subscription<msg::ExecutionReceipt>::SharedPtr consumed_;
+  rclcpp::Subscription<msg::ActuatorSend>::SharedPtr sent_;
   msg::ControlSnapshot latest_; bool have_latest_{}, stopped_{}, invalid_source_{},output_fault_{};
   double last_control_{},source_time_{-1.}; std::uint64_t source_sequence_{},pending_issued_{},next_admission_{};
   std::uint64_t awaiting_output_sequence_{};

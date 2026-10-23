@@ -1,0 +1,47 @@
+{
+  "kind": "x650_normal_failed_attempt_v1",
+  "passed": false,
+  "complete": false,
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054",
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_launch_20261023_232449_63053",
+  "error": "RuntimeError('C++ output latched fault reason 1')",
+  "recorded_solver_calls": 185,
+  "valid_output_span_s": 3.700059569,
+  "fault": {
+    "sequence": 192,
+    "command_sequence": 184,
+    "command_age_ns": 62887178,
+    "reason": 1,
+    "actual_monotonic_ns": 14816769278350472
+  },
+  "worker_gen2": [
+    {
+      "generation": 2,
+      "start_ns": 14816769274476831,
+      "end_ns": 14816769286008554,
+      "collected": 8,
+      "duration_ms": 11.531723
+    }
+  ],
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 14816769466689750
+  },
+  "landed_and_disarmed": true,
+  "parameters_restored": true,
+  "runtime_closed": true,
+  "last_call_compute_ms": 27.718495,
+  "last_call_source_to_compute_end_ms": 31.083776,
+  "prior_candidate_age_at_last_valid_tick_ms": 42.887796,
+  "scope": "failed partial trajectory, not a normal certificate; no threshold or controller changes",
+  "artifacts": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/isolated_live/worker_final.json": "47a9f55016d3f70a8b448dfcd174b3b11fb5d46c715cdb3addbf73ebfabe569a",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/isolated_live/dispatch.json": "c7a38528675cd2082186b1381566447cd85f3dea44eaf493b4bdf1632f7a9781",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/isolated_live/sends.json": "dd5951dad32f346b6ba3ed0d31d569d5b8cb03dc0b49c7e635ac2d56568bd3b0",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/isolated_live/receipts.json": "72b14a8fe7587355b06b5e932be34d5c4bd23b44243f5ae157e9cdc57e3b4cb3",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/isolated_live/recording/diagnostics.jsonl": "1acbb27184eb233b2ca3a57224e3b06b7b9492ef0a49c550706bd19729939788",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_v1_20261023_232521_63054/controller_metadata.json": "68d1b3b0f4f52ac0cb4ab26183864cd29b59d47adfa57cfa09c9c3a06c2b9670",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_figure8_launch_20261023_232449_63053/launch.json": "4efbbd4cf496b02e2aad9d98f2873b78e94e6902868987a5b0cc0ff80081f56e"
+  }
+}

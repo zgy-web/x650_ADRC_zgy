@@ -64,6 +64,7 @@ struct Config {
   Hash configuration_sha256{};
   // Must be supplied from the frozen PID readback, not inferred from a request.
   std::array<double, 3> position_gains{};
+  bool replay_only{true};
 };
 
 struct Admission {
@@ -98,7 +99,7 @@ class ShadowGate {
     const auto reject = [&](Reason reason) { return Admission{false, fail(reason, snapshot.sequence, 0, now)}; };
     if (!observe_now(now)) return reject(Reason::CLOCK_REGRESSION);
     if (pending_) return reject(Reason::INFLIGHT);
-    if (!snapshot.replay_only) return reject(Reason::REPLAY_REQUIRED);
+    if (snapshot.replay_only != config_.replay_only) return reject(Reason::REPLAY_REQUIRED);
     if (!identity(snapshot)) return reject(Reason::IDENTITY);
     if (snapshot.sequence != next_sequence_ || snapshot.sequence == std::numeric_limits<std::uint64_t>::max())
       return reject(Reason::SEQUENCE);
@@ -119,7 +120,7 @@ class ShadowGate {
     if (!proper_rotation(snapshot.rotation_row_major)) return reject(Reason::FRAME);
     for (std::size_t axis = 0; axis < 3; ++axis) {
       if (!near(snapshot.position_gains[axis], config_.position_gains[axis]) ||
-          snapshot.target_acceleration_enu[axis] != 0.) return reject(Reason::INPUT);
+          (config_.replay_only && snapshot.target_acceleration_enu[axis] != 0.)) return reject(Reason::INPUT);
     }
     for (std::size_t joint = 0; joint < 2; ++joint)
       if (snapshot.q[joint] < Q_MIN[joint] || snapshot.q[joint] > Q_MAX[joint]) return reject(Reason::LIMIT);
@@ -138,7 +139,7 @@ class ShadowGate {
     };
     if (!observe_now(now)) return reject(Reason::CLOCK_REGRESSION);
     if (!pending_) return reject(Reason::SEQUENCE);
-    if (!proposal.replay_only) return reject(Reason::REPLAY_REQUIRED);
+    if (proposal.replay_only != config_.replay_only) return reject(Reason::REPLAY_REQUIRED);
     if (!identity(proposal)) return reject(Reason::IDENTITY);
     if (proposal.sequence != next_sequence_ || proposal.snapshot_sequence != cached_.sequence)
       return reject(Reason::SEQUENCE);
@@ -262,6 +263,7 @@ class ShadowGate {
   Event make_event(bool accepted, Reason reason, std::uint64_t snapshot, std::uint64_t proposal, std::uint64_t now) {
     Event event;
     event.session_id = config_.session_id;
+    event.replay_only = config_.replay_only;
     event.epoch = config_.epoch;
     event.sequence = ++event_sequence_;
     event.snapshot_sequence = snapshot;

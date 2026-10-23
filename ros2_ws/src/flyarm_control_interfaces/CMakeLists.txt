@@ -12,6 +12,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/DispatchTick.msg"
   "msg/RuntimeStop.msg"
   "msg/AcceptedCommand.msg"
+  "msg/LiveStart.msg"
+  "msg/ActuatorState.msg"
+  "msg/ExecutionReceipt.msg"
+  "msg/ActuatorSend.msg"
 )
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()

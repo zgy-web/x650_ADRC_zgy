@@ -1,0 +1,352 @@
+{
+  "kind": "actual_simulation_io_commissioning_v1",
+  "source_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825",
+  "source_launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_220708_51824",
+  "stage_certificate": false,
+  "hardware_qualified": false,
+  "declared_hold_duration_s": 30.0,
+  "flight_complete": false,
+  "flight_error": "RuntimeError('C++ output latched fault reason 1')",
+  "checks": {
+    "frozen_identity": {
+      "verified": true,
+      "source_files": 159,
+      "task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+      "native_library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef"
+    },
+    "recovery": {
+      "landed_and_disarmed": true,
+      "parameters_restored": true,
+      "runtime_closed": true,
+      "zero_consumed": true,
+      "all_owned_processes_exited": true
+    },
+    "joint_consumption_and_single_owner": {
+      "verified": true,
+      "sent_commands": 28,
+      "individual_joint_commands": 56,
+      "all_raw_consumed_counters_matched": true,
+      "zero_consumed": true,
+      "no_overlapping_legacy_publications": true,
+      "legacy_publication_records": 3541,
+      "source_observation_to_consumption_s": {
+        "count": 56,
+        "min": 0.003999999999997783,
+        "median": 0.0040000000000048885,
+        "p99": 0.0040000000000048885,
+        "max": 0.0040000000000048885
+      },
+      "lag_clock_note": "Latest actual plugin sim clock at send; no fitted time offset"
+    },
+    "actual_feedback": {
+      "verified": true,
+      "admitted_samples": 21,
+      "source_samples": 145,
+      "maximum_callback_age_s": {
+        "position": 0.02400000000000091,
+        "attitude": 0.020000000000003126,
+        "angular_velocity": 0.020000000000003126,
+        "estimator_flags": 0.5720000000000027,
+        "clock": 0.0
+      },
+      "physical_joint_q_and_modeled_endpoint_dq": true,
+      "truth_feedback": false,
+      "prediction_context": {
+        "verified": true,
+        "rounds": 21,
+        "maximum_reference_difference_rad": 0.0,
+        "postflight_later_rows_used_to_revise_history": false,
+        "selected_source_rows": 21,
+        "reference_reconstruction": "selected r plus held already-consumed u through control clock",
+        "opaque_python_object_identity_audited_offline": false,
+        "actual_packet_binding": {
+          "verified": true,
+          "state_rows": 21,
+          "packet_rows": 9673,
+          "last_and_active_sequence_fields_verified": true,
+          "tail_packet_coverage_required": true
+        }
+      },
+      "all_wire_packet_and_command_histories_verified": true
+    },
+    "px4_actual_received_encoding": {
+      "verified": true,
+      "matched_sends": 27,
+      "matches": [
+        {
+          "dispatch_sequence": 6,
+          "candidate_sequence": 1,
+          "actual_send_sim_s": 41.66,
+          "matching_px4_ulog_times_s": [
+            41.66
+          ]
+        },
+        {
+          "dispatch_sequence": 7,
+          "candidate_sequence": 2,
+          "actual_send_sim_s": 41.68,
+          "matching_px4_ulog_times_s": [
+            41.68
+          ]
+        },
+        {
+          "dispatch_sequence": 8,
+          "candidate_sequence": 3,
+          "actual_send_sim_s": 41.7,
+          "matching_px4_ulog_times_s": [
+            41.699999999999996,
+            41.72
+          ]
+        },
+        {
+          "dispatch_sequence": 9,
+          "candidate_sequence": 3,
+          "actual_send_sim_s": 41.72,
+          "matching_px4_ulog_times_s": [
+            41.72
+          ]
+        },
+        {
+          "dispatch_sequence": 10,
+          "candidate_sequence": 4,
+          "actual_send_sim_s": 41.74,
+          "matching_px4_ulog_times_s": [
+            41.739999999999995
+          ]
+        },
+        {
+          "dispatch_sequence": 11,
+          "candidate_sequence": 5,
+          "actual_send_sim_s": 41.76,
+          "matching_px4_ulog_times_s": [
+            41.76,
+            41.78
+          ]
+        },
+        {
+          "dispatch_sequence": 12,
+          "candidate_sequence": 5,
+          "actual_send_sim_s": 41.78,
+          "matching_px4_ulog_times_s": [
+            41.78
+          ]
+        },
+        {
+          "dispatch_sequence": 13,
+          "candidate_sequence": 6,
+          "actual_send_sim_s": 41.8,
+          "matching_px4_ulog_times_s": [
+            41.8
+          ]
+        },
+        {
+          "dispatch_sequence": 14,
+          "candidate_sequence": 7,
+          "actual_send_sim_s": 41.82,
+          "matching_px4_ulog_times_s": [
+            41.82
+          ]
+        },
+        {
+          "dispatch_sequence": 15,
+          "candidate_sequence": 8,
+          "actual_send_sim_s": 41.84,
+          "matching_px4_ulog_times_s": [
+            41.839999999999996,
+            41.86
+          ]
+        },
+        {
+          "dispatch_sequence": 16,
+          "candidate_sequence": 8,
+          "actual_send_sim_s": 41.86,
+          "matching_px4_ulog_times_s": [
+            41.86
+          ]
+        },
+        {
+          "dispatch_sequence": 17,
+          "candidate_sequence": 9,
+          "actual_send_sim_s": 41.88,
+          "matching_px4_ulog_times_s": [
+            41.879999999999995
+          ]
+        },
+        {
+          "dispatch_sequence": 18,
+          "candidate_sequence": 10,
+          "actual_send_sim_s": 41.9,
+          "matching_px4_ulog_times_s": [
+            41.9
+          ]
+        },
+        {
+          "dispatch_sequence": 19,
+          "candidate_sequence": 11,
+          "actual_send_sim_s": 41.92,
+          "matching_px4_ulog_times_s": [
+            41.919999999999995,
+            41.94
+          ]
+        },
+        {
+          "dispatch_sequence": 20,
+          "candidate_sequence": 11,
+          "actual_send_sim_s": 41.94,
+          "matching_px4_ulog_times_s": [
+            41.94
+          ]
+        },
+        {
+          "dispatch_sequence": 21,
+          "candidate_sequence": 12,
+          "actual_send_sim_s": 41.96,
+          "matching_px4_ulog_times_s": [
+            41.96
+          ]
+        },
+        {
+          "dispatch_sequence": 22,
+          "candidate_sequence": 13,
+          "actual_send_sim_s": 41.98,
+          "matching_px4_ulog_times_s": [
+            41.98
+          ]
+        },
+        {
+          "dispatch_sequence": 23,
+          "candidate_sequence": 14,
+          "actual_send_sim_s": 42.0,
+          "matching_px4_ulog_times_s": [
+            42.0,
+            42.019999999999996
+          ]
+        },
+        {
+          "dispatch_sequence": 24,
+          "candidate_sequence": 14,
+          "actual_send_sim_s": 42.02,
+          "matching_px4_ulog_times_s": [
+            42.019999999999996
+          ]
+        },
+        {
+          "dispatch_sequence": 25,
+          "candidate_sequence": 15,
+          "actual_send_sim_s": 42.04,
+          "matching_px4_ulog_times_s": [
+            42.04
+          ]
+        },
+        {
+          "dispatch_sequence": 26,
+          "candidate_sequence": 16,
+          "actual_send_sim_s": 42.06,
+          "matching_px4_ulog_times_s": [
+            42.059999999999995
+          ]
+        },
+        {
+          "dispatch_sequence": 27,
+          "candidate_sequence": 17,
+          "actual_send_sim_s": 42.08,
+          "matching_px4_ulog_times_s": [
+            42.08,
+            42.1
+          ]
+        },
+        {
+          "dispatch_sequence": 28,
+          "candidate_sequence": 17,
+          "actual_send_sim_s": 42.1,
+          "matching_px4_ulog_times_s": [
+            42.1
+          ]
+        },
+        {
+          "dispatch_sequence": 29,
+          "candidate_sequence": 18,
+          "actual_send_sim_s": 42.12,
+          "matching_px4_ulog_times_s": [
+            42.12
+          ]
+        },
+        {
+          "dispatch_sequence": 30,
+          "candidate_sequence": 19,
+          "actual_send_sim_s": 42.14,
+          "matching_px4_ulog_times_s": [
+            42.14,
+            42.16
+          ]
+        },
+        {
+          "dispatch_sequence": 31,
+          "candidate_sequence": 19,
+          "actual_send_sim_s": 42.16,
+          "matching_px4_ulog_times_s": [
+            42.16
+          ]
+        },
+        {
+          "dispatch_sequence": 32,
+          "candidate_sequence": 20,
+          "actual_send_sim_s": 42.18,
+          "matching_px4_ulog_times_s": [
+            42.18
+          ]
+        }
+      ],
+      "local_frame": 1,
+      "mask": 2048,
+      "zero_acceleration": true,
+      "source_proposal_encoding_verified": true,
+      "per_message_ack_claimed": false,
+      "full_stage_coverage_claimed": false,
+      "same_raw_clock": true,
+      "float_tolerance": 2e-05,
+      "clock_boundary_allowance_s": 0.008,
+      "delivery_allowance_s": 0.1
+    },
+    "frozen_numeric_replay": {
+      "verified": true,
+      "pairs": 21,
+      "max_command_absolute_error": 0.0,
+      "worker_compute_ms": {
+        "count": 21,
+        "min": 11.598144,
+        "median": 12.128472,
+        "p99": 14.0987164,
+        "max": 14.21916
+      },
+      "only_transport_wall_clock_rebased": true
+    }
+  },
+  "failed_checks": {},
+  "observed_execution": {
+    "output_count": 27,
+    "source_samples": 145,
+    "faults": [
+      {
+        "dispatch_sequence": 33,
+        "reason": 1,
+        "command_age_ms": 54.636109
+      }
+    ],
+    "accepted_candidate_count": 20,
+    "first_last_valid_output_wall_span_s": 0.520059172
+  },
+  "io_checks_passed": true,
+  "hold_accepted": false,
+  "evidence_sha256": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/controller_metadata.json": "332f5113798497226434ee5e071c8db2d9a49863bd34ab597a9f1585969e119e",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/px4.ulg": "ade4464d5a07373162318f64e12bae0d2d4bd069f86cbec57c51cd713e2495c4",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/ts20_state.csv": "e0f6ff5ed70eb33df5a7e96b3287ad12eb28e79a3e77a1266381f38e572983e8",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/isolated_live/sends.json": "059efede751f6b899272cfa7cd01988243e4eef26adab560089699a760e590d3",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/isolated_live/receipts.json": "8f93a313af1b914e100e5fb24b81f98ad9d39171e793f129ec1769edd358be4c",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/isolated_live/dispatch.json": "3bf989d2d8e065fb9456d7723c6982535131c7811e57cc5df71c39e6a4747c25",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_220740_51825/isolated_live/recording/diagnostics.jsonl": "6fdda1546609a8d8e3ef732e5ceeb43aadac5f1c4b94d03737419d7d40c16ce9",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_220708_51824/launch.json": "896bdc495df937857cd2f6b7b3815e8e3122731ceb7a907081c33646c09f0f16",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_220708_51824/sources.zip": "cdae84880b9bd8125878befe6c502403ed969e465b52a8a437ccc108b2493a46"
+  }
+}

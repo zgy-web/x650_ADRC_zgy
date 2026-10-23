@@ -1,0 +1,16 @@
+uint64 session_id
+uint64 epoch
+uint64 command_sequence
+uint64 dispatch_sequence
+uint64 sent_monotonic_ns
+float64 sim_s
+bool repeated
+bool stop_zero
+uint64[2] expected_counter
+float64[2] joint_velocity
+uint8 coordinate_frame
+uint16 type_mask
+float64[3] position_ned
+float64[3] velocity_ned
+float64[3] acceleration_ned
+float64 yaw_ned

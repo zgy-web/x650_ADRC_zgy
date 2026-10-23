@@ -1,0 +1,26 @@
+{
+  "kind": "native_fix_progress_20261024",
+  "qp_root_cause_fixed": true,
+  "v3_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+  "targeted_native_regression_tests_passed": 16,
+  "scaled_analytic_subcases": 12,
+  "local_worker_tests_passed": 28,
+  "local_static_qp_tests_passed": 3,
+  "local_receipt_identity_tests_passed": 4,
+  "local_source_recording_tests_passed": 4,
+  "historical_388_replay_and_full_software_qualification": "started_on_server_completion_not_retrieved_due_connection_loss",
+  "new_backend_complete_hold_passed": false,
+  "new_backend_normal_figure8_passed": false,
+  "fast_started": false,
+  "server_job": "artifacts/isolated_live_20261023/native_fix_qualify_v1.sh",
+  "server_log": "artifacts/isolated_live_20261023/native_fix_qualify_v1.log",
+  "server_exit_file": "artifacts/isolated_live_20261023/native_fix_qualify_v1.exit",
+  "last_confirmed_physics_runtime_active": false,
+  "notes": [
+    "Local source recorder test initially failed on Windows temporary-directory permissions; all four passed when rerun with normal filesystem permissions.",
+    "Historical hold_v15 uses old numerical backend and is not admission for the repaired library.",
+    "No flight started after the new numerical library build.",
+    "Revision9 is pending new full software proof and task binding; checked-in execution protocol remains revision8."
+  ],
+  "local_normal_sequence_tests_passed": 4
+}

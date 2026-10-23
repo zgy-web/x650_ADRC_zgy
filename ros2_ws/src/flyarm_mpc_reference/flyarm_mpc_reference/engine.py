@@ -78,10 +78,43 @@ class ReferenceEngine:
         self.faulted, self.busy, self.last_error = False, False, None
         self._metadata = dict(metadata or {})
         self.requests, self.accepted = 0, 0
+        self.simulation_live, self.live_started, self.trajectory = False, False, None
+
+    def begin_live(self, start):
+        """One-shot prewarmed handoff. Numerics/reset/history methods unchanged."""
+        if not self.simulation_live or self.live_started or self.requests:
+            raise ValueError("Live handoff is one-shot and must precede all solves")
+        if (int(start.session_id)!=self.session_id or int(start.epoch)!=self.epoch
+                or hash_bytes(start.configuration_sha256)!=self.configuration_sha256):
+            raise ValueError("Live handoff identity differs")
+        count=uint(start.history_count,"history_count",minimum=1,maximum=64)
+        times=vector(start.history_time_s,64,"history times")[:count]
+        commands=vector(start.history_command,320,"history commands").reshape(64,5)[:count]
+        origin=finite_scalar(start.origin_s,"origin")
+        if abs(times[-1]-origin)>1e-9 or np.any(np.diff(times)<=0):
+            raise ValueError("Live origin must be the final actual prestream send")
+        target = vector(start.target_position_enu,3,"target")
+        if getattr(self,'live_reference_deferred',False):
+            # All executable references come from this one actual handoff.
+            # The pre-arm constructor template has never been stepped.
+            allocator=self.adapter.allocator
+            allocator.trajectory=type(allocator.trajectory)(target.copy())
+            self.target_position=target.copy()
+            self.live_reference_deferred=False
+        elif not np.array_equal(target,self.target_position):
+            raise ValueError("Live target changed after warm construction")
+        self.adapter.reset(vector(start.anchor_position_enu,3,"anchor"),
+            vector(start.anchor_rotation_row_major,9,"rotation").reshape(3,3),vector(start.anchor_q,2,"q"))
+        allocator=self.adapter.allocator
+        allocator.prime_command_history(list(zip(times,commands)),origin)
+        self.task_origin=self.last_control_time=origin
+        self.live_started=True
 
     def metadata(self):
-        return {**self._metadata, "implementation": "existing_python_scipy_reference_mpc",
-                "native_mpc": False, "replay_only": True, "actuator_dispatch": False,
+        native = self._metadata.get("numerical_backend",{}).get("kind")=="cpp_numerics_v1"
+        return {**self._metadata, "implementation": "frozen_cpp_numerics_with_python_adapter" if native else "existing_python_scipy_reference_mpc",
+                "native_mpc": native,
+                "replay_only": not self.simulation_live, "actuator_dispatch": False,
                 "requests": self.requests, "accepted": self.accepted,
                 "faulted": self.faulted, "last_error": self.last_error,
                 "outer_deadline_s": .05, "configuration_sha256": self.configuration_sha256.hex()}
@@ -98,9 +131,11 @@ class ReferenceEngine:
         if (uint(snapshot.schema_version, "schema", minimum=1, maximum=1) != 1
                 or uint(snapshot.session_id, "session", minimum=1) != self.session_id
                 or uint(snapshot.epoch, "epoch", minimum=1) != self.epoch
-                or snapshot.replay_only is not True
+                or snapshot.replay_only is not (not self.simulation_live)
                 or hash_bytes(snapshot.configuration_sha256) != self.configuration_sha256):
             raise ValueError("Snapshot session/schema/configuration or offline-only identity differs")
+        if self.simulation_live and not self.live_started:
+            raise ValueError("Live worker has not received its one-shot handoff")
         sequence = uint(snapshot.sequence, "sequence", minimum=1)
         if sequence != self.last_sequence+1:
             raise ValueError("Snapshot sequence is not the next sequential request")
@@ -128,8 +163,8 @@ class ReferenceEngine:
             acceleration_enu=a, control_time_s=now, joint_stamp_s=joint_time)
         target_values = [vector(getattr(snapshot, name), 3, name) for name in
                          ("target_position_enu", "target_velocity_enu", "target_acceleration_enu")]
-        if (not np.array_equal(target_values[0], self.target_position)
-                or np.any(target_values[1] != 0.) or np.any(target_values[2] != 0.)):
+        expected = (self.target_position,np.zeros(3),np.zeros(3)) if self.trajectory is None else self.trajectory.sample(task)
+        if any(not np.array_equal(a,b) for a,b in zip(target_values,expected)):
             raise ValueError("Phase 1 frozen tip-hold target changed")
         target = self.target_factory(*target_values)
         reference_time = from_snapshot("reference_time_s")
@@ -165,7 +200,7 @@ class ReferenceEngine:
         except Exception:
             sequence = 0
         proposal.sequence = proposal.snapshot_sequence = sequence
-        proposal.replay_only = True
+        proposal.replay_only = not self.simulation_live
         proposal.configuration_sha256 = list(self.configuration_sha256)
         proposal.compute_start_monotonic_ns, proposal.compute_end_monotonic_ns = begin, begin
         proposal.status, proposal.accepted_optimum, proposal.nonlinear_check_passed = 1, False, False

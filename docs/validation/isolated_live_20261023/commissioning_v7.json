@@ -1,0 +1,142 @@
+{
+  "kind": "actual_simulation_io_commissioning_v1",
+  "source_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280",
+  "source_launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_215832_50279",
+  "stage_certificate": false,
+  "hardware_qualified": false,
+  "declared_hold_duration_s": 30.0,
+  "flight_complete": false,
+  "flight_error": "RuntimeError('C++ output latched fault reason 1')",
+  "checks": {
+    "frozen_identity": {
+      "verified": true,
+      "source_files": 156,
+      "task_sha256": "f8d96cb8d70b55a9885b4723f5ea614d1978f4e50663921a2e9fe440b4357ae1",
+      "native_library_sha256": "773241c1a3fe858f9d4b0e60f7f6b7465c6c0b9ef50b4ac1adac8f55590f7fef"
+    },
+    "recovery": {
+      "landed_and_disarmed": true,
+      "parameters_restored": true,
+      "runtime_closed": true,
+      "zero_consumed": true,
+      "all_owned_processes_exited": true
+    },
+    "joint_consumption_and_single_owner": {
+      "verified": true,
+      "sent_commands": 4,
+      "individual_joint_commands": 8,
+      "all_raw_consumed_counters_matched": true,
+      "zero_consumed": true,
+      "no_overlapping_legacy_publications": true,
+      "legacy_publication_records": 3600,
+      "source_observation_to_consumption_s": {
+        "count": 8,
+        "min": 0.003999999999997783,
+        "median": 0.0040000000000048885,
+        "p99": 0.0040000000000048885,
+        "max": 0.0040000000000048885
+      },
+      "lag_clock_note": "Latest actual plugin sim clock at send; no fitted time offset"
+    },
+    "actual_feedback": {
+      "verified": true,
+      "admitted_samples": 3,
+      "source_samples": 26,
+      "maximum_callback_age_s": {
+        "position": 0.015999999999998238,
+        "attitude": 0.015999999999998238,
+        "angular_velocity": 0.015999999999998238,
+        "estimator_flags": 0.9919999999999973,
+        "clock": 0.0
+      },
+      "physical_joint_q_and_modeled_endpoint_dq": true,
+      "truth_feedback": false
+    },
+    "px4_actual_received_encoding": {
+      "verified": true,
+      "matched_sends": 3,
+      "matches": [
+        {
+          "dispatch_sequence": 53,
+          "candidate_sequence": 1,
+          "actual_send_sim_s": 42.576,
+          "matching_px4_ulog_times_s": [
+            42.58,
+            42.6
+          ]
+        },
+        {
+          "dispatch_sequence": 54,
+          "candidate_sequence": 1,
+          "actual_send_sim_s": 42.596,
+          "matching_px4_ulog_times_s": [
+            42.6
+          ]
+        },
+        {
+          "dispatch_sequence": 55,
+          "candidate_sequence": 2,
+          "actual_send_sim_s": 42.616,
+          "matching_px4_ulog_times_s": [
+            42.62
+          ]
+        }
+      ],
+      "local_frame": 1,
+      "mask": 2048,
+      "zero_acceleration": true,
+      "source_proposal_encoding_verified": true,
+      "per_message_ack_claimed": false,
+      "full_stage_coverage_claimed": false,
+      "same_raw_clock": true,
+      "float_tolerance": 2e-05,
+      "clock_boundary_allowance_s": 0.008,
+      "delivery_allowance_s": 0.1
+    },
+    "frozen_numeric_replay": {
+      "verified": true,
+      "pairs": 3,
+      "max_command_absolute_error": 0.0,
+      "worker_compute_ms": {
+        "count": 3,
+        "min": 12.012807,
+        "median": 12.445952,
+        "p99": 12.601325119999998,
+        "max": 12.604496
+      },
+      "only_transport_wall_clock_rebased": true
+    }
+  },
+  "failed_checks": {},
+  "observed_execution": {
+    "output_count": 3,
+    "source_samples": 26,
+    "faults": [
+      {
+        "dispatch_sequence": 56,
+        "reason": 1,
+        "command_age_ms": 51.639543
+      },
+      {
+        "dispatch_sequence": 57,
+        "reason": 1,
+        "command_age_ms": 71.667203
+      }
+    ],
+    "accepted_candidate_count": 2,
+    "first_last_valid_output_wall_span_s": 0.040018777
+  },
+  "io_checks_passed": true,
+  "hold_accepted": false,
+  "evidence_sha256": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/controller_metadata.json": "6c6dd545cbae38bc8ec4673d5ad5ae8b689e86c51efb98e38cff401b6242836a",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/px4.ulg": "eb112d07d68820234c4540fb4bf9740f795b1dc7b39d4d7088340d2b65e6eb2e",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/ts20_state.csv": "ddcc0f868a59a09b3cd8801cd6fb643d3202291bc699f57482e22d50762c934d",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/isolated_live/sends.json": "f0e3e84122c1156450c6ead79bb13fff2045f5848eda45f08b20cd26eb12ecea",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/isolated_live/receipts.json": "e4051d975a284f858165af8eae7acff29aa72e005cb399730ce8dbd6f4468b07",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/isolated_live/dispatch.json": "d91198658ab77e5177acc98090905eef7a3f64fe08fc8861e995b7cba0118b75",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261023_215903_50280/isolated_live/recording/diagnostics.jsonl": "45eeaa40fb2b4498143e7e6861cc5d68294b19a7db7d9d62e7c75ebcf803e636",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_215832_50279/launch.json": "c26aa2df0759c41eb52887bf153d232eac846b2dd64390d9ad8f4f37c30239ce",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261023_215832_50279/sources.zip": "f0e4887b442e7803cfed9696068803eb762de465c2bfc7472807424cec7efa27"
+  }
+}
