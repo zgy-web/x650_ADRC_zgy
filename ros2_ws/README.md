@@ -130,6 +130,36 @@ child logs, deploy the driver fix, and run both cases in fresh output
 directories. The original phase-one checkpoint records the earlier state
 before this manual attempt; it is not retroactively changed.
 
+The subsequent [server follow-up](../docs/validation/ros2_structure_20261023/report_repair_followup.json)
+used the repaired driver at commit `bfb4da9` in fresh output directories over
+authorized SSH. All 13 driver regression tests and the native CTest passed.
+The healthy DDS case accepted 5/5 proposals, matched the direct Python command
+vectors, and verified all 15 persisted input/proposal/decision records. The
+worker-stop case accepted no proposal and verified its two input/decision
+records. Both closed with no cleanup errors or remaining owned ROS processes.
+The five healthy request round trips were 18.403–20.997 ms; the timeout case
+reported its rejection after 54.930 ms. These finite software cases validate
+the process separation and failure handling, not sustained 50 Hz operation.
+
+## Server management connection
+
+On the same date, Remote startup intermittently failed while fetching its
+public `/api/mcp-info` endpoint. General HTTPS and authenticated SSH worked.
+The existing Node 22 runtime reconnected with process-scoped options
+`--dns-result-order=ipv4first --network-family-autoselection-attempt-timeout=1000`.
+Its saved session was restored, and an actual Remote tool call returned the
+expected container hostname and both software test results. This is an observed
+recovery, not a guarantee against future network outages.
+
+Those defaults are saved in `/root/autodl-tmp/rdc-runtime/env.sh`, only when
+`NODE_OPTIONS` is otherwise empty. The previous file is retained as
+`env.sh.before_network_20261023`; hashes and scope are recorded in the
+[connection recovery record](../docs/validation/ros2_structure_20261023/report_repair_server/connection_recovery.json).
+The existing command remains `/root/autodl-tmp/rdc-runtime/bin/rdcctl start`.
+It still reports that screen was started, so confirm actual online tool access
+before calling the connection recovered. Authorized SSH is an independent
+maintenance path; do not treat a Remote outage as a ROS controller failure.
+
 ## Next integration boundary
 
 Move prediction assembly, QP execution and nonlinear candidate checks into the

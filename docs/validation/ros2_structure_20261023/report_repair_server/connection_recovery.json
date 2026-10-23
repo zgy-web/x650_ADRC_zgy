@@ -1,0 +1,13 @@
+{
+  "node_options": "--dns-result-order=ipv4first --network-family-autoselection-attempt-timeout=1000",
+  "runtime_env": "/root/autodl-tmp/rdc-runtime/env.sh",
+  "backup": "/root/autodl-tmp/rdc-runtime/env.sh.before_network_20261023",
+  "old_sha256": "28dacc200aa9d880009f3ea19657c19c12cd208347eb82d1331358b3b8df5a38",
+  "sha256": "932c299d599f9ed2e733dd53f8cd3f78338f80c5916d56c33987eb4f0bdcb599",
+  "remote_tool_hostname_verified": "autodl-container-f64b45a5b8-51661812",
+  "ssh_fallback_verified": true,
+  "container_restarted": false,
+  "dependencies_reinstalled": false,
+  "tls_verification_disabled": false,
+  "scope": "Remote runtime only; existing custom NODE_OPTIONS takes precedence"
+}

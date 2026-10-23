@@ -17,3 +17,4 @@ scripts/verify_x650_ros2_recording.py -text whitespace=cr-at-eol
 tests/unit/test_x650_ros2_structure_smoke.py -text whitespace=cr-at-eol
 tests/unit/test_x650_ros2_recording_verify.py -text whitespace=cr-at-eol
 docs/validation/ros2_structure_20261023/*.json -text whitespace=cr-at-eol
+docs/validation/ros2_structure_20261023/report_repair_server/** -text

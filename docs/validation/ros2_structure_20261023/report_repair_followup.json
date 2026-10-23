@@ -1,0 +1,67 @@
+{
+  "kind": "ros2_structure_report_repair_followup_v1",
+  "date_local": "2026-10-23",
+  "server": "autodl-container-f64b45a5b8-51661812",
+  "transport_used": "authorized SSH",
+  "code_commit": "bfb4da9",
+  "server_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ros2_structure_report_repair_20261023",
+  "local_unit_tests": 13,
+  "server_unit_tests": 13,
+  "server_unit_tests_passed": true,
+  "server_unit_log_sha256": "1ac21fd3071c563811ba70f77ff6c29d099486b323564ef472154a24a95534cb",
+  "native_ctest_tests": 1,
+  "native_ctest_passed": true,
+  "native_ctest_log_sha256": "75307ab8c739c31cb9c880ab956a20e7ea30da0a11515afef114c010b473cde0",
+  "cases": {
+    "healthy": {
+      "report": "report_repair_server/healthy.json",
+      "report_sha256": "8bc06a1678990b8b5c1eda6411b7ef6230248083a75b5ef04ccf8b5baf0bfca1",
+      "passed": true,
+      "expected_stream_counts": [
+        5,
+        5,
+        5
+      ],
+      "accepted_shadow_commands": 5,
+      "decision_roundtrip_ms": [
+        20.997141,
+        18.804304,
+        18.570212,
+        18.403121,
+        18.491842
+      ],
+      "recording_manifest_sha256": "bfa9d59b10cb571d4a275de6736d60a6c085504d1735c71fa8472a40ec3c21ff",
+      "records_sha256": "0a1b596e68779096c588843d68559aeda2131b1f95676b1e870e219da020c4bd",
+      "remaining_owned_processes": []
+    },
+    "worker_timeout": {
+      "report": "report_repair_server/worker_timeout.json",
+      "report_sha256": "3dc1eacec0bb640899aba90ba16e81e4c8297a6355058968457a04ed632ab192",
+      "passed": true,
+      "expected_stream_counts": [
+        1,
+        0,
+        1
+      ],
+      "accepted_shadow_commands": 0,
+      "decision_roundtrip_ms": [
+        54.92952
+      ],
+      "recording_manifest_sha256": "75161db7ebb5a0dfe79504dc50fed967ca7c57b3db7119a10816a26f0fc95313",
+      "records_sha256": "0b8d0c34a37d4f5c121403037f632c521d2d95704dc6c095974420ff2c173508",
+      "remaining_owned_processes": []
+    }
+  },
+  "prior_failed_manual_output_retained": true,
+  "initial_repair_launcher_failed_before_tests": {
+    "reason": "set -u while sourcing existing ROS/bash setup with unset optional variables",
+    "preserved_diagnostic": "initial_launcher_diagnostic.json",
+    "corrected_runner": "run_checks_v2.sh",
+    "change": "source existing environment with errexit and pipefail, without nounset"
+  },
+  "native_mpc_implemented": false,
+  "flight_started": false,
+  "sustained_50hz_qualified": false,
+  "full_30s_endpoint_hold_passed": false,
+  "hard_realtime_qualified": false
+}

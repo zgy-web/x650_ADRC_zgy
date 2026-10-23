@@ -1,0 +1,428 @@
+{
+  "kind": "x650_ros2_structure_smoke_v1",
+  "complete": true,
+  "passed": true,
+  "case": "worker_timeout",
+  "synthetic_software_fixture_only": true,
+  "native_mpc": false,
+  "flight_started": false,
+  "actuator_publishers_present": false,
+  "hard_realtime_qualified": false,
+  "task_configuration_sha256": "e2cc311bfb59f9fee4ac70293590bedc045933a2b4eb5dcdd7275315e7992419",
+  "session_id": 919773278,
+  "epoch": 1,
+  "domain_id": 198,
+  "controller_process_separate_from_recorder": true,
+  "sources": {
+    "ros2_ws/src/flyarm_control_gateway/CMakeLists.txt": "f202eb848996726520f311bc5a971d0e70ae6df46e4dcdccdab1b62924d7fdd3",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp": "3a632bb157cf1e141a8efe5fbbdc217ea2f63501a95e290ec7a030352a874938",
+    "ros2_ws/src/flyarm_control_gateway/package.xml": "29786fda118bcb98ec36620ee4594c734b98631745cd498c6261f4e5a41118f6",
+    "ros2_ws/src/flyarm_control_gateway/src/shadow_gateway.cpp": "48db5636e83c1ec9af95a8bbdb02f118745817ea4cad9d74d2e52dcaeead3daf",
+    "ros2_ws/src/flyarm_control_gateway/test/test_shadow_gate.cpp": "b1c2594a901bf0d74ffa294346f564d6a2a61b62eebc50159dc8117b9fbe8b8a",
+    "ros2_ws/src/flyarm_control_interfaces/CMakeLists.txt": "424de83a5118420a09c96c431a60a9bb75b5bff806ff6d6a3a3789805b8bf036",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlProposal.msg": "b8875418e1b0d33a845fd0a96e0b5182dc9dcde1de3ac6baea3e13fce8024e82",
+    "ros2_ws/src/flyarm_control_interfaces/msg/ControlSnapshot.msg": "2fd53a0988f9aed466ae697dd69828cbc521e058409249ed78e9fdffa13c7fa2",
+    "ros2_ws/src/flyarm_control_interfaces/msg/DrainRequest.msg": "360b25d979a456e93ac49a900aaa0309982e7a3d10342a1979ef1a88a19e2ca4",
+    "ros2_ws/src/flyarm_control_interfaces/msg/GateEvent.msg": "6e0a19d7f6b81d223e468657bcf1f0e79ef8950ae7a4ea35674eb55704683b6f",
+    "ros2_ws/src/flyarm_control_interfaces/msg/RecordingReceipt.msg": "af3951a8317becd1c2f1ffddb1a1d684e09e7f23ab9ff9adeb40397cfce35bff",
+    "ros2_ws/src/flyarm_control_interfaces/package.xml": "b3784d51f00f4d26aac79e30027064a8673ac49d678efc25543d9e83c0eb96d5",
+    "ros2_ws/src/flyarm_control_recorder/README.md": "09bf5b3ae0f5bb6302e2b3d21d736a92f7d819657c8af33a7877a93c3a07db08",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/__init__.py": "c2effba0146b830c74a5d7a98f3492a19ebbf96e838dac8674461d4b84242271",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/core.py": "2c2d53edae10a2f2105d2960c2832355e2d1cc4fdd53ebe6c1847e9c472d27b1",
+    "ros2_ws/src/flyarm_control_recorder/flyarm_control_recorder/recorder_node.py": "4ea54b35af23db64bf8f11a0d5c9b151870cf446c19a6b125025ee70e035d3f0",
+    "ros2_ws/src/flyarm_control_recorder/package.xml": "8621e0c098c8c22ba0bce657ffb347a90a62ae0320c2ce9d29d5ce499daab7e9",
+    "ros2_ws/src/flyarm_control_recorder/resource/flyarm_control_recorder": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "ros2_ws/src/flyarm_control_recorder/setup.cfg": "c50904a2ec5314b9cc52063870d24e03afd6101f5d207f2a594047890857b294",
+    "ros2_ws/src/flyarm_control_recorder/setup.py": "1508a80ef2f1d6d3182201f908e9d3fc5418277591e407c6058000d3587cda40",
+    "ros2_ws/src/flyarm_control_recorder/test/test_core.py": "76cad0ab59991a3303e08067c9efe776878e7c88a08e41df73fecd94032355e3",
+    "ros2_ws/src/flyarm_control_recorder/test/test_node_lifecycle.py": "098af5fb1e2776fec46bd708f2fa3886687f699d9914503e69d90d5592869044",
+    "ros2_ws/src/flyarm_mpc_reference/README.md": "30580f63ea23731509779f89d8a503ee9633ce04b49172f9336a34659528e7d3",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/__init__.py": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py": "78fba51f53a03fee0eb6d15bb72a271c64986cf950db985eafc1fd5da5b78ecb",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py": "5bd4c3f2bc36bea582ea3daf96e4b8f74c813c54e27c0063758141c27436361d",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/node.py": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/startup.py": "92bcc619e592223def51e19a1a98e11a36ad64a3a826713348cf19e018eb3a31",
+    "ros2_ws/src/flyarm_mpc_reference/package.xml": "86035ecbdf66a35e147ed2f0576d532de499967805a0a9a8196cca0f015f5883",
+    "ros2_ws/src/flyarm_mpc_reference/resource/flyarm_mpc_reference": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "ros2_ws/src/flyarm_mpc_reference/setup.cfg": "538775e44dccb88abfa0e32b3abf7df6641b9bc8cc8930af646c62cd440b8ec2",
+    "ros2_ws/src/flyarm_mpc_reference/setup.py": "666606ca03161de23116ac12693a6ca7de92345281f22ee6c6b32ed778358bb9",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_engine.py": "d0c52b39a18be2a399704ba492181ab1a24b06eeff1e03eaaf84fd5eef510591",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_node_cleanup.py": "668a3824f26d9cb22542e31265f56e6ca2910bdb0c706599bd8d4a11644b673f",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_startup.py": "057ceb7a682d4a95bc9d8661f5d3b1995f8ec5a57ab806524a8332bee24f60db",
+    "scripts/run_x650_ros2_structure_smoke.py": "a2e6430d5a36b6d8ce15ffb94f5b197ea19a8330a8aa0671a5d35d9d113d98d5"
+  },
+  "installed_gateway": {
+    "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/shadow_gateway",
+    "sha256": "f65dbaed53ad61ff38f252615ca6843b4d6467714e765f164f5398b7490f28bc"
+  },
+  "actual_process_executables": [
+    {
+      "pid": 21350,
+      "group": 21350,
+      "owner": "recorder",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 21351,
+      "group": 21351,
+      "owner": "gateway",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 21352,
+      "group": 21352,
+      "owner": "reference",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 21353,
+      "group": 21350,
+      "owner": "recorder",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    },
+    {
+      "pid": 21354,
+      "group": 21351,
+      "owner": "gateway",
+      "executable": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/shadow_gateway",
+      "sha256": "f65dbaed53ad61ff38f252615ca6843b4d6467714e765f164f5398b7490f28bc"
+    },
+    {
+      "pid": 21355,
+      "group": 21352,
+      "owner": "reference",
+      "executable": "/usr/bin/python3.10",
+      "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae"
+    }
+  ],
+  "observed_topics": {
+    "/flyarm/offline/v1/admitted/snapshot": [
+      "flyarm_control_interfaces/msg/ControlSnapshot"
+    ],
+    "/flyarm/offline/v1/input/snapshot": [
+      "flyarm_control_interfaces/msg/ControlSnapshot"
+    ],
+    "/flyarm/offline/v1/output/gate_event": [
+      "flyarm_control_interfaces/msg/GateEvent"
+    ],
+    "/flyarm/offline/v1/output/proposal": [
+      "flyarm_control_interfaces/msg/ControlProposal"
+    ],
+    "/flyarm/offline/v1/output/shadow_command": [
+      "flyarm_control_interfaces/msg/ControlProposal"
+    ],
+    "/flyarm/offline/v1/recorder/input/drain": [
+      "flyarm_control_interfaces/msg/DrainRequest"
+    ],
+    "/flyarm/offline/v1/recorder/output/receipt": [
+      "flyarm_control_interfaces/msg/RecordingReceipt"
+    ],
+    "/parameter_events": [
+      "rcl_interfaces/msg/ParameterEvent"
+    ],
+    "/rosout": [
+      "rcl_interfaces/msg/Log"
+    ]
+  },
+  "reference_startup": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ros2_structure_report_repair_20261023/worker_timeout_v1/reference_startup.json",
+    "sha256": "f77fce413e919e61e86d78fd2578e51e14a4d88405a25d31d7f5a13c8e954452"
+  },
+  "actual_worker_sources": {
+    "_x650_ts20_0c1e0abeb0bb499c93c819a817effbbe": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/__init__.py",
+      "sha256": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+      "bytes": 273
+    },
+    "_x650_ts20_0c1e0abeb0bb499c93c819a817effbbe.mechanics": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/mechanics.py",
+      "sha256": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+      "bytes": 12918
+    },
+    "_x650_ts20_0c1e0abeb0bb499c93c819a817effbbe.observers": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/observers.py",
+      "sha256": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+      "bytes": 10599
+    },
+    "_x650_ts20_0c1e0abeb0bb499c93c819a817effbbe.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/runtime.py",
+      "sha256": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+      "bytes": 5350
+    },
+    "_x650_ts20_c3053384f6f0477e81a7af4a7591521b": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/__init__.py",
+      "sha256": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+      "bytes": 273
+    },
+    "_x650_ts20_c3053384f6f0477e81a7af4a7591521b.mechanics": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/mechanics.py",
+      "sha256": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+      "bytes": 12918
+    },
+    "_x650_ts20_c3053384f6f0477e81a7af4a7591521b.observers": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/observers.py",
+      "sha256": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+      "bytes": 10599
+    },
+    "_x650_ts20_c3053384f6f0477e81a7af4a7591521b.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/models/ts20_50/runtime.py",
+      "sha256": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+      "bytes": 5350
+    },
+    "accepted_response_model": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/accepted_response_model.py",
+      "sha256": "ee2ef5f24133706376cc9dbbe708353f3717bb9a06f511abbd05a106da0be72b",
+      "bytes": 24077
+    },
+    "amsim": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/__init__.py",
+      "sha256": "954e7079f600eec312837acdfc5f5fd6b7d4a17c8cf178ee7a3342f11603f8b7",
+      "bytes": 261
+    },
+    "amsim.modeling": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "amsim.modeling.generator": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/generator.py",
+      "sha256": "f4a11dcd4dbd344455d3b9c891d63ee17181f078a35386bae09e07fc5dc46890",
+      "bytes": 12115
+    },
+    "amsim.modeling.manager": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/modeling/manager.py",
+      "sha256": "1c50bc945bee55fb997fd53e916168598b451b1798f156d920daa2bf9cf57044",
+      "bytes": 19485
+    },
+    "amsim.paths": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/paths.py",
+      "sha256": "b9c4c30e03f51a5f83d28d3e5039568ba1d5972802a07b41636825cb52dc4bca",
+      "bytes": 828
+    },
+    "amsim.runtime": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/runtime/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "amsim.runtime.model_metadata": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/runtime/model_metadata.py",
+      "sha256": "2ba07a93178a77fccc1f0fe446a819c93b9999fe82b0c4c3c9ddce262b538275",
+      "bytes": 10526
+    },
+    "amsim.scenario_registry": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/scenario_registry.py",
+      "sha256": "4668e59b219fdb47b5615e2ebc0dbf8976c820bb323efd180d962bc12aeddc46",
+      "bytes": 3665
+    },
+    "diagnostic_parameters": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/diagnostic_parameters.py",
+      "sha256": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+      "bytes": 30227
+    },
+    "execution_trace": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/execution_trace.py",
+      "sha256": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+      "bytes": 8930
+    },
+    "flyarm_mpc_reference.engine": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/engine.py",
+      "sha256": "78fba51f53a03fee0eb6d15bb72a271c64986cf950db985eafc1fd5da5b78ecb",
+      "bytes": 14074
+    },
+    "flyarm_mpc_reference.factory": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/factory.py",
+      "sha256": "5bd4c3f2bc36bea582ea3daf96e4b8f74c813c54e27c0063758141c27436361d",
+      "bytes": 6011
+    },
+    "flyarm_mpc_reference.node": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/node.py",
+      "sha256": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+      "bytes": 2978
+    },
+    "flyarm_mpc_reference.startup": {
+      "path": "/root/autodl-tmp/flyarm_ros2_structure_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/startup.py",
+      "sha256": "92bcc619e592223def51e19a1a98e11a36ad64a3a826713348cf19e018eb3a31",
+      "bytes": 2955
+    },
+    "hover_reference": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/hover_reference.py",
+      "sha256": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+      "bytes": 13595
+    },
+    "mixed_mpc_protocol": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/mixed_mpc_protocol.py",
+      "sha256": "ea482a2b07233aa04f2df41d805132c1ed425352ba40b66989a422b7ce10c5e5",
+      "bytes": 4991
+    },
+    "recording": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/recording.py",
+      "sha256": "2378a55ae2db2f586843c99dcb3341a01875f0a9fae06b56e91d13a151803e38",
+      "bytes": 26186
+    },
+    "research_condition": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/research_condition.py",
+      "sha256": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "bytes": 10883
+    },
+    "response_protocol": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/response_protocol.py",
+      "sha256": "a43b91a4a6c786f98e92b60bc4f62d2b9cf92157831a0f7231cfddaae8ea54f5",
+      "bytes": 6468
+    },
+    "simulations.x650_ts20_hold_v1.task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/task.py",
+      "sha256": "b7791cbade474c0c4e74f9f8c8936a824d1a488826dfc54401f91006cd0616dd",
+      "bytes": 21486
+    },
+    "simulations.x650_wholebody_mpc_v1.research_condition": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/research_condition.py",
+      "sha256": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "bytes": 10883
+    },
+    "simulations.x650_wholebody_mpc_v1.run_case": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+      "sha256": "8ed20f88a9a626a038294df44b56becbd7486173fdfbb2433460e5fe2309e648",
+      "bytes": 86651
+    },
+    "simulations.x650_wholebody_mpc_v1.task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/task.py",
+      "sha256": "43b7195f996085b6fedd1107595894d29c66eb0ec8c80217e923ec353b5f544f",
+      "bytes": 31832
+    },
+    "validate_x650_ts20_prediction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/validate_x650_ts20_prediction.py",
+      "sha256": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+      "bytes": 20364
+    },
+    "x650_wholebody": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/__init__.py",
+      "sha256": "ddf24a56592a5f46aac941f7af3a17d923d931de84eff08e3c2eb6bf762430db",
+      "bytes": 272
+    },
+    "x650_wholebody.adapter": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+      "sha256": "b41f7012b3b5d6849f9cb8a285d80b7a46a56800f98177fe18e44b029fb45469",
+      "bytes": 10484
+    },
+    "x650_wholebody.api": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/api.py",
+      "sha256": "cc3eb5db0455120f51a3edb499cef56f88773673b9b53a14ae1e715e1e10ae76",
+      "bytes": 5305
+    },
+    "x650_wholebody.baseline": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/baseline.py",
+      "sha256": "d6ee21d254ee0fb6f089705dfa7b2cca36d14fe0c01b9ea9a76592355c8766c4",
+      "bytes": 15194
+    },
+    "x650_wholebody.feedforward": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+      "sha256": "3897d73898895eba8c5652670f8a7bff1a599736a1d94c31db6784fa2d0e8631",
+      "bytes": 3968
+    },
+    "x650_wholebody.model": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/model.py",
+      "sha256": "266bf543c8546b5bd82738e0283c87853a1796d43f70a24c69f8ad9908276e5f",
+      "bytes": 11599
+    },
+    "x650_wholebody.mpc": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/mpc.py",
+      "sha256": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+      "bytes": 45468
+    },
+    "x650_wholebody.prediction_chain": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/prediction_chain.py",
+      "sha256": "3df989b72ba0013c58d0d022347309a10244ee74cd4fa56655db5ccbddda2ac5",
+      "bytes": 10485
+    },
+    "x650_wholebody.qp_constraints": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py",
+      "sha256": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+      "bytes": 4020
+    },
+    "x650_wholebody.ts20": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20.py",
+      "sha256": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+      "bytes": 13684
+    },
+    "x650_wholebody.ts20_mpc": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+      "sha256": "bd5558186381e622d36039f8b58314b5f63b709a0c5fc65a6f9e6e7d828fa830",
+      "bytes": 16885
+    },
+    "x650_wholebody.ts20_prediction": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+      "sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+      "bytes": 38016
+    }
+  },
+  "actually_loaded_native_library": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "bytes": 25112
+  },
+  "recording_verification": {
+    "passed": true,
+    "schema_version": 1,
+    "session_id": 919773278,
+    "epoch": 1,
+    "replay_only": true,
+    "counts": [
+      1,
+      0,
+      1
+    ],
+    "record_count": 2,
+    "cdr_bytes": 7704,
+    "decoded_verified": true,
+    "expected_messages_verified": true,
+    "records_sha256": "0b8d0c34a37d4f5c121403037f632c521d2d95704dc6c095974420ff2c173508",
+    "sources_archive_sha256": "6f73cf19b85d00cbc2e40616b54a0e3e26eadf0850f4e5eb7a726537be09f849",
+    "row_receipts": [
+      {
+        "stream": 0,
+        "sequence": 1,
+        "sha256": "6d79f3e53e6c48f1123d47de28cf32cf3e5d8f74668c9da85866453184d7353d"
+      },
+      {
+        "stream": 2,
+        "sequence": 1,
+        "sha256": "166c1c0b28e8988467e69d690cd99753878d78f9a6e756fc916423c3a142ca13"
+      }
+    ],
+    "final_receipt": {
+      "stream": 255,
+      "sequence": 2,
+      "sha256": "75161db7ebb5a0dfe79504dc50fed967ca7c57b3db7119a10816a26f0fc95313"
+    },
+    "scope": "archived bytes/decoded values; caller must match actual DDS receipts"
+  },
+  "expected_stream_counts": [
+    1,
+    0,
+    1
+  ],
+  "accepted_shadow_commands": 0,
+  "proposals": 0,
+  "gate_decisions": 1,
+  "decision_roundtrip_ns": [
+    54929520
+  ],
+  "recorder_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ros2_structure_report_repair_20261023/worker_timeout_v1/recording/recording_manifest.json",
+    "sha256": "75161db7ebb5a0dfe79504dc50fed967ca7c57b3db7119a10816a26f0fc95313"
+  },
+  "command_equivalence_scope": "same Python core direct vs ROS node; not native port equivalence",
+  "source_contract": "synthetic fixed-state hold; not replay of historical read availability",
+  "actual_ros_messages": "installed generated types; separate OS processes; local isolated DDS domain",
+  "process_exit_codes": {
+    "reference": 0,
+    "gateway": 0,
+    "recorder": 0
+  },
+  "remaining_owned_processes": [],
+  "cleanup_errors": []
+}
