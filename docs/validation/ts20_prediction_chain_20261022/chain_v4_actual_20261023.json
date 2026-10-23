@@ -1,0 +1,357 @@
+{
+  "kind": "x650_ts20_fresh_chain_actual_v4_20261023",
+  "chain_passed": false,
+  "status": "fresh_hover_and_probe_passed; quiet_failed_next_interval_guard; no_force_or_fast_run",
+  "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+  "airframe": 4996,
+  "condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee",
+  "oracle_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+  "software_proof_sha256": "dd086c21d80a8907174cb8c78f81698daa33bb1d22ac8a0cb865e21c84379d0c",
+  "stages": {
+    "hover_folded": {
+      "passed": true,
+      "window_sim_s": [
+        41.644,
+        61.644
+      ],
+      "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_123534_5219",
+      "certificate_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/hover_audit_v1/ts20_stage_certificate.json",
+      "certificate_sha256": "68b7d723f11b75f215771bdd07d7fcb9ae482b182d9cf4eb18ca92d2ab7b5652",
+      "platform_verification_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/hover_audit_v1/platform_verification.json",
+      "platform_verification_sha256": "c798fc0eb49c9bf93a1dddb2ddded09b6929135dcd098757db189980641802ae",
+      "timing": {
+        "max_actual_send_interval_s": 0.020000000000003126,
+        "max_compute_ms": 1.9376743584871292
+      },
+      "forecast_first_state_no_resets": {
+        "first_state_only": true,
+        "later_state_resets": false,
+        "q_peak_abs_rad": 4.813903957900927e-09,
+        "dq_peak_abs_rad_s": 0.0,
+        "first_state_horizons": {
+          "20ms": {
+            "actual_horizon_s": 0.020000000000003126,
+            "q_abs_error_rad": [
+              4.004971687622156e-12,
+              4.8132694496746654e-12
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "100ms": {
+            "actual_horizon_s": 0.10000000000000142,
+            "q_abs_error_rad": [
+              2.003627419533764e-11,
+              2.4068030235464006e-11
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "300ms": {
+            "actual_horizon_s": 0.30000000000000426,
+            "q_abs_error_rad": [
+              6.012145870038168e-11,
+              7.221612330355057e-11
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "600ms": {
+            "actual_horizon_s": 0.6000000000000014,
+            "q_abs_error_rad": [
+              1.2023748607870417e-10,
+              1.444132796679739e-10
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "complete_window_s": 20.0
+      },
+      "full_window_ulog_verified": true,
+      "typed_restore_verified": true,
+      "native_ground_verified": true,
+      "actual_packet_state_binding_verified": true,
+      "body_position": {
+        "unit": "m",
+        "sample_count": 5001,
+        "duration_s": 20.0,
+        "rmse_3d": 0.0017891334205028836,
+        "rmse_xy": 0.0015987120021598363,
+        "rmse_z": 0.0008031925861899098,
+        "axis_rmse": [
+          0.0011273401995563846,
+          0.0011335714094463062,
+          0.0008031925861899083
+        ],
+        "peak_3d": 0.0030207825186252843,
+        "peak_xy": 0.002361983543667619,
+        "peak_abs_z": 0.0021125906439807274,
+        "mean_vector": [
+          -0.00010232122354586219,
+          -0.00011195391202959633,
+          -0.0006495019982577738
+        ],
+        "mean_vector_norm": 0.0006669753795662131,
+        "centered_rms_3d": 0.0016601633170904757,
+        "sample_p95_3d": 0.0027645452935201867,
+        "coordinate_system": "world ENU",
+        "no_offset_or_phase_fit": true
+      }
+    },
+    "joint_probe": {
+      "passed": true,
+      "window_sim_s": [
+        41.576,
+        71.58
+      ],
+      "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_123911_6123",
+      "certificate_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/joint_probe_audit_v1/ts20_stage_certificate.json",
+      "certificate_sha256": "5fe8bb02f6870d515f8c0a255a9f79208abecf9441c8cde1d914c429a4e063f2",
+      "platform_verification_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/joint_probe_audit_v1/platform_verification.json",
+      "platform_verification_sha256": "006c08d28c815ad20a56ce2f676487ddd6dbc90f89f98858dd267b0a377f9c33",
+      "timing": {
+        "max_actual_send_interval_s": 0.020000000000010232,
+        "max_compute_ms": 2.482036128640175
+      },
+      "forecast_first_state_no_resets": {
+        "first_state_only": true,
+        "later_state_resets": false,
+        "q_peak_abs_rad": 6.092869706264548e-07,
+        "dq_peak_abs_rad_s": 5.195253886251805e-05,
+        "first_state_horizons": {
+          "20ms": {
+            "actual_horizon_s": 0.01999999999999602,
+            "q_abs_error_rad": [
+              4.003887554838544e-12,
+              4.812285459008986e-12
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "100ms": {
+            "actual_horizon_s": 0.10000000000000142,
+            "q_abs_error_rad": [
+              2.004170596147867e-11,
+              2.4074824578336605e-11
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "300ms": {
+            "actual_horizon_s": 0.29999999999999716,
+            "q_abs_error_rad": [
+              6.011380404568587e-11,
+              7.220338205105676e-11
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          },
+          "600ms": {
+            "actual_horizon_s": 0.6000000000000014,
+            "q_abs_error_rad": [
+              1.2021536177631105e-10,
+              1.4439975448699032e-10
+            ],
+            "dq_abs_error_rad_s": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "complete_window_s": 30.003999999999998
+      },
+      "full_window_ulog_verified": true,
+      "typed_restore_verified": true,
+      "native_ground_verified": true,
+      "actual_packet_state_binding_verified": true,
+      "body_position": {
+        "rmse_3d": 0.004539929061785432,
+        "peak_3d": 0.010310862580309067
+      },
+      "tilt_peak_deg": 0.15373620948147407,
+      "q_reference_tracking": {
+        "rmse_rad": [
+          0.0032051620697097377,
+          0.003524900036378657
+        ],
+        "peak_rad": [
+          0.015610741998574179,
+          0.01558341880514931
+        ],
+        "joint_speed_peak_rad_s": [
+          0.10480018855274761,
+          0.1038912204906571
+        ],
+        "sign_cosine": [
+          0.9962678386681438,
+          0.9948589248281481
+        ]
+      },
+      "native_fk": {
+        "samples": 7501,
+        "maximum_error_m": 1.2170809796964346e-06,
+        "time_weighted_rms_m": 2.9389905439233e-08,
+        "tolerance_m": 0.0001,
+        "passed": true,
+        "semantics": "Independent native distal-link WorldPose tip versus +Y-axis FK of same-step base pose/q; no phase or offset fit"
+      }
+    },
+    "quiet_tip_hold": {
+      "passed": false,
+      "complete_30s_hold": false,
+      "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_124322_7048",
+      "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T044251Z_7040",
+      "failure_evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/quiet_failure_v1/failure_evidence.json",
+      "failure_evidence_sha256": "6a38d7469d25d8984372de3851eb4253aba5cc4245daceee0afecb3ddfe97115",
+      "available_failure_timeline_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/quiet_failure_v1/available_failure_timeline.json",
+      "available_failure_timeline_sha256": "8c1829f26c4bad5709ccd83f70db6799a17e7605494320ffec3499401594651f",
+      "error": "RuntimeError('Control interval 0.0560s exceeds 0.05s')",
+      "failure_phase": "next control interval guard before MPC call",
+      "allocator_invoked_for_rejected_interval": false,
+      "failure_feedback_snapshot_recorded": false,
+      "exact_failure_replay_recorded": false,
+      "observability_limit": "dt guard precedes ExecutionTrace.controller_step; exact failed-pump state/feedback was not persisted. Last20 accepted snapshots and actual nearby sensor rows are preserved, not promoted to the missing snapshot.",
+      "measure_publications": 554,
+      "partial_window_sim_s": [
+        41.496,
+        59.74
+      ],
+      "partial_native_endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.020000000000003126,
+          18.264000000000003
+        ],
+        "sample_count": 4562,
+        "duration_s": 18.244,
+        "position_rmse_m": 0.003236932281319326,
+        "position_max_m": 0.004899803896708214,
+        "axis_rmse_m": [
+          0.00309963760769611,
+          0.0007169143492464857,
+          0.0005966666662782198
+        ]
+      },
+      "partial_native_body_position": {
+        "unit": "m",
+        "sample_count": 4562,
+        "duration_s": 18.244,
+        "rmse_3d": 0.010040583700192845,
+        "rmse_xy": 0.009953640649465727,
+        "rmse_z": 0.0013184683772778725,
+        "axis_rmse": [
+          0.009903715386995582,
+          0.0009956825357932064,
+          0.0013184683772778732
+        ],
+        "peak_3d": 0.015318034230321662,
+        "peak_xy": 0.015231682783969651,
+        "peak_abs_z": 0.002010290799286274,
+        "mean_vector": [
+          -0.008914919555032543,
+          0.0006845105550366696,
+          -0.0012701315369230545
+        ],
+        "mean_vector_norm": 0.009030923512783439,
+        "centered_rms_3d": 0.004388136454901246,
+        "sample_p95_3d": 0.015251558933613343,
+        "coordinate_system": "world ENU",
+        "no_offset_or_phase_fit": true
+      },
+      "partial_tilt_peak_deg": 0.08249606561684811,
+      "partial_native_fk": {
+        "samples": 4562,
+        "maximum_error_m": 9.340885913262566e-16,
+        "time_weighted_rms_m": 3.747177474814846e-16,
+        "tolerance_m": 0.0001,
+        "passed": true,
+        "semantics": "Independent native distal-link WorldPose tip versus +Y-axis FK of same-step base pose/q; no phase or offset fit"
+      },
+      "successful_timing": {
+        "max_compute_ms": 31.269652768969536,
+        "max_actual_send_interval_s": 0.044000000000004036,
+        "last_mpc_observation": {
+          "inner_allocator_compute_ms": 16.89845137298107,
+          "inner_allocator_thread_cpu_ms": 17.08353799999429,
+          "outer_thread_cpu_ms": 17.394787999997163,
+          "gc_collection_count_before": [
+            737,
+            67,
+            3
+          ],
+          "gc_collection_count_after": [
+            737,
+            67,
+            3
+          ],
+          "gc_collection_count_delta": [
+            0,
+            0,
+            0
+          ],
+          "gc_policy_changed": false,
+          "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+          "outer_compute_ms": 17.401080578565598
+        }
+      },
+      "partial_ulog_verified": true,
+      "partial_ulog_window_sim_s": [
+        41.476,
+        59.74
+      ],
+      "typed_restore_verified": true,
+      "synchronous_storage_save_verified": true,
+      "PID42_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "landed_and_disarmed": true,
+      "runtime_closed": true,
+      "pending_journal": false,
+      "platform_source_unchanged_and_three_archives_verified": true,
+      "platform_provenance_sha256": "61bcf23290e97f70aa28922ae621eb08aa37e8891d105d4a2f1d25a816659703"
+    }
+  },
+  "startup_failure_before_any_aircraft_run": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_chain_v4_20261023/hover_startup_failure_v1.json",
+    "sha256": "02f997a9a6623f9a54aa196357810d0200a2df2b5510688360efb461159f4622",
+    "separate_from_flight_failures": true
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "constraints_unchanged": {
+    "max_control_interval_s": 0.05,
+    "max_complete_compute_s": 0.05,
+    "joint_probe_speed_rad_s": 0.2,
+    "MIT_bus_period_s": 0.005,
+    "tip_rms_m": 0.05,
+    "tip_peak_m": 0.1,
+    "tilt_deg": 8.0
+  },
+  "notes": [
+    "Partial quiet endpoint error is measured over18.244s only and is not a30s acceptance.",
+    "q reference tracking errors and first-state forecast numerical consistency are separate quantities.",
+    "GC counts within a successful MPC call do not locate any activity outside that call.",
+    "No historical certificate/source archive was rewritten."
+  ]
+}
