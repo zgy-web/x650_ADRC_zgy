@@ -280,7 +280,11 @@ v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，�
 
 按用户选择，下一阶段转向 ROS2 原生运行时。现平台已经由 `rclpy.SingleThreadedExecutor` 接收 PX4 遥测和处理关节接口，服务器已有 ROS2 Humble、rclcpp、Eigen、colcon 和 px4_msgs。飞机 PVA、解锁、Offboard 与降落当前仍经 pymavlink／MAVLink；初期保留该监督及发送网关和 PX4 底层 PID，将上层 MPC 计算迁入独立 C++ 节点，并把记录器移出计算回路。DDS `TrajectorySetpoint` 输出属于后续单独验收的传输迁移，不能把当前接口写成已经全部经 ROS2 输出。
 
-原生节点须保持同源时钟、因果快照、25 ms 源年龄、机体 PX4 状态及关节物理 q／条件端点 dq 的契约，以及 ENU／NED、关节轴向和 PVA type-mask／NaN 语义。现 TS20 native 预测核可以复用，但矩阵组装、QP、非线性后验检查和提交／回滚仍在 Python，必须真正移植并通过冻结 30 工况与实际记录回放的数值、约束、编码和拒绝行为等价检查，再重新取得物理阶段证据；只包一层 ROS2 不构成实时性改善证明。执行器与内存／调度边界参考 ROS2 Humble 官方的[Executor 说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Intermediate/About-Executors.rst)和[实时编程说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Real-Time-Programming.rst)。本路线尚未实现 C++ 控制节点，也未实施 GC 延后策略或新增飞行，不宣称已具备硬实时保证。
+原生节点须保持同源时钟、因果快照、关节 25 ms／机体 250 ms 源年龄、机体 PX4 状态及关节物理 q／条件端点 dq 的契约，以及 ENU／NED、关节轴向和 PVA type-mask／NaN 语义。现 TS20 native 预测核可以复用，但矩阵组装、QP、非线性后验检查和提交／回滚仍在 Python，必须真正移植并通过冻结 30 工况与实际记录回放的数值、约束、编码和拒绝行为等价检查，再重新取得物理阶段证据；只包一层 ROS2 不构成实时性改善证明。执行器与内存／调度边界参考 ROS2 Humble 官方的[Executor 说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Intermediate/About-Executors.rst)和[实时编程说明](https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Real-Time-Programming.rst)。未实施 GC 延后策略或新增飞行，不宣称已具备硬实时保证。
+
+2026-10-23 已新增独立的 [ROS2 工作区](../ros2_ws/README.md)：固定容量消息接口、Python 参考 MPC 进程、C++ 影子网关和独立 CDR 记录进程。首版只接软件输入，网关只输出 shadow topic，不建立飞机或关节执行器 publisher；现有仿真场景没有切换。Python 参考节点调用原控制核并一次性核对真实 task／model／PID／prior／oracle／native 来源，保留五轴已发布 prestream 与两轴实际消费历史的区别，不逐轮 reset。其内部计划先于网关接受 proposal 推进，因此仅允许单请求在途、拒绝后锁定 epoch；真实发布后的提交回路仍待原生实现。
+
+[阶段一检查点](validation/ros2_structure_20261023/phase1_checkpoint.json)记录 39 项本地测试全部通过（参考节点 16、记录器 11、独立 CDR 校验 8、进程收尾 4）。40 项新文件原字节已新增部署，未改旧控制来源；四个 ROS2 包在服务器用现有依赖于 32.0 s 内编译成功。编译后 Remote 心跳断开，C++ CTest 和真实 DDS 正常／worker 停止测试尚未执行，不能把编译或本地测试当成跨进程验收。恢复连接后以同一冻结 task／输入做 direct Python 与 ROS worker 指令对照、影子网关时序／拒绝和真实 CDR／落盘回执核验；完整 30 s 保持与快速轨迹仍未通过或运行。
 
 ## 12. 真机条件仍需补齐
 

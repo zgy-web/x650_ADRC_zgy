@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>flyarm_control_gateway</name>
+  <version>0.1.0</version>
+  <description>Bounded fail-closed offline shadow gateway; never publishes actuator commands.</description>
+  <maintainer email="maintainer@example.invalid">Flyarm maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>flyarm_control_interfaces</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

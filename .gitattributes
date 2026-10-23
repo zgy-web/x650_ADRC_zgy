@@ -10,3 +10,10 @@ docs/validation/pid_ff_wholebody_v1_20261017/*.log -text -whitespace
 docs/validation/ts20_prediction_chain_20261022/server_executed_software_v2/** -text -whitespace
 # Keep the byte identity of this captured server failure report.
 docs/validation/ts20_prediction_chain_20261022/recording_quiet_actual_20261023.json -text
+# Preserve the exact cross-host sources of the isolated ROS 2 structure stage.
+ros2_ws/** -text whitespace=cr-at-eol
+scripts/run_x650_ros2_structure_smoke.py -text whitespace=cr-at-eol
+scripts/verify_x650_ros2_recording.py -text whitespace=cr-at-eol
+tests/unit/test_x650_ros2_structure_smoke.py -text whitespace=cr-at-eol
+tests/unit/test_x650_ros2_recording_verify.py -text whitespace=cr-at-eol
+docs/validation/ros2_structure_20261023/*.json -text whitespace=cr-at-eol
