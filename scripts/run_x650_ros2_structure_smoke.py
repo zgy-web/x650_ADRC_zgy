@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import math
+from numbers import Integral
 import os
 from pathlib import Path
 import signal
@@ -30,9 +31,28 @@ def sha(path):
 
 
 def write_json(path, value):
+    # Validate/encode before creating an exclusive evidence file. An unsupported
+    # report value or NaN must not leave a truncated JSON file behind.
+    encoded = json.dumps(value, indent=2, allow_nan=False) + "\n"
     with Path(path).open("x", encoding="utf-8") as stream:
-        json.dump(value, stream, indent=2, allow_nan=False)
-        stream.write("\n")
+        stream.write(encoded)
+
+
+def stream_counts_for_report(final_sequences):
+    """Detach the ROS uint64[3] boundary as exact Python integers for JSON."""
+    counts = []
+    for value in final_sequences:
+        # Generated fixed numeric arrays can yield NumPy uint64 scalars.
+        # Refuse floats/strings/bools rather than silently truncating/coercing.
+        if isinstance(value, bool) or not isinstance(value, Integral):
+            raise TypeError("Final stream sequences must be integer uint64 values")
+        integer = int(value)
+        if not 0 <= integer < 1 << 64:
+            raise ValueError("Final stream sequence is outside uint64")
+        counts.append(integer)
+    if len(counts) != 3:
+        raise ValueError("Expected final snapshot/proposal/gate sequence counts")
+    return counts
 
 
 def make_snapshot(cls, *, sequence, session, config_sha, target, gains):
@@ -77,11 +97,25 @@ def values(msg):
     return {name: [float(x) for x in getattr(msg, name)] for name in COMMAND_FIELDS}
 
 
+def group_has_live_members(group):
+    """A reaped CLI leader does not prove its ROS node children have exited."""
+    for path in Path("/proc").iterdir():
+        if not path.name.isdigit():
+            continue
+        try:
+            fields = (path / "stat").read_text().rsplit(") ", 1)[1].split()
+            if int(fields[2]) == group and fields[0] not in ("Z", "X"):
+                return True
+        except (OSError, IndexError, ValueError):
+            continue
+    return False
+
+
 def stop_owned_process(proc):
     """Bounded cleanup of one process group, including already-exited races."""
     errors = []
     for sig, timeout in ((signal.SIGINT, 8.), (signal.SIGTERM, 5.), (signal.SIGKILL, 3.)):
-        if proc.poll() is not None:
+        if proc.poll() is not None and not group_has_live_members(proc.pid):
             return errors
         try:
             os.killpg(proc.pid, sig)
@@ -90,13 +124,17 @@ def stop_owned_process(proc):
         except Exception as error:
             errors.append(repr(error))
         try:
+            deadline = time.monotonic() + timeout
             proc.wait(timeout=timeout)
-            return errors
+            while group_has_live_members(proc.pid) and time.monotonic() < deadline:
+                time.sleep(.02)
+            if not group_has_live_members(proc.pid):
+                return errors
         except subprocess.TimeoutExpired:
             continue
         except Exception as error:
             errors.append(repr(error))
-    if proc.poll() is None:
+    if proc.poll() is None or group_has_live_members(proc.pid):
         errors.append("Owned process group did not exit after SIGKILL")
     return errors
 
@@ -331,7 +369,7 @@ def main(argv=None):
         write_json(out / "received_receipts.json", [{"stream": int(m.stream), "sequence": int(m.sequence),
             "persisted": bool(m.persisted), "complete": bool(m.complete), "failed": bool(m.failed),
             "sha256": bytes(m.sha256).hex()} for m in receipts])
-        report.update(complete=True, passed=True, expected_stream_counts=list(request.final_sequences),
+        report.update(complete=True, passed=True, expected_stream_counts=stream_counts_for_report(request.final_sequences),
             accepted_shadow_commands=len(shadow), proposals=len(proposals), gate_decisions=len(events),
             decision_roundtrip_ns=[int(m.roundtrip_ns) for m in events.values()],
             recorder_manifest={"path": str(manifests[0]), "sha256": sha(manifests[0])},
@@ -363,6 +401,9 @@ def main(argv=None):
                 stream.close()
             except BaseException as error:
                 cleanup_errors.append("log: " + repr(error))
+        report["remaining_owned_processes"] = owned_executables(processes)
+        if report["remaining_owned_processes"]:
+            cleanup_errors.append("Owned ROS node process remains after cleanup")
         try:
             if sha(installed_gateway) != report["installed_gateway"]["sha256"]:
                 cleanup_errors.append("Installed gateway changed during the test")

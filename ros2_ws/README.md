@@ -114,6 +114,22 @@ process groups. The finite test proves the process/message/recording contracts;
 it does not establish sustained 50 Hz operation, worst-case execution time,
 native-port equivalence or the full 30 s endpoint-hold acceptance.
 
+The driver converts the generated `uint64[3]` final stream counts to Python
+integers before reporting, preserving the full integer range. It serializes
+strict JSON before creating the exclusive output file, so an unsupported value
+does not leave a truncated JSON report. Cleanup checks the owned process group,
+including ROS children whose `ros2 run` parent has already exited.
+
+On 2026-10-23, the user's server terminal reported the native
+`shadow_gate_synthetic` CTest passing (1/1). The first `healthy_manual_v1`
+attempt then failed while writing `structure_report.json`, because the original
+driver kept NumPy `uint64` values in that stream-count list. The following
+`worker_timeout` command was not executed. This terminal report is not a DDS
+acceptance result: retain that output directory, inspect its recording and
+child logs, deploy the driver fix, and run both cases in fresh output
+directories. The original phase-one checkpoint records the earlier state
+before this manual attempt; it is not retroactively changed.
+
 ## Next integration boundary
 
 Move prediction assembly, QP execution and nonlinear candidate checks into the
