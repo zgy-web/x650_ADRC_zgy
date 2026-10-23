@@ -1,0 +1,65 @@
+{
+  "schema": "ts20_server_executed_source_diff_v1",
+  "server_read_only": true,
+  "server_sources_changed": false,
+  "production_local_sources_changed": false,
+  "tests_run": false,
+  "source_archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_causal_joint_software_20261023/software_v2/executed_sources.zip",
+    "sha256": "33e52c5e6ceffaaa316033c0765dbf9483fbd257c849cafea2bf2f1e507e0d9f",
+    "bytes": 369188
+  },
+  "proof_path": "docs\\validation\\ts20_prediction_chain_20261022\\causal_joint_software_acceptance_20261023.json",
+  "proof_sha256": "dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201",
+  "remote_archive_members_match_live_at_read": true,
+  "files": [
+    {
+      "path": "control_packages/x650_wholebody_v1/tests/test_ts20_prediction.py",
+      "server_sha256": "0a8075b84d4a98fa6d5c34151061049b9d9030604795e7eea2c005b03d44a85b",
+      "server_bytes": 15594,
+      "local_sha256": "bb1fcffe32dcf7b1c84464268f72a1aaa8ddfd2d891fa1dee54221298911bac6",
+      "local_bytes": 15592,
+      "rstrip_whitespace_equal": true,
+      "server_final_newline_bytes": 3,
+      "local_final_newline_bytes": 1,
+      "diff_path": "docs\\validation\\ts20_prediction_chain_20261022\\server_executed_software_v2\\control_packages\\x650_wholebody_v1\\tests\\test_ts20_prediction.py.diff",
+      "byte_suffix_local": "b'\"__main__\":\\n    unittest.main()\\n'",
+      "byte_suffix_server": "b'_main__\":\\n    unittest.main()\\n\\r\\n'",
+      "python_ast_equal": true,
+      "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
+      "server_equals_local_plus_crlf": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "server_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "server_bytes": 5931,
+      "local_sha256": "7ef459d349f33ae59ff88db66dcbfdaea41981cefc309916f8900c716386bb15",
+      "local_bytes": 5929,
+      "rstrip_whitespace_equal": true,
+      "server_final_newline_bytes": 3,
+      "local_final_newline_bytes": 1,
+      "diff_path": "docs\\validation\\ts20_prediction_chain_20261022\\server_executed_software_v2\\control_packages\\x650_wholebody_v1\\x650_wholebody\\ts20_prediction_native.cpp.diff",
+      "byte_suffix_local": "b'ize,\"%s\",e.what());return 1;}\\n}\\n'",
+      "byte_suffix_server": "b'e,\"%s\",e.what());return 1;}\\n}\\n\\r\\n'",
+      "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
+      "server_equals_local_plus_crlf": true
+    },
+    {
+      "path": "scripts/validate_x650_ts20_prediction.py",
+      "server_sha256": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+      "server_bytes": 20364,
+      "local_sha256": "0ae6936046ef3754f52487137599077ea91e18b8ed69592e3aa78a0a0998bc59",
+      "local_bytes": 20362,
+      "rstrip_whitespace_equal": true,
+      "server_final_newline_bytes": 3,
+      "local_final_newline_bytes": 1,
+      "diff_path": "docs\\validation\\ts20_prediction_chain_20261022\\server_executed_software_v2\\scripts\\validate_x650_ts20_prediction.py.diff",
+      "byte_suffix_local": "b'ame__ == \"__main__\":\\n    main()\\n'",
+      "byte_suffix_server": "b'e__ == \"__main__\":\\n    main()\\n\\r\\n'",
+      "python_ast_equal": true,
+      "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
+      "server_equals_local_plus_crlf": true
+    }
+  ],
+  "conclusion": "All three server-executed files equal the corresponding current local file bytes plus exactly one trailing CRLF (0D 0A). There are no comment, diagnostic label, code or numerical behavior changes. Python ASTs match; C++ content before trailing whitespace is byte-identical."
+}

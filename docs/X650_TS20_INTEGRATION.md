@@ -256,9 +256,11 @@ v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，�
 
 读内失败促成第 6 节的因果关节 provider：在解释 ROS JointState 之前选择真实可用的 TS20 源观测，而不是放宽未来／25 ms 年龄或原时序门槛。provider、默认／恢复路径及峰值保留 observer 的 42 项本地合并回归保留为开发证据；随后已取得[服务器 fresh 软件证明](validation/ts20_prediction_chain_20261022/causal_joint_software_acceptance_20261023.json)，该 JSON 保持服务器原始字节，SHA 为 `dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201`，绑定 86 项实际源码。新执行的 288 项测试由 124 项 package、134 项 interface／audit、30 项 shared-loop 组成，全部通过、0 skip，显式提供 native 测试库。原 30 个矩阵夹具重新运行 30/30 通过，最大 26.684829965 ms；full/view 的矩阵、计划、状态、编码包及非线性输出比较一致，记录的差值均为零。独立 timing 的全部 full/view 记录一并保留，最大值分别 37.344370／26.682980 ms，不以较快记录替代完整结果。
 
-首次 `software_v1` 仅完成 248 项、0 failure／4 个同源 ImportError，原因是服务器未带齐已跟踪的 `test_x650_precision_stage_audit.py` 辅助文件；该次没有飞行，失败输出保留。补齐既有 helper 的精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`）后，保持控制源码和 driver 不变，在全新 `software_v2` 目录重新执行上述回归与矩阵，没有继承旧 package／matrix 成绩。证明区分静态 before、实际导入后的来源观测和最终 after，并归档实际源；未改变的预测器／数值核、物理条件和 oracle 身份继续逐项核验。
+首次 `software_v1` 报告为 248 项、0 failure／4 个同源 ImportError，原因是服务器未带齐已跟踪的 `test_x650_precision_stage_audit.py` 辅助文件；该次没有飞行，失败输出保留。补齐既有 helper 的精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`）后，保持控制源码和 driver 不变，在全新 `software_v2` 目录重新执行上述回归与矩阵，没有继承旧 package／matrix 成绩。证明区分静态 before、实际导入后的来源观测和最终 after，并归档实际源；未改变的预测器／数值核、物理条件和 oracle 身份继续逐项核验。
 
-现在仅启动了新版 fresh folded hover，尚无该轮通过证书；新的完整末端保持和快速轨迹尚未运行，旧工况的 full-window 证书没有升级为新版证书。观察文件失败或观察计数不完整仍拒绝新观测阶段完整性，并继续封存执行器日志，不遮蔽原控制错误。
+软件证明绑定的是服务器实际执行字节。与本地 Git 的逐项核对发现，预测器测试、native CPP 和 oracle 验证工具三份服务器源各多一个末尾 CRLF，其余代码字节一致，Python AST 也相同；不是算法变化。对应原始源、实际 archive SHA 和差异报告保存于 [精确来源档案](validation/ts20_prediction_chain_20261022/server_executed_software_v2/source_diff_report.json)，Git 对该目录关闭文本换行转换，保留证明所引用的原始 SHA，不以本地文件 SHA 代替服务器执行身份。
+
+新版 fresh folded hover 已完成独立验收：完整 20 s、5001 个原生点，机体三维 RMS 1.80599 mm／峰值 2.83115 mm；完整 ULog、参数恢复和实际平台／控制／软件源码归档核验通过。新的关节探针正在运行，完整末端保持和快速轨迹尚未运行，旧工况的 full-window 证书没有升级为新版证书。观察文件失败或观察计数不完整仍拒绝新观测阶段完整性，并继续封存执行器日志，不遮蔽原控制错误。
 
 ## 12. 真机条件仍需补齐
 

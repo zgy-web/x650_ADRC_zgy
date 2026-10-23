@@ -1,0 +1,7 @@
+--- current_local/control_packages/x650_wholebody_v1/tests/test_ts20_prediction.py
++++ server_executed_software_v2/control_packages/x650_wholebody_v1/tests/test_ts20_prediction.py
+@@ -275,3 +275,4 @@
+ 
+ if __name__ == "__main__":
+     unittest.main()
++
