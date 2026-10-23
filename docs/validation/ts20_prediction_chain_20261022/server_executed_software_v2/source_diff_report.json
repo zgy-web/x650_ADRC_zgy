@@ -27,7 +27,8 @@
       "byte_suffix_server": "b'_main__\":\\n    unittest.main()\\n\\r\\n'",
       "python_ast_equal": true,
       "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
-      "server_equals_local_plus_crlf": true
+      "server_equals_local_plus_crlf": true,
+      "archived_relative_path": "control_packages/x650_wholebody_v1/tests/test_ts20_prediction.py.raw"
     },
     {
       "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
@@ -42,7 +43,8 @@
       "byte_suffix_local": "b'ize,\"%s\",e.what());return 1;}\\n}\\n'",
       "byte_suffix_server": "b'e,\"%s\",e.what());return 1;}\\n}\\n\\r\\n'",
       "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
-      "server_equals_local_plus_crlf": true
+      "server_equals_local_plus_crlf": true,
+      "archived_relative_path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp.raw"
     },
     {
       "path": "scripts/validate_x650_ts20_prediction.py",
@@ -58,8 +60,10 @@
       "byte_suffix_server": "b'e__ == \"__main__\":\\n    main()\\n\\r\\n'",
       "python_ast_equal": true,
       "exact_difference": "Server bytes = local bytes + one trailing CRLF (0D 0A).",
-      "server_equals_local_plus_crlf": true
+      "server_equals_local_plus_crlf": true,
+      "archived_relative_path": "scripts/validate_x650_ts20_prediction.py.raw"
     }
   ],
-  "conclusion": "All three server-executed files equal the corresponding current local file bytes plus exactly one trailing CRLF (0D 0A). There are no comment, diagnostic label, code or numerical behavior changes. Python ASTs match; C++ content before trailing whitespace is byte-identical."
+  "conclusion": "All three server-executed files equal the corresponding current local file bytes plus exactly one trailing CRLF (0D 0A). There are no comment, diagnostic label, code or numerical behavior changes. Python ASTs match; C++ content before trailing whitespace is byte-identical.",
+  "archive_extension_semantics": "Original source bytes use a .raw suffix so repository test discovery never executes archived test modules; strip .raw when reconstructing the original project path."
 }

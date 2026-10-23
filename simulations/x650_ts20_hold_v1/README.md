@@ -96,7 +96,9 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 循环 observer 仍不主动 collect／disable GC 或改阈值；新版以三代各两个完整峰值事件、共固定 6 槽补足最近 64 个事件环的长期峰值时段记录。11 项 observer 及 provider／默认／恢复路径组成的 42 项本地合并回归保留为开发证据；随后[服务器 fresh 软件证明](../../docs/validation/ts20_prediction_chain_20261022/causal_joint_software_acceptance_20261023.json)绑定 86 项实际源，新执行 288 项测试（124 package＋134 interface／audit＋30 shared-loop）全部通过、0 skip，显式提供 native 测试库。原 30 个矩阵夹具重新运行全部通过，最大 26.684829965 ms；full/view 的矩阵、计划、状态、编码包和非线性输出等价，独立 timing 全部保留，最大 full／view 分别为 37.344370／26.682980 ms。证明 JSON 原始字节 SHA 为 `dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201`。
 
-首个 `software_v1` 保留 248 项、0 failure／4 个同源 ImportError 的失败输出，缺失的是服务器部署中已有跟踪的 `test_x650_precision_stage_audit.py` helper，没有飞行。补齐该文件精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`），不改控制或 driver，在全新 `software_v2` 重跑上述软件验收；不继承旧测试／矩阵成绩。新版 fresh folded hover 已启动但尚无证书，新的完整保持和快速轨迹尚未运行；软件通过不能升级旧飞行证书，旧记录和源码归档保持原身份。更完整的机制与边界见 TS20 接入[第 6 节](../../docs/X650_TS20_INTEGRATION.md#6-新预测链和单独的仿真工况)和[第 11 节](../../docs/X650_TS20_INTEGRATION.md#11-循环层时序诊断)。
+首个 `software_v1` 保留 248 项、0 failure／4 个同源 ImportError 的失败输出，缺失的是服务器部署中已有跟踪的 `test_x650_precision_stage_audit.py` helper，没有飞行。补齐该文件精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`），不改控制或 driver，在全新 `software_v2` 重跑上述软件验收；不继承旧测试／矩阵成绩。新版 fresh folded hover 与关节探针已通过完整独立验收；因果输入修正后的首次保持在 64 ms 控制间隔保护处失败，只有 6.412 s partial 记录，不能认证完整 30 s，快速轨迹未运行；软件通过不能升级旧飞行证书，旧记录和源码归档保持原身份。更完整的机制与边界见 TS20 接入[第 6 节](../../docs/X650_TS20_INTEGRATION.md#6-新预测链和单独的仿真工况)和[第 11 节](../../docs/X650_TS20_INTEGRATION.md#11-循环层时序诊断)。
+
+本轮保持的[精确失败记录](../../docs/validation/ts20_prediction_chain_20261022/causal_quiet_actual_20261023.json)保存了失败轮状态与循环边界。31.200 ms 自然 gen2 callback 区间完全位于 35.103 ms 的诊断转换／编码间隙，实际 write 仅 0.071 ms；下一轮在 allocator 之前拒绝 64 ms。安全收尾、部分 ULog／因果输入及源码档案核验通过，不等于保持通过。诊断序列化和记录在线聚合候选目前仅本地评估，未改 GC 策略或控制／模型／50 ms 门槛。
 
 ## 结果解释
 

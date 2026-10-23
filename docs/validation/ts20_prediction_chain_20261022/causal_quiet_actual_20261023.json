@@ -1,0 +1,494 @@
+{
+  "kind": "ts20_causal_quiet_failed_episode_v1",
+  "accepted_as_gate": false,
+  "complete_30s_hold": false,
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261023_141407_12889",
+  "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261023T061336Z_12883",
+  "error": "RuntimeError('Control interval 0.0640s exceeds 0.05s')",
+  "failure_phase": "unchanged dt guard after causal read, before allocator and dispatch",
+  "failure_control_time_s": 47.972,
+  "failure_task_time_s": 6.496000000000002,
+  "failed_dt_s": 0.06400000000000006,
+  "failed_allocator_invoked": false,
+  "failed_command_published": false,
+  "exact_failure_snapshot_available": true,
+  "measure_publications": 183,
+  "partial_window_sim_s": [
+    41.496,
+    47.908
+  ],
+  "partial_endpoint": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.020000000000003126,
+      6.432000000000002
+    ],
+    "sample_count": 1604,
+    "duration_s": 6.411999999999999,
+    "position_rmse_m": 0.0036675715932183157,
+    "position_max_m": 0.005229429339324845,
+    "axis_rmse_m": [
+      0.003489715118741537,
+      0.0007033375924876084,
+      0.0008822051985804667
+    ]
+  },
+  "partial_body_position": {
+    "unit": "m",
+    "sample_count": 1604,
+    "duration_s": 6.411999999999999,
+    "rmse_3d": 0.0031021454950141665,
+    "rmse_xy": 0.0028851209208063337,
+    "rmse_z": 0.0011399052349043337,
+    "axis_rmse": [
+      0.0028562660471553656,
+      0.0004070221069448797,
+      0.001139905234904334
+    ],
+    "peak_3d": 0.004418773552147947,
+    "peak_xy": 0.004162953614447927,
+    "peak_abs_z": 0.0015890847518464923,
+    "mean_vector": [
+      -0.00029482395526707073,
+      9.49957983093336e-05,
+      -0.0011081126794373014
+    ],
+    "mean_vector_norm": 0.0011505907511471934,
+    "centered_rms_3d": 0.0028808761854011065,
+    "sample_p95_3d": 0.004318946864063298,
+    "coordinate_system": "world ENU",
+    "no_offset_or_phase_fit": true
+  },
+  "partial_tilt_peak_deg": 0.06164029186892592,
+  "timing": {
+    "max_successful_compute_ms": 34.423600882291794,
+    "max_successful_send_interval_s": 0.04800000000000182,
+    "last_mpc_observation": {
+      "inner_allocator_compute_ms": 16.927465796470642,
+      "inner_allocator_thread_cpu_ms": 17.10028800000174,
+      "outer_thread_cpu_ms": 17.39797699999457,
+      "gc_collection_count_before": [
+        605,
+        55,
+        3
+      ],
+      "gc_collection_count_after": [
+        605,
+        55,
+        3
+      ],
+      "gc_collection_count_delta": [
+        0,
+        0,
+        0
+      ],
+      "gc_policy_changed": false,
+      "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+      "outer_compute_ms": 17.40296371281147
+    },
+    "last_successful_diagnostic_tree": {
+      "last_json_line_bytes_without_newline": 66110,
+      "outer_candidate_envelope_events": 116,
+      "allocation_diagnostics_candidate_envelope_events": 116,
+      "serialized_event_values_equal": true,
+      "python_object_alias_identity_not_recoverable_from_json": true
+    },
+    "last_actual_pva_returned_wall_s": 14783695.910933342,
+    "last_pva_trace_returned_to_next_read_wall_ms": 43.55747252702713,
+    "diagnostic_conversion_encoding_gap": {
+      "pump_sequence": 3841,
+      "begin": "control_write_exit",
+      "end": "diagnostic_write_begin",
+      "begin_wall_s": 14783695.911646102,
+      "end_wall_s": 14783695.946748791,
+      "wall_ms": 35.102689638733864,
+      "thread_cpu_ms": 35.093946000003484,
+      "clock_begin_s": 47.908,
+      "clock_end_s": 47.908,
+      "overlapping_gc": [
+        {
+          "generation": 2,
+          "overlap_wall_ms": 31.1990138143301
+        }
+      ]
+    },
+    "exact_segments": [
+      {
+        "pump_sequence": 3841,
+        "begin": "pump_entry",
+        "end": "original_pump_entry",
+        "begin_wall_s": 14783695.881563677,
+        "end_wall_s": 14783695.881571457,
+        "wall_ms": 0.0077802687883377075,
+        "thread_cpu_ms": 0.00765999999430278,
+        "clock_begin_s": 47.876,
+        "clock_end_s": 47.876,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "original_pump_entry",
+        "end": "original_pump_exit",
+        "begin_wall_s": 14783695.881571457,
+        "end_wall_s": 14783695.882665733,
+        "wall_ms": 1.0942760854959488,
+        "thread_cpu_ms": 1.0947600000008606,
+        "clock_begin_s": 47.876,
+        "clock_end_s": 47.876,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "original_pump_exit",
+        "end": "after_shared_drain",
+        "begin_wall_s": 14783695.882665733,
+        "end_wall_s": 14783695.887126006,
+        "wall_ms": 4.460273310542107,
+        "thread_cpu_ms": 4.312392000002774,
+        "clock_begin_s": 47.876,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "after_shared_drain",
+        "end": "read_entry",
+        "begin_wall_s": 14783695.887126006,
+        "end_wall_s": 14783695.887144957,
+        "wall_ms": 0.018950551748275757,
+        "thread_cpu_ms": 0.018148999998857107,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "read_entry",
+        "end": "read_returned",
+        "begin_wall_s": 14783695.887144957,
+        "end_wall_s": 14783695.888927583,
+        "wall_ms": 1.7826259136199951,
+        "thread_cpu_ms": 1.7836410000029446,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "read_returned",
+        "end": "joint1_publish_trace_entry",
+        "begin_wall_s": 14783695.888927583,
+        "end_wall_s": 14783695.910097728,
+        "wall_ms": 21.17014490067959,
+        "thread_cpu_ms": 21.169739999997716,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "joint1_publish_trace_entry",
+        "end": "joint1_publish_trace_returned",
+        "begin_wall_s": 14783695.910097728,
+        "end_wall_s": 14783695.910370672,
+        "wall_ms": 0.2729445695877075,
+        "thread_cpu_ms": 0.2722500000018613,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "joint1_publish_trace_returned",
+        "end": "joint2_publish_trace_entry",
+        "begin_wall_s": 14783695.910370672,
+        "end_wall_s": 14783695.910379045,
+        "wall_ms": 0.008372589945793152,
+        "thread_cpu_ms": 0.008059999998977219,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "joint2_publish_trace_entry",
+        "end": "joint2_publish_trace_returned",
+        "begin_wall_s": 14783695.910379045,
+        "end_wall_s": 14783695.910615597,
+        "wall_ms": 0.23655220866203308,
+        "thread_cpu_ms": 0.23677000000077442,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "joint2_publish_trace_returned",
+        "end": "pva_publish_trace_entry",
+        "begin_wall_s": 14783695.910615597,
+        "end_wall_s": 14783695.91081173,
+        "wall_ms": 0.1961328089237213,
+        "thread_cpu_ms": 0.19607999999493586,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "pva_publish_trace_entry",
+        "end": "pva_publish_trace_returned",
+        "begin_wall_s": 14783695.91081173,
+        "end_wall_s": 14783695.911134103,
+        "wall_ms": 0.3223735839128494,
+        "thread_cpu_ms": 0.3221500000023525,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "pva_publish_trace_returned",
+        "end": "feedback_stream_write_begin",
+        "begin_wall_s": 14783695.911134103,
+        "end_wall_s": 14783695.91152007,
+        "wall_ms": 0.38596615195274353,
+        "thread_cpu_ms": 0.38631000000322047,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "feedback_stream_write_begin",
+        "end": "feedback_stream_write_exit",
+        "begin_wall_s": 14783695.91152007,
+        "end_wall_s": 14783695.91154057,
+        "wall_ms": 0.020500272512435913,
+        "thread_cpu_ms": 0.020270000000266464,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "feedback_stream_write_exit",
+        "end": "control_write_begin",
+        "begin_wall_s": 14783695.91154057,
+        "end_wall_s": 14783695.911641521,
+        "wall_ms": 0.10095164179801941,
+        "thread_cpu_ms": 0.1009899999999675,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "control_write_begin",
+        "end": "control_write_exit",
+        "begin_wall_s": 14783695.911641521,
+        "end_wall_s": 14783695.911646102,
+        "wall_ms": 0.004580244421958923,
+        "thread_cpu_ms": 0.004479999994089212,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "control_write_exit",
+        "end": "diagnostic_write_begin",
+        "begin_wall_s": 14783695.911646102,
+        "end_wall_s": 14783695.946748791,
+        "wall_ms": 35.102689638733864,
+        "thread_cpu_ms": 35.093946000003484,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": [
+          {
+            "generation": 2,
+            "overlap_wall_ms": 31.1990138143301
+          }
+        ]
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "diagnostic_write_begin",
+        "end": "diagnostic_write_exit",
+        "begin_wall_s": 14783695.946748791,
+        "end_wall_s": 14783695.946819702,
+        "wall_ms": 0.07091090083122253,
+        "thread_cpu_ms": 0.07022999999861668,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3841,
+        "begin": "diagnostic_write_exit",
+        "end": "pump_exit",
+        "begin_wall_s": 14783695.946819702,
+        "end_wall_s": 14783695.946920473,
+        "wall_ms": 0.100770965218544,
+        "thread_cpu_ms": 0.1010100000016223,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "pump_entry",
+        "end": "original_pump_entry",
+        "begin_wall_s": 14783695.946947465,
+        "end_wall_s": 14783695.946959473,
+        "wall_ms": 0.01200847327709198,
+        "thread_cpu_ms": 0.011999999998124622,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "original_pump_entry",
+        "end": "original_pump_exit",
+        "begin_wall_s": 14783695.946959473,
+        "end_wall_s": 14783695.948526977,
+        "wall_ms": 1.5675034373998642,
+        "thread_cpu_ms": 1.5603510000019583,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.908,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "original_pump_exit",
+        "end": "after_shared_drain",
+        "begin_wall_s": 14783695.948526977,
+        "end_wall_s": 14783695.952399652,
+        "wall_ms": 3.872675821185112,
+        "thread_cpu_ms": 3.873641999994959,
+        "clock_begin_s": 47.908,
+        "clock_end_s": 47.972,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "after_shared_drain",
+        "end": "read_entry",
+        "begin_wall_s": 14783695.952399652,
+        "end_wall_s": 14783695.952423723,
+        "wall_ms": 0.024070963263511658,
+        "thread_cpu_ms": 0.02258900000384756,
+        "clock_begin_s": 47.972,
+        "clock_end_s": 47.972,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "read_entry",
+        "end": "read_returned",
+        "begin_wall_s": 14783695.952423723,
+        "end_wall_s": 14783695.954691576,
+        "wall_ms": 2.2678524255752563,
+        "thread_cpu_ms": 2.2689209999953164,
+        "clock_begin_s": 47.972,
+        "clock_end_s": 47.972,
+        "overlapping_gc": []
+      },
+      {
+        "pump_sequence": 3842,
+        "begin": "read_returned",
+        "end": "interval_rejection_observed",
+        "begin_wall_s": 14783695.954691576,
+        "end_wall_s": 14783695.954709088,
+        "wall_ms": 0.017512589693069458,
+        "thread_cpu_ms": 0.016471000002127312,
+        "clock_begin_s": 47.972,
+        "clock_end_s": 47.972,
+        "overlapping_gc": []
+      }
+    ]
+  },
+  "overlapping_natural_gc_events": [
+    {
+      "generation": 2,
+      "start_wall_monotonic_s": 14783695.91290823,
+      "stop_wall_monotonic_s": 14783695.944107244,
+      "start_perf_counter_s": 14783695.9129085,
+      "stop_perf_counter_s": 14783695.944108533,
+      "start_thread_cpu_s": 38.491651855,
+      "stop_thread_cpu_s": 38.522846879,
+      "start_thread_ident": 139623315280320,
+      "stop_thread_ident": 139623315280320,
+      "wall_s": 0.03120003268122673,
+      "thread_cpu_s": 0.03119502399999874,
+      "collected": 9,
+      "uncollectable": 0
+    }
+  ],
+  "finding": "Natural generation-2 collection interval lies wholly inside the diagnostic pre-write conversion/encoding gap after the last accepted PVA. Next pump drains the advanced simulation clock and rejects 64ms interval before allocator. Collector-specific stack/causal intervention was not recorded.",
+  "gc_event_durations_include_intervening_callbacks": true,
+  "gc_specific_trigger_stack_identified": false,
+  "historical_53_56ms_failures_causally_explained": false,
+  "partial_ulog_verified": true,
+  "partial_causal_feedback_verified": true,
+  "landed_and_disarmed": true,
+  "runtime_closed": true,
+  "pending_journal": false,
+  "typed_restore_verified": true,
+  "synchronous_storage_save_verified": true,
+  "PID42_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+  "source_verification": {
+    "failed_episode_sources_verified": true,
+    "does_not_certify_complete_flight": true,
+    "before_after_source_scope_and_bytes_equal": true,
+    "live_sources_still_equal": true,
+    "archives": [
+      {
+        "file": "controller_sources.zip",
+        "sha256": "d698d225c52e15f7929c3c4169e5c96de852c37a1ba40c727215d3852f39faf7",
+        "source_files": 49
+      },
+      {
+        "file": "platform_sources.zip",
+        "sha256": "26d1e9f21e89084b6b0b15b976e8882b0834e6f25915bf671061fb828dd0f2ee",
+        "source_files": 38
+      },
+      {
+        "file": "software_sources.zip",
+        "sha256": "ab026a24f61653b79cda2a52078a9820bbf4da720149a3dd2642d8ae4fb81d62",
+        "source_files": 86
+      }
+    ],
+    "software_acceptance_sha256": "dfc55fea230a857829a5a109219db1c15e18f46f9f7f54b76d8feb4e95359201",
+    "platform_provenance_sha256": "d6a6f347c5e68b8c24caa71bfb81b48f053a0d94736ba5c5befca9ef20c2d6f7",
+    "native_library": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "bytes": 25112,
+      "cpp_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "cpp_sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "abi": 1
+    }
+  },
+  "observer_manifest": {
+    "file": "loop_timing_evidence.json",
+    "sha256": "f6de6ccf969015db267aab4ed8d68a6b907fea91b47b677478a8bb2e34360b7a",
+    "complete": true,
+    "interval_failure_recorded": true,
+    "observations_valid": true
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  },
+  "failure_evidence_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_causal_chain_20261023/quiet_failure_v1/failure_evidence.json",
+  "failure_evidence_sha256": "3664357ffe8d66551fef52b84d6019a69fff44a6a16b0adc6fe12a194e9fa255",
+  "timeline_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_causal_chain_20261023/quiet_failure_v1/timeline.json",
+  "timeline_sha256": "ebe769e5b4a2f56f503b359a2a356e5dc4aac7c612a05141ed2e7ab51a2dc08d"
+}
