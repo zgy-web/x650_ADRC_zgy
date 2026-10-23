@@ -15,6 +15,7 @@ for directory in (ROOT, ROOT / "src", ROOT / "control_packages/x650_wholebody_v1
         sys.path.insert(0, str(directory))
 from simulations.x650_ts20_hold_v1 import task
 from simulations.x650_ts20_hold_v1.loop_timing import LoopTimingObserver
+from simulations.x650_ts20_hold_v1.diagnostic_serialization import encode_diagnostic_row
 from simulations.x650_wholebody_mpc_v1 import run_case as shared
 from x650_wholebody.ts20 import FrozenTs20Model
 from x650_wholebody.ts20_prediction import Ts20PredictionModel
@@ -99,6 +100,9 @@ class Ts20Extension:
     def on_pump(self, loop, sim):
         if self.loop_timing is not None:
             self.loop_timing.after_drain(sim)
+
+    def encode_diagnostic_row(self, row):
+        return encode_diagnostic_row(row, reference_converter=shared.json_value)
 
     def before_publish(self, loop, begin, sim, command):
         if loop.recovery:

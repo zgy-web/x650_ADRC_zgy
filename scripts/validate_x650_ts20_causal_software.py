@@ -1,8 +1,10 @@
-"""Fresh causal-joint software proof; no flight and no inherited test results.
+"""Fresh TS20 software-plumbing proof; no flight or inherited test results.
 
 The previous proof is a hash-pinned source of unchanged oracle/native/physical
 identities only. Package, interface/auditor/shared regressions, full/view QP
 equivalence and the original 30 fixtures are executed again in a fresh folder.
+This revision includes causal joint selection, bounded recorder statistics and
+the diagnostic-specific serializer; previous causal-v2 results are not reused.
 """
 from __future__ import annotations
 
@@ -32,9 +34,11 @@ EXTRA_SOURCES = (
     "simulations/x650_ts20_hold_v1/audit.py",
     "simulations/x650_ts20_hold_v1/task.py",
     "simulations/x650_ts20_hold_v1/loop_timing.py",
+    "simulations/x650_ts20_hold_v1/diagnostic_serialization.py",
     "simulations/x650_ts20_hold_v1/launch_chain_v4.py",
     "scripts/audit_x650_mixed_feedback.py",
     "scripts/validate_x650_ts20_causal_software.py",
+    "scripts/profile_x650_ts20_diagnostic_serialization.py",
 )
 UNIT_PATTERNS = (
     "test_x650_ts20_*.py", "test_ts20_causal_feedback_audit.py",
@@ -42,14 +46,18 @@ UNIT_PATTERNS = (
     "test_x650_estimated_feedback.py", "test_x650_prediction_timing_feedback.py",
     "test_x650_mixed_estimated_feedback.py", "test_x650_upper_stage_audit.py",
     "test_x650_activation_handoff.py", "test_x650_execution_trace.py",
+    "test_ts20_diagnostic_serialization.py",
 )
-SHARED_PATTERNS = ("test_upper_loop.py", "test_lifecycle.py", "test_status_receipt_guard.py")
+SHARED_PATTERNS = ("test_upper_loop.py", "test_lifecycle.py", "test_status_receipt_guard.py", "test_recording.py")
 REVIEWED_CAUSAL_SOURCES = {
     PKG+"/x650_wholebody/ts20_runtime.py": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080",
     "simulations/x650_wholebody_mpc_v1/estimated_feedback.py": "312ccc060320ba1af4008f2582a6de4212934d7630c2b653d4e55ca8a0dc7090",
-    "simulations/x650_wholebody_mpc_v1/run_case.py": "84f7cbc67b193b971b39ca5834ba6e756d065f89ceb9b979659825b371721316",
-    "simulations/x650_wholebody_mpc_v1/recording.py": "a56db35aa16449ae93da748f98cab797b9b17ec5cddf427f302a97c5ee9dcec3",
-    "simulations/x650_ts20_hold_v1/run_case.py": "2cc54023645e4c49008d659aa8c80bc1cc68be97b83649cb4d4ef414bd120e35",
+    "simulations/x650_wholebody_mpc_v1/run_case.py": "8ed20f88a9a626a038294df44b56becbd7486173fdfbb2433460e5fe2309e648",
+    "simulations/x650_wholebody_mpc_v1/recording.py": "2378a55ae2db2f586843c99dcb3341a01875f0a9fae06b56e91d13a151803e38",
+    "simulations/x650_wholebody_mpc_v1/tests/test_recording.py": "d784fd6ce2adc735c9ba86c4c5dba18d60129197cfd06e18c681e603f35fa1f2",
+    "simulations/x650_ts20_hold_v1/run_case.py": "77f4c9dfa0c2c3f8f309cefb413c5d44815b6695c4ee02d6542d63c440495bd8",
+    "simulations/x650_ts20_hold_v1/diagnostic_serialization.py": "c83575362bc097086c3bbe4ab50c292972dddb80fc16b7d5a130913e025ea1c3",
+    "tests/unit/test_ts20_diagnostic_serialization.py": "56adbbf7867478745ce9cd0a6a0d7e2207987b5a7a37bfd0e8e77594070f6872",
     "tests/unit/test_x650_ts20_causal_joints.py": "21a91435d644471b650e2a0a0babce05ba39b126153eb68a0acbd7647afe9500",
     "tests/unit/test_x650_ts20_extension.py": "efe835b321f5f710496f12f0fa04cb99840510b1c7693c6b3a7c619483197e55",
     "scripts/audit_x650_mixed_feedback.py": "a0418b10be072dfb48087eba780e8b0de37a082d4352e3e2ba74198a1f7c65e6",
@@ -57,6 +65,7 @@ REVIEWED_CAUSAL_SOURCES = {
     "tests/unit/test_ts20_causal_feedback_audit.py": "22b3876e75a6b28d1cde5fa9665b5a9e9a86fce1321e85f1fb1f118afac16734",
     "simulations/x650_ts20_hold_v1/loop_timing.py": "2d1f9242e3b3286a9b19448751ea440fb9da40294f3e487b24e83c8fbda0e535",
     "tests/unit/test_ts20_loop_timing.py": "bd89dc191a1dfea2bfef929be437a309da7797728517f52cd6bf4b3ffa024744",
+    "scripts/profile_x650_ts20_diagnostic_serialization.py": "8b8320a09248cb7abbff00d614983b268b3f02cdca220125f69e618f2469ae48",
 }
 
 
@@ -266,7 +275,7 @@ def main():
             "fresh_equivalence": {k: matrix[k] for k in ("equivalence_passed", "differences", "constraint_view", "independent_timing")},
             "historical_failures": previous["historical_failures"],
             "source_archive": identity(archive), "driver": identity(__file__),
-            "scope": "Software only. Upper-active causal joint source; unchanged physics, predictor/kernel, gains, weights, horizon and all safety/timing bounds. Fresh physical stages are required; no old certificates promoted."}
+            "scope": "Software plumbing revision only: causal joint selection, bounded recorder statistics and TS20-specific diagnostic encoding. Unchanged physics, predictor/kernel, gains, weights, horizon, GC policy and all safety/timing bounds. Fresh package/interface/shared regressions and original 30-case/full-view checks; no causal-v2 results or old physical certificates promoted."}
         write_new(out/"software_acceptance_compact.json", proof)
         print(json.dumps({"proof": identity(out/"software_acceptance_compact.json"),
                           "tests": suite["tests"], "skipped": suite["skipped"],

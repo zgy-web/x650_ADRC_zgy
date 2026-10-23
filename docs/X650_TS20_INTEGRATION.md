@@ -264,7 +264,13 @@ v4 安静保持仍未取得完整通过证书：554 次 measure 发布之后，�
 
 因果输入修正后的首次保持仍失败，详见[本轮精确失败与时序记录](validation/ts20_prediction_chain_20261022/causal_quiet_actual_20261023.json)。183 次 measure 发布后，下一轮在 `dt=64 ms > 50 ms` 的原保护处停止，未调用 allocator、未发布被拒指令。独立物理记录仅覆盖 6.412 s、1604 点，末端 RMS 3.66757 mm／峰值 5.22943 mm，不能当作完整 30 s 保持通过。部分窗口的因果反馈、参考状态、MIT 包、ULog、11 项 typed 恢复、同步保存、42 项 PID 与 49／38／86 项实际控制／平台／软件源档案均核过，已着陆解除锁定并关闭 runtime。
 
-本轮有精确临界段：最后成功 PVA 返回后，`control_write_exit → diagnostic_write_begin` 耗时 35.102690 ms，其中完整自然 gen2 callback 区间为 31.200033 ms，位于诊断转换／编码的写入前间隙；实际诊断 write 为 0.070911 ms。随后 pump／callback drain 把处理时钟从 47.908 推到 47.972 s，下一轮拒绝 64 ms 间隔。没有采集 GC 触发栈，不能细分为 `json_value` 或 `json.dumps` 的哪条分配触发，也不把这次结论外推到历史 53／56 ms。当前只在本地评估诊断序列化避免整树复制、记录在线统计两项候选，GC 策略、模型、控制参数与门槛保持不变，候选尚未取得新的服务器闭环证据。
+本轮有精确临界段：最后成功 PVA 返回后，`control_write_exit → diagnostic_write_begin` 耗时 35.102690 ms，其中完整自然 gen2 callback 区间为 31.200033 ms，位于诊断转换／编码的写入前间隙；实际诊断 write 为 0.070911 ms。随后 pump／callback drain 把处理时钟从 47.908 推到 47.972 s，下一轮拒绝 64 ms 间隔。没有采集 GC 触发栈，不能细分为 `json_value` 或 `json.dumps` 的哪条分配触发，也不把这次结论外推到历史 53／56 ms。随后实现诊断序列化避免整树复制、记录在线统计两项修正，GC 策略、模型、控制参数与门槛保持不变；其软件验收与新的实际阶段分开记录如下。
+
+本轮记录路径修正中，TS20 显式 serializer 仅对字符串键、限定数值 dtype 和最多 32 层内建容器使用直接编码，避免先复制整棵 dict/list 树。其余输入完整回到原 `json_value + dumps`，保留键转换、object／longdouble、自定义类型、循环和非有限数的既有语义；没有启用 hook 的共享场景仍用原表达式。识别函数为模块级递归，不逐轮产生闭包自环。FlightRecorder 只保留采样数、phase 计数和间隔统计，完整 CSV 保持原字节；14 项 recorder 测试含冻结旧类的逐字段及 CSV／manifest 原字节对照，长期对象数量不随采样行数增加。
+
+服务器真实末尾 20 条 decoded 诊断记录的 100 对 AB／BA 样本逐字节相同，旧／新编码中位数为 5.169196／3.617654 ms；另一个新生成 NumPy inner-allocation 样本的 5 对中位数为 2.292931／1.725961 ms。独立 tracemalloc 该 NumPy 样本峰值为 356115／296315 B，tracemalloc 不混作普通计时。全部 raw 计时、自然 GC、类型与分配结果见[完整离线观测](validation/ts20_prediction_chain_20261022/recording_serialization_observation_20261023.json)，由原报告 SHA `f41579662b059b549c8e9ad03182af51522122ad5780391055da1f09753efc01` 绑定。decoded JSON 不恢复历史 NumPy 类型／alias／heap；新 NumPy 样本不代表完整 adapter heap，离线节省不保证消除真实 gen2 停顿。
+
+新[记录路径软件证明](validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)原字节 SHA 为 `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，绑定 89 项实际源；317 项测试（124 package、149 interface／audit、44 shared-loop）全部通过、0 skip，原 30 工况重新全部通过，最大 26.608396 ms，full/view 比较差值均为零。新的 folded hover 已通过完整 20 s 验收，三维 RMS 1.76454 mm／峰值 2.71331 mm；新的关节探针正在运行，完整末端保持仍须取得当前代码的实际证据，快速轨迹保持关闭。此前失败及证书保留各自原始身份。
 
 ## 12. 真机条件仍需补齐
 

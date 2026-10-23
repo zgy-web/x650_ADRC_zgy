@@ -98,7 +98,9 @@ env -u PYTHONPATH OPENBLAS_NUM_THREADS=1 /usr/bin/python3 \
 
 首个 `software_v1` 保留 248 项、0 failure／4 个同源 ImportError 的失败输出，缺失的是服务器部署中已有跟踪的 `test_x650_precision_stage_audit.py` helper，没有飞行。补齐该文件精确字节（SHA `36c4d9f24185dff7a714ba7b48b282d909c3006cf02f9d014effe06dbea94699`），不改控制或 driver，在全新 `software_v2` 重跑上述软件验收；不继承旧测试／矩阵成绩。新版 fresh folded hover 与关节探针已通过完整独立验收；因果输入修正后的首次保持在 64 ms 控制间隔保护处失败，只有 6.412 s partial 记录，不能认证完整 30 s，快速轨迹未运行；软件通过不能升级旧飞行证书，旧记录和源码归档保持原身份。更完整的机制与边界见 TS20 接入[第 6 节](../../docs/X650_TS20_INTEGRATION.md#6-新预测链和单独的仿真工况)和[第 11 节](../../docs/X650_TS20_INTEGRATION.md#11-循环层时序诊断)。
 
-本轮保持的[精确失败记录](../../docs/validation/ts20_prediction_chain_20261022/causal_quiet_actual_20261023.json)保存了失败轮状态与循环边界。31.200 ms 自然 gen2 callback 区间完全位于 35.103 ms 的诊断转换／编码间隙，实际 write 仅 0.071 ms；下一轮在 allocator 之前拒绝 64 ms。安全收尾、部分 ULog／因果输入及源码档案核验通过，不等于保持通过。诊断序列化和记录在线聚合候选目前仅本地评估，未改 GC 策略或控制／模型／50 ms 门槛。
+本轮保持的[精确失败记录](../../docs/validation/ts20_prediction_chain_20261022/causal_quiet_actual_20261023.json)保存了失败轮状态与循环边界。31.200 ms 自然 gen2 callback 区间完全位于 35.103 ms 的诊断转换／编码间隙，实际 write 仅 0.071 ms；下一轮在 allocator 之前拒绝 64 ms。安全收尾、部分 ULog／因果输入及源码档案核验通过，不等于保持通过。诊断序列化和记录在线聚合随后完成服务器软件验收，未改 GC 策略或控制／模型／50 ms 门槛。
+
+记录路径修正的[服务器证明](../../docs/validation/ts20_prediction_chain_20261022/recording_software_acceptance_20261023.json)为 SHA `c71da7352984187a3c54be518787dee6669fbfe87fa055201d97f003056525b3`，89 项来源绑定、317 项测试全过／0 skip、原 30 工况全过，最大 26.608396 ms。直接编码仅用于严格支持域，其他输入回原 helper；未启用 hook 的场景保持原路径。在线统计与旧 recorder 的 CSV／manifest 对照一致。真实 decoded 诊断 100 对样本逐字节一致，编码中位数由 5.169196 降至 3.617654 ms；独立新 NumPy 样本与历史 decoded 数据分开观测，不声称还原历史 heap 或保证保持成功。新一轮 folded hover 已通过完整 20 s 验收，RMS 1.76454 mm／峰值 2.71331 mm；新的关节探针正在运行，完整保持仍待验收，快速轨迹未运行。
 
 ## 结果解释
 

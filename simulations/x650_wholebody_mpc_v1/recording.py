@@ -70,7 +70,11 @@ def state_from_node(node, *, joint_observation=None):
 
 
 class FlightRecorder:
-    """Capture every flight phase on the API's existing ROS executor."""
+    """Capture every flight phase without retaining each CSV row in memory.
+
+    Scalar interval/count statistics and one ordered counter per phase suffice
+    for the manifest. The complete original samples remain in the CSV stream.
+    """
     columns = ["sim_time_s", "phase", "world_x_m", "world_y_m", "world_z_m",
                "world_qx", "world_qy", "world_qz", "world_qw", "q1_rad", "q2_rad",
                "q1_velocity_rad_s", "q2_velocity_rad_s", "joint_stamp_s", "joint_age_s",
@@ -83,7 +87,10 @@ class FlightRecorder:
             raise ValueError("Capture rate must be positive")
         self.folder, self.rate_hz = Path(folder), float(rate_hz)
         self.model_sha256, self.source_urdf_sha256 = model_sha256, source_urdf_sha256
-        self.phase, self.rows, self.error = "ground_ready", [], None
+        self.phase, self.error = "ground_ready", None
+        self._sample_count, self._phase_counts = 0, {}
+        self._last_recorded_stamp = None
+        self._interval_min_s, self._interval_max_s = None, None
         self.target_body, self.tip_target = None, None
         self.clock_s, self.last_stamp, self.next_sample = 0., None, None
         self.context, self.subscriptions = None, []
@@ -149,7 +156,13 @@ class FlightRecorder:
                 row.update({prefix+axis+"_m": "" if target is None else float(value)
                             for axis, value in zip("xyz", [None]*3 if target is None else target)})
             self.writer.writerow(row)
-            self.rows.append(row)
+            if self._last_recorded_stamp is not None:
+                interval = stamp-self._last_recorded_stamp
+                self._interval_min_s = interval if self._interval_min_s is None else min(self._interval_min_s, interval)
+                self._interval_max_s = interval if self._interval_max_s is None else max(self._interval_max_s, interval)
+            self._last_recorded_stamp = stamp
+            self._sample_count += 1
+            self._phase_counts[row["phase"]] = self._phase_counts.get(row["phase"], 0)+1
             period = 1/self.rate_hz
             self.next_sample = stamp+period if self.next_sample is None else self.next_sample+max(1, math.floor((stamp-self.next_sample)/period+1e-9)+1)*period
             if time.monotonic()-self.last_flush > 1.:
@@ -167,17 +180,16 @@ class FlightRecorder:
             self.context.node.destroy_subscription(sub)
         self.subscriptions = []
         self.stream.close()
-        intervals = np.diff([r["sim_time_s"] for r in self.rows])
-        manifest = dict(schema_version=1, complete=bool(complete and not self.error and len(self.rows) > 1),
+        manifest = dict(schema_version=1, complete=bool(complete and not self.error and self._sample_count > 1),
                         file="flight_samples.csv", sha256=sha(self.folder/"flight_samples.csv"),
                         model_sha256=self.model_sha256, source_urdf_sha256=self.source_urdf_sha256,
-                        requested_rate_hz=self.rate_hz, sample_count=len(self.rows), capture_error=self.error,
-                        phases={p: sum(r["phase"] == p for r in self.rows) for p in dict.fromkeys(r["phase"] for r in self.rows)},
+                        requested_rate_hz=self.rate_hz, sample_count=self._sample_count, capture_error=self.error,
+                        phases=dict(self._phase_counts),
                         time_semantics="Original truth header stamp; measured joints have their own asynchronous stamp; no inserted/interpolated samples",
                         tip_semantics="Only desired tip_target_world is present; actual independent tip is native_trace.csv",
                         pose_semantics="Original Gazebo ENU base_link pose; ROS xyzw quaternion; frame IDs retained",
-                        interval_min_s=None if not len(intervals) else float(intervals.min()),
-                        interval_max_s=None if not len(intervals) else float(intervals.max()))
+                        interval_min_s=self._interval_min_s,
+                        interval_max_s=self._interval_max_s)
         atomic_json(self.folder/"flight_samples_manifest.json", manifest)
         return manifest
 

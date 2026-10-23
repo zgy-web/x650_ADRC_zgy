@@ -594,6 +594,13 @@ class ControlLoop:
             return max(clocks)
         return self.recorder.now()
 
+    def encode_diagnostic_row(self, row):
+        """Allow an explicit scenario serializer; retain the default expression."""
+        encode = getattr(self.extension, "encode_diagnostic_row", None)
+        if callable(encode):
+            return encode(row)
+        return json.dumps(json_value(row), allow_nan=False)+"\n"
+
     def read(self):
         joint_observation = None
         selector = getattr(self.extension, "select_joint_observation", None)
@@ -816,7 +823,7 @@ class ControlLoop:
             diagnostic_row = {"sim_s": sim, "t_s": t, "diagnostics": command.diagnostics}
             if self.cfg.get("mixed_mpc_protocol") is not None or self.extension is not None:
                 diagnostic_row["phase"] = self.recorder.phase
-            self.diagnostic.write(json.dumps(json_value(diagnostic_row), allow_nan=False)+"\n")
+            self.diagnostic.write(self.encode_diagnostic_row(diagnostic_row))
         if self.rows % 50 == 0:
             self.control.flush()
             self.diagnostic.flush()
