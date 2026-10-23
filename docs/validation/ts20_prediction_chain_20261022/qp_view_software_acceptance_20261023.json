@@ -1,0 +1,280 @@
+{
+  "kind": "ts20_qp_view_software_compact_v1",
+  "software_cpu_stage_ended": true,
+  "no_flight_started": true,
+  "equivalence_passed": true,
+  "problem_arrays_exact": {
+    "H": true,
+    "g": true,
+    "A": true,
+    "b": true,
+    "C": true,
+    "lo": true,
+    "hi": true
+  },
+  "differences": {
+    "normalized_plan_peak": 0,
+    "predicted_state_peak": 0,
+    "objective_error": 0,
+    "quadratic_objective_error": 0,
+    "nonlinear_q_peak": 0,
+    "nonlinear_dq_peak": 0
+  },
+  "encoded_packets_exact": true,
+  "constraint_view": {
+    "original_rows": 305,
+    "solver_rows": 130,
+    "duplicate_rows_merged": 35,
+    "box_implied_rows_omitted": 140,
+    "proof": "retained singleton bounds; outward quotient rounding and guarded row intervals",
+    "full_constraints_retained_for_quality": true
+  },
+  "sides": {
+    "full": {
+      "step_returned": true,
+      "full_C_quality_passed": true,
+      "full_C_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 4.2609145378680324e-17,
+        "kkt_complementarity_inf": 3.700322095459509e-20,
+        "active_constraints": 20
+      },
+      "nonlinear_check_passed": true,
+      "nonlinear_bounds_passed": true,
+      "q_linearization_error_rad": 0.00011536385097442141,
+      "dq_linearization_error_rad_s": 0.0014003010275666153,
+      "objective": 0.002192705281959247
+    },
+    "view": {
+      "step_returned": true,
+      "full_C_quality_passed": true,
+      "full_C_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 4.2609145378680324e-17,
+        "kkt_complementarity_inf": 3.700322095459509e-20,
+        "active_constraints": 20
+      },
+      "nonlinear_check_passed": true,
+      "nonlinear_bounds_passed": true,
+      "q_linearization_error_rad": 0.00011536385097442141,
+      "dq_linearization_error_rad_s": 0.0014003010275666153,
+      "objective": 0.002192705281959247
+    }
+  },
+  "independent_timing": [
+    {
+      "view": "full",
+      "passed": true,
+      "wall_ms": 29.787609353661537,
+      "compute_ms": 29.77260947227478,
+      "solve_ms": 9.891463443636894
+    },
+    {
+      "view": "view",
+      "passed": true,
+      "wall_ms": 26.434902101755142,
+      "compute_ms": 26.393739506602287,
+      "solve_ms": 6.743054836988449
+    },
+    {
+      "view": "view",
+      "passed": true,
+      "wall_ms": 35.83024814724922,
+      "compute_ms": 35.78635677695274,
+      "solve_ms": 6.673604249954224
+    },
+    {
+      "view": "full",
+      "passed": true,
+      "wall_ms": 29.236001893877983,
+      "compute_ms": 29.187403619289398,
+      "solve_ms": 9.328076615929604
+    },
+    {
+      "view": "full",
+      "passed": true,
+      "wall_ms": 30.169036239385605,
+      "compute_ms": 30.12837842106819,
+      "solve_ms": 9.249057620763779
+    },
+    {
+      "view": "view",
+      "passed": true,
+      "wall_ms": 26.216773316264153,
+      "compute_ms": 26.177413761615753,
+      "solve_ms": 6.6531952470541
+    }
+  ],
+  "matrix": {
+    "total": 30,
+    "passed": 30,
+    "max_wall_ms": 27.68504060804844,
+    "failures": [],
+    "original_script_sha256": "a2768dd7b87d04e714d34243caa0073025c9db77188971f1d18a00bc74006e61",
+    "historical_failure_sha256": "c17200af4cfbc3d5a114e71d9f252bd565df0020b3cdcdbef4d58ec57880bb5e"
+  },
+  "regression": {
+    "total": 117,
+    "passed": 116,
+    "optional_skip": 1,
+    "seconds": 2.572
+  },
+  "native_backend": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "abi": 1
+  },
+  "deployment": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py",
+      "sha256": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+      "bytes": 4020
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+      "sha256": "633b101aeba41681fae3b814dab4180a94a6a04affe4c5eb6bc7d664aa8bccfa",
+      "bytes": 13296
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/tests/test_qp_constraints.py",
+      "sha256": "d6500b269fc584d8328b8319d9a7179831744df097a3c433881c9660d8fa6c5e",
+      "bytes": 4439
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/tests/test_ts20_mpc.py",
+      "sha256": "96155088f69a72ab1308d46821b7f676ca48dd58faf3b2111e413ffaee55c03e",
+      "bytes": 7193
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/mpc.py",
+      "sha256": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+      "bytes": 45468
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/profile_x650_ts20_actual_step.py",
+      "sha256": "9b48bcf9a321175e8c9f8fd5b58c5559c23ad0ff60f9256dcba0e33683737f6c",
+      "bytes": 18655
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/profile_x650_ts20_matrix_fixture.py",
+      "sha256": "46b14cf27c72d9f6dd084ccb4eb6ffcfbc1d591a9d82604b4121b22b026a705a",
+      "bytes": 9922
+    }
+  ],
+  "acceptance_harness": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/validate_x650_ts20_qp_view.py",
+    "sha256": "a40881d87779708c60874843f4019e83615971b60d58a91ff4d33fb4841fb6b2",
+    "bytes": 11365
+  },
+  "cpu_environment_before": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/cpu_environment_before.json",
+  "cpu_environment_after": {
+    "loadavg": [
+      27.35302734375,
+      31.92041015625,
+      34.04345703125
+    ],
+    "cpu_stat": "usage_usec 75537442\nuser_usec 53934620\nsystem_usec 21602822\nnr_periods 9915\nnr_throttled 0\nthrottled_usec 0\n",
+    "affinity_count": 256,
+    "cpu_max": "1800000 100000",
+    "thread_env": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "18",
+      "NUMEXPR_NUM_THREADS": null
+    }
+  },
+  "unrelated_tracked_files_unchanged": true,
+  "unrelated_file_checks": [
+    {
+      "path": "README.md",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/fr3_gazebo_six_axis_dynamics_v1.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/api/context.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/api/node.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/cli.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/hil/process.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/hil/supervisor.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/modeling/manager.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/recording.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/run_manager.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/runtime/process.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/runtime/readiness_check.py",
+      "unchanged": true
+    },
+    {
+      "path": "src/amsim/runtime/sitl_supervisor.py",
+      "unchanged": true
+    }
+  ],
+  "server_head": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+  "evidence_files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/software_v1/validation_summary.json",
+      "sha256": "e2c90450522cf11c659fd6ff740b2b52d80a87ef2609bb43cddf399734469155",
+      "bytes": 10057
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/software_v1/equivalence.json",
+      "sha256": "a8f0cfd3abdde7824397226ff19b554ba922e1cf598300c30214e866b29b81bc",
+      "bytes": 2452096
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/software_v1/independent_timing.json",
+      "sha256": "71ec4cd5ffb41b9051fe1bcc0f7a468383692be65e398a5311e2481c10e70e3a",
+      "bytes": 932
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/software_v1/matrix_result.json",
+      "sha256": "765094a1ca2071962645ac757bf5a4b721dd5293a5496e79221c5c78cdae2e7c",
+      "bytes": 22428
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/software_v1/protocol_and_identity.json",
+      "sha256": "5db4abd7db691888b974ffc0dd9db0aa70671b76ccb0bf4544e97e39a10b075c",
+      "bytes": 12058
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/package_regression.log",
+      "sha256": "dd5b40be7ca247fe534825da1642d3362ac3287183d4bc0bba1522aee676c507",
+      "bytes": 229
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_qp_view_acceptance_20261023/predeploy/archive_manifest.json",
+      "sha256": "2453f4fbd3c70f19f1b5403c0b24d7e17723379fb72db0924f5e3d81dc92ec5e",
+      "bytes": 7954
+    }
+  ],
+  "qualification": "software/simulation conditional only; thresholds unchanged; no new physical or flight certificate"
+}

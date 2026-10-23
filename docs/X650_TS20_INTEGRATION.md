@@ -187,23 +187,27 @@ local characteristic: lambda^2 + d_incremental/Jbar*lambda + Kp/Jbar = 0
 
 这项缓存修复尚未使整套时序验收通过：随后 30 个原软件工况有 1 个 `+5 mm / age=0 / moving_warm` 达到 51.064 ms，被原总截止时间拒绝，结果为 29/30。其关节误差和约束检查通过，不能替代时间门槛；原失败记录保留，继续优化之前不会准入新保持。回放、源码身份和本次未通过的矩阵见 [增量缓存时序记录](validation/ts20_prediction_chain_20261022/incremental_runtime_timing_summary.json)，不作真机实时性声明。
 
-## 9. TS20 专用约束视图候选（尚未完成服务器验收）
+## 9. TS20 专用约束视图与服务器软件验收
 
 对上述 `+5 mm / age=0 / moving_warm` 工况的剖析表明，约束组装与 SLSQP 在该工况仍有较大开销。新增 `qp_constraints.py` 只精简传给求解器的等价约束视图：字节完全相同的行取区间交集；所有单变量原始行保留；利用这些行推导外向舍入的区间，并加保守浮点误差守卫，只有严格落在原界内的其他行才可省略。近边界、极小非零系数、无界或溢出的证明不会被近似处理。
 
 这个候选仅由 `Ts20MpcController` 显式启用。默认 `MpcController` 返回原 C／lo／hi 数组对象和行序；原完整约束仍用于 primal／KKT 解质量检查，H／g、初值、求解器设置、非线性后验、权重和 50 ms 截止时间均不变。它不修改关节数值核、物理模型、增益或既有阶段的条件身份。
 
-本地既有 Python 3.12.14／NumPy 2.3.5 环境的 7 项测试通过，覆盖精确重复行、负系数、signed-zero、极小系数、近边界、不可行约束、溢出保留与随机可行集一致性。该环境没有 SciPy，因此新旧控制器选择测试及完整 MPC 回归仍待服务器执行。本地语法检查通过不能代替这些检查。候选源码身份和边界见 [本地候选记录](validation/ts20_prediction_chain_20261022/qp_constraint_view_candidate_summary.json)。
+2026-10-22，本地既有 Python 3.12.14／NumPy 2.3.5 环境的 7 项测试通过，覆盖精确重复行、负系数、signed-zero、极小系数、近边界、不可行约束、溢出保留与随机可行集一致性。当时服务器离线，本地环境没有 SciPy，因此控制器选择测试及完整 MPC 回归尚未执行。该阶段的源码身份和边界保留在 [本地候选记录](validation/ts20_prediction_chain_20261022/qp_constraint_view_candidate_summary.json)，不改写为后来的服务器成绩。
 
-当前服务器 Remote 连接离线，此候选尚未部署，也没有新的耗时或保持成绩。恢复后必须先对同一个失败工况检查精简前后行数、原完整约束质量、目标函数、完整计划和非线性后验，再跑原 30 工况矩阵及包回归。通过后才启动全新的安静末端保持；既有两次失败和 29/30 记录保留，快速八字仍未准入。
+2026-10-23，新容器 `autodl-container-f64b45a5b8-51661812` 恢复连接后，先按字节归档旧源码、原矩阵脚本及 29/30 失败记录，再只同步 TS20 文件。原预测核、native library、物理模型、增益与门槛不变。117 项服务器回归为 116 通过、1 项可选跳过；原冻结 30 工况脚本全部执行，30/30 通过，最大计算耗时 27.685 ms。该结果只打开全新安静末端保持的准入门，未构成完整保持或真机验收，快速八字仍未准入。
 
-原完整矩阵脚本在服务器 `artifacts/ts20_prediction_chain_20261022/benchmark_gain_kd025_matrix_v1.py`；本轮仅更改输出位置的执行副本为 `artifacts/ts20_chain_hold_damped_v1_20261022/benchmark_incremental_runtime_matrix.py`。恢复连接后先读取并归档这两个版本及其 SHA，再以同一冻结工况重跑；本地单工况 profiler 不能代替完整矩阵。目前本地只有矩阵的精简结果，不另行猜测或重写其余工况。
+同一个原失败工况中，原完整约束视图和精简视图的 H／g／A／b／C／lo／hi 逐值相同；75 个归一化计划量、180 个预测状态、目标函数、完整非线性 q／dq 和编码后 MIT 包均为零差异。求解器约束由 305 行减为 130 行，合并 35 条精确重复行，省去 140 条被保留单变量约束严格蕴含的行。两侧原 full C 检查及非线性包络均通过，primal violation 为 2.776e-17，KKT stationarity 为 4.261e-17。
+
+同容器、fresh controller 的交错计时中，原视图整步为 29.788／29.236／30.169 ms，精简视图为 26.435／35.830／26.217 ms；35.830 ms 的较慢记录完整保留。对应 QP 求解约由 9.25–9.89 ms 降为 6.65–6.74 ms。不能把旧容器 51.064 ms 与新容器成绩之差全部归因于算法：新容器配额为 18 核，环境和全部计时另行记录。证据、部署身份和原失败 SHA 见 [服务器软件验收摘要](validation/ts20_prediction_chain_20261022/qp_view_software_acceptance_20261023.json)。本地 JSON 是服务器摘要的格式化副本；服务器原文件 SHA 为 `da4a4d50748f10527ad8648c1f30cd448bc76005db73e59162ec287fa44c8197`，不声称字节相同。
+
+原完整矩阵脚本在服务器 `artifacts/ts20_prediction_chain_20261022/benchmark_gain_kd025_matrix_v1.py`；先前仅更改输出位置的执行副本为 `artifacts/ts20_chain_hold_damped_v1_20261022/benchmark_incremental_runtime_matrix.py`。本轮 `scripts/validate_x650_ts20_qp_view.py` 先固定原脚本及历史失败 SHA，从原 AST 提取同一失败工况进行等价检查；再运行原脚本的全部语句，仅将唯一结果写入重定向到新目录，原结果保持原 SHA。本地单工况 profiler 不能代替这个完整矩阵。
 
 结果工具 `scripts/plot_x650_ts20_commissioning_results.py` 要求完整通过的实际阶段证书，逐文件核对原始 CSV 与证书 SHA。保持图严格使用证书中的名义 30 s 评分区间，另外保留实际回调结束时刻，避免多纳入一个回调的尾部样本；关节图每次从绑定的实际首态和 MIT 包重新自由推演，不接收外部预测数组替代计算。图中分别标明物理区间平均 dq 与模型端点 dq，后者不当作独立实测速度。6 项合成回归通过；该工具尚未用本轮服务器数据生成正式图，合成测试不构成实验成绩。
 
 `scripts/profile_x650_ts20_actual_step.py` 用于原 quiet v2 首个真实状态的离线回放；`scripts/profile_x650_ts20_matrix_fixture.py` 用于单个 `+5 mm / age=0 / moving_warm` 软件工况定位。它们不启动飞行，不代替完整矩阵或实时验收。当前工具将新输出与原失败记录分开，并记录实际加载代码及库的身份；历史报告中的 harness SHA 指向当时归档的执行版本，不能用本地后来修订的工具 SHA 覆写。服务器恢复后仍须验证当前工具的实际数据读取与结果，不把本地语法或合成检查当成重放通过。
 
-两个诊断工具的语法检查和 `--help` 均通过，且 `--help` 无需 SciPy。7 项离线保护检查确认：已有空／非空输出目录均拒绝，原 marker 和 prefix 不被覆盖，增量读取遵循给定时钟并拒绝已消费行中的非有限数。矩阵单工况工具必须显式提供 `--native-sha256`；实际回放工具支持 `--historical-source-archive` 附加旧执行归档身份。当前版本尚未完成实际数据重放或服务器数值验收。
+两个诊断工具的语法检查和 `--help` 均通过，且 `--help` 无需 SciPy。7 项离线保护检查确认：已有空／非空输出目录均拒绝，原 marker 和 prefix 不被覆盖，增量读取遵循给定时钟并拒绝已消费行中的非有限数。矩阵单工况工具必须显式提供 `--native-sha256`；实际回放工具支持 `--historical-source-archive` 附加旧执行归档身份。新增等价性验收工具已在服务器完成上述软件检查；修订后实际 CSV 回放工具的主入口及结果绘图仍须另行用真实记录验证。
 
 ## 10. 真机条件仍需补齐
 
