@@ -1,0 +1,62 @@
+{
+  "kind": "cpp_pipeline_software_review_v1",
+  "physical_hold_qualified": false,
+  "matrix_cases": 30,
+  "history_cases": 1056,
+  "core_matrix_wall": {
+    "count": 30,
+    "median_ms": 5.0338955,
+    "p99_ms": 8.654987440000001,
+    "max_ms": 8.675625
+  },
+  "core_history_wall": {
+    "count": 1056,
+    "median_ms": 2.7903395,
+    "p99_ms": 5.285436450000004,
+    "max_ms": 5.758237
+  },
+  "worker_compute_and_checks": {
+    "count": 1056,
+    "median_ms": 5.788168,
+    "p99_ms": 12.266008100000006,
+    "max_ms": 13.387062
+  },
+  "worker_full_callback": {
+    "count": 1056,
+    "median_ms": 5.9152635,
+    "p99_ms": 12.408002300000005,
+    "max_ms": 13.548795
+  },
+  "software_issue_to_proposal_publish_return": {
+    "count": 1056,
+    "median_ms": 6.061172,
+    "p99_ms": 12.641264850000006,
+    "max_ms": 13.721321
+  },
+  "worker_command_peak_difference": 1.1552651196788943e-13,
+  "matrix_plan_peak_difference": 2.321375415125327e-15,
+  "history_plan_peak_difference": 1.0123381547726725e-13,
+  "reports": {
+    "matrix": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/matrix_check_v2/report.json",
+      "bytes": 32305,
+      "sha256": "5925f229d1a2ccf67a8f4df01d25977be65a13c7e15f9e20f9a39132928935e7"
+    },
+    "history": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/history_check_v2/report.json",
+      "bytes": 819819,
+      "sha256": "2bfd40e08f6a9e098a810a7e2a0bbb8438c9c2166fd8f5ef3920461330dc4d37"
+    },
+    "ros_worker": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/worker_ros_v1/report.json",
+      "bytes": 771307,
+      "sha256": "9a7f89c13571b131c578ce646bc49fc2a075de84160778417f0ab5eac2cee059"
+    }
+  },
+  "server_full_archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/core_and_worker_evidence_v2.zip",
+    "bytes": 151170596,
+    "sha256": "15b9d4cf09e6bf5c15609ed66c333cbd86c09fca7ec3ac0f8f7503dcfb3a726c"
+  },
+  "all_passed": true
+}

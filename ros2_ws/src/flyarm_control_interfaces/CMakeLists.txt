@@ -13,6 +13,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/RuntimeStop.msg"
   "msg/AcceptedCommand.msg"
   "msg/LiveStart.msg"
+  "msg/SourceBinding.msg"
+  "msg/SourceBindingAck.msg"
   "msg/ActuatorState.msg"
   "msg/ExecutionReceipt.msg"
   "msg/ActuatorSend.msg"

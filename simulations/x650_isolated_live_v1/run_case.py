@@ -170,7 +170,7 @@ class LiveExtension(Ts20Extension):
         msg=self.msg
         from simulations.x650_isolated_live_v1.supervision import FaultSupervisor
         self.supervisor=FaultSupervisor(ctx.node.context,msg,self.session,self.epoch)
-        self.source_pub=ctx.node.create_publisher(msg.ControlSnapshot,"/flyarm/isolated/v1/source",QoSProfile(depth=1,reliability=ReliabilityPolicy.BEST_EFFORT))
+        self._create_source_publisher(ctx)
         self.start_pub=ctx.node.create_publisher(msg.LiveStart,"/flyarm/isolated/v1/live_start",1)
         self.stop_pub=ctx.node.create_publisher(msg.RuntimeStop,"/flyarm/isolated/v1/stop",1)
         qos=QoSProfile(depth=4000,reliability=ReliabilityPolicy.BEST_EFFORT)
@@ -228,8 +228,7 @@ class LiveExtension(Ts20Extension):
         self.prepared_model=loop.model
         self.prepared_pid=dict(loop.pid)
         before=time.monotonic_ns()
-        self.prepared_allocator=super().build_allocator(loop.cfg,loop.model,loop.pid,
-                                                       shared.ConstantTarget(np.zeros(3)),loop)
+        self.prepared_allocator=self._prepare_allocator(loop)
         record['allocator_prepare_ns']=time.monotonic_ns()-before
         record['allocator_step_count']=int(self.prepared_allocator.step_count)
         if record['allocator_step_count']!=0:raise RuntimeError('Ground constructor unexpectedly advanced controller')
@@ -249,6 +248,7 @@ class LiveExtension(Ts20Extension):
             'sitl_system_id':int(ctx.vehicle.target[0]),'sitl_component_id':int(ctx.vehicle.target[1]),'ready_file':self.out/'dispatcher_ready'}))
         self._launch('consumption',self._ros('flyarm_control_gateway','consumption_source',{**common,
             'state_csv':self.runtime.states.path,'ready_file':self.out/'consumption_ready'}))
+        self._prepare_additional_transport(ctx,loop,meta)
         record['transport_launch_ns']=time.monotonic_ns()-before
         deadline=time.monotonic()+60
         while not self._transport_ready():
@@ -309,6 +309,43 @@ class LiveExtension(Ts20Extension):
         previous=loop.sent_command_history[-1][0]
         ctx.vehicle.wait(lambda:loop.sent_command_history[-1][0]>previous,8.,'last legacy prestream send')
         history=loop.sent_command_history[-64:]
+        self._verify_handoff_resources()
+        self._assert_waiting_no_output()
+        start=float(history[-1][0])
+        s=self.msg.LiveStart();s.session_id=self.session;s.epoch=1;s.configuration_sha256=list(bytes.fromhex(self.task_sha))
+        s.issued_monotonic_ns=time.monotonic_ns();s.origin_s=start
+        s.anchor_position_enu=np.asarray(loop.anchor).tolist();s.anchor_rotation_row_major=np.asarray(rotation).reshape(-1).tolist()
+        s.anchor_q=[0.,0.];s.target_position_enu=loop.trajectory.sample(0.)[0].tolist()
+        s.history_count=len(history);s.history_time_s=[float(t) for t,v in history]+[0.]*(64-len(history))
+        s.history_command=np.asarray([v for t,v in history]).reshape(-1).tolist()+[0.]*(320-5*len(history))
+        s.ref_alt=float(loop.fixed_reference.document['px4_reference_at_bind']['ref_alt']);s.yaw_ned=float(loop.yaw_ned)
+        self.start_message=s;self.gains=gains
+        self.source_activity.start_gc()
+        self.active=self.started=True
+        loop.next_control=float('inf')
+        ctx.vehicle._pump=self.pump_actual
+        loop.task_start=start;loop.recorder.phase='measure'
+        meta.update(phase='measure',task_start_sim_s=start,reference_base_enu_m=loop.anchor,
+            reference_rotation=rotation,requested_duration_s=cfg['duration_s'])
+        meta['activation_command_history']=[{'control_time_s':t,'task_time_s':t-start,'command':v.tolist()} for t,v in history]
+        meta['ts20_activation']={'task_start_sim_s':start,'reference_reset_to_measured_q':False,
+            'command_source':'actual plugin-consumed upper commands','packet_source':'actual fixed-grid MIT sends','delay_applied_once':True}
+        self.start_pub.publish(s)
+        return start
+
+    def _create_source_publisher(self,ctx):
+        from rclpy.qos import QoSProfile, ReliabilityPolicy
+        self.source_pub=ctx.node.create_publisher(self.msg.ControlSnapshot,"/flyarm/isolated/v1/source",
+            QoSProfile(depth=1,reliability=ReliabilityPolicy.BEST_EFFORT))
+
+    def _prepare_allocator(self,loop):
+        return super().build_allocator(loop.cfg,loop.model,loop.pid,
+                                       shared.ConstantTarget(np.zeros(3)),loop)
+
+    def _prepare_additional_transport(self,ctx,loop,meta):
+        pass
+
+    def _verify_handoff_resources(self):
         observed={'source':self._affinity(os.getpid())}
         for name,p in self.procs.items():
             if name=='worker' and getattr(self,'worker_thread_roles',None) is not None:
@@ -333,29 +370,6 @@ class LiveExtension(Ts20Extension):
             if not threads or any(cpus!=expected for cpus in threads.values()):
                 raise RuntimeError('Owned process CPU isolation differs: '+name)
         self.affinity_handoff_observed=observed
-        self._assert_waiting_no_output()
-        start=float(history[-1][0])
-        s=self.msg.LiveStart();s.session_id=self.session;s.epoch=1;s.configuration_sha256=list(bytes.fromhex(self.task_sha))
-        s.issued_monotonic_ns=time.monotonic_ns();s.origin_s=start
-        s.anchor_position_enu=np.asarray(loop.anchor).tolist();s.anchor_rotation_row_major=np.asarray(rotation).reshape(-1).tolist()
-        s.anchor_q=[0.,0.];s.target_position_enu=loop.trajectory.sample(0.)[0].tolist()
-        s.history_count=len(history);s.history_time_s=[float(t) for t,v in history]+[0.]*(64-len(history))
-        s.history_command=np.asarray([v for t,v in history]).reshape(-1).tolist()+[0.]*(320-5*len(history))
-        s.ref_alt=float(loop.fixed_reference.document['px4_reference_at_bind']['ref_alt']);s.yaw_ned=float(loop.yaw_ned)
-        self.start_message=s;self.gains=gains
-        self.source_activity.start_gc()
-        self.active=self.started=True
-        loop.next_control=float('inf')
-        ctx.vehicle._pump=self.pump_actual
-        loop.task_start=start;loop.recorder.phase='measure'
-        meta.update(phase='measure',task_start_sim_s=start,reference_base_enu_m=loop.anchor,
-            reference_rotation=rotation,requested_duration_s=cfg['duration_s'])
-        meta['activation_command_history']=[{'control_time_s':t,'task_time_s':t-start,'command':v.tolist()} for t,v in history]
-        meta['ts20_activation']={'task_start_sim_s':start,'reference_reset_to_measured_q':False,
-            'command_source':'actual plugin-consumed upper commands','packet_source':'actual fixed-grid MIT sends','delay_applied_once':True}
-        self.start_pub.publish(s)
-        return start
-
     def _alive(self):
         for name,p in self.procs.items():
             if p.poll() is not None:raise RuntimeError('Isolated '+name+' exited '+str(p.returncode))
@@ -626,12 +640,24 @@ class LiveExtension(Ts20Extension):
             try:p.wait(timeout=3.)
             except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
 
+    def _runtime_process_names(self):
+        return ('ingress','worker','dispatcher','consumption','recorder')
+
+    def _write_source_timing(self):
+        write(self.out/'source_timing.json',{'columns':['sequence','issued_ns','publish_return_ns','control_s','joint_s'],'rows':self.sources})
+
+    def _materialize_source_recording(self):
+        from rclpy.serialization import deserialize_message
+        from rosidl_runtime_py.convert import message_to_ordereddict
+        from simulations.x650_isolated_live_v1.source_recording import materialize
+        return materialize(self.out,self.message_types,deserialize_message,message_to_ordereddict,write)
+
     def finalize(self,meta,stage,out):
         trace=getattr(self,'source_activity',None)
         if trace is not None:trace.close()
         if self.active:self._release(self.loop)
         self._close_supervision()
-        for name in ('ingress','worker','dispatcher','consumption','recorder'):self._stop_process(name)
+        for name in self._runtime_process_names():self._stop_process(name)
         if self.source_sender is not None:
             self.source_sender.close(self.out/'source_sender.json');self.source_sender=None
         self._stop_process('source_recorder')
@@ -639,11 +665,9 @@ class LiveExtension(Ts20Extension):
         self._write_placement_evidence()
         from rosidl_runtime_py.convert import message_to_ordereddict
         if self.started:write(self.out/'live_start.json',message_to_ordereddict(self.start_message))
-        write(self.out/'source_timing.json',{'columns':['sequence','issued_ns','publish_return_ns','control_s','joint_s'],'rows':self.sources})
-        from rclpy.serialization import deserialize_message
-        from simulations.x650_isolated_live_v1.source_recording import materialize
+        self._write_source_timing()
         try:
-            materialize(self.out,self.message_types,deserialize_message,message_to_ordereddict,write)
+            self._materialize_source_recording()
         except Exception as error:
             self.failure='Source recording reconciliation failed: '+repr(error)
         write(self.out/'source_pump_timing.json',{'columns':['begin_ns','drained_ns','end_ns','extra_callbacks'],'rows':self.pump_times})
@@ -662,7 +686,7 @@ class LiveExtension(Ts20Extension):
         if trace is not None:trace.close()
         if self.source_sender is not None:
             self.source_sender.close(self.out/'source_sender.json');self.source_sender=None
-        for name in ('dispatcher','consumption','ingress','worker','recorder','source_recorder'):self._stop_process(name)
+        for name in dict.fromkeys(('dispatcher','consumption',*self._runtime_process_names(),'source_recorder')):self._stop_process(name)
         for f in self.logs:
             if not f.closed:f.close()
         # A report-write failure must not prevent stopping owned processes.

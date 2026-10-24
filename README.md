@@ -445,6 +445,7 @@ virtualgl_ready: true
 - [Clean-room 验证报告](docs/CLEAN_ROOM_VALIDATION_2026-10-02.md)
 - [公共 API](docs/PUBLIC_API.md)
 - [X650 / TS20 上层 MPC 的 C++ 数值后端与验证方法](control_packages/x650_wholebody_v1/NATIVE_NUMERICS.md)
+- [X650 完整 C++ 在线 MPC 链与分层验证](docs/X650_CPP_PIPELINE.md)
 - [自定义场景](docs/CUSTOM_SCENARIOS.md)
 - [数据记录](docs/RECORDING.md)
 - [可配置机械臂模型](docs/CONFIGURABLE_MODELS.md)
