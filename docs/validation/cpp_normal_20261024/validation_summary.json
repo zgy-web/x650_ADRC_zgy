@@ -1,0 +1,35 @@
+{
+  "kind": "x650_cpp_normal_validation_summary_v1",
+  "physical_certificate_passed": true,
+  "physical_certificate_sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474",
+  "local_control_and_admission_regressions": {
+    "passed": true,
+    "tests": 105
+  },
+  "presentation_regressions": {
+    "passed": true,
+    "tests": 8,
+    "module": "test_x650_isolated_validation_render.py"
+  },
+  "server_worker_ctest": {
+    "passed": true,
+    "tests": 4
+  },
+  "dynamic_numerical_cases": {
+    "passed": true,
+    "cases": 48
+  },
+  "compiled_reference": {
+    "passed": true,
+    "cases": 3370,
+    "target_samples": 53920
+  },
+  "actual_ros_cases": {
+    "passed": true,
+    "cases": 4,
+    "continuous_positive_steps": 160,
+    "negative_case_steps": 120
+  },
+  "independent_original_byte_review_passed": true,
+  "scope": "These observed checks supplement the original reports and raw archive; presentation status is recorded separately. One precise-EV simulation condition."
+}

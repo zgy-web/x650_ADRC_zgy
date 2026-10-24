@@ -28,3 +28,9 @@ tests/unit/test_x650_isolated_diagnostics.py -text
 docs/validation/isolated_runtime_20261023/** -text -whitespace
 # Preserve original evidence bytes referenced by the 2026-10-24 manifests.
 docs/validation/isolated_live_20261024/** -text
+# Ordinary C++ trajectory proofs bind the executed source bytes on both hosts.
+simulations/x650_cpp_normal_v1/** -text whitespace=cr-at-eol
+simulations/x650_cpp_live_v1/*.py -text whitespace=cr-at-eol
+configs/experiments/x650_cpp_normal_v1.json -text whitespace=cr-at-eol
+scripts/*x650_cpp_normal* -text whitespace=cr-at-eol
+tests/unit/test_x650_cpp_normal* -text whitespace=cr-at-eol

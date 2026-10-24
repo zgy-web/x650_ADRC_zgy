@@ -1,0 +1,56 @@
+{
+  "scope": "Presentation-only quality/parallel rendering; no physics rerun or mesh decimation",
+  "new_sources": [
+    {
+      "original": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/render_x650_cpp_normal.py",
+        "bytes": 5338,
+        "sha256": "4cd43b0172fba7af3a931a0bafeadf0b835f23bb0a6e92cef7ad55e7014e9a7a"
+      },
+      "preserved": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v2/render_x650_cpp_normal.py",
+        "bytes": 5338,
+        "sha256": "4cd43b0172fba7af3a931a0bafeadf0b835f23bb0a6e92cef7ad55e7014e9a7a"
+      }
+    },
+    {
+      "original": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/render_x650_isolated_validation.py",
+        "bytes": 28809,
+        "sha256": "264c146f4b8c5ffe10a17d8e805888618d1faeaa30f991e0abceabfbf051ee1d"
+      },
+      "preserved": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v2/render_x650_isolated_validation.py",
+        "bytes": 28809,
+        "sha256": "264c146f4b8c5ffe10a17d8e805888618d1faeaa30f991e0abceabfbf051ee1d"
+      }
+    }
+  ],
+  "original_sources": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v1/manifest.json",
+    "bytes": 583,
+    "sha256": "27fffbcfc4126b9953a8d98c4fcbee35cac153fe3d0454961e39ee99e95678f4"
+  },
+  "old_video_partial_not_deliverable": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v1/X650_normal_CPP_MPC.mp4",
+    "bytes": 628323,
+    "sha256": "b3d12389e5b9bba850bc41f6a09de955cf8bf84a4c33373c01d53f808c23348f"
+  },
+  "old_video_exit": "130",
+  "new_video": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+    "bytes": 6534764,
+    "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059"
+  },
+  "quality": {
+    "profile": "software_fast_v1",
+    "shadows": false,
+    "reflections": false,
+    "offscreen_samples": 0,
+    "mesh_decimation": false
+  },
+  "source_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_audit_v1/report.json",
+    "sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474"
+  }
+}

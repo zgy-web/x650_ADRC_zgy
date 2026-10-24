@@ -1,0 +1,33 @@
+{
+  "kind": "cpp_normal_media_local_verification_v1",
+  "passed": true,
+  "archive": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_normal_20261024\\normal_media_v2.zip",
+    "bytes": 8013330,
+    "sha256": "ebaa4331f50851fe3b7669adbcea32943679e3202e2bb7ef119323f03e980484"
+  },
+  "verified_original_file_count": 35,
+  "all_archive_originals_size_sha256_verified": true,
+  "all_members_exact": true,
+  "manifest_bytes_match_remote_archive": true,
+  "video": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_normal_20261024\\X650_normal_CPP_MPC.mp4",
+    "bytes": 6534764,
+    "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059"
+  },
+  "full_decode": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 768,
+    "duration_s": 32.0
+  },
+  "source_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_audit_v1/report.json",
+    "sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474"
+  },
+  "excluded_cache": true,
+  "physical_rerun": false,
+  "verified_unix": 1792835611.27052
+}

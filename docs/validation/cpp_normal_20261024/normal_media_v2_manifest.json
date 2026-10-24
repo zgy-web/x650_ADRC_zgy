@@ -1,0 +1,267 @@
+{
+  "kind": "x650_cpp_normal_media_archive_v2",
+  "complete": true,
+  "file_count": 35,
+  "files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/archive_media_v2.py",
+      "bytes": 4940,
+      "sha256": "8a2473dd117d3e21d143a8165ceed3a49f30dac68292d80e27365dba40624397",
+      "entry": "archive_media_v2.py"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/gpu_render_probe_v1.json",
+      "bytes": 769,
+      "sha256": "a152efb0dcf31c37ef0ab94432a7711ecc98c82e39ab238db03bc57d0f36a69b",
+      "entry": "gpu_render_probe_v1.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/nvidia_egl560_vendor.json",
+      "bytes": 113,
+      "sha256": "545bfff5474eafaa8ca1addf11a4eeeebcd53b79c962ab99645180ab8f73c199",
+      "entry": "nvidia_egl560_vendor.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v1/manifest.json",
+      "bytes": 583,
+      "sha256": "27fffbcfc4126b9953a8d98c4fcbee35cac153fe3d0454961e39ee99e95678f4",
+      "entry": "presentation_sources_v1/manifest.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v1/render_x650_cpp_normal.py",
+      "bytes": 4715,
+      "sha256": "958619f71dfd62c5490dfdc9f22ee2e867dbb2c251b5dc5860a173664cc3d54a",
+      "entry": "presentation_sources_v1/render_x650_cpp_normal.py"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v1/render_x650_isolated_validation.py",
+      "bytes": 27702,
+      "sha256": "a98b695dc11ffd0932ac6e47e5726bdbfe5d2321fff351ff21e785cc2f120e60",
+      "entry": "presentation_sources_v1/render_x650_isolated_validation.py"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v2/mapping.json",
+      "bytes": 2424,
+      "sha256": "feb6dc761a3f67ddff926db0cb361b4dee30bd16ced080da5ebd0610dbf8b3b0",
+      "entry": "presentation_sources_v2/mapping.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v2/render_x650_cpp_normal.py",
+      "bytes": 5338,
+      "sha256": "4cd43b0172fba7af3a931a0bafeadf0b835f23bb0a6e92cef7ad55e7014e9a7a",
+      "entry": "presentation_sources_v2/render_x650_cpp_normal.py"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/presentation_sources_v2/render_x650_isolated_validation.py",
+      "bytes": 28809,
+      "sha256": "264c146f4b8c5ffe10a17d8e805888618d1faeaa30f991e0abceabfbf051ee1d",
+      "entry": "presentation_sources_v2/render_x650_isolated_validation.py"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_profile_v1.log",
+      "bytes": 558,
+      "sha256": "b058a0952409678bc850d305be19075b1094d924177c95fccac77bc0515f6454",
+      "entry": "preview_profile_v1.log"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2/delivery_manifest.json",
+      "bytes": 1133,
+      "sha256": "c7b49d8e5bcd44abe3f9e5afaa0763422940e0879ad5e3976bb7ade81f286a01",
+      "entry": "preview_v2/delivery_manifest.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2/preview.png",
+      "bytes": 186363,
+      "sha256": "6f5f76775b792453a1007e0054e5943b5cb0d71ee00d6e32099bef63e0ba8bae",
+      "entry": "preview_v2/preview.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2/render_status.json",
+      "bytes": 276962,
+      "sha256": "dc4721550e827528b910d19ee2bf36999f5b4146674e92c77102ed87ec3d27c7",
+      "entry": "preview_v2/render_status.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2/replay_manifest.json",
+      "bytes": 276962,
+      "sha256": "dc4721550e827528b910d19ee2bf36999f5b4146674e92c77102ed87ec3d27c7",
+      "entry": "preview_v2/replay_manifest.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2.log",
+      "bytes": 558,
+      "sha256": "b058a0952409678bc850d305be19075b1094d924177c95fccac77bc0515f6454",
+      "entry": "preview_v2.log"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/preview_v2_process.json",
+      "bytes": 844,
+      "sha256": "8dd973777e2c95001b5173248b094dc684df27f8408b993d38160bc644f9a26e",
+      "entry": "preview_v2_process.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v1.exit",
+      "bytes": 4,
+      "sha256": "f5bde7eb9f6c71611dc5726e8aca3eb4eba3e386da49e0a4ed5c295a90a73a0d",
+      "entry": "video_v1.exit"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+      "bytes": 6534764,
+      "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059",
+      "entry": "video_v2/X650_normal_CPP_MPC.mp4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/delivery_manifest.json",
+      "bytes": 2955,
+      "sha256": "933216389d16f84ad5106a6e3549bbae49f97130bf4a5e1fa33361adaac8db20",
+      "entry": "video_v2/delivery_manifest.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/ffmpeg.log",
+      "bytes": 111884,
+      "sha256": "13e471856000cfaf3540a84d9e8d575417dc01a9c5ba834ec466166543e29409",
+      "entry": "video_v2/ffmpeg.log"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/final_state.png",
+      "bytes": 194488,
+      "sha256": "10f3b394c97319f3b5fdaaf9ed5ba5b195deab5c8cf95717c70a1436761b3742",
+      "entry": "video_v2/final_state.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/frame_00000.png",
+      "bytes": 181462,
+      "sha256": "20e732beece525687a0a478addc266fb3393157294aaead37f357918d63998e1",
+      "entry": "video_v2/frame_00000.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/frame_00191.png",
+      "bytes": 190970,
+      "sha256": "1b3af7389b1a14f075aecfff8b14407238f31802614fc13b5b0755167162aa25",
+      "entry": "video_v2/frame_00191.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/frame_00383.png",
+      "bytes": 189491,
+      "sha256": "1ab76db3df1fe7814c4653ba3400ab1f88608c3ad26322912e1db993a9442d69",
+      "entry": "video_v2/frame_00383.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/frame_00575.png",
+      "bytes": 190104,
+      "sha256": "9e398f1a261e353fa955f00092171882cd4c60923cb9ef8edc6932a01386f777",
+      "entry": "video_v2/frame_00575.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/frame_00767.png",
+      "bytes": 195023,
+      "sha256": "cd0992fb931639349e2b3a1c261fd7d0e3328d2f115a51c3dd1a19e636ee3172",
+      "entry": "video_v2/frame_00767.png"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/full_decode.framemd5",
+      "bytes": 61656,
+      "sha256": "50eae4a80a07bb819d925cf6de201442d60ee689a8830cae99ad8ea06b064da8",
+      "entry": "video_v2/full_decode.framemd5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/full_decode.json",
+      "bytes": 1309,
+      "sha256": "f1ca851769b700e53350761650989954b1e9cd66e8073bccbd188c4a3a529ee6",
+      "entry": "video_v2/full_decode.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/full_decode.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "entry": "video_v2/full_decode.stderr"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/render_status.json",
+      "bytes": 277653,
+      "sha256": "88d2500a2bba526f421097ba6586d2044729c96f6ee1dbfd43e908aaac5f57d6",
+      "entry": "video_v2/render_status.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/replay_manifest.json",
+      "bytes": 277653,
+      "sha256": "88d2500a2bba526f421097ba6586d2044729c96f6ee1dbfd43e908aaac5f57d6",
+      "entry": "video_v2/replay_manifest.json"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "entry": "video_v2.exit"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2.log",
+      "bytes": 1273,
+      "sha256": "aadafcf72945e81af34976165367daf33a6d73ff151f75490d50e2ac7a6181c1",
+      "entry": "video_v2.log"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2.sh",
+      "bytes": 652,
+      "sha256": "d6c38fd1e2c689a52bd54399d21e53b2ab26e96b48b38f1f377b348323235cd0",
+      "entry": "video_v2.sh"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2_process.json",
+      "bytes": 496,
+      "sha256": "322fbf3e0c276e541e16e0549205ca42617802cd8c243330dcf6dfebed427c6a",
+      "entry": "video_v2_process.json"
+    }
+  ],
+  "video": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+    "bytes": 6534764,
+    "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059"
+  },
+  "full_decode": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 768,
+    "duration_s": 32.0,
+    "verification": "complete FFmpeg framemd5 decode",
+    "command": [
+      "/root/autodl-tmp/flyarm-video-venv/lib/python3.10/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+      "-v",
+      "error",
+      "-xerror",
+      "-i",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+      "-map",
+      "0:v:0",
+      "-an",
+      "-f",
+      "framemd5",
+      "-"
+    ],
+    "returncode": 0,
+    "video": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+      "bytes": 6534764,
+      "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059"
+    },
+    "decoded_frames": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/full_decode.framemd5",
+      "bytes": 61656,
+      "sha256": "50eae4a80a07bb819d925cf6de201442d60ee689a8830cae99ad8ea06b064da8"
+    },
+    "stderr": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/full_decode.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "excluded": "Generated render_geometry cache and incomplete old v1 video; original physics mesh SHA remains bound",
+  "physical_rerun": false,
+  "source_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_audit_v1/report.json",
+    "sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474"
+  }
+}

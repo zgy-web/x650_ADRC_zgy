@@ -1,0 +1,15 @@
+{
+  "kind": "x650_cpp_normal_local_archive_verification_v1",
+  "passed": true,
+  "archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_full_raw_v1.zip",
+    "bytes": 68629383,
+    "sha256": "a15ab0c3bbbb017c9d60da5f8c7eb6dde5bfd72d162780dc6c8f7e03df68ccaf",
+    "entries": 8616,
+    "uncompressed_bytes": 324723066
+  },
+  "verified_originals": 8616,
+  "every_original_size_and_sha256_equal": true,
+  "embedded_external_manifests_equal": true,
+  "physical_certificate_sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474"
+}

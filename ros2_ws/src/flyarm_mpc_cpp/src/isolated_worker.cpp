@@ -81,7 +81,7 @@ class Worker : public rclcpp::Node {
     void* raw=dlopen(startup_.predictor_library.c_str(),RTLD_NOW|RTLD_LOCAL);if(!raw)throw std::runtime_error(std::string("Frozen predictor load failed: ")+dlerror());
     predictor_=std::shared_ptr<void>(raw,[](void* handle){dlclose(handle);});auto batch=reinterpret_cast<x650::Ts20BatchFn>(dlsym(raw,"ts20_prediction_batch"));if(!batch)throw std::runtime_error("Frozen predictor batch ABI missing");
     core_=std::make_unique<x650::Core>(startup_.config,batch,x650::DiagnosticMode::Compact);
-    wire::Config config;config.session_id=session_;config.epoch=epoch_;config.configuration_sha256=hash_;config.position_gains=startup_.config.base_position_gain;config.replay_only=false;contract_=std::make_unique<fm::Contract>(config);
+    wire::Config config;config.session_id=session_;config.epoch=epoch_;config.configuration_sha256=hash_;config.position_gains=startup_.config.base_position_gain;config.replay_only=false;contract_=std::make_unique<fm::Contract>(config,startup_.trajectory);
     recorder_=std::make_unique<Recorder>(out_);timing_.resize(TIMING_CAPACITY);
     placement_=std::make_unique<fm::ThreadPlacement>(get_parameter("executor_cpu").as_int(),get_parameter("auxiliary_cpus").as_integer_array());
     const auto qos=rclcpp::QoS(rclcpp::KeepLast(1)).best_effort();publisher_=create_publisher<messages::ControlProposal>("/flyarm/isolated/v1/output/proposal",qos);

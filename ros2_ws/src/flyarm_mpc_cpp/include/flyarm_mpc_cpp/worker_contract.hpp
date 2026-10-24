@@ -1,6 +1,7 @@
 #pragma once
 // Typed, owning boundary. No Python, ROS executor, actuator writer or file I/O.
 #include "mpc_core.hpp"
+#include "flyarm_mpc_cpp/trajectory_plan.hpp"
 #include "flyarm_control_gateway/shadow_gate.hpp"
 #include <algorithm>
 #include <array>
@@ -24,7 +25,8 @@ struct Handoff {
 
 class Contract {
  public:
-  explicit Contract(wire::Config config) : config_(config), gate_(config) {
+  explicit Contract(wire::Config config,TrajectoryPlan trajectory={})
+      : config_(config), gate_(config), trajectory_(trajectory) {
     if (config.replay_only) throw std::invalid_argument("C++ live worker requires explicit simulation identity");
   }
   std::vector<x650::Command5> begin(const Handoff& start,std::uint64_t now) {
@@ -55,21 +57,23 @@ class Contract {
     if (!admission.forward) fail("Independent worker input contract rejected snapshot");
     for(std::size_t i=1;i<s.command_count;++i)
       if(s.command_time_s[i]<=s.command_time_s[i-1])fail("Actual command history must be strictly ordered");
+    const auto expected_target=trajectory_.sample(s.task_time_s,target_);
     if (std::abs(s.control_time_s-origin_-s.task_time_s)>1e-9
         || std::abs(s.control_time_s-last_control_-s.dt_s)>1e-9
         || std::abs(s.reference_time_s-(s.task_time_s-(s.control_time_s-s.joint_time_s)))>1e-9
-        || !proper_rotation(s.rotation_row_major) || s.position_gains!=config_.position_gains || s.target_position_enu!=target_
-        || s.target_velocity_enu!=x650::V3{} || s.target_acceleration_enu!=x650::V3{}
+        || !proper_rotation(s.rotation_row_major) || s.position_gains!=config_.position_gains
+        || s.target_position_enu!=expected_target.position || s.target_velocity_enu!=expected_target.velocity
+        || s.target_acceleration_enu!=expected_target.acceleration
         || nodes<1 || nodes>60 || !std::isfinite(node_dt) || node_dt<=0.)
-      fail("Frozen hold reference, actual dt or reference anchor differs");
+      fail("Frozen reference, actual dt or reference anchor differs");
     x650::StepInput value;value.t=s.task_time_s;value.dt=s.dt_s;
     value.state.position=s.position_enu;value.state.velocity=s.velocity_enu;
     value.state.omega_body=s.omega_body_flu;value.state.acceleration=s.acceleration_enu;
     value.state.rotation=s.rotation_row_major;value.state.q=s.q;value.state.dq=s.dq;
     value.state.stamp=s.state_time_s;value.state.control_time=s.control_time_s;value.state.joint_stamp=s.joint_time_s;
     value.target={s.target_position_enu,s.target_velocity_enu,s.target_acceleration_enu};
-    // Strict hold preview is explicit; never the core's approximate fallback.
-    value.preview.assign(static_cast<std::size_t>(nodes),value.target);
+    // Explicit frozen reference at every actual horizon node; no fallback.
+    value.preview=trajectory_.preview(s.task_time_s,s.dt_s,nodes,node_dt,target_);
     value.context.reference_time=s.reference_time_s;value.context.reference=s.reference_r;value.context.bus_origin=s.bus_origin_s;
     value.context.commands.reserve(s.command_count);value.context.packets.reserve(s.packet_count);
     for (std::size_t i=0;i<s.command_count;++i)
@@ -109,7 +113,7 @@ class Contract {
     return std::abs(determinant-1.)<=1e-8;
   }
   [[noreturn]] void fail(const char* text) {faulted_=true;throw std::invalid_argument(text);}
-  wire::Config config_;wire::ShadowGate gate_;
+  wire::Config config_;wire::ShadowGate gate_;TrajectoryPlan trajectory_;
   bool started_{},faulted_{};std::uint64_t requests_{},accepted_{};
   double origin_{},last_control_{};x650::V3 target_{};
 };

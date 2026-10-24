@@ -1,5 +1,6 @@
 #pragma once
 #include "mpc_core.hpp"
+#include "flyarm_mpc_cpp/trajectory_plan.hpp"
 #include <json/json.h>
 #include <openssl/evp.h>
 #include <algorithm>
@@ -64,9 +65,21 @@ inline void write_json(const fs::path& path,const Json::Value& value) {
   std::ofstream output(path);if(!output)throw std::runtime_error("Cannot create evidence");Json::StreamWriterBuilder writer;writer["indentation"]="";
   output<<Json::writeString(writer,value)<<'\n';if(!output)throw std::runtime_error("Evidence write failed");
 }
+inline TrajectoryPlan trajectory_from_json(const Json::Value& value) {
+  const auto kind=string_field(value,"kind");
+  if(kind=="hold"){exact_keys(value,{"kind"});return {};}
+  if(kind!="normal_figure8")throw std::invalid_argument("Only hold or frozen ordinary figure-eight admitted");
+  exact_keys(value,{"kind","amplitude_x","amplitude_z","period_s","cycles","start_s","ramp_s","duration_s"});
+  if(number(value["amplitude_x"])!=.25 || number(value["amplitude_z"])!=.10 ||
+     number(value["period_s"])!=12. || integer(value["cycles"])!=2 ||
+     number(value["start_s"])!=2. || number(value["ramp_s"])!=2. || number(value["duration_s"])!=32.)
+    throw std::invalid_argument("Frozen ordinary figure-eight parameters differ");
+  return TrajectoryPlan::normal();
+}
 struct Startup {
   Json::Value manifest;
   x650::Config config;
+  TrajectoryPlan trajectory;
   fs::path core_library,optimization_library,predictor_library;
   std::string task_hash;
 };
@@ -96,7 +109,7 @@ inline Startup load_startup(const fs::path& path,const std::string& expected) {
   if(root["predictor_library"]["symbol"]!="ts20_prediction_batch")throw std::invalid_argument("Frozen predictor symbol differs");
   if(!root["source_artifacts"].isArray()||root["source_artifacts"].empty())throw std::invalid_argument("Source artifact bindings are required");
   std::set<std::string> sources;for(const auto& item:root["source_artifacts"]){exact_keys(item,{"path","sha256"});if(!sources.insert(bound_path(item).string()).second)throw std::invalid_argument("Duplicate source binding");}
-  exact_keys(root["trajectory"],{"kind"});if(root["trajectory"]["kind"]!="hold")throw std::invalid_argument("Only full hold is enabled before fresh C++ acceptance");
+  output.trajectory=trajectory_from_json(root["trajectory"]);
   output.config=config_from_json(root["config"]);
   return output;
 }

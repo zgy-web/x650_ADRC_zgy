@@ -47,12 +47,13 @@ def checked_input(report, path):
     return {"path": str(path), "sha256": actual}
 
 
-def verified_data(report_path):
+def verified_data(report_path, *, certificate_kinds=None):
     """Return original physical rows only after matching the certified metric."""
     report_path = Path(report_path).resolve(strict=True)
     report = read(report_path)
-    kinds = {"tip_hold": "x650_isolated_live_stage_certificate_v1",
-             "normal": "x650_isolated_normal_stage_certificate_v1"}
+    kinds = ({"tip_hold": "x650_isolated_live_stage_certificate_v1",
+              "normal": "x650_isolated_normal_stage_certificate_v1"}
+             if certificate_kinds is None else certificate_kinds)
     stage = report.get("stage")
     require(stage in kinds and report.get("kind") == kinds[stage],
             "Only certified isolated hold or normal figure eight can be plotted")

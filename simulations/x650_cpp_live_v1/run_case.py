@@ -117,6 +117,13 @@ def dispatcher_parameters(protocol):
 
 
 class CppLiveExtension(LiveExtension):
+    def validate_trajectory_manifest(self):
+        if self.cpp_manifest['trajectory'] != {'kind': 'hold'}:
+            raise ValueError('Explicit complete-hold reference required')
+
+    def source_trajectory_parameters(self):
+        return {'trajectory_kind': 'hold'}
+
     def _ros(self, package, executable, params):
         if package == 'flyarm_control_gateway' and executable == 'live_dispatcher':
             additions = dispatcher_parameters(self.protocol)
@@ -170,8 +177,9 @@ class CppLiveExtension(LiveExtension):
         binding = self.cpp_manifest['task_config']
         if (Path(binding['path']).resolve() != self.task_path.resolve() or binding['sha256'] != self.task_sha
                 or self.cpp_manifest['kind'] != 'cpp_full_pipeline_v1'
-                or self.cpp_manifest['trajectory'] != {'kind': 'hold'} or 'numerical_backend' in self.cfg):
+                or 'numerical_backend' in self.cfg):
             raise ValueError('New complete C++ startup/task selection differs')
+        self.validate_trajectory_manifest()
         write(self.out/'execution_resources.json', self.resources)
         write(self.out/'cpp_startup_binding.json', {'path': str(manifest_path), 'sha256': expected,
               'protocol_path': os.environ['FLYARM_CPP_PROTOCOL'], 'protocol_sha256': sha(Path(os.environ['FLYARM_CPP_PROTOCOL']))})
@@ -235,7 +243,7 @@ class CppLiveExtension(LiveExtension):
             'ready_file': self.out/'cpp_source_ready', 'evidence_directory': self.out/'cpp_source',
             'position_gains': self.cpp_manifest['config']['base_position_gain'],
             'bus_period_s': self.cpp_manifest['config']['bus_period'],
-            'delay_s': self.cpp_manifest['config']['motion'][4], 'trajectory_kind': 'hold'}))
+            'delay_s': self.cpp_manifest['config']['motion'][4], **self.source_trajectory_parameters()}))
         meta['isolated_execution'].update(kind='cpp_full_pipeline_v1', numerical_backend_unchanged=False,
             active_source='C++ direct PX4/clock/actual TS20 CSV', active_controller='C++ complete Core',
             python_role='prestream, original reference binding, supervision, recovery and evidence only',

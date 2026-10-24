@@ -46,7 +46,7 @@ def runtime_interfaces():
     return q.verify_runtime_interfaces(msg, serialize_message, deserialize_message)
 
 
-def source_hashes():
+def source_hashes(extra_sources=()):
     paths = []
     for name in ('src/amsim', 'ros2_ws/src', 'control_packages/x650_wholebody_v1',
                  'simulations/x650_wholebody_mpc_v1', 'simulations/x650_ts20_hold_v1',
@@ -57,6 +57,13 @@ def source_hashes():
                  'scripts/validate_x650_cpp_pipeline.py', 'scripts/export_x650_cpp_inputs.py',
                  'scripts/x650_cpp_core_replay.cpp', 'configs/experiments/x650_cpp_live_v1.json',
                  'scenarios/x650_cpp_live_v1.yaml'))
+    for name in extra_sources:
+        path = ROOT/name
+        q.require(path.exists() and path.resolve().is_relative_to(ROOT.resolve()), 'Missing/outside extra execution source')
+        if path.is_dir():
+            paths.extend(p for p in path.rglob('*') if p.is_file() and '__pycache__' not in p.parts)
+        else:
+            paths.append(path)
     return {p.relative_to(ROOT).as_posix(): q.sha(p) for p in sorted(set(paths))}
 
 
@@ -80,13 +87,14 @@ def archive_binaries(out, identities):
     atomic_json(out/'runtime_binary_manifest.json', manifest)
 
 
-def main(argv=None):
+def main(argv=None, *, task_api=task, qualification_api=q, scenario=EXECUTION_SCENARIO,
+         default_protocol=None, extra_sources=(), launch_prefix='x650_cpp_launch_'):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--task', type=Path, required=True)
     parser.add_argument('--startup-manifest', type=Path, required=True)
     parser.add_argument('--startup-sha256', required=True)
     parser.add_argument('--qualification-manifest', type=Path, required=True)
-    parser.add_argument('--protocol', type=Path, default=ROOT/'configs/experiments/x650_cpp_live_v1.json')
+    parser.add_argument('--protocol', type=Path, default=default_protocol or ROOT/'configs/experiments/x650_cpp_live_v1.json')
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args(argv)
     protocol = q.read(args.protocol)
@@ -94,15 +102,15 @@ def main(argv=None):
     interfaces = runtime_interfaces()
     startup = q.read(args.startup_manifest)
     binaries = runtime_hashes(startup)
-    admission = q.verify(args.qualification_manifest, task_path=args.task,
+    admission = qualification_api.verify(args.qualification_manifest, task_path=args.task,
                          startup_path=args.startup_manifest, startup_sha256=args.startup_sha256,
                          protocol_path=args.protocol, binaries=binaries)
     admission['runtime_interfaces'] = interfaces
-    cfg = task.validate_task_config(q.read(args.task))
-    _, provenance = task.preflight(cfg)
+    cfg = task_api.validate_task_config(q.read(args.task))
+    _, provenance = task_api.preflight(cfg)
     from amsim.scenario_registry import get
-    descriptor = get(EXECUTION_SCENARIO)
-    q.require(descriptor.module == 'simulations/x650_cpp_live_v1/run_case.py'
+    descriptor = get(scenario)
+    q.require(descriptor.module == 'simulations/'+scenario+'/run_case.py'
               and descriptor.config['model'] == cfg['model'], 'Explicit C++ scenario physical model differs')
     q.require(not (ROOT/'.amsim/runtime.json').exists(), 'An active runtime already exists')
     if args.dry_run:
@@ -111,7 +119,7 @@ def main(argv=None):
     with flight_lock(ROOT):
         q.require(not (ROOT/'.amsim/runtime.json').exists(), 'An active runtime already exists')
         q.require(runtime_hashes(startup) == binaries, 'Runtime changed after admission')
-        out = ROOT/'runs'/('x650_cpp_launch_'+time.strftime('%Y%m%d_%H%M%S')+'_'+str(os.getpid()))
+        out = ROOT/'runs'/(launch_prefix+time.strftime('%Y%m%d_%H%M%S')+'_'+str(os.getpid()))
         out.mkdir(parents=True)
         logs = out/'actuator_live'; logs.mkdir()
         for name, source in [('task.json', args.task), ('protocol.json', args.protocol),
@@ -124,7 +132,7 @@ def main(argv=None):
         owned_startup = dict(startup)
         owned_startup['task_config'] = {key: value for key, value in q.identity(out/'task.json').items() if key != 'bytes'}
         atomic_json(out/'startup_manifest.json', owned_startup)
-        before = source_hashes()
+        before = source_hashes(extra_sources)
         atomic_json(out/'source_manifest.json', before)
         archive_sources(out, before); archive_binaries(out, binaries)
         atomic_json(out/'ground_admission.json', admission)
@@ -138,7 +146,7 @@ def main(argv=None):
             'startup_derivation': 'Only task_config.path redirected to identical archived task bytes',
             'launch_inputs': launch_inputs,
             'execution_resources': resources, 'runtime_binaries_sha256': binaries,
-            'execution_scenario': EXECUTION_SCENARIO, 'new_runtime_acceptance_required': True}
+            'execution_scenario': scenario, 'new_runtime_acceptance_required': True}
         atomic_json(out/'launch.json', status)
         env = os.environ.copy()
         env.update(X650_EXECUTION_ADAPTER='cpp_full_pipeline_v1',
@@ -152,14 +160,14 @@ def main(argv=None):
             OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
         env['PYTHONPATH'] = '/usr/lib/python3/dist-packages:/root/autodl-tmp/amsim-venv/lib/python3.10/site-packages:'+env.get('PYTHONPATH', '')
         env['PX4_GZ_MODEL_POSE'] = ','.join(str(x) for x in cfg['spawn_pose_enu_xyz_rpy'])
-        old = set((ROOT/'runs').glob(EXECUTION_SCENARIO+'_*'))
+        old = set((ROOT/'runs').glob(scenario+'_*'))
         print('CPP_LAUNCH '+str(out), flush=True)
         try:
             with (out/'flight.log').open('x') as log:
                 result = subprocess.run(['taskset', '--cpu-list', ','.join(map(str, resources['background'])),
-                    str(ROOT/'scripts/amsim'), 'run', EXECUTION_SCENARIO, '--headless'],
+                    str(ROOT/'scripts/amsim'), 'run', scenario, '--headless'],
                     cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
-            new = sorted(set((ROOT/'runs').glob(EXECUTION_SCENARIO+'_*'))-old)
+            new = sorted(set((ROOT/'runs').glob(scenario+'_*'))-old)
             status.update(exit_code=result.returncode, run_directories=[str(x) for x in new],
                           runtime_closed=not (ROOT/'.amsim/runtime.json').exists())
             status['complete'] = (result.returncode == 0 and len(new) == 1
@@ -169,7 +177,7 @@ def main(argv=None):
             raise
         finally:
             try:
-                after = source_hashes()
+                after = source_hashes(extra_sources)
                 status['sources_unchanged'] = after == before
                 atomic_json(out/'source_manifest_after.json', after)
                 after_binaries = runtime_hashes(startup)

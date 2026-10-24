@@ -1,0 +1,20 @@
+{
+  "archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_media_v2.zip",
+    "bytes": 8013330,
+    "sha256": "ebaa4331f50851fe3b7669adbcea32943679e3202e2bb7ef119323f03e980484"
+  },
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_media_v2_manifest.json",
+    "bytes": 12228,
+    "sha256": "550c0953bad90eea16adcb9633e4319a7113bb1ad7b04675f2cfb574df1aa9df"
+  },
+  "verified_at_unix": 1792835519.8712127,
+  "file_count": 35,
+  "video": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2/X650_normal_CPP_MPC.mp4",
+    "bytes": 6534764,
+    "sha256": "0b2c79473ca045716db9add48fadb1ddfa21012564b76c7a676c5331c1f26059"
+  },
+  "complete": true
+}

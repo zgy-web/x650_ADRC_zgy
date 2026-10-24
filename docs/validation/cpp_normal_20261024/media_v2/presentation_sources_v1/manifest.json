@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/render_x650_cpp_normal.py",
+      "bytes": 4715,
+      "sha256": "958619f71dfd62c5490dfdc9f22ee2e867dbb2c251b5dc5860a173664cc3d54a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/render_x650_isolated_validation.py",
+      "bytes": 27702,
+      "sha256": "a98b695dc11ffd0932ac6e47e5726bdbfe5d2321fff351ff21e785cc2f120e60"
+    }
+  ],
+  "stopped_pid": 47869,
+  "signal": "SIGINT",
+  "video_v1_partial_not_deliverable": true,
+  "time": 1792834784.2540448
+}

@@ -1,0 +1,10 @@
+{
+  "supervisor_pid": 48588,
+  "started_unix": 1792834908.6555147,
+  "script": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/video_v2.sh",
+  "script_sha256": "d6c38fd1e2c689a52bd54399d21e53b2ab26e96b48b38f1f377b348323235cd0",
+  "source_hashes": {
+    "render_x650_cpp_normal.py": "4cd43b0172fba7af3a931a0bafeadf0b835f23bb0a6e92cef7ad55e7014e9a7a",
+    "render_x650_isolated_validation.py": "264c146f4b8c5ffe10a17d8e805888618d1faeaa30f991e0abceabfbf051ee1d"
+  }
+}

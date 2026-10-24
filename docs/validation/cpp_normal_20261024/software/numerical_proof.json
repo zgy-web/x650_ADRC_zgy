@@ -1,0 +1,1463 @@
+{
+  "kind": "cpp_normal_numerical_qualification_v1",
+  "cases": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/dynamic_raw_v1/manifest.json",
+    "sha256": "9347e15862629b1d3474451dfcbb01d52d3187b071c609fd5a2093f2914761fe",
+    "bytes": 17918
+  },
+  "binary": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/cpp_core_replay_v2",
+    "sha256": "4d2867112d7d1f6ea1fedbda7758755c14ec746e522aa1bac2c3c5f64e728cf9",
+    "bytes": 86464
+  },
+  "predictor": {
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "bytes": 25112
+  },
+  "rows": [
+    {
+      "index": 0,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.858824288409778e-15,
+        "b": 1.5612511283791264e-17,
+        "H": 4.440892098500626e-16,
+        "g": 1.3877787807814457e-17,
+        "C": 5.551115123125783e-16,
+        "lo": 2.220446049250313e-16,
+        "hi": 2.220446049250313e-16
+      },
+      "normalized_plan_peak": 4.1633363423443375e-16,
+      "predicted_state_peak": 7.979727989493313e-17,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 3.029154552133826e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 3.382710778154774e-17,
+        "kkt_complementarity_inf": 2.348190522508733e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 8.52542,
+      "native_compute_ms": 8.462851,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 1,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.858824288409778e-15,
+        "b": 1.4230153513872246e-17,
+        "H": 6.661338147750939e-16,
+        "g": 4.163336342344337e-17,
+        "C": 4.996003610813204e-16,
+        "lo": 2.220446049250313e-16,
+        "hi": 2.220446049250313e-16
+      },
+      "normalized_plan_peak": 1.9555064638284006e-16,
+      "predicted_state_peak": 1.249000902703301e-16,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 4.327330742681543e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 5.811323644522304e-17,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 8.377815,
+      "native_compute_ms": 8.34191,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 2,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.858824288409778e-15,
+        "b": 2.3229031545501932e-17,
+        "H": 8.881784197001252e-16,
+        "g": 2.0816681711721685e-17,
+        "C": 6.661338147750939e-16,
+        "lo": 4.440892098500626e-16,
+        "hi": 4.440892098500626e-16
+      },
+      "normalized_plan_peak": 4.037174635000569e-16,
+      "predicted_state_peak": 2.42861286636753e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 2.1636600760937935e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 5.4643789493269423e-17,
+        "kkt_complementarity_inf": 9.868377902809999e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 8.347567,
+      "native_compute_ms": 8.299253,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 3,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.7098423211776606e-15,
+        "b": 2.6373217845709895e-17,
+        "H": 6.661338147750939e-16,
+        "g": 1.3877787807814457e-17,
+        "C": 1.1102230246251565e-15,
+        "lo": 4.440892098500626e-16,
+        "hi": 4.440892098500626e-16
+      },
+      "normalized_plan_peak": 2.5736988298128627e-15,
+      "predicted_state_peak": 1.7139067942650854e-15,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 9.087386716276441e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.0516761073109393e-16,
+        "kkt_complementarity_inf": 8.997509877842518e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 8.420586,
+      "native_compute_ms": 8.38399,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 4,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.073929999430902e-15,
+        "b": 8.881784197001252e-16,
+        "H": 3.725318664660193e-16,
+        "g": 1.942890293094024e-16,
+        "C": 3.941291737419306e-14,
+        "lo": 3.219646771412954e-15,
+        "hi": 3.219646771412954e-15
+      },
+      "normalized_plan_peak": 1.9032394707859826e-15,
+      "predicted_state_peak": 2.3592239273284576e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 2.163636270447397e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.1102230246251565e-16,
+        "kkt_complementarity_inf": 1.3726652447773435e-20,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.497686,
+      "native_compute_ms": 6.454656,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 5,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.4486302702418925e-15,
+        "b": 8.881784197001252e-16,
+        "H": 6.661338147750939e-16,
+        "g": 2.8362728832220796e-16,
+        "C": 2.0872192862952943e-14,
+        "lo": 1.7208456881689926e-15,
+        "hi": 1.7208456881689926e-15
+      },
+      "normalized_plan_peak": 1.7644615927078382e-15,
+      "predicted_state_peak": 1.6653345369377348e-16,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 1.2548963834781603e-17,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 6.938893903907228e-17,
+        "kkt_complementarity_inf": 2.920142107753546e-21,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.584606,
+      "native_compute_ms": 6.550558,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 6,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.2855662635000726e-15,
+        "b": 8.881784197001252e-16,
+        "H": 4.436555289810684e-16,
+        "g": 4.38451358553138e-16,
+        "C": 1.865174681370263e-14,
+        "lo": 2.1649348980190553e-15,
+        "hi": 2.1649348980190553e-15
+      },
+      "normalized_plan_peak": 2.7138785046392714e-15,
+      "predicted_state_peak": 2.220446049250313e-16,
+      "predicted_tip_peak": 4.440892098500626e-16,
+      "objective_relative": 7.35624850687567e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.691355389077387e-16,
+        "kkt_complementarity_inf": 1.3306121918793818e-20,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.593627,
+      "native_compute_ms": 6.548633,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 7,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.710276002046655e-15,
+        "b": 8.881784197001252e-16,
+        "H": 8.881784197001252e-16,
+        "g": 2.7668839441830073e-16,
+        "C": 6.52811138479592e-14,
+        "lo": 7.438494264988549e-15,
+        "hi": 7.438494264988549e-15
+      },
+      "normalized_plan_peak": 6.740639792367023e-16,
+      "predicted_state_peak": 2.914335439641036e-16,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 1.1250732140101513e-17,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.0321604682062002e-16,
+        "kkt_complementarity_inf": 2.1426005582389137e-20,
+        "active_constraints": 8
+      },
+      "core_step_wall_ms": 6.830953,
+      "native_compute_ms": 6.787279,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 8,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.7098423211776606e-15,
+        "b": 8.881784197001252e-16,
+        "H": 4.2934406030425976e-16,
+        "g": 1.8908485888147197e-16,
+        "C": 4.346523141407488e-14,
+        "lo": 4.3298697960381105e-15,
+        "hi": 4.3298697960381105e-15
+      },
+      "normalized_plan_peak": 2.3195731050204167e-15,
+      "predicted_state_peak": 1.8041124150158794e-16,
+      "predicted_tip_peak": 8.673617379884035e-18,
+      "objective_relative": 3.461799640820991e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.1709383462843448e-16,
+        "kkt_complementarity_inf": 1.1366375740494807e-20,
+        "active_constraints": 8
+      },
+      "core_step_wall_ms": 6.760738,
+      "native_compute_ms": 6.712472,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 9,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.4382219293860317e-15,
+        "b": 8.881784197001252e-16,
+        "H": 4.462576141950336e-16,
+        "g": 3.9985376121265404e-16,
+        "C": 2.0650148258027912e-14,
+        "lo": 1.609823385706477e-15,
+        "hi": 1.609823385706477e-15
+      },
+      "normalized_plan_peak": 7.731910350068055e-16,
+      "predicted_state_peak": 2.706168622523819e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 5.192645133635034e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.700029006457271e-16,
+        "kkt_complementarity_inf": 1.357567368208782e-20,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.719678,
+      "native_compute_ms": 6.681716,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 10,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.710709682915649e-15,
+        "b": 8.881784197001252e-16,
+        "H": 1.3322676295501878e-15,
+        "g": 4.397524011601206e-16,
+        "C": 4.2826853174915414e-14,
+        "lo": 4.773959005888173e-15,
+        "hi": 4.773959005888173e-15
+      },
+      "normalized_plan_peak": 2.339398516174437e-15,
+      "predicted_state_peak": 6.938893903907228e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 4.7598962240653945e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.6664187391102203e-16,
+        "kkt_complementarity_inf": 1.094130362531976e-20,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.9122,
+      "native_compute_ms": 6.857104,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 11,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 4.6074255521944e-15,
+        "b": 8.881784197001252e-16,
+        "H": 7.771561172376096e-16,
+        "g": 2.723515857283587e-16,
+        "C": 5.917488721252084e-14,
+        "lo": 6.716849298982197e-15,
+        "hi": 6.716849298982197e-15
+      },
+      "normalized_plan_peak": 7.247289188525327e-16,
+      "predicted_state_peak": 4.0245584642661925e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 5.6253292701749555e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 3.469446951953614e-17,
+        "kkt_complementarity_inf": 6.3125579861329335e-21,
+        "active_constraints": 7
+      },
+      "core_step_wall_ms": 6.74293,
+      "native_compute_ms": 6.700549,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 12,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.1995530397056484e-12,
+        "g": 5.315348855505775e-13,
+        "C": 4.1522341120980855e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 2.9684588120915123e-13,
+      "predicted_state_peak": 8.368306048112117e-14,
+      "predicted_tip_peak": 3.774758283725532e-15,
+      "objective_relative": 2.0000436068448903e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 6.22002449546244e-14,
+        "kkt_complementarity_inf": 3.1228425558902327e-22,
+        "active_constraints": 13
+      },
+      "core_step_wall_ms": 6.240022,
+      "native_compute_ms": 6.189691,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 13,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.707305733762322e-12,
+        "g": 7.357365042724717e-13,
+        "C": 1.970645868709653e-14,
+        "lo": 1.5543122344752192e-15,
+        "hi": 1.5543122344752192e-15
+      },
+      "normalized_plan_peak": 5.963285421017872e-13,
+      "predicted_state_peak": 8.598590589548039e-14,
+      "predicted_tip_peak": 1.3988810110276972e-14,
+      "objective_relative": 1.7211446087560503e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 9.932332734052807e-14,
+        "kkt_complementarity_inf": 1.476498050534428e-20,
+        "active_constraints": 12
+      },
+      "core_step_wall_ms": 6.122755,
+      "native_compute_ms": 6.079323,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 14,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.7070962659025977e-12,
+        "g": 7.279900965904973e-13,
+        "C": 4.4797499043625066e-14,
+        "lo": 4.9404924595819466e-15,
+        "hi": 4.9404924595819466e-15
+      },
+      "normalized_plan_peak": 8.013998415496499e-13,
+      "predicted_state_peak": 2.68143146575639e-13,
+      "predicted_tip_peak": 4.8627768478581856e-14,
+      "objective_relative": 1.098052444539374e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.223882106771157e-13,
+        "kkt_complementarity_inf": 3.412533575654555e-20,
+        "active_constraints": 11
+      },
+      "core_step_wall_ms": 6.015683,
+      "native_compute_ms": 5.966297,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 15,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.984324593002796e-12,
+        "g": 7.712576237384194e-13,
+        "C": 6.222800053024002e-14,
+        "lo": 7.049916206369744e-15,
+        "hi": 7.049916206369744e-15
+      },
+      "normalized_plan_peak": 5.084975650425526e-13,
+      "predicted_state_peak": 1.7798089391174443e-13,
+      "predicted_tip_peak": 4.3076653355456074e-14,
+      "objective_relative": 1.3097103752202818e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 3.469446951953614e-18,
+        "kkt_stationarity_inf": 1.8354415209920205e-13,
+        "kkt_complementarity_inf": 3.3098068954616136e-20,
+        "active_constraints": 12
+      },
+      "core_step_wall_ms": 6.224588,
+      "native_compute_ms": 6.183029,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 16,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.7081639882020614e-12,
+        "g": 6.642370572844392e-13,
+        "C": 4.1522341120980855e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 6.966919325396898e-13,
+      "predicted_state_peak": 2.1578919207065894e-13,
+      "predicted_tip_peak": 4.374278717023117e-14,
+      "objective_relative": 2.9261097119406543e-16,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.7889856263053616e-13,
+        "kkt_complementarity_inf": 2.884109628046526e-20,
+        "active_constraints": 12
+      },
+      "core_step_wall_ms": 6.090528,
+      "native_compute_ms": 6.043398,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 17,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 3.219954251149071e-12,
+        "g": 7.897412107951696e-13,
+        "C": 1.970645868709653e-14,
+        "lo": 1.5543122344752192e-15,
+        "hi": 1.5543122344752192e-15
+      },
+      "normalized_plan_peak": 8.018701443586924e-13,
+      "predicted_state_peak": 2.6338826952798655e-13,
+      "predicted_tip_peak": 7.882583474838611e-14,
+      "objective_relative": 2.3408027663893096e-16,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.004958699064474e-13,
+        "kkt_complementarity_inf": 2.3384663804393158e-20,
+        "active_constraints": 13
+      },
+      "core_step_wall_ms": 6.056842,
+      "native_compute_ms": 6.021752,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 18,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.3467269794075207e-12,
+        "g": 5.664765531654403e-13,
+        "C": 4.4797499043625066e-14,
+        "lo": 4.9404924595819466e-15,
+        "hi": 4.9404924595819466e-15
+      },
+      "normalized_plan_peak": 3.118735428638989e-13,
+      "predicted_state_peak": 2.874089854998374e-14,
+      "predicted_tip_peak": 4.440892098500626e-15,
+      "objective_relative": 1.1170069119057662e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 8.364489656464968e-14,
+        "kkt_complementarity_inf": 3.2753463720280804e-20,
+        "active_constraints": 12
+      },
+      "core_step_wall_ms": 5.943984,
+      "native_compute_ms": 5.900194,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 19,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.199886106613036e-12,
+        "g": 5.105698849816598e-13,
+        "C": 6.222800053024002e-14,
+        "lo": 7.049916206369744e-15,
+        "hi": 7.049916206369744e-15
+      },
+      "normalized_plan_peak": 9.563381832476484e-13,
+      "predicted_state_peak": 1.0229317393140036e-13,
+      "predicted_tip_peak": 1.9095836023552692e-14,
+      "objective_relative": 1.1978675567479291e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.41737316328161e-13,
+        "kkt_complementarity_inf": 2.628775913644502e-20,
+        "active_constraints": 13
+      },
+      "core_step_wall_ms": 6.104838,
+      "native_compute_ms": 6.069149,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 20,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 1.1992906667757097e-12,
+        "g": 2.8949065367100957e-13,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.3306690738754696e-15,
+        "hi": 3.3306690738754696e-15
+      },
+      "normalized_plan_peak": 3.9357406222961794e-13,
+      "predicted_state_peak": 2.582378755278114e-13,
+      "predicted_tip_peak": 3.566591466608315e-15,
+      "objective_relative": 9.069698229396755e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 6.17214612752548e-14,
+        "kkt_complementarity_inf": 2.4579985789132536e-19,
+        "active_constraints": 32
+      },
+      "core_step_wall_ms": 8.57904,
+      "native_compute_ms": 8.52829,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 21,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.7618762311887313e-12,
+        "g": 4.9540380478441115e-12,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.552713678800501e-15,
+        "hi": 3.552713678800501e-15
+      },
+      "normalized_plan_peak": 1.519309369671065e-12,
+      "predicted_state_peak": 3.818889648954382e-13,
+      "predicted_tip_peak": 3.197442310920451e-14,
+      "objective_relative": 6.76541567342145e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 5.551115123125783e-17,
+        "kkt_stationarity_inf": 1.8180682653801128e-13,
+        "kkt_complementarity_inf": 1.8831645221698573e-19,
+        "active_constraints": 33
+      },
+      "core_step_wall_ms": 7.282016,
+      "native_compute_ms": 7.255899,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 22,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.5649222329393595e-12,
+        "g": 3.1848412795909553e-12,
+        "C": 3.266831249959523e-14,
+        "lo": 2.9976021664879227e-15,
+        "hi": 2.9976021664879227e-15
+      },
+      "normalized_plan_peak": 6.699402937166659e-13,
+      "predicted_state_peak": 2.1457835508442713e-13,
+      "predicted_tip_peak": 1.1324274851176597e-14,
+      "objective_relative": 2.314371752559054e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.1102230246251565e-16,
+        "kkt_stationarity_inf": 1.317522480004385e-13,
+        "kkt_complementarity_inf": 4.226313514581633e-19,
+        "active_constraints": 33
+      },
+      "core_step_wall_ms": 7.558292,
+      "native_compute_ms": 7.521909,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 23,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.4674776111233143e-12,
+        "g": 2.7329319363111892e-12,
+        "C": 4.9904524956900786e-14,
+        "lo": 5.662137425588298e-15,
+        "hi": 5.662137425588298e-15
+      },
+      "normalized_plan_peak": 6.169165557189482e-13,
+      "predicted_state_peak": 3.78239106701983e-13,
+      "predicted_tip_peak": 2.2648549702353193e-14,
+      "objective_relative": 2.5271735341768246e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 5.551115123125783e-17,
+        "kkt_stationarity_inf": 1.6649182033035004e-13,
+        "kkt_complementarity_inf": 2.569222158813996e-19,
+        "active_constraints": 33
+      },
+      "core_step_wall_ms": 8.35667,
+      "native_compute_ms": 8.326701,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 24,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 6.498100668661522e-13,
+        "b": 8.881784197001252e-16,
+        "H": 1.1590728377086634e-13,
+        "g": 2.5510843437714925e-14,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.3306690738754696e-15,
+        "hi": 3.3306690738754696e-15
+      },
+      "normalized_plan_peak": 1.2323475573339238e-13,
+      "predicted_state_peak": 2.2537527399890678e-14,
+      "predicted_tip_peak": 1.9984014443252818e-15,
+      "objective_relative": 5.167346166034675e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 5.551115123125783e-17,
+        "kkt_stationarity_inf": 1.858582732161551e-14,
+        "kkt_complementarity_inf": 5.181654690044615e-19,
+        "active_constraints": 29
+      },
+      "core_step_wall_ms": 6.675941,
+      "native_compute_ms": 6.641618,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 25,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 6.498100668661522e-13,
+        "b": 8.881784197001252e-16,
+        "H": 1.0680345496894006e-13,
+        "g": 4.5102810375396984e-14,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.552713678800501e-15,
+        "hi": 3.552713678800501e-15
+      },
+      "normalized_plan_peak": 2.171495306800931e-13,
+      "predicted_state_peak": 1.2778667013435552e-13,
+      "predicted_tip_peak": 2.4424906541753444e-15,
+      "objective_relative": 5.543626817469245e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 1.860837872680321e-14,
+        "kkt_complementarity_inf": 2.507685601409025e-19,
+        "active_constraints": 28
+      },
+      "core_step_wall_ms": 8.076222,
+      "native_compute_ms": 8.035802,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 26,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 6.498100668661522e-13,
+        "b": 8.881784197001252e-16,
+        "H": 9.969802761133906e-14,
+        "g": 1.8721135752741702e-14,
+        "C": 3.266831249959523e-14,
+        "lo": 2.9976021664879227e-15,
+        "hi": 2.9976021664879227e-15
+      },
+      "normalized_plan_peak": 1.9836405245660607e-13,
+      "predicted_state_peak": 1.154909501366319e-13,
+      "predicted_tip_peak": 2.4424906541753444e-15,
+      "objective_relative": 3.629681720616122e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 8.326672684688674e-17,
+        "kkt_stationarity_inf": 1.6867583718660484e-14,
+        "kkt_complementarity_inf": 4.826916126461018e-19,
+        "active_constraints": 28
+      },
+      "core_step_wall_ms": 7.963009,
+      "native_compute_ms": 7.913517,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 27,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 6.498100668661522e-13,
+        "b": 8.881784197001252e-16,
+        "H": 1.0147438445073931e-13,
+        "g": 2.466082893448629e-14,
+        "C": 4.9904524956900786e-14,
+        "lo": 5.662137425588298e-15,
+        "hi": 5.662137425588298e-15
+      },
+      "normalized_plan_peak": 2.9004576518332215e-14,
+      "predicted_state_peak": 6.106226635438361e-15,
+      "predicted_tip_peak": 1.3322676295501878e-15,
+      "objective_relative": 2.2008912923144445e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 1.2864709297844001e-14,
+        "kkt_complementarity_inf": 2.8703405828220825e-19,
+        "active_constraints": 28
+      },
+      "core_step_wall_ms": 7.972736,
+      "native_compute_ms": 7.932734,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 28,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.697564394082974e-12,
+        "g": 3.522643982067919e-12,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 1.52399697799726e-12,
+      "predicted_state_peak": 3.3911762287175407e-13,
+      "predicted_tip_peak": 7.327471962526033e-14,
+      "objective_relative": 4.7570553138017e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 3.424205363700139e-13,
+        "kkt_complementarity_inf": 4.660030390342837e-20,
+        "active_constraints": 25
+      },
+      "core_step_wall_ms": 7.558457,
+      "native_compute_ms": 7.507076,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 29,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.3463835041592773e-12,
+        "g": 2.157336809194277e-12,
+        "C": 3.314015728506092e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 4.872645496965965e-13,
+      "predicted_state_peak": 9.89763826453327e-14,
+      "predicted_tip_peak": 1.199040866595169e-14,
+      "objective_relative": 1.0865707815611687e-14,
+      "independently_recomputed_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 1.7780221739371882e-13,
+        "kkt_complementarity_inf": 1.0430917670409575e-19,
+        "active_constraints": 26
+      },
+      "core_step_wall_ms": 7.798211,
+      "native_compute_ms": 7.75253,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 30,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.46540982073995e-12,
+        "g": 2.6400340247256793e-12,
+        "C": 3.2807090377673376e-14,
+        "lo": 3.552713678800501e-15,
+        "hi": 3.552713678800501e-15
+      },
+      "normalized_plan_peak": 7.932235115662125e-13,
+      "predicted_state_peak": 2.0378143616994748e-13,
+      "predicted_tip_peak": 3.352873534367973e-14,
+      "objective_relative": 1.8865952587072232e-14,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 2.280675648336228e-13,
+        "kkt_complementarity_inf": 1.0420770867979042e-19,
+        "active_constraints": 26
+      },
+      "core_step_wall_ms": 7.407557,
+      "native_compute_ms": 7.365559,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 31,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 1.5305742784299525e-12,
+        "g": 6.804556917927584e-13,
+        "C": 4.9960036108132044e-14,
+        "lo": 5.828670879282072e-15,
+        "hi": 5.828670879282072e-15
+      },
+      "normalized_plan_peak": 1.9885327952175026e-13,
+      "predicted_state_peak": 2.4077961846558082e-14,
+      "predicted_tip_peak": 4.440892098500626e-15,
+      "objective_relative": 2.63529219047561e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 1.1966816426678406e-13,
+        "kkt_complementarity_inf": 1.0371481078296209e-19,
+        "active_constraints": 26
+      },
+      "core_step_wall_ms": 6.534636,
+      "native_compute_ms": 6.504164,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 32,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 2.914335439641036e-16,
+        "H": 1.193579957092794e-12,
+        "g": 3.046868313205664e-13,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 3.7975575065526564e-13,
+      "predicted_state_peak": 3.0142555118573e-14,
+      "predicted_tip_peak": 3.774758283725532e-15,
+      "objective_relative": 7.914389699591004e-16,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 6.504519145522636e-14,
+        "kkt_complementarity_inf": 9.981880741051642e-20,
+        "active_constraints": 25
+      },
+      "core_step_wall_ms": 7.324742,
+      "native_compute_ms": 7.287231,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 33,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 2.96637714392034e-16,
+        "H": 2.7607243748006827e-12,
+        "g": 4.615200582813728e-12,
+        "C": 3.314015728506092e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 9.742823831654984e-13,
+      "predicted_state_peak": 2.998989945268704e-13,
+      "predicted_tip_peak": 8.970602038971265e-14,
+      "objective_relative": 8.486817009143773e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 2.5743296383495817e-13,
+        "kkt_complementarity_inf": 9.998610870908114e-20,
+        "active_constraints": 25
+      },
+      "core_step_wall_ms": 7.048981,
+      "native_compute_ms": 7.01824,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 34,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.5630591399261604e-12,
+        "g": 3.1603747396857784e-12,
+        "C": 3.2807090377673376e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 1.0849346112864725e-12,
+      "predicted_state_peak": 3.8130609780751e-13,
+      "predicted_tip_peak": 7.172040739078511e-14,
+      "objective_relative": 1.2666738003890215e-14,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.2120152931570658e-13,
+        "kkt_complementarity_inf": 9.982116448607215e-20,
+        "active_constraints": 25
+      },
+      "core_step_wall_ms": 7.473254,
+      "native_compute_ms": 7.431944,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 35,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.4657394182003856e-12,
+        "g": 2.6787808082850972e-12,
+        "C": 4.9960036108132044e-14,
+        "lo": 5.828670879282072e-15,
+        "hi": 5.828670879282072e-15
+      },
+      "normalized_plan_peak": 7.114679216139544e-13,
+      "predicted_state_peak": 1.779826286352204e-13,
+      "predicted_tip_peak": 2.398081733190338e-14,
+      "objective_relative": 3.0964416608446385e-17,
+      "independently_recomputed_quality": {
+        "primal_violation": 5.551115123125783e-17,
+        "kkt_stationarity_inf": 1.723968190425751e-13,
+        "kkt_complementarity_inf": 6.746731094172392e-20,
+        "active_constraints": 25
+      },
+      "core_step_wall_ms": 7.372445,
+      "native_compute_ms": 7.335808,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 36,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 2.019689970822469e-12,
+        "g": 5.738497784596452e-14,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 5.943008431054232e-13,
+      "predicted_state_peak": 1.4130710490611875e-13,
+      "predicted_tip_peak": 4.3520742565306136e-14,
+      "objective_relative": 7.851141093518571e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.4442980191968777e-13,
+        "kkt_complementarity_inf": 1.2682586495714256e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.240036,
+      "native_compute_ms": 7.185591,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 37,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 4.2020113517199364e-12,
+        "b": 8.881784197001252e-16,
+        "H": 3.505878584404015e-13,
+        "g": 4.1234377023968705e-15,
+        "C": 3.314015728506092e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 1.0567304607113989e-13,
+      "predicted_state_peak": 6.588479761759913e-14,
+      "predicted_tip_peak": 2.9334173978767808e-15,
+      "objective_relative": 7.174719191602553e-16,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.846247543208946e-14,
+        "kkt_complementarity_inf": 1.2507960080220015e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 6.611056,
+      "native_compute_ms": 6.581244,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 38,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.079391693554644e-11,
+        "b": 8.881784197001252e-16,
+        "H": 1.1940101685148363e-12,
+        "g": 6.156685404545836e-14,
+        "C": 3.2807090377673376e-14,
+        "lo": 3.552713678800501e-15,
+        "hi": 3.552713678800501e-15
+      },
+      "normalized_plan_peak": 2.84582963255337e-13,
+      "predicted_state_peak": 1.873466659585432e-13,
+      "predicted_tip_peak": 8.43769498715119e-15,
+      "objective_relative": 2.83223296056745e-15,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.1525196989419237e-13,
+        "kkt_complementarity_inf": 7.62134461151427e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 6.790019,
+      "native_compute_ms": 6.750264,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 39,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 4.19630107571789e-12,
+        "b": 6.879804885506768e-16,
+        "H": 3.382313689109101e-13,
+        "g": 7.971054372113429e-15,
+        "C": 4.9960036108132044e-14,
+        "lo": 5.828670879282072e-15,
+        "hi": 5.828670879282072e-15
+      },
+      "normalized_plan_peak": 3.8107143703185055e-14,
+      "predicted_state_peak": 2.1798535199124558e-14,
+      "predicted_tip_peak": 1.6670692604137116e-15,
+      "objective_relative": 2.583415994450866e-16,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 3.072975901519115e-14,
+        "kkt_complementarity_inf": 8.99767650409611e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.208901,
+      "native_compute_ms": 7.174821,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 40,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.851885394505871e-15,
+        "b": 2.886552758971095e-16,
+        "H": 4.440892098500626e-16,
+        "g": 1.1709383462843448e-16,
+        "C": 3.3306690738754696e-14,
+        "lo": 3.4416913763379853e-15,
+        "hi": 3.4416913763379853e-15
+      },
+      "normalized_plan_peak": 8.642076953048093e-16,
+      "predicted_state_peak": 4.787836793695988e-16,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 0.0,
+      "independently_recomputed_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 5.551115123125783e-17,
+        "kkt_complementarity_inf": 2.408916882148047e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 6.916221,
+      "native_compute_ms": 6.86894,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 41,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.7098423211776606e-15,
+        "b": 2.9767871788420955e-16,
+        "H": 6.661338147750939e-16,
+        "g": 8.196568423990414e-17,
+        "C": 3.314015728506092e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 1.3373140978439385e-15,
+      "predicted_state_peak": 8.638922910364499e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 1.7309322970726173e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 7.321752796066172e-17,
+        "kkt_complementarity_inf": 1.250787133468135e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.097205,
+      "native_compute_ms": 7.049852,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 42,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 2.858824288409778e-15,
+        "b": 8.881784197001252e-16,
+        "H": 6.661338147750939e-16,
+        "g": 2.187919984075748e-16,
+        "C": 3.2807090377673376e-14,
+        "lo": 3.497202527569243e-15,
+        "hi": 3.497202527569243e-15
+      },
+      "normalized_plan_peak": 6.542385680826816e-16,
+      "predicted_state_peak": 3.365363543395006e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 4.327320152187587e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.446325698095663e-16,
+        "kkt_complementarity_inf": 9.868377902810918e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.135829,
+      "native_compute_ms": 7.087689,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 43,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.710276002046655e-15,
+        "b": 8.881784197001252e-16,
+        "H": 7.771561172376096e-16,
+        "g": 1.682681771697503e-16,
+        "C": 4.9960036108132044e-14,
+        "lo": 5.828670879282072e-15,
+        "hi": 5.828670879282072e-15
+      },
+      "normalized_plan_peak": 1.0705722023171154e-15,
+      "predicted_state_peak": 2.1510571102112408e-16,
+      "predicted_tip_peak": 1.3877787807814457e-17,
+      "objective_relative": 9.95285211782658e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 8.760353553682876e-17,
+        "kkt_complementarity_inf": 2.2183031986812858e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.270722,
+      "native_compute_ms": 7.230909,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 44,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.783106640453671e-15,
+        "b": 8.881784197001252e-16,
+        "H": 5.429684479807406e-16,
+        "g": 1.5525775109992423e-16,
+        "C": 4.884981308350689e-14,
+        "lo": 6.050715484207103e-15,
+        "hi": 6.050715484207103e-15
+      },
+      "normalized_plan_peak": 7.191217318594763e-16,
+      "predicted_state_peak": 4.198030811863873e-16,
+      "predicted_tip_peak": 6.938893903907228e-18,
+      "objective_relative": 6.923781792536037e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 4.163336342344337e-17,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.203006,
+      "native_compute_ms": 7.150273,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 45,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 5.710492842481152e-15,
+        "b": 8.881784197001252e-16,
+        "H": 6.661338147750939e-16,
+        "g": 2.469812548921979e-16,
+        "C": 5.551115123125783e-14,
+        "lo": 8.659739592076221e-15,
+        "hi": 8.659739592076221e-15
+      },
+      "normalized_plan_peak": 1.5662074811676316e-15,
+      "predicted_state_peak": 3.712308238590367e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 1.5145657511632857e-17,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.411265631607762e-16,
+        "kkt_complementarity_inf": 7.840865612856127e-21,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 6.602539,
+      "native_compute_ms": 6.569176,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 46,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.157196726277789e-15,
+        "b": 8.881784197001252e-16,
+        "H": 6.661338147750939e-16,
+        "g": 1.48318857196017e-16,
+        "C": 4.04121180963557e-14,
+        "lo": 8.93729534823251e-15,
+        "hi": 8.93729534823251e-15
+      },
+      "normalized_plan_peak": 8.452834392032441e-16,
+      "predicted_state_peak": 5.724587470723463e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 9.520104331842484e-18,
+      "independently_recomputed_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 1.951563910473908e-16,
+        "kkt_complementarity_inf": 2.96051004677125e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.151188,
+      "native_compute_ms": 7.105208,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    },
+    {
+      "index": 47,
+      "pass_": true,
+      "exit_code": 0,
+      "matrix_peak_errors": {
+        "A": 3.859407368342338e-15,
+        "b": 8.881784197001252e-16,
+        "H": 7.589415207398531e-16,
+        "g": 5.689893001203927e-16,
+        "C": 4.96269692007445e-14,
+        "lo": 9.71445146547012e-15,
+        "hi": 9.71445146547012e-15
+      },
+      "normalized_plan_peak": 9.3990471971107e-16,
+      "predicted_state_peak": 5.585809592645319e-16,
+      "predicted_tip_peak": 2.220446049250313e-16,
+      "objective_relative": 3.029128912815201e-17,
+      "independently_recomputed_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.3418766925686896e-16,
+        "kkt_complementarity_inf": 1.1988988089773355e-20,
+        "active_constraints": 20
+      },
+      "core_step_wall_ms": 7.189415,
+      "native_compute_ms": 7.155051,
+      "mit_wire_fields_equal": true,
+      "independent_matrix_oracle": true,
+      "timing_scope": "owning Core only; does not include ROS feedback/admission/dispatch"
+    }
+  ],
+  "complete": true,
+  "core_library": {
+    "path": "/root/autodl-tmp/x650_cpp_core_scratch_v2/libx650_mpc_core.so",
+    "sha256": "6af46a510654ff302c2f2dcec2b73c6e752776ff5cbd538254dd0c017d4cc63b",
+    "bytes": 144080
+  },
+  "optimization_library": {
+    "path": "/root/autodl-tmp/x650_native_optimization_build_v4/libx650_optimization.so",
+    "sha256": "582b0a150787333936b04c4c9b40d461db99fa884577e81e6ff230f49a4b3452",
+    "bytes": 331840
+  },
+  "validator": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/validate_x650_cpp_pipeline.py",
+    "sha256": "9c547515eba4093209e72a7ede022fd36605e549c4a4f005f7c7f10a3b9ac7fa",
+    "bytes": 7977
+  },
+  "runtime_python_calls": 0,
+  "ros_timing_qualified": false,
+  "physical_hold_qualified": false,
+  "passed": 48,
+  "total": 48,
+  "pass": true,
+  "libraries_unchanged": true,
+  "trajectory": {
+    "kind": "normal_figure8",
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 12.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0,
+    "duration_s": 32.0
+  },
+  "trajectory_center": [
+    -0.009807621135331623,
+    0.04,
+    1.67
+  ],
+  "center_source": {
+    "artifact": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/dynamic_raw_v1/case_000.json",
+      "sha256": "a78418054e383c1e46aa512c21829541207d409f9255a61f153270d2e5013452",
+      "bytes": 495133
+    },
+    "json_pointer": "/input/target/position"
+  },
+  "original_numerical_proof": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/dynamic_check_v1/report.json",
+    "sha256": "9c50ef437950e30ca73e54af5d22943c49171e1b3dfdf1bdc1d0a11eaecf9e54",
+    "bytes": 52891
+  }
+}

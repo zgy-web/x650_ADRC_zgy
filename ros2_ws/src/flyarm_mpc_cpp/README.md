@@ -2,15 +2,15 @@
 
 This package is the `cpp_full_pipeline_v1` integration boundary. It receives the
 existing admitted `ControlSnapshot`, calls the complete C++ controller with raw
-state, actual command/packet history and an explicit hold preview, and publishes
+state, actual command/packet history and an explicit trajectory preview, and publishes
 the existing `ControlProposal`. It never publishes PX4 or joint actuator commands.
 The existing ingress, actual-send barrier, periodic writer and consumption checks
 remain necessary. The separate `flyarm_state_cpp` package supplies actual feedback.
 
-The initial implementation supports **hold only**. Compilation and synthetic
-contract checks do not qualify physical operation, 30-second hold, figure-eight,
-Orin hardware, or hard real-time behavior. The C++ core still requires independent
-numerical qualification against the original records before flight acceptance.
+The worker supports the original strict hold and one explicitly configured
+ordinary figure eight. Each task requires its own numerical, ROS and physical
+evidence. Compilation and synthetic contract checks alone cannot qualify a
+flight, Orin hardware, or hard real-time behavior.
 
 ## Explicit startup
 
@@ -40,7 +40,20 @@ The startup JSON is strictly parsed by `config_io.hpp` and contains exactly:
   `symbol: "ts20_prediction_batch"`;
 - nonempty `source_artifacts`, each an absolute path and SHA binding;
 - `config`, containing every `x650::Config` field without defaulting or extras;
-- `trajectory: {"kind": "hold"}`.
+- `trajectory: {"kind": "hold"}`; or exactly the ordinary trajectory below.
+
+```json
+{"kind":"normal_figure8","amplitude_x":0.25,"amplitude_z":0.10,
+ "period_s":12.0,"cycles":2,"start_s":2.0,"ramp_s":2.0,"duration_s":32.0}
+```
+
+The current target and every future node use the same C++ `Trajectory` law as
+the state source. The preview times are `t + cumulative([actual_dt, node_dt, ...])`,
+so a delayed or shortened first step cannot silently use a fixed 20 ms preview.
+The center and time origin come from the actual `LiveStart`. The source's current
+target must match this law exactly; wrong phases are rejected. The separate
+`simulations/x650_cpp_normal_v1` entry binds the accepted hold and newly tested
+dynamic worker. Fast trajectories require a later explicit entry and validation.
 
 The actually loaded core ABI and optimization dependency are checked with `dladdr`
 (including the actual `x650_assemble` symbol); the predictor is loaded
@@ -80,3 +93,11 @@ invalid identity, time, packet history, quality and PVA reconstruction.
 `test_config_diagnostics` exercises exact startup schema, SHA bindings, duplicate
 JSON keys, unsupported trajectory, nonfinite diagnostics and detached evidence.
 Neither test sends actuator commands or proves runtime timing.
+
+`test_normal_contract` and `test_normal_config` cover the exact ordinary schema,
+phase boundaries, actual first-step intervals and preservation of strict hold.
+`trajectory_probe` is compared against the independent original Python law by
+`scripts/validate_x650_cpp_normal_reference.py`. Dynamic full-matrix fixtures and
+the actual ROS worker are checked separately. The software ROS test records both
+serialized endpoints and compares every decoded field exactly: CDR alignment
+padding is not a control field and need not have identical bytes across serializers.

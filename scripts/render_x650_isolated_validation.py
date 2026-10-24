@@ -255,7 +255,7 @@ def draw_overlay(ImageDraw, canvas, bundle, now, quat, fonts):
     verified, data = bundle["verified"], bundle["data"]
     duration, t, error_mm = verified["duration"], data["elapsed"], verified["norm"] * 1000
     draw = ImageDraw.Draw(canvas)
-    draw.text((26, 12), "NORMAL FIGURE-EIGHT | ISOLATED C++ UPPER MPC", fill=FG, font=fonts[30])
+    draw.text((26, 12), bundle.get("display_title", "NORMAL FIGURE-EIGHT | ISOLATED C++ UPPER MPC"), fill=FG, font=fonts[30])
     draw.text((26, 55), "One complete certified run | Actual X650 + two-link TS20 | Precision EV", fill=MUTED, font=fonts[22])
     draw.text((26, 91), "Full target path and recorded actual tip | Same-time native error; no phase/origin alignment", fill=MUTED, font=fonts[20])
     draw.text((26, 126), "Fixed world view", fill=FG, font=fonts[20])
@@ -321,6 +321,14 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
     from PIL import Image, ImageDraw
     scene_path, scene_details = replay.make_scene(output / "render_geometry", bundle["source"], bundle["robot"], PANEL_WIDTH, SCENE_HEIGHT)
     model = mujoco.MjModel.from_xml_path(str(scene_path))
+    quality = bundle.get('render_quality')
+    if quality is not None:
+        require(quality == {'profile': 'software_fast_v1', 'shadows': False,
+                            'reflections': False, 'offscreen_samples': 0, 'mesh_decimation': False},
+                'Unknown explicit render-only quality profile')
+        # Set before allocating the offscreen framebuffer. Geometry, poses,
+        # sample times, reference and all independent error metrics are intact.
+        model.vis.quality.offsamples = quality['offscreen_samples']
     state = mujoco.MjData(model)
     renderer = mujoco.Renderer(model, height=SCENE_HEIGHT, width=PANEL_WIDTH, max_geom=2200)
     proc, log = None, None
@@ -354,12 +362,15 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
             canvas = Image.new("RGB", (WIDTH, HEIGHT), BG)
             for index, camera in enumerate(cameras):
                 renderer.update_scene(state, camera=camera)
+                if quality is not None:
+                    renderer.scene.flags[mujoco.mjtRndFlag.mjRND_SHADOW] = False
+                    renderer.scene.flags[mujoco.mjtRndFlag.mjRND_REFLECTION] = False
                 add_path(mujoco, renderer.scene, target_path, TARGET, .0017)
                 add_path(mujoco, renderer.scene, trail, ACTUAL, .0015)
                 canvas.paste(Image.fromarray(renderer.render().copy()), (index * PANEL_WIDTH, SCENE_Y))
             draw_overlay(ImageDraw, canvas, bundle, now, quat, fonts)
             return canvas
-        video = output / "X650_normal_isolated_CPP_MPC.mp4"
+        video = output / bundle.get("video_filename", "X650_normal_isolated_CPP_MPC.mp4")
         if not preview:
             log = (output / "ffmpeg.log").open("x", encoding="utf-8")
             proc = subprocess.Popen([ffmpeg, "-n", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{WIDTH}x{HEIGHT}",
@@ -385,6 +396,7 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
             video_contract = video_decode(ffmpeg, video, len(frames))
             frame(DURATION).save(output / "final_state.png")
         return {"geometry": scene_details, "video": None if preview else identity(video),
+                "effective_offscreen_samples": int(model.vis.quality.offsamples),
                 "decoded_video": video_contract, "frames": len(frames), "preview_time_s": float(frames[0]) if preview else None,
                 "cameras": {"world": {"distance": 2.05, "azimuth": 110., "elevation": -14.,
                                        "lookat": cameras[0].lookat.tolist()},
@@ -394,10 +406,10 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
         close_media(proc, log, renderer)
 
 
-def render(args):
+def render(args, *, loader=load_recording):
     output = args.output.resolve()
     require(not output.exists(), "Use a new output directory; existing evidence/media is never overwritten")
-    bundle = load_recording(args.report, args.report_sha256)
+    bundle = loader(args.report, args.report_sha256)
     for protected in (Path(bundle["report"]["source_run_directory"]), Path(bundle["report"]["launch_directory"]),
                       Path(args.report).resolve().parent, bundle["source"].parent):
         require(not output.is_relative_to(protected.resolve()), "Presentation output must be outside original evidence/model folders")
@@ -412,7 +424,7 @@ def render(args):
             versions[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             versions[name] = None
-    record = {"kind": "x650_isolated_normal_recorded_visualization_v1", "complete": False,
+    record = {"kind": bundle.get("visualization_kind", "x650_isolated_normal_recorded_visualization_v1"), "complete": False,
               "stage": "normal", "source_certificate_passed": True, "eligible_as_stage_gate": False,
               "hardware_qualified": False, "synthetic": False, "new_physics_run": False,
               "native_gazebo_screen_capture": False, "width": WIDTH, "height": HEIGHT, "fps": args.fps,
@@ -432,6 +444,9 @@ def render(args):
               "visual_subsampling": {"target_path_points": 400, "past_actual_tip_maximum": 360,
                                      "past_error_chart_maximum": 2200, "metric_subsampling": False},
               "input_hashes": inputs, "python": sys.executable, "package_versions": versions,
+              "render_quality": bundle.get('render_quality', {'profile': 'original'}),
+              "software_render_threads": os.environ.get('LP_NUM_THREADS'),
+              "render_process_affinity": sorted(os.sched_getaffinity(0)) if hasattr(os, 'sched_getaffinity') else None,
               "render_backend": "MuJoCo offscreen rendering only", "mujoco_gl": os.environ.get("MUJOCO_GL")}
     output.mkdir(parents=True, exist_ok=False)
     save(output / "render_status.json", record)
