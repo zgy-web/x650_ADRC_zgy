@@ -1,0 +1,46 @@
+{
+  "started": true,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "bounded_failed_recovery": true,
+    "receipt_budget_s": 0.15,
+    "sigint_budget_s": 0.15,
+    "sigkill_budget_s": 0.05,
+    "signals": [
+      "SIGINT"
+    ],
+    "errors": [],
+    "begin_monotonic_ns": 59602891591124787,
+    "wall_monotonic_ns": 59602891756696462
+  },
+  "error": "C++ output latched fault reason 2",
+  "processes": {
+    "recorder": {
+      "pid": 18847,
+      "returncode": 0
+    },
+    "source_recorder": {
+      "pid": 18848,
+      "returncode": 0
+    },
+    "worker": {
+      "pid": 18849,
+      "returncode": 0
+    },
+    "ingress": {
+      "pid": 18937,
+      "returncode": 0
+    },
+    "dispatcher": {
+      "pid": 18938,
+      "returncode": 0
+    },
+    "consumption": {
+      "pid": 18939,
+      "returncode": 0
+    }
+  },
+  "source_samples": 965,
+  "physical_acceptance_pending": true
+}

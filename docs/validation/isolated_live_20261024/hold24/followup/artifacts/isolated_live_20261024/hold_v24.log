@@ -1,0 +1,7 @@
+ISOLATED_LAUNCH /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_124434_18155
+Traceback (most recent call last):
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/launch.py", line 106, in <module>
+    if __name__=='__main__':main()
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/launch.py", line 104, in main
+    if not status['complete']:raise RuntimeError('Live simulation lifecycle did not complete: '+str(out))
+RuntimeError: Live simulation lifecycle did not complete: /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_124434_18155

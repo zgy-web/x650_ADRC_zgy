@@ -1,0 +1,2700 @@
+{
+  "kind": "x650_ground_truth_aided_research_parameter_session",
+  "schema_version": 1,
+  "purpose": "research",
+  "operating_condition": {
+    "kind": "x650_research_operating_condition",
+    "schema_version": 1,
+    "research_profile": "precision_ev_selected_pid_v1",
+    "scope": "simulation_truth_aided_ev_commissioning",
+    "control_interface": "fixed_world_position_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "estimator_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3
+    },
+    "observer": {
+      "rate_hz": 50.0,
+      "gaussian_noise": 0.0,
+      "measurement_point": "base_link"
+    },
+    "coordinate_contract": "raw_ev_world",
+    "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "ground_truth_aided": true,
+    "gps_performance_claim": false,
+    "hardware_performance_claim": false
+  },
+  "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+  "diagnostic_only": false,
+  "eligible_as_stage_gate": false,
+  "ground_truth_aided": true,
+  "ideal_data": true,
+  "aiding_requested": true,
+  "aiding_confirmed": true,
+  "formal_performance_claim": false,
+  "profile": {
+    "EKF2_EV_CTRL": 7,
+    "EKF2_EV_NOISE_MD": 1,
+    "EKF2_EVP_NOISE": 0.01,
+    "EKF2_EVV_NOISE": 0.01,
+    "EKF2_GPS_CTRL": 0,
+    "EKF2_BARO_CTRL": 0,
+    "EKF2_HGT_REF": 3
+  },
+  "profile_name": "ev_precision_xyz_velocity_v1",
+  "simulation_ground_truth_aided": true,
+  "formal_gps_performance_claim": false,
+  "hardware_performance_claim": false,
+  "pid_tuning_candidate": {
+    "MPC_XY_P": 0.95,
+    "MPC_Z_P": 1.0,
+    "MPC_XY_VEL_P_ACC": 2.2,
+    "MPC_Z_VEL_P_ACC": 4.8
+  },
+  "pid_tuning_candidate_name": "velocity_high",
+  "canonical_control_originals_count": 42,
+  "mutable_parameters": {
+    "EKF2_EV_CTRL": 7,
+    "EKF2_EV_NOISE_MD": 1,
+    "EKF2_EVP_NOISE": 0.01,
+    "EKF2_EVV_NOISE": 0.01,
+    "EKF2_GPS_CTRL": 0,
+    "EKF2_BARO_CTRL": 0,
+    "EKF2_HGT_REF": 3,
+    "MPC_XY_P": 0.95,
+    "MPC_Z_P": 1.0,
+    "MPC_XY_VEL_P_ACC": 2.2,
+    "MPC_Z_VEL_P_ACC": 4.8
+  },
+  "tuning_claim": "Finite local candidate comparison only; no claim of global or fully tuned optimum",
+  "fixed_world_reference_required": true,
+  "protected_parameters": [
+    "EKF2_EV_DELAY",
+    "EKF2_EV_POS_X",
+    "EKF2_EV_POS_Y",
+    "EKF2_EV_POS_Z",
+    "EKF2_IMU_POS_X",
+    "EKF2_IMU_POS_Y",
+    "EKF2_IMU_POS_Z",
+    "MPC_THR_HOVER",
+    "MC_ROLL_P",
+    "MC_PITCH_P",
+    "MC_YAW_P",
+    "MC_AIRMODE",
+    "MC_ROLLRATE_P",
+    "MC_ROLLRATE_I",
+    "MC_ROLLRATE_D",
+    "MC_ROLLRATE_FF",
+    "MC_ROLLRATE_K",
+    "MC_PITCHRATE_P",
+    "MC_PITCHRATE_I",
+    "MC_PITCHRATE_D",
+    "MC_PITCHRATE_FF",
+    "MC_PITCHRATE_K",
+    "MC_YAWRATE_P",
+    "MC_YAWRATE_I",
+    "MC_YAWRATE_D",
+    "MC_YAWRATE_FF",
+    "MC_YAWRATE_K",
+    "MPC_XY_VEL_I_ACC",
+    "MPC_XY_VEL_D_ACC",
+    "MPC_Z_VEL_I_ACC",
+    "MPC_Z_VEL_D_ACC",
+    "MPC_THR_MIN",
+    "MPC_THR_MAX",
+    "MPC_USE_HTE",
+    "MPC_TILTMAX_AIR",
+    "MPC_TILTMAX_LND",
+    "MPC_XY_VEL_MAX",
+    "MPC_Z_VEL_MAX_UP",
+    "MPC_Z_VEL_MAX_DN",
+    "MPC_ACC_HOR_MAX",
+    "MPC_ACC_UP_MAX",
+    "MPC_ACC_DOWN_MAX",
+    "MPC_JERK_MAX",
+    "MPC_TKO_SPEED",
+    "MPC_LAND_SPEED"
+  ],
+  "read_only_prerequisites": {
+    "EKF2_EV_DELAY": 0.0,
+    "EKF2_EV_POS_X": 0.0,
+    "EKF2_EV_POS_Y": 0.0,
+    "EKF2_EV_POS_Z": 0.0,
+    "EKF2_IMU_POS_X": 0.0,
+    "EKF2_IMU_POS_Y": 0.0,
+    "EKF2_IMU_POS_Z": 0.0
+  },
+  "required_fusion_flags_before_takeoff": {
+    "cs_ev_pos": true,
+    "cs_ev_vel": true,
+    "cs_ev_hgt": true,
+    "cs_gnss_pos": false,
+    "cs_gnss_vel": false,
+    "cs_gps_hgt": false,
+    "cs_baro_hgt": false
+  },
+  "origin_semantics": "Raw EV NED observation has [world_y, world_x, -world_z]; with zero EV/IMU offsets, no GNSS position fusion resets EKF local XY to [world_y, world_x]. EV height reference resets global altitude to world_z, retaining an existing origin altitude: local_z=ref_alt-world_z. Require live frame bridge checks; old GPS/world geodetic mapping is not a valid precision-mode target conversion.",
+  "applied_verified": true,
+  "restored_verified": true,
+  "write_attempts": [
+    {
+      "phase": "apply",
+      "name": "EKF2_EVP_NOISE",
+      "attempt": 1,
+      "desired": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "raw_value_hex": "0ad7233c"
+      },
+      "started_wall_time": 1792816712.5881388,
+      "readback": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0ad7233c",
+        "received_wall_time": 1792816712.6008244,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_EVV_NOISE",
+      "attempt": 1,
+      "desired": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "raw_value_hex": "0ad7233c"
+      },
+      "started_wall_time": 1792816712.603405,
+      "readback": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0ad7233c",
+        "received_wall_time": 1792816712.6078894,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_EV_NOISE_MD",
+      "attempt": 1,
+      "desired": {
+        "value": 1,
+        "param_type": 6,
+        "raw_value_hex": "01000000"
+      },
+      "started_wall_time": 1792816712.6100016,
+      "readback": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816712.6343923,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_HGT_REF",
+      "attempt": 1,
+      "desired": {
+        "value": 3,
+        "param_type": 6,
+        "raw_value_hex": "03000000"
+      },
+      "started_wall_time": 1792816712.6361523,
+      "readback": {
+        "value": 3,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "03000000",
+        "received_wall_time": 1792816712.6413374,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_GPS_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 0,
+        "param_type": 6,
+        "raw_value_hex": "00000000"
+      },
+      "started_wall_time": 1792816712.6430018,
+      "readback": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.6648445,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_BARO_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 0,
+        "param_type": 6,
+        "raw_value_hex": "00000000"
+      },
+      "started_wall_time": 1792816712.6665792,
+      "readback": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.6709328,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "EKF2_EV_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 7,
+        "param_type": 6,
+        "raw_value_hex": "07000000"
+      },
+      "started_wall_time": 1792816712.6725638,
+      "readback": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816712.6962526,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "MPC_XY_P",
+      "attempt": 1,
+      "desired": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "raw_value_hex": "3333733f"
+      },
+      "started_wall_time": 1792816712.6979487,
+      "readback": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816712.7215986,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "MPC_Z_P",
+      "attempt": 1,
+      "desired": {
+        "value": 1.0,
+        "param_type": 9,
+        "raw_value_hex": "0000803f"
+      },
+      "started_wall_time": 1792816712.7233446,
+      "readback": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.7275987,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "MPC_XY_VEL_P_ACC",
+      "attempt": 1,
+      "desired": {
+        "value": 2.200000047683716,
+        "param_type": 9,
+        "raw_value_hex": "cdcc0c40"
+      },
+      "started_wall_time": 1792816712.7295842,
+      "readback": {
+        "value": 2.200000047683716,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc0c40",
+        "received_wall_time": 1792816712.7482238,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "apply",
+      "name": "MPC_Z_VEL_P_ACC",
+      "attempt": 1,
+      "desired": {
+        "value": 4.800000190734863,
+        "param_type": 9,
+        "raw_value_hex": "9a999940"
+      },
+      "started_wall_time": 1792816712.750329,
+      "readback": {
+        "value": 4.800000190734863,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a999940",
+        "received_wall_time": 1792816712.7719588,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "MPC_XY_P",
+      "attempt": 1,
+      "desired": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816711.7627378,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.2802052,
+      "readback": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816812.2951593,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "MPC_Z_P",
+      "attempt": 1,
+      "desired": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816711.782967,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.308204,
+      "readback": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816812.3216765,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "MPC_XY_VEL_P_ACC",
+      "attempt": 1,
+      "desired": {
+        "value": 1.7999999523162842,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "6666e63f",
+        "received_wall_time": 1792816711.8010204,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.3302166,
+      "readback": {
+        "value": 1.7999999523162842,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "6666e63f",
+        "received_wall_time": 1792816812.3388948,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "MPC_Z_VEL_P_ACC",
+      "attempt": 1,
+      "desired": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816711.8197463,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.3504815,
+      "readback": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816812.3582249,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_HGT_REF",
+      "attempt": 1,
+      "desired": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816711.7422748,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.3638878,
+      "readback": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816812.374127,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_GPS_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816711.7027824,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.3795166,
+      "readback": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816812.3900797,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_BARO_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816711.721545,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.395119,
+      "readback": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816812.406841,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_EVV_NOISE",
+      "attempt": 1,
+      "desired": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816711.6833887,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.4117734,
+      "readback": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816812.4238148,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_EV_NOISE_MD",
+      "attempt": 1,
+      "desired": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.6545706,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.4306338,
+      "readback": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.440567,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_EVP_NOISE",
+      "attempt": 1,
+      "desired": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816711.6750493,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.4456377,
+      "readback": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816812.4569817,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    },
+    {
+      "phase": "restore",
+      "name": "EKF2_EV_CTRL",
+      "attempt": 1,
+      "desired": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.633888,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "started_wall_time": 1792816812.4621205,
+      "readback": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.4734828,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "verified": true
+    }
+  ],
+  "transport": "Existing owned VehicleAPI.link only; raw-byte PX4 PARAM_SET / PARAM_VALUE",
+  "restore_journal_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/.amsim/x650_diagnostic_restore_pending.json",
+  "source_sha256": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+  "before": {
+    "EKF2_EV_CTRL": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.633888,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_NOISE_MD": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.6545706,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVP_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816711.6750493,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVV_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816711.6833887,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_GPS_CTRL": {
+      "value": 7,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "07000000",
+      "received_wall_time": 1792816711.7027824,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_BARO_CTRL": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816711.721545,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_HGT_REF": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816711.7422748,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_P": {
+      "value": 0.949999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333733f",
+      "received_wall_time": 1792816711.7627378,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_P": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816711.782967,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_P_ACC": {
+      "value": 1.7999999523162842,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "6666e63f",
+      "received_wall_time": 1792816711.8010204,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_P_ACC": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816711.8197463,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_DELAY": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.8403897,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.8608356,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.8813152,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.8827727,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.9027011,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.9231718,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816711.9438028,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_HOVER": {
+      "value": 0.4499668478965759,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0e62e63e",
+      "received_wall_time": 1792816711.9644103,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLL_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816711.9853694,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCH_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816711.9872358,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAW_P": {
+      "value": 2.799999952316284,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "33333340",
+      "received_wall_time": 1792816712.0069337,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_AIRMODE": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.02749,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816712.0485106,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816712.0692823,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816712.0722485,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.0933669,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816712.1127493,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816712.1334424,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816712.1547523,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816712.1756964,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.1963334,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816712.1986456,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_P": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816712.218706,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_I": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816712.2395387,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_D": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.2606387,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.2811308,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816712.2830834,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_I_ACC": {
+      "value": 0.4000000059604645,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3e",
+      "received_wall_time": 1792816712.30372,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_D_ACC": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816712.321142,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_I_ACC": {
+      "value": 2.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000040",
+      "received_wall_time": 1792816712.3420458,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_D_ACC": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.362712,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MIN": {
+      "value": 0.11999999731779099,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "8fc2f53d",
+      "received_wall_time": 1792816712.383178,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MAX": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816712.387885,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_USE_HTE": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816712.4084527,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_AIR": {
+      "value": 45.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00003442",
+      "received_wall_time": 1792816712.4275093,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_LND": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816712.4483695,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_MAX": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816712.4499497,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_UP": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816712.470531,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_DN": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816712.490974,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_HOR_MAX": {
+      "value": 5.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000a040",
+      "received_wall_time": 1792816712.5113983,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_UP_MAX": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816712.5132883,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_DOWN_MAX": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816712.5338027,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_JERK_MAX": {
+      "value": 8.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000041",
+      "received_wall_time": 1792816712.5543501,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TKO_SPEED": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816712.5589612,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_LAND_SPEED": {
+      "value": 0.699999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333333f",
+      "received_wall_time": 1792816712.579919,
+      "source_system": 1,
+      "source_component": 1
+    }
+  },
+  "applied": {
+    "EKF2_EV_CTRL": {
+      "value": 7,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "07000000",
+      "received_wall_time": 1792816712.7946947,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_NOISE_MD": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816712.8150988,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVP_NOISE": {
+      "value": 0.009999999776482582,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0ad7233c",
+      "received_wall_time": 1792816712.834853,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVV_NOISE": {
+      "value": 0.009999999776482582,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0ad7233c",
+      "received_wall_time": 1792816712.8555236,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_GPS_CTRL": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.8587842,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_BARO_CTRL": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.8802316,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_HGT_REF": {
+      "value": 3,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "03000000",
+      "received_wall_time": 1792816712.9015431,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_P": {
+      "value": 0.949999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333733f",
+      "received_wall_time": 1792816712.9224916,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_P": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816712.942683,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_P_ACC": {
+      "value": 2.200000047683716,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc0c40",
+      "received_wall_time": 1792816712.963583,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_P_ACC": {
+      "value": 4.800000190734863,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a999940",
+      "received_wall_time": 1792816712.9845595,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_DELAY": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816712.9869108,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.0075002,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.0279582,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.0467067,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.067441,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.0712118,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.0928473,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_HOVER": {
+      "value": 0.4499668478965759,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0e62e63e",
+      "received_wall_time": 1792816713.093605,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLL_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816713.1143143,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCH_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816713.1350334,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAW_P": {
+      "value": 2.799999952316284,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "33333340",
+      "received_wall_time": 1792816713.1557243,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_AIRMODE": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.157506,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816713.1778178,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816713.198266,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816713.2002747,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.220802,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816713.2412152,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816713.2446249,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816713.2651598,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816713.2855992,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.2921457,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816713.3127177,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_P": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816713.3146503,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_I": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816713.335594,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_D": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.3560793,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.376568,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816713.3825657,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_I_ACC": {
+      "value": 0.4000000059604645,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3e",
+      "received_wall_time": 1792816713.403693,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_D_ACC": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816713.4254596,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_I_ACC": {
+      "value": 2.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000040",
+      "received_wall_time": 1792816713.446643,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_D_ACC": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816713.4674993,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MIN": {
+      "value": 0.11999999731779099,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "8fc2f53d",
+      "received_wall_time": 1792816713.4722571,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MAX": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816713.4927993,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_USE_HTE": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816713.513213,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_AIR": {
+      "value": 45.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00003442",
+      "received_wall_time": 1792816713.5167248,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_LND": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816713.5376322,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_MAX": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816713.5397346,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_UP": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816713.5603201,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_DN": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816713.5806766,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_HOR_MAX": {
+      "value": 5.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000a040",
+      "received_wall_time": 1792816713.601026,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_UP_MAX": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816713.6214182,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_DOWN_MAX": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816713.6261187,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_JERK_MAX": {
+      "value": 8.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000041",
+      "received_wall_time": 1792816713.646871,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TKO_SPEED": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816713.6471891,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_LAND_SPEED": {
+      "value": 0.699999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333333f",
+      "received_wall_time": 1792816713.6676013,
+      "source_system": 1,
+      "source_component": 1
+    }
+  },
+  "restored": {
+    "EKF2_EV_CTRL": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.4903336,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_NOISE_MD": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.5075946,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVP_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816812.5244894,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVV_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816812.5408337,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_GPS_CTRL": {
+      "value": 7,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "07000000",
+      "received_wall_time": 1792816812.5571861,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_BARO_CTRL": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816812.5760386,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_HGT_REF": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816812.5928473,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_P": {
+      "value": 0.949999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333733f",
+      "received_wall_time": 1792816812.6092157,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_P": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816812.629541,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_P_ACC": {
+      "value": 1.7999999523162842,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "6666e63f",
+      "received_wall_time": 1792816812.6457086,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_P_ACC": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816812.6620429,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_DELAY": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.6795957,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.6976821,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.7163532,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.7362869,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.7566302,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.7773058,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.7976115,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_HOVER": {
+      "value": 0.4499668478965759,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0e62e63e",
+      "received_wall_time": 1792816812.8180766,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLL_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816812.8385584,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCH_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816812.8590963,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAW_P": {
+      "value": 2.799999952316284,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "33333340",
+      "received_wall_time": 1792816812.879151,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_AIRMODE": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.8995497,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816812.9197962,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816812.9396777,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816812.9600482,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816812.9798915,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816813.0001144,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816813.0199747,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816813.0398698,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816813.060412,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.0805113,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816813.1002488,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_P": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816813.1200156,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_I": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816813.1402905,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_D": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.160563,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.1813064,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816813.2013154,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_I_ACC": {
+      "value": 0.4000000059604645,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3e",
+      "received_wall_time": 1792816813.221217,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_D_ACC": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816813.2408822,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_I_ACC": {
+      "value": 2.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000040",
+      "received_wall_time": 1792816813.2610815,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_D_ACC": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.2815084,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MIN": {
+      "value": 0.11999999731779099,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "8fc2f53d",
+      "received_wall_time": 1792816813.3022873,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MAX": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816813.3231783,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_USE_HTE": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816813.3440156,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_AIR": {
+      "value": 45.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00003442",
+      "received_wall_time": 1792816813.3651597,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_LND": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816813.3854637,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_MAX": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816813.4092405,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_UP": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816813.4303687,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_DN": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816813.450149,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_HOR_MAX": {
+      "value": 5.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000a040",
+      "received_wall_time": 1792816813.4711385,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_UP_MAX": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816813.4914622,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_DOWN_MAX": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816813.5119212,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_JERK_MAX": {
+      "value": 8.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000041",
+      "received_wall_time": 1792816813.5324173,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TKO_SPEED": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816813.55278,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_LAND_SPEED": {
+      "value": 0.699999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333333f",
+      "received_wall_time": 1792816813.5738611,
+      "source_system": 1,
+      "source_component": 1
+    }
+  },
+  "restore_failures": {},
+  "restore_mismatches": [],
+  "runtime_restored_verified": true,
+  "restore_storage_save": {
+    "args": [
+      "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-param",
+      "save"
+    ],
+    "cwd": "/root/autodl-tmp/PX4-Autopilot",
+    "log": "diagnostic_parameter_storage_save.log",
+    "started_wall_time": 1792816813.5973356,
+    "timeout_s": 60.0,
+    "semantics": "Pinned param.cpp save without path calls do_save_default -> param_save_default(true); exit 0 means synchronous success",
+    "synchronous_default_save": true,
+    "returncode": 0,
+    "completed_wall_time": 1792816813.639571,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "restore_post_save_readback": {
+    "EKF2_EV_CTRL": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.6563835,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_NOISE_MD": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.6777406,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVP_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816813.698678,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EVV_NOISE": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816813.7194614,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_GPS_CTRL": {
+      "value": 7,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "07000000",
+      "received_wall_time": 1792816813.7417119,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_BARO_CTRL": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816813.7618506,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_HGT_REF": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816813.78226,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_P": {
+      "value": 0.949999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333733f",
+      "received_wall_time": 1792816813.8026652,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_P": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816813.8228612,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_P_ACC": {
+      "value": 1.7999999523162842,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "6666e63f",
+      "received_wall_time": 1792816813.8428428,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_P_ACC": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816813.8647695,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_DELAY": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.8851159,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.9053745,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.9255834,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_EV_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.9461927,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_X": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.967016,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Y": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816813.9874878,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "EKF2_IMU_POS_Z": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.0080752,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_HOVER": {
+      "value": 0.4499668478965759,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0e62e63e",
+      "received_wall_time": 1792816814.0281014,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLL_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816814.0489705,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCH_P": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816814.0686018,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAW_P": {
+      "value": 2.799999952316284,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "33333340",
+      "received_wall_time": 1792816814.089118,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_AIRMODE": {
+      "value": 0,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.1099808,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816814.1312027,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816814.1513915,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816814.1709943,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.191699,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_ROLLRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816814.2114248,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_P": {
+      "value": 0.15000000596046448,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "9a99193e",
+      "received_wall_time": 1792816814.2317479,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_I": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816814.251978,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_D": {
+      "value": 0.003000000026077032,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "a69b443b",
+      "received_wall_time": 1792816814.2719905,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.2927082,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_PITCHRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816814.3152072,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_P": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816814.33547,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_I": {
+      "value": 0.10000000149011612,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3d",
+      "received_wall_time": 1792816814.3553643,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_D": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.3755956,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_FF": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.3961976,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MC_YAWRATE_K": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816814.415985,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_I_ACC": {
+      "value": 0.4000000059604645,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcccc3e",
+      "received_wall_time": 1792816814.4356987,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_D_ACC": {
+      "value": 0.20000000298023224,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "cdcc4c3e",
+      "received_wall_time": 1792816814.455664,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_I_ACC": {
+      "value": 2.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000040",
+      "received_wall_time": 1792816814.4756727,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_D_ACC": {
+      "value": 0.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000000",
+      "received_wall_time": 1792816814.4959335,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MIN": {
+      "value": 0.11999999731779099,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "8fc2f53d",
+      "received_wall_time": 1792816814.5157168,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_THR_MAX": {
+      "value": 1.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000803f",
+      "received_wall_time": 1792816814.5355985,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_USE_HTE": {
+      "value": 1,
+      "param_type": 6,
+      "type_name": "INT32",
+      "raw_value_hex": "01000000",
+      "received_wall_time": 1792816814.55566,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_AIR": {
+      "value": 45.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00003442",
+      "received_wall_time": 1792816814.5776916,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TILTMAX_LND": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816814.5981143,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_XY_VEL_MAX": {
+      "value": 12.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004041",
+      "received_wall_time": 1792816814.6180365,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_UP": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816814.6386144,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_Z_VEL_MAX_DN": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816814.6592896,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_HOR_MAX": {
+      "value": 5.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000a040",
+      "received_wall_time": 1792816814.6785235,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_UP_MAX": {
+      "value": 4.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00008040",
+      "received_wall_time": 1792816814.6991804,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_ACC_DOWN_MAX": {
+      "value": 3.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00004040",
+      "received_wall_time": 1792816814.7196598,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_JERK_MAX": {
+      "value": 8.0,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "00000041",
+      "received_wall_time": 1792816814.739837,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_TKO_SPEED": {
+      "value": 1.5,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "0000c03f",
+      "received_wall_time": 1792816814.7602415,
+      "source_system": 1,
+      "source_component": 1
+    },
+    "MPC_LAND_SPEED": {
+      "value": 0.699999988079071,
+      "param_type": 9,
+      "type_name": "REAL32",
+      "raw_value_hex": "3333333f",
+      "received_wall_time": 1792816814.7815444,
+      "source_system": 1,
+      "source_component": 1
+    }
+  },
+  "restore_persistent_storage_verified": true
+}

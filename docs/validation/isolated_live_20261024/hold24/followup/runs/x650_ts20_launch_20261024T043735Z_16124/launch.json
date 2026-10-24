@@ -1,0 +1,382 @@
+{
+  "complete": true,
+  "task": {
+    "schema_version": 1,
+    "scenario": "x650_ts20_damped_hold_v1",
+    "stage": "hover_folded",
+    "controller": "pid_ff",
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "trajectory": "hover",
+    "trajectory_parameters": null,
+    "duration_s": 20.0,
+    "hover_height_m": 2.0,
+    "control_period_s": 0.02,
+    "spawn_pose_enu_xyz_rpy": [
+      0.0,
+      0.0,
+      0.375,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nominal_arm_share": 0.2,
+    "feedforward_enabled": false,
+    "simulation_only": true,
+    "preparation_report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json",
+    "airframe_source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1",
+    "native_recorder_library": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libwholebody_recorder.so",
+    "response_model": null,
+    "pid_profile": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/pid_profile.json",
+    "stage_evidence": {},
+    "diagnostic_profile": null,
+    "hover_reference_profile": {
+      "name": "fixed_world_position_v1",
+      "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+    },
+    "pid_tuning_candidate": null,
+    "precision_test_profile": null,
+    "research_profile": {
+      "name": "precision_ev_selected_pid_v1",
+      "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+    },
+    "ts20_protocol": {
+      "kind": "x650_ts20_damped_conditional_hold_protocol_v1",
+      "simulation_only": true,
+      "stages": [
+        "hover_folded",
+        "joint_probe",
+        "tip_hold"
+      ],
+      "control_period_s": 0.02,
+      "max_control_interval_s": 0.05,
+      "max_compute_s": 0.05,
+      "tip_hold_duration_s": 30.0,
+      "tip_rms_max_m": 0.05,
+      "tip_peak_max_m": 0.1,
+      "tilt_max_deg": 8.0,
+      "q_lower_rad": [
+        -0.75,
+        -0.35
+      ],
+      "q_upper_rad": [
+        0.45,
+        0.85
+      ],
+      "joint_velocity_max_rad_s": [
+        0.45,
+        0.35
+      ],
+      "internal_physical_q_tolerance_rad": 0.0001,
+      "new_joint_prediction_q_peak_max_rad": 0.003,
+      "new_joint_prediction_dq_peak_max_rad_s": 0.05,
+      "native_tip_required": true,
+      "whole_declared_window_required": true,
+      "motion_capture_mode": "simulation ideal EV; PX4 estimated base feedback",
+      "required_new_plant_gates": [
+        "native_ground",
+        "hover_folded",
+        "joint_probe"
+      ],
+      "base_response_status": "prior_from_old_ideal_joint_plant; not newly identified",
+      "joint_prediction_validation": "new complete probe; actual consumed MIT packets and first physical state only",
+      "qualification": {
+        "hardware_motor": "TS20-50",
+        "hardware_supply_v": 24,
+        "identified_supply_v": 20,
+        "supply_24v_qualified": false,
+        "actual_aerial_arm_load_qualified": false,
+        "physical_torque_scale_qualified": false
+      },
+      "disturbance": {
+        "kind": "external_world_force",
+        "link": "base_link",
+        "start_s": 8.0,
+        "duration_s": 0.3,
+        "force_n": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "trajectory_stages_enabled": false,
+      "mit_gain_profile": {
+        "name": "mit_kp6_kd025_v1",
+        "kp": 6.0,
+        "kd": 0.25,
+        "bus_period_s": 0.005,
+        "gain_semantics": "candidate effective normalized MIT gains; not hardware readback"
+      },
+      "joint_probe_velocity_max_rad_s": 0.2,
+      "gain_selection": "b+Kd exceeds 1.4 times maximum negative Stribeck friction slope; fixed before new flights"
+    },
+    "ts20_inputs": {
+      "source_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot",
+      "source_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/source_manifest.json",
+      "plant_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_2link_ts20_damped_v1_flight/plant_manifest.json",
+      "oracle_validation": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_ffi_pointer_validation_20261023/oracle_v1/validation_summary.json",
+      "base_response_prior": null,
+      "native_library": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "native_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+    },
+    "disturbance_enabled": false,
+    "mpc_config": {
+      "arm_share": 0.2,
+      "velocity_limit": [
+        0.55,
+        0.35,
+        0.45,
+        0.45,
+        0.35
+      ],
+      "acceleration_limit": [
+        0.45,
+        0.3,
+        0.45,
+        0.6,
+        0.6
+      ],
+      "q_lower": [
+        -0.75,
+        -0.35
+      ],
+      "q_upper": [
+        0.45,
+        0.85
+      ],
+      "joint_position_gain": 3.0,
+      "tip_gain": 2.0,
+      "max_tip_correction_m_s": 0.2,
+      "task_weight": 1.0,
+      "measured_base_weight": 4.0,
+      "base_nominal_weight": 4.0,
+      "arm_regularizer_length_m_rad": 0.02,
+      "max_dt_s": 0.05,
+      "nodes": 15,
+      "node_dt_s": 0.04,
+      "attitude_rate_decay_s": 0.15,
+      "max_iterations": 100,
+      "solver_ftol": 1e-09,
+      "feasibility_tolerance": 2e-07,
+      "kkt_tolerance": 0.002,
+      "solve_budget_ms": 20.0,
+      "failure_policy": "raise",
+      "tip_position_weight": 400.0,
+      "tip_velocity_weight": 4.0,
+      "base_position_weight": 0.25,
+      "joint_posture_weight": 0.02,
+      "input_nominal_weight": 0.01,
+      "input_delta_weight": 0.01
+    }
+  },
+  "provenance": {
+    "model_name": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "total_mass_kg": 3.4949999999999997,
+    "preparation_report_sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+    "airframe_sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+    "flight_profile_sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+    "px4_sys_autostart": 4996,
+    "native_recorder_sha256": "e78e067d3e09a1288e07c944d1cf868174dc40d4cbaee40f88d2314eede2a72d",
+    "stage": "hover_folded",
+    "controller": "pid_ff",
+    "operating_condition": {
+      "kind": "x650_research_operating_condition",
+      "schema_version": 1,
+      "research_profile": "precision_ev_selected_pid_v1",
+      "scope": "simulation_truth_aided_ev_commissioning",
+      "control_interface": "fixed_world_position_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "estimator_parameters": {
+        "EKF2_EV_CTRL": 7,
+        "EKF2_EV_NOISE_MD": 1,
+        "EKF2_EVP_NOISE": 0.01,
+        "EKF2_EVV_NOISE": 0.01,
+        "EKF2_GPS_CTRL": 0,
+        "EKF2_BARO_CTRL": 0,
+        "EKF2_HGT_REF": 3
+      },
+      "observer": {
+        "rate_hz": 50.0,
+        "gaussian_noise": 0.0,
+        "measurement_point": "base_link"
+      },
+      "coordinate_contract": "raw_ev_world",
+      "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "ground_truth_aided": true,
+      "gps_performance_claim": false,
+      "hardware_performance_claim": false
+    },
+    "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "full_body_torque_nmpc": false,
+    "base_response_is_prior": true,
+    "ts20_model_metadata": {
+      "source_manifest": {
+        "schema": "ts20_external_source_v1",
+        "motor": "TS20-50",
+        "upstream_commit": "a97ef4f227ab778f9efdf86ff93ee309d7d35a22",
+        "files": {
+          "models/ts20_50/__init__.py": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+          "models/ts20_50/conditional_candidates.json": "841741ce575f49e57675ebabb14ad92e04c9e07215853b87279b3aa214c9c9d1",
+          "models/ts20_50/example.py": "3c09417b24c6205a8f5f999af508630af2acbe907048dcba15037e03f7308c2f",
+          "models/ts20_50/mechanics.py": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+          "models/ts20_50/motion.json": "2cba59ffb5554825390c32fb4a386614133659d1d5627351831b4e7d6963c31f",
+          "models/ts20_50/observers.py": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+          "models/ts20_50/provenance.json": "548e6118a2b52a16417f6b144e26bd203beefc9f5b69f254f4d322fa527e2b6e",
+          "models/ts20_50/README.md": "f0c2024198bfb7e81c589c73ebf08b497a9f301058f47d40c83e4e85c2b364dd",
+          "models/ts20_50/reported_outputs.json": "ef2d033cd9555f453bea3ee66b2621f35ee8d262a76b7d6c152ffea9b3c2890e",
+          "models/ts20_50/requirements.txt": "3db45b6727e00fae75ce1f38fcf572afa339215925255947f2102602bf8deb5e",
+          "models/ts20_50/runtime.py": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+          "models/ts20_50/thermal.json": "66a7d4698a11810c7ffa2a898db3f15cbf7da6555133fde80f1ee23cb2526f52"
+        }
+      },
+      "motion_model": {
+        "schema": "ts20_public_motion_v1",
+        "release_date": "2026-10-22",
+        "motor": "TS20-50",
+        "firmware_family": "3.4.6",
+        "family": "event_stribeck",
+        "status": "frozen_conditional_interface_model",
+        "fixed_parameters": {
+          "J_total_over_ka": 0.0007447642530597398,
+          "b_over_ka": 0.004194907941904997,
+          "Fc_over_ka": 0.03470285366117535,
+          "offset_over_ka": 0.0004632811241788992,
+          "combined_interface_delay_s": 0.003346379092576424
+        },
+        "friction_parameters": {
+          "static_threshold": 0.075,
+          "delta_static": 0.04,
+          "stribeck_velocity": 0.2
+        },
+        "coordinate": "MIT-reported rotor angle divided by signed gear; independent output-shaft angle not established",
+        "scale": "command normalized ka=1 convention; J_total_over_ka is not identified physical body inertia",
+        "identified_assembly": "fixed PLA bench with original small PLA output disk; attachment/body inertias not separated",
+        "identification_supply": "20 V nominal, 2 A supply limit; not an Iq limit",
+        "input_contract": "actual quantized MIT q_ref,dq_ref,tau_ff and fixed gains; delayed ZOH external forcing, continuous model-internal PD",
+        "initialization": "first state only; unknown first-command prehistory held constant",
+        "limitations": [
+          "No unique physical Kt, inertia split, gear stiffness, backlash width, or internal three-loop reconstruction.",
+          "Current frozen parameters were transferred across recorded gains and motions; finite historical validation is not global stability or TS20-100 qualification.",
+          "Additional known inertia cannot be added directly to J_total_over_ka without the unknown physical scale ka.",
+          "Blocked-output geometry and backlash are not represented by this free-motion model."
+        ],
+        "source_parameter_lock_sha256": "bedcef5b0febe1aab62c7c10aeaf364d5ab87d2ac03a58ad85f184e8039dd939"
+      },
+      "external_local_dependency": true,
+      "hardware_accessed": false,
+      "interface_model_not_physical_joint_inertia": true,
+      "supply_24v_qualified": false,
+      "aerial_arm_load_qualified": false,
+      "raw_identification_timeseries_published": false
+    },
+    "ts20_operating_condition": {
+      "kind": "x650_ts20_conditional_operating_condition_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+      "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+      "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+      "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+      "qualification": {
+        "hardware_motor": "TS20-50",
+        "hardware_supply_v": 24,
+        "identified_supply_v": 20,
+        "supply_24v_qualified": false,
+        "actual_aerial_arm_load_qualified": false,
+        "physical_torque_scale_qualified": false
+      }
+    },
+    "ts20_operating_condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee",
+    "stage_gates": {},
+    "hover_world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_files_sha256": {
+      "control_packages/x650_wholebody_v1/x650_wholebody/__init__.py": "ddf24a56592a5f46aac941f7af3a17d923d931de84eff08e3c2eb6bf762430db",
+      "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "477e0e2888ba5ef7d1515fe41342e651af79548472665f447cb71f8b47e9e635",
+      "control_packages/x650_wholebody_v1/x650_wholebody/api.py": "cc3eb5db0455120f51a3edb499cef56f88773673b9b53a14ae1e715e1e10ae76",
+      "control_packages/x650_wholebody_v1/x650_wholebody/baseline.py": "d6ee21d254ee0fb6f089705dfa7b2cca36d14fe0c01b9ea9a76592355c8766c4",
+      "control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py": "3897d73898895eba8c5652670f8a7bff1a599736a1d94c31db6784fa2d0e8631",
+      "control_packages/x650_wholebody_v1/x650_wholebody/model.py": "266bf543c8546b5bd82738e0283c87853a1796d43f70a24c69f8ad9908276e5f",
+      "control_packages/x650_wholebody_v1/x650_wholebody/mpc.py": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "a66f3645224b708343188b43f4f74c2f135592438db27a12760478561e428fcf",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py": "653b1a9fd9fefd9df106a112cf60795ddc60faf0548887650f73d8d16dbd0c59",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "8d1381ed359396aa74a2cc3a8c0f37768ba58ee06cb2d83e5fb28ce1ffc8ef10",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py": "e86fe8d035ba9137f5c94be52f239bf33df2af9318a38e0d12e6f42318acc0b8",
+      "control_packages/x650_wholebody_v1/x650_wholebody/prediction_chain.py": "3df989b72ba0013c58d0d022347309a10244ee74cd4fa56655db5ccbddda2ac5",
+      "control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20.py": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py": "bd5558186381e622d36039f8b58314b5f63b709a0c5fc65a6f9e6e7d828fa830",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_runtime.py": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080",
+      "simulations/x650_wholebody_mpc_v1/accepted_response_model.py": "ee2ef5f24133706376cc9dbbe708353f3717bb9a06f511abbd05a106da0be72b",
+      "simulations/x650_wholebody_mpc_v1/diagnostic_odometry.py": "50d5c37daf5e837b63ddfcc05ea063d79cd5eba34404229ed5610578270dd793",
+      "simulations/x650_wholebody_mpc_v1/diagnostic_parameters.py": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+      "simulations/x650_wholebody_mpc_v1/estimated_feedback.py": "312ccc060320ba1af4008f2582a6de4212934d7630c2b653d4e55ca8a0dc7090",
+      "simulations/x650_wholebody_mpc_v1/execution_trace.py": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+      "simulations/x650_wholebody_mpc_v1/hover_reference.py": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+      "simulations/x650_wholebody_mpc_v1/launch.py": "a1eab5282d2ab4614be64efe456f61e83dd7f3fbb47122fc145ca017ecaac042",
+      "simulations/x650_wholebody_mpc_v1/mixed_mpc_protocol.py": "ea482a2b07233aa04f2df41d805132c1ed425352ba40b66989a422b7ce10c5e5",
+      "simulations/x650_wholebody_mpc_v1/position_step_probe.py": "1a831f6a65bed81f327523964f94c066769d597eb41d7a5fb331c8717054f731",
+      "simulations/x650_wholebody_mpc_v1/recording.py": "2378a55ae2db2f586843c99dcb3341a01875f0a9fae06b56e91d13a151803e38",
+      "simulations/x650_wholebody_mpc_v1/research_condition.py": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "simulations/x650_wholebody_mpc_v1/response_protocol.py": "a43b91a4a6c786f98e92b60bc4f62d2b9cf92157831a0f7231cfddaae8ea54f5",
+      "simulations/x650_wholebody_mpc_v1/run_case.py": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+      "simulations/x650_wholebody_mpc_v1/task.py": "43b7195f996085b6fedd1107595894d29c66eb0ec8c80217e923ec353b5f544f",
+      "simulations/x650_hover_v1/parameter_evidence.py": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+      "simulations/x650_ts20_hold_v1/audit.py": "79c8af6339e04e241b0a6b23c9396c55d3e0ebfc930b5ebb0da4cfdbba0d34b9",
+      "simulations/x650_ts20_hold_v1/diagnostic_serialization.py": "c83575362bc097086c3bbe4ab50c292972dddb80fc16b7d5a130913e025ea1c3",
+      "simulations/x650_ts20_hold_v1/launch.py": "9a0eb2fa3123d10e6c3215f6734c1f2deee28ebafdd98068a4d82504bb057a15",
+      "simulations/x650_ts20_hold_v1/launch_chain_v4.py": "7be7f4f70744587d644071cdbd7422831c4f7e9cff65099cad5c03bf3e978b63",
+      "simulations/x650_ts20_hold_v1/launch_quiet_v3.py": "7d1436e334730bb215009e22d7f2f6799c8b660946c8596c9fda68e540c0a488",
+      "simulations/x650_ts20_hold_v1/loop_timing.py": "2d1f9242e3b3286a9b19448751ea440fb9da40294f3e487b24e83c8fbda0e535",
+      "simulations/x650_ts20_hold_v1/run_case.py": "79866fc012ca20bc867b88773782bce64d6632cb8ee9804d0103aa29d161211e",
+      "simulations/x650_ts20_hold_v1/task.py": "7044528ad0772c625ede60976916d13da0ec97caaf39cbfdb687310b783a8116",
+      "scripts/prepare_x650_ts20_plant.py": "a4ceb88ff3a5e5be7159f2f8b71d5d55deb43ba9b77cbcb5451034bcd4d6adca",
+      "scripts/ts20_interface_system.cpp": "310485f2d2eba8c611008b9b8b3e1e60d94759b465497086f5e64e73eb3477af",
+      "benchmark/whole_body_closed_loop_v1/wholebody_recorder.cpp": "826bbe091507121e6f397f176cbd4288d707781f570e92efa5c1ac27d91e69ad",
+      "benchmark/whole_body_closed_loop_v1/build_recorder.py": "4e278c685a6bedfe5198e3fb669f793349975bb55e7cbaf289e513bd6c17d6cf",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "scripts/validate_x650_ts20_prediction.py": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+      "configs/actuators/ts20_50_24v_damped_v1_candidate.json": "9d23be903984c38373e1ea0488fb3c36f09d89504e4b9c78ae85820a415dcb97"
+    }
+  },
+  "command": [
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/amsim",
+    "run",
+    "x650_ts20_damped_hold_v1",
+    "--headless"
+  ],
+  "started_utc": "2026-10-24T04:37:35.303538+00:00",
+  "ts20_log_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261024T043735Z_16124/actuator_live",
+  "conditional_simulation_only": true,
+  "supply_24v_qualified": false,
+  "python_dependency_profile": {
+    "scenario_python": "/usr/bin/python3",
+    "numpy_scipy_source": "/usr/lib/python3/dist-packages",
+    "existing_mavlink_ulog_source": "/root/autodl-tmp/amsim-venv/lib/python3.10/site-packages",
+    "packages_installed_or_replaced": false
+  },
+  "exit_code": 0,
+  "run_directories": [
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261024_123818_16126"
+  ],
+  "runtime_closed": true,
+  "amsim_result": {
+    "experiment": "x650_ts20_damped_hold_v1",
+    "success": true,
+    "scenario_returncode": 0,
+    "ulog_source": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/rootfs/log/2026-10-24/04_37_52.ulg",
+    "ulog_copied": true,
+    "ulog_archive_method": "copy_after_px4_shutdown",
+    "ulog_sha256": "b8269d5aff8012b7fbcd4b745358e3a16687a96a8ec5a99f4b15a8880b14489c",
+    "ulog_size_bytes": 19090507,
+    "ulog_finalized_wall_time": 1792816834.6174326
+  },
+  "finished_utc": "2026-10-24T04:40:34.863578+00:00"
+}

@@ -1,0 +1,76 @@
+{
+  "kind": "worker_preflight_full_gc_v1",
+  "generation": 2,
+  "explicit_collection": true,
+  "before_ready": true,
+  "start_monotonic_ns": 59602806681717557,
+  "end_monotonic_ns": 59602806698240590,
+  "duration_ns": 16523033,
+  "collected": 66,
+  "before": {
+    "enabled": true,
+    "counts": [
+      124,
+      1,
+      1
+    ],
+    "thresholds": [
+      700,
+      10,
+      10
+    ],
+    "stats": [
+      {
+        "collections": 1002,
+        "collected": 441,
+        "uncollectable": 0
+      },
+      {
+        "collections": 91,
+        "collected": 46,
+        "uncollectable": 0
+      },
+      {
+        "collections": 8,
+        "collected": 95,
+        "uncollectable": 0
+      }
+    ],
+    "garbage_count": 0,
+    "frozen_count": 0
+  },
+  "after": {
+    "enabled": true,
+    "counts": [
+      2,
+      0,
+      0
+    ],
+    "thresholds": [
+      700,
+      10,
+      10
+    ],
+    "stats": [
+      {
+        "collections": 1002,
+        "collected": 441,
+        "uncollectable": 0
+      },
+      {
+        "collections": 91,
+        "collected": 46,
+        "uncollectable": 0
+      },
+      {
+        "collections": 9,
+        "collected": 161,
+        "uncollectable": 0
+      }
+    ],
+    "garbage_count": 0,
+    "frozen_count": 0
+  },
+  "gc_policy_unchanged": true,
+  "scope": "one preflight setup-cycle collection; natural runtime GC remains enabled as observed; no future pause bound"
+}

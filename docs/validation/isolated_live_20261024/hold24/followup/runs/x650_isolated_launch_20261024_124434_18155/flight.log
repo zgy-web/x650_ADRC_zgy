@@ -1,0 +1,29 @@
+1/7 Waiting for PX4 MAVLink heartbeat
+2/7 Waiting for model telemetry: position, status, land, joints, truth
+3/7 Waiting for normal PX4 preflight checks
+4/7 Checking configured initial joint positions
+5/7 Checking ROS-to-Gazebo command bridge
+6/7 Rechecking telemetry freshness
+7/7 CHECK PASSED: no arming or flight commands sent.
+arm_joint_1: q=-0.0000000 rad (-0.0000 deg), dq=-0.0000000 rad/s
+arm_joint_2: q=+0.0000000 rad (+0.0000 deg), dq=+0.0000000 rad/s
+Results: /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/check_amsim_urdf_x650_2link_ts20_damped_v1_flight_20261024_124454
+Traceback (most recent call last):
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/run_case.py", line 613, in <module>
+    if __name__=='__main__':scenario()
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/run_case.py", line 608, in scenario
+    return shared.execute(cfg,model,provenance,out,extension=extension)
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py", line 1400, in execute
+    raise error
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py", line 1224, in execute
+    wait_sim(ctx, loop, cfg["duration_s"], "X650 "+cfg["stage"])
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py", line 851, in wait_sim
+    ctx.vehicle.wait(lambda: loop.control_now()-start >= duration, max(45., duration*12.), description)
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/src/amsim/api/vehicle.py", line 69, in wait
+    self._pump()
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/run_case.py", line 38, in pump_actual
+    self._check_supervision()
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/run_case.py", line 368, in _check_supervision
+    raise RuntimeError(error)
+RuntimeError: C++ output latched fault reason 2
+[ERROR] Scenario 'x650_isolated_live_v1' failed with rc=1; results: /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157

@@ -1,0 +1,2 @@
+[INFO] [1792817151.426941654] [isolated_periodic_dispatcher]: READY independent absolute 20 ms wait-set publisher; simulation_live=true
+[INFO] [1792817218.153270474] [rclcpp]: signal_handler(SIGINT/SIGTERM)

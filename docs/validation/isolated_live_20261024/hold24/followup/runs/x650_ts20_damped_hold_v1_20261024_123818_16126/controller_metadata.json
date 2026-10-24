@@ -1,0 +1,4232 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "stage": "hover_folded",
+  "controller": "pid_ff",
+  "task": {
+    "schema_version": 1,
+    "scenario": "x650_ts20_damped_hold_v1",
+    "stage": "hover_folded",
+    "controller": "pid_ff",
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "trajectory": "hover",
+    "trajectory_parameters": null,
+    "duration_s": 20.0,
+    "hover_height_m": 2.0,
+    "control_period_s": 0.02,
+    "spawn_pose_enu_xyz_rpy": [
+      0.0,
+      0.0,
+      0.375,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nominal_arm_share": 0.2,
+    "feedforward_enabled": false,
+    "simulation_only": true,
+    "preparation_report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json",
+    "airframe_source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1",
+    "native_recorder_library": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libwholebody_recorder.so",
+    "response_model": null,
+    "pid_profile": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/pid_profile.json",
+    "stage_evidence": {},
+    "diagnostic_profile": null,
+    "hover_reference_profile": {
+      "name": "fixed_world_position_v1",
+      "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+    },
+    "pid_tuning_candidate": null,
+    "precision_test_profile": null,
+    "research_profile": {
+      "name": "precision_ev_selected_pid_v1",
+      "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+    },
+    "ts20_protocol": {
+      "kind": "x650_ts20_damped_conditional_hold_protocol_v1",
+      "simulation_only": true,
+      "stages": [
+        "hover_folded",
+        "joint_probe",
+        "tip_hold"
+      ],
+      "control_period_s": 0.02,
+      "max_control_interval_s": 0.05,
+      "max_compute_s": 0.05,
+      "tip_hold_duration_s": 30.0,
+      "tip_rms_max_m": 0.05,
+      "tip_peak_max_m": 0.1,
+      "tilt_max_deg": 8.0,
+      "q_lower_rad": [
+        -0.75,
+        -0.35
+      ],
+      "q_upper_rad": [
+        0.45,
+        0.85
+      ],
+      "joint_velocity_max_rad_s": [
+        0.45,
+        0.35
+      ],
+      "internal_physical_q_tolerance_rad": 0.0001,
+      "new_joint_prediction_q_peak_max_rad": 0.003,
+      "new_joint_prediction_dq_peak_max_rad_s": 0.05,
+      "native_tip_required": true,
+      "whole_declared_window_required": true,
+      "motion_capture_mode": "simulation ideal EV; PX4 estimated base feedback",
+      "required_new_plant_gates": [
+        "native_ground",
+        "hover_folded",
+        "joint_probe"
+      ],
+      "base_response_status": "prior_from_old_ideal_joint_plant; not newly identified",
+      "joint_prediction_validation": "new complete probe; actual consumed MIT packets and first physical state only",
+      "qualification": {
+        "hardware_motor": "TS20-50",
+        "hardware_supply_v": 24,
+        "identified_supply_v": 20,
+        "supply_24v_qualified": false,
+        "actual_aerial_arm_load_qualified": false,
+        "physical_torque_scale_qualified": false
+      },
+      "disturbance": {
+        "kind": "external_world_force",
+        "link": "base_link",
+        "start_s": 8.0,
+        "duration_s": 0.3,
+        "force_n": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "trajectory_stages_enabled": false,
+      "mit_gain_profile": {
+        "name": "mit_kp6_kd025_v1",
+        "kp": 6.0,
+        "kd": 0.25,
+        "bus_period_s": 0.005,
+        "gain_semantics": "candidate effective normalized MIT gains; not hardware readback"
+      },
+      "joint_probe_velocity_max_rad_s": 0.2,
+      "gain_selection": "b+Kd exceeds 1.4 times maximum negative Stribeck friction slope; fixed before new flights"
+    },
+    "ts20_inputs": {
+      "source_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot",
+      "source_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/source_manifest.json",
+      "plant_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_2link_ts20_damped_v1_flight/plant_manifest.json",
+      "oracle_validation": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_ffi_pointer_validation_20261023/oracle_v1/validation_summary.json",
+      "base_response_prior": null,
+      "native_library": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "native_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+    },
+    "disturbance_enabled": false,
+    "mpc_config": {
+      "arm_share": 0.2,
+      "velocity_limit": [
+        0.55,
+        0.35,
+        0.45,
+        0.45,
+        0.35
+      ],
+      "acceleration_limit": [
+        0.45,
+        0.3,
+        0.45,
+        0.6,
+        0.6
+      ],
+      "q_lower": [
+        -0.75,
+        -0.35
+      ],
+      "q_upper": [
+        0.45,
+        0.85
+      ],
+      "joint_position_gain": 3.0,
+      "tip_gain": 2.0,
+      "max_tip_correction_m_s": 0.2,
+      "task_weight": 1.0,
+      "measured_base_weight": 4.0,
+      "base_nominal_weight": 4.0,
+      "arm_regularizer_length_m_rad": 0.02,
+      "max_dt_s": 0.05,
+      "nodes": 15,
+      "node_dt_s": 0.04,
+      "attitude_rate_decay_s": 0.15,
+      "max_iterations": 100,
+      "solver_ftol": 1e-09,
+      "feasibility_tolerance": 2e-07,
+      "kkt_tolerance": 0.002,
+      "solve_budget_ms": 20.0,
+      "failure_policy": "raise",
+      "tip_position_weight": 400.0,
+      "tip_velocity_weight": 4.0,
+      "base_position_weight": 0.25,
+      "joint_posture_weight": 0.02,
+      "input_nominal_weight": 0.01,
+      "input_delta_weight": 0.01
+    }
+  },
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+  "physical_profile": {
+    "masses": [
+      0.25,
+      0.2
+    ],
+    "lengths": [
+      0.3,
+      0.25
+    ],
+    "com_distances": [
+      0.15,
+      0.125
+    ],
+    "angle_offsets": [
+      2.6179938779914944,
+      0.0
+    ],
+    "mount_body": [
+      0.0,
+      0.0,
+      -0.18
+    ],
+    "inertia_diagonal": [
+      [
+        6.66666666667e-05,
+        0.00190833333333,
+        0.00190833333333
+      ],
+      [
+        4.08333333333e-05,
+        0.00106208333333,
+        0.00106208333333
+      ]
+    ],
+    "total_mass": 3.495,
+    "base_com_body": [
+      0.00163765394600985,
+      0.0021076955882748747,
+      -0.06417257438730621
+    ],
+    "joint_lower": [
+      -1.0471975511965976,
+      -0.4363323129985824
+    ],
+    "joint_upper": [
+      0.5235987755982988,
+      1.0471975511965976
+    ],
+    "profile_name": "x650_2link_ts20_damped_v1",
+    "source_report_sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+    "elbow_offset_body_m": [
+      0.0,
+      0.04,
+      0.0
+    ]
+  },
+  "provenance": {
+    "model_name": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "total_mass_kg": 3.4949999999999997,
+    "preparation_report_sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+    "airframe_sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+    "flight_profile_sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+    "px4_sys_autostart": 4996,
+    "native_recorder_sha256": "e78e067d3e09a1288e07c944d1cf868174dc40d4cbaee40f88d2314eede2a72d",
+    "stage": "hover_folded",
+    "controller": "pid_ff",
+    "operating_condition": {
+      "kind": "x650_research_operating_condition",
+      "schema_version": 1,
+      "research_profile": "precision_ev_selected_pid_v1",
+      "scope": "simulation_truth_aided_ev_commissioning",
+      "control_interface": "fixed_world_position_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "estimator_parameters": {
+        "EKF2_EV_CTRL": 7,
+        "EKF2_EV_NOISE_MD": 1,
+        "EKF2_EVP_NOISE": 0.01,
+        "EKF2_EVV_NOISE": 0.01,
+        "EKF2_GPS_CTRL": 0,
+        "EKF2_BARO_CTRL": 0,
+        "EKF2_HGT_REF": 3
+      },
+      "observer": {
+        "rate_hz": 50.0,
+        "gaussian_noise": 0.0,
+        "measurement_point": "base_link"
+      },
+      "coordinate_contract": "raw_ev_world",
+      "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "ground_truth_aided": true,
+      "gps_performance_claim": false,
+      "hardware_performance_claim": false
+    },
+    "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "full_body_torque_nmpc": false,
+    "base_response_is_prior": true,
+    "ts20_model_metadata": {
+      "source_manifest": {
+        "schema": "ts20_external_source_v1",
+        "motor": "TS20-50",
+        "upstream_commit": "a97ef4f227ab778f9efdf86ff93ee309d7d35a22",
+        "files": {
+          "models/ts20_50/__init__.py": "1ddbe3e41fe69c9177835824be944ab723f4163d18858716faf9a4957939b65a",
+          "models/ts20_50/conditional_candidates.json": "841741ce575f49e57675ebabb14ad92e04c9e07215853b87279b3aa214c9c9d1",
+          "models/ts20_50/example.py": "3c09417b24c6205a8f5f999af508630af2acbe907048dcba15037e03f7308c2f",
+          "models/ts20_50/mechanics.py": "2adb95ededaa81d66bd5e64845e6e4b989d3fb1f9c76814434c7a7ced8a09b32",
+          "models/ts20_50/motion.json": "2cba59ffb5554825390c32fb4a386614133659d1d5627351831b4e7d6963c31f",
+          "models/ts20_50/observers.py": "3e681956f03cebb08fe336ea7457180b301924c7dc5b27d51e58b286aec8c445",
+          "models/ts20_50/provenance.json": "548e6118a2b52a16417f6b144e26bd203beefc9f5b69f254f4d322fa527e2b6e",
+          "models/ts20_50/README.md": "f0c2024198bfb7e81c589c73ebf08b497a9f301058f47d40c83e4e85c2b364dd",
+          "models/ts20_50/reported_outputs.json": "ef2d033cd9555f453bea3ee66b2621f35ee8d262a76b7d6c152ffea9b3c2890e",
+          "models/ts20_50/requirements.txt": "3db45b6727e00fae75ce1f38fcf572afa339215925255947f2102602bf8deb5e",
+          "models/ts20_50/runtime.py": "9fc6b323421ccf6771ffda8b051f8dff3fe46d07d252bc72db63dae572538a4a",
+          "models/ts20_50/thermal.json": "66a7d4698a11810c7ffa2a898db3f15cbf7da6555133fde80f1ee23cb2526f52"
+        }
+      },
+      "motion_model": {
+        "schema": "ts20_public_motion_v1",
+        "release_date": "2026-10-22",
+        "motor": "TS20-50",
+        "firmware_family": "3.4.6",
+        "family": "event_stribeck",
+        "status": "frozen_conditional_interface_model",
+        "fixed_parameters": {
+          "J_total_over_ka": 0.0007447642530597398,
+          "b_over_ka": 0.004194907941904997,
+          "Fc_over_ka": 0.03470285366117535,
+          "offset_over_ka": 0.0004632811241788992,
+          "combined_interface_delay_s": 0.003346379092576424
+        },
+        "friction_parameters": {
+          "static_threshold": 0.075,
+          "delta_static": 0.04,
+          "stribeck_velocity": 0.2
+        },
+        "coordinate": "MIT-reported rotor angle divided by signed gear; independent output-shaft angle not established",
+        "scale": "command normalized ka=1 convention; J_total_over_ka is not identified physical body inertia",
+        "identified_assembly": "fixed PLA bench with original small PLA output disk; attachment/body inertias not separated",
+        "identification_supply": "20 V nominal, 2 A supply limit; not an Iq limit",
+        "input_contract": "actual quantized MIT q_ref,dq_ref,tau_ff and fixed gains; delayed ZOH external forcing, continuous model-internal PD",
+        "initialization": "first state only; unknown first-command prehistory held constant",
+        "limitations": [
+          "No unique physical Kt, inertia split, gear stiffness, backlash width, or internal three-loop reconstruction.",
+          "Current frozen parameters were transferred across recorded gains and motions; finite historical validation is not global stability or TS20-100 qualification.",
+          "Additional known inertia cannot be added directly to J_total_over_ka without the unknown physical scale ka.",
+          "Blocked-output geometry and backlash are not represented by this free-motion model."
+        ],
+        "source_parameter_lock_sha256": "bedcef5b0febe1aab62c7c10aeaf364d5ab87d2ac03a58ad85f184e8039dd939"
+      },
+      "external_local_dependency": true,
+      "hardware_accessed": false,
+      "interface_model_not_physical_joint_inertia": true,
+      "supply_24v_qualified": false,
+      "aerial_arm_load_qualified": false,
+      "raw_identification_timeseries_published": false
+    },
+    "ts20_operating_condition": {
+      "kind": "x650_ts20_conditional_operating_condition_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+      "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+      "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+      "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+      "qualification": {
+        "hardware_motor": "TS20-50",
+        "hardware_supply_v": 24,
+        "identified_supply_v": 20,
+        "supply_24v_qualified": false,
+        "actual_aerial_arm_load_qualified": false,
+        "physical_torque_scale_qualified": false
+      }
+    },
+    "ts20_operating_condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee",
+    "stage_gates": {},
+    "hover_world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_files_sha256": {
+      "control_packages/x650_wholebody_v1/x650_wholebody/__init__.py": "ddf24a56592a5f46aac941f7af3a17d923d931de84eff08e3c2eb6bf762430db",
+      "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "477e0e2888ba5ef7d1515fe41342e651af79548472665f447cb71f8b47e9e635",
+      "control_packages/x650_wholebody_v1/x650_wholebody/api.py": "cc3eb5db0455120f51a3edb499cef56f88773673b9b53a14ae1e715e1e10ae76",
+      "control_packages/x650_wholebody_v1/x650_wholebody/baseline.py": "d6ee21d254ee0fb6f089705dfa7b2cca36d14fe0c01b9ea9a76592355c8766c4",
+      "control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py": "3897d73898895eba8c5652670f8a7bff1a599736a1d94c31db6784fa2d0e8631",
+      "control_packages/x650_wholebody_v1/x650_wholebody/model.py": "266bf543c8546b5bd82738e0283c87853a1796d43f70a24c69f8ad9908276e5f",
+      "control_packages/x650_wholebody_v1/x650_wholebody/mpc.py": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "a66f3645224b708343188b43f4f74c2f135592438db27a12760478561e428fcf",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py": "653b1a9fd9fefd9df106a112cf60795ddc60faf0548887650f73d8d16dbd0c59",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "8d1381ed359396aa74a2cc3a8c0f37768ba58ee06cb2d83e5fb28ce1ffc8ef10",
+      "control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py": "e86fe8d035ba9137f5c94be52f239bf33df2af9318a38e0d12e6f42318acc0b8",
+      "control_packages/x650_wholebody_v1/x650_wholebody/prediction_chain.py": "3df989b72ba0013c58d0d022347309a10244ee74cd4fa56655db5ccbddda2ac5",
+      "control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20.py": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py": "bd5558186381e622d36039f8b58314b5f63b709a0c5fc65a6f9e6e7d828fa830",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_runtime.py": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080",
+      "simulations/x650_wholebody_mpc_v1/accepted_response_model.py": "ee2ef5f24133706376cc9dbbe708353f3717bb9a06f511abbd05a106da0be72b",
+      "simulations/x650_wholebody_mpc_v1/diagnostic_odometry.py": "50d5c37daf5e837b63ddfcc05ea063d79cd5eba34404229ed5610578270dd793",
+      "simulations/x650_wholebody_mpc_v1/diagnostic_parameters.py": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+      "simulations/x650_wholebody_mpc_v1/estimated_feedback.py": "312ccc060320ba1af4008f2582a6de4212934d7630c2b653d4e55ca8a0dc7090",
+      "simulations/x650_wholebody_mpc_v1/execution_trace.py": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+      "simulations/x650_wholebody_mpc_v1/hover_reference.py": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+      "simulations/x650_wholebody_mpc_v1/launch.py": "a1eab5282d2ab4614be64efe456f61e83dd7f3fbb47122fc145ca017ecaac042",
+      "simulations/x650_wholebody_mpc_v1/mixed_mpc_protocol.py": "ea482a2b07233aa04f2df41d805132c1ed425352ba40b66989a422b7ce10c5e5",
+      "simulations/x650_wholebody_mpc_v1/position_step_probe.py": "1a831f6a65bed81f327523964f94c066769d597eb41d7a5fb331c8717054f731",
+      "simulations/x650_wholebody_mpc_v1/recording.py": "2378a55ae2db2f586843c99dcb3341a01875f0a9fae06b56e91d13a151803e38",
+      "simulations/x650_wholebody_mpc_v1/research_condition.py": "233a391e0dc8fabd946bf76cbb5000d998221a4a92c0c15102a01bfe854903ac",
+      "simulations/x650_wholebody_mpc_v1/response_protocol.py": "a43b91a4a6c786f98e92b60bc4f62d2b9cf92157831a0f7231cfddaae8ea54f5",
+      "simulations/x650_wholebody_mpc_v1/run_case.py": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+      "simulations/x650_wholebody_mpc_v1/task.py": "43b7195f996085b6fedd1107595894d29c66eb0ec8c80217e923ec353b5f544f",
+      "simulations/x650_hover_v1/parameter_evidence.py": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+      "simulations/x650_ts20_hold_v1/audit.py": "79c8af6339e04e241b0a6b23c9396c55d3e0ebfc930b5ebb0da4cfdbba0d34b9",
+      "simulations/x650_ts20_hold_v1/diagnostic_serialization.py": "c83575362bc097086c3bbe4ab50c292972dddb80fc16b7d5a130913e025ea1c3",
+      "simulations/x650_ts20_hold_v1/launch.py": "9a0eb2fa3123d10e6c3215f6734c1f2deee28ebafdd98068a4d82504bb057a15",
+      "simulations/x650_ts20_hold_v1/launch_chain_v4.py": "7be7f4f70744587d644071cdbd7422831c4f7e9cff65099cad5c03bf3e978b63",
+      "simulations/x650_ts20_hold_v1/launch_quiet_v3.py": "7d1436e334730bb215009e22d7f2f6799c8b660946c8596c9fda68e540c0a488",
+      "simulations/x650_ts20_hold_v1/loop_timing.py": "2d1f9242e3b3286a9b19448751ea440fb9da40294f3e487b24e83c8fbda0e535",
+      "simulations/x650_ts20_hold_v1/run_case.py": "79866fc012ca20bc867b88773782bce64d6632cb8ee9804d0103aa29d161211e",
+      "simulations/x650_ts20_hold_v1/task.py": "7044528ad0772c625ede60976916d13da0ec97caaf39cbfdb687310b783a8116",
+      "scripts/prepare_x650_ts20_plant.py": "a4ceb88ff3a5e5be7159f2f8b71d5d55deb43ba9b77cbcb5451034bcd4d6adca",
+      "scripts/ts20_interface_system.cpp": "310485f2d2eba8c611008b9b8b3e1e60d94759b465497086f5e64e73eb3477af",
+      "benchmark/whole_body_closed_loop_v1/wholebody_recorder.cpp": "826bbe091507121e6f397f176cbd4288d707781f570e92efa5c1ac27d91e69ad",
+      "benchmark/whole_body_closed_loop_v1/build_recorder.py": "4e278c685a6bedfe5198e3fb669f793349975bb55e7cbaf289e513bd6c17d6cf",
+      "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "scripts/validate_x650_ts20_prediction.py": "dc9a8f068a194ea69ae161c5592a8a7fd0124035ad0118e90ab820d4f708d4f5",
+      "configs/actuators/ts20_50_24v_damped_v1_candidate.json": "9d23be903984c38373e1ea0488fb3c36f09d89504e4b9c78ae85820a415dcb97"
+    }
+  },
+  "stage_gates": {},
+  "native_tip": "Independent native Gazebo plugin only",
+  "phase": "complete",
+  "parameter_writes": true,
+  "landed_and_disarmed": true,
+  "allocator_active": false,
+  "external_force_disturbance": false,
+  "response_identification_claimed": false,
+  "diagnostic_only": false,
+  "ground_truth_aided": true,
+  "aiding_requested": true,
+  "aiding_confirmed": true,
+  "formal_performance_claim": null,
+  "eligible_as_stage_gate": false,
+  "telemetry_freshness": {
+    "continuous_topic_wall_timeout_s": {
+      "truth": 2.0,
+      "joints": 2.0,
+      "position": 2.0,
+      "status": 3.0
+    },
+    "land_watchdog_timeout_sim_s": 3.0,
+    "land_semantics": "new ApiNode land callback token observed at every pump, bound to recorder simulation clock; cached initial message cannot establish liveness",
+    "transport_age_claimed": false,
+    "px4_timestamps": "DDS time-sync adjusted epoch; diagnostic only, may jump or regress in non-real-time SITL",
+    "transition_semantics": "new land and status callbacks after actual NAV send plus expected airborne/armed or landed/disarmed state"
+  },
+  "research_profile": {
+    "name": "precision_ev_selected_pid_v1",
+    "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+  },
+  "operating_condition": {
+    "kind": "x650_research_operating_condition",
+    "schema_version": 1,
+    "research_profile": "precision_ev_selected_pid_v1",
+    "scope": "simulation_truth_aided_ev_commissioning",
+    "control_interface": "fixed_world_position_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "estimator_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3
+    },
+    "observer": {
+      "rate_hz": 50.0,
+      "gaussian_noise": 0.0,
+      "measurement_point": "base_link"
+    },
+    "coordinate_contract": "raw_ev_world",
+    "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "ground_truth_aided": true,
+    "gps_performance_claim": false,
+    "hardware_performance_claim": false
+  },
+  "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+  "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+  "acceptance_pending": "full_ulog_audit",
+  "formal_gps_performance_claim": false,
+  "formal_hardware_performance_claim": false,
+  "control_feedback_contract": "PX4 EKF position loop; fixed raw-EV world target; measured joint position/velocity",
+  "feedback_contract": null,
+  "upper_command_interface": "fixed_world_position_v1",
+  "upper_allocator_active": false,
+  "truth_used_as_upper_feedback": null,
+  "actual_pid_parameters": {
+    "MPC_XY_P": 0.949999988079071,
+    "MPC_Z_P": 1.0,
+    "MPC_XY_VEL_P_ACC": 2.200000047683716,
+    "MPC_Z_VEL_P_ACC": 4.800000190734863,
+    "MPC_THR_HOVER": 0.4499668478965759,
+    "MC_ROLL_P": 4.0,
+    "MC_PITCH_P": 4.0,
+    "MC_YAW_P": 2.799999952316284,
+    "MC_AIRMODE": 0,
+    "MC_ROLLRATE_P": 0.15000000596046448,
+    "MC_ROLLRATE_I": 0.20000000298023224,
+    "MC_ROLLRATE_D": 0.003000000026077032,
+    "MC_ROLLRATE_FF": 0.0,
+    "MC_ROLLRATE_K": 1.0,
+    "MC_PITCHRATE_P": 0.15000000596046448,
+    "MC_PITCHRATE_I": 0.20000000298023224,
+    "MC_PITCHRATE_D": 0.003000000026077032,
+    "MC_PITCHRATE_FF": 0.0,
+    "MC_PITCHRATE_K": 1.0,
+    "MC_YAWRATE_P": 0.20000000298023224,
+    "MC_YAWRATE_I": 0.10000000149011612,
+    "MC_YAWRATE_D": 0.0,
+    "MC_YAWRATE_FF": 0.0,
+    "MC_YAWRATE_K": 1.0,
+    "MPC_XY_VEL_I_ACC": 0.4000000059604645,
+    "MPC_XY_VEL_D_ACC": 0.20000000298023224,
+    "MPC_Z_VEL_I_ACC": 2.0,
+    "MPC_Z_VEL_D_ACC": 0.0,
+    "MPC_THR_MIN": 0.11999999731779099,
+    "MPC_THR_MAX": 1.0,
+    "MPC_USE_HTE": 1,
+    "MPC_TILTMAX_AIR": 45.0,
+    "MPC_TILTMAX_LND": 12.0,
+    "MPC_XY_VEL_MAX": 12.0,
+    "MPC_Z_VEL_MAX_UP": 3.0,
+    "MPC_Z_VEL_MAX_DN": 1.5,
+    "MPC_ACC_HOR_MAX": 5.0,
+    "MPC_ACC_UP_MAX": 4.0,
+    "MPC_ACC_DOWN_MAX": 3.0,
+    "MPC_JERK_MAX": 8.0,
+    "MPC_TKO_SPEED": 1.5,
+    "MPC_LAND_SPEED": 0.699999988079071
+  },
+  "diagnostic_odometry": {
+    "kind": "x650_ideal_external_position_research_observer",
+    "schema_version": 1,
+    "purpose": "research",
+    "operating_condition": {
+      "kind": "x650_research_operating_condition",
+      "schema_version": 1,
+      "research_profile": "precision_ev_selected_pid_v1",
+      "scope": "simulation_truth_aided_ev_commissioning",
+      "control_interface": "fixed_world_position_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "estimator_parameters": {
+        "EKF2_EV_CTRL": 7,
+        "EKF2_EV_NOISE_MD": 1,
+        "EKF2_EVP_NOISE": 0.01,
+        "EKF2_EVV_NOISE": 0.01,
+        "EKF2_GPS_CTRL": 0,
+        "EKF2_BARO_CTRL": 0,
+        "EKF2_HGT_REF": 3
+      },
+      "observer": {
+        "rate_hz": 50.0,
+        "gaussian_noise": 0.0,
+        "measurement_point": "base_link"
+      },
+      "coordinate_contract": "raw_ev_world",
+      "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "ground_truth_aided": true,
+      "gps_performance_claim": false,
+      "hardware_performance_claim": false
+    },
+    "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+    "diagnostic_only": false,
+    "eligible_as_stage_gate": false,
+    "formal_performance_claim": false,
+    "ground_truth_aided": true,
+    "formal_gps_performance_claim": false,
+    "hardware_performance_claim": false,
+    "ideal_data": true,
+    "runtime_scoped_observer": true,
+    "model_snapshot_unmodified": true,
+    "instance": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+    "world": "default",
+    "runtime_meta": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/runtime_20261024_123738/runtime.json",
+    "runtime_meta_sha256": "63a19e6fe847a4f2eea118ddbcb0d0b139103d66dc1764316d4d2a804eb54e0b",
+    "covariance_topic": "/model/amsim_urdf_x650_2link_ts20_damped_v1_flight_0/odometry_with_covariance",
+    "odom_topic": "/x650_diagnostic/33282a6b04e9/odometry",
+    "tf_topic": "/x650_diagnostic/33282a6b04e9/pose",
+    "requested_rate_hz": 50.0,
+    "gaussian_noise": 0.0,
+    "measurement_point": "Gazebo model/base_link origin, ENU; pinned GZBridge converts to PX4 NED",
+    "covariance_semantics": "Ideal observer raw covariance; diagnostic EKF_EV_NOISE_MD=1 uses explicit parameter noise floor",
+    "physical_model_changes": [],
+    "observer_loaded": true,
+    "input_stream_confirmed": true,
+    "aiding_confirmed": true,
+    "commands": [
+      {
+        "args": [
+          "gz",
+          "service",
+          "--timeout",
+          "8000",
+          "-s",
+          "/world/default/scene/info",
+          "--reptype",
+          "gz.msgs.Scene",
+          "--reqtype",
+          "gz.msgs.Empty",
+          "--req",
+          ""
+        ],
+        "log": "diagnostic_odometry_001.log",
+        "timeout_s": 20.0,
+        "started_wall_time": 1792816709.0856686,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "gz",
+          "service",
+          "--timeout",
+          "8000",
+          "-s",
+          "/world/default/entity/system/add",
+          "--reptype",
+          "gz.msgs.Boolean",
+          "--reqtype",
+          "gz.msgs.EntityPlugin_V",
+          "--req",
+          "entity { id: 10 } plugins { name: \"gz::sim::systems::OdometryPublisher\" filename: \"gz-sim-odometry-publisher-system\" innerxml: \"<dimensions>3</dimensions><odom_publish_frequency>50</odom_publish_frequency><odom_topic>/x650_diagnostic/33282a6b04e9/odometry</odom_topic><odom_covariance_topic>/model/amsim_urdf_x650_2link_ts20_damped_v1_flight_0/odometry_with_covariance</odom_covariance_topic><tf_topic>/x650_diagnostic/33282a6b04e9/pose</tf_topic><odom_frame>world</odom_frame><robot_base_frame>amsim_urdf_x650_2link_ts20_damped_v1_flight_0/model_frame</robot_base_frame><gaussian_noise>0</gaussian_noise>\" }"
+        ],
+        "log": "diagnostic_odometry_002.log",
+        "timeout_s": 20.0,
+        "started_wall_time": 1792816709.4836974,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "gz",
+          "topic",
+          "-e",
+          "-t",
+          "/model/amsim_urdf_x650_2link_ts20_damped_v1_flight_0/odometry_with_covariance"
+        ],
+        "log": "diagnostic_odometry_003.log",
+        "timeout_s": 25.0,
+        "started_wall_time": 1792816709.8740454,
+        "returncode": 0,
+        "satisfied_capture": true
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_004.log",
+        "timeout_s": 24.999996729195118,
+        "started_wall_time": 1792816710.267466,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_005.log",
+        "timeout_s": 24.84858137369156,
+        "started_wall_time": 1792816710.4189293,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_006.log",
+        "timeout_s": 24.706041164696217,
+        "started_wall_time": 1792816710.5614688,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_007.log",
+        "timeout_s": 24.57464549690485,
+        "started_wall_time": 1792816710.6928487,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_008.log",
+        "timeout_s": 24.445536457002163,
+        "started_wall_time": 1792816710.821943,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "estimator_status_flags",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_009.log",
+        "timeout_s": 15.0,
+        "started_wall_time": 1792816733.8328338,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_010.log",
+        "timeout_s": 24.99999714642763,
+        "started_wall_time": 1792816733.8677888,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_011.log",
+        "timeout_s": 24.86625876277685,
+        "started_wall_time": 1792816734.0015826,
+        "returncode": 0,
+        "satisfied_capture": false
+      },
+      {
+        "args": [
+          "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-listener",
+          "vehicle_visual_odometry",
+          "-n",
+          "1"
+        ],
+        "log": "diagnostic_odometry_012.log",
+        "timeout_s": 24.73659637570381,
+        "started_wall_time": 1792816734.1312265,
+        "returncode": 0,
+        "satisfied_capture": false
+      }
+    ],
+    "artifacts": {
+      "diagnostic_odometry_001.log": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+      "diagnostic_odometry_plugin.xml": "da6f008dc61a70dd7e0247f37ec0d969f638816fd614bd6fd7a96dd4d60a1827",
+      "diagnostic_odometry_002.log": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+      "diagnostic_odometry_003.log": "64d10bef602831f18e1ca723101df53ee4a8176e1f16c1b50e675e6225f52791",
+      "diagnostic_odometry_004.log": "51848075acf1bef67d15c8a6c553312858ddd9e560782a797897ba9081a3f5d0",
+      "diagnostic_odometry_005.log": "97e6ee6bc74c219d1f413f84405490e818bbc891dbc5c29ff4a4fdd5cc42749a",
+      "diagnostic_odometry_006.log": "dea77885e41db13b29f23379013c4844bd97176a1a4230869d937035583d22ce",
+      "diagnostic_odometry_007.log": "dc71d2d4ffafb1d36ab1bb731d0e6604eb8c800937cae18ce7106820c7877439",
+      "diagnostic_odometry_008.log": "0be04a6956daee0cda5a9cd3107dbb9c8fe433402b8ed8c9af4123a7a030853f",
+      "diagnostic_odometry_009.log": "eeeca30699a8c707172e3c4c655bf52b7cc3802d0adc54b992102fd154f7a3cf",
+      "diagnostic_odometry_010.log": "4c1112a80f0d13ecb96c7c65beab74346ea106738a3e73c2852fcee9f51de123",
+      "diagnostic_odometry_011.log": "59813e93831ee2b65ae87e6e8a117c1e6fbe51f40c86f3df485c9d57ab1899df",
+      "diagnostic_odometry_012.log": "b24de24c7625374113340cf20a91060c18c49912f09c043d9fbfd03ec6254066"
+    },
+    "cleanup": "No dynamic unload; ends with owned Gazebo runtime after EKF parameters are restored",
+    "source_sha256": "50d5c37daf5e837b63ddfcc05ea063d79cd5eba34404229ed5610578270dd793",
+    "model_entity_id": 10,
+    "initial_gazebo_samples": [
+      {
+        "stamp_ns": 13484000000,
+        "position_enu_m": [
+          6.279181337979136e-07,
+          3.8140413714229476e-10,
+          0.36970589515892927
+        ]
+      },
+      {
+        "stamp_ns": 13504000000,
+        "position_enu_m": [
+          6.279181337979136e-07,
+          3.8140413714229476e-10,
+          0.36970589515892927
+        ]
+      }
+    ],
+    "initial_visual_samples": [
+      {
+        "timestamp_us": 13504000,
+        "timestamp_sample_us": 13504000,
+        "position_ned_m": [
+          0.0,
+          0.0,
+          -0.36971
+        ],
+        "quality": 0,
+        "pose_frame": 1
+      },
+      {
+        "timestamp_us": 13624000,
+        "timestamp_sample_us": 13624000,
+        "position_ned_m": [
+          0.0,
+          0.0,
+          -0.36971
+        ],
+        "quality": 0,
+        "pose_frame": 1
+      }
+    ],
+    "required_fusion_flags": {
+      "cs_ev_pos": true,
+      "cs_ev_vel": true,
+      "cs_ev_hgt": true,
+      "cs_gnss_pos": false,
+      "cs_gnss_vel": false,
+      "cs_gps_hgt": false,
+      "cs_baro_hgt": false
+    },
+    "last_estimator_status": {
+      "cs_ev_pos": true,
+      "timestamp_us": 18952000,
+      "listener_age_s": 0.876,
+      "cs_ev_vel": true,
+      "cs_ev_hgt": true,
+      "cs_gnss_pos": false,
+      "cs_gnss_vel": false,
+      "cs_gps_hgt": false,
+      "cs_baro_hgt": false
+    },
+    "fusion_confirmed_wall_time": 1792816734.156949,
+    "fusion_visual_samples": [
+      {
+        "timestamp_us": 19824000,
+        "timestamp_sample_us": 19824000,
+        "position_ned_m": [
+          0.0,
+          0.0,
+          -0.36971
+        ],
+        "quality": 0,
+        "pose_frame": 1
+      },
+      {
+        "timestamp_us": 19944000,
+        "timestamp_sample_us": 19944000,
+        "position_ned_m": [
+          0.0,
+          0.0,
+          -0.36971
+        ],
+        "quality": 0,
+        "pose_frame": 1
+      }
+    ]
+  },
+  "pid_tuning_candidate": {
+    "MPC_XY_P": 0.95,
+    "MPC_Z_P": 1.0,
+    "MPC_XY_VEL_P_ACC": 2.2,
+    "MPC_Z_VEL_P_ACC": 4.8
+  },
+  "parameter_write_scope": "Exact reviewed estimator/PID profile; other actual MC/MPC gains protected; restore original typed values after landing",
+  "diagnostic_parameters": {
+    "kind": "x650_ground_truth_aided_research_parameter_session",
+    "schema_version": 1,
+    "purpose": "research",
+    "operating_condition": {
+      "kind": "x650_research_operating_condition",
+      "schema_version": 1,
+      "research_profile": "precision_ev_selected_pid_v1",
+      "scope": "simulation_truth_aided_ev_commissioning",
+      "control_interface": "fixed_world_position_v1",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "estimator_parameters": {
+        "EKF2_EV_CTRL": 7,
+        "EKF2_EV_NOISE_MD": 1,
+        "EKF2_EVP_NOISE": 0.01,
+        "EKF2_EVV_NOISE": 0.01,
+        "EKF2_GPS_CTRL": 0,
+        "EKF2_BARO_CTRL": 0,
+        "EKF2_HGT_REF": 3
+      },
+      "observer": {
+        "rate_hz": 50.0,
+        "gaussian_noise": 0.0,
+        "measurement_point": "base_link"
+      },
+      "coordinate_contract": "raw_ev_world",
+      "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+      "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+      "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "ground_truth_aided": true,
+      "gps_performance_claim": false,
+      "hardware_performance_claim": false
+    },
+    "operating_condition_sha256": "76ec2360a2d3f051a506cb4dcfcad593f465668d2061226cac1c8ddb8ec6ec4e",
+    "diagnostic_only": false,
+    "eligible_as_stage_gate": false,
+    "ground_truth_aided": true,
+    "ideal_data": true,
+    "aiding_requested": true,
+    "aiding_confirmed": true,
+    "formal_performance_claim": false,
+    "profile": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3
+    },
+    "profile_name": "ev_precision_xyz_velocity_v1",
+    "simulation_ground_truth_aided": true,
+    "formal_gps_performance_claim": false,
+    "hardware_performance_claim": false,
+    "pid_tuning_candidate": {
+      "MPC_XY_P": 0.95,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.2,
+      "MPC_Z_VEL_P_ACC": 4.8
+    },
+    "pid_tuning_candidate_name": "velocity_high",
+    "canonical_control_originals_count": 42,
+    "mutable_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3,
+      "MPC_XY_P": 0.95,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.2,
+      "MPC_Z_VEL_P_ACC": 4.8
+    },
+    "tuning_claim": "Finite local candidate comparison only; no claim of global or fully tuned optimum",
+    "fixed_world_reference_required": true,
+    "protected_parameters": [
+      "EKF2_EV_DELAY",
+      "EKF2_EV_POS_X",
+      "EKF2_EV_POS_Y",
+      "EKF2_EV_POS_Z",
+      "EKF2_IMU_POS_X",
+      "EKF2_IMU_POS_Y",
+      "EKF2_IMU_POS_Z",
+      "MPC_THR_HOVER",
+      "MC_ROLL_P",
+      "MC_PITCH_P",
+      "MC_YAW_P",
+      "MC_AIRMODE",
+      "MC_ROLLRATE_P",
+      "MC_ROLLRATE_I",
+      "MC_ROLLRATE_D",
+      "MC_ROLLRATE_FF",
+      "MC_ROLLRATE_K",
+      "MC_PITCHRATE_P",
+      "MC_PITCHRATE_I",
+      "MC_PITCHRATE_D",
+      "MC_PITCHRATE_FF",
+      "MC_PITCHRATE_K",
+      "MC_YAWRATE_P",
+      "MC_YAWRATE_I",
+      "MC_YAWRATE_D",
+      "MC_YAWRATE_FF",
+      "MC_YAWRATE_K",
+      "MPC_XY_VEL_I_ACC",
+      "MPC_XY_VEL_D_ACC",
+      "MPC_Z_VEL_I_ACC",
+      "MPC_Z_VEL_D_ACC",
+      "MPC_THR_MIN",
+      "MPC_THR_MAX",
+      "MPC_USE_HTE",
+      "MPC_TILTMAX_AIR",
+      "MPC_TILTMAX_LND",
+      "MPC_XY_VEL_MAX",
+      "MPC_Z_VEL_MAX_UP",
+      "MPC_Z_VEL_MAX_DN",
+      "MPC_ACC_HOR_MAX",
+      "MPC_ACC_UP_MAX",
+      "MPC_ACC_DOWN_MAX",
+      "MPC_JERK_MAX",
+      "MPC_TKO_SPEED",
+      "MPC_LAND_SPEED"
+    ],
+    "read_only_prerequisites": {
+      "EKF2_EV_DELAY": 0.0,
+      "EKF2_EV_POS_X": 0.0,
+      "EKF2_EV_POS_Y": 0.0,
+      "EKF2_EV_POS_Z": 0.0,
+      "EKF2_IMU_POS_X": 0.0,
+      "EKF2_IMU_POS_Y": 0.0,
+      "EKF2_IMU_POS_Z": 0.0
+    },
+    "required_fusion_flags_before_takeoff": {
+      "cs_ev_pos": true,
+      "cs_ev_vel": true,
+      "cs_ev_hgt": true,
+      "cs_gnss_pos": false,
+      "cs_gnss_vel": false,
+      "cs_gps_hgt": false,
+      "cs_baro_hgt": false
+    },
+    "origin_semantics": "Raw EV NED observation has [world_y, world_x, -world_z]; with zero EV/IMU offsets, no GNSS position fusion resets EKF local XY to [world_y, world_x]. EV height reference resets global altitude to world_z, retaining an existing origin altitude: local_z=ref_alt-world_z. Require live frame bridge checks; old GPS/world geodetic mapping is not a valid precision-mode target conversion.",
+    "applied_verified": true,
+    "restored_verified": true,
+    "write_attempts": [
+      {
+        "phase": "apply",
+        "name": "EKF2_EVP_NOISE",
+        "attempt": 1,
+        "desired": {
+          "value": 0.009999999776482582,
+          "param_type": 9,
+          "raw_value_hex": "0ad7233c"
+        },
+        "started_wall_time": 1792816712.5881388,
+        "readback": {
+          "value": 0.009999999776482582,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "0ad7233c",
+          "received_wall_time": 1792816712.6008244,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_EVV_NOISE",
+        "attempt": 1,
+        "desired": {
+          "value": 0.009999999776482582,
+          "param_type": 9,
+          "raw_value_hex": "0ad7233c"
+        },
+        "started_wall_time": 1792816712.603405,
+        "readback": {
+          "value": 0.009999999776482582,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "0ad7233c",
+          "received_wall_time": 1792816712.6078894,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_EV_NOISE_MD",
+        "attempt": 1,
+        "desired": {
+          "value": 1,
+          "param_type": 6,
+          "raw_value_hex": "01000000"
+        },
+        "started_wall_time": 1792816712.6100016,
+        "readback": {
+          "value": 1,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "01000000",
+          "received_wall_time": 1792816712.6343923,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_HGT_REF",
+        "attempt": 1,
+        "desired": {
+          "value": 3,
+          "param_type": 6,
+          "raw_value_hex": "03000000"
+        },
+        "started_wall_time": 1792816712.6361523,
+        "readback": {
+          "value": 3,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "03000000",
+          "received_wall_time": 1792816712.6413374,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_GPS_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 0,
+          "param_type": 6,
+          "raw_value_hex": "00000000"
+        },
+        "started_wall_time": 1792816712.6430018,
+        "readback": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816712.6648445,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_BARO_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 0,
+          "param_type": 6,
+          "raw_value_hex": "00000000"
+        },
+        "started_wall_time": 1792816712.6665792,
+        "readback": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816712.6709328,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "EKF2_EV_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 7,
+          "param_type": 6,
+          "raw_value_hex": "07000000"
+        },
+        "started_wall_time": 1792816712.6725638,
+        "readback": {
+          "value": 7,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "07000000",
+          "received_wall_time": 1792816712.6962526,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "MPC_XY_P",
+        "attempt": 1,
+        "desired": {
+          "value": 0.949999988079071,
+          "param_type": 9,
+          "raw_value_hex": "3333733f"
+        },
+        "started_wall_time": 1792816712.6979487,
+        "readback": {
+          "value": 0.949999988079071,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "3333733f",
+          "received_wall_time": 1792816712.7215986,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "MPC_Z_P",
+        "attempt": 1,
+        "desired": {
+          "value": 1.0,
+          "param_type": 9,
+          "raw_value_hex": "0000803f"
+        },
+        "started_wall_time": 1792816712.7233446,
+        "readback": {
+          "value": 1.0,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "0000803f",
+          "received_wall_time": 1792816712.7275987,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "MPC_XY_VEL_P_ACC",
+        "attempt": 1,
+        "desired": {
+          "value": 2.200000047683716,
+          "param_type": 9,
+          "raw_value_hex": "cdcc0c40"
+        },
+        "started_wall_time": 1792816712.7295842,
+        "readback": {
+          "value": 2.200000047683716,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "cdcc0c40",
+          "received_wall_time": 1792816712.7482238,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "apply",
+        "name": "MPC_Z_VEL_P_ACC",
+        "attempt": 1,
+        "desired": {
+          "value": 4.800000190734863,
+          "param_type": 9,
+          "raw_value_hex": "9a999940"
+        },
+        "started_wall_time": 1792816712.750329,
+        "readback": {
+          "value": 4.800000190734863,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "9a999940",
+          "received_wall_time": 1792816712.7719588,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "MPC_XY_P",
+        "attempt": 1,
+        "desired": {
+          "value": 0.949999988079071,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "3333733f",
+          "received_wall_time": 1792816711.7627378,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.2802052,
+        "readback": {
+          "value": 0.949999988079071,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "3333733f",
+          "received_wall_time": 1792816812.2951593,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "MPC_Z_P",
+        "attempt": 1,
+        "desired": {
+          "value": 1.0,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "0000803f",
+          "received_wall_time": 1792816711.782967,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.308204,
+        "readback": {
+          "value": 1.0,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "0000803f",
+          "received_wall_time": 1792816812.3216765,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "MPC_XY_VEL_P_ACC",
+        "attempt": 1,
+        "desired": {
+          "value": 1.7999999523162842,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "6666e63f",
+          "received_wall_time": 1792816711.8010204,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.3302166,
+        "readback": {
+          "value": 1.7999999523162842,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "6666e63f",
+          "received_wall_time": 1792816812.3388948,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "MPC_Z_VEL_P_ACC",
+        "attempt": 1,
+        "desired": {
+          "value": 4.0,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "00008040",
+          "received_wall_time": 1792816711.8197463,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.3504815,
+        "readback": {
+          "value": 4.0,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "00008040",
+          "received_wall_time": 1792816812.3582249,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_HGT_REF",
+        "attempt": 1,
+        "desired": {
+          "value": 1,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "01000000",
+          "received_wall_time": 1792816711.7422748,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.3638878,
+        "readback": {
+          "value": 1,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "01000000",
+          "received_wall_time": 1792816812.374127,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_GPS_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 7,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "07000000",
+          "received_wall_time": 1792816711.7027824,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.3795166,
+        "readback": {
+          "value": 7,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "07000000",
+          "received_wall_time": 1792816812.3900797,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_BARO_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 1,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "01000000",
+          "received_wall_time": 1792816711.721545,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.395119,
+        "readback": {
+          "value": 1,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "01000000",
+          "received_wall_time": 1792816812.406841,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_EVV_NOISE",
+        "attempt": 1,
+        "desired": {
+          "value": 0.10000000149011612,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "cdcccc3d",
+          "received_wall_time": 1792816711.6833887,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.4117734,
+        "readback": {
+          "value": 0.10000000149011612,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "cdcccc3d",
+          "received_wall_time": 1792816812.4238148,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_EV_NOISE_MD",
+        "attempt": 1,
+        "desired": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816711.6545706,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.4306338,
+        "readback": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816812.440567,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_EVP_NOISE",
+        "attempt": 1,
+        "desired": {
+          "value": 0.10000000149011612,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "cdcccc3d",
+          "received_wall_time": 1792816711.6750493,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.4456377,
+        "readback": {
+          "value": 0.10000000149011612,
+          "param_type": 9,
+          "type_name": "REAL32",
+          "raw_value_hex": "cdcccc3d",
+          "received_wall_time": 1792816812.4569817,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      },
+      {
+        "phase": "restore",
+        "name": "EKF2_EV_CTRL",
+        "attempt": 1,
+        "desired": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816711.633888,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "started_wall_time": 1792816812.4621205,
+        "readback": {
+          "value": 0,
+          "param_type": 6,
+          "type_name": "INT32",
+          "raw_value_hex": "00000000",
+          "received_wall_time": 1792816812.4734828,
+          "source_system": 1,
+          "source_component": 1
+        },
+        "verified": true
+      }
+    ],
+    "transport": "Existing owned VehicleAPI.link only; raw-byte PX4 PARAM_SET / PARAM_VALUE",
+    "restore_journal_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/.amsim/x650_diagnostic_restore_pending.json",
+    "source_sha256": "f2ef5c84cae3fb08fecb9c416e9ebe05032b4860b075bd93538390edc3595a30",
+    "before": {
+      "EKF2_EV_CTRL": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.633888,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_NOISE_MD": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.6545706,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVP_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816711.6750493,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVV_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816711.6833887,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_GPS_CTRL": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816711.7027824,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_BARO_CTRL": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816711.721545,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_HGT_REF": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816711.7422748,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_P": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816711.7627378,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_P": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816711.782967,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_P_ACC": {
+        "value": 1.7999999523162842,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "6666e63f",
+        "received_wall_time": 1792816711.8010204,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_P_ACC": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816711.8197463,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_DELAY": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.8403897,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.8608356,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.8813152,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.8827727,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.9027011,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.9231718,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816711.9438028,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_HOVER": {
+        "value": 0.4499668478965759,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0e62e63e",
+        "received_wall_time": 1792816711.9644103,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLL_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816711.9853694,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCH_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816711.9872358,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAW_P": {
+        "value": 2.799999952316284,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "33333340",
+        "received_wall_time": 1792816712.0069337,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_AIRMODE": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.02749,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816712.0485106,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816712.0692823,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816712.0722485,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.0933669,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.1127493,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816712.1334424,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816712.1547523,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816712.1756964,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.1963334,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.1986456,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_P": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816712.218706,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_I": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816712.2395387,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_D": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.2606387,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.2811308,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.2830834,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_I_ACC": {
+        "value": 0.4000000059604645,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3e",
+        "received_wall_time": 1792816712.30372,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_D_ACC": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816712.321142,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_I_ACC": {
+        "value": 2.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000040",
+        "received_wall_time": 1792816712.3420458,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_D_ACC": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.362712,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MIN": {
+        "value": 0.11999999731779099,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "8fc2f53d",
+        "received_wall_time": 1792816712.383178,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MAX": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.387885,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_USE_HTE": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816712.4084527,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_AIR": {
+        "value": 45.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00003442",
+        "received_wall_time": 1792816712.4275093,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_LND": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816712.4483695,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_MAX": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816712.4499497,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_UP": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816712.470531,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_DN": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816712.490974,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_HOR_MAX": {
+        "value": 5.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000a040",
+        "received_wall_time": 1792816712.5113983,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_UP_MAX": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816712.5132883,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_DOWN_MAX": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816712.5338027,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_JERK_MAX": {
+        "value": 8.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000041",
+        "received_wall_time": 1792816712.5543501,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TKO_SPEED": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816712.5589612,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_LAND_SPEED": {
+        "value": 0.699999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333333f",
+        "received_wall_time": 1792816712.579919,
+        "source_system": 1,
+        "source_component": 1
+      }
+    },
+    "applied": {
+      "EKF2_EV_CTRL": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816712.7946947,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_NOISE_MD": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816712.8150988,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVP_NOISE": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0ad7233c",
+        "received_wall_time": 1792816712.834853,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVV_NOISE": {
+        "value": 0.009999999776482582,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0ad7233c",
+        "received_wall_time": 1792816712.8555236,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_GPS_CTRL": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.8587842,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_BARO_CTRL": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.8802316,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_HGT_REF": {
+        "value": 3,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "03000000",
+        "received_wall_time": 1792816712.9015431,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_P": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816712.9224916,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_P": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816712.942683,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_P_ACC": {
+        "value": 2.200000047683716,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc0c40",
+        "received_wall_time": 1792816712.963583,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_P_ACC": {
+        "value": 4.800000190734863,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a999940",
+        "received_wall_time": 1792816712.9845595,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_DELAY": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816712.9869108,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.0075002,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.0279582,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.0467067,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.067441,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.0712118,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.0928473,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_HOVER": {
+        "value": 0.4499668478965759,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0e62e63e",
+        "received_wall_time": 1792816713.093605,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLL_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816713.1143143,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCH_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816713.1350334,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAW_P": {
+        "value": 2.799999952316284,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "33333340",
+        "received_wall_time": 1792816713.1557243,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_AIRMODE": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.157506,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816713.1778178,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816713.198266,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816713.2002747,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.220802,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816713.2412152,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816713.2446249,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816713.2651598,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816713.2855992,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.2921457,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816713.3127177,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_P": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816713.3146503,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_I": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816713.335594,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_D": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.3560793,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.376568,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816713.3825657,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_I_ACC": {
+        "value": 0.4000000059604645,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3e",
+        "received_wall_time": 1792816713.403693,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_D_ACC": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816713.4254596,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_I_ACC": {
+        "value": 2.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000040",
+        "received_wall_time": 1792816713.446643,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_D_ACC": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816713.4674993,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MIN": {
+        "value": 0.11999999731779099,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "8fc2f53d",
+        "received_wall_time": 1792816713.4722571,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MAX": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816713.4927993,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_USE_HTE": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816713.513213,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_AIR": {
+        "value": 45.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00003442",
+        "received_wall_time": 1792816713.5167248,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_LND": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816713.5376322,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_MAX": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816713.5397346,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_UP": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816713.5603201,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_DN": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816713.5806766,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_HOR_MAX": {
+        "value": 5.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000a040",
+        "received_wall_time": 1792816713.601026,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_UP_MAX": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816713.6214182,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_DOWN_MAX": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816713.6261187,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_JERK_MAX": {
+        "value": 8.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000041",
+        "received_wall_time": 1792816713.646871,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TKO_SPEED": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816713.6471891,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_LAND_SPEED": {
+        "value": 0.699999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333333f",
+        "received_wall_time": 1792816713.6676013,
+        "source_system": 1,
+        "source_component": 1
+      }
+    },
+    "restored": {
+      "EKF2_EV_CTRL": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.4903336,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_NOISE_MD": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.5075946,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVP_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816812.5244894,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVV_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816812.5408337,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_GPS_CTRL": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816812.5571861,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_BARO_CTRL": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816812.5760386,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_HGT_REF": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816812.5928473,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_P": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816812.6092157,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_P": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816812.629541,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_P_ACC": {
+        "value": 1.7999999523162842,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "6666e63f",
+        "received_wall_time": 1792816812.6457086,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_P_ACC": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816812.6620429,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_DELAY": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.6795957,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.6976821,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.7163532,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.7362869,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.7566302,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.7773058,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.7976115,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_HOVER": {
+        "value": 0.4499668478965759,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0e62e63e",
+        "received_wall_time": 1792816812.8180766,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLL_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816812.8385584,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCH_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816812.8590963,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAW_P": {
+        "value": 2.799999952316284,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "33333340",
+        "received_wall_time": 1792816812.879151,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_AIRMODE": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.8995497,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816812.9197962,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816812.9396777,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816812.9600482,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816812.9798915,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816813.0001144,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816813.0199747,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816813.0398698,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816813.060412,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.0805113,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816813.1002488,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_P": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816813.1200156,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_I": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816813.1402905,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_D": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.160563,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.1813064,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816813.2013154,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_I_ACC": {
+        "value": 0.4000000059604645,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3e",
+        "received_wall_time": 1792816813.221217,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_D_ACC": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816813.2408822,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_I_ACC": {
+        "value": 2.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000040",
+        "received_wall_time": 1792816813.2610815,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_D_ACC": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.2815084,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MIN": {
+        "value": 0.11999999731779099,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "8fc2f53d",
+        "received_wall_time": 1792816813.3022873,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MAX": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816813.3231783,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_USE_HTE": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816813.3440156,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_AIR": {
+        "value": 45.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00003442",
+        "received_wall_time": 1792816813.3651597,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_LND": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816813.3854637,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_MAX": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816813.4092405,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_UP": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816813.4303687,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_DN": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816813.450149,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_HOR_MAX": {
+        "value": 5.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000a040",
+        "received_wall_time": 1792816813.4711385,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_UP_MAX": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816813.4914622,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_DOWN_MAX": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816813.5119212,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_JERK_MAX": {
+        "value": 8.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000041",
+        "received_wall_time": 1792816813.5324173,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TKO_SPEED": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816813.55278,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_LAND_SPEED": {
+        "value": 0.699999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333333f",
+        "received_wall_time": 1792816813.5738611,
+        "source_system": 1,
+        "source_component": 1
+      }
+    },
+    "restore_failures": {},
+    "restore_mismatches": [],
+    "runtime_restored_verified": true,
+    "restore_storage_save": {
+      "args": [
+        "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4-param",
+        "save"
+      ],
+      "cwd": "/root/autodl-tmp/PX4-Autopilot",
+      "log": "diagnostic_parameter_storage_save.log",
+      "started_wall_time": 1792816813.5973356,
+      "timeout_s": 60.0,
+      "semantics": "Pinned param.cpp save without path calls do_save_default -> param_save_default(true); exit 0 means synchronous success",
+      "synchronous_default_save": true,
+      "returncode": 0,
+      "completed_wall_time": 1792816813.639571,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "restore_post_save_readback": {
+      "EKF2_EV_CTRL": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.6563835,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_NOISE_MD": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.6777406,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVP_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816813.698678,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EVV_NOISE": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816813.7194614,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_GPS_CTRL": {
+        "value": 7,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "07000000",
+        "received_wall_time": 1792816813.7417119,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_BARO_CTRL": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816813.7618506,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_HGT_REF": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816813.78226,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_P": {
+        "value": 0.949999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333733f",
+        "received_wall_time": 1792816813.8026652,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_P": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816813.8228612,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_P_ACC": {
+        "value": 1.7999999523162842,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "6666e63f",
+        "received_wall_time": 1792816813.8428428,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_P_ACC": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816813.8647695,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_DELAY": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.8851159,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.9053745,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.9255834,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_EV_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.9461927,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_X": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.967016,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Y": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816813.9874878,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "EKF2_IMU_POS_Z": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.0080752,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_HOVER": {
+        "value": 0.4499668478965759,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0e62e63e",
+        "received_wall_time": 1792816814.0281014,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLL_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816814.0489705,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCH_P": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816814.0686018,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAW_P": {
+        "value": 2.799999952316284,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "33333340",
+        "received_wall_time": 1792816814.089118,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_AIRMODE": {
+        "value": 0,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.1099808,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816814.1312027,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816814.1513915,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816814.1709943,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.191699,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_ROLLRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816814.2114248,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_P": {
+        "value": 0.15000000596046448,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "9a99193e",
+        "received_wall_time": 1792816814.2317479,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_I": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816814.251978,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_D": {
+        "value": 0.003000000026077032,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "a69b443b",
+        "received_wall_time": 1792816814.2719905,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.2927082,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_PITCHRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816814.3152072,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_P": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816814.33547,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_I": {
+        "value": 0.10000000149011612,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3d",
+        "received_wall_time": 1792816814.3553643,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_D": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.3755956,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_FF": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.3961976,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MC_YAWRATE_K": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816814.415985,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_I_ACC": {
+        "value": 0.4000000059604645,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcccc3e",
+        "received_wall_time": 1792816814.4356987,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_D_ACC": {
+        "value": 0.20000000298023224,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "cdcc4c3e",
+        "received_wall_time": 1792816814.455664,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_I_ACC": {
+        "value": 2.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000040",
+        "received_wall_time": 1792816814.4756727,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_D_ACC": {
+        "value": 0.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000000",
+        "received_wall_time": 1792816814.4959335,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MIN": {
+        "value": 0.11999999731779099,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "8fc2f53d",
+        "received_wall_time": 1792816814.5157168,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_THR_MAX": {
+        "value": 1.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000803f",
+        "received_wall_time": 1792816814.5355985,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_USE_HTE": {
+        "value": 1,
+        "param_type": 6,
+        "type_name": "INT32",
+        "raw_value_hex": "01000000",
+        "received_wall_time": 1792816814.55566,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_AIR": {
+        "value": 45.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00003442",
+        "received_wall_time": 1792816814.5776916,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TILTMAX_LND": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816814.5981143,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_XY_VEL_MAX": {
+        "value": 12.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004041",
+        "received_wall_time": 1792816814.6180365,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_UP": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816814.6386144,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_Z_VEL_MAX_DN": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816814.6592896,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_HOR_MAX": {
+        "value": 5.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000a040",
+        "received_wall_time": 1792816814.6785235,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_UP_MAX": {
+        "value": 4.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00008040",
+        "received_wall_time": 1792816814.6991804,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_ACC_DOWN_MAX": {
+        "value": 3.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00004040",
+        "received_wall_time": 1792816814.7196598,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_JERK_MAX": {
+        "value": 8.0,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "00000041",
+        "received_wall_time": 1792816814.739837,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_TKO_SPEED": {
+        "value": 1.5,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "0000c03f",
+        "received_wall_time": 1792816814.7602415,
+        "source_system": 1,
+        "source_component": 1
+      },
+      "MPC_LAND_SPEED": {
+        "value": 0.699999988079071,
+        "param_type": 9,
+        "type_name": "REAL32",
+        "raw_value_hex": "3333333f",
+        "received_wall_time": 1792816814.7815444,
+        "source_system": 1,
+        "source_component": 1
+      }
+    },
+    "restore_persistent_storage_verified": true
+  },
+  "pid_profile": {
+    "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/pid_profile.json",
+    "sha256": "9faba7f138d6d846cc3f54ee43e3965b18350d02ab49d1b108a5a0d48cad546a",
+    "matched_parameter_count": 42,
+    "parameter_writes": false
+  },
+  "ts20_operating_condition": {
+    "kind": "x650_ts20_conditional_operating_condition_v1",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "source_manifest_sha256": "59cc88db61e215e976cb3ddb0495011ebb99ada667d66c47d06ede83b6f872c5",
+    "plant_manifest_sha256": "51c10be8ad6eb29318b8a52293be980e6b2162c078a5d68b5e49b084aef74af1",
+    "oracle_validation_sha256": "d38371f205870a12ced83958ff6c9ecef14e19b5f8db90a9037c912caf4eb3e7",
+    "native_predictor_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "protocol_sha256": "47c5a86e66e75c7f231795bfd539cd0bc2b1d26e05c47c6f7551e6e4e0d60a28",
+    "qualification": {
+      "hardware_motor": "TS20-50",
+      "hardware_supply_v": 24,
+      "identified_supply_v": 20,
+      "supply_24v_qualified": false,
+      "actual_aerial_arm_load_qualified": false,
+      "physical_torque_scale_qualified": false
+    }
+  },
+  "ts20_operating_condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee",
+  "conditional_actuator_plant": true,
+  "base_response_is_prior": true,
+  "causal_joint_provider": "while upper estimated feedback is active: one estimator-clock selection; physical q and modeled endpoint dq; same opaque observation binds MPC context",
+  "raw_ros_joint_role": "while causal upper provider is active: independent recording diagnostic, not upper joint/control or physical-monitor clock; recorder health faults still reject evidence. Non-upper commissioning retains its original physical-feedback clock.",
+  "upper_computation_and_ros_transport_delay_compensated": false,
+  "future_upper_command_timing_assumption": "new upper velocity is modeled at current control snapshot time; actual future compute/ROS consumption lag is not predicted",
+  "supply_24v_qualified": false,
+  "aerial_arm_load_qualified": false,
+  "ts20_actuator": {
+    "state_csv": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261024T043735Z_16124/actuator_live/ts20_state.csv",
+    "packet_csv": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_launch_20261024T043735Z_16124/actuator_live/ts20_packets.csv",
+    "joint_position_source": "same-stamp physical Gazebo joint encoder",
+    "joint_velocity_source": "conditional simulated servo endpoint speed report",
+    "physical_interval_average_velocity_used_for_prediction": false,
+    "solve_snapshot_policy": "exact measured q/dq/r and already-read causal histories; refresh only on next observation",
+    "joint_provider_binding": "one preselected immutable observation; opaque object identity binds unchanged q/dq/clock; no second CSV read or projection",
+    "future_rows_used_for_control": false,
+    "source_age_limit_s": 0.025,
+    "position_consistency_limit_rad": 0.0001,
+    "max_position_disagreement_rad": 1.4253198405769635e-08,
+    "observations": 2387,
+    "supply_24v_qualified": false,
+    "hardware_sensor_model_qualified": false
+  },
+  "ts20_acceptance_pending": "new_plant_native_full_window_and_ulog_audit",
+  "python_dependency_evidence": {
+    "executable": "/usr/bin/python3",
+    "numpy_version": "1.21.5",
+    "numpy_path": "/usr/lib/python3/dist-packages/numpy/__init__.py",
+    "scipy_version": "1.8.0",
+    "scipy_path": "/usr/lib/python3/dist-packages/scipy/__init__.py",
+    "before_arming": true,
+    "new_download": false
+  },
+  "ts20_loop_timing": {
+    "enabled": true,
+    "kind": "ts20_opt_in_loop_scalar_timing_v1",
+    "retained_control_cycles": 3,
+    "normal_path_extra_file_writes": 0,
+    "retained_completed_pumps": 64,
+    "normal_path_extra_flushes": 0,
+    "gc_policy_changed": false,
+    "natural_gc_callback_registered": true,
+    "max_completed_gc_events": 64,
+    "active_collection_requested": false,
+    "retained_gc_generation_summaries": 3,
+    "peak_event_slots_per_generation": 2,
+    "scheduler_or_deadline_changed": false,
+    "json_conversion_and_encoding_separately_measured": false
+  },
+  "native_ground": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261024_123818_16126/native_ground.json",
+    "sha256": "86bb33ec8fae705dcc3163337a210a1bcc59bf4d8074c793522732c323c743c8",
+    "metrics": {
+      "duration_s": 4.996,
+      "sample_count": 1250,
+      "tilt_max_deg": 0.0004464591303857333,
+      "speed_max_m_s": 0.0007214233817411034,
+      "folded_q_abs_max_rad": [
+        3.2192717322764373e-09,
+        3.9523709121343446e-09
+      ],
+      "joint_speed_abs_max_rad_s": [
+        2.0451157481945368e-10,
+        2.506690435807536e-10
+      ],
+      "max_physics_interval_s": 0.004000000000001336
+    },
+    "criteria": {
+      "tilt_at_most_2deg": true,
+      "speed_at_most_003m_s": true,
+      "folded_q_at_most_001rad": true,
+      "joint_speed_at_most_002rad_s": true,
+      "native_sampling_complete": true
+    },
+    "passed": true
+  },
+  "precision_pre_takeoff_reference": {
+    "x": 0.00012605027586687356,
+    "y": -0.00018955317500513047,
+    "z": -0.05132567882537842,
+    "ref_lat": 47.39797070315642,
+    "ref_lon": 8.54616391418531,
+    "ref_alt": 0.3182864785194397,
+    "ref_timestamp": 4776000.0,
+    "xy_valid": true,
+    "z_valid": true,
+    "xy_global": true,
+    "z_global": true,
+    "xy_reset_counter": 4,
+    "z_reset_counter": 3,
+    "heading_reset_counter": 1
+  },
+  "precision_ground_frame_check": {
+    "estimated_world_enu_m": [
+      -0.00018955317500513047,
+      0.00012605027586687356,
+      0.3696121573448181
+    ],
+    "native_world_enu_m": [
+      2.1213478356110444e-06,
+      1.548937399804225e-10,
+      0.36970582376417455
+    ],
+    "difference_m": [
+      -0.0001916745228407415,
+      0.00012605012097313358,
+      -9.366641935643072e-05
+    ],
+    "used_for_setpoint_calibration": false,
+    "tolerance_m": 0.1
+  },
+  "takeoff_state_transition": {
+    "before": {
+      "command_boundary_wall_monotonic_s": 59602415.68492069,
+      "land_received_wall_monotonic_s": 59602415.60005643,
+      "status_received_wall_monotonic_s": 59602415.66668827,
+      "land_timestamp_us": 1792816743457153.0,
+      "status_timestamp_us": 1792816743662320.0,
+      "landed_before": true,
+      "boundary_semantics": "immediately before actual NAV command_long_send; raw DDS epoch stamps diagnostic only",
+      "nav_command": 22,
+      "nav_send_completed": true
+    },
+    "after": {
+      "land_timestamp_us": 1792816753674320.0,
+      "position_timestamp_us": 1792816754242320.0,
+      "status_timestamp_us": 1792816753790320.0,
+      "land_epoch_delta_diagnostic_s": 0.568,
+      "land_received_wall_monotonic_s": 59602433.3181201,
+      "status_received_wall_monotonic_s": 59602433.43352006,
+      "position_received_wall_monotonic_s": 59602433.89137643,
+      "land_receipt_sequence": 22,
+      "land_last_observed_sim_s": 32.024,
+      "land_receipt_age_sim_s": 0.5839999999999961,
+      "landed": false,
+      "armed": true,
+      "requires_new_report_after_command": true,
+      "new_report_semantics": "actual ApiNode callback reception after actual NAV command send boundary"
+    }
+  },
+  "fixed_hover_reference": {
+    "kind": "x650_fixed_world_hover_reference",
+    "schema_version": 1,
+    "profile": "fixed_world_position_v1",
+    "frame_mode": "raw_ev_world",
+    "world": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf",
+      "source_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+      "world_name": "default",
+      "latitude_deg": 47.397971057728974,
+      "longitude_deg": 8.546163739800146,
+      "elevation": 0.0,
+      "heading_deg": 0.0
+    },
+    "target_world_enu_m": [
+      6.279181337979136e-07,
+      3.8140413714229476e-10,
+      2.3697058951589294
+    ],
+    "target_local_ned_m": [
+      3.8140413714229476e-10,
+      6.279181337979136e-07,
+      -2.0514194166394897
+    ],
+    "fixed_yaw_ned_rad": 1.672863245010376,
+    "px4_reference_at_bind": {
+      "x": -0.0009546930668875575,
+      "y": -0.000824224145617336,
+      "z": -2.0427358150482178,
+      "ref_lat": 47.39797070315642,
+      "ref_lon": 8.54616391418531,
+      "ref_alt": 0.3182864785194397,
+      "ref_timestamp": 4776000.0,
+      "xy_valid": true,
+      "z_valid": true,
+      "xy_global": true,
+      "z_global": true,
+      "xy_reset_counter": 4,
+      "z_reset_counter": 3,
+      "heading_reset_counter": 2
+    },
+    "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "coordinate_frame": 1,
+    "type_mask": 2552,
+    "controller": "PX4 native position loop, velocity/acceleration fields ignored",
+    "target_frozen": true,
+    "fit_estimator_translation": false,
+    "truth_feedback_in_setpoint": false,
+    "reset_policy": "Reject origin/global-validity or position/heading reset changes; never silently rebind or re-center evaluation",
+    "ref_timestamp_policy": "Diagnostic only after bind because DDS may translate epoch; lat/lon/alt and reset counters establish identity",
+    "source_sha256": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+    "position_semantics": "Pinned raw Gazebo EV worldNE -> localNE; localD=retained_ref_alt-worldZ",
+    "global_altitude_semantics": "Raw EV height reference makes reported global altitude equal Gazebo worldZ, NOT AMSL; never audit this mode with global_wgs84 conversion",
+    "required_external_gate": "Caller verifies live EV position/height/velocity fusion, EV HGT_REF and no GNSS/baro aiding before binding",
+    "source_contract": [
+      "GZBridge::odometryCallback: EVz=-worldZ",
+      "ev_pos_control: no GNSS -> resetHorizontalPositionTo(EV measurement), EV bias reset",
+      "ev_height_control: EV height reference -> resetAltitudeTo(-measurement)",
+      "position_fusion: resetAltitudeTo retains previously established local origin altitude"
+    ]
+  },
+  "task_start_sim_s": 41.888,
+  "reference_base_enu_m": [
+    6.279181337979136e-07,
+    3.8140413714229476e-10,
+    2.3697058951589294
+  ],
+  "reference_rotation": [
+    [
+      0.9999111669110695,
+      0.013328255086307186,
+      0.00012610669136398742
+    ],
+    [
+      -0.013328257286235585,
+      0.9999111746957654,
+      1.6620660952887748e-05
+    ],
+    [
+      -0.00012587396548987789,
+      -1.8299966916250367e-05,
+      0.999999991910428
+    ]
+  ],
+  "requested_duration_s": 20.0,
+  "ts20_activation": {
+    "task_start_sim_s": 41.888,
+    "reference_reset_to_measured_q": false,
+    "command_source": "actual plugin-consumed upper commands",
+    "packet_source": "actual fixed-grid MIT sends",
+    "delay_applied_once": true
+  },
+  "task_end_sim_s": 61.888,
+  "max_joint_command_rad_s": [
+    3.532250512907877e-08,
+    4.2759595217308904e-08
+  ],
+  "folded_before_landing": true,
+  "landing_command_attempted": true,
+  "landing_api_returned": true,
+  "landing_state_transition": {
+    "before": {
+      "command_boundary_wall_monotonic_s": 59602463.50077415,
+      "land_received_wall_monotonic_s": 59602463.3282003,
+      "status_received_wall_monotonic_s": 59602463.369882725,
+      "land_timestamp_us": 1792816789863906.0,
+      "status_timestamp_us": 1792816789907906.0,
+      "landed_before": false,
+      "boundary_semantics": "immediately before actual NAV command_long_send; raw DDS epoch stamps diagnostic only",
+      "nav_command": 21,
+      "nav_send_completed": true
+    },
+    "after": {
+      "land_timestamp_us": 1792816795392034.0,
+      "position_timestamp_us": 1792816796368034.0,
+      "status_timestamp_us": 1792816796388034.0,
+      "land_epoch_delta_diagnostic_s": 0.976,
+      "land_received_wall_monotonic_s": 59602476.0904578,
+      "status_received_wall_monotonic_s": 59602481.11067411,
+      "position_received_wall_monotonic_s": 59602481.07647265,
+      "land_receipt_sequence": 61,
+      "land_last_observed_sim_s": 67.556,
+      "land_receipt_age_sim_s": 0.9960000000000093,
+      "landed": true,
+      "armed": false,
+      "requires_new_report_after_command": true,
+      "new_report_semantics": "actual ApiNode callback reception after actual NAV command send boundary"
+    }
+  },
+  "diagnostic_parameters_restored": true,
+  "diagnostic_restore_pending": false,
+  "parameter_evidence": {
+    "before": {
+      "file": "px4_parameters_before.json",
+      "sha256": "10b799c9a4b0e07eb68ffed33868366a0b735aeb7258638a87f54583835a9216",
+      "airframe_sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+      "parameter_count": 101,
+      "contract_matches": true,
+      "control_readback_complete": true
+    },
+    "after": {
+      "file": "px4_parameters_after.json",
+      "sha256": "a87cd84d33b6a9b853d541f4bf5537abd5420cee08f51ae4037cdfd866b63841",
+      "airframe_sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+      "parameter_count": 101,
+      "contract_matches": true,
+      "control_readback_complete": true,
+      "parameters_unchanged": true,
+      "changed_names": []
+    }
+  },
+  "native_recording": {
+    "schema_version": 1,
+    "complete": true,
+    "file": "native_trace.csv",
+    "sha256": "1ae05ed7965733fdc442e3e44f0233c191c39d20d0d0adb4679b06deb5df0295",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "sample_count": 14064,
+    "time_first_s": 14.192,
+    "time_last_s": 70.444,
+    "task_window_sim_s": [
+      41.888,
+      61.888
+    ],
+    "max_physics_interval_s": 0.0040000000000048885,
+    "library": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libwholebody_recorder.so",
+    "library_sha256": "e78e067d3e09a1288e07c944d1cf868174dc40d4cbaee40f88d2314eede2a72d",
+    "instance": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+    "source_stream": "native_stream.csv",
+    "source_snapshot_bytes": 10644297,
+    "semantics": "Unmodified complete original Gazebo PostUpdate rows frozen from the append-only stream; tip=arm_link_2 WorldPose*[.25,0,0] independently measured by native plugin",
+    "model_snapshot_unmodified": true
+  },
+  "control_execution_trace": {
+    "kind": "x650_control_execution_trace",
+    "schema_version": 1,
+    "file": "control_execution_trace.jsonl",
+    "sha256": "4faa1a355ed06423d318df56da2d7edd9221ce8cb08351359e94b589b2bd96cb",
+    "event_count": 6857,
+    "event_sequence_attempts": 6857,
+    "failure_count": 0,
+    "recording_closed": true,
+    "recording_error": null,
+    "experiment_complete": true,
+    "eligible_as_stage_gate": false,
+    "source_sha256": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+    "clock_semantics": "monotonic local wall clock plus latest already processed /clock and JointState header; no extra spin",
+    "publication_semantics": "local ROS publish or MAVLink send returned; neither Gazebo receipt nor application is acknowledged",
+    "last_publications": {
+      "joint:arm_joint_1": {
+        "channel": "joint:arm_joint_1",
+        "payload": {
+          "joint": "arm_joint_1",
+          "velocity_rad_s": 0.0009438079989177973
+        },
+        "context": {
+          "sim_s": 70.452,
+          "t_s": -1.0,
+          "phase": "landed",
+          "control_dt_s": 0.01999999999999602,
+          "measured_joint_stamp_s": 70.44,
+          "compute_before": {
+            "wall_monotonic_s": 59602490.23234314,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 70,
+              "nanosec": 440000000
+            },
+            "joint_header_stamp_s": 70.44,
+            "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2983
+          },
+          "compute_after": {
+            "wall_monotonic_s": 59602490.23252816,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 70,
+              "nanosec": 440000000
+            },
+            "joint_header_stamp_s": 70.44,
+            "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2983
+          },
+          "pre_publish_guard": {
+            "active": false,
+            "reason": "experiment disabled for recovery"
+          }
+        },
+        "publish_before": {
+          "wall_monotonic_s": 59602490.23265962,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "publish_after": {
+          "wall_monotonic_s": 59602490.23289869,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "local_call_returned": true,
+        "downstream_application_confirmed": false
+      },
+      "joint:arm_joint_2": {
+        "channel": "joint:arm_joint_2",
+        "payload": {
+          "joint": "arm_joint_2",
+          "velocity_rad_s": -4.9071115539268254e-08
+        },
+        "context": {
+          "sim_s": 70.452,
+          "t_s": -1.0,
+          "phase": "landed",
+          "control_dt_s": 0.01999999999999602,
+          "measured_joint_stamp_s": 70.44,
+          "compute_before": {
+            "wall_monotonic_s": 59602490.23234314,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 70,
+              "nanosec": 440000000
+            },
+            "joint_header_stamp_s": 70.44,
+            "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2983
+          },
+          "compute_after": {
+            "wall_monotonic_s": 59602490.23252816,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 70,
+              "nanosec": 440000000
+            },
+            "joint_header_stamp_s": 70.44,
+            "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2983
+          },
+          "pre_publish_guard": {
+            "active": false,
+            "reason": "experiment disabled for recovery"
+          }
+        },
+        "publish_before": {
+          "wall_monotonic_s": 59602490.23368283,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "publish_after": {
+          "wall_monotonic_s": 59602490.23386239,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "local_call_returned": true,
+        "downstream_application_confirmed": false
+      },
+      "px4_pva": {
+        "channel": "px4_pva",
+        "payload": {
+          "coordinate_frame": 1,
+          "type_mask": 2552,
+          "position": [
+            3.8140413714229476e-10,
+            6.279181337979136e-07,
+            -2.0514194166394897
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "yaw": 1.672863245010376,
+          "yaw_rate": 0.0
+        },
+        "context": {
+          "sim_s": 62.192,
+          "t_s": -1.0,
+          "phase": "restore_folded",
+          "control_dt_s": 0.020000000000003126,
+          "measured_joint_stamp_s": 62.18,
+          "compute_before": {
+            "wall_monotonic_s": 59602463.49641424,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 62,
+              "nanosec": 180000000
+            },
+            "joint_header_stamp_s": 62.18,
+            "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2570
+          },
+          "compute_after": {
+            "wall_monotonic_s": 59602463.496462554,
+            "processed_estimator_clock_s": null,
+            "joint_header": {
+              "sec": 62,
+              "nanosec": 180000000
+            },
+            "joint_header_stamp_s": 62.18,
+            "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+            "joint_callback_received_sim_s": null,
+            "joint_callback_sequence": 2570
+          },
+          "pre_publish_guard": {
+            "active": false,
+            "reason": "experiment disabled for recovery"
+          }
+        },
+        "publish_before": {
+          "wall_monotonic_s": 59602463.49722524,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 62,
+            "nanosec": 180000000
+          },
+          "joint_header_stamp_s": 62.18,
+          "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2570
+        },
+        "publish_after": {
+          "wall_monotonic_s": 59602463.49733018,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 62,
+            "nanosec": 180000000
+          },
+          "joint_header_stamp_s": 62.18,
+          "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2570
+        },
+        "local_call_returned": true,
+        "downstream_application_confirmed": false
+      }
+    }
+  },
+  "hover_metrics": {
+    "source": "native_trace.csv independent same-physics-step base_link world pose",
+    "fixed_target_enu_m": [
+      6.279181337979136e-07,
+      3.8140413714229476e-10,
+      2.3697058951589294
+    ],
+    "window_sim_s": [
+      41.888,
+      61.888
+    ],
+    "requested_duration_s": 20.0,
+    "duration_s": 20.0,
+    "sample_count": 5001,
+    "max_physics_interval_s": 0.0040000000000048885,
+    "no_phase_alignment": true,
+    "position_rmse_m": 0.0015494645363644944,
+    "position_max_m": 0.002458393693614165,
+    "tilt_max_deg": 0.01606036561369849,
+    "axis_rmse_m": [
+      0.0009828059750366684,
+      0.0009007049972695184,
+      0.0007897235419924982
+    ],
+    "criteria": {
+      "position_rmse_at_most_025m": true,
+      "position_peak_at_most_05m": true,
+      "tilt_at_most_15deg": true
+    },
+    "accepted": true
+  },
+  "flight_recording": {
+    "schema_version": 1,
+    "complete": true,
+    "file": "flight_samples.csv",
+    "sha256": "4cda2a084e6ae6c9e5318e67bc18e028862a1be4aa38f91da2476b3db753c9ab",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+    "requested_rate_hz": 20.0,
+    "sample_count": 1128,
+    "capture_error": null,
+    "phases": {
+      "ground_ready": 158,
+      "takeoff": 213,
+      "settle": 185,
+      "measure": 400,
+      "restore_folded": 6,
+      "landing": 127,
+      "landed": 39
+    },
+    "time_semantics": "Original truth header stamp; measured joints have their own asynchronous stamp; no inserted/interpolated samples",
+    "tip_semantics": "Only desired tip_target_world is present; actual independent tip is native_trace.csv",
+    "pose_semantics": "Original Gazebo ENU base_link pose; ROS xyzw quaternion; frame IDs retained",
+    "interval_min_s": 0.03999999999999204,
+    "interval_max_s": 0.060000000000002274
+  },
+  "ts20_loop_timing_evidence": {
+    "file": "loop_timing_evidence.json",
+    "sha256": "7d920c8b6050e2f6e194157b9c13f65c59e27eaae6db07b35c6cababf097a32c",
+    "complete": true,
+    "interval_failure_recorded": false,
+    "observations_valid": true
+  },
+  "ts20_recording": {
+    "ts20_state.csv": {
+      "file": "ts20_state.csv",
+      "sha256": "8c7bda481f47c574758afc6adbb181d03c72a2525b0caa88126fff7638efff4f",
+      "samples": 16752,
+      "first_sim_s": 3.44,
+      "last_sim_s": 70.444,
+      "semantics": "unmodified complete rows, no synthetic resampling"
+    },
+    "ts20_packets.csv": {
+      "file": "ts20_packets.csv",
+      "sha256": "60843c6dd3eb995cc5eea23b66722a033b5fc66c8e92c75707cbb0969715b679",
+      "samples": 13402,
+      "first_sim_s": 3.436,
+      "last_sim_s": 70.441,
+      "semantics": "unmodified complete rows, no synthetic resampling"
+    }
+  }
+}

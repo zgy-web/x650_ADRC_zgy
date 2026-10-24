@@ -1,0 +1,17 @@
+{
+  "kind": "x650_ts20_conditional_stage_certificate_v1",
+  "stage": "hover_folded",
+  "passed": true,
+  "timing": {
+    "max_actual_send_interval_s": 0.02400000000000091,
+    "max_compute_ms": 2.6498064398765564
+  },
+  "qualification": {
+    "hardware_motor": "TS20-50",
+    "hardware_supply_v": 24,
+    "identified_supply_v": 20,
+    "supply_24v_qualified": false,
+    "actual_aerial_arm_load_qualified": false,
+    "physical_torque_scale_qualified": false
+  }
+}

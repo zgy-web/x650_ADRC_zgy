@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "kind": "x650_native_stage_evidence",
+  "stage": "native_ground",
+  "complete": true,
+  "simulation_backend": "gazebo_px4",
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+  "preparation_report_sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+  "interval_sim_s": [
+    16.608,
+    21.608
+  ],
+  "metrics": {
+    "duration_s": 5.0,
+    "sample_count": 1251,
+    "tilt_max_deg": 0.0004464591303857333,
+    "speed_max_m_s": 0.0007214233826473114,
+    "folded_q_abs_max_rad": [
+      3.701820061005469e-09,
+      4.544775914583044e-09
+    ],
+    "joint_speed_abs_max_rad_s": [
+      2.0451144652391678e-10,
+      2.5066926550054607e-10
+    ],
+    "max_physics_interval_s": 0.004000000000001336
+  },
+  "criteria": {
+    "tilt_at_most_2deg": true,
+    "speed_at_most_003m_s": true,
+    "folded_q_at_most_001rad": true,
+    "joint_speed_at_most_002rad_s": true,
+    "native_sampling_complete": true
+  },
+  "passed": true,
+  "artifacts": {
+    "native_ground.csv": "a4a1d7d720655d3ee2bfdf8742b96fde1d1dae3e77cacc8058eec5750fa58e14",
+    "native_ground_manifest.json": "55e1e8bcc1cd5c21ae2d37204a3dd4d198fa39583105062d9e80813b3f9da165"
+  },
+  "research_profile": {
+    "name": "precision_ev_mixed_mpc_v3",
+    "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+  },
+  "operating_condition": {
+    "kind": "x650_research_operating_condition",
+    "schema_version": 3,
+    "research_profile": "precision_ev_mixed_mpc_v3",
+    "scope": "simulation_truth_aided_ev_mixed_mpc",
+    "control_interface": "raw_ev_world_pva_v2",
+    "feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "estimator_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3
+    },
+    "observer": {
+      "rate_hz": 50.0,
+      "gaussian_noise": 0.0,
+      "measurement_point": "base_link"
+    },
+    "coordinate_contract": "raw_ev_world",
+    "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "ground_truth_aided": true,
+    "gps_performance_claim": false,
+    "hardware_performance_claim": false
+  },
+  "operating_condition_sha256": "fe4997a8a5ffccce424d2023432f76404eab76196fca8fc79b059e21d6f51bee",
+  "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+  "diagnostic_only": false,
+  "ground_truth_aided": true,
+  "eligible_as_stage_gate": false,
+  "acceptance_pending": "full_ulog_audit",
+  "formal_gps_performance_claim": false,
+  "formal_hardware_performance_claim": false,
+  "control_feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+  "feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+  "upper_command_interface": "raw_ev_world_pva_v2",
+  "upper_allocator_active": true,
+  "truth_used_as_upper_feedback": false
+}

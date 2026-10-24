@@ -1,0 +1,11 @@
+{
+  "experiment": "x650_isolated_live_v1",
+  "success": false,
+  "scenario_returncode": 1,
+  "ulog_source": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/rootfs/log/2026-10-24/04_44_52.ulg",
+  "ulog_copied": true,
+  "ulog_archive_method": "copy_after_px4_shutdown",
+  "ulog_sha256": "ed2d0cb32c993ea42f44ff02972b278152abfe29bef271c52dbf8697eb3ee266",
+  "ulog_size_bytes": 15769339,
+  "ulog_finalized_wall_time": 1792817266.6137671
+}

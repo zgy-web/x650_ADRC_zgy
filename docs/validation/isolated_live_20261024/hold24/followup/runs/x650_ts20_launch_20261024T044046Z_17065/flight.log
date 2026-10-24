@@ -1,0 +1,16 @@
+1/7 Waiting for PX4 MAVLink heartbeat
+2/7 Waiting for model telemetry: position, status, land, joints, truth
+3/7 Waiting for normal PX4 preflight checks
+4/7 Checking configured initial joint positions
+5/7 Checking ROS-to-Gazebo command bridge
+6/7 Rechecking telemetry freshness
+7/7 CHECK PASSED: no arming or flight commands sent.
+arm_joint_1: q=-0.0000000 rad (-0.0000 deg), dq=-0.0000000 rad/s
+arm_joint_2: q=+0.0000000 rad (+0.0000 deg), dq=+0.0000000 rad/s
+Results: /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/check_amsim_urdf_x650_2link_ts20_damped_v1_flight_20261024_124106
+X650_STAGE_COMPLETE joint_probe /root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261024_124130_17066
+{
+  "success": true,
+  "scenario": "x650_ts20_damped_hold_v1",
+  "results": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_ts20_damped_hold_v1_20261024_124130_17066"
+}

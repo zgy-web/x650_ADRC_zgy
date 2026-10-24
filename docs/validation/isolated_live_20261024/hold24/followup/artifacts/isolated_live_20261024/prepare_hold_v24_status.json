@@ -1,0 +1,9 @@
+{
+  "flight_started": false,
+  "stage": "stopped",
+  "task_sha256": "21185ea26e345968777b1fc3206fb45f0a3e0bd98e79abaa85ee63732736b63e",
+  "protocol_sha256": "bc5d25bd1097b9b0edeba837dbe5e91e29363206bdf781a437437c481ccd55ba",
+  "native_proof_sha256": "c42d5c843c8fef1ed0290ea0a448f287becb517a27024ff816db892e1121eeea",
+  "error": "CalledProcessError(1, ['/bin/bash', '/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v24_preflight.sh'])",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prepare_hold_v24.py\", line 36, in <module>\n    with (B/'hold_v24_preflight.log').open('x') as log:subprocess.run(['/bin/bash',str(B/'hold_v24_preflight.sh')],stdout=log,stderr=subprocess.STDOUT,check=True)\n  File \"/usr/lib/python3.10/subprocess.py\", line 526, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['/bin/bash', '/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v24_preflight.sh']' returned non-zero exit status 1.\n"
+}

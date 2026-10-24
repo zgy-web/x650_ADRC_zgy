@@ -1,0 +1,242 @@
+{
+  "kind": "x650_control_execution_trace",
+  "schema_version": 1,
+  "file": "control_execution_trace.jsonl",
+  "sha256": "8ad1d9a1d7de6dce0c7ee2900f6ea9ddca9b2687dc65de3c80f03b81007e7c40",
+  "event_count": 3397,
+  "event_sequence_attempts": 3397,
+  "failure_count": 0,
+  "recording_closed": true,
+  "recording_error": null,
+  "experiment_complete": false,
+  "eligible_as_stage_gate": false,
+  "source_sha256": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+  "clock_semantics": "monotonic local wall clock plus latest already processed /clock and JointState header; no extra spin",
+  "publication_semantics": "local ROS publish or MAVLink send returned; neither Gazebo receipt nor application is acknowledged",
+  "last_publications": {
+    "joint:arm_joint_1": {
+      "channel": "joint:arm_joint_1",
+      "payload": {
+        "joint": "arm_joint_1",
+        "velocity_rad_s": -5.886709259315239e-07
+      },
+      "context": {
+        "sim_s": 59.064,
+        "t_s": -1.0,
+        "phase": "landed",
+        "control_dt_s": 0.020000000000003126,
+        "measured_joint_stamp_s": 59.06,
+        "compute_before": {
+          "wall_monotonic_s": 59602919.59674866,
+          "processed_estimator_clock_s": 59.064,
+          "joint_header": {
+            "sec": 59,
+            "nanosec": 60000000
+          },
+          "joint_header_stamp_s": 59.06,
+          "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+          "joint_callback_received_sim_s": 59.06,
+          "joint_callback_sequence": 2243
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602919.59680518,
+          "processed_estimator_clock_s": 59.064,
+          "joint_header": {
+            "sec": 59,
+            "nanosec": 60000000
+          },
+          "joint_header_stamp_s": 59.06,
+          "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+          "joint_callback_received_sim_s": 59.06,
+          "joint_callback_sequence": 2243
+        },
+        "pre_publish_guard": {
+          "active": false,
+          "reason": "experiment disabled for recovery"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602919.59684879,
+        "processed_estimator_clock_s": 59.064,
+        "joint_header": {
+          "sec": 59,
+          "nanosec": 60000000
+        },
+        "joint_header_stamp_s": 59.06,
+        "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+        "joint_callback_received_sim_s": 59.06,
+        "joint_callback_sequence": 2243
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602919.59696944,
+        "processed_estimator_clock_s": 59.064,
+        "joint_header": {
+          "sec": 59,
+          "nanosec": 60000000
+        },
+        "joint_header_stamp_s": 59.06,
+        "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+        "joint_callback_received_sim_s": 59.06,
+        "joint_callback_sequence": 2243
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    },
+    "joint:arm_joint_2": {
+      "channel": "joint:arm_joint_2",
+      "payload": {
+        "joint": "arm_joint_2",
+        "velocity_rad_s": -4.093579731542135e-08
+      },
+      "context": {
+        "sim_s": 59.064,
+        "t_s": -1.0,
+        "phase": "landed",
+        "control_dt_s": 0.020000000000003126,
+        "measured_joint_stamp_s": 59.06,
+        "compute_before": {
+          "wall_monotonic_s": 59602919.59674866,
+          "processed_estimator_clock_s": 59.064,
+          "joint_header": {
+            "sec": 59,
+            "nanosec": 60000000
+          },
+          "joint_header_stamp_s": 59.06,
+          "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+          "joint_callback_received_sim_s": 59.06,
+          "joint_callback_sequence": 2243
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602919.59680518,
+          "processed_estimator_clock_s": 59.064,
+          "joint_header": {
+            "sec": 59,
+            "nanosec": 60000000
+          },
+          "joint_header_stamp_s": 59.06,
+          "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+          "joint_callback_received_sim_s": 59.06,
+          "joint_callback_sequence": 2243
+        },
+        "pre_publish_guard": {
+          "active": false,
+          "reason": "experiment disabled for recovery"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602919.59722359,
+        "processed_estimator_clock_s": 59.064,
+        "joint_header": {
+          "sec": 59,
+          "nanosec": 60000000
+        },
+        "joint_header_stamp_s": 59.06,
+        "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+        "joint_callback_received_sim_s": 59.06,
+        "joint_callback_sequence": 2243
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602919.59730669,
+        "processed_estimator_clock_s": 59.064,
+        "joint_header": {
+          "sec": 59,
+          "nanosec": 60000000
+        },
+        "joint_header_stamp_s": 59.06,
+        "joint_callback_received_wall_monotonic_s": 59602919.5841703,
+        "joint_callback_received_sim_s": 59.06,
+        "joint_callback_sequence": 2243
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    },
+    "px4_pva": {
+      "channel": "px4_pva",
+      "payload": {
+        "coordinate_frame": 1,
+        "type_mask": 2048,
+        "position": [
+          3.8135770615129627e-10,
+          6.279121782517217e-07,
+          -1.9925876056881533
+        ],
+        "velocity": [
+          0.0003559539639371119,
+          -0.0004593576347719239,
+          -0.00027062474349071053
+        ],
+        "acceleration": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": 1.6744019985198975,
+        "yaw_rate": 0.0
+      },
+      "context": {
+        "sim_s": 44.38,
+        "t_s": -1.0,
+        "phase": "settle",
+        "control_dt_s": 0.028000000000005798,
+        "measured_joint_stamp_s": 44.38,
+        "compute_before": {
+          "wall_monotonic_s": 59602886.58835473,
+          "processed_estimator_clock_s": 44.38,
+          "joint_header": {
+            "sec": 44,
+            "nanosec": 360000000
+          },
+          "joint_header_stamp_s": 44.36,
+          "joint_callback_received_wall_monotonic_s": 59602886.56672576,
+          "joint_callback_received_sim_s": 44.356,
+          "joint_callback_sequence": 1513
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602886.588512,
+          "processed_estimator_clock_s": 44.38,
+          "joint_header": {
+            "sec": 44,
+            "nanosec": 360000000
+          },
+          "joint_header_stamp_s": 44.36,
+          "joint_callback_received_wall_monotonic_s": 59602886.56672576,
+          "joint_callback_received_sim_s": 44.356,
+          "joint_callback_sequence": 1513
+        },
+        "pre_publish_guard": {
+          "active": true,
+          "elapsed_before_first_publish_s": 0.00018867850303649902,
+          "limit_s": 0.05,
+          "passed": true,
+          "scope": "complete controller/adapter/returned-trace calculation before any joint or PVA publication"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602886.58946402,
+        "processed_estimator_clock_s": 44.38,
+        "joint_header": {
+          "sec": 44,
+          "nanosec": 360000000
+        },
+        "joint_header_stamp_s": 44.36,
+        "joint_callback_received_wall_monotonic_s": 59602886.56672576,
+        "joint_callback_received_sim_s": 44.356,
+        "joint_callback_sequence": 1513
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602886.58958694,
+        "processed_estimator_clock_s": 44.38,
+        "joint_header": {
+          "sec": 44,
+          "nanosec": 360000000
+        },
+        "joint_header_stamp_s": 44.36,
+        "joint_callback_received_wall_monotonic_s": 59602886.56672576,
+        "joint_callback_received_sim_s": 44.356,
+        "joint_callback_sequence": 1513
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    }
+  }
+}

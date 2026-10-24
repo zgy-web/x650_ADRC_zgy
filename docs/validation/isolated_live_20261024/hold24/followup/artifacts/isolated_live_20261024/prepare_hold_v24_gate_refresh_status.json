@@ -1,0 +1,15 @@
+{
+  "flight_started": true,
+  "stage": "fresh_hold24_running",
+  "fast_started": false,
+  "prerequisites_sha256": "13b05ac26378e573288ee9ca5f1a6337466e2ed67feade347a02379d226d1d2d",
+  "stage_evidence": {
+    "hover_folded": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prerequisites_v17/hover_folded_audit/ts20_stage_certificate.json",
+    "joint_probe": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prerequisites_v17/joint_probe_audit/ts20_stage_certificate.json"
+  },
+  "task_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/quiet_task_cpp_v11.json",
+  "task_sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181",
+  "protocol_sha256": "67a5216fd4c8256490d6d1398387f364570352849728b1406fe7d82eeb2221f0",
+  "algorithm_or_parameter_changes": false,
+  "ordinary_allowed_only_after_full_hold_audit": true
+}

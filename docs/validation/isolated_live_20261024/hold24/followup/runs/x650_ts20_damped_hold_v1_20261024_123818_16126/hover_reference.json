@@ -1,0 +1,61 @@
+{
+  "kind": "x650_fixed_world_hover_reference",
+  "schema_version": 1,
+  "profile": "fixed_world_position_v1",
+  "frame_mode": "raw_ev_world",
+  "world": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf",
+    "source_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "world_name": "default",
+    "latitude_deg": 47.397971057728974,
+    "longitude_deg": 8.546163739800146,
+    "elevation": 0.0,
+    "heading_deg": 0.0
+  },
+  "target_world_enu_m": [
+    6.279181337979136e-07,
+    3.8140413714229476e-10,
+    2.3697058951589294
+  ],
+  "target_local_ned_m": [
+    3.8140413714229476e-10,
+    6.279181337979136e-07,
+    -2.0514194166394897
+  ],
+  "fixed_yaw_ned_rad": 1.672863245010376,
+  "px4_reference_at_bind": {
+    "x": -0.0009546930668875575,
+    "y": -0.000824224145617336,
+    "z": -2.0427358150482178,
+    "ref_lat": 47.39797070315642,
+    "ref_lon": 8.54616391418531,
+    "ref_alt": 0.3182864785194397,
+    "ref_timestamp": 4776000.0,
+    "xy_valid": true,
+    "z_valid": true,
+    "xy_global": true,
+    "z_global": true,
+    "xy_reset_counter": 4,
+    "z_reset_counter": 3,
+    "heading_reset_counter": 2
+  },
+  "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "coordinate_frame": 1,
+  "type_mask": 2552,
+  "controller": "PX4 native position loop, velocity/acceleration fields ignored",
+  "target_frozen": true,
+  "fit_estimator_translation": false,
+  "truth_feedback_in_setpoint": false,
+  "reset_policy": "Reject origin/global-validity or position/heading reset changes; never silently rebind or re-center evaluation",
+  "ref_timestamp_policy": "Diagnostic only after bind because DDS may translate epoch; lat/lon/alt and reset counters establish identity",
+  "source_sha256": "0448dff24e2df11ebd55e5dcb307742888d29c2a2cedb0a6c7f31cfdad6d20dc",
+  "position_semantics": "Pinned raw Gazebo EV worldNE -> localNE; localD=retained_ref_alt-worldZ",
+  "global_altitude_semantics": "Raw EV height reference makes reported global altitude equal Gazebo worldZ, NOT AMSL; never audit this mode with global_wgs84 conversion",
+  "required_external_gate": "Caller verifies live EV position/height/velocity fusion, EV HGT_REF and no GNSS/baro aiding before binding",
+  "source_contract": [
+    "GZBridge::odometryCallback: EVz=-worldZ",
+    "ev_pos_control: no GNSS -> resetHorizontalPositionTo(EV measurement), EV bias reset",
+    "ev_height_control: EV height reference -> resetAltitudeTo(-measurement)",
+    "position_fusion: resetAltitudeTo retains previously established local origin altitude"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "attempts": 5041,
+  "dropped": 0,
+  "feedback_rows": 965,
+  "message_rows": {
+    "dispatch": 3335,
+    "sends": 247,
+    "receipts": 247,
+    "events": 247
+  },
+  "records_sha256": "25ae74f16cd99b84eef246395c056aa5dd9dc9597d1bd05a8d0821393f1a53e1",
+  "natural_gc_policy_unchanged": true,
+  "materialization": "postflight from original private binary copies"
+}

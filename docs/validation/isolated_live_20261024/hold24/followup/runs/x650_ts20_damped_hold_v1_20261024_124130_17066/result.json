@@ -1,0 +1,11 @@
+{
+  "experiment": "x650_ts20_damped_hold_v1",
+  "success": true,
+  "scenario_returncode": 0,
+  "ulog_source": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/rootfs/log/2026-10-24/04_41_04.ulg",
+  "ulog_copied": true,
+  "ulog_archive_method": "copy_after_px4_shutdown",
+  "ulog_sha256": "3a6850f56daef4847b53a6f6d7da1a96017813b48b5f1ddc734d247289e19777",
+  "ulog_size_bytes": 21805201,
+  "ulog_finalized_wall_time": 1792817042.9448402
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "isolated_ground_preparation_v1",
+  "start_monotonic_ns": 59602821654300010,
+  "ground_landed": true,
+  "ground_disarmed": true,
+  "loop_strict_false": true,
+  "before_live_start": true,
+  "initial_task_origin_s": 0.0,
+  "allocator_prepare_ns": 3174803193,
+  "allocator_step_count": 0,
+  "transport_launch_ns": 6390684,
+  "transport_ready": true,
+  "allocator_constructed_no_step": true,
+  "normal_output_count": 0,
+  "end_monotonic_ns": 59602825117124446,
+  "thread_cpu_ns": 3429536608
+}

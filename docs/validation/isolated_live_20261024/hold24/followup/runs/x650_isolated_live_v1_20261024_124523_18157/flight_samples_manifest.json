@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "complete": false,
+  "file": "flight_samples.csv",
+  "sha256": "4ef9adc50400c08df5cafcedbf32bd1614d33be65d1e401167625fc80851e0a8",
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+  "requested_rate_hz": 20.0,
+  "sample_count": 855,
+  "capture_error": null,
+  "phases": {
+    "ground_ready": 163,
+    "takeoff": 213,
+    "settle": 187,
+    "measure": 102,
+    "restore_folded": 22,
+    "landing": 127,
+    "landed": 41
+  },
+  "time_semantics": "Original truth header stamp; measured joints have their own asynchronous stamp; no inserted/interpolated samples",
+  "tip_semantics": "Only desired tip_target_world is present; actual independent tip is native_trace.csv",
+  "pose_semantics": "Original Gazebo ENU base_link pose; ROS xyzw quaternion; frame IDs retained",
+  "interval_min_s": 0.019999999999999574,
+  "interval_max_s": 0.3800000000000008
+}

@@ -1,0 +1,2 @@
+[INFO] [1792817151.436261980] [isolated_state_ingress]: READY isolated C++ state receiver; simulation_live=1
+[INFO] [1792817246.576590605] [rclcpp]: signal_handler(SIGINT/SIGTERM)

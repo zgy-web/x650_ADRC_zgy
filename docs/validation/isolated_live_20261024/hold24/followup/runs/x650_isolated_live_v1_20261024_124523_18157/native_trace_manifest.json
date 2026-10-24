@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "complete": false,
+  "file": "native_trace.csv",
+  "sha256": "d503dc3806561fb5a194b4ed07c65cb38b95994930027b230c0502e239537c5c",
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+  "sample_count": 10632,
+  "time_first_s": 16.54,
+  "time_last_s": 59.064,
+  "task_window_sim_s": null,
+  "max_physics_interval_s": 0.0040000000000048885,
+  "library": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libwholebody_recorder.so",
+  "library_sha256": "e78e067d3e09a1288e07c944d1cf868174dc40d4cbaee40f88d2314eede2a72d",
+  "instance": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+  "source_stream": "native_stream.csv",
+  "source_snapshot_bytes": 8033620,
+  "semantics": "Unmodified complete original Gazebo PostUpdate rows frozen from the append-only stream; tip=arm_link_2 WorldPose*[.25,0,0] independently measured by native plugin",
+  "model_snapshot_unmodified": true
+}

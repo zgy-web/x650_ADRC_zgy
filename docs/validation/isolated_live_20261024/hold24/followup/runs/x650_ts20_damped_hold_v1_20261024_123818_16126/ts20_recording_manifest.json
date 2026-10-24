@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "captures": {
+    "ts20_state.csv": {
+      "file": "ts20_state.csv",
+      "sha256": "8c7bda481f47c574758afc6adbb181d03c72a2525b0caa88126fff7638efff4f",
+      "samples": 16752,
+      "first_sim_s": 3.44,
+      "last_sim_s": 70.444,
+      "semantics": "unmodified complete rows, no synthetic resampling"
+    },
+    "ts20_packets.csv": {
+      "file": "ts20_packets.csv",
+      "sha256": "60843c6dd3eb995cc5eea23b66722a033b5fc66c8e92c75707cbb0969715b679",
+      "samples": 13402,
+      "first_sim_s": 3.436,
+      "last_sim_s": 70.441,
+      "semantics": "unmodified complete rows, no synthetic resampling"
+    }
+  },
+  "ts20_operating_condition_sha256": "1650aa6f30c1cfc13da31251d9418abb8699d6f060c4a05f88d97f5f8b3f67ee"
+}

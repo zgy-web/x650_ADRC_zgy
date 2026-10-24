@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "platform_version": "0.1.0",
+  "platform_git_commit": "e21cba6a38091470f2f19a00a729526b1ca4403d",
+  "platform_git_dirty": true,
+  "px4_git_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "px4_git_dirty": true,
+  "model_name": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "model_source": "urdf_flight",
+  "model_manifest_sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+  "model_total_mass_kg": 3.4949999999999997,
+  "model_base_link": "base_link",
+  "model_controlled_joints": [
+    "arm_joint_1",
+    "arm_joint_2"
+  ],
+  "px4_sys_autostart": 4996,
+  "model_config": null,
+  "scenario": "x650_ts20_damped_hold_v1",
+  "scenario_source": "user",
+  "scenario_module": "simulations/x650_ts20_hold_v1/run_case.py",
+  "headless": true,
+  "started_wall_time": 1792816849.825058,
+  "finished_wall_time": 1792817043.1671953,
+  "scenario_returncode": 0,
+  "record": {
+    "rosbag": true,
+    "px4_ulog": true,
+    "ground_truth": true
+  },
+  "config": {
+    "schema_version": 1,
+    "name": "x650_ts20_damped_hold_v1",
+    "module": "simulations/x650_ts20_hold_v1/run_case.py",
+    "backend": "px4_sitl",
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "vehicle": {
+      "takeoff_height_m": 2.0
+    },
+    "record": {
+      "rosbag": true,
+      "px4_ulog": true,
+      "ground_truth": true
+    },
+    "visualization": {
+      "default": "headless"
+    }
+  }
+}

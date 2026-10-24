@@ -1,0 +1,239 @@
+{
+  "kind": "x650_control_execution_trace",
+  "schema_version": 1,
+  "file": "control_execution_trace.jsonl",
+  "sha256": "4faa1a355ed06423d318df56da2d7edd9221ce8cb08351359e94b589b2bd96cb",
+  "event_count": 6857,
+  "event_sequence_attempts": 6857,
+  "failure_count": 0,
+  "recording_closed": true,
+  "recording_error": null,
+  "experiment_complete": true,
+  "eligible_as_stage_gate": false,
+  "source_sha256": "366fe858e860bf70643c2e8b7b9c7672eb59e6b1cf809b691b695f00d22db892",
+  "clock_semantics": "monotonic local wall clock plus latest already processed /clock and JointState header; no extra spin",
+  "publication_semantics": "local ROS publish or MAVLink send returned; neither Gazebo receipt nor application is acknowledged",
+  "last_publications": {
+    "joint:arm_joint_1": {
+      "channel": "joint:arm_joint_1",
+      "payload": {
+        "joint": "arm_joint_1",
+        "velocity_rad_s": 0.0009438079989177973
+      },
+      "context": {
+        "sim_s": 70.452,
+        "t_s": -1.0,
+        "phase": "landed",
+        "control_dt_s": 0.01999999999999602,
+        "measured_joint_stamp_s": 70.44,
+        "compute_before": {
+          "wall_monotonic_s": 59602490.23234314,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602490.23252816,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "pre_publish_guard": {
+          "active": false,
+          "reason": "experiment disabled for recovery"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602490.23265962,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 70,
+          "nanosec": 440000000
+        },
+        "joint_header_stamp_s": 70.44,
+        "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2983
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602490.23289869,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 70,
+          "nanosec": 440000000
+        },
+        "joint_header_stamp_s": 70.44,
+        "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2983
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    },
+    "joint:arm_joint_2": {
+      "channel": "joint:arm_joint_2",
+      "payload": {
+        "joint": "arm_joint_2",
+        "velocity_rad_s": -4.9071115539268254e-08
+      },
+      "context": {
+        "sim_s": 70.452,
+        "t_s": -1.0,
+        "phase": "landed",
+        "control_dt_s": 0.01999999999999602,
+        "measured_joint_stamp_s": 70.44,
+        "compute_before": {
+          "wall_monotonic_s": 59602490.23234314,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602490.23252816,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 70,
+            "nanosec": 440000000
+          },
+          "joint_header_stamp_s": 70.44,
+          "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2983
+        },
+        "pre_publish_guard": {
+          "active": false,
+          "reason": "experiment disabled for recovery"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602490.23368283,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 70,
+          "nanosec": 440000000
+        },
+        "joint_header_stamp_s": 70.44,
+        "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2983
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602490.23386239,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 70,
+          "nanosec": 440000000
+        },
+        "joint_header_stamp_s": 70.44,
+        "joint_callback_received_wall_monotonic_s": 59602490.18527856,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2983
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    },
+    "px4_pva": {
+      "channel": "px4_pva",
+      "payload": {
+        "coordinate_frame": 1,
+        "type_mask": 2552,
+        "position": [
+          3.8140413714229476e-10,
+          6.279181337979136e-07,
+          -2.0514194166394897
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw": 1.672863245010376,
+        "yaw_rate": 0.0
+      },
+      "context": {
+        "sim_s": 62.192,
+        "t_s": -1.0,
+        "phase": "restore_folded",
+        "control_dt_s": 0.020000000000003126,
+        "measured_joint_stamp_s": 62.18,
+        "compute_before": {
+          "wall_monotonic_s": 59602463.49641424,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 62,
+            "nanosec": 180000000
+          },
+          "joint_header_stamp_s": 62.18,
+          "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2570
+        },
+        "compute_after": {
+          "wall_monotonic_s": 59602463.496462554,
+          "processed_estimator_clock_s": null,
+          "joint_header": {
+            "sec": 62,
+            "nanosec": 180000000
+          },
+          "joint_header_stamp_s": 62.18,
+          "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+          "joint_callback_received_sim_s": null,
+          "joint_callback_sequence": 2570
+        },
+        "pre_publish_guard": {
+          "active": false,
+          "reason": "experiment disabled for recovery"
+        }
+      },
+      "publish_before": {
+        "wall_monotonic_s": 59602463.49722524,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 62,
+          "nanosec": 180000000
+        },
+        "joint_header_stamp_s": 62.18,
+        "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2570
+      },
+      "publish_after": {
+        "wall_monotonic_s": 59602463.49733018,
+        "processed_estimator_clock_s": null,
+        "joint_header": {
+          "sec": 62,
+          "nanosec": 180000000
+        },
+        "joint_header_stamp_s": 62.18,
+        "joint_callback_received_wall_monotonic_s": 59602463.48449324,
+        "joint_callback_received_sim_s": null,
+        "joint_callback_sequence": 2570
+      },
+      "local_call_returned": true,
+      "downstream_application_confirmed": false
+    }
+  }
+}
