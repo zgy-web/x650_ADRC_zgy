@@ -1,0 +1,126 @@
+{
+  "kind": "x650_cpp_robustness_protocol_v1",
+  "simulation_only": true,
+  "execution_revision": 2,
+  "cpu_roles": {
+    "source": [
+      19
+    ],
+    "cpp_source": [
+      17
+    ],
+    "worker": [
+      87,
+      89,
+      91,
+      97
+    ],
+    "dispatcher": [
+      93
+    ],
+    "ingress": [
+      94
+    ],
+    "consumption": [
+      95
+    ]
+  },
+  "cpu_scope": "owned simulation processes only; SMT siblings excluded from owned background workloads; ordinary scheduler; host not reserved; Orin requires its own measurement",
+  "worker_thread_roles": {
+    "executor": [
+      87
+    ],
+    "auxiliary": [
+      89,
+      91,
+      97
+    ]
+  },
+  "active_pipeline": [
+    "cpp_raw_estimated_state_and_actual_joint_history",
+    "cpp_admission",
+    "cpp_owning_mpc",
+    "cpp_periodic_dispatch",
+    "cpp_actual_consumption"
+  ],
+  "python_scope": "ground validation and startup, lifecycle supervision and recovery, offline independent analysis; no ACTIVE snapshot construction, MPC step or normal actuator output",
+  "trajectory_kind": "fast_figure8",
+  "order": [
+    "software_equivalence_and_ros_contract",
+    "complete_tip_hold",
+    "normal_figure_eight",
+    "fast_figure_eight"
+  ],
+  "tip_hold_duration_s": 30.0,
+  "output_period_s": 0.02,
+  "command_age_max_s": 0.05,
+  "control_interval_max_s": 0.05,
+  "source_wall_age_max_s": 0.025,
+  "output_interval_max_s": 0.04,
+  "consumption_policy": "latest_value_v1",
+  "consumption_progress_budget_ms": 40,
+  "consumption_budget_scope": "separate per-joint asynchronous progress watchdog anchored to oldest unresolved actual send; new sends do not renew it; not the output-period deadline",
+  "core_compute_max_s": 0.05,
+  "tip_rms_max_m": 0.05,
+  "tip_peak_max_m": 0.1,
+  "tilt_max_deg": 8.0,
+  "numerical_replay_max_absolute_difference": 1e-07,
+  "next_solve_commit": "one next solve after matching actual writer send and a strictly newer source; measured model dt; no fabricated timestamps",
+  "next_output_commit": "latest_valid_candidate_at_absolute_period_without_waiting_for_previous_joint_receipt",
+  "ground_initialization": "all processes and hash-bound libraries READY before takeoff; source remains UNBOUND; copy original fixed reference/reset binding once, verify ACK while legacy owns output, then publish actual LiveStart",
+  "diagnostic_policy": "bounded ownership queue for raw worker CDR and Compact core results; auxiliary JSON/hash/file writer; bounded raw source CDR buffer persisted after shutdown; overflow or missing evidence fails acceptance",
+  "requirements": [
+    "same_mathematics_and_physical_parameters",
+    "raw_source_equivalence",
+    "actual_cpp_ros_worker_equivalence",
+    "bounded_asynchronous_joint_progress",
+    "independent_adoption_or_supersession_accounting_without_fabricated_receipts",
+    "px4_wire_encoding_and_full_window_ulog",
+    "no_overlapping_output_owners",
+    "zero_consumed_before_recovery",
+    "landed_disarmed_and_parameters_restored",
+    "complete_independent_native_tip_record",
+    "no_diagnostic_loss",
+    "no_gate_or_output_fault"
+  ],
+  "incomplete_run_policy": "retain raw evidence, no certificate, do not advance to next stage",
+  "claims_excluded": [
+    "hardware_24v_validation",
+    "hard_realtime",
+    "full_body_torque_nmpc",
+    "software_replay_as_new_physical_hold",
+    "software_replay_as_new_physical_normal",
+    "software_replay_as_new_physical_fast"
+  ],
+  "duration_s": 24.0,
+  "required_prior_stage": "complete_cpp_fast_figure8",
+  "fast_admitted": true,
+  "trajectory": {
+    "kind": "fast_figure8",
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 8.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0,
+    "duration_s": 24.0
+  },
+  "robustness": {
+    "case_id": "mass085_fast",
+    "kind": "uniform_rigid_mismatch",
+    "mass_inertia_scale": 0.85,
+    "physical_manifest": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass085_v1_flight/robustness_manifest.json",
+      "sha256": "7ab22b5401dda2cac1d533b0865db149cff186d82a070b2b95436ce3269de1ea"
+    },
+    "pid_profile_binding": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/pid_profile_rebound.json",
+      "sha256": "e55af5f30cf0d19866e90032613e2a548cbb2f266ccca30f92847e8f750184b9"
+    },
+    "wrench_runtime": null,
+    "schedule": [],
+    "recovery_threshold_m": 0.01,
+    "recovery_hold_s": 1.0
+  },
+  "delay_tests_enabled": false
+}

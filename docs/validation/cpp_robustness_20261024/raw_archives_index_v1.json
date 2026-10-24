@@ -1,0 +1,111 @@
+{
+  "kind": "x650_robustness_initial_raw_archive_index_v1",
+  "complete": true,
+  "all_zip_members_read_back": true,
+  "original_sources_preserved": true,
+  "files": [
+    {
+      "case_id": "wrench_fast",
+      "receipt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1_receipt.json",
+        "bytes": 196635,
+        "sha256": "6504ee64a617a212c3f1d715d177457eb06fbc26521439c12dff38f44e247263"
+      },
+      "manifest": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1_manifest.json",
+        "bytes": 819824,
+        "sha256": "d06587da7ddd0add6d90fcbfb5b4490a87fe4600fdf03ac06e126523c59688a3"
+      },
+      "archives": [
+        {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1.zip",
+          "bytes": 25296413,
+          "sha256": "632b36f7bf5c23448909df3373e5e2e2a71c7f2443dddb71dcf85b07a37d2e40"
+        }
+      ],
+      "verified_member_count": 1314,
+      "original_file_count": 1314,
+      "original_bytes": 115635587,
+      "physical_run_exit": 1,
+      "audit_exit": null,
+      "physical_acceptance_claim": false
+    },
+    {
+      "case_id": "mass085_fast",
+      "receipt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1_receipt.json",
+        "bytes": 196001,
+        "sha256": "418c699325f6280243275b24e14a1c6da4b8a75e17cf5e6aeb694ef64be7fb88"
+      },
+      "manifest": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1_manifest.json",
+        "bytes": 1999887,
+        "sha256": "7a37d29d973da1840ad686d83e95037b1972c4e38f8e2026cad995101301c219"
+      },
+      "archives": [
+        {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1.zip",
+          "bytes": 40965508,
+          "sha256": "6fff3bcd1fb85190cea8dd217d83f8383e66752edcc7198e049dedb1ec62d79e"
+        }
+      ],
+      "verified_member_count": 3759,
+      "original_file_count": 3759,
+      "original_bytes": 196758375,
+      "physical_run_exit": 0,
+      "audit_exit": 1,
+      "physical_acceptance_claim": false
+    },
+    {
+      "case_id": "mass115_fast",
+      "receipt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1_receipt.json",
+        "bytes": 196001,
+        "sha256": "eef8c5b06e17f7d36d4f6a528a2a0095689db5bbe04ad1c434da1ae98d5b0b24"
+      },
+      "manifest": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1_manifest.json",
+        "bytes": 2001333,
+        "sha256": "7dad4b95d42eb97bd1a681479d9fd7f1cc4ee1566576ec61e2f7f6c30126b179"
+      },
+      "archives": [
+        {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1.zip",
+          "bytes": 41484973,
+          "sha256": "e4b5719bb45f3b1635c001ed7ec35524ca4d60be16537575e6727ea13b835604"
+        }
+      ],
+      "verified_member_count": 3762,
+      "original_file_count": 3762,
+      "original_bytes": 198870879,
+      "physical_run_exit": 0,
+      "audit_exit": 1,
+      "physical_acceptance_claim": false
+    },
+    {
+      "case_id": "support",
+      "receipt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1_receipt.json",
+        "bytes": 1287,
+        "sha256": "a722f09148faf3dc2de3cc851aa466ec94225bfcefef37dbe81c16d0a7b4c56b"
+      },
+      "manifest": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1_manifest.json",
+        "bytes": 20477,
+        "sha256": "5cca11b0d712b04a46689cd1e9467d15cd20bd95109a7e6bbf0370df23799e28"
+      },
+      "archives": [
+        {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1.zip",
+          "bytes": 99086,
+          "sha256": "9204262d56fe236e655274997b7e058389949b968a73c93997a50a47c1b2b05c"
+        }
+      ],
+      "verified_member_count": 49
+    }
+  ],
+  "archive_count": 4,
+  "total_archive_bytes": 107845980,
+  "no_file_exceeds_90mib": true,
+  "note": "These are immutable initial-run raw archives, preserving original flight/audit failures. Later offline audit corrections or physical retries must have separately named evidence and must not overwrite these packages."
+}

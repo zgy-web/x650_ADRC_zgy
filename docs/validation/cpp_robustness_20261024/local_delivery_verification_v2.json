@@ -1,0 +1,534 @@
+{
+  "kind": "x650_cpp_robustness_local_delivery_verification_v2",
+  "passed": true,
+  "raw_archives_passed": true,
+  "delta_archive_passed": true,
+  "original_archive_members_checked": 8989,
+  "raw_bytes_checked": 544799319,
+  "delivered_runtime_and_reports_match_sealed_server_entries": true,
+  "explicit_final_test_source_supplement": [
+    {
+      "path": "tests/unit/test_x650_cpp_robustness_plots.py",
+      "sealed_test_source_sha256": "d16e3dbbff2e354645d6ea3d1f14c3f9204d88505d4877a46af4b61dc2763f2a",
+      "final_local_test_source_sha256": "224a672a0120ad499f06b827d7fd64f0c8acf8bbd198de6b962a462fcc66fd6b",
+      "scope": "Three additional presentation-only regression guards tested locally; no physical code or original archive changed. Final test source accompanies Git delivery; see post_delta_plot_test_source_note.json."
+    }
+  ],
+  "plot_outputs_match_presentation_identity": true,
+  "verified_delivery_files": [
+    {
+      "path": "scripts/archive_x650_robustness_delta.py",
+      "sha256": "66d41b864c7ee04f523521eefc41d00d76278e9808b65f551a176c383279e956",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/archive_x650_robustness_raw.py",
+      "sha256": "13ed0aaa00bb20fd6112e6c26087a451ee0f5355bebc7a1047edadd2bdd69aa8",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/audit_x650_cpp_robustness.py",
+      "sha256": "d68d24977ed8e4b64b2d544ac81cc09eba4b1a64cdc7a059b3600ad6ba8124da",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/plot_x650_cpp_robustness.py",
+      "sha256": "6aa0ed2b9fef5d49a972226e5f26cf7ed6cce3117bf928bd2e747537a58f4d8b",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/prepare_x650_robustness_models.py",
+      "sha256": "5295345bc3191d932aa8c947e5d5bdda6582fc5d160d13bdb93f18c995ed950d",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/verify_x650_robustness_delivery.py",
+      "sha256": "fc8b670b8ebee267fafb773ee3c622aaf2e6caf7c4f5fdb66fc2322454459189",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "scripts/verify_x650_robustness_model.py",
+      "sha256": "7f3766df0df1c248ad8a5eb413b858e742eeebe87d424b9648212c9a784c4ea8",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/__init__.py",
+      "sha256": "48207d9527af50432253627420633217409b5d373d64f5b94640be275cc07e04",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/disturbance.py",
+      "sha256": "502816d899e163cf70e64319d3f05061d628e9c6ccaa298575f241156550b994",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/launch.py",
+      "sha256": "d773bb5d93d6f859bd60ffc4757b2cb9eda57be826165272df3544df3c6e0d17",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/qualification.py",
+      "sha256": "d8a0cd157b8626041a204e7165cfd694d2b75ddf5390a725fe05025f8e1c7ddf",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/run_case.py",
+      "sha256": "3ba08fe86ba82b27d387b4cb15d01665bdef1b59318f206373325e31668449d1",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "simulations/x650_cpp_robustness_v1/task.py",
+      "sha256": "6dc5f8a57580981eddc49fe61aa3af90e8f2678fea160c8af08bfa0dbb2db782",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_cpp_robustness_adapter.py",
+      "sha256": "1179d5fc4bb1ec0f822ab6b457e6a5976f74cc75888f1abd7e08a85b0f6218ad",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_cpp_robustness_audit.py",
+      "sha256": "8d44b94d7c4e400a1904b5b61134393395df58d051c31b0dc44b8fbe6457fa96",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_robustness_archive.py",
+      "sha256": "12ff6342ae0cc3aaddc8dc1331aa6ecb96d0c4810374c5bda53eea71259b1767",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_robustness_delta_archive.py",
+      "sha256": "c624c16eab1bdc3d511c7d1d704d173811cf439069a2b3a062b3d79e05049f5a",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_robustness_models.py",
+      "sha256": "b9ccfad5f7df36aae1966f07688574cf03a4033995f4dca7cb9ad772539e1585",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "tests/unit/test_x650_robustness_verifier.py",
+      "sha256": "61f0c40405047ce53ffbcc2dacc247d0f0a6b450e69249f6f34e18eb227e6ac3",
+      "matches_sealed_server_source": true
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/final_results_v2.json",
+      "bytes": 29819,
+      "sha256": "27ea9fd5a402435aa6d1bca1abe81b75c55def01a38a7a15d0f0bc522a2c99a9",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/final_results_v2.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/raw_archives_index_v1.json",
+      "bytes": 4653,
+      "sha256": "7c6a9f8208bba2216f48cf3605d5a19a297e822573ed9425b16ff885de2872ee",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/raw_archives_index_v1.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/audit_source_proof_repair_note.json",
+      "bytes": 2235264,
+      "sha256": "72538345770ba93349ef5db9cb25e55caaa23e9c8623cca46e7f8ac521db5318",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/repair_note.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/post_run_packaging_fix_v1.json",
+      "bytes": 544,
+      "sha256": "65a0977ef8bcf238ffe89888a84b1a4b07bdc0eda3f2b2f3fd80c90cff57a228",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/post_run_packaging_fix_v1.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2_execution.json",
+      "bytes": 2944,
+      "sha256": "b298be3ed220f1450629b6304157be642d77a33afe137b3d5514c3d7306a7e38",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2_execution.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/final_outputs_ready.json",
+      "bytes": 560,
+      "sha256": "f20225a50727fcbb6ed99bfc80f7dad85476714c3fe731a094ff462238a2419b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/final_outputs_ready.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/mass085_fast/report.json",
+      "bytes": 4531169,
+      "sha256": "4c66e779fd2c6a475d2788fe539fbcd63d5980f7ddac8639125316c6f613fa2c",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/mass115_fast/report.json",
+      "bytes": 4534372,
+      "sha256": "00bab2bb63e7f755dd4382b7d21add806aef77046482b720fcded66f7b21127c",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_chart_data.csv",
+      "bytes": 1386358,
+      "sha256": "c80be45376e9bc44b0ddbe7cc6640d4c502f05afd17fcbc9e9413884f6e61ee3",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_chart_data.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.pdf",
+      "bytes": 341829,
+      "sha256": "1e68f212c2050be147ff1087b86c4bfb9f3acf3b04db97fa29d54b38ec4a2376",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.png",
+      "bytes": 352347,
+      "sha256": "b000a11905e59c7398337e29550fa12f1bdd221d3b8bb26c614c50403d218d7a",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass085_fast/figure_manifest.json",
+      "bytes": 11015,
+      "sha256": "aea2c911f90e7b5d00ef21506a40768ba1ddca61047ba6e58a09ad92dfd6f79a",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/figure_manifest.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_chart_data.csv",
+      "bytes": 1388928,
+      "sha256": "62bfa43067d18e61674347722946d28678001d52e9b67808d5c85410bf582810",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_chart_data.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.pdf",
+      "bytes": 342689,
+      "sha256": "7829a0ff3a71887c87b768e0336a7ce0d8d10a1adb9088d119bcd462a41b5e71",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.png",
+      "bytes": 351347,
+      "sha256": "e867e7e6b8b93e6d59475482678a7592d2c7190a87377dcd76413474ca13ae01",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/mass115_fast/figure_manifest.json",
+      "bytes": 10996,
+      "sha256": "dc251a2a952ae8aa18c3709ebf1992649e0bae1434b18a026f88d1508ff4642e",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/figure_manifest.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/presentation_summary.json",
+      "bytes": 29206,
+      "sha256": "05a20170676ad74e78306d917980a7e87416c622cdedc76acd735c05b2f65e1c",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/presentation_summary.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/renderer_original.py",
+      "bytes": 20714,
+      "sha256": "30c20156b3f79056865c5c3e90d545c713a449e89b66ec504e7106da139bfc4b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/renderer_original.py"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/robustness_summary.pdf",
+      "bytes": 126475,
+      "sha256": "26ce6c1a2dc012deb0b69f435292071f73f6515421c42b6d1d36b787c939cd9e",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v1/robustness_summary.png",
+      "bytes": 298333,
+      "sha256": "6a610f4f332cce63ca8609722ccc47a5983dad0632ed6a56508470cad4222691",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_chart_data.csv",
+      "bytes": 1386358,
+      "sha256": "c80be45376e9bc44b0ddbe7cc6640d4c502f05afd17fcbc9e9413884f6e61ee3",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_chart_data.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.pdf",
+      "bytes": 341829,
+      "sha256": "48e22426af5671c77519a79e39376de8985c8b23b191918880d7cac7c1f89f39",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.png",
+      "bytes": 352347,
+      "sha256": "b000a11905e59c7398337e29550fa12f1bdd221d3b8bb26c614c50403d218d7a",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass085_fast/figure_manifest.json",
+      "bytes": 11015,
+      "sha256": "b0b8d2157a2a4e1cab5796db00db6c08f05efaa306beac53bf87664d098ee197",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/figure_manifest.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_chart_data.csv",
+      "bytes": 1388928,
+      "sha256": "62bfa43067d18e61674347722946d28678001d52e9b67808d5c85410bf582810",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_chart_data.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.pdf",
+      "bytes": 342689,
+      "sha256": "782c0ccd9e52ffbe4db572794357f10b1ee32d12bad20c4e04bde03297baa426",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.png",
+      "bytes": 351347,
+      "sha256": "e867e7e6b8b93e6d59475482678a7592d2c7190a87377dcd76413474ca13ae01",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/mass115_fast/figure_manifest.json",
+      "bytes": 10996,
+      "sha256": "23dcd93f228497944a9b9669837e0368ff52b7ca9f0a71b02ea4329de9f70d13",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/figure_manifest.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/presentation_summary.json",
+      "bytes": 30876,
+      "sha256": "d05d6825b0d0beb50ba381100e7744cbdb68100dd3216acfeb4ec349a70c6df3",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/presentation_summary.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/robustness_summary.pdf",
+      "bytes": 126007,
+      "sha256": "61d688d5eeeab53c38c63fceaf265cc7f3672f3fcb4ddccde60ff2b6b1d6be56",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/plots_v2/robustness_summary.png",
+      "bytes": 308688,
+      "sha256": "231182f51da0a9c42ff0c7c092842bc44406de637c24c579f4ef69d0b2542507",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.png"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/analysis.json",
+      "bytes": 19543,
+      "sha256": "b9655dfebb334ea0b3e3e84250e7909a20570c5021276e1e171e32112195f7e7",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/analysis.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/constraint_isolation.json",
+      "bytes": 5093,
+      "sha256": "1a9af9a3d5780f13ad4a525bf87f986d017f14606ecaca214aa583ad456d2842",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/constraint_isolation.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/decoded_000378.json",
+      "bytes": 2522,
+      "sha256": "2788c6893da1fe13b000b0f72d2f6c0a91efe848e2ed75b8b1dd8abe598e6852",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000378.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/decoded_000379.json",
+      "bytes": 2295,
+      "sha256": "f148f66d7db0c1eaad558e3033ff41bece9de36217582f3c4cbdad88550d89ba",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000379.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/direct_trust_conflict.json",
+      "bytes": 3315,
+      "sha256": "de1357b2ca6fa283988f975523bed8fd532bd6ab9c828422cd1b0b04b287cd73",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/direct_trust_conflict.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+      "bytes": 654251,
+      "sha256": "87de0f3363c694787b3134d10ab193fca4f659c0be4db35adfe443a21d955fe1",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/controller_metadata.json",
+      "bytes": 241300,
+      "sha256": "5e4d185930247feaffdb9d087b3111de0fc384d84d78a4a43ef81ed2df0a55aa",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/controller_metadata.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/events.json",
+      "bytes": 114272,
+      "sha256": "74b051341a8631fdcc8aa68ca25a98e0965f25a24485c211ae38f5f0eab26808",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/events.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/lifecycle.json",
+      "bytes": 915,
+      "sha256": "cbb8a93a68ed0d85d26319ebf4ce8efb71c15541403311b4ccbbf7c9790f8f8b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/lifecycle.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/live_start.json",
+      "bytes": 7214,
+      "sha256": "f804611e22d2b15be4a5cc9464a1981cb27d1357456d4a51cf87f80407df2f5a",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/live_start.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.json",
+      "bytes": 12220,
+      "sha256": "401b264d21b89848a34cdd25221846b4b95e2503c5aaad1049a3c0329a5536d4",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.proposal.cdr",
+      "bytes": 264,
+      "sha256": "92a8a548e73c68e4e6d48247288c21ff0874ae456800e75c856425a8a55c6d46",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.proposal.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "a9a987dd11b919c8e86777fc05f51d4200e7bc69f3f090929b253dd8e0c31b8b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.snapshot.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.json",
+      "bytes": 12258,
+      "sha256": "8d468a7e55049a284d7824de90fd3fec9ed064f20224c35c0538bbf6402ad414",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.proposal.cdr",
+      "bytes": 264,
+      "sha256": "bcd1e4c88b990ca94516e92bcbcd204609b6c3eeb6df9204e0382d9eab41add8",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.proposal.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "33f2fcad09e743d86efbc3382fa6362e65c11f770b81ac7831216b4983809e67",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.snapshot.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.json",
+      "bytes": 12269,
+      "sha256": "6fd4571145016f7400a925afca3c43467bf2c93dd39aa97c0bfb7f2adbc49af7",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.proposal.cdr",
+      "bytes": 264,
+      "sha256": "e9880e6168a3a3b1e4d09ee53a664c233cbed64ecc7a44dfd9d9d699bf84ac4a",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.proposal.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "d93058bcd89635cc10721677e02b76ed68957dc97eed338a706750c96ac49c16",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.snapshot.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.json",
+      "bytes": 410741,
+      "sha256": "01e7a1fbd78d21f4324a3c743a3b9f4de6ebda7111b008c2ffa3850b5bfb168d",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.proposal.cdr",
+      "bytes": 264,
+      "sha256": "13851516ae95349b8519c12ba6eafab2dc9fddc2f7bc392a64e2b1597fca6e2b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.proposal.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "2360b9dfd8a213e125a5cf79d9b1c173f03067347b144dbf49cfe43821c71091",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.snapshot.cdr"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/sends.json",
+      "bytes": 282043,
+      "sha256": "c9ac21724035130a58f35c96cdc889c0d88e417af3c0835a08aa206d9bee1f7f",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/sends.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/worker_final.json",
+      "bytes": 327,
+      "sha256": "b5f84a9172e3addb8408d56b3aa455816528692b565ec131e7cc2e8e7d8e5c9e",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_final.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/worker_startup.json",
+      "bytes": 12464,
+      "sha256": "1ffbecf4531f883fef4675c7ac048569ac7f861667dc41484db7ceac5eb99d31",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_startup.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/isolated_live/worker_timing.json",
+      "bytes": 72838,
+      "sha256": "465a5666c3365de98577996effc30066acce2b6c69c71f81ab8ac35ac96ccc6f",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_timing.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/physical_disturbance/applied_wrench.csv.status.json",
+      "bytes": 960,
+      "sha256": "67d87107cd50d9c13257c09d179d2c1500d954ef7434ecb78c6b2db831a132d5",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/applied_wrench.csv.status.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/physical_disturbance/arm_receipt.json",
+      "bytes": 742,
+      "sha256": "25c12429ebf3d9f7c8a385ba28216b7b4a37c5a941cba7abb05b9113dfb68968",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/arm_receipt.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/originals/stage_result.json",
+      "bytes": 22239,
+      "sha256": "6f964c19c622225bc5286e81c3bb56d610e2f72eb546e9d8086d24f4bdf1299f",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/stage_result.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/wrench_failure_analysis_v1/qp_feasibility_probe.json",
+      "bytes": 6140,
+      "sha256": "066ca39bf7ebb4e21537ad8be989664f5c10e720a31608eba4482a98b53472e2",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/qp_feasibility_probe.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/diagnostic_plot_v2/controlled_prefix.csv",
+      "bytes": 638794,
+      "sha256": "31c8ef7746e85fa892b67aa2196e7bfd5dce437f8af3d5862d227e81b8f21a39",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/controlled_prefix.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/diagnostic_plot_v2/diagnostic_figure_manifest.json",
+      "bytes": 28402,
+      "sha256": "30642e41856fbac3a34167f68efcbb4b0b4e85495afa20ee2b72d85af419b9a7",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/diagnostic_figure_manifest.json"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/diagnostic_plot_v2/enqueued_wrench_prefix.csv",
+      "bytes": 65202,
+      "sha256": "b11ba5793d83adb4e3d3b73e318884ab9c30db50a332713fcc9209d2ba718eb4",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/enqueued_wrench_prefix.csv"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/diagnostic_plot_v2/wrench_failed_prefix.pdf",
+      "bytes": 104465,
+      "sha256": "95dff0ec03837fa482fc9b55a9473eaad1fdf9514d9aa440e1756d8f43126c5b",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.pdf"
+    },
+    {
+      "path": "docs/validation/cpp_robustness_20261024/wrench_fast/diagnostic_plot_v2/wrench_failed_prefix.png",
+      "bytes": 288916,
+      "sha256": "0823c3869684fad200ca10ecf33bdcb2b1321311283d818cbbc24f10ea031454",
+      "matches_delta_archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.png"
+    }
+  ],
+  "selected_evidence_extracted": [
+    "final_results_v2.json",
+    "raw_archives_index_v1.json",
+    "audit_source_proof_repair_note.json",
+    "post_run_packaging_fix_v1.json",
+    "plots_v2_execution.json",
+    "final_outputs_ready.json",
+    "plots_v1/renderer_original.py"
+  ],
+  "unit_tests": {
+    "command": "python -m unittest discover -s tests/unit -p '*robustness*.py'",
+    "host": "local Windows Python3.11",
+    "count": 54,
+    "result": "PASS",
+    "elapsed_s": 13.286
+  },
+  "physical_case_results": {
+    "wrench_fast": false,
+    "mass085_fast": true,
+    "mass115_fast": true
+  },
+  "delay_injected": false,
+  "completed_unix": 1792848785.9121778
+}

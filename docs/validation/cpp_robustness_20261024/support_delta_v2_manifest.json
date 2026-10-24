@@ -1,0 +1,964 @@
+{
+  "kind": "x650_robustness_raw_archive_manifest_v1",
+  "context": {
+    "scope": "Separate post-run delta: repaired offline source-proof interface and re-audits of unchanged physical records; failed external-wrench analysis and final figures/results. No new flight is implied.",
+    "ready_marker": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/final_outputs_ready.json",
+      "bytes": 560,
+      "sha256": "f20225a50727fcbb6ed99bfc80f7dad85476714c3fe731a094ff462238a2419b"
+    },
+    "explicit_paths": [
+      "mass085_fast/audit_v2",
+      "mass115_fast/audit_v2",
+      "audit_code_v1",
+      "audit_code_v2",
+      "wrench_failure_analysis_v1",
+      "wrench_failure_plot_v2",
+      "plots_v1",
+      "plots_v2",
+      "plots_v2_execution.json",
+      "post_run_packaging_fix_v1.json",
+      "final_results_v2.json",
+      "plot_batch_v1.py",
+      "plot_batch_v1.sh",
+      "plots_v1.log",
+      "plots_v1.exit",
+      "raw_archives_index_v1.json",
+      "local_raw_verification_v1.json"
+    ],
+    "prior_raw_archives_verified_unchanged": [
+      {
+        "receipt": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1_receipt.json",
+          "bytes": 196635,
+          "sha256": "6504ee64a617a212c3f1d715d177457eb06fbc26521439c12dff38f44e247263"
+        },
+        "manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1_manifest.json",
+          "bytes": 819824,
+          "sha256": "d06587da7ddd0add6d90fcbfb5b4490a87fe4600fdf03ac06e126523c59688a3"
+        },
+        "archives": [
+          {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/raw_v1.zip",
+            "bytes": 25296413,
+            "sha256": "632b36f7bf5c23448909df3373e5e2e2a71c7f2443dddb71dcf85b07a37d2e40"
+          }
+        ]
+      },
+      {
+        "receipt": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1_receipt.json",
+          "bytes": 196001,
+          "sha256": "418c699325f6280243275b24e14a1c6da4b8a75e17cf5e6aeb694ef64be7fb88"
+        },
+        "manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1_manifest.json",
+          "bytes": 1999887,
+          "sha256": "7a37d29d973da1840ad686d83e95037b1972c4e38f8e2026cad995101301c219"
+        },
+        "archives": [
+          {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/raw_v1.zip",
+            "bytes": 40965508,
+            "sha256": "6fff3bcd1fb85190cea8dd217d83f8383e66752edcc7198e049dedb1ec62d79e"
+          }
+        ]
+      },
+      {
+        "receipt": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1_receipt.json",
+          "bytes": 196001,
+          "sha256": "eef8c5b06e17f7d36d4f6a528a2a0095689db5bbe04ad1c434da1ae98d5b0b24"
+        },
+        "manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1_manifest.json",
+          "bytes": 2001333,
+          "sha256": "7dad4b95d42eb97bd1a681479d9fd7f1cc4ee1566576ec61e2f7f6c30126b179"
+        },
+        "archives": [
+          {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/raw_v1.zip",
+            "bytes": 41484973,
+            "sha256": "e4b5719bb45f3b1635c001ed7ec35524ca4d60be16537575e6727ea13b835604"
+          }
+        ]
+      },
+      {
+        "receipt": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1_receipt.json",
+          "bytes": 1287,
+          "sha256": "a722f09148faf3dc2de3cc851aa466ec94225bfcefef37dbe81c16d0a7b4c56b"
+        },
+        "manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1_manifest.json",
+          "bytes": 20477,
+          "sha256": "5cca11b0d712b04a46689cd1e9467d15cd20bd95109a7e6bbf0370df23799e28"
+        },
+        "archives": [
+          {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1.zip",
+            "bytes": 99086,
+            "sha256": "9204262d56fe236e655274997b7e058389949b968a73c93997a50a47c1b2b05c"
+          }
+        ]
+      }
+    ],
+    "excluded_generated_caches_and_prior_archives": [],
+    "delay_tests_enabled": false,
+    "original_raw_v1_archives_not_rewritten": true
+  },
+  "original_files": [
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v1/audit_x650_cpp_robustness.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v1/audit_x650_cpp_robustness.py",
+      "bytes": 40708,
+      "sha256": "f52e409046410f6e195edcc0fc8899c7370af3b3eaa5ae113822d17144957d34",
+      "compressed_size_estimate": 12031,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v1/test_x650_cpp_robustness_audit.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v1/test_x650_cpp_robustness_audit.py",
+      "bytes": 8466,
+      "sha256": "ebd936258b0eb0b253fe71b13e5e95ed46d29c21e65574d69aa3e49e85c56766",
+      "compressed_size_estimate": 2793,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/audit_results.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/audit_results.json",
+      "bytes": 3513,
+      "sha256": "71957b47cb0cb1c5a75004c85baa58e1d8cd753ef3f8c524a2321236fe7e3ad9",
+      "compressed_size_estimate": 820,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/audit_x650_cpp_robustness.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/audit_x650_cpp_robustness.py",
+      "bytes": 43429,
+      "sha256": "d68d24977ed8e4b64b2d544ac81cc09eba4b1a64cdc7a059b3600ad6ba8124da",
+      "compressed_size_estimate": 12836,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/repair_note.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/repair_note.json",
+      "bytes": 2235264,
+      "sha256": "72538345770ba93349ef5db9cb25e55caaa23e9c8623cca46e7f8ac521db5318",
+      "compressed_size_estimate": 70247,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/test_x650_cpp_robustness_audit.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/test_x650_cpp_robustness_audit.py",
+      "bytes": 11774,
+      "sha256": "8d44b94d7c4e400a1904b5b61134393395df58d051c31b0dc44b8fbe6457fa96",
+      "compressed_size_estimate": 3617,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/tests.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/tests.json",
+      "bytes": 516,
+      "sha256": "a0972e6225aa3f809e5e0f0228937a34c5f6155739cf1fb397024b91cec147d3",
+      "compressed_size_estimate": 289,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/audit_code_v2/upstream_source_probe.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/audit_code_v2/upstream_source_probe.json",
+      "bytes": 2251,
+      "sha256": "dabbd66047de95096dc11769f0ad55273ddd7575f107d0b8fb06e60277ee269e",
+      "compressed_size_estimate": 759,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/final_outputs_ready.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/final_outputs_ready.json",
+      "bytes": 560,
+      "sha256": "f20225a50727fcbb6ed99bfc80f7dad85476714c3fe731a094ff462238a2419b",
+      "compressed_size_estimate": 260,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/final_results_v2.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/final_results_v2.json",
+      "bytes": 29819,
+      "sha256": "27ea9fd5a402435aa6d1bca1abe81b75c55def01a38a7a15d0f0bc522a2c99a9",
+      "compressed_size_estimate": 5590,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/local_raw_verification_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/local_raw_verification_v1.json",
+      "bytes": 2756135,
+      "sha256": "4237af078c6b056bbdc2fc05e3c8772dd4449a9cb2f25e1a459ba58bfa59465e",
+      "compressed_size_estimate": 408190,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/derived_command_audit_view.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/derived_command_audit_view.json",
+      "bytes": 1121492,
+      "sha256": "51304adb1d4ad79c4742d12269728a023aef888d33ec276105eaf5418b951cd2",
+      "compressed_size_estimate": 162563,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/distinct_pva_value_audit_view.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/distinct_pva_value_audit_view.json",
+      "bytes": 2136416,
+      "sha256": "06e2e0814532c60989d9b6b8bf6f87a91f0e99d2b51afe0ef3cdb1dbec6dfbdb",
+      "compressed_size_estimate": 294824,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json",
+      "bytes": 4531169,
+      "sha256": "4c66e779fd2c6a475d2788fe539fbcd63d5980f7ddac8639125316c6f613fa2c",
+      "compressed_size_estimate": 638549,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/derived_command_audit_view.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/derived_command_audit_view.json",
+      "bytes": 1122244,
+      "sha256": "b5abb68397ca5a50beaf32828f8f0e27959e1f459d9cee097d05c95d5050acd0",
+      "compressed_size_estimate": 163052,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/distinct_pva_value_audit_view.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/distinct_pva_value_audit_view.json",
+      "bytes": 2049264,
+      "sha256": "aad75c69725ab311bdafdfce132939b4971615aad5c6535c62bfdf902b3c7b03",
+      "compressed_size_estimate": 285772,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json",
+      "bytes": 4534372,
+      "sha256": "00bab2bb63e7f755dd4382b7d21add806aef77046482b720fcded66f7b21127c",
+      "compressed_size_estimate": 638419,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plot_batch_v1.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plot_batch_v1.py",
+      "bytes": 935,
+      "sha256": "a4a872758db13d5c5a3a3b96bcb93cdf4a4ad9d9f963f6328c2beaaf4ddf1864",
+      "compressed_size_estimate": 314,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plot_batch_v1.sh",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plot_batch_v1.sh",
+      "bytes": 248,
+      "sha256": "97ac48c3d45f02c490ef2c5d0d37b52469c625eeecd5f56cb9be0874859f409d",
+      "compressed_size_estimate": 142,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_chart_data.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_chart_data.csv",
+      "bytes": 1386358,
+      "sha256": "c80be45376e9bc44b0ddbe7cc6640d4c502f05afd17fcbc9e9413884f6e61ee3",
+      "compressed_size_estimate": 504188,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.pdf",
+      "bytes": 341829,
+      "sha256": "1e68f212c2050be147ff1087b86c4bfb9f3acf3b04db97fa29d54b38ec4a2376",
+      "compressed_size_estimate": 339006,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/endpoint_validation.png",
+      "bytes": 352347,
+      "sha256": "b000a11905e59c7398337e29550fa12f1bdd221d3b8bb26c614c50403d218d7a",
+      "compressed_size_estimate": 325921,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/figure_manifest.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass085_fast/figure_manifest.json",
+      "bytes": 11015,
+      "sha256": "aea2c911f90e7b5d00ef21506a40768ba1ddca61047ba6e58a09ad92dfd6f79a",
+      "compressed_size_estimate": 2826,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_chart_data.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_chart_data.csv",
+      "bytes": 1388928,
+      "sha256": "62bfa43067d18e61674347722946d28678001d52e9b67808d5c85410bf582810",
+      "compressed_size_estimate": 504765,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.pdf",
+      "bytes": 342689,
+      "sha256": "7829a0ff3a71887c87b768e0336a7ce0d8d10a1adb9088d119bcd462a41b5e71",
+      "compressed_size_estimate": 339868,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/endpoint_validation.png",
+      "bytes": 351347,
+      "sha256": "e867e7e6b8b93e6d59475482678a7592d2c7190a87377dcd76413474ca13ae01",
+      "compressed_size_estimate": 325288,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/figure_manifest.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/mass115_fast/figure_manifest.json",
+      "bytes": 10996,
+      "sha256": "dc251a2a952ae8aa18c3709ebf1992649e0bae1434b18a026f88d1508ff4642e",
+      "compressed_size_estimate": 2839,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/presentation_summary.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/presentation_summary.json",
+      "bytes": 29206,
+      "sha256": "05a20170676ad74e78306d917980a7e87416c622cdedc76acd735c05b2f65e1c",
+      "compressed_size_estimate": 4738,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/renderer_original.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/renderer_original.py",
+      "bytes": 20714,
+      "sha256": "30c20156b3f79056865c5c3e90d545c713a449e89b66ec504e7106da139bfc4b",
+      "compressed_size_estimate": 6612,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.pdf",
+      "bytes": 126475,
+      "sha256": "26ce6c1a2dc012deb0b69f435292071f73f6515421c42b6d1d36b787c939cd9e",
+      "compressed_size_estimate": 125255,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1/robustness_summary.png",
+      "bytes": 298333,
+      "sha256": "6a610f4f332cce63ca8609722ccc47a5983dad0632ed6a56508470cad4222691",
+      "compressed_size_estimate": 265452,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1.exit",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "compressed_size_estimate": 4,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v1.log",
+      "bytes": 1594,
+      "sha256": "f264b7331df71bf12b8a5676a664e75946125423919a01fea29a303abe645a07",
+      "compressed_size_estimate": 555,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_chart_data.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_chart_data.csv",
+      "bytes": 1386358,
+      "sha256": "c80be45376e9bc44b0ddbe7cc6640d4c502f05afd17fcbc9e9413884f6e61ee3",
+      "compressed_size_estimate": 504188,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.pdf",
+      "bytes": 341829,
+      "sha256": "48e22426af5671c77519a79e39376de8985c8b23b191918880d7cac7c1f89f39",
+      "compressed_size_estimate": 339007,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.png",
+      "bytes": 352347,
+      "sha256": "b000a11905e59c7398337e29550fa12f1bdd221d3b8bb26c614c50403d218d7a",
+      "compressed_size_estimate": 325921,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/figure_manifest.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/figure_manifest.json",
+      "bytes": 11015,
+      "sha256": "b0b8d2157a2a4e1cab5796db00db6c08f05efaa306beac53bf87664d098ee197",
+      "compressed_size_estimate": 2827,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_chart_data.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_chart_data.csv",
+      "bytes": 1388928,
+      "sha256": "62bfa43067d18e61674347722946d28678001d52e9b67808d5c85410bf582810",
+      "compressed_size_estimate": 504765,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.pdf",
+      "bytes": 342689,
+      "sha256": "782c0ccd9e52ffbe4db572794357f10b1ee32d12bad20c4e04bde03297baa426",
+      "compressed_size_estimate": 339868,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.png",
+      "bytes": 351347,
+      "sha256": "e867e7e6b8b93e6d59475482678a7592d2c7190a87377dcd76413474ca13ae01",
+      "compressed_size_estimate": 325288,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/figure_manifest.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/figure_manifest.json",
+      "bytes": 10996,
+      "sha256": "23dcd93f228497944a9b9669837e0368ff52b7ca9f0a71b02ea4329de9f70d13",
+      "compressed_size_estimate": 2839,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/presentation_summary.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/presentation_summary.json",
+      "bytes": 30876,
+      "sha256": "d05d6825b0d0beb50ba381100e7744cbdb68100dd3216acfeb4ec349a70c6df3",
+      "compressed_size_estimate": 5081,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.pdf",
+      "bytes": 126007,
+      "sha256": "61d688d5eeeab53c38c63fceaf265cc7f3672f3fcb4ddccde60ff2b6b1d6be56",
+      "compressed_size_estimate": 124789,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.png",
+      "bytes": 308688,
+      "sha256": "231182f51da0a9c42ff0c7c092842bc44406de637c24c579f4ef69d0b2542507",
+      "compressed_size_estimate": 275385,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2_execution.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/plots_v2_execution.json",
+      "bytes": 2944,
+      "sha256": "b298be3ed220f1450629b6304157be642d77a33afe137b3d5514c3d7306a7e38",
+      "compressed_size_estimate": 966,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/post_run_packaging_fix_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/post_run_packaging_fix_v1.json",
+      "bytes": 544,
+      "sha256": "65a0977ef8bcf238ffe89888a84b1a4b07bdc0eda3f2b2f3fd80c90cff57a228",
+      "compressed_size_estimate": 352,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/raw_archives_index_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/raw_archives_index_v1.json",
+      "bytes": 4653,
+      "sha256": "7c6a9f8208bba2216f48cf3605d5a19a297e822573ed9425b16ff885de2872ee",
+      "compressed_size_estimate": 1269,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/analysis.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/analysis.json",
+      "bytes": 19543,
+      "sha256": "b9655dfebb334ea0b3e3e84250e7909a20570c5021276e1e171e32112195f7e7",
+      "compressed_size_estimate": 4516,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/constraint_isolation.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/constraint_isolation.json",
+      "bytes": 5093,
+      "sha256": "1a9af9a3d5780f13ad4a525bf87f986d017f14606ecaca214aa583ad456d2842",
+      "compressed_size_estimate": 761,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000378.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000378.json",
+      "bytes": 2522,
+      "sha256": "2788c6893da1fe13b000b0f72d2f6c0a91efe848e2ed75b8b1dd8abe598e6852",
+      "compressed_size_estimate": 992,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000379.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/decoded_000379.json",
+      "bytes": 2295,
+      "sha256": "f148f66d7db0c1eaad558e3033ff41bece9de36217582f3c4cbdad88550d89ba",
+      "compressed_size_estimate": 840,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/direct_trust_conflict.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/direct_trust_conflict.json",
+      "bytes": 3315,
+      "sha256": "de1357b2ca6fa283988f975523bed8fd532bd6ab9c828422cd1b0b04b287cd73",
+      "compressed_size_estimate": 807,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+      "bytes": 654251,
+      "sha256": "87de0f3363c694787b3134d10ab193fca4f659c0be4db35adfe443a21d955fe1",
+      "compressed_size_estimate": 120815,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/controller_metadata.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/controller_metadata.json",
+      "bytes": 241300,
+      "sha256": "5e4d185930247feaffdb9d087b3111de0fc384d84d78a4a43ef81ed2df0a55aa",
+      "compressed_size_estimate": 43007,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/events.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/events.json",
+      "bytes": 114272,
+      "sha256": "74b051341a8631fdcc8aa68ca25a98e0965f25a24485c211ae38f5f0eab26808",
+      "compressed_size_estimate": 8635,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/lifecycle.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/lifecycle.json",
+      "bytes": 915,
+      "sha256": "cbb8a93a68ed0d85d26319ebf4ce8efb71c15541403311b4ccbbf7c9790f8f8b",
+      "compressed_size_estimate": 367,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/live_start.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/live_start.json",
+      "bytes": 7214,
+      "sha256": "f804611e22d2b15be4a5cc9464a1981cb27d1357456d4a51cf87f80407df2f5a",
+      "compressed_size_estimate": 2073,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.json",
+      "bytes": 12220,
+      "sha256": "401b264d21b89848a34cdd25221846b4b95e2503c5aaad1049a3c0329a5536d4",
+      "compressed_size_estimate": 5731,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.proposal.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.proposal.cdr",
+      "bytes": 264,
+      "sha256": "92a8a548e73c68e4e6d48247288c21ff0874ae456800e75c856425a8a55c6d46",
+      "compressed_size_estimate": 214,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.snapshot.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "a9a987dd11b919c8e86777fc05f51d4200e7bc69f3f090929b253dd8e0c31b8b",
+      "compressed_size_estimate": 500,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.json",
+      "bytes": 12258,
+      "sha256": "8d468a7e55049a284d7824de90fd3fec9ed064f20224c35c0538bbf6402ad414",
+      "compressed_size_estimate": 5744,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.proposal.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.proposal.cdr",
+      "bytes": 264,
+      "sha256": "bcd1e4c88b990ca94516e92bcbcd204609b6c3eeb6df9204e0382d9eab41add8",
+      "compressed_size_estimate": 217,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.snapshot.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "33f2fcad09e743d86efbc3382fa6362e65c11f770b81ac7831216b4983809e67",
+      "compressed_size_estimate": 505,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.json",
+      "bytes": 12269,
+      "sha256": "6fd4571145016f7400a925afca3c43467bf2c93dd39aa97c0bfb7f2adbc49af7",
+      "compressed_size_estimate": 5731,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.proposal.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.proposal.cdr",
+      "bytes": 264,
+      "sha256": "e9880e6168a3a3b1e4d09ee53a664c233cbed64ecc7a44dfd9d9d699bf84ac4a",
+      "compressed_size_estimate": 214,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.snapshot.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "d93058bcd89635cc10721677e02b76ed68957dc97eed338a706750c96ac49c16",
+      "compressed_size_estimate": 542,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.json",
+      "bytes": 410741,
+      "sha256": "01e7a1fbd78d21f4324a3c743a3b9f4de6ebda7111b008c2ffa3850b5bfb168d",
+      "compressed_size_estimate": 103484,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.proposal.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.proposal.cdr",
+      "bytes": 264,
+      "sha256": "13851516ae95349b8519c12ba6eafab2dc9fddc2f7bc392a64e2b1597fca6e2b",
+      "compressed_size_estimate": 98,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.snapshot.cdr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "2360b9dfd8a213e125a5cf79d9b1c173f03067347b144dbf49cfe43821c71091",
+      "compressed_size_estimate": 551,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/sends.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/sends.json",
+      "bytes": 282043,
+      "sha256": "c9ac21724035130a58f35c96cdc889c0d88e417af3c0835a08aa206d9bee1f7f",
+      "compressed_size_estimate": 40123,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_final.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_final.json",
+      "bytes": 327,
+      "sha256": "b5f84a9172e3addb8408d56b3aa455816528692b565ec131e7cc2e8e7d8e5c9e",
+      "compressed_size_estimate": 224,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_startup.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_startup.json",
+      "bytes": 12464,
+      "sha256": "1ffbecf4531f883fef4675c7ac048569ac7f861667dc41484db7ceac5eb99d31",
+      "compressed_size_estimate": 3217,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_timing.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_timing.json",
+      "bytes": 72838,
+      "sha256": "465a5666c3365de98577996effc30066acce2b6c69c71f81ab8ac35ac96ccc6f",
+      "compressed_size_estimate": 21319,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/applied_wrench.csv.status.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/applied_wrench.csv.status.json",
+      "bytes": 960,
+      "sha256": "67d87107cd50d9c13257c09d179d2c1500d954ef7434ecb78c6b2db831a132d5",
+      "compressed_size_estimate": 568,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/arm_receipt.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/arm_receipt.json",
+      "bytes": 742,
+      "sha256": "25c12429ebf3d9f7c8a385ba28216b7b4a37c5a941cba7abb05b9113dfb68968",
+      "compressed_size_estimate": 428,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/stage_result.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/stage_result.json",
+      "bytes": 22239,
+      "sha256": "6f964c19c622225bc5286e81c3bb56d610e2f72eb546e9d8086d24f4bdf1299f",
+      "compressed_size_estimate": 6422,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/qp_feasibility_probe.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/qp_feasibility_probe.json",
+      "bytes": 6140,
+      "sha256": "066ca39bf7ebb4e21537ad8be989664f5c10e720a31608eba4482a98b53472e2",
+      "compressed_size_estimate": 1198,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/controlled_prefix.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/controlled_prefix.csv",
+      "bytes": 638794,
+      "sha256": "31c8ef7746e85fa892b67aa2196e7bfd5dce437f8af3d5862d227e81b8f21a39",
+      "compressed_size_estimate": 245915,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/diagnostic_figure_manifest.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/diagnostic_figure_manifest.json",
+      "bytes": 28402,
+      "sha256": "30642e41856fbac3a34167f68efcbb4b0b4e85495afa20ee2b72d85af419b9a7",
+      "compressed_size_estimate": 4319,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/enqueued_wrench_prefix.csv",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/enqueued_wrench_prefix.csv",
+      "bytes": 65202,
+      "sha256": "b11ba5793d83adb4e3d3b73e318884ab9c30db50a332713fcc9209d2ba718eb4",
+      "compressed_size_estimate": 11330,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.pdf",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.pdf",
+      "bytes": 104465,
+      "sha256": "95dff0ec03837fa482fc9b55a9473eaad1fdf9514d9aa440e1756d8f43126c5b",
+      "compressed_size_estimate": 101322,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.png",
+      "archive_entry": "artifacts/cpp_robustness_20261024/wrench_failure_plot_v2/wrench_failed_prefix.png",
+      "bytes": 288916,
+      "sha256": "0823c3869684fad200ca10ecf33bdcb2b1321311283d818cbbc24f10ea031454",
+      "compressed_size_estimate": 247057,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_mass085_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_mass085_v1.yaml",
+      "bytes": 305,
+      "sha256": "edd0e4ff0cd2215e8b65ba49971fecd44959f9fae6e69cbc72cc3d68b36e4e7e",
+      "compressed_size_estimate": 191,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_mass115_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_mass115_v1.yaml",
+      "bytes": 305,
+      "sha256": "bbdc4160bc449a9970d861f836370872628365160c4a1fe4d82d7d7afe4620af",
+      "compressed_size_estimate": 191,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_wrench_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_wrench_v1.yaml",
+      "bytes": 306,
+      "sha256": "e3dc0fb4ccbad9226793c4abcf1f369f63bd4b40d0485a583ce020924c2d1da6",
+      "compressed_size_estimate": 199,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/archive_x650_robustness_delta.py",
+      "archive_entry": "scripts/archive_x650_robustness_delta.py",
+      "bytes": 5701,
+      "sha256": "66d41b864c7ee04f523521eefc41d00d76278e9808b65f551a176c383279e956",
+      "compressed_size_estimate": 2135,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/archive_x650_robustness_raw.py",
+      "archive_entry": "scripts/archive_x650_robustness_raw.py",
+      "bytes": 13184,
+      "sha256": "13ed0aaa00bb20fd6112e6c26087a451ee0f5355bebc7a1047edadd2bdd69aa8",
+      "compressed_size_estimate": 4365,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_cpp_robustness.py",
+      "archive_entry": "scripts/audit_x650_cpp_robustness.py",
+      "bytes": 43429,
+      "sha256": "d68d24977ed8e4b64b2d544ac81cc09eba4b1a64cdc7a059b3600ad6ba8124da",
+      "compressed_size_estimate": 12836,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_cpp_robustness.py",
+      "archive_entry": "scripts/plot_x650_cpp_robustness.py",
+      "bytes": 25208,
+      "sha256": "6aa0ed2b9fef5d49a972226e5f26cf7ed6cce3117bf928bd2e747537a58f4d8b",
+      "compressed_size_estimate": 7845,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/prepare_x650_robustness_models.py",
+      "archive_entry": "scripts/prepare_x650_robustness_models.py",
+      "bytes": 15886,
+      "sha256": "5295345bc3191d932aa8c947e5d5bdda6582fc5d160d13bdb93f18c995ed950d",
+      "compressed_size_estimate": 4899,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/verify_x650_robustness_delivery.py",
+      "archive_entry": "scripts/verify_x650_robustness_delivery.py",
+      "bytes": 4932,
+      "sha256": "fc8b670b8ebee267fafb773ee3c622aaf2e6caf7c4f5fdb66fc2322454459189",
+      "compressed_size_estimate": 1737,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/verify_x650_robustness_model.py",
+      "archive_entry": "scripts/verify_x650_robustness_model.py",
+      "bytes": 10887,
+      "sha256": "7f3766df0df1c248ad8a5eb413b858e742eeebe87d424b9648212c9a784c4ea8",
+      "compressed_size_estimate": 3275,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/__init__.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/__init__.py",
+      "bytes": 80,
+      "sha256": "48207d9527af50432253627420633217409b5d373d64f5b94640be275cc07e04",
+      "compressed_size_estimate": 74,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/disturbance.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/disturbance.py",
+      "bytes": 13810,
+      "sha256": "502816d899e163cf70e64319d3f05061d628e9c6ccaa298575f241156550b994",
+      "compressed_size_estimate": 4071,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/launch.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/launch.py",
+      "bytes": 1308,
+      "sha256": "d773bb5d93d6f859bd60ffc4757b2cb9eda57be826165272df3544df3c6e0d17",
+      "compressed_size_estimate": 606,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/qualification.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/qualification.py",
+      "bytes": 5420,
+      "sha256": "d8a0cd157b8626041a204e7165cfd694d2b75ddf5390a725fe05025f8e1c7ddf",
+      "compressed_size_estimate": 1805,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/run_case.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/run_case.py",
+      "bytes": 2598,
+      "sha256": "3ba08fe86ba82b27d387b4cb15d01665bdef1b59318f206373325e31668449d1",
+      "compressed_size_estimate": 1036,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/task.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/task.py",
+      "bytes": 8467,
+      "sha256": "6dc5f8a57580981eddc49fe61aa3af90e8f2678fea160c8af08bfa0dbb2db782",
+      "compressed_size_estimate": 2626,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_adapter.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_adapter.py",
+      "bytes": 10014,
+      "sha256": "1179d5fc4bb1ec0f822ab6b457e6a5976f74cc75888f1abd7e08a85b0f6218ad",
+      "compressed_size_estimate": 3030,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_audit.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_audit.py",
+      "bytes": 11774,
+      "sha256": "8d44b94d7c4e400a1904b5b61134393395df58d051c31b0dc44b8fbe6457fa96",
+      "compressed_size_estimate": 3617,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_plots.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_plots.py",
+      "bytes": 9100,
+      "sha256": "d16e3dbbff2e354645d6ea3d1f14c3f9204d88505d4877a46af4b61dc2763f2a",
+      "compressed_size_estimate": 3069,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_archive.py",
+      "archive_entry": "tests/unit/test_x650_robustness_archive.py",
+      "bytes": 2492,
+      "sha256": "12ff6342ae0cc3aaddc8dc1331aa6ecb96d0c4810374c5bda53eea71259b1767",
+      "compressed_size_estimate": 935,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_delta_archive.py",
+      "archive_entry": "tests/unit/test_x650_robustness_delta_archive.py",
+      "bytes": 1786,
+      "sha256": "c624c16eab1bdc3d511c7d1d704d173811cf439069a2b3a062b3d79e05049f5a",
+      "compressed_size_estimate": 695,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_models.py",
+      "archive_entry": "tests/unit/test_x650_robustness_models.py",
+      "bytes": 3699,
+      "sha256": "b9ccfad5f7df36aae1966f07688574cf03a4033995f4dca7cb9ad772539e1585",
+      "compressed_size_estimate": 1281,
+      "archive": "support_delta_v2.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_verifier.py",
+      "archive_entry": "tests/unit/test_x650_robustness_verifier.py",
+      "bytes": 2604,
+      "sha256": "61f0c40405047ce53ffbcc2dacc247d0f0a6b450e69249f6f34e18eb227e6ac3",
+      "compressed_size_estimate": 926,
+      "archive": "support_delta_v2.zip"
+    }
+  ],
+  "original_file_count": 105,
+  "original_bytes": 33196232,
+  "archive_count": 1,
+  "archive_size_cap_bytes": 94371840,
+  "source_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+  "archiver": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/archive_x650_robustness_raw.py",
+    "bytes": 13184,
+    "sha256": "13ed0aaa00bb20fd6112e6c26087a451ee0f5355bebc7a1047edadd2bdd69aa8"
+  },
+  "policy": "Original evidence is immutable; every member SHA/size and embedded manifest are read back; omitted inherited meshes are separately hash-listed."
+}

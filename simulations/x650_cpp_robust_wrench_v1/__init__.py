@@ -1,0 +1,1 @@
+"""Independent registered robustness scenario."""

@@ -1,0 +1,478 @@
+{
+  "kind": "x650_robust_wrench_failed_prefix_analysis_v1",
+  "failed_original_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502",
+  "physical_acceptance": false,
+  "full_experiment_complete": false,
+  "failed_sequence": 379,
+  "failed_snapshot_task_s": 7.544000000000004,
+  "error": "QP infeasible",
+  "failed_proposal": {
+    "schema_version": 1,
+    "session_id": 1359918069,
+    "epoch": 1,
+    "sequence": 379,
+    "replay_only": false,
+    "configuration_sha256": [
+      123,
+      22,
+      133,
+      153,
+      226,
+      161,
+      130,
+      241,
+      163,
+      211,
+      221,
+      134,
+      11,
+      136,
+      210,
+      248,
+      124,
+      251,
+      12,
+      35,
+      202,
+      37,
+      137,
+      100,
+      192,
+      18,
+      111,
+      76,
+      73,
+      154,
+      243,
+      136
+    ],
+    "snapshot_sequence": 379,
+    "compute_start_monotonic_ns": 59632169851689155,
+    "compute_end_monotonic_ns": 59632169859685477,
+    "status": 2,
+    "control_time_s": 53.42,
+    "task_time_s": 7.544000000000004,
+    "position_reference_enu": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocity_feedforward_enu": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "acceleration_feedforward_enu": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "base_velocity_target": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "joint_velocity": [
+      0.0,
+      0.0
+    ],
+    "accepted_optimum": false,
+    "nonlinear_check_passed": false,
+    "primal_violation": 0.0,
+    "kkt_residual": 0.0,
+    "subproblems": 0
+  },
+  "failed_measured_snapshot": {
+    "task_time_s": 7.544000000000004,
+    "control_time_s": 53.42,
+    "dt_s": 0.020000000000003126,
+    "state_time_s": 53.412,
+    "joint_time_s": 53.416,
+    "position_enu": [
+      -0.05213775858283043,
+      -0.0014788643456995487,
+      2.3893014192581177
+    ],
+    "velocity_enu": [
+      -0.060332465916872025,
+      -0.0005482967826537788,
+      0.0484418049454689
+    ],
+    "acceleration_enu": [
+      -0.012651609256863594,
+      0.0012869267957285047,
+      -0.4282500445842743
+    ],
+    "omega_body_flu": [
+      0.012172376736998558,
+      -0.1580578088760376,
+      0.01282733865082264
+    ],
+    "q": [
+      0.09571607120635006,
+      -0.24526200628810443
+    ],
+    "dq": [
+      0.14708913883168173,
+      -0.2031785903646323
+    ],
+    "rotation_row_major": [
+      0.9934955996822693,
+      0.1023306000476234,
+      -0.04994939144635835,
+      -0.1024793663521093,
+      0.9947350417520157,
+      -0.000419741213240777,
+      0.049643457615665396,
+      0.00553579303345628,
+      0.9987516618816974
+    ]
+  },
+  "failed_core_ms": 7.940253,
+  "accepted_count": 378,
+  "accepted_core_median_ms": 6.3831045,
+  "accepted_core_max_ms": 21.109405,
+  "failed_gate_event": {
+    "schema_version": 1,
+    "session_id": 1359918069,
+    "epoch": 1,
+    "sequence": 379,
+    "snapshot_sequence": 379,
+    "proposal_sequence": 379,
+    "replay_only": false,
+    "accepted": false,
+    "reason": 11,
+    "received_monotonic_ns": 59632169859735894,
+    "roundtrip_ns": 9109535
+  },
+  "prefix_native_metrics": {
+    "scope": "FAILED prefix through rejected snapshot, not complete24s acceptance and not recovery-performance qualification",
+    "interval_task_s": [
+      0.0,
+      7.544000000000004
+    ],
+    "sample_count": 1887,
+    "tip_3d_rmse_m": 0.009188457265991202,
+    "tip_3d_peak_m": 0.04977791320002805,
+    "tip_error_at_last_native_m": 0.04977791320002805,
+    "tilt_peak_deg": 3.025759126130363,
+    "tilt_at_last_native_deg": 3.025759126130363,
+    "q_min_rad": [
+      -0.2545233435312472,
+      -0.24606843413240456
+    ],
+    "q_max_rad": [
+      0.09630852419676954,
+      1.1117840331746449e-08
+    ],
+    "q_at_last_native_rad": [
+      0.09630852419676954,
+      -0.24606843413240456
+    ],
+    "dq_at_last_native_rad_s": [
+      0.1481132476048699,
+      -0.20160696107503254
+    ],
+    "dq_abs_peak_rad_s": [
+      0.2690705743612001,
+      0.20160696107503254
+    ]
+  },
+  "lifecycle": {
+    "started": true,
+    "release": {
+      "zero_consumed": true,
+      "writer_exited": true,
+      "bounded_failed_recovery": true,
+      "receipt_budget_s": 0.15,
+      "sigint_budget_s": 0.15,
+      "sigkill_budget_s": 0.05,
+      "signals": [
+        "SIGINT"
+      ],
+      "errors": [],
+      "begin_monotonic_ns": 59632169874233634,
+      "wall_monotonic_ns": 59632170033288373
+    },
+    "error": "C++ candidate gate rejected reason 11",
+    "processes": {
+      "source_recorder": {
+        "pid": 56181,
+        "returncode": 0
+      },
+      "worker": {
+        "pid": 56182,
+        "returncode": 1
+      },
+      "ingress": {
+        "pid": 56269,
+        "returncode": 0
+      },
+      "dispatcher": {
+        "pid": 56270,
+        "returncode": 0
+      },
+      "consumption": {
+        "pid": 56271,
+        "returncode": 0
+      },
+      "cpp_source": {
+        "pid": 56272,
+        "returncode": 0
+      }
+    },
+    "source_samples": 0,
+    "physical_acceptance_pending": true
+  },
+  "landed_and_disarmed": true,
+  "parameters_restored": true,
+  "disturbance_status": {
+    "state": "ABORTED",
+    "reason": "stop_path observed",
+    "ready": true,
+    "anchored": true,
+    "complete": true,
+    "success": false,
+    "t0_sim_s": 45.876,
+    "duration_s": 24,
+    "rows": 8847,
+    "task_rows": 1892,
+    "first_task_sim_s": 45.884,
+    "last_task_sim_s": 53.448,
+    "max_step_dt_s": 0.004,
+    "max_enqueue_component_error": 3.3306690738754696e-16,
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+    "link": "base_link",
+    "force_frame": "world ENU",
+    "free_couple_frame": "world ENU",
+    "application_point": "base_link own center of mass, not whole-system CoM",
+    "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+    "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+    "impulse_force_Ns_couple_Nms": [
+      0.8580000000000007,
+      0,
+      0,
+      0,
+      6.0507154842071085e-18,
+      -5.2041704279304214e-21
+    ],
+    "expected_impulse_force_Ns_couple_Nms": [
+      0,
+      0,
+      0,
+      0,
+      0.015999999999999945,
+      0
+    ]
+  },
+  "qp_feasibility_probe": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/qp_feasibility_probe.json",
+  "constraint_group_isolation": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/constraint_isolation.json",
+  "direct_trust_conflict": [
+    {
+      "row": 104,
+      "node": 4,
+      "field": "stopping_reserve_q2",
+      "required_interval": [
+        -0.1036217243023966,
+        1.0963782756976033
+      ],
+      "reachable_inside_trust_interval": [
+        -0.11164450558531691,
+        -0.10369004199871269
+      ],
+      "gap": 6.831769631608642e-05,
+      "nonzero_variables": [
+        4,
+        9,
+        14,
+        19,
+        24
+      ]
+    },
+    {
+      "row": 122,
+      "node": 7,
+      "field": "stopping_reserve_q2",
+      "required_interval": [
+        -0.10557411270385204,
+        1.0944258872961479
+      ],
+      "reachable_inside_trust_interval": [
+        -0.11563044944108497,
+        -0.10599735236834379
+      ],
+      "gap": 0.0004232396644917452,
+      "nonzero_variables": [
+        4,
+        9,
+        14,
+        19,
+        24,
+        29,
+        34,
+        39
+      ]
+    }
+  ],
+  "diagnostic_interpretation": "Primal/KKT=0 and nonlinear=false in failed proposal are default uncomputed values because QP threw before solving; they are not passing quality or a failed nonlinear rollout. Independent LP confirms infeasible local subproblem.",
+  "original_evidence": [
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/controller_metadata.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/controller_metadata.json",
+      "bytes": 241300,
+      "sha256": "5e4d185930247feaffdb9d087b3111de0fc384d84d78a4a43ef81ed2df0a55aa"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/stage_result.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/stage_result.json",
+      "bytes": 22239,
+      "sha256": "6f964c19c622225bc5286e81c3bb56d610e2f72eb546e9d8086d24f4bdf1299f"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/worker_final.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_final.json",
+      "bytes": 327,
+      "sha256": "b5f84a9172e3addb8408d56b3aa455816528692b565ec131e7cc2e8e7d8e5c9e"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/worker_startup.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_startup.json",
+      "bytes": 12464,
+      "sha256": "1ffbecf4531f883fef4675c7ac048569ac7f861667dc41484db7ceac5eb99d31"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/worker_timing.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/worker_timing.json",
+      "bytes": 72838,
+      "sha256": "465a5666c3365de98577996effc30066acce2b6c69c71f81ab8ac35ac96ccc6f"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/live_start.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/live_start.json",
+      "bytes": 7214,
+      "sha256": "f804611e22d2b15be4a5cc9464a1981cb27d1357456d4a51cf87f80407df2f5a"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/events.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/events.json",
+      "bytes": 114272,
+      "sha256": "74b051341a8631fdcc8aa68ca25a98e0965f25a24485c211ae38f5f0eab26808"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/sends.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/sends.json",
+      "bytes": 282043,
+      "sha256": "c9ac21724035130a58f35c96cdc889c0d88e417af3c0835a08aa206d9bee1f7f"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/lifecycle.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/lifecycle.json",
+      "bytes": 915,
+      "sha256": "cbb8a93a68ed0d85d26319ebf4ce8efb71c15541403311b4ccbbf7c9790f8f8b"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/applied_wrench.csv.status.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/applied_wrench.csv.status.json",
+      "bytes": 960,
+      "sha256": "67d87107cd50d9c13257c09d179d2c1500d954ef7434ecb78c6b2db831a132d5"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/arm_receipt.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/physical_disturbance/arm_receipt.json",
+      "bytes": 742,
+      "sha256": "25c12429ebf3d9f7c8a385ba28216b7b4a37c5a941cba7abb05b9113dfb68968"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000376.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.json",
+      "bytes": 12220,
+      "sha256": "401b264d21b89848a34cdd25221846b4b95e2503c5aaad1049a3c0329a5536d4"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000376.snapshot.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "a9a987dd11b919c8e86777fc05f51d4200e7bc69f3f090929b253dd8e0c31b8b"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000376.proposal.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000376.proposal.cdr",
+      "bytes": 264,
+      "sha256": "92a8a548e73c68e4e6d48247288c21ff0874ae456800e75c856425a8a55c6d46"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000377.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.json",
+      "bytes": 12258,
+      "sha256": "8d468a7e55049a284d7824de90fd3fec9ed064f20224c35c0538bbf6402ad414"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000377.snapshot.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "33f2fcad09e743d86efbc3382fa6362e65c11f770b81ac7831216b4983809e67"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000377.proposal.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000377.proposal.cdr",
+      "bytes": 264,
+      "sha256": "bcd1e4c88b990ca94516e92bcbcd204609b6c3eeb6df9204e0382d9eab41add8"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000378.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.json",
+      "bytes": 12269,
+      "sha256": "6fd4571145016f7400a925afca3c43467bf2c93dd39aa97c0bfb7f2adbc49af7"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000378.snapshot.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "d93058bcd89635cc10721677e02b76ed68957dc97eed338a706750c96ac49c16"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000378.proposal.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000378.proposal.cdr",
+      "bytes": 264,
+      "sha256": "e9880e6168a3a3b1e4d09ee53a664c233cbed64ecc7a44dfd9d9d699bf84ac4a"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000379.json",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.json",
+      "bytes": 410741,
+      "sha256": "01e7a1fbd78d21f4324a3c743a3b9f4de6ebda7111b008c2ffa3850b5bfb168d"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000379.snapshot.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "2360b9dfd8a213e125a5cf79d9b1c173f03067347b144dbf49cfe43821c71091"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000379.proposal.cdr",
+      "copy_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/originals/isolated_live/native_records/000379.proposal.cdr",
+      "bytes": 264,
+      "sha256": "13851516ae95349b8519c12ba6eafab2dc9fddc2f7bc392a64e2b1597fca6e2b"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/native_trace.csv",
+      "bytes": 8645663,
+      "sha256": "660c85c8c8b897aa239a726e3cb87aaa40414fce29bf6c57162543cc97d0b798"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/applied_wrench.csv",
+      "bytes": 1307905,
+      "sha256": "6e67c4df8bcd9070b8e938e9b4c0b97054877a43dd34d2c32edf68ca517ff2dd"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/optimization.cpp",
+      "bytes": 21389,
+      "sha256": "6cdab0071506895d2e9ed95c3d0defd3f6292b1ac5175f7ada7a9045aa16cd54"
+    },
+    {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+      "bytes": 28904,
+      "sha256": "4f2994398b88515454b77c2c2d7ed0d8346498655cac3c25b876075f9c792162"
+    }
+  ]
+}

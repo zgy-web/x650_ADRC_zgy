@@ -1,0 +1,24 @@
+{
+  "kind": "x650_cpp_robustness_qualification_v1",
+  "simulation_only": true,
+  "task_config": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/task.json",
+    "sha256": "7b168599e2a182f1a3d3dd860b88d2f87cfb0c23ca258964c0126f4c499af388",
+    "bytes": 10675
+  },
+  "startup_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/startup_manifest.json",
+    "sha256": "9b7e287eae25523bdb25e2f49bc6b9027d85579e4a5f9fddbc203c81be10a8df",
+    "bytes": 13524
+  },
+  "protocol": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/protocol.json",
+    "sha256": "09a7faa4d2d60c46ffd8561baa8fc8dc7d43d0c5037d14f2ef832b678d4901f4",
+    "bytes": 6320
+  },
+  "nominal_qualification": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/qualification_manifest.json",
+    "sha256": "6c3fc4aa99cc0ed0b6263a635d3bc090de07b9efd1ada485178caff85bc5fe89",
+    "bytes": 1667
+  }
+}

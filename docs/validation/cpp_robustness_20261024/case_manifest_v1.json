@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "case_id": "wrench_fast",
+      "scenario": "x650_cpp_robust_wrench_v1",
+      "directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast",
+      "startup_sha256": "9b7e287eae25523bdb25e2f49bc6b9027d85579e4a5f9fddbc203c81be10a8df"
+    },
+    {
+      "case_id": "mass085_fast",
+      "scenario": "x650_cpp_robust_mass085_v1",
+      "directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast",
+      "startup_sha256": "edb3194fe9290d481bce826074fd918cade72b8597e5ce0d18b5550a1ae93d07"
+    },
+    {
+      "case_id": "mass115_fast",
+      "scenario": "x650_cpp_robust_mass115_v1",
+      "directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast",
+      "startup_sha256": "c2f59c02ec37b467f2787d4e66f2a692e0f9ed32e6df85dcd8fb33e28d8e370e"
+    }
+  ],
+  "delay_tests_enabled": false
+}

@@ -1,0 +1,194 @@
+{
+  "kind": "x650_cpp_robustness_protocol_v1",
+  "simulation_only": true,
+  "execution_revision": 2,
+  "cpu_roles": {
+    "source": [
+      19
+    ],
+    "cpp_source": [
+      17
+    ],
+    "worker": [
+      87,
+      89,
+      91,
+      97
+    ],
+    "dispatcher": [
+      93
+    ],
+    "ingress": [
+      94
+    ],
+    "consumption": [
+      95
+    ]
+  },
+  "cpu_scope": "owned simulation processes only; SMT siblings excluded from owned background workloads; ordinary scheduler; host not reserved; Orin requires its own measurement",
+  "worker_thread_roles": {
+    "executor": [
+      87
+    ],
+    "auxiliary": [
+      89,
+      91,
+      97
+    ]
+  },
+  "active_pipeline": [
+    "cpp_raw_estimated_state_and_actual_joint_history",
+    "cpp_admission",
+    "cpp_owning_mpc",
+    "cpp_periodic_dispatch",
+    "cpp_actual_consumption"
+  ],
+  "python_scope": "ground validation and startup, lifecycle supervision and recovery, offline independent analysis; no ACTIVE snapshot construction, MPC step or normal actuator output",
+  "trajectory_kind": "fast_figure8",
+  "order": [
+    "software_equivalence_and_ros_contract",
+    "complete_tip_hold",
+    "normal_figure_eight",
+    "fast_figure_eight"
+  ],
+  "tip_hold_duration_s": 30.0,
+  "output_period_s": 0.02,
+  "command_age_max_s": 0.05,
+  "control_interval_max_s": 0.05,
+  "source_wall_age_max_s": 0.025,
+  "output_interval_max_s": 0.04,
+  "consumption_policy": "latest_value_v1",
+  "consumption_progress_budget_ms": 40,
+  "consumption_budget_scope": "separate per-joint asynchronous progress watchdog anchored to oldest unresolved actual send; new sends do not renew it; not the output-period deadline",
+  "core_compute_max_s": 0.05,
+  "tip_rms_max_m": 0.05,
+  "tip_peak_max_m": 0.1,
+  "tilt_max_deg": 8.0,
+  "numerical_replay_max_absolute_difference": 1e-07,
+  "next_solve_commit": "one next solve after matching actual writer send and a strictly newer source; measured model dt; no fabricated timestamps",
+  "next_output_commit": "latest_valid_candidate_at_absolute_period_without_waiting_for_previous_joint_receipt",
+  "ground_initialization": "all processes and hash-bound libraries READY before takeoff; source remains UNBOUND; copy original fixed reference/reset binding once, verify ACK while legacy owns output, then publish actual LiveStart",
+  "diagnostic_policy": "bounded ownership queue for raw worker CDR and Compact core results; auxiliary JSON/hash/file writer; bounded raw source CDR buffer persisted after shutdown; overflow or missing evidence fails acceptance",
+  "requirements": [
+    "same_mathematics_and_physical_parameters",
+    "raw_source_equivalence",
+    "actual_cpp_ros_worker_equivalence",
+    "bounded_asynchronous_joint_progress",
+    "independent_adoption_or_supersession_accounting_without_fabricated_receipts",
+    "px4_wire_encoding_and_full_window_ulog",
+    "no_overlapping_output_owners",
+    "zero_consumed_before_recovery",
+    "landed_disarmed_and_parameters_restored",
+    "complete_independent_native_tip_record",
+    "no_diagnostic_loss",
+    "no_gate_or_output_fault"
+  ],
+  "incomplete_run_policy": "retain raw evidence, no certificate, do not advance to next stage",
+  "claims_excluded": [
+    "hardware_24v_validation",
+    "hard_realtime",
+    "full_body_torque_nmpc",
+    "software_replay_as_new_physical_hold",
+    "software_replay_as_new_physical_normal",
+    "software_replay_as_new_physical_fast"
+  ],
+  "duration_s": 24.0,
+  "required_prior_stage": "complete_cpp_fast_figure8",
+  "fast_admitted": true,
+  "trajectory": {
+    "kind": "fast_figure8",
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 8.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0,
+    "duration_s": 24.0
+  },
+  "robustness": {
+    "case_id": "wrench_fast",
+    "kind": "external_wrench",
+    "mass_inertia_scale": 1.0,
+    "physical_manifest": null,
+    "pid_profile_binding": null,
+    "wrench_runtime": {
+      "library": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libdisturbance.so",
+        "sha256": "0aaced93ce33e2efc960f9b30a3aa357d379aaa7dfe06de37facfc96ae802384",
+        "bytes": 259040
+      },
+      "build": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_build.json",
+        "sha256": "b7b3e287603b2f2fe28540765fdc6a24f855aeb1982f19847b2fb35db0dd7a6a",
+        "bytes": 3910
+      },
+      "probe": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/gz_world_entity_probe_build_v1_20261022/gz_world_entity_probe",
+        "sha256": "12704f6820ce57642ea81e2e626b0ad06a80fb97ae8351d88283717465f21c96",
+        "bytes": 380224
+      },
+      "source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance.cpp",
+        "sha256": "c7752489cded1a218a671a02c0098c165c9b5a9d66682a922fe89b056e17a257",
+        "bytes": 13382
+      },
+      "loader": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_loader.py",
+        "sha256": "b476cf429fcdeef88598c174a308c9a44f37e516b800db4d20e8c78da42e9808",
+        "bytes": 4127
+      },
+      "binding_source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/gz_world_entity_binding.py",
+        "sha256": "31fa4b23ae37407bbdadd81e78ccdb1f2f5e92a3fe649be8751b36b0162b91f6",
+        "bytes": 9384
+      }
+    },
+    "schedule": [
+      {
+        "start_s": 7.0,
+        "end_s": 7.6,
+        "force_world_n": [
+          1.5,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "start_s": 13.0,
+        "end_s": 13.6,
+        "force_world_n": [
+          -1.5,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "start_s": 20.5,
+        "end_s": 20.9,
+        "force_world_n": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.04,
+          0.0
+        ]
+      }
+    ],
+    "recovery_threshold_m": 0.01,
+    "recovery_hold_s": 1.0
+  },
+  "delay_tests_enabled": false
+}

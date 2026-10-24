@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "scenario": "x650_cpp_robust_mass115_v1",
+  "stage": "fast",
+  "controller": "mpc",
+  "model": "amsim_urdf_x650_robust_mass115_v1_flight",
+  "trajectory": "fast",
+  "trajectory_parameters": {
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 8.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0
+  },
+  "duration_s": 24.0,
+  "hover_height_m": 2.0,
+  "control_period_s": 0.02,
+  "spawn_pose_enu_xyz_rpy": [
+    0.0,
+    0.0,
+    0.375,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "nominal_arm_share": 0.2,
+  "feedforward_enabled": false,
+  "simulation_only": true,
+  "preparation_report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json",
+  "airframe_source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1",
+  "native_recorder_library": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libwholebody_recorder.so",
+  "response_model": null,
+  "pid_profile": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/pid_profile_rebound.json",
+  "stage_evidence": {
+    "hover_folded": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prerequisites_v17/hover_folded_audit/ts20_stage_certificate.json",
+    "joint_probe": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prerequisites_v17/joint_probe_audit/ts20_stage_certificate.json"
+  },
+  "diagnostic_profile": null,
+  "hover_reference_profile": {
+    "name": "fixed_world_position_v1",
+    "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+  },
+  "pid_tuning_candidate": null,
+  "precision_test_profile": null,
+  "research_profile": {
+    "name": "precision_ev_mixed_mpc_v3",
+    "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+  },
+  "ts20_protocol": {
+    "kind": "x650_ts20_damped_conditional_hold_protocol_v1",
+    "simulation_only": true,
+    "stages": [
+      "hover_folded",
+      "joint_probe",
+      "tip_hold"
+    ],
+    "control_period_s": 0.02,
+    "max_control_interval_s": 0.05,
+    "max_compute_s": 0.05,
+    "tip_hold_duration_s": 30.0,
+    "tip_rms_max_m": 0.05,
+    "tip_peak_max_m": 0.1,
+    "tilt_max_deg": 8.0,
+    "q_lower_rad": [
+      -0.75,
+      -0.35
+    ],
+    "q_upper_rad": [
+      0.45,
+      0.85
+    ],
+    "joint_velocity_max_rad_s": [
+      0.45,
+      0.35
+    ],
+    "internal_physical_q_tolerance_rad": 0.0001,
+    "new_joint_prediction_q_peak_max_rad": 0.003,
+    "new_joint_prediction_dq_peak_max_rad_s": 0.05,
+    "native_tip_required": true,
+    "whole_declared_window_required": true,
+    "motion_capture_mode": "simulation ideal EV; PX4 estimated base feedback",
+    "required_new_plant_gates": [
+      "native_ground",
+      "hover_folded",
+      "joint_probe"
+    ],
+    "base_response_status": "prior_from_old_ideal_joint_plant; not newly identified",
+    "joint_prediction_validation": "new complete probe; actual consumed MIT packets and first physical state only",
+    "qualification": {
+      "hardware_motor": "TS20-50",
+      "hardware_supply_v": 24,
+      "identified_supply_v": 20,
+      "supply_24v_qualified": false,
+      "actual_aerial_arm_load_qualified": false,
+      "physical_torque_scale_qualified": false
+    },
+    "disturbance": {
+      "kind": "external_world_force",
+      "link": "base_link",
+      "start_s": 8.0,
+      "duration_s": 0.3,
+      "force_n": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    "trajectory_stages_enabled": false,
+    "mit_gain_profile": {
+      "name": "mit_kp6_kd025_v1",
+      "kp": 6.0,
+      "kd": 0.25,
+      "bus_period_s": 0.005,
+      "gain_semantics": "candidate effective normalized MIT gains; not hardware readback"
+    },
+    "joint_probe_velocity_max_rad_s": 0.2,
+    "gain_selection": "b+Kd exceeds 1.4 times maximum negative Stribeck friction slope; fixed before new flights"
+  },
+  "ts20_inputs": {
+    "source_dir": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot",
+    "source_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_integration_20261022/upstream_snapshot/source_manifest.json",
+    "plant_manifest": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass115_v1_flight/plant_manifest.json",
+    "oracle_validation": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_ffi_pointer_validation_20261023/oracle_v1/validation_summary.json",
+    "base_response_prior": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/x650_formal_response_20261022/holdout_validation/response_model.json",
+    "native_library": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "native_library_sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+  },
+  "disturbance_enabled": false,
+  "mpc_config": {
+    "arm_share": 0.2,
+    "velocity_limit": [
+      0.55,
+      0.35,
+      0.45,
+      0.45,
+      0.35
+    ],
+    "acceleration_limit": [
+      0.45,
+      0.3,
+      0.45,
+      0.6,
+      0.6
+    ],
+    "q_lower": [
+      -0.75,
+      -0.35
+    ],
+    "q_upper": [
+      0.45,
+      0.85
+    ],
+    "joint_position_gain": 3.0,
+    "tip_gain": 2.0,
+    "max_tip_correction_m_s": 0.2,
+    "task_weight": 1.0,
+    "measured_base_weight": 4.0,
+    "base_nominal_weight": 4.0,
+    "arm_regularizer_length_m_rad": 0.02,
+    "max_dt_s": 0.05,
+    "nodes": 15,
+    "node_dt_s": 0.04,
+    "attitude_rate_decay_s": 0.15,
+    "max_iterations": 100,
+    "solver_ftol": 1e-09,
+    "feasibility_tolerance": 2e-07,
+    "kkt_tolerance": 0.002,
+    "solve_budget_ms": 20.0,
+    "failure_policy": "raise",
+    "tip_position_weight": 400.0,
+    "tip_velocity_weight": 4.0,
+    "base_position_weight": 0.25,
+    "joint_posture_weight": 0.02,
+    "input_nominal_weight": 0.01,
+    "input_delta_weight": 0.01
+  },
+  "frozen_cpp_hold": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_inputs_stream_v1/task.json",
+    "sha256": "3b2a91888100c01febae14620b30912dce848e427c6d48fd5e1ea160e04df786"
+  },
+  "cpp_hold_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_audit_v2/report.json",
+    "sha256": "701a666b79c4f2bd4ca037ce0f2989f60fda907617d2724cfcf6024f1592a8b4"
+  },
+  "figure8_protocol": {
+    "kind": "x650_cpp_fast_protocol_v1",
+    "stages": [
+      "fast"
+    ],
+    "trajectory": {
+      "kind": "fast_figure8",
+      "amplitude_x": 0.25,
+      "amplitude_z": 0.1,
+      "period_s": 8.0,
+      "cycles": 2,
+      "start_s": 2.0,
+      "ramp_s": 2.0,
+      "duration_s": 24.0
+    },
+    "tail_hold_s": 4.0,
+    "required_prior_stage": "complete_cpp_normal_figure8",
+    "target_alignment": "same world frame and timestamp; no fitted translation or phase",
+    "controller_parameters": "exact accepted C++ normal task; no retuning"
+  },
+  "frozen_cpp_normal": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_inputs_v1/task.json",
+    "sha256": "3372fedcccdc9e0a17aff5c9d425fe82b9b7b8bd58a66fe548de5e358cc90825"
+  },
+  "cpp_normal_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_normal_20261024/normal_audit_v1/report.json",
+    "sha256": "a8588defbd3ce237a04e1403d7f895aecde4008fa4ee4ca78c591ddb711be474"
+  },
+  "frozen_cpp_fast": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/task.json",
+    "sha256": "90c2d7304bf3e93caeb6a7611c366104454d83a45d43c2d851782c40b3c267e0"
+  },
+  "cpp_fast_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_audit_v1/report.json",
+    "sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea"
+  },
+  "robustness": {
+    "case_id": "mass115_fast",
+    "kind": "uniform_rigid_mismatch",
+    "mass_inertia_scale": 1.15,
+    "physical_manifest": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass115_v1_flight/robustness_manifest.json",
+      "sha256": "42376b81b108ceb4f6c15a5a1c4c0137d0c4fc78d044c1e1d8c44dcc1ababa79"
+    },
+    "pid_profile_binding": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/pid_profile_rebound.json",
+      "sha256": "e6d0bf30b317f0457fc4a7fa44dc3f230b46acc93fcbb0deef2230b10f3c5aaa"
+    },
+    "wrench_runtime": null,
+    "schedule": [],
+    "recovery_threshold_m": 0.01,
+    "recovery_hold_s": 1.0
+  }
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "case_id": "wrench_fast",
+    "run_exit": 1,
+    "command": [
+      "/usr/bin/python3",
+      "simulations/x650_cpp_robustness_v1/launch.py",
+      "--task",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/task.json",
+      "--startup-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/startup_manifest.json",
+      "--startup-sha256",
+      "9b7e287eae25523bdb25e2f49bc6b9027d85579e4a5f9fddbc203c81be10a8df",
+      "--qualification-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/qualification_manifest.json",
+      "--protocol",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_fast/protocol.json"
+    ],
+    "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_launch_20261024_205220_55493",
+    "runs": [
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502"
+    ]
+  },
+  {
+    "case_id": "mass085_fast",
+    "run_exit": 0,
+    "command": [
+      "/usr/bin/python3",
+      "simulations/x650_cpp_robustness_v1/launch.py",
+      "--task",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/task.json",
+      "--startup-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/startup_manifest.json",
+      "--startup-sha256",
+      "edb3194fe9290d481bce826074fd918cade72b8597e5ce0d18b5550a1ae93d07",
+      "--qualification-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/qualification_manifest.json",
+      "--protocol",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/protocol.json"
+    ],
+    "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_launch_20261024_205604_56600",
+    "runs": [
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass085_v1_20261024_205646_56619"
+    ],
+    "audit_exit": 1,
+    "audit_command": [
+      "taskset",
+      "-c",
+      "0",
+      "nice",
+      "-n",
+      "10",
+      "/usr/bin/python3",
+      "scripts/audit_x650_cpp_robustness.py",
+      "--launch-dir",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_launch_20261024_205604_56600",
+      "--run-dir",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass085_v1_20261024_205646_56619",
+      "--output",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v1"
+    ],
+    "passed": false,
+    "error": "ValueError('Fast execution source archive omits dynamic contract/law')",
+    "endpoint": null,
+    "robustness_performance": null
+  },
+  {
+    "case_id": "mass115_fast",
+    "run_exit": 0,
+    "command": [
+      "/usr/bin/python3",
+      "simulations/x650_cpp_robustness_v1/launch.py",
+      "--task",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/task.json",
+      "--startup-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/startup_manifest.json",
+      "--startup-sha256",
+      "c2f59c02ec37b467f2787d4e66f2a692e0f9ed32e6df85dcd8fb33e28d8e370e",
+      "--qualification-manifest",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/qualification_manifest.json",
+      "--protocol",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/protocol.json"
+    ],
+    "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_launch_20261024_210012_57629",
+    "runs": [
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass115_v1_20261024_210056_57647"
+    ],
+    "audit_exit": 1,
+    "audit_command": [
+      "taskset",
+      "-c",
+      "0",
+      "nice",
+      "-n",
+      "10",
+      "/usr/bin/python3",
+      "scripts/audit_x650_cpp_robustness.py",
+      "--launch-dir",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_launch_20261024_210012_57629",
+      "--run-dir",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass115_v1_20261024_210056_57647",
+      "--output",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v1"
+    ],
+    "passed": false,
+    "error": "ValueError('Fast execution source archive omits dynamic contract/law')",
+    "endpoint": null,
+    "robustness_performance": null
+  }
+]

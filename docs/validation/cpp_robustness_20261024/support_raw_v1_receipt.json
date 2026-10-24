@@ -1,0 +1,30 @@
+{
+  "kind": "x650_robustness_raw_archive_receipt_v1",
+  "complete": true,
+  "all_original_sizes_and_sha256_verified": true,
+  "all_zip_members_read_back": true,
+  "embedded_manifests_byte_identical": true,
+  "verified_member_count": 49,
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1_manifest.json",
+    "bytes": 20477,
+    "sha256": "5cca11b0d712b04a46689cd1e9467d15cd20bd95109a7e6bbf0370df23799e28"
+  },
+  "archives": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_raw_v1.zip",
+      "bytes": 99086,
+      "sha256": "9204262d56fe236e655274997b7e058389949b968a73c93997a50a47c1b2b05c"
+    }
+  ],
+  "context": {
+    "scope": "Closed batch commands, model preparation successes and preserved failures, independent static probes, new source and regression tests; no other case raw directory is included.",
+    "batch_complete": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/batch_complete_v1.json",
+      "bytes": 5105,
+      "sha256": "e45a4b3d78f4de991c9405be22a7a8d0ef2f1f768cdee55e524f6a7f3d5f7470"
+    },
+    "delay_tests_enabled": false
+  },
+  "completed_unix": 1792847058.2754333
+}

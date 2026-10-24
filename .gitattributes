@@ -43,3 +43,9 @@ scripts/plot_x650_isolated_validation.py -text whitespace=cr-at-eol
 scripts/render_x650_isolated_validation.py -text whitespace=cr-at-eol
 # Retain the exact executed qualification source, including its final blank line.
 simulations/x650_cpp_fast_v1/qualification.py -text whitespace=cr-at-eol,-blank-at-eof
+# Robustness protocols and their cross-host evidence retain exact source bytes.
+simulations/x650_cpp_robust*/** -text whitespace=cr-at-eol
+scenarios/x650_cpp_robust*.yaml -text whitespace=cr-at-eol
+scripts/*x650*robustness*.py -text whitespace=cr-at-eol
+scripts/plot_x650_wrench_failure.py -text whitespace=cr-at-eol
+tests/unit/*x650*robustness*.py -text whitespace=cr-at-eol

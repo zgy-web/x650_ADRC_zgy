@@ -1,0 +1,10 @@
+{
+  "kind": "post_run_source_archive_coverage_fix_v1",
+  "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/launch.py",
+  "before_sha256": "b13f8e8df75199cecf490a70e51092a9f70198e8330e26371c33cc138fc89752",
+  "after_sha256": "d773bb5d93d6f859bd60ffc4757b2cb9eda57be826165272df3544df3c6e0d17",
+  "change": "Future launches also archive immutable normal/fast parent wrappers explicitly",
+  "simulation_repeated": false,
+  "mpc_or_execution_changed": false,
+  "original_launch_archives_rewritten": false
+}

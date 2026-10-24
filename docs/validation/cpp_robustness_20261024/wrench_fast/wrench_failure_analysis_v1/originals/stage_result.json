@@ -1,0 +1,462 @@
+{
+  "success": false,
+  "complete": false,
+  "passed": false,
+  "stage": "fast",
+  "kind": "x650_ts20_conditional_run_result_v1",
+  "simulation_backend": "gazebo_px4",
+  "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+  "source_urdf_sha256": "b33275b0ec9df6e2c495bac7956f702ad7d886c7d79230e711d0c5d70aa1e96d",
+  "landed_and_disarmed": true,
+  "metadata": "controller_metadata.json",
+  "artifacts": {
+    "flight_samples.csv": "5e2475c7bea989bde60de34f3abcd4ec9c5a2517e81b7a9a6bf742c4d91366be",
+    "flight_samples_manifest.json": "cc246ba8c18ca5ca2a8edad6be95dceb4f84b635a4d7cad294af3ed28a1ea2f5",
+    "native_trace.csv": "660c85c8c8b897aa239a726e3cb87aaa40414fce29bf6c57162543cc97d0b798",
+    "hover_reference.json": "63e5eccce8ab800fcc598a544f747c34b9b6b491bdf136d15c515a09699d0523",
+    "estimated_feedback.json": "34c93af8bd5f117fa2a72c247fc3846111f1421d2fca5027b19969e671b158a7",
+    "feedback_trace.jsonl": "f3d8e4ea2228179e121429f1ee1f10e1537076b676d4e7b6a8e45b2fc2722f22",
+    "control_execution_trace.jsonl": "a06bceda7f3442415da7f39061ccb5ce7688e0903afc342331def2d141a547a1",
+    "control_execution_trace_manifest.json": "0eda2f55ade1ebe025befae82f78fec1a42b9d0100fe19559cd8974296c2a3c2",
+    "native_trace_manifest.json": "d0820473784909b428d2b18c4084389dc31f399fc6f9d9ad19f877285579f307",
+    "control_trace.csv": "6f43a62ea6452469066d9fa56f2fd781b664e1aa3f31396985568b408f95a0a8",
+    "px4_parameters_before.json": "77f8114d9158eca3459ad160789a5a13e4663a0da6e446da3b31982161325384",
+    "px4_parameters_after.json": "33231f28e13b187e5c7162756f09fa3ca1a5fc7fd0fe9d592477b0f2789af647",
+    "diagnostic_parameter_session.json": "090361ccb8399d2dd4b12f44893fcc6e48dd8f4bb9993eaaa064c460410b5254",
+    "diagnostic_parameters_before.json": "046e7fd3bd849c282841c6a7dd03ee0162aee34d8e01b0ae11e41a1d562f5223",
+    "diagnostic_parameters_applied.json": "3ee71fe9f927a597946f8f8b45d85bf28fbfa57c8b5a957bb1b53a85e317774d",
+    "diagnostic_parameters_restored.json": "f49b882680cdf42338b074bac699d156f24d038e9e80c6a6dd3fea9632d755e5",
+    "diagnostic_restore_journal_completed.json": "5fc55810374459d4ac2ac0daf965a6a439b1362ccae97d6aa4455030b3a00077",
+    "diagnostic_odometry.json": "6c3695c297977841bcc18acad9ced42db47a79e57e28b047e7132ff3e8dc7587",
+    "diagnostic_odometry_001.log": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+    "diagnostic_odometry_plugin.xml": "456aed9d7825dd94cc4e796b6e9b3abadf20b06006a21afe07c62e1b8da7e111",
+    "diagnostic_odometry_002.log": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+    "diagnostic_odometry_003.log": "85836b3e356af1de57a92f1babfbf5f46476730a20e02e93b87f211d6278f49b",
+    "diagnostic_odometry_004.log": "1d88f3028427c2fae7a43dc4ca453fb40db4bf8c0f7426a5a9ecb2b80db72a94",
+    "diagnostic_odometry_005.log": "b1d974c81211649de319ee14f0ff375cf572b9176ad049cf5fc192adbbae681d",
+    "diagnostic_odometry_006.log": "373f1f581d47e5e4c1a119508808a57d59501f56caebecf70dc84cb37c1dcd7c",
+    "diagnostic_odometry_007.log": "f3b89c00af922e9ffaaea6afdb10affd23d0e9a4f885ec54521fc0c6d544423b",
+    "diagnostic_odometry_008.log": "13a1c6509a54f18feb93aaf0ab6976a75e75b55f3c5e9184632a9a5fcbe857a8",
+    "diagnostic_odometry_009.log": "734983fd614d98999d385cfe40f3e15200673426d9975c1ae70ff094200f4801",
+    "diagnostic_odometry_010.log": "b67929a14d21aaaad6852b295ac1ee44b3a768bc24c4ce5b3f0eb52b8c757a81",
+    "diagnostic_odometry_011.log": "3cc3a8ace5b6af298fdac74117d88b0cff9bffd3dac5b00169044c17cd5afa11",
+    "diagnostic_odometry_012.log": "0dd44324daf90dabb81309aaf667a9401b6ea90bd5e55818703245a3ad2bb818",
+    "diagnostic_odometry_013.log": "6a15a72501445cf2133833c60e442fc26cc610499532dd3a5e0925745e1ac012",
+    "diagnostic_odometry_014.log": "2ad716e04a253c2ecec5e1a738a3ef7f163a49719e2dfd4f341a105e1afc2c6b",
+    "diagnostic_odometry_015.log": "fa2abefaf9b54b5a7e317e73ad34b6ed5a2c2062b9a55057756c092d88adf6ab",
+    "diagnostic_odometry_016.log": "7340554b9f70e9281c55f7bed774c814f0f188602ad732da0f0f1c948c60d346",
+    "diagnostic_parameter_storage_save.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "loop_timing_evidence.json": "e095ffd0376e021e3c3735d13b26814b49ee999a2b84815154bb623bf507143b",
+    "ts20_state.csv": "a37cc34bf4e33bb90ecf602959cb433d2022e7bb22f19b7ee6cd7c99d5110830",
+    "ts20_packets.csv": "4ce1da967b2c237d9d8eb64f9cf89c28d161ddeed503bb40f0f08df4224855ad",
+    "ts20_recording_manifest.json": "72f2a3f8f857619a80e80ba20f069059c0dc498e102575d70cc6028b3f3ab390"
+  },
+  "research_profile": {
+    "name": "precision_ev_mixed_mpc_v3",
+    "world_sdf": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/world.sdf"
+  },
+  "operating_condition": {
+    "kind": "x650_research_operating_condition",
+    "schema_version": 3,
+    "research_profile": "precision_ev_mixed_mpc_v3",
+    "scope": "simulation_truth_aided_ev_mixed_mpc",
+    "control_interface": "raw_ev_world_pva_v2",
+    "feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "estimator_parameters": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3
+    },
+    "observer": {
+      "rate_hz": 50.0,
+      "gaussian_noise": 0.0,
+      "measurement_point": "base_link"
+    },
+    "coordinate_contract": "raw_ev_world",
+    "px4_source_contract_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "world_sdf_sha256": "21701faad142ed507f15a05572eda2af813dea14ebb81b03c3bb8fd127f68248",
+    "ground_truth_aided": true,
+    "gps_performance_claim": false,
+    "hardware_performance_claim": false
+  },
+  "operating_condition_sha256": "fe4997a8a5ffccce424d2023432f76404eab76196fca8fc79b059e21d6f51bee",
+  "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+  "diagnostic_only": false,
+  "ground_truth_aided": true,
+  "eligible_as_stage_gate": false,
+  "acceptance_pending": "full_ulog_audit",
+  "formal_gps_performance_claim": false,
+  "formal_hardware_performance_claim": false,
+  "control_feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+  "feedback_contract": "px4_estimator_acceleration_receipt_enu_v2",
+  "upper_command_interface": "raw_ev_world_pva_v2",
+  "upper_allocator_active": true,
+  "truth_used_as_upper_feedback": false,
+  "aiding_confirmed": true,
+  "diagnostic_parameters_restored": true,
+  "ts20_acceptance_pending": "new_plant_native_full_window_and_ulog_audit",
+  "ts20_operating_condition": {
+    "kind": "x650_cpp_robustness_condition_v1",
+    "actual_model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "nominal_controller_model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "physical_robustness": {
+      "verified": true,
+      "scale": 1.0,
+      "model_name": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+      "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+      "total_mass_kg": 3.4949999999999997,
+      "nominal_total_mass_kg": 3.4949999999999997
+    },
+    "nominal_actuator_parameters_unchanged": true,
+    "loaded_hardware_response_qualified": false
+  },
+  "ts20_operating_condition_sha256": "f4c0a3b81bafd7f2b2174ceb0cfce94a1ecde26d097021cf7062f0ec57810d4c",
+  "supply_24v_qualified": false,
+  "aerial_arm_load_qualified": false,
+  "base_response_is_prior": true,
+  "tip_target_recording": {
+    "flight_samples_tip_target": "Latest fast-reference sample at Python diagnostic monitor time; cached until the next pump, not exact truth-row-time reference",
+    "authoritative_control_target": "Original C++ ControlSnapshot target at its control_time_s in isolated_live/cpp_source",
+    "authoritative_error_reference": "Frozen FigureEight evaluated at each native sample time relative to original LiveStart.origin_s and target_position_enu",
+    "used_by_cpp_controller": false
+  },
+  "external_force_disturbance": true,
+  "robustness_external": {
+    "kind": "x650_robust_wrench_lifecycle_v1",
+    "directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance",
+    "complete": false,
+    "ready": {
+      "state": "READY_WAITING_START",
+      "reason": "",
+      "ready": true,
+      "anchored": false,
+      "complete": false,
+      "success": false,
+      "t0_sim_s": -1,
+      "duration_s": 24,
+      "rows": 1,
+      "task_rows": 0,
+      "first_task_sim_s": -1,
+      "last_task_sim_s": -1,
+      "max_step_dt_s": 0.004,
+      "max_enqueue_component_error": 0,
+      "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+      "link": "base_link",
+      "force_frame": "world ENU",
+      "free_couple_frame": "world ENU",
+      "application_point": "base_link own center of mass, not whole-system CoM",
+      "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+      "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+      "impulse_force_Ns_couple_Nms": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected_impulse_force_Ns_couple_Nms": [
+        0,
+        0,
+        0,
+        0,
+        0.015999999999999945,
+        0
+      ]
+    },
+    "runtime": {
+      "library": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libdisturbance.so",
+        "sha256": "0aaced93ce33e2efc960f9b30a3aa357d379aaa7dfe06de37facfc96ae802384",
+        "bytes": 259040
+      },
+      "build": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_build.json",
+        "sha256": "b7b3e287603b2f2fe28540765fdc6a24f855aeb1982f19847b2fb35db0dd7a6a",
+        "bytes": 3910
+      },
+      "probe": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/gz_world_entity_probe_build_v1_20261022/gz_world_entity_probe",
+        "sha256": "12704f6820ce57642ea81e2e626b0ad06a80fb97ae8351d88283717465f21c96",
+        "bytes": 380224
+      },
+      "source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance.cpp",
+        "sha256": "c7752489cded1a218a671a02c0098c165c9b5a9d66682a922fe89b056e17a257",
+        "bytes": 13382
+      },
+      "loader": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_loader.py",
+        "sha256": "b476cf429fcdeef88598c174a308c9a44f37e516b800db4d20e8c78da42e9808",
+        "bytes": 4127
+      },
+      "binding_source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/gz_world_entity_binding.py",
+        "sha256": "31fa4b23ae37407bbdadd81e78ccdb1f2f5e92a3fe649be8751b36b0162b91f6",
+        "bytes": 9384
+      }
+    },
+    "entity_binding": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/entity_identity/entity_binding.json",
+      "sha256": "124477cdcda6f733c0e683040ac139033c646505b771409bf6c496b23385ee27",
+      "bytes": 2228
+    },
+    "load_ack": {
+      "schema": "verified_disturbance_load_ack_v1",
+      "service_acknowledged": true,
+      "force_experiment_complete": false,
+      "verified_binding": {
+        "schema": "gz_ecs_world_entity_binding_v1",
+        "verified": true,
+        "read_only": true,
+        "api": "gz_sim8_SerializedStepMap_local_ECM",
+        "world": "default",
+        "world_id": 1,
+        "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+        "model_id": 10,
+        "model_parent_id": 1,
+        "link": "base_link",
+        "link_id": 11,
+        "link_parent_id": 10,
+        "service": "/world/default/state",
+        "component_types": {
+          "World": 5975074572899138571,
+          "Name": 17448053894352336366,
+          "Model": 15483128506684855746,
+          "Link": 14769025567331365649,
+          "ParentEntity": 50322453549405034
+        },
+        "sim_sec": 17,
+        "sim_nsec": 932000000,
+        "binding_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/entity_identity/entity_binding.json",
+        "binding_sha256": "124477cdcda6f733c0e683040ac139033c646505b771409bf6c496b23385ee27",
+        "runtime_meta_sha256": "63a19e6fe847a4f2eea118ddbcb0d0b139103d66dc1764316d4d2a804eb54e0b"
+      },
+      "service": "/world/default/entity/system/add",
+      "config_sha256": "8d9cf5db6f8b19f9f751e17e849c2dbfe002f2f1dcafc775350f1b0c1fe27d5a",
+      "library_sha256": "0aaced93ce33e2efc960f9b30a3aa357d379aaa7dfe06de37facfc96ae802384",
+      "loader_source_sha256": "b476cf429fcdeef88598c174a308c9a44f37e516b800db4d20e8c78da42e9808",
+      "load_log_sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3"
+    },
+    "arm_receipt": {
+      "kind": "x650_robust_wrench_arm_receipt_v1",
+      "origin_s": 45.876,
+      "observed_before_sim_s": 45.876,
+      "observed_after_sim_s": 45.876,
+      "begin_monotonic_ns": 59632162265031074,
+      "end_monotonic_ns": 59632162265626408,
+      "activation_lag_s": 0.0,
+      "max_activation_lag_s": 0.05,
+      "start_marker": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_start.txt",
+        "sha256": "8becda696dc65ab5c5da79215469830bad47f630c5140d99eb523b11ebcc70b9",
+        "bytes": 28
+      },
+      "same_origin_as_live_start": true,
+      "clock_semantics": "loop physical monitor maximum and immutable LiveStart origin; native plugin independently rejects late activation"
+    },
+    "stop_receipt": {
+      "reason": "bounded_failed_recovery_before_release",
+      "monotonic_ns": 59632169873911112,
+      "marker": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_stop.txt",
+        "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+        "bytes": 5
+      }
+    },
+    "status": {
+      "state": "ABORTED",
+      "reason": "stop_path observed",
+      "ready": true,
+      "anchored": true,
+      "complete": true,
+      "success": false,
+      "t0_sim_s": 45.876,
+      "duration_s": 24,
+      "rows": 8847,
+      "task_rows": 1892,
+      "first_task_sim_s": 45.884,
+      "last_task_sim_s": 53.448,
+      "max_step_dt_s": 0.004,
+      "max_enqueue_component_error": 3.3306690738754696e-16,
+      "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+      "link": "base_link",
+      "force_frame": "world ENU",
+      "free_couple_frame": "world ENU",
+      "application_point": "base_link own center of mass, not whole-system CoM",
+      "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+      "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+      "impulse_force_Ns_couple_Nms": [
+        0.8580000000000007,
+        0,
+        0,
+        0,
+        6.0507154842071085e-18,
+        -5.2041704279304214e-21
+      ],
+      "expected_impulse_force_Ns_couple_Nms": [
+        0,
+        0,
+        0,
+        0,
+        0.015999999999999945,
+        0
+      ]
+    },
+    "artifacts": {
+      "applied_wrench.csv": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/applied_wrench.csv",
+        "sha256": "6e67c4df8bcd9070b8e938e9b4c0b97054877a43dd34d2c32edf68ca517ff2dd",
+        "bytes": 1307905
+      },
+      "applied_wrench.csv.status.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/applied_wrench.csv.status.json",
+        "sha256": "67d87107cd50d9c13257c09d179d2c1500d954ef7434ecb78c6b2db831a132d5",
+        "bytes": 960
+      },
+      "disturbance_config.txt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_config.txt",
+        "sha256": "8d9cf5db6f8b19f9f751e17e849c2dbfe002f2f1dcafc775350f1b0c1fe27d5a",
+        "bytes": 669
+      },
+      "disturbance_load.log": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_load.log",
+        "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+        "bytes": 12
+      },
+      "disturbance_load_binding.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_load_binding.json",
+        "sha256": "ea3c569a9166f74e9a6e3f2dc0ebe098541227a57b0852928910addd0e625d26",
+        "bytes": 1589
+      },
+      "disturbance_start.txt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_start.txt",
+        "sha256": "8becda696dc65ab5c5da79215469830bad47f630c5140d99eb523b11ebcc70b9",
+        "bytes": 28
+      },
+      "arm_receipt.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/arm_receipt.json",
+        "sha256": "25c12429ebf3d9f7c8a385ba28216b7b4a37c5a941cba7abb05b9113dfb68968",
+        "bytes": 742
+      },
+      "ground_ready.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/ground_ready.json",
+        "sha256": "8f37ce70531a0085178359adbc19d84130f9402560e08bde250bcaa175c863ed",
+        "bytes": 4712
+      },
+      "disturbance_stop.txt": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_stop.txt",
+        "sha256": "a11c3d917a2149a4b548217038bc8f2dd2130a1966e0c7af5c4225d81f25a8c3",
+        "bytes": 5
+      },
+      "stop_receipt.json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/stop_receipt.json",
+        "sha256": "a72ea96588f697be743c3f46bdd37b85e6b0e54ffd8749de15513467f348bcc7",
+        "bytes": 369
+      }
+    },
+    "measurement_semantics": "Physics-step ECS wrench increment; independent full waveform and actual motion audit still required",
+    "actuator_ownership_changed": false
+  },
+  "robustness": {
+    "case_id": "wrench_fast",
+    "kind": "external_wrench",
+    "mass_inertia_scale": 1.0,
+    "physical_manifest": null,
+    "pid_profile_binding": null,
+    "wrench_runtime": {
+      "library": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/libdisturbance.so",
+        "sha256": "0aaced93ce33e2efc960f9b30a3aa357d379aaa7dfe06de37facfc96ae802384",
+        "bytes": 259040
+      },
+      "build": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_build.json",
+        "sha256": "b7b3e287603b2f2fe28540765fdc6a24f855aeb1982f19847b2fb35db0dd7a6a",
+        "bytes": 3910
+      },
+      "probe": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/gz_world_entity_probe_build_v1_20261022/gz_world_entity_probe",
+        "sha256": "12704f6820ce57642ea81e2e626b0ad06a80fb97ae8351d88283717465f21c96",
+        "bytes": 380224
+      },
+      "source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance.cpp",
+        "sha256": "c7752489cded1a218a671a02c0098c165c9b5a9d66682a922fe89b056e17a257",
+        "bytes": 13382
+      },
+      "loader": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/disturbance_loader.py",
+        "sha256": "b476cf429fcdeef88598c174a308c9a44f37e516b800db4d20e8c78da42e9808",
+        "bytes": 4127
+      },
+      "binding_source": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/benchmark/whole_body_closed_loop_v1/gz_world_entity_binding.py",
+        "sha256": "31fa4b23ae37407bbdadd81e78ccdb1f2f5e92a3fe649be8751b36b0162b91f6",
+        "bytes": 9384
+      }
+    },
+    "schedule": [
+      {
+        "start_s": 7.0,
+        "end_s": 7.6,
+        "force_world_n": [
+          1.5,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "start_s": 13.0,
+        "end_s": 13.6,
+        "force_world_n": [
+          -1.5,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "start_s": 20.5,
+        "end_s": 20.9,
+        "force_world_n": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "torque_world_nm": [
+          0.0,
+          0.04,
+          0.0
+        ]
+      }
+    ],
+    "recovery_threshold_m": 0.01,
+    "recovery_hold_s": 1.0
+  },
+  "frozen_cpp_fast": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/task.json",
+    "sha256": "90c2d7304bf3e93caeb6a7611c366104454d83a45d43c2d851782c40b3c267e0"
+  },
+  "cpp_fast_certificate": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_audit_v1/report.json",
+    "sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea"
+  },
+  "actual_plant_robustness": true,
+  "delay_injection_enabled": false
+}

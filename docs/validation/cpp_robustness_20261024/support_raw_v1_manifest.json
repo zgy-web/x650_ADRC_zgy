@@ -1,0 +1,417 @@
+{
+  "kind": "x650_robustness_raw_archive_manifest_v1",
+  "context": {
+    "scope": "Closed batch commands, model preparation successes and preserved failures, independent static probes, new source and regression tests; no other case raw directory is included.",
+    "batch_complete": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/batch_complete_v1.json",
+      "bytes": 5105,
+      "sha256": "e45a4b3d78f4de991c9405be22a7a8d0ef2f1f768cdee55e524f6a7f3d5f7470"
+    },
+    "delay_tests_enabled": false
+  },
+  "original_files": [
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/archive_helper_unit_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/archive_helper_unit_v1.log",
+      "bytes": 381,
+      "sha256": "3e5346b23bab4dbd26ef847448d49edc678384c2d69579825777e15db9642b6a",
+      "compressed_size_estimate": 162,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/batch_complete_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/batch_complete_v1.json",
+      "bytes": 5105,
+      "sha256": "e45a4b3d78f4de991c9405be22a7a8d0ef2f1f768cdee55e524f6a7f3d5f7470",
+      "compressed_size_estimate": 796,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/batch_result_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/batch_result_v1.json",
+      "bytes": 4818,
+      "sha256": "fca3e6dfe32e3f0e47a41106642dfd948ada9a37dc6d9e1dd50a8230d3b810d0",
+      "compressed_size_estimate": 759,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/case_manifest_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/case_manifest_v1.json",
+      "bytes": 958,
+      "sha256": "4f1e35b3054fda3c113b08792c3a0290d5a3e1fb55b5413410176ddb796f2336",
+      "compressed_size_estimate": 354,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/dryruns_v1.exit",
+      "archive_entry": "artifacts/cpp_robustness_20261024/dryruns_v1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "compressed_size_estimate": 4,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/dryruns_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/dryruns_v1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_size_estimate": 2,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/dryruns_v1.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/dryruns_v1.py",
+      "bytes": 1019,
+      "sha256": "30d826cf9c7418c87eb1afee4bb20eee5ab12cdcec4ef4b2546a3202ab800a2b",
+      "compressed_size_estimate": 557,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/dryruns_v1.sh",
+      "archive_entry": "artifacts/cpp_robustness_20261024/dryruns_v1.sh",
+      "bytes": 470,
+      "sha256": "48bddd5beed605c6879977da00c608cc3085e118c488cf294267f7b58ea441c2",
+      "compressed_size_estimate": 175,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/dryruns_v1_result.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/dryruns_v1_result.json",
+      "bytes": 178,
+      "sha256": "d34b0bc98d7dab6a6309923efb18dbcbcc93a50d6cddfd1279cd4fd885ea31d8",
+      "compressed_size_estimate": 71,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/independent_audit_adapter_tests_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/independent_audit_adapter_tests_v1.json",
+      "bytes": 3299,
+      "sha256": "14935e7fc2ae320f732840fb32765f55f32fbd44f39ab859e258c795b4d1151c",
+      "compressed_size_estimate": 1105,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/independent_physical_gate_probe_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/independent_physical_gate_probe_v1.json",
+      "bytes": 19157,
+      "sha256": "4c163d580ec355a930a58997d4eccd6622a65be02ba21a4c27193a10c8a7188a",
+      "compressed_size_estimate": 2547,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_preparation_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_preparation_v1.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_size_estimate": 2,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_preparation_v1.stderr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_preparation_v1.stderr",
+      "bytes": 676,
+      "sha256": "8c91f9d04fdebc6fb573b073d4ea652d87b2f19b00c19e72479c340231418484",
+      "compressed_size_estimate": 277,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_preparation_v2.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_preparation_v2.json",
+      "bytes": 1689,
+      "sha256": "eb42a45b8b97d36ab370a847e44e94aee2ce2afcbca78ffc8b3633a3b4f1319e",
+      "compressed_size_estimate": 625,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_preparation_v2.stderr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_preparation_v2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_size_estimate": 2,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_readonly_verification_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass085_readonly_verification_v1.json",
+      "bytes": 2976,
+      "sha256": "5c04ef6d52d1b1484579234c10984c62ea6a596a989a50fabeebf3ee75351df8",
+      "compressed_size_estimate": 1120,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_preparation_v2.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_preparation_v2.json",
+      "bytes": 1689,
+      "sha256": "5ccfe4ea7dfae5ec994aee33e0b8a2f3f8e1d48d75c5451815adb873b18e5d77",
+      "compressed_size_estimate": 624,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_preparation_v2.stderr",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_preparation_v2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_size_estimate": 2,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_readonly_verification_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass115_readonly_verification_v1.json",
+      "bytes": 2976,
+      "sha256": "af30031b7ba0c8eccb458d104e66650968899ebb85378f075dc861db25c793dc",
+      "compressed_size_estimate": 1119,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass_models_and_verifier_unit_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass_models_and_verifier_unit_v1.log",
+      "bytes": 929,
+      "sha256": "88bc5e4393f0ea9c1c5993eed270d2c2ae16ba1162ff54936f7a9cea5e65e1e9",
+      "compressed_size_estimate": 287,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass_models_unit_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass_models_unit_v1.log",
+      "bytes": 530,
+      "sha256": "4632b7dc5d465a85a305071e7b27101e2e979c263229de166eefacc7c1cbc368",
+      "compressed_size_estimate": 200,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass_models_verification_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/mass_models_verification_v1.json",
+      "bytes": 106371,
+      "sha256": "5670110bb2ddb64bce59c2302bf0e8ccf23ba6483da976ff33b7f33c7249033d",
+      "compressed_size_estimate": 17335,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/prepare_inputs_v1.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/prepare_inputs_v1.py",
+      "bytes": 2018,
+      "sha256": "e8a8b8c5e11cdabf0754d0413d0be197301d1a9e3b39fb66a7badc3ae7522eed",
+      "compressed_size_estimate": 856,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/prepare_inputs_v2.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/prepare_inputs_v2.py",
+      "bytes": 2154,
+      "sha256": "bed1b00b41a2ab02c4f135974e9c19ea334c92f0fb8d1923d59cbac3a350af28",
+      "compressed_size_estimate": 884,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/root_code_deploy_v1.json",
+      "archive_entry": "artifacts/cpp_robustness_20261024/root_code_deploy_v1.json",
+      "bytes": 3508,
+      "sha256": "c9e34e07e58b70a2ce2367d8559ddcfc5f6a445fe7d2e842d41fd6b024231b6e",
+      "compressed_size_estimate": 796,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/run_batch_v1.exit",
+      "archive_entry": "artifacts/cpp_robustness_20261024/run_batch_v1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "compressed_size_estimate": 4,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/run_batch_v1.log",
+      "archive_entry": "artifacts/cpp_robustness_20261024/run_batch_v1.log",
+      "bytes": 4236,
+      "sha256": "a6d1896fbed71e7ee07482c4dc43379bb1fc1edd4905d0ce61d7e7549b9c2fa4",
+      "compressed_size_estimate": 727,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/run_batch_v1.py",
+      "archive_entry": "artifacts/cpp_robustness_20261024/run_batch_v1.py",
+      "bytes": 2354,
+      "sha256": "5d5a48b11fc9a99fcf67b4cefc068fc4d5a6a86e8c09f83a8ebe476f19c91173",
+      "compressed_size_estimate": 979,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/run_batch_v1.sh",
+      "archive_entry": "artifacts/cpp_robustness_20261024/run_batch_v1.sh",
+      "bytes": 476,
+      "sha256": "2668e741b46818ab0a6feb1c30c6bc265c92df80f57a4d80fc36041e5055861e",
+      "compressed_size_estimate": 178,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_mass085_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_mass085_v1.yaml",
+      "bytes": 305,
+      "sha256": "edd0e4ff0cd2215e8b65ba49971fecd44959f9fae6e69cbc72cc3d68b36e4e7e",
+      "compressed_size_estimate": 191,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_mass115_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_mass115_v1.yaml",
+      "bytes": 305,
+      "sha256": "bbdc4160bc449a9970d861f836370872628365160c4a1fe4d82d7d7afe4620af",
+      "compressed_size_estimate": 191,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scenarios/x650_cpp_robust_wrench_v1.yaml",
+      "archive_entry": "scenarios/x650_cpp_robust_wrench_v1.yaml",
+      "bytes": 306,
+      "sha256": "e3dc0fb4ccbad9226793c4abcf1f369f63bd4b40d0485a583ce020924c2d1da6",
+      "compressed_size_estimate": 199,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/archive_x650_robustness_raw.py",
+      "archive_entry": "scripts/archive_x650_robustness_raw.py",
+      "bytes": 13184,
+      "sha256": "13ed0aaa00bb20fd6112e6c26087a451ee0f5355bebc7a1047edadd2bdd69aa8",
+      "compressed_size_estimate": 4365,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_cpp_robustness.py",
+      "archive_entry": "scripts/audit_x650_cpp_robustness.py",
+      "bytes": 40708,
+      "sha256": "f52e409046410f6e195edcc0fc8899c7370af3b3eaa5ae113822d17144957d34",
+      "compressed_size_estimate": 12031,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_cpp_robustness.py",
+      "archive_entry": "scripts/plot_x650_cpp_robustness.py",
+      "bytes": 20714,
+      "sha256": "30c20156b3f79056865c5c3e90d545c713a449e89b66ec504e7106da139bfc4b",
+      "compressed_size_estimate": 6612,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/prepare_x650_robustness_models.py",
+      "archive_entry": "scripts/prepare_x650_robustness_models.py",
+      "bytes": 15886,
+      "sha256": "5295345bc3191d932aa8c947e5d5bdda6582fc5d160d13bdb93f18c995ed950d",
+      "compressed_size_estimate": 4899,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/verify_x650_robustness_model.py",
+      "archive_entry": "scripts/verify_x650_robustness_model.py",
+      "bytes": 10887,
+      "sha256": "7f3766df0df1c248ad8a5eb413b858e742eeebe87d424b9648212c9a784c4ea8",
+      "compressed_size_estimate": 3275,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/__init__.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/__init__.py",
+      "bytes": 80,
+      "sha256": "48207d9527af50432253627420633217409b5d373d64f5b94640be275cc07e04",
+      "compressed_size_estimate": 74,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/disturbance.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/disturbance.py",
+      "bytes": 13810,
+      "sha256": "502816d899e163cf70e64319d3f05061d628e9c6ccaa298575f241156550b994",
+      "compressed_size_estimate": 4071,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/launch.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/launch.py",
+      "bytes": 1230,
+      "sha256": "b13f8e8df75199cecf490a70e51092a9f70198e8330e26371c33cc138fc89752",
+      "compressed_size_estimate": 591,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/qualification.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/qualification.py",
+      "bytes": 5420,
+      "sha256": "d8a0cd157b8626041a204e7165cfd694d2b75ddf5390a725fe05025f8e1c7ddf",
+      "compressed_size_estimate": 1805,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/run_case.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/run_case.py",
+      "bytes": 2598,
+      "sha256": "3ba08fe86ba82b27d387b4cb15d01665bdef1b59318f206373325e31668449d1",
+      "compressed_size_estimate": 1036,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_cpp_robustness_v1/task.py",
+      "archive_entry": "simulations/x650_cpp_robustness_v1/task.py",
+      "bytes": 8467,
+      "sha256": "6dc5f8a57580981eddc49fe61aa3af90e8f2678fea160c8af08bfa0dbb2db782",
+      "compressed_size_estimate": 2626,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_adapter.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_adapter.py",
+      "bytes": 10014,
+      "sha256": "1179d5fc4bb1ec0f822ab6b457e6a5976f74cc75888f1abd7e08a85b0f6218ad",
+      "compressed_size_estimate": 3030,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_audit.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_audit.py",
+      "bytes": 8466,
+      "sha256": "ebd936258b0eb0b253fe71b13e5e95ed46d29c21e65574d69aa3e49e85c56766",
+      "compressed_size_estimate": 2793,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_plots.py",
+      "archive_entry": "tests/unit/test_x650_cpp_robustness_plots.py",
+      "bytes": 9100,
+      "sha256": "d16e3dbbff2e354645d6ea3d1f14c3f9204d88505d4877a46af4b61dc2763f2a",
+      "compressed_size_estimate": 3069,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_archive.py",
+      "archive_entry": "tests/unit/test_x650_robustness_archive.py",
+      "bytes": 2492,
+      "sha256": "12ff6342ae0cc3aaddc8dc1331aa6ecb96d0c4810374c5bda53eea71259b1767",
+      "compressed_size_estimate": 935,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_models.py",
+      "archive_entry": "tests/unit/test_x650_robustness_models.py",
+      "bytes": 3699,
+      "sha256": "b9ccfad5f7df36aae1966f07688574cf03a4033995f4dca7cb9ad772539e1585",
+      "compressed_size_estimate": 1281,
+      "archive": "support_raw_v1.zip"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_robustness_verifier.py",
+      "archive_entry": "tests/unit/test_x650_robustness_verifier.py",
+      "bytes": 2604,
+      "sha256": "61f0c40405047ce53ffbcc2dacc247d0f0a6b450e69249f6f34e18eb227e6ac3",
+      "compressed_size_estimate": 926,
+      "archive": "support_raw_v1.zip"
+    }
+  ],
+  "original_file_count": 49,
+  "original_bytes": 338246,
+  "archive_count": 1,
+  "archive_size_cap_bytes": 94371840,
+  "source_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+  "archiver": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/archive_x650_robustness_raw.py",
+    "bytes": 13184,
+    "sha256": "13ed0aaa00bb20fd6112e6c26087a451ee0f5355bebc7a1047edadd2bdd69aa8"
+  },
+  "policy": "Original evidence is immutable; every member SHA/size and embedded manifest are read back; omitted inherited meshes are separately hash-listed."
+}

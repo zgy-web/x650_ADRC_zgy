@@ -1,0 +1,17 @@
+{
+  "kind": "x650_robust_wrench_arm_receipt_v1",
+  "origin_s": 45.876,
+  "observed_before_sim_s": 45.876,
+  "observed_after_sim_s": 45.876,
+  "begin_monotonic_ns": 59632162265031074,
+  "end_monotonic_ns": 59632162265626408,
+  "activation_lag_s": 0.0,
+  "max_activation_lag_s": 0.05,
+  "start_marker": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/physical_disturbance/disturbance_start.txt",
+    "sha256": "8becda696dc65ab5c5da79215469830bad47f630c5140d99eb523b11ebcc70b9",
+    "bytes": 28
+  },
+  "same_origin_as_live_start": true,
+  "clock_semantics": "loop physical monitor maximum and immutable LiveStart origin; native plugin independently rejects late activation"
+}

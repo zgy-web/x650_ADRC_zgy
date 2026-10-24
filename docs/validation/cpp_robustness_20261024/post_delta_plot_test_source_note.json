@@ -1,0 +1,62 @@
+{
+  "kind": "x650_post_delta_plot_test_source_note_v1",
+  "created_utc": "2026-10-24T13:34:49.920170+00:00",
+  "scope": "Test-source-only supplement after support_delta_v2; no physical rerun or runtime/controller changes",
+  "reason": "The failure-label plot renderer was deployed for plots_v2, but the three added local guard tests were not deployed before support_delta_v2 was sealed. The archive therefore intentionally retains the earlier eight-test source.",
+  "original_delta_preserved": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_robustness_20261024\\support_delta_v2.zip",
+    "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/support_delta_v2.zip",
+    "bytes": 9284230,
+    "sha256": "c8bd6dc99c192a97d065585a07335b658918d2518414be30b8d1f435d30a4347",
+    "rewritten": false
+  },
+  "old_archived_test": {
+    "entry": "tests/unit/test_x650_cpp_robustness_plots.py",
+    "bytes": 9100,
+    "sha256": "d16e3dbbff2e354645d6ea3d1f14c3f9204d88505d4877a46af4b61dc2763f2a"
+  },
+  "final_test_source": {
+    "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\tests\\unit\\test_x650_cpp_robustness_plots.py",
+    "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_robustness_plots.py",
+    "bytes": 11965,
+    "sha256": "224a672a0120ad499f06b827d7fd64f0c8acf8bbd198de6b962a462fcc66fd6b",
+    "server_deployment_hash_verified": true
+  },
+  "change": "Three synthetic failed-label guards added: recover actual case/reason/time from bound records, never infer time without ROS decoder, reject changed raw task or inconsistent snapshot clock.",
+  "local_validation": {
+    "executed": true,
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "elapsed_s": 9.04,
+    "command": [
+      "C:/Users/Liym0817/AppData/Local/Programs/Python/Python311/python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/unit",
+      "-p",
+      "test_x650_cpp_robustness_plots.py",
+      "-v"
+    ],
+    "evidence": "Observed actual local unittest result in this task; includes real matplotlib PNG/PDF/CSV presentation checks using synthetic fixtures; no ROS/Gazebo/actuator output."
+  },
+  "final_local_suite": {
+    "executed": true,
+    "tests": 54,
+    "passed": 54,
+    "elapsed_s": 13.286,
+    "reported_by": "Parent agent /root in this team session",
+    "scope": "Final local robustness suite, including these eleven plot tests"
+  },
+  "server_validation": {
+    "final_test_source_executed": false,
+    "statement": "Final test source was copied and its bytes/hash verified on the server only. No claim that this eleven-test source was executed on the server."
+  },
+  "physical_experiment_rerun": false,
+  "original_reports_modified": false,
+  "original_archive_modified": false,
+  "runtime_or_controller_code_changed": false,
+  "renderer_source_sha256": "6aa0ed2b9fef5d49a972226e5f26cf7ed6cce3117bf928bd2e747537a58f4d8b"
+}

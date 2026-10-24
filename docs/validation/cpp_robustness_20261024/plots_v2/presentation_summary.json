@@ -1,0 +1,743 @@
+{
+  "kind": "x650_cpp_robustness_presentation_batch_v1",
+  "complete": false,
+  "certificate_acceptance_granted": false,
+  "no_delay_injected": true,
+  "no_offset_or_phase_fit": true,
+  "no_resampling": true,
+  "hardware_qualified": false,
+  "renderer": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_cpp_robustness.py",
+    "sha256": "6aa0ed2b9fef5d49a972226e5f26cf7ed6cce3117bf928bd2e747537a58f4d8b",
+    "bytes": 25208
+  },
+  "cases": [
+    {
+      "report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+      "verified": false,
+      "case_id": "wrench_fast",
+      "report_identity": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+        "sha256": "87de0f3363c694787b3134d10ab193fca4f659c0be4db35adfe443a21d955fe1",
+        "bytes": 654251
+      },
+      "error": "ValueError('Complete passed robustness physical certificate required')",
+      "failure_reason": "QP infeasible",
+      "failure_task_s": 7.544000000000004,
+      "failure_sequence": 379,
+      "failure_time_source": "Original rejected ControlSnapshot CDR",
+      "failure_proof_inputs": {
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json",
+          "sha256": "87de0f3363c694787b3134d10ab193fca4f659c0be4db35adfe443a21d955fe1",
+          "bytes": 654251
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/controller_task.json",
+          "sha256": "7b168599e2a182f1a3d3dd860b88d2f87cfb0c23ca258964c0126f4c499af388"
+        },
+        "rejected_call": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000379.json",
+          "sha256": "01e7a1fbd78d21f4324a3c743a3b9f4de6ebda7111b008c2ffa3850b5bfb168d"
+        },
+        "rejected_snapshot": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/native_records/000379.snapshot.cdr",
+          "sha256": "2360b9dfd8a213e125a5cf79d9b1c173f03067347b144dbf49cfe43821c71091"
+        },
+        "live_start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261024_205309_55502/isolated_live/live_start.json",
+          "sha256": "f804611e22d2b15be4a5cc9464a1981cb27d1357456d4a51cf87f80407df2f5a"
+        }
+      }
+    },
+    {
+      "report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json",
+      "verified": true,
+      "case_id": "mass085_fast",
+      "report_identity": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json",
+        "sha256": "4c66e779fd2c6a475d2788fe539fbcd63d5980f7ddac8639125316c6f613fa2c",
+        "bytes": 4531169
+      },
+      "metrics": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "sample_count": 6001,
+        "duration_s": 24.000000000000007,
+        "position_rmse_m": 0.006515877037928148,
+        "position_max_m": 0.011306714148851265,
+        "axis_rmse_m": [
+          0.0049900101559582745,
+          0.002040018417643968,
+          0.0036598875764845655
+        ]
+      },
+      "physical_model": {
+        "verified": true,
+        "kind": "uniform_rigid_mismatch",
+        "scale": 0.85,
+        "model_sha256": "bdcfd2e5a524cdcfd122a7d5355a67625aee288b1bf6311acaac8147324a9f6d",
+        "nominal_model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+        "total_mass_kg": 2.9707500000000002,
+        "nominal_total_mass_kg": 3.4949999999999997,
+        "rigid_links_independently_recomputed": 7,
+        "per_link": [
+          {
+            "link": "base_link",
+            "nominal": {
+              "mass": 2.961,
+              "ixx": 0.0936670044629915,
+              "ixy": 0.0007265747674082059,
+              "ixz": 0.0003644722599271861,
+              "iyy": 0.09173830304001489,
+              "iyz": -0.0004474236778129314,
+              "izz": 0.1102547086834794
+            },
+            "actual": {
+              "mass": 2.51685,
+              "ixx": 0.07961695379354278,
+              "ixy": 0.000617588552296975,
+              "ixz": 0.00030980142093810817,
+              "iyy": 0.07797755758401265,
+              "iyz": -0.00038031012614099166,
+              "izz": 0.0937165023809575
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "arm_link_1",
+            "nominal": {
+              "mass": 0.25,
+              "ixx": 6.66666666667e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00190833333333,
+              "iyz": 0.0,
+              "izz": 0.00190833333333
+            },
+            "actual": {
+              "mass": 0.2125,
+              "ixx": 5.6666666666694996e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0016220833333305,
+              "iyz": 0.0,
+              "izz": 0.0016220833333305
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "arm_link_2",
+            "nominal": {
+              "mass": 0.2,
+              "ixx": 4.08333333333e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00106208333333,
+              "iyz": 0.0,
+              "izz": 0.00106208333333
+            },
+            "actual": {
+              "mass": 0.17,
+              "ixx": 3.4708333333305e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0009027708333305,
+              "iyz": 0.0,
+              "izz": 0.0009027708333305
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_002",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.01785,
+              "ixx": 0.00016194672812500002,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00016194672812500002,
+              "iyz": 0.0,
+              "izz": 0.00032389048125000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_003",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.01785,
+              "ixx": 0.00016194672812500002,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00016194672812500002,
+              "iyz": 0.0,
+              "izz": 0.00032389048125000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_004",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.01785,
+              "ixx": 0.00016194672812500002,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00016194672812500002,
+              "iyz": 0.0,
+              "izz": 0.00032389048125000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_005",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.01785,
+              "ixx": 0.00016194672812500002,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00016194672812500002,
+              "iyz": 0.0,
+              "izz": 0.00032389048125000005
+            },
+            "inertial_pose_preserved": true
+          }
+        ],
+        "all_other_sdf_semantics_unchanged": true,
+        "controller_preparation_unchanged": true,
+        "controller_pid_values_unchanged": true,
+        "ts20_internal_model_unchanged": true,
+        "readonly_resource_verification": {
+          "verified": true,
+          "model_name": "amsim_urdf_x650_robust_mass085_v1_flight",
+          "model_sha256": "bdcfd2e5a524cdcfd122a7d5355a67625aee288b1bf6311acaac8147324a9f6d",
+          "scale": 0.85,
+          "nominal_total_mass_kg": 3.4949999999999997,
+          "total_mass_kg": 2.9707500000000002,
+          "report": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass085_v1_flight/robustness_manifest.json",
+            "sha256": "7ab22b5401dda2cac1d533b0865db149cff186d82a070b2b95436ce3269de1ea",
+            "bytes": 99637
+          },
+          "nominal_model_manifest": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_2link_ts20_damped_v1_flight/import_manifest.json",
+            "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+            "bytes": 186209
+          },
+          "nominal_preparation_report": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json",
+            "sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+            "bytes": 106089
+          },
+          "unchanged_airframe_source": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1",
+            "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+            "bytes": 3197
+          },
+          "generator": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/prepare_x650_robustness_models.py",
+            "sha256": "5295345bc3191d932aa8c947e5d5bdda6582fc5d160d13bdb93f18c995ed950d",
+            "bytes": 15886
+          },
+          "verifier": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/verify_x650_robustness_model.py",
+            "sha256": "7f3766df0df1c248ad8a5eb413b858e742eeebe87d424b9648212c9a784c4ea8",
+            "bytes": 10887
+          },
+          "ts20": {
+            "plugin_library": {
+              "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/ts20_interface_build_v2/libts20_interface.so",
+              "sha256": "c021a1f6ceb5e8216db1d455eb6f7b89e837e0d0f92d980c49d23f3706fb8f1e",
+              "bytes": 220288
+            },
+            "plugin_source": {
+              "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/ts20_interface_system.cpp",
+              "sha256": "310485f2d2eba8c611008b9b8b3e1e60d94759b465497086f5e64e73eb3477af",
+              "bytes": 13770
+            },
+            "parameters": {
+              "normalized_inertia": 0.0007447642530597398,
+              "normalized_viscous": 0.004194907941904997,
+              "normalized_coulomb": 0.03470285366117535,
+              "normalized_offset": 0.0004632811241788992,
+              "combined_interface_delay_s": 0.003346379092576424,
+              "static_threshold": 0.075,
+              "delta_static": 0.04,
+              "stribeck_velocity": 0.2,
+              "bus_period_s": 0.005,
+              "kp": 6.0,
+              "kd": 0.25
+            }
+          },
+          "all_nonmass_sdf_semantics_preserved": true,
+          "original_resource_bytes_preserved": true,
+          "loaded_motor_response_qualified": false,
+          "hardware_qualified": false
+        },
+        "scope": "Actual rigid mass/COM inertia mismatch against unchanged identified upper response; not an identified loaded-joint motor model"
+      },
+      "robustness": {
+        "case_id": "mass085_fast",
+        "kind": "uniform_rigid_mismatch",
+        "mass_inertia_scale": 0.85,
+        "physical_manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass085_v1_flight/robustness_manifest.json",
+          "sha256": "7ab22b5401dda2cac1d533b0865db149cff186d82a070b2b95436ce3269de1ea"
+        },
+        "pid_profile_binding": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/pid_profile_rebound.json",
+          "sha256": "e55af5f30cf0d19866e90032613e2a548cbb2f266ccca30f92847e8f750184b9"
+        },
+        "wrench_runtime": null,
+        "schedule": [],
+        "recovery_threshold_m": 0.01,
+        "recovery_hold_s": 1.0
+      },
+      "robustness_performance": {
+        "case_id": "mass085_fast",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "body_position_peak_to_peak_m": [
+          0.5358762140162857,
+          0.013986035929137837,
+          0.26572920227314123
+        ],
+        "joint_position_peak_to_peak_rad": [
+          0.6273411804750376,
+          0.5153957909515899
+        ],
+        "delay_injected": false,
+        "performance_passed": null,
+        "scope": "Rigid mismatch tracking is reported against original safety envelope; no new post-hoc precision threshold"
+      },
+      "inputs": {
+        "native_trace": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass085_v1_20261024_205646_56619/native_trace.csv",
+          "sha256": "b70221e885bf787f70efdd6406fd4de1670e7c81676889f93e8636f0109bd8ea"
+        },
+        "live_start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass085_v1_20261024_205646_56619/isolated_live/live_start.json",
+          "sha256": "23cbaa3fc4faa6c5b9a53ee6e394e06e8577de006fadd2a73bf76ed95d7c7545"
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass085_v1_20261024_205646_56619/controller_task.json",
+          "sha256": "8a846b58f838a1f09f1ebfcb705b59f06f6b25f246ed845bb2073e3417b68ef7"
+        },
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass085_fast/audit_v2/report.json",
+          "sha256": "4c66e779fd2c6a475d2788fe539fbcd63d5980f7ddac8639125316c6f613fa2c"
+        }
+      }
+    },
+    {
+      "report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json",
+      "verified": true,
+      "case_id": "mass115_fast",
+      "report_identity": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json",
+        "sha256": "00bab2bb63e7f755dd4382b7d21add806aef77046482b720fcded66f7b21127c",
+        "bytes": 4534372
+      },
+      "metrics": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "sample_count": 6001,
+        "duration_s": 23.999999999999993,
+        "position_rmse_m": 0.007740803356524287,
+        "position_max_m": 0.013217508200749321,
+        "axis_rmse_m": [
+          0.005974493656757125,
+          0.002259503811542236,
+          0.004372654191148957
+        ]
+      },
+      "physical_model": {
+        "verified": true,
+        "kind": "uniform_rigid_mismatch",
+        "scale": 1.15,
+        "model_sha256": "ddf94a0bdf0c706a82aaa0073fe16f87e7ba7b23c13c478cfaf43fb6f04152b9",
+        "nominal_model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+        "total_mass_kg": 4.0192499999999995,
+        "nominal_total_mass_kg": 3.4949999999999997,
+        "rigid_links_independently_recomputed": 7,
+        "per_link": [
+          {
+            "link": "base_link",
+            "nominal": {
+              "mass": 2.961,
+              "ixx": 0.0936670044629915,
+              "ixy": 0.0007265747674082059,
+              "ixz": 0.0003644722599271861,
+              "iyy": 0.09173830304001489,
+              "iyz": -0.0004474236778129314,
+              "izz": 0.1102547086834794
+            },
+            "actual": {
+              "mass": 3.4051499999999995,
+              "ixx": 0.10771705513244022,
+              "ixy": 0.0008355609825194367,
+              "ixz": 0.00041914309891626393,
+              "iyy": 0.10549904849601711,
+              "iyz": -0.000514537229484871,
+              "izz": 0.12679291498600131
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "arm_link_1",
+            "nominal": {
+              "mass": 0.25,
+              "ixx": 6.66666666667e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00190833333333,
+              "iyz": 0.0,
+              "izz": 0.00190833333333
+            },
+            "actual": {
+              "mass": 0.2875,
+              "ixx": 7.6666666666705e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0021945833333295,
+              "iyz": 0.0,
+              "izz": 0.0021945833333295
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "arm_link_2",
+            "nominal": {
+              "mass": 0.2,
+              "ixx": 4.08333333333e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.00106208333333,
+              "iyz": 0.0,
+              "izz": 0.00106208333333
+            },
+            "actual": {
+              "mass": 0.22999999999999998,
+              "ixx": 4.6958333333295e-05,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0012213958333295,
+              "iyz": 0.0,
+              "izz": 0.0012213958333295
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_002",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.02415,
+              "ixx": 0.000219104396875,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.000219104396875,
+              "iyz": 0.0,
+              "izz": 0.00043820476875000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_003",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.02415,
+              "ixx": 0.000219104396875,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.000219104396875,
+              "iyz": 0.0,
+              "izz": 0.00043820476875000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_004",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.02415,
+              "ixx": 0.000219104396875,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.000219104396875,
+              "iyz": 0.0,
+              "izz": 0.00043820476875000005
+            },
+            "inertial_pose_preserved": true
+          },
+          {
+            "link": "link_005",
+            "nominal": {
+              "mass": 0.021,
+              "ixx": 0.0001905255625,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.0001905255625,
+              "iyz": 0.0,
+              "izz": 0.0003810476250000001
+            },
+            "actual": {
+              "mass": 0.02415,
+              "ixx": 0.000219104396875,
+              "ixy": 0.0,
+              "ixz": 0.0,
+              "iyy": 0.000219104396875,
+              "iyz": 0.0,
+              "izz": 0.00043820476875000005
+            },
+            "inertial_pose_preserved": true
+          }
+        ],
+        "all_other_sdf_semantics_unchanged": true,
+        "controller_preparation_unchanged": true,
+        "controller_pid_values_unchanged": true,
+        "ts20_internal_model_unchanged": true,
+        "readonly_resource_verification": {
+          "verified": true,
+          "model_name": "amsim_urdf_x650_robust_mass115_v1_flight",
+          "model_sha256": "ddf94a0bdf0c706a82aaa0073fe16f87e7ba7b23c13c478cfaf43fb6f04152b9",
+          "scale": 1.15,
+          "nominal_total_mass_kg": 3.4949999999999997,
+          "total_mass_kg": 4.0192499999999995,
+          "report": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass115_v1_flight/robustness_manifest.json",
+            "sha256": "42376b81b108ceb4f6c15a5a1c4c0137d0c4fc78d044c1e1d8c44dcc1ababa79",
+            "bytes": 99618
+          },
+          "nominal_model_manifest": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_2link_ts20_damped_v1_flight/import_manifest.json",
+            "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+            "bytes": 186209
+          },
+          "nominal_preparation_report": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json",
+            "sha256": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+            "bytes": 106089
+          },
+          "unchanged_airframe_source": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_airframe_20261022/4996_gz_x650_2link_ts20_damped_v1",
+            "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+            "bytes": 3197
+          },
+          "generator": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/prepare_x650_robustness_models.py",
+            "sha256": "5295345bc3191d932aa8c947e5d5bdda6582fc5d160d13bdb93f18c995ed950d",
+            "bytes": 15886
+          },
+          "verifier": {
+            "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/verify_x650_robustness_model.py",
+            "sha256": "7f3766df0df1c248ad8a5eb413b858e742eeebe87d424b9648212c9a784c4ea8",
+            "bytes": 10887
+          },
+          "ts20": {
+            "plugin_library": {
+              "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/ts20_interface_build_v2/libts20_interface.so",
+              "sha256": "c021a1f6ceb5e8216db1d455eb6f7b89e837e0d0f92d980c49d23f3706fb8f1e",
+              "bytes": 220288
+            },
+            "plugin_source": {
+              "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/ts20_interface_system.cpp",
+              "sha256": "310485f2d2eba8c611008b9b8b3e1e60d94759b465497086f5e64e73eb3477af",
+              "bytes": 13770
+            },
+            "parameters": {
+              "normalized_inertia": 0.0007447642530597398,
+              "normalized_viscous": 0.004194907941904997,
+              "normalized_coulomb": 0.03470285366117535,
+              "normalized_offset": 0.0004632811241788992,
+              "combined_interface_delay_s": 0.003346379092576424,
+              "static_threshold": 0.075,
+              "delta_static": 0.04,
+              "stribeck_velocity": 0.2,
+              "bus_period_s": 0.005,
+              "kp": 6.0,
+              "kd": 0.25
+            }
+          },
+          "all_nonmass_sdf_semantics_preserved": true,
+          "original_resource_bytes_preserved": true,
+          "loaded_motor_response_qualified": false,
+          "hardware_qualified": false
+        },
+        "scope": "Actual rigid mass/COM inertia mismatch against unchanged identified upper response; not an identified loaded-joint motor model"
+      },
+      "robustness": {
+        "case_id": "mass115_fast",
+        "kind": "uniform_rigid_mismatch",
+        "mass_inertia_scale": 1.15,
+        "physical_manifest": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass115_v1_flight/robustness_manifest.json",
+          "sha256": "42376b81b108ceb4f6c15a5a1c4c0137d0c4fc78d044c1e1d8c44dcc1ababa79"
+        },
+        "pid_profile_binding": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/pid_profile_rebound.json",
+          "sha256": "e6d0bf30b317f0457fc4a7fa44dc3f230b46acc93fcbb0deef2230b10f3c5aaa"
+        },
+        "wrench_runtime": null,
+        "schedule": [],
+        "recovery_threshold_m": 0.01,
+        "recovery_hold_s": 1.0
+      },
+      "robustness_performance": {
+        "case_id": "mass115_fast",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "body_position_peak_to_peak_m": [
+          0.5287221882386671,
+          0.014523223565611969,
+          0.24440253538917833
+        ],
+        "joint_position_peak_to_peak_rad": [
+          0.4826161943847302,
+          0.44035287224930464
+        ],
+        "delay_injected": false,
+        "performance_passed": null,
+        "scope": "Rigid mismatch tracking is reported against original safety envelope; no new post-hoc precision threshold"
+      },
+      "inputs": {
+        "native_trace": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass115_v1_20261024_210056_57647/native_trace.csv",
+          "sha256": "46bb93291cee8957855d05b3e94371e44d79cac91a9a2736970b809a9a4afd42"
+        },
+        "live_start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass115_v1_20261024_210056_57647/isolated_live/live_start.json",
+          "sha256": "829b63d283e2489820f62e822ea1257a5661e3608c193a952108690a9a656c6e"
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_mass115_v1_20261024_210056_57647/controller_task.json",
+          "sha256": "f71fc1832debe10e4de45f1fd621c73fbea64706aa94c9cc00bc19257b4bbf99"
+        },
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/mass115_fast/audit_v2/report.json",
+          "sha256": "00bab2bb63e7f755dd4382b7d21add806aef77046482b720fcded66f7b21127c"
+        }
+      }
+    }
+  ],
+  "all_predeclared_recoveries_passed": false,
+  "outputs": {
+    "mass085_fast/endpoint_chart_data.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_chart_data.csv",
+      "sha256": "c80be45376e9bc44b0ddbe7cc6640d4c502f05afd17fcbc9e9413884f6e61ee3",
+      "bytes": 1386358
+    },
+    "mass085_fast/endpoint_validation.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.pdf",
+      "sha256": "48e22426af5671c77519a79e39376de8985c8b23b191918880d7cac7c1f89f39",
+      "bytes": 341829
+    },
+    "mass085_fast/endpoint_validation.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/endpoint_validation.png",
+      "sha256": "b000a11905e59c7398337e29550fa12f1bdd221d3b8bb26c614c50403d218d7a",
+      "bytes": 352347
+    },
+    "mass085_fast/figure_manifest.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass085_fast/figure_manifest.json",
+      "sha256": "b0b8d2157a2a4e1cab5796db00db6c08f05efaa306beac53bf87664d098ee197",
+      "bytes": 11015
+    },
+    "mass115_fast/endpoint_chart_data.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_chart_data.csv",
+      "sha256": "62bfa43067d18e61674347722946d28678001d52e9b67808d5c85410bf582810",
+      "bytes": 1388928
+    },
+    "mass115_fast/endpoint_validation.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.pdf",
+      "sha256": "782c0ccd9e52ffbe4db572794357f10b1ee32d12bad20c4e04bde03297baa426",
+      "bytes": 342689
+    },
+    "mass115_fast/endpoint_validation.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/endpoint_validation.png",
+      "sha256": "e867e7e6b8b93e6d59475482678a7592d2c7190a87377dcd76413474ca13ae01",
+      "bytes": 351347
+    },
+    "mass115_fast/figure_manifest.json": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/mass115_fast/figure_manifest.json",
+      "sha256": "23dcd93f228497944a9b9669837e0368ff52b7ca9f0a71b02ea4329de9f70d13",
+      "bytes": 10996
+    },
+    "robustness_summary.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.pdf",
+      "sha256": "61d688d5eeeab53c38c63fceaf265cc7f3672f3fcb4ddccde60ff2b6b1d6be56",
+      "bytes": 126007
+    },
+    "robustness_summary.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_robustness_20261024/plots_v2/robustness_summary.png",
+      "sha256": "231182f51da0a9c42ff0c7c092842bc44406de637c24c579f4ef69d0b2542507",
+      "bytes": 308688
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"accepted":378,"configuration_sha256":"7b168599e2a182f1a3d3dd860b88d2f87cfb0c23ca258964c0126f4c499af388","faulted":true,"implementation":"cpp_full_pipeline_v1","kind":"cpp_full_pipeline_worker_final_v1","last_error":"QP infeasible","live_started":true,"no_python_gc_or_pickle":true,"physical_acceptance":false,"requests":379}
