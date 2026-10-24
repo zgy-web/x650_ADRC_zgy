@@ -7,14 +7,17 @@ replay uses only consumed packets available at each recorded snapshot.
 from __future__ import annotations
 import argparse
 import ast
+import builtins
 from copy import deepcopy
 from contextlib import nullcontext
 import hashlib
+import dis
 import json
 from pathlib import Path
 import sys
 from time import perf_counter
 import traceback
+from types import CodeType, FunctionType
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +41,35 @@ MEMORY = ("_plan","_plan_t","_plan_h","previous_command","last_t","_previous_sta
           "step_count","_joint_history","_chain_clock_origin")
 
 
+def _release_fixture_bindings(ns):
+    """Keep the frozen callbacks/code/data, remove only constructor roots.
+
+    A callback's __globals__ is this exec namespace. Leaving ns['c'] or the
+    callback's own name in it retains an otherwise finished fixture until GC.
+    Fail closed if the pinned callback ever depends on a removed binding.
+    """
+    owned = {name: value for name, value in ns.items()
+             if isinstance(value, FunctionType) and value.__globals__ is ns}
+    if set(owned) != {'context', 'packet'}:
+        raise ValueError('Frozen fixture local function structure changed')
+    removed = {'c', 'p', 's', 'target', 'shifted', 'context', 'packet'}
+    dynamic = {'globals', 'locals', 'eval', 'exec', 'vars', '__import__'}
+    for function in owned.values():
+        names, pending = set(), [function.__code__]
+        while pending:
+            code = pending.pop()
+            names.update(i.argval for i in dis.get_instructions(code)
+                         if i.opname in ('LOAD_GLOBAL', 'LOAD_NAME'))
+            pending.extend(value for value in code.co_consts if isinstance(value, CodeType))
+        aliases = any(ns.get(name) is getattr(builtins, key) for name in names for key in dynamic)
+        if (function.__closure__ or function.__defaults__ or function.__kwdefaults__
+                or names & (removed | dynamic) or aliases):
+            raise ValueError('Frozen fixture callback depends on constructor roots or dynamic globals')
+    if ns['c'].context_provider is not owned['context']:
+        raise ValueError('Frozen fixture context provider changed')
+    for name in removed: ns.pop(name, None)
+
+
 def frozen_constructor(path, expected):
     if file_identity(path)["sha256"] != expected:
         raise ValueError("Original frozen matrix script hash differs")
@@ -51,11 +83,20 @@ def frozen_constructor(path, expected):
     setup = compile(ast.Module(body=loop.body[:stop],type_ignores=[]),str(path),"exec")
     def build(spec=None):
         ns = {"__file__":str(path),"__name__":"_frozen_constructor"}
-        exec(prefix,ns)
-        if spec is None:
-            return ns["fixtures"]
-        ns["spec"] = spec; exec(setup,ns)
-        return ns["c"],ns["p"],ns["shifted"],ns["target"]
+        returned = False
+        try:
+            exec(prefix,ns)
+            if spec is None:
+                fixtures = ns['fixtures']; ns.clear(); return fixtures
+            ns["spec"] = spec; exec(setup,ns)
+            result = ns["c"],ns["p"],ns["shifted"],ns["target"]
+            _release_fixture_bindings(ns)
+            returned = True
+            return result
+        finally:
+            # No controller is returned after setup/dependency-check failure.
+            # Release this private namespace even when exec raised halfway.
+            if not returned: ns.clear()
     return build
 
 
@@ -182,6 +223,7 @@ def source_receipt():
         "control_packages/x650_wholebody_v1/tests/test_native_packed_preparation.py",
         "control_packages/x650_wholebody_v1/tests/test_packed_candidate_capture.py",
         "control_packages/x650_wholebody_v1/tests/test_qualification_recording.py",
+        "control_packages/x650_wholebody_v1/tests/test_frozen_fixture_lifecycle.py",
         "simulations/x650_ts20_hold_v1/task.py",
         "simulations/x650_ts20_hold_v1/run_case.py",
         "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py",
