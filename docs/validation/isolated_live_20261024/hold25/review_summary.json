@@ -1,0 +1,496 @@
+{
+  "kind": "hold25_independent_failure_archive_review_v1",
+  "full_hold_pass": false,
+  "run": "x650_isolated_live_v1_20261024_131702_20177",
+  "launch": "x650_isolated_launch_20261024_131614_20176",
+  "task_sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181",
+  "execution_revision": 18,
+  "archived_originals_verified": 19,
+  "physical_source_files_checked_remotely": {
+    "isolated_live/sends.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/sends.json",
+      "bytes": 790464,
+      "sha256": "4bcdfe82a3d0c6557670c011271c2592113cee533677bbd0854fd569450a9808"
+    },
+    "isolated_live/receipts.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/receipts.json",
+      "bytes": 417993,
+      "sha256": "03d843539519228addd2c027afd78f1f3fbb24e0d84e81c67461bf61aa331967"
+    },
+    "isolated_live/events.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/events.json",
+      "bytes": 319512,
+      "sha256": "4662b7d8306bad47ba4b225efaf03a3198fb268c695d604e037d1409c75a13f4"
+    },
+    "isolated_live/live_start.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/live_start.json",
+      "bytes": 7288,
+      "sha256": "dc5a2e704eaa5180894c7a196b851c83b5626b875794afd109304627d8f42588"
+    },
+    "isolated_live/lifecycle.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/lifecycle.json",
+      "bytes": 912,
+      "sha256": "11b7a372d55549543e2f0a9377572487d6d7ab3e379239cf6588d16411bdc3bc"
+    },
+    "isolated_live/dispatch.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/dispatch.json",
+      "bytes": 7159398,
+      "sha256": "c2aa06160f5a4ae2151b3be6ae44a53706ec3c6824eece42315bbd1168104c55"
+    },
+    "ts20_state.csv": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/ts20_state.csv",
+      "bytes": 8982598,
+      "sha256": "a48e720f58940a2d317f410233f53aaeaf6df95fb1b1e4f59e42d10c185f28f5"
+    },
+    "control_execution_trace.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/control_execution_trace.jsonl",
+      "bytes": 5976179,
+      "sha256": "5445e2fb81ed521dca0c45a854f3ac356e270c3163905d96d3d2dec7045a857e"
+    },
+    "isolated_live/source_recording/diagnostics.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/source_recording/diagnostics.jsonl",
+      "bytes": 21802938,
+      "sha256": "ab80fbb8ab29499a734bb504af5a32020367b03f0342b16389083ed14d2283ae"
+    },
+    "controller_metadata.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/controller_metadata.json",
+      "bytes": 347588,
+      "sha256": "aa49ce1264aadfe4bfbeabe8d7c72d08360784a3fb942a586aeb016200df13f8"
+    },
+    "isolated_live/fault_supervision.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/fault_supervision.json",
+      "bytes": 539,
+      "sha256": "8d4a967354b040128ea75552e6a1278f49880e3156b12684620a1e373fcd2d72"
+    },
+    "isolated_live/worker_final.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/worker_final.json",
+      "bytes": 6464,
+      "sha256": "e546058f3d0780f35d41fbb20d1d7af15b9a195ec26625f691a43617882ebee0"
+    },
+    "isolated_live/worker_timing.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/worker_timing.json",
+      "bytes": 438304,
+      "sha256": "5e55b09756319db0545b626f658603c7ce4303e6c0d453b96c3362eccb6b8dae"
+    },
+    "diagnostic_parameters_before.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/diagnostic_parameters_before.json",
+      "bytes": 12632,
+      "sha256": "8f8362f6c6e5c3ec54e654357e014cda8b974e5257664e47ed42e06bc662141b"
+    },
+    "diagnostic_parameters_restored.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/diagnostic_parameters_restored.json",
+      "bytes": 12641,
+      "sha256": "217286212551dccf0ea395162c6886e8c0b6a5649c5a289a79e3e238704efae6"
+    },
+    "launch/launch.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_131614_20176/launch.json",
+      "bytes": 118726,
+      "sha256": "4e0b57c487fdf0b478289f5e9bd8d74c61e555d5f8d6a6b0fe189bc195ee5484"
+    }
+  },
+  "fault": {
+    "session_id": 1796045635,
+    "epoch": 1,
+    "sequence": 4070,
+    "scheduled_monotonic_ns": 59604801514447979,
+    "actual_monotonic_ns": 59604801514530238,
+    "source_sequence": 4098,
+    "source_received_monotonic_ns": 59604801514275462,
+    "command_sequence": 1055,
+    "command_issued_monotonic_ns": 59604801450723097,
+    "command_age_ns": 63807141,
+    "status": 3,
+    "reason": 1,
+    "output_valid": false,
+    "repeated": false
+  },
+  "task_progress_last_source_s": 21.168,
+  "fresh_source_issue_age_ms": 2.828795,
+  "fresh_source_received_age_ms": 0.254776,
+  "supervisor_latency_ms": 0.387149,
+  "source_activity": {
+    "complete": true,
+    "pumps": 7136,
+    "all_sources_bound_to_read_publish": 4098,
+    "unique_last_failure_preserved": true,
+    "failed_phase": "supervision",
+    "last_pump_wall_ms": 0.61373,
+    "max_pump_ms": 8.088555,
+    "max_between_pumps_ms": 0.064768,
+    "complete_gc_pairs": [
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604780333744128,
+        "end_ns": 59604780333947835,
+        "wall_ms": 0.203707,
+        "thread_cpu_ms": 0.20316
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604780742024659,
+        "end_ns": 59604780742149631,
+        "wall_ms": 0.124972,
+        "thread_cpu_ms": 0.124949
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604781820248341,
+        "end_ns": 59604781820458533,
+        "wall_ms": 0.210192,
+        "thread_cpu_ms": 0.210197
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604782982562580,
+        "end_ns": 59604782982791942,
+        "wall_ms": 0.229362,
+        "thread_cpu_ms": 0.229356
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604784152108007,
+        "end_ns": 59604784152331138,
+        "wall_ms": 0.223131,
+        "thread_cpu_ms": 0.223131
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604785304758485,
+        "end_ns": 59604785305013516,
+        "wall_ms": 0.255031,
+        "thread_cpu_ms": 0.225698
+      },
+      {
+        "thread_id": 20842,
+        "generation": 1,
+        "start_ns": 59604786464229598,
+        "end_ns": 59604786464663987,
+        "wall_ms": 0.434389,
+        "thread_cpu_ms": 0.409045
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604787624528335,
+        "end_ns": 59604787624778332,
+        "wall_ms": 0.249997,
+        "thread_cpu_ms": 0.249944
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604788823954082,
+        "end_ns": 59604788824177041,
+        "wall_ms": 0.222959,
+        "thread_cpu_ms": 0.222877
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604789995394431,
+        "end_ns": 59604789995604625,
+        "wall_ms": 0.210194,
+        "thread_cpu_ms": 0.210149
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604791183584700,
+        "end_ns": 59604791183804011,
+        "wall_ms": 0.219311,
+        "thread_cpu_ms": 0.219257
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604792364338559,
+        "end_ns": 59604792364590743,
+        "wall_ms": 0.252184,
+        "thread_cpu_ms": 0.224094
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604793544556147,
+        "end_ns": 59604793544787975,
+        "wall_ms": 0.231828,
+        "thread_cpu_ms": 0.231819
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604794704292759,
+        "end_ns": 59604794704525436,
+        "wall_ms": 0.232677,
+        "thread_cpu_ms": 0.232675
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604795891721559,
+        "end_ns": 59604795891951394,
+        "wall_ms": 0.229835,
+        "thread_cpu_ms": 0.229792
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604797063433286,
+        "end_ns": 59604797063637320,
+        "wall_ms": 0.204034,
+        "thread_cpu_ms": 0.204166
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604798245036003,
+        "end_ns": 59604798245274795,
+        "wall_ms": 0.238792,
+        "thread_cpu_ms": 0.238873
+      },
+      {
+        "thread_id": 20842,
+        "generation": 0,
+        "start_ns": 59604799443548350,
+        "end_ns": 59604799443772581,
+        "wall_ms": 0.224231,
+        "thread_cpu_ms": 0.2242
+      },
+      {
+        "thread_id": 20842,
+        "generation": 1,
+        "start_ns": 59604800624976894,
+        "end_ns": 59604800625217700,
+        "wall_ms": 0.240806,
+        "thread_cpu_ms": 0.240795
+      }
+    ],
+    "gc_policy_unchanged": true,
+    "no_gc_in_fault_plusminus100ms": true
+  },
+  "worker": {
+    "numerical_accepted": 1056,
+    "gate_accepted": 1055,
+    "gate_rejected": 0,
+    "last_five": [
+      {
+        "sequence": 1052,
+        "engine_ms": 9.707915,
+        "callback_ms": 12.115829,
+        "callback_cpu_ms": 12.108604
+      },
+      {
+        "sequence": 1053,
+        "engine_ms": 9.654884,
+        "callback_ms": 12.066563,
+        "callback_cpu_ms": 12.059224
+      },
+      {
+        "sequence": 1054,
+        "engine_ms": 9.697988,
+        "callback_ms": 12.146272,
+        "callback_cpu_ms": 12.13908
+      },
+      {
+        "sequence": 1055,
+        "engine_ms": 18.840497,
+        "callback_ms": 22.306755,
+        "callback_cpu_ms": 22.295037
+      },
+      {
+        "sequence": 1056,
+        "engine_ms": 20.97718,
+        "callback_ms": 24.740122,
+        "callback_cpu_ms": 24.728932
+      }
+    ],
+    "all_deferred_diagnostic_boundaries_valid": true,
+    "command1055_return_after_tick4068_scheduled_ms": 2.289303,
+    "command1055_gate_after_tick4068_actual_ms": 2.258476,
+    "command1055_first_send_age_ms": 43.966654,
+    "command1056_return_after_fault_ms": 1.704397,
+    "command1056_normal_sent": false
+  },
+  "execution": {
+    "all_sends": 1058,
+    "normal_sends": 1057,
+    "normal_repeats": 2,
+    "all_receipts": 1058,
+    "individual_joint_commands": 2116,
+    "per_joint_counter_range": [
+      1205,
+      2262
+    ],
+    "exact_send_receipt_identity_and_raw_joint_counter_value_time_matches": true,
+    "normal_output_after_output_fault": false,
+    "no_legacy_publication_overlap": true,
+    "all_materialized_ros_fields_match_original_cdr": true,
+    "cdr_counts": {
+      "dispatch": 4071,
+      "sends": 1058,
+      "events": 1055,
+      "receipts": 1058
+    },
+    "stop_zero_send_after_output_fault_ms": 0.132929,
+    "stop_zero_receipt_after_output_fault_ms": 4.39574
+  },
+  "recovery": {
+    "fresh_hold_confirmed": true,
+    "hold_confirmation_ms": 26.14639699459076,
+    "six_processes_returned_zero": true,
+    "runtime_closed": true,
+    "restored_exact_parameters": 56,
+    "ulog_status_rows": 152,
+    "px4_failsafe_observed": false,
+    "ulog": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 70980000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 72992000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 73496000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 73020000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "ulog_status_changes": [
+      {
+        "timestamp": 3680000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 24164000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 24212000,
+        "arming_state": 2,
+        "nav_state": 17,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 29720000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 41084000,
+        "arming_state": 2,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 65528000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 66668000,
+        "arming_state": 2,
+        "nav_state": 18,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 72992000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 73496000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      }
+    ]
+  },
+  "resources": {
+    "source": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v25_resources.jsonl",
+      "bytes": 1767532,
+      "sha256": "112c68c05b8feac2878d17da0a9cfc3536de02cd5af95cf69a755a0e3edf3c92"
+    },
+    "bracket_samples": 413,
+    "duration_s": 21.255874294,
+    "cgroup_stat_deltas": {
+      "usage_usec": 77839106,
+      "user_usec": 73703349,
+      "system_usec": 4135756,
+      "nr_periods": 212,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "mean_cpu_cores": 3.662004438084771,
+    "quota_cpu_equivalent": 12.0,
+    "cpu_max": "1200000 100000"
+  },
+  "hardware": {
+    "hostname": "autodl-container-edeb42a3f7-c2d98427",
+    "cpu_model_postrun": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+    "logical_cpus_visible": 128,
+    "physical_cores_visible": 64,
+    "sockets_visible": 2,
+    "cpu_roles": {
+      "source": [
+        17
+      ],
+      "worker": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "dispatcher": [
+        93
+      ],
+      "ingress": [
+        94
+      ],
+      "consumption": [
+        95
+      ]
+    },
+    "own_background_excludes_smt_siblings": true,
+    "cpu_resources_exclusive": false,
+    "scope": "CPU model/topology post-run snapshot agrees with original host identity/quota; a role mask is allowed affinity, not observed execution per call."
+  },
+  "limitations": [
+    "This failed window does not qualify the 30 s hold or hardware deployment.",
+    "Source freshness and GC evidence do not reproduce or explain the earlier hold24 source pause.",
+    "No new quota throttling occurred in the bracket. Coarse worker-mask frequency samples do not establish each call's actual CPU frequency or a general hardware capacity bound.",
+    "The 128 visible logical CPUs are not 128 exclusive CPUs; the container has a 12-CPU time quota on a shared host.",
+    "Complete raw CDR, plugin CSV and ULog are retained at hashed server paths and independently decoded; they are not copied in this archive.",
+    "Host monotonic, simulation time and original ULog microseconds are kept distinct without fitted clock conversion."
+  ]
+}

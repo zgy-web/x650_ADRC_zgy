@@ -1,0 +1,120 @@
+{
+  "kind": "hold25_original_zip_members_v1",
+  "files": [
+    {
+      "path": "controller_metadata.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/controller_metadata.json",
+      "bytes": 347588,
+      "sha256": "aa49ce1264aadfe4bfbeabe8d7c72d08360784a3fb942a586aeb016200df13f8"
+    },
+    {
+      "path": "isolated_live/source_activity.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/source_activity.json",
+      "bytes": 5369718,
+      "sha256": "64a65f05ccd6eaffdb24db9025250f906fb2e04724e6980c7a04d310a7d79c80"
+    },
+    {
+      "path": "isolated_live/source_timing.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/source_timing.json",
+      "bytes": 415045,
+      "sha256": "d623e1422d2cbfc07c4a082833cbe5c9ae4c829a634ed18b9e05c8d14f2ec1c7"
+    },
+    {
+      "path": "isolated_live/worker_timing.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/worker_timing.json",
+      "bytes": 438304,
+      "sha256": "5e55b09756319db0545b626f658603c7ce4303e6c0d453b96c3362eccb6b8dae"
+    },
+    {
+      "path": "isolated_live/worker_final.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/worker_final.json",
+      "bytes": 6464,
+      "sha256": "e546058f3d0780f35d41fbb20d1d7af15b9a195ec26625f691a43617882ebee0"
+    },
+    {
+      "path": "isolated_live/ingress_timing.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/ingress_timing.json",
+      "bytes": 1972595,
+      "sha256": "a068798a6cb879f641d70d49d891029d1860cfe5551ba27b443602ee34ee4eb4"
+    },
+    {
+      "path": "isolated_live/events.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/events.json",
+      "bytes": 319512,
+      "sha256": "4662b7d8306bad47ba4b225efaf03a3198fb268c695d604e037d1409c75a13f4"
+    },
+    {
+      "path": "isolated_live/sends.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/sends.json",
+      "bytes": 790464,
+      "sha256": "4bcdfe82a3d0c6557670c011271c2592113cee533677bbd0854fd569450a9808"
+    },
+    {
+      "path": "isolated_live/receipts.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/receipts.json",
+      "bytes": 417993,
+      "sha256": "03d843539519228addd2c027afd78f1f3fbb24e0d84e81c67461bf61aa331967"
+    },
+    {
+      "path": "isolated_live/lifecycle.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/lifecycle.json",
+      "bytes": 912,
+      "sha256": "11b7a372d55549543e2f0a9377572487d6d7ab3e379239cf6588d16411bdc3bc"
+    },
+    {
+      "path": "isolated_live/live_start.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/live_start.json",
+      "bytes": 7288,
+      "sha256": "dc5a2e704eaa5180894c7a196b851c83b5626b875794afd109304627d8f42588"
+    },
+    {
+      "path": "isolated_live/fault_supervision.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/isolated_live/fault_supervision.json",
+      "bytes": 539,
+      "sha256": "8d4a967354b040128ea75552e6a1278f49880e3156b12684620a1e373fcd2d72"
+    },
+    {
+      "path": "launch.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_131614_20176/launch.json",
+      "bytes": 118726,
+      "sha256": "4e0b57c487fdf0b478289f5e9bd8d74c61e555d5f8d6a6b0fe189bc195ee5484"
+    },
+    {
+      "path": "hold_v25.exit",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v25.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "diagnostic_parameters_before.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/diagnostic_parameters_before.json",
+      "bytes": 12632,
+      "sha256": "8f8362f6c6e5c3ec54e654357e014cda8b974e5257664e47ed42e06bc662141b"
+    },
+    {
+      "path": "diagnostic_parameters_restored.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/diagnostic_parameters_restored.json",
+      "bytes": 12641,
+      "sha256": "217286212551dccf0ea395162c6886e8c0b6a5649c5a289a79e3e238704efae6"
+    },
+    {
+      "path": "diagnostic_restore_journal_completed.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/diagnostic_restore_journal_completed.json",
+      "bytes": 30541,
+      "sha256": "d12c0dd707984e2e51a9c49c26328dfcda7269bcc6719f685f89cef56d40204e"
+    },
+    {
+      "path": "run_manifest.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_131702_20177/run_manifest.json",
+      "bytes": 1522,
+      "sha256": "982633f4f7b6718dffdbefa9ef2c84e88687aa47e788d22b058cf573a1dd69ad"
+    },
+    {
+      "path": "host_v1.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/host_v1.json",
+      "bytes": 2501,
+      "sha256": "a9b5d86bab4eac4816d3fc0be407c7eabc7e3748e954520f71675048b9856dd9"
+    }
+  ],
+  "scope": "Original server bytes inside originals.zip; only ZIP container compression and metadata are local."
+}
