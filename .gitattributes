@@ -26,3 +26,5 @@ scripts/x650_isolated_diagnostic_recorder.py -text
 scripts/report_x650_isolated_runtime.py -text
 tests/unit/test_x650_isolated_diagnostics.py -text
 docs/validation/isolated_runtime_20261023/** -text -whitespace
+# Preserve original evidence bytes referenced by the 2026-10-24 manifests.
+docs/validation/isolated_live_20261024/** -text
