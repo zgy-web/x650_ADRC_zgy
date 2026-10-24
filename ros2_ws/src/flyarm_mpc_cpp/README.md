@@ -101,3 +101,21 @@ phase boundaries, actual first-step intervals and preservation of strict hold.
 the actual ROS worker are checked separately. The software ROS test records both
 serialized endpoints and compares every decoded field exactly: CDR alignment
 padding is not a control field and need not have identical bytes across serializers.
+
+
+The separate fast stage uses the same worker and unchanged Core with the exact
+schema below. It is admitted only by `simulations/x650_cpp_fast_v1` after an
+accepted complete normal certificate. Changing the kind alone cannot select a
+new period or duration.
+
+```json
+{"kind":"fast_figure8","amplitude_x":0.25,"amplitude_z":0.10,
+ "period_s":8.0,"cycles":2,"start_s":2.0,"ramp_s":2.0,"duration_s":24.0}
+```
+
+`test_fast_contract` and `test_fast_config` add full 24-second phase and strict
+schema checks; all hold and ordinary tests remain active. Probe kind 2 selects
+the fast C2 law, and `validate_x650_cpp_fast_reference.py` independently compares
+the full reference and cumulative actual-dt horizon against the original Python
+trajectory. Separate 48-case matrix/QP/candidate and private actual-ROS software
+proofs cover the fast configuration without launching any actuator publisher.

@@ -1,0 +1,68 @@
+{
+  "kind": "x650_isolated_validation_figure_v1",
+  "complete": true,
+  "stage": "fast",
+  "full_window_task_s": [
+    0.0,
+    24.0
+  ],
+  "metrics": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.0,
+      24.0
+    ],
+    "sample_count": 6001,
+    "duration_s": 23.999999999999993,
+    "position_rmse_m": 0.006734414223724676,
+    "position_max_m": 0.011760660793353155,
+    "axis_rmse_m": [
+      0.005038103616994521,
+      0.002129940811743988,
+      0.003928511043588811
+    ]
+  },
+  "metric_match_verified_before_write": true,
+  "inputs": {
+    "native_trace": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/native_trace.csv",
+      "sha256": "ea5721ce55f3b41ca66dc4f468d4fb7fc40e10da3d2d235914bdc21f2b7a0b02"
+    },
+    "live_start": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/live_start.json",
+      "sha256": "33f9f2adc1d07fe66c319f5b7dadf874b01f9ecbf18d555513d26b8f711b0f60"
+    },
+    "task": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/controller_task.json",
+      "sha256": "90c2d7304bf3e93caeb6a7611c366104454d83a45d43c2d851782c40b3c267e0"
+    },
+    "report": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_audit_v1/report.json",
+      "sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea"
+    }
+  },
+  "coordinate_frame": "world ENU",
+  "no_offset_or_phase_fit": true,
+  "resampled": false,
+  "hardware_qualified": false,
+  "renderer": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_isolated_validation.py",
+    "sha256": "abd14e22f30887fe68f2e50cc3ac9d5692fa352d7617fde10b5dc04414f793b1"
+  },
+  "outputs": {
+    "endpoint_chart_data.csv": {
+      "bytes": 1386166,
+      "sha256": "e7f0badb98999242e232e6d0f04af99503ab6c88c660f42954afeed9de27c37a"
+    },
+    "endpoint_validation.pdf": {
+      "bytes": 342008,
+      "sha256": "442bafa270c2bf5c3e474211f3226cdcadd09093991a0f098c4b76a4bba02def"
+    },
+    "endpoint_validation.png": {
+      "bytes": 366741,
+      "sha256": "8bddeb1fb89d844bc4c8ee9d4a484b1978e716c4ab1d840abd9a94ddabb9ac71"
+    }
+  }
+}

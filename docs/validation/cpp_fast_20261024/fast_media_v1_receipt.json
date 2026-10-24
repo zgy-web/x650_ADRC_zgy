@@ -1,0 +1,17 @@
+{
+  "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_media_v1.zip",
+  "bytes": 7691014,
+  "sha256": "b808e0f61c43a19fc29428ea2b18ec3bd8f441d2ec32fe5eacf1088d7d279389",
+  "entries": 28,
+  "uncompressed_bytes": 9248214,
+  "all_entries_verified": true,
+  "complete_decode": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 576,
+    "duration_s": 24.0,
+    "verification": "complete FFmpeg framemd5 decode"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_full_raw_v1.zip",
+  "bytes": 58852185,
+  "sha256": "a424d2b874639a82a60720a8f603d4609574c57f61d0e75e6bd1f3b8227b3fc8",
+  "entries": 6722,
+  "uncompressed_bytes": 272958475,
+  "manifest_sha256": "59af4e02c374bf75a2a311bcba2866bdc2a92bc67275635d5e69953835211b1b",
+  "physical_certificate_sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea",
+  "all_entries_size_and_sha256_verified": true,
+  "all_sources_unchanged_after_write": true,
+  "embedded_manifest_exact": true,
+  "all_original_certificate_artifacts_verified_again": true,
+  "original_certificate_artifact_count": 3732,
+  "verification_sources_absent": [
+    "scripts/plot_x650_cpp_fast.py"
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "kind": "independent_cpp_fast_review_v1",
+  "passed": true,
+  "scope": "Independent raw-byte, closed phase-law/native error, CDR, physics-adoption and ULog lifecycle cross-check; no new physics, time/space fitting or hardware claim",
+  "report": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_audit_v1/report.json",
+    "bytes": 4379364,
+    "sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea"
+  },
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118",
+  "window_sim_s": [
+    46.764,
+    70.76400000000001
+  ],
+  "trajectory": {
+    "kind": "fast_figure8",
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 8.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0,
+    "duration_s": 24.0
+  },
+  "metrics": {
+    "endpoint": {
+      "samples": 6001,
+      "duration_s": 23.999999999999993,
+      "rmse_m": 0.006734414223724676,
+      "peak_m": 0.011760660793353155
+    },
+    "tracking_endpoint": {
+      "samples": 4501,
+      "duration_s": 17.999999999999993,
+      "rmse_m": 0.00753873176119032,
+      "peak_m": 0.011760660793353155
+    },
+    "tail_endpoint": {
+      "samples": 1001,
+      "duration_s": 4.0,
+      "rmse_m": 0.002378813398556662,
+      "peak_m": 0.00485584096179712
+    }
+  },
+  "tilt_peak_deg": 1.0256682014161749,
+  "source": {
+    "snapshots": 5982,
+    "worker_link_count": 1198,
+    "clean_stop": true
+  },
+  "worker": {
+    "calls": 1198,
+    "accepted": 1198,
+    "core_median_ms": 6.990365,
+    "core_max_ms": 18.034395,
+    "callback_max_ms": 18.225463
+  },
+  "execution": {
+    "continuous_sends": 1200,
+    "all_sends": 1201,
+    "receipts": 1201,
+    "stop_zero": 1,
+    "repeated_sends": 3,
+    "joint_counts": [
+      {
+        "adopted": 1201
+      },
+      {
+        "adopted": 1201
+      }
+    ],
+    "same_physics_boundary": 1199,
+    "gate_events": 1197,
+    "dispatch_ticks": 4320,
+    "faults": 0,
+    "max_send_gap_ms": 28.911026,
+    "command_age_max_ms": 40.662868
+  },
+  "recovery": {
+    "runtime_closed": true,
+    "landed_and_disarmed": true,
+    "parameters_restored": true,
+    "child_exit_codes": {
+      "source_recorder": 0,
+      "worker": 0,
+      "ingress": 0,
+      "dispatcher": 0,
+      "consumption": 0,
+      "cpp_source": 0
+    },
+    "last_status_s": 80.448,
+    "last_land_s": 79.944,
+    "failsafe_samples_active_and_recovery": 0
+  },
+  "limitations": [
+    "Precise simulated EV localization; no GPS or hardware accuracy claim",
+    "No per-publication PX4 ACK is inferred from ULog value matching",
+    "Float64-to-counter mapping uses declared exclusive ordered exactly-once bridge assumption",
+    "Independent per-joint adoption is recorded honestly, without claiming all pairs share the same physics boundary",
+    "One ordinary-scheduler execution is not a worst-case timing guarantee"
+  ],
+  "original_identities": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/launch.json",
+      "bytes": 260010,
+      "sha256": "419bd254016247605cfb4bb175a0b1fc5103352f37158c8c4521ef5e646f68a4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/task.json",
+      "bytes": 7637,
+      "sha256": "90c2d7304bf3e93caeb6a7611c366104454d83a45d43c2d851782c40b3c267e0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/protocol.json",
+      "bytes": 3820,
+      "sha256": "9f27b9c24eb79c14d62f1b22d40c1d28c87a207f8f93718a0aaec4a85608f5be"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/sources.zip",
+      "bytes": 731706,
+      "sha256": "6b38d71b47008278cf17e7bc998deb72e92ca2ac6391e84b06450b15392658ea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/source_manifest.json",
+      "bytes": 30769,
+      "sha256": "a569d2420c297c4a4a4a9c5558cd7b856e737f68c57afc8aab65f881ac6f897f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/source_manifest_after.json",
+      "bytes": 30769,
+      "sha256": "a569d2420c297c4a4a4a9c5558cd7b856e737f68c57afc8aab65f881ac6f897f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/runtime_binaries.zip",
+      "bytes": 1758897,
+      "sha256": "972048e37413e1da990acfcf97440b236f314f84946fd9c8024db7b0f7ae082e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/runtime_binary_manifest.json",
+      "bytes": 2142,
+      "sha256": "c9fcfa81b87ff1592a80fb4f32adcd962292ba01443844f94b73cf67a6adb600"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_launch_20261024_200610_52114/runtime_binary_manifest_after.json",
+      "bytes": 1352,
+      "sha256": "671db56de9e7e1f8b9bb71f9c4aef93126ac93f708cba6a6873894f96a8c309d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/controller_metadata.json",
+      "bytes": 616675,
+      "sha256": "4598eed9943c0c8181800611c28aa0d7eaf413c76bba1a9c8cca29b3fe168fa5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/stage_result.json",
+      "bytes": 8079,
+      "sha256": "69df1f5f51b2451355012053993913a539750c248cceab6db93859792af00d74"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/live_start.json",
+      "bytes": 7123,
+      "sha256": "33f9f2adc1d07fe66c319f5b7dadf874b01f9ecbf18d555513d26b8f711b0f60"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/lifecycle.json",
+      "bytes": 652,
+      "sha256": "ed540f649d871b428ebf562330311aed2b8f99802c6c9267eebe4a28f0d2a9a7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/worker_final.json",
+      "bytes": 317,
+      "sha256": "463008166c784686b61ff65d2d01a938eab269d6a6085fc54c790b170fa1fe8c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/diagnostic_sender.json",
+      "bytes": 285,
+      "sha256": "fd9149e5250edd8f7425d3d0c818b1ead072b931a9de6e97eb9f4067309a39c9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/cpp_source/source_final.json",
+      "bytes": 691,
+      "sha256": "ab36500bf4d316feb053556a40772a4f9043e7287d308349ce6fcca7bd0d8dcc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/cpp_source/source_selections.csv",
+      "bytes": 860964,
+      "sha256": "7c6d44364c12804dd1682b5e0d981c01c6fdacfd84e4b5cbc37355e587903b21"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/worker_timing.json",
+      "bytes": 230432,
+      "sha256": "4cadd9681caf521c152e883d02c00c619ea929fa3d108d6e7852a994cea9d692"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/native_trace.csv",
+      "bytes": 11940233,
+      "sha256": "ea5721ce55f3b41ca66dc4f468d4fb7fc40e10da3d2d235914bdc21f2b7a0b02"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/ts20_state.csv",
+      "bytes": 10029194,
+      "sha256": "73a797f94014a8f9d608ff1f076560d9ebbad72c66358cb530a2bc9c53dda021"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/ts20_packets.csv",
+      "bytes": 1593693,
+      "sha256": "4f27400e6fe5ded6a4b4f2d3b5cd3f1a71b380ab04cdccdb217ce93745ded388"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/px4.ulg",
+      "bytes": 22406170,
+      "sha256": "6a3380110c1036fa1dd3950dc9be8f5651a1c7afedfd5499804404f909aeb55a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/diagnostic_parameters_restored.json",
+      "bytes": 12636,
+      "sha256": "632a01f97538ba01a79fd5ede298b2d0d3c0b88c37069f140a6687cabe58da43"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/source_recording/diagnostics.jsonl",
+      "bytes": 3349486,
+      "sha256": "fa1e288779d265921a5c43d677ba59de5587c10bbb5b6545d7b688b2b14826aa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_fast_v1_20261024_200653_52118/isolated_live/source_recording/manifest.json",
+      "bytes": 367,
+      "sha256": "7cef163aaddd34a9c240f81edaa50acdb2ae6e60501b1f4ef71494b06c2a1e7b"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/review_remote.py",
+      "bytes": 13322,
+      "sha256": "69c234de5226db15f14d0769e5adacb6cceafc01f17a24c7598968c33d7c60cb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/review.json",
+      "bytes": 9459,
+      "sha256": "e746d6e1d515725ccb124f26f0673b92a633be79d06a3edbc9c9c43de03c573a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/ranges_and_candidate_counts.json",
+      "bytes": 2237,
+      "sha256": "52544c3ba704b39f293f631bfe524384c1771170d9ecdc14a30b20744240013f"
+    }
+  ]
+}

@@ -17,7 +17,14 @@ class TrajectoryPlan {
     output.law_.period=12.;output.law_.cycles=2;output.law_.start=2.;output.law_.ramp=2.;
     output.law_.validate();return output;
   }
-  bool is_normal() const noexcept {return law_.figure8;}
+  static TrajectoryPlan fast() {
+    TrajectoryPlan output;
+    output.law_.figure8=true;output.law_.ax=.25;output.law_.az=.10;
+    output.law_.period=8.;output.law_.cycles=2;output.law_.start=2.;output.law_.ramp=2.;
+    output.law_.validate();return output;
+  }
+  bool is_normal() const noexcept {return law_.figure8 && law_.period==12.;}
+  bool is_fast() const noexcept {return law_.figure8 && law_.period==8.;}
   x650::Target sample(double time,const x650::V3& center) const {
     const auto value=law_.sample(time,center);
     return {value.p,value.v,value.a};

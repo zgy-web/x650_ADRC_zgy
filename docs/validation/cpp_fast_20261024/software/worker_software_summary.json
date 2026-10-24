@@ -1,0 +1,40 @@
+{
+  "kind": "cpp_fast_worker_software_summary_v1",
+  "passed": true,
+  "simulation_only": true,
+  "hardware_qualified": false,
+  "build_exit": 0,
+  "ctest_count": 6,
+  "reference": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/reference_v1/report.json",
+    "bytes": 3403,
+    "sha256": "5166d1bc38ae5a9d28b3ac7968b487d94b10f76cb07bb02f33d75633f2d93f61"
+  },
+  "numerical": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/dynamic_check_v1/report.json",
+    "bytes": 52966,
+    "sha256": "be126d8f93608fc3986727763277413bb0416ab83b984bf85e8da8165abe6d8a"
+  },
+  "sequence": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/sequence_v1/manifest.json",
+    "bytes": 35336,
+    "sha256": "33bca9b9ea0beef5606376742022fd94df4e00f686781ea76f6e9582a15651de"
+  },
+  "actual_ros": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/worker_ros_v1/report.json",
+    "bytes": 1085883,
+    "sha256": "4cbb0bc682fff3bc285604e8945fb99ea3c090cfb7c9f0ef20d3131b4a4e6f67"
+  },
+  "worker": {
+    "path": "/root/autodl-tmp/flyarm_cpp_fast_20261024/install/flyarm_mpc_cpp/lib/flyarm_mpc_cpp/isolated_worker",
+    "bytes": 1153240,
+    "sha256": "401bcb5f835f9d1df25ce660fca1066457ae775759cd63ad4f2cf8902bf79de3"
+  },
+  "actual_ros_accepted": 517,
+  "actual_ros_sent": 520,
+  "callback_median_ms": 7.019645,
+  "callback_peak_ms": 10.815348,
+  "command_absolute_peak": 0.0,
+  "diagnostic_absolute_peak": 0.0,
+  "scope": "Software only: independent original Python reference and matrix oracle, original native Core math, and actual ROS worker. No physical/actuator conclusion."
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "x650_cpp_fast_qualification_v1",
+  "simulation_only": true,
+  "task_config": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/task.json",
+    "sha256": "90c2d7304bf3e93caeb6a7611c366104454d83a45d43c2d851782c40b3c267e0"
+  },
+  "startup_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/startup_manifest.json",
+    "sha256": "429e4b27f63e0a969e9dfab64e82c5845b24f174d02f16aa641a46cba3edac48"
+  },
+  "protocol": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_inputs_v1/protocol.json",
+    "sha256": "9f27b9c24eb79c14d62f1b22d40c1d28c87a207f8f93718a0aaec4a85608f5be"
+  },
+  "reference_proof": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/reference_v1/report.json",
+    "sha256": "5166d1bc38ae5a9d28b3ac7968b487d94b10f76cb07bb02f33d75633f2d93f61"
+  },
+  "numerical_proof": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/fast_numerical_proof_v1.json",
+    "sha256": "d682f877dde952006268e24d50d7d14be7b1fc0c67d180c81a9a2b58610ce425"
+  },
+  "worker_proof": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/worker_ros_v1/report.json",
+    "sha256": "4cbb0bc682fff3bc285604e8945fb99ea3c090cfb7c9f0ef20d3131b4a4e6f67"
+  },
+  "transport_proof": {
+    "path": "/root/autodl-tmp/flyarm_gateway_streaming_20261024/transport_streaming_v1/report.json",
+    "sha256": "b0c9181d7477e912671812ac3c6d34962e161408a1c765938c7693d714a6cc68",
+    "bytes": 4383
+  }
+}

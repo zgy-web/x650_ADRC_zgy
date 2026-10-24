@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "archive_sha256": "b808e0f61c43a19fc29428ea2b18ec3bd8f441d2ec32fe5eacf1088d7d279389",
+  "entries_verified": 28,
+  "bytes_verified": 9248214,
+  "embedded_manifest_equals_external": true,
+  "video_sha256": "020e034b5a92918b3b803bd708b984cd3c5d9de1f415748768fe4671e634265f",
+  "full_decode": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 576,
+    "duration_s": 24.0,
+    "verification": "complete FFmpeg framemd5 decode"
+  },
+  "preview_source_frame": {
+    "index": 287,
+    "task_time_s": 11.958333333333334,
+    "exact_bytes": true
+  }
+}

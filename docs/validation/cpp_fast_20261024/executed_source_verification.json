@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "scope": "All archived fast adapter and worker project source bytes; new explanatory README was written after execution and is not claimed as executed source",
+  "files": [
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/CMakeLists.txt",
+      "sha256": "c5df2c8fa4965888a5103a020f625ace1c3589507e6772f8ebbbf0f9d31daf8f"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/bounded_record_queue.hpp",
+      "sha256": "5565a0af2526fa8df272b4797491561d00945accf368101b0d26b925ef215235"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/config_io.hpp",
+      "sha256": "df6bc20ba1b23f012baee5485d4abe397b590551e463d95176e8eacb598f5e08"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/diagnostics_json.hpp",
+      "sha256": "035ef14ec934f3b04170ceedb792cb81be15d845813635a46c8d893efb08d361"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/thread_placement.hpp",
+      "sha256": "2ecd5b8bf3f6966e5a7480a31e447bc025a7da6c5a4f202c6e8c65e1a4be9bef"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/trajectory_plan.hpp",
+      "sha256": "90e4897f537aafb99f82261ffc8bc682d6473a26abca3d0d513241289cb3bd68"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/worker_contract.hpp",
+      "sha256": "d368dffa52209391a4c4c85ca8ef1fd3471dac1511e9b7f1d6469be2dce87b82"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/package.xml",
+      "sha256": "710087080f49336f9247bed36fc0e0a9e0388be190935420f81735a4cf20fc9c"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/src/isolated_worker.cpp",
+      "sha256": "7ab06faa244df747b0b0fdf2846a4f8bbb2bab3c8951948bc17a02d05a3c931c"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/probe_worker_ros.py",
+      "sha256": "de81b85bcf9bc1ba6d230509d4cc4b7208feec7ffa232e0f5ff063c0dbf06f7c"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_config_diagnostics.cpp",
+      "sha256": "c5e1e77dcaec267e3d95e73d620de52c0f4933a13d9731493828448750e50e6a"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_fast_config.cpp",
+      "sha256": "994ed676a1ead7d0fe8d7ddc88706fb19f1a8395a997b7fb8982a5e946c5c132"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_fast_contract.cpp",
+      "sha256": "d0751e31b9739b16a516da87c1fd0ea4afc6b09e754bc0c3255883ccef82925b"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_normal_config.cpp",
+      "sha256": "18a0b1e713fb8d11cae91abc2d45a924f601610a04232054be0f086f33f82f48"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_normal_contract.cpp",
+      "sha256": "ee0d3f2f8c1fc73d93750c1ec3f26d2efaa8f138242848cf31e32d3717e99f65"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/test_worker_contract.cpp",
+      "sha256": "3934f8ed5dc9a765ecae5183ce39a0bd87b665ce91bcc6b7cfed743e957e4529"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_cpp/test/trajectory_probe.cpp",
+      "sha256": "af38737acbfa40555dd4aa356c72e972cda79edd4c6847b94f026bb437579aa9"
+    },
+    {
+      "path": "simulations/x650_cpp_fast_v1/__init__.py",
+      "sha256": "8b9f7603fde4d8b5d050f2cf0e113e434e897ea722c07a4fc111895b04c80650"
+    },
+    {
+      "path": "simulations/x650_cpp_fast_v1/launch.py",
+      "sha256": "6e9209ca91b7416d9efb06b404304ddf35be871984e71cc2d291ee995284d2dc"
+    },
+    {
+      "path": "simulations/x650_cpp_fast_v1/qualification.py",
+      "sha256": "600ecacfeb53f42727c73b51d0f4966a2947f9b6012d3b07745e1ee6c4a37ac9"
+    },
+    {
+      "path": "simulations/x650_cpp_fast_v1/run_case.py",
+      "sha256": "5db3b992ffcd6ed4f38b020fd1e40ccdb0cf1a354ce61ab579fff9f633475ae2"
+    },
+    {
+      "path": "simulations/x650_cpp_fast_v1/task.py",
+      "sha256": "c0f059a343ffce3827ec370aecb0da636b63f57538eb8243da0bfd1d44ceae03"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "kind": "cpp_fast_reference_preview_v1",
+  "trajectory": {
+    "kind": "fast_figure8",
+    "amplitude_x": 0.25,
+    "amplitude_z": 0.1,
+    "period_s": 8.0,
+    "cycles": 2,
+    "start_s": 2.0,
+    "ramp_s": 2.0,
+    "duration_s": 24.0
+  },
+  "passed": true,
+  "complete": true,
+  "source_artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/validate_x650_cpp_fast_reference.py",
+      "bytes": 5751,
+      "sha256": "d4c7d3d264459c80f349cfe8b47e16df558bded16555894e0e85245cfcd9eaeb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+      "bytes": 87999,
+      "sha256": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/trajectory_plan.hpp",
+      "bytes": 1986,
+      "sha256": "90e4897f537aafb99f82261ffc8bc682d6473a26abca3d0d513241289cb3bd68"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_state_cpp/include/flyarm_state_cpp/source_core.hpp",
+      "bytes": 13869,
+      "sha256": "4ede458e7753c99cd770d4cc3f28e0f95464c6cddeac630928fe0d702e73071c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/test/trajectory_probe.cpp",
+      "bytes": 1323,
+      "sha256": "af38737acbfa40555dd4aa356c72e972cda79edd4c6847b94f026bb437579aa9"
+    }
+  ],
+  "binary": {
+    "path": "/root/autodl-tmp/flyarm_cpp_fast_20261024/build/flyarm_mpc_cpp/trajectory_probe",
+    "bytes": 30816,
+    "sha256": "96b853ae4a16982c7fd267f09af8cce1a8f52417a099f0900366fe10e7846d7a"
+  },
+  "physical_acceptance": false,
+  "maximum_absolute_error": {
+    "position": 1.1102230246251565e-16,
+    "velocity": 2.7755575615628914e-17,
+    "acceleration": 5.551115123125783e-17,
+    "preview_position": 0.0,
+    "preview_velocity": 2.7755575615628914e-17,
+    "preview_acceleration": 5.551115123125783e-17
+  },
+  "c2_boundaries": [
+    {
+      "t": 2.0,
+      "epsilon_s": 1e-08,
+      "maximum_pva_difference": 7.363107618721853e-17
+    },
+    {
+      "t": 4.0,
+      "epsilon_s": 1e-08,
+      "maximum_pva_difference": 4.9348019898575834e-09
+    },
+    {
+      "t": 18.0,
+      "epsilon_s": 1e-08,
+      "maximum_pva_difference": 4.934802652552602e-09
+    },
+    {
+      "t": 20.0,
+      "epsilon_s": 1e-08,
+      "maximum_pva_difference": 7.363108926672571e-17
+    }
+  ],
+  "case_count": 2570,
+  "target_sample_count": 41120,
+  "actual_dt_s": [
+    0.012,
+    0.016,
+    0.02,
+    0.024
+  ],
+  "time_tolerance": 0.0,
+  "pva_tolerance": 2e-12,
+  "cases": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/reference_v1/cases.json",
+    "bytes": 247455,
+    "sha256": "f40d76eee16e328b742eeba98bd2a678bb8b4bfc14d2f29dec3ceec42d1b8330"
+  },
+  "corpus": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/reference_v1/corpus.txt",
+    "bytes": 102425,
+    "sha256": "b8f8bc1d1a2a7228510644d13e8e5a46ab86887bfc9a2c348e4b9c9ba272c439"
+  },
+  "actual_output": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/reference_v1/probe_stdout.txt",
+    "bytes": 5585995,
+    "sha256": "faf75a33986028dba579566fdadfd77517bebf5010e26c8b098cdf8c78d6f490"
+  }
+}

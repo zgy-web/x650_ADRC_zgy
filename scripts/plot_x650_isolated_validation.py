@@ -47,7 +47,7 @@ def checked_input(report, path):
     return {"path": str(path), "sha256": actual}
 
 
-def verified_data(report_path, *, certificate_kinds=None):
+def verified_data(report_path, *, certificate_kinds=None, stage_durations=None):
     """Return original physical rows only after matching the certified metric."""
     report_path = Path(report_path).resolve(strict=True)
     report = read(report_path)
@@ -67,7 +67,8 @@ def verified_data(report_path, *, certificate_kinds=None):
     inputs["report"] = {"path": str(report_path), "sha256": sha(report_path)}
     start, task = read(paths["live_start"]), read(paths["task"])
     origin, duration = float(start["origin_s"]), float(task["duration_s"])
-    require(task["stage"] == stage and duration == (30. if stage == "tip_hold" else 32.),
+    durations = ({"tip_hold": 30., "normal": 32.} if stage_durations is None else stage_durations)
+    require(task["stage"] == stage and stage in durations and duration == durations[stage],
             "Unexpected stage or incomplete declared duration")
     window = np.asarray(report["window_sim_s"], float)
     require(window.shape == (2,) and np.isfinite(window).all()
@@ -130,7 +131,7 @@ def render(data, output):
     t, actual = data["values"][:, 1], data["values"][:, 2:5]
     desired, errors, norm = data["desired"], data["error"], data["norm"]
     metrics = data["metrics"]
-    title = "Normal figure eight" if data["stage"] == "normal" else "End-effector hold"
+    title = {"normal": "Normal figure eight", "fast": "Fast figure eight"}.get(data["stage"], "End-effector hold")
     with plt.rc_context({"font.size": 10, "axes.titlesize": 11, "axes.labelsize": 10,
                          "pdf.fonttype": 42, "ps.fonttype": 42, "path.simplify": False}):
         figure = plt.figure(figsize=(13, 7.4))
@@ -140,7 +141,7 @@ def render(data, output):
         magnitude_axis = figure.add_subplot(grid[0, 1])
         component_axis = figure.add_subplot(grid[1, 1], sharex=magnitude_axis)
         path_axis.plot(actual[:, 0], actual[:, 2], color="#0072B2", lw=1.2, label="Native physical tip", zorder=2)
-        if data["stage"] == "normal":
+        if data["stage"] in {"normal", "fast"}:
             path_axis.plot(desired[:, 0], desired[:, 2], color="#D55E00", lw=1.25, ls="--", label="Reference", zorder=3)
         else:
             path_axis.scatter(desired[0, 0], desired[0, 2], marker="+", s=140, linewidths=1.8,
@@ -162,7 +163,7 @@ def render(data, output):
         component_axis.set(title="C  Signed position error (actual minus reference)",
                            xlabel="Task time [s]", ylabel="Axis error [mm]", xlim=(0., data["duration"]))
         component_axis.legend(loc="best", ncol=3, fontsize=9)
-        if data["stage"] == "normal":
+        if data["stage"] in {"normal", "fast"}:
             for axis in (magnitude_axis, component_axis):
                 axis.axvspan(0., data["reference"].start_s, color="#777777", alpha=.08)
                 axis.axvspan(data["reference"].end_s, data["duration"], color="#777777", alpha=.08)
@@ -174,8 +175,8 @@ def render(data, output):
                     (data["duration"], len(t), metrics["position_rmse_m"] * 1000., metrics["position_max_m"] * 1000.),
                     ha="center", fontsize=11)
         footer = "Original Gazebo physics timestamps and measured tip; no time/position alignment or resampling. Simulation result; not hardware qualification."
-        if data["stage"] == "normal":
-            footer += "\nLight shading: initial/final hold; the full 32 s remains in every metric."
+        if data["stage"] in {"normal", "fast"}:
+            footer += "\nLight shading: initial/final hold; the full %.0f s remains in every metric." % data["duration"]
         footer += "\nNative CSV SHA256: " + data["inputs"]["native_trace"]["sha256"]
         figure.text(.075, .065, footer, fontsize=8.3, va="center", linespacing=1.55)
         # Only now create the destination, after all numeric/evidence checks.

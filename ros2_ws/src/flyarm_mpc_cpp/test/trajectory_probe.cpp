@@ -2,14 +2,14 @@
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
-// Input: case_id kind(0=hold,1=normal) t dt nodes node_dt center[3].
+// Input: case_id kind(0=hold,1=normal,2=fast) t dt nodes node_dt center[3].
 // Output: case_id node(-1=current) sample_time position[3] velocity[3] acceleration[3].
 int main(){try{
   unsigned id;int kind,nodes;double t,dt,node_dt;x650::V3 center;
   std::cout<<std::setprecision(17);
   while(std::cin>>id>>kind>>t>>dt>>nodes>>node_dt>>center[0]>>center[1]>>center[2]){
-    if(kind!=0&&kind!=1)throw std::invalid_argument("Invalid probe trajectory kind");
-    const auto plan=kind?flyarm_mpc_cpp::TrajectoryPlan::normal():flyarm_mpc_cpp::TrajectoryPlan{};
+    if(kind!=0&&kind!=1&&kind!=2)throw std::invalid_argument("Invalid probe trajectory kind");
+    const auto plan=kind==2?flyarm_mpc_cpp::TrajectoryPlan::fast():kind==1?flyarm_mpc_cpp::TrajectoryPlan::normal():flyarm_mpc_cpp::TrajectoryPlan{};
     const auto emit=[&](int node,double at,const x650::Target& value){
       std::cout<<id<<' '<<node<<' '<<at;
       for(const auto& v:{value.position,value.velocity,value.acceleration})for(double n:v)std::cout<<' '<<n;

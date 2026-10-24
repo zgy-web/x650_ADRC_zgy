@@ -172,14 +172,15 @@ def load_recording(report_path, expected_sha256=None):
             "source": source, "robot": robot, "geometry_report": geometry_report, "fk": fk, "inputs": inputs}
 
 
-def frame_times(duration, fps=FPS, preview_time=None):
-    require(type(fps) is int and fps == FPS and math.isfinite(duration) and duration == DURATION,
-            "This entry requires the complete 32 s normal stage at 24 fps")
+def frame_times(duration, fps=FPS, preview_time=None, *, expected_duration=DURATION):
+    require(expected_duration in (24., DURATION) and type(fps) is int and fps == FPS
+            and math.isfinite(duration) and duration == expected_duration,
+            "This entry requires the complete declared stage at 24 fps (default 32 s normal stage)")
     if preview_time is not None:
         require(math.isfinite(preview_time) and 0 <= preview_time <= duration, "Preview time is outside the task window")
         return np.array([preview_time], float)
-    # 768 frames encode exactly 32 seconds; the end state at t=32 is archived
-    # separately as final_state.png. Metrics include every full-window sample.
+    # Encode exactly the full duration; archive the end state separately.
+    # Metrics include every full-window native physical sample.
     return np.arange(round(duration * fps), dtype=float) / fps
 
 
@@ -394,7 +395,7 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
             proc.stdin.close()
             require(proc.wait() == 0, "Video encoding failed; inspect ffmpeg.log")
             video_contract = video_decode(ffmpeg, video, len(frames))
-            frame(DURATION).save(output / "final_state.png")
+            frame(bundle["verified"]["duration"]).save(output / "final_state.png")
         return {"geometry": scene_details, "video": None if preview else identity(video),
                 "effective_offscreen_samples": int(model.vis.quality.offsamples),
                 "decoded_video": video_contract, "frames": len(frames), "preview_time_s": float(frames[0]) if preview else None,
@@ -413,7 +414,8 @@ def render(args, *, loader=load_recording):
     for protected in (Path(bundle["report"]["source_run_directory"]), Path(bundle["report"]["launch_directory"]),
                       Path(args.report).resolve().parent, bundle["source"].parent):
         require(not output.is_relative_to(protected.resolve()), "Presentation output must be outside original evidence/model folders")
-    frames = frame_times(bundle["verified"]["duration"], args.fps, args.preview_time if args.preview_only else None)
+    frames = frame_times(bundle["verified"]["duration"], args.fps, args.preview_time if args.preview_only else None,
+                         expected_duration=bundle.get("expected_duration_s", DURATION))
     ffmpeg = find_ffmpeg(args.ffmpeg) if not (args.audit_only or args.preview_only) else None
     inputs = bundle["inputs"]
     if ffmpeg is not None:
@@ -425,7 +427,7 @@ def render(args, *, loader=load_recording):
         except importlib.metadata.PackageNotFoundError:
             versions[name] = None
     record = {"kind": bundle.get("visualization_kind", "x650_isolated_normal_recorded_visualization_v1"), "complete": False,
-              "stage": "normal", "source_certificate_passed": True, "eligible_as_stage_gate": False,
+              "stage": bundle["verified"]["stage"], "source_certificate_passed": True, "eligible_as_stage_gate": False,
               "hardware_qualified": False, "synthetic": False, "new_physics_run": False,
               "native_gazebo_screen_capture": False, "width": WIDTH, "height": HEIGHT, "fps": args.fps,
               "recorded_duration_s": bundle["verified"]["duration"], "video_time_scale": 1,

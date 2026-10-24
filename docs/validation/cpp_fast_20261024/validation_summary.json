@@ -1,0 +1,35 @@
+{
+  "kind": "x650_cpp_fast_validation_summary_v1",
+  "physical_certificate_passed": true,
+  "physical_certificate_sha256": "56b58ee6e4128d4c1bc19507517a42e57aea564602708ae0dbca4243964555ea",
+  "local_cpp_control_and_admission_regressions": {
+    "passed": true,
+    "tests": 118,
+    "pattern": "test_x650_cpp_*.py",
+    "includes_fast_presentation_tests": 3
+  },
+  "original_presentation_regressions": {
+    "passed": true,
+    "tests": 8
+  },
+  "server_worker_ctest": {
+    "passed": true,
+    "tests": 6
+  },
+  "dynamic_numerical_cases": {
+    "passed": true,
+    "cases": 48
+  },
+  "compiled_reference": {
+    "passed": true,
+    "cases": 2570,
+    "target_samples": 41120
+  },
+  "actual_ros_cases": {
+    "passed": true,
+    "cases": 4,
+    "positive_steps": 160,
+    "negative_case_steps": 120
+  },
+  "scope": "Observed tests and one new precise-EV complete fast simulation; independent raw review and video are separate deliverables. No hardware qualification."
+}

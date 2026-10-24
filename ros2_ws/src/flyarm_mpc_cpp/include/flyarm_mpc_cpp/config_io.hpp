@@ -68,13 +68,16 @@ inline void write_json(const fs::path& path,const Json::Value& value) {
 inline TrajectoryPlan trajectory_from_json(const Json::Value& value) {
   const auto kind=string_field(value,"kind");
   if(kind=="hold"){exact_keys(value,{"kind"});return {};}
-  if(kind!="normal_figure8")throw std::invalid_argument("Only hold or frozen ordinary figure-eight admitted");
+  if(kind!="normal_figure8" && kind!="fast_figure8")
+    throw std::invalid_argument("Only hold or explicitly frozen normal/fast figure-eight admitted");
   exact_keys(value,{"kind","amplitude_x","amplitude_z","period_s","cycles","start_s","ramp_s","duration_s"});
+  const bool fast=kind=="fast_figure8";
   if(number(value["amplitude_x"])!=.25 || number(value["amplitude_z"])!=.10 ||
-     number(value["period_s"])!=12. || integer(value["cycles"])!=2 ||
-     number(value["start_s"])!=2. || number(value["ramp_s"])!=2. || number(value["duration_s"])!=32.)
-    throw std::invalid_argument("Frozen ordinary figure-eight parameters differ");
-  return TrajectoryPlan::normal();
+     number(value["period_s"])!=(fast?8.:12.) || integer(value["cycles"])!=2 ||
+     number(value["start_s"])!=2. || number(value["ramp_s"])!=2. ||
+     number(value["duration_s"])!=(fast?24.:32.))
+    throw std::invalid_argument("Frozen figure-eight stage parameters differ");
+  return fast?TrajectoryPlan::fast():TrajectoryPlan::normal();
 }
 struct Startup {
   Json::Value manifest;

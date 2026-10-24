@@ -34,3 +34,12 @@ simulations/x650_cpp_live_v1/*.py -text whitespace=cr-at-eol
 configs/experiments/x650_cpp_normal_v1.json -text whitespace=cr-at-eol
 scripts/*x650_cpp_normal* -text whitespace=cr-at-eol
 tests/unit/test_x650_cpp_normal* -text whitespace=cr-at-eol
+# Preserve exact fast-stage source/proof identities across hosts.
+simulations/x650_cpp_fast_v1/** -text whitespace=cr-at-eol
+configs/experiments/x650_cpp_fast_v1.json -text whitespace=cr-at-eol
+scripts/*x650_cpp_fast* -text whitespace=cr-at-eol
+tests/unit/test_x650_cpp_fast* -text whitespace=cr-at-eol
+scripts/plot_x650_isolated_validation.py -text whitespace=cr-at-eol
+scripts/render_x650_isolated_validation.py -text whitespace=cr-at-eol
+# Retain the exact executed qualification source, including its final blank line.
+simulations/x650_cpp_fast_v1/qualification.py -text whitespace=cr-at-eol,-blank-at-eof

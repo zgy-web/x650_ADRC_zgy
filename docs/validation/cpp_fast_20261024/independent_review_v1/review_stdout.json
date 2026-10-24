@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "metrics": {
+    "endpoint": {
+      "samples": 6001,
+      "duration_s": 23.999999999999993,
+      "rmse_m": 0.006734414223724676,
+      "peak_m": 0.011760660793353155
+    },
+    "tracking_endpoint": {
+      "samples": 4501,
+      "duration_s": 17.999999999999993,
+      "rmse_m": 0.00753873176119032,
+      "peak_m": 0.011760660793353155
+    },
+    "tail_endpoint": {
+      "samples": 1001,
+      "duration_s": 4.0,
+      "rmse_m": 0.002378813398556662,
+      "peak_m": 0.00485584096179712
+    }
+  },
+  "tilt": 1.0256682014161749,
+  "worker": {
+    "calls": 1198,
+    "accepted": 1198,
+    "core_median_ms": 6.990365,
+    "core_max_ms": 18.034395,
+    "callback_max_ms": 18.225463
+  },
+  "execution": {
+    "continuous_sends": 1200,
+    "all_sends": 1201,
+    "receipts": 1201,
+    "stop_zero": 1,
+    "repeated_sends": 3,
+    "joint_counts": [
+      {
+        "adopted": 1201
+      },
+      {
+        "adopted": 1201
+      }
+    ],
+    "same_physics_boundary": 1199,
+    "gate_events": 1197,
+    "dispatch_ticks": 4320,
+    "faults": 0,
+    "max_send_gap_ms": 28.911026,
+    "command_age_max_ms": 40.662868
+  },
+  "recovery": {
+    "runtime_closed": true,
+    "landed_and_disarmed": true,
+    "parameters_restored": true,
+    "child_exit_codes": {
+      "source_recorder": 0,
+      "worker": 0,
+      "ingress": 0,
+      "dispatcher": 0,
+      "consumption": 0,
+      "cpp_source": 0
+    },
+    "last_status_s": 80.448,
+    "last_land_s": 79.944,
+    "failsafe_samples_active_and_recovery": 0
+  },
+  "extra": {
+    "unique_continuous_candidates": 1197,
+    "not_sent_accepted_candidates": [
+      1198
+    ],
+    "repeated_sends": [
+      {
+        "dispatch_sequence": 3466,
+        "command_sequence": 346,
+        "sim_s": 53.704,
+        "sent_monotonic_ns": 59629383844799603
+      },
+      {
+        "dispatch_sequence": 3710,
+        "command_sequence": 589,
+        "sim_s": 58.584,
+        "sent_monotonic_ns": 59629388724731452
+      },
+      {
+        "dispatch_sequence": 4160,
+        "command_sequence": 1038,
+        "sim_s": 67.584,
+        "sent_monotonic_ns": 59629397724703745
+      }
+    ],
+    "last_sends": [
+      {
+        "dispatch_sequence": 4318,
+        "command_sequence": 1196,
+        "sim_s": 70.744,
+        "stop_zero": false
+      },
+      {
+        "dispatch_sequence": 4319,
+        "command_sequence": 1197,
+        "sim_s": 70.764,
+        "stop_zero": false
+      },
+      {
+        "dispatch_sequence": 4320,
+        "command_sequence": 1197,
+        "sim_s": 70.784,
+        "stop_zero": true
+      }
+    ],
+    "ranges": {
+      "base_px": {
+        "min": -0.3088845212575145,
+        "max": 0.2269875314476784,
+        "peak_to_peak": 0.5358720527051929
+      },
+      "base_py": {
+        "min": -0.0021243324027654196,
+        "max": 0.011461832059047392,
+        "peak_to_peak": 0.013586164461812811
+      },
+      "base_pz": {
+        "min": 2.2116223318437256,
+        "max": 2.4548077490390683,
+        "peak_to_peak": 0.2431854171953427
+      },
+      "arm_joint_1_q": {
+        "min": -0.5148234063585112,
+        "max": 0.010409453525571344,
+        "peak_to_peak": 0.5252328598840825
+      },
+      "arm_joint_2_q": {
+        "min": -0.24396614290679886,
+        "max": 0.21401579659654624,
+        "peak_to_peak": 0.4579819395033451
+      },
+      "tip_x": {
+        "min": -0.2550681485147093,
+        "max": 0.24695370447475679,
+        "peak_to_peak": 0.5020218529894661
+      },
+      "tip_y": {
+        "min": 0.038442193479053414,
+        "max": 0.05093513192061612,
+        "peak_to_peak": 0.012492938441562705
+      },
+      "tip_z": {
+        "min": 1.9356622319699797,
+        "max": 2.142091333715691,
+        "peak_to_peak": 0.20642910174571116
+      }
+    },
+    "joint_peak_to_peak_deg": [
+      30.093626132944053,
+      26.240432226757466
+    ],
+    "scope": "Original full24s physical world ranges; these are not control-contribution allocation ratios"
+  },
+  "files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/review.json",
+      "bytes": 9459,
+      "sha256": "e746d6e1d515725ccb124f26f0673b92a633be79d06a3edbc9c9c43de03c573a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/ranges_and_candidate_counts.json",
+      "bytes": 2237,
+      "sha256": "52544c3ba704b39f293f631bfe524384c1771170d9ecdc14a30b20744240013f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_fast_20261024/independent_review_v1/manifest.json",
+      "bytes": 782,
+      "sha256": "85c342c1c4f6c4122e8daca9af59d7c554ca0e6acd350498c116bf7024bc0c94"
+    }
+  ]
+}
