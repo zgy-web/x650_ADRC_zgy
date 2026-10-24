@@ -1,0 +1,26 @@
+test_batched_future_packets_preserve_bus_boundaries_and_sensitivities (test_native_optimization.NativeGates) ... ok
+test_batched_packets_keep_independent_mutable_fields (test_native_optimization.NativeGates) ... ok
+test_batched_prediction_and_changed_candidate_preserve_complete_results (test_native_optimization.NativeGates) ... ok
+test_batched_rollout_events_do_not_alias_public_arrays_or_inputs (test_native_optimization.NativeGates) ... ok
+test_bounded_active_set (test_native_optimization.NativeGates) ... ok
+test_candidate_error_thresholds (test_native_optimization.NativeGates) ... ok
+test_candidate_full_envelope_and_reference_limits (test_native_optimization.NativeGates) ... ok
+test_candidate_missing_or_nonfinite_envelope (test_native_optimization.NativeGates) ... ok
+test_ffi_pointers_have_no_owner_dictionary_cycle (test_native_optimization.NativeGates) ... ok
+test_independent_active_qp_and_duplicate_rows (test_native_optimization.NativeGates) ... ok
+test_interior_solution (test_native_optimization.NativeGates) ... ok
+test_joint_matrix_kernel_preserves_complete_problem (test_native_optimization.NativeGates) ... ok
+test_joint_recurrence_matches_reference_at_packet_boundaries (test_native_optimization.NativeGates) ... ok
+test_joint_recurrence_rejects_bad_times_and_shapes (test_native_optimization.NativeGates) ... ok
+test_nonuniform_horizon_and_half_lsb_packet_boundaries_are_exact (test_native_optimization.NativeGates) ... ok
+test_per_row_precision_survives_dimension_and_row_scaling (test_native_optimization.NativeGates) ... ok
+test_recorded_near_active_row_is_actually_converged (test_native_optimization.NativeGates) ... ok
+test_reject_bad_hessian (test_native_optimization.NativeGates) ... ok
+test_reject_bad_shapes_and_nonfinite (test_native_optimization.NativeGates) ... ok
+test_reject_infeasible (test_native_optimization.NativeGates) ... ok
+test_rejection_rolls_back_plan_and_command (test_native_optimization.NativeGates) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.150s
+
+OK

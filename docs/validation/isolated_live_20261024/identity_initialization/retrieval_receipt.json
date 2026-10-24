@@ -1,0 +1,29 @@
+{
+  "kind": "identity_initialization_local_receipt_v1",
+  "flight_acceptance": false,
+  "source_artifact": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\isolated_live_20261024\\hold25_identity_qp_scratch_v1.zip",
+  "source_artifact_sha256": "3bdb1059db7701b40cd0123a9f13cac0a71aba0412b8908d9eac8571ee5435e8",
+  "source_archive_entries_verified": 16,
+  "files": {
+    "comparison.json": {
+      "bytes": 255249,
+      "sha256": "a42ba36fd21f77cd62145cd79e246d1ac4a54650a025a5e19df117df296ea41a"
+    },
+    "ctest.log": {
+      "bytes": 964,
+      "sha256": "bde4885b0e769237c5e5b0f30a82f80a50c100c506d267d9f0b334c69e627b04"
+    },
+    "manifest.json": {
+      "bytes": 2060,
+      "sha256": "5613d35f86f0b431bfe79a706f59adf2d661986039784059cb4eaefdd1677cd0"
+    },
+    "native_tests.log": {
+      "bytes": 2060,
+      "sha256": "fc02b7378f571d202b24290aafe71ce91fa3009cc8a27a46e48126c2c61749ab"
+    },
+    "verified_sources_and_results.zip": {
+      "bytes": 150908,
+      "sha256": "3bdb1059db7701b40cd0123a9f13cac0a71aba0412b8908d9eac8571ee5435e8"
+    }
+  }
+}

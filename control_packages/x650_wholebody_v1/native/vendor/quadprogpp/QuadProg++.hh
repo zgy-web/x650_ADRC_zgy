@@ -72,6 +72,15 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
                       Vector<double>& x, unsigned int max_iterations = 100,
                       const Vector<double>* inequality_tolerances = nullptr);
 
+// Explicit fast initialization for a Hessian whose entries are exactly I.
+// Rejects every non-identity entry; all active-set updates and convergence
+// criteria are shared with solve_quadprog. It does not approximate G.
+double solve_quadprog_identity(Matrix<double>& G, Vector<double>& g0,
+                      const Matrix<double>& CE, const Vector<double>& ce0,
+                      const Matrix<double>& CI, const Vector<double>& ci0,
+                      Vector<double>& x, unsigned int max_iterations = 100,
+                      const Vector<double>* inequality_tolerances = nullptr);
+
 }  // namespace quadprogpp
 
 #endif // #define _QUADPROGPP

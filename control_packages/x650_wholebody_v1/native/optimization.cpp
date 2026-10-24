@@ -223,7 +223,9 @@ extern "C" int x650_solve(int n,int m,const double* hp,const double* gp,const do
    quadprogpp::Matrix<double> G(n,n),CE(n,0),CI(n,keep.size());quadprogpp::Vector<double> g0(n),ce0(0),ci0(keep.size()),tolerances(keep.size()),y(n);
    for(int i=0;i<n;i++){g0[i]=0;for(int j=0;j<n;j++)G[i][j]=i==j?1:0;}
    for(int j=0;j<int(keep.size());j++){ci0[j]=b[keep[j]];tolerances[j]=row_tolerance[keep[j]];for(int i=0;i<n;i++)CI[i][j]=-M(keep[j],i);}
-   double objective=quadprogpp::solve_quadprog(G,g0,CE,ce0,CI,ci0,y,max_iterations,&tolerances);require(std::isfinite(objective),"QP infeasible");Vec solution(n);for(int i=0;i<n;i++)solution[i]=y[i];z=center+T*solution;
+   // Whitening constructs this exact identity explicitly above. The specialized
+   // entry checks every entry before skipping its redundant factorization.
+   double objective=quadprogpp::solve_quadprog_identity(G,g0,CE,ce0,CI,ci0,y,max_iterations,&tolerances);require(std::isfinite(objective),"QP infeasible");Vec solution(n);for(int i=0;i<n;i++)solution[i]=y[i];z=center+T*solution;
   }
   require(z.allFinite(),"nonfinite solution");Vec q=quality(H,g,C,lo,hi,z);Eigen::Map<Vec>(zp,n)=z;Eigen::Map<Vec>(quality_out,4)=q;return 0;
  }catch(const std::exception& e){std::snprintf(error,es,"%s",e.what());return 1;}

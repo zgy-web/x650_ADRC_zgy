@@ -1,0 +1,25 @@
+{
+  "kind": "scratch_identity_qp_verified_local_optimization",
+  "flight_acceptance": false,
+  "native_tests": 21,
+  "ctest": 1,
+  "scope": "Exactly identity Hessian initialization only; original full-row gates unchanged. Measured typical isolated QP saving about 0.4ms does not prove sufficient 20ms pipeline capacity.",
+  "files": {
+    "compare.py": "054eca01fc5b2315f37b0b6a5e66dae8eae62883e65827c1419a8aa26034e5fa",
+    "comparison.json": "a42ba36fd21f77cd62145cd79e246d1ac4a54650a025a5e19df117df296ea41a",
+    "ctest.log": "bde4885b0e769237c5e5b0f30a82f80a50c100c506d267d9f0b334c69e627b04",
+    "identity_build_flags.make": "e2be68a40c95f89a184b52103bbcac9644f718213d0fd15ee63889a4cad26fdb",
+    "native_tests.log": "fc02b7378f571d202b24290aafe71ce91fa3009cc8a27a46e48126c2c61749ab",
+    "probe.py": "a771ebbc754165f47553fa308a6174a7c2a43c371e57f9df85067c6cbca45e96",
+    "native_source\\CMakeLists.txt": "841de54a43e0d00e5d834fa3a37c545b41271d30fafa616ca82651ea0ab93c9b",
+    "native_source\\optimization.cpp": "6cdab0071506895d2e9ed95c3d0defd3f6292b1ac5175f7ada7a9045aa16cd54",
+    "native_source\\test_quadprog_identity.cpp": "1cfb6f67951706bcaff6726d46c30a367cd0b175cdeb590a87f491ff4882a2e9",
+    "original_replay\\hold25_round1054_qp0.npz": "9143e4144728268b35956f64268238c9cc8ec5e91ff4cde2490334db67fb9b5b",
+    "original_replay\\hold25_round1055_qp0.npz": "73eaf78163a722f6432b6a333d07eafe87b0f3330a44f16126ecd5058fe4c42c",
+    "original_replay\\hold25_round1056_qp0.npz": "a98bb4224e464f1bf7f4e47a6e1f04ec9e26446bd628e17ab6c6d4ea60722d47",
+    "original_replay\\report.json": "2d7796d2e21f2b649c37c0c9919f3f8e94560497fae116baa5a0be47bd5b281b",
+    "native_source\\vendor\\quadprogpp\\QuadProg++.cc": "aafb5dfb449c659012d61cce649fddfa8225aa6f7a5a5df0195781af87d7fc29",
+    "native_source\\vendor\\quadprogpp\\QuadProg++.hh": "526ae146e9e121223157f858710e5684021024f57bc0392da3243fbae060aab2",
+    "native_source\\vendor\\quadprogpp\\UPSTREAM.json": "d9aa5a56e9b8bd0db8fdac751d79e1b0c05708d8c00ff78479edc4e6d67e5976"
+  }
+}

@@ -49,11 +49,12 @@ void print_vector(const char* name, const Vector<T>& v, int n = -1);
 
 // The Solving function, implementing the Goldfarb-Idnani method
 
-double solve_quadprog(Matrix<double>& G, Vector<double>& g0, 
+static double solve_quadprog_impl(Matrix<double>& G, Vector<double>& g0, 
                       const Matrix<double>& CE, const Vector<double>& ce0,  
                       const Matrix<double>& CI, const Vector<double>& ci0, 
                       Vector<double>& x, unsigned int max_iterations,
-                      const Vector<double>* inequality_tolerances)
+                      const Vector<double>* inequality_tolerances,
+                      bool identity_hessian)
 {
   std::ostringstream msg;
   unsigned int n = G.ncols(), p = CE.ncols(), m = CI.ncols();
@@ -61,6 +62,21 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
   {
     msg << "The matrix G is not a squared matrix (" << G.nrows() << " x " << G.ncols() << ")";
     throw std::logic_error(msg.str());
+  }
+  if (identity_hessian)
+  {
+    if (n == 0)
+      throw std::logic_error("Identity Hessian must be nonempty");
+    if (g0.size() != n)
+      throw std::logic_error("Identity Hessian linear term dimension");
+    for (unsigned int row = 0; row < n; ++row)
+    {
+      if (!std::isfinite(g0[row]))
+        throw std::logic_error("Identity Hessian linear term must be finite");
+      for (unsigned int col = 0; col < n; ++col)
+        if (G[row][col] != (row == col ? 1.0 : 0.0))
+          throw std::logic_error("Identity Hessian entry is not exactly identity");
+    }
   }
   if (CE.nrows() != n)
   {
@@ -131,7 +147,8 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
     c1 += G[i][i];
   }
   /* decompose the matrix G in the form L^T L */
-  cholesky_decomposition(G);
+  if (!identity_hessian)
+    cholesky_decomposition(G);
 #ifdef TRACE_SOLVER
   print_matrix("G", G);
 #endif
@@ -149,7 +166,11 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
   for (i = 0; i < n; i++) 
   {
     d[i] = 1.0;
-    forward_elimination(G, z, d);
+    if (identity_hessian)
+      for (j = 0; j < n; j++)
+        z[j] = d[j];
+    else
+      forward_elimination(G, z, d);
     for (j = 0; j < n; j++)
       J[i][j] = z[j];
     c2 += z[i];
@@ -166,7 +187,11 @@ double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
    * this is a feasible point in the dual space
    * x = G^-1 * g0
    */
-  cholesky_solve(G, x, g0);
+  if (identity_hessian)
+    for (i = 0; i < n; i++)
+      x[i] = g0[i];
+  else
+    cholesky_solve(G, x, g0);
   for (i = 0; i < n; i++)
     x[i] = -x[i];
   /* and compute the current solution value */ 
@@ -469,6 +494,26 @@ l2a:/* Step 2a: determine step direction */
   print_vector("s", s, m);
 #endif
   goto l2a;
+}
+
+double solve_quadprog(Matrix<double>& G, Vector<double>& g0,
+                      const Matrix<double>& CE, const Vector<double>& ce0,
+                      const Matrix<double>& CI, const Vector<double>& ci0,
+                      Vector<double>& x, unsigned int max_iterations,
+                      const Vector<double>* inequality_tolerances)
+{
+  return solve_quadprog_impl(G, g0, CE, ce0, CI, ci0, x, max_iterations,
+                            inequality_tolerances, false);
+}
+
+double solve_quadprog_identity(Matrix<double>& G, Vector<double>& g0,
+                      const Matrix<double>& CE, const Vector<double>& ce0,
+                      const Matrix<double>& CI, const Vector<double>& ci0,
+                      Vector<double>& x, unsigned int max_iterations,
+                      const Vector<double>* inequality_tolerances)
+{
+  return solve_quadprog_impl(G, g0, CE, ce0, CI, ci0, x, max_iterations,
+                            inequality_tolerances, true);
 }
 
 inline void compute_d(Vector<double>& d, const Matrix<double>& J, const Vector<double>& np)

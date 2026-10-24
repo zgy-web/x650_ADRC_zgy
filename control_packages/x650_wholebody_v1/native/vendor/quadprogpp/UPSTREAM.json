@@ -3,6 +3,7 @@
   "commit": "0c25447365c980876fdc395f55d60300a5e5793c",
   "license": "MIT",
   "local_changes": [
+    "Explicit solve_quadprog_identity entry validates every Hessian entry against exact identity before using its known Cholesky/inverse initialization. The generic entry retains the original factorization; all active-set updates, iteration limits, per-row and aggregate convergence tests, and external original-row quality checks are shared and unchanged.",
     "Optional max_iterations argument; explicit outer and inner active-set transition limits throw before a result is accepted.",
     "Optional per-inequality convergence tolerances supplement the upstream aggregate residual test. The X650 wrapper transforms a 1e-10 original-row numerical tolerance with the same row normalization; active-set iterations continue until both tests pass. An exhausted constraint search with outstanding per-row violations throws. The original all-row external 2e-7 feasibility gate, constraints, cost, and active-set update equations are unchanged."
   ],

@@ -1,0 +1,19 @@
+Start testing: Oct 24 13:34 CST
+----------------------------------------------------------
+1/1 Testing: quadprog_identity_initialization
+1/1 Test: quadprog_identity_initialization
+Command: "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/identity_qp_scratch_v1/build/test_quadprog_identity"
+Directory: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/identity_qp_scratch_v1/build
+"quadprog_identity_initialization" start time: Oct 24 13:34 CST
+Output:
+----------------------------------------------------------
+Identity/generic exact equivalence and strict-entry tests passed
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"quadprog_identity_initialization" end time: Oct 24 13:34 CST
+"quadprog_identity_initialization" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 24 13:34 CST
