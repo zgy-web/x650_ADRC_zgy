@@ -1,0 +1,1443 @@
+{
+  "kind": "hold23_physical_consumption_review_v1",
+  "derived_analysis": true,
+  "full_hold_pass": false,
+  "recovery_checks_passed": true,
+  "first_output_fault": {
+    "session_id": 74613692,
+    "epoch": 1,
+    "sequence": 3225,
+    "scheduled_monotonic_ns": 59601001541302535,
+    "actual_monotonic_ns": 59601001541391213,
+    "source_sequence": 106,
+    "source_received_monotonic_ns": 59601001538683187,
+    "command_sequence": 25,
+    "command_issued_monotonic_ns": 59601001478717642,
+    "command_age_ns": 62673571,
+    "status": 3,
+    "reason": 1,
+    "output_valid": false,
+    "repeated": false,
+    "command": {
+      "schema_version": 1,
+      "session_id": 0,
+      "epoch": 0,
+      "sequence": 0,
+      "replay_only": true,
+      "configuration_sha256": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "snapshot_sequence": 0,
+      "compute_start_monotonic_ns": 0,
+      "compute_end_monotonic_ns": 0,
+      "status": 0,
+      "control_time_s": 0.0,
+      "task_time_s": 0.0,
+      "position_reference_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_velocity_target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "accepted_optimum": false,
+      "nonlinear_check_passed": false,
+      "primal_violation": 0.0,
+      "kkt_residual": 0.0,
+      "subproblems": 0
+    }
+  },
+  "dispatch_status_counts": {
+    "0": 3195,
+    "1": 25,
+    "2": 4,
+    "3": 2
+  },
+  "first_dispatch_fault": {
+    "session_id": 74613692,
+    "epoch": 1,
+    "sequence": 3225,
+    "scheduled_monotonic_ns": 59601001541302535,
+    "actual_monotonic_ns": 59601001541391213,
+    "source_sequence": 106,
+    "source_received_monotonic_ns": 59601001538683187,
+    "command_sequence": 25,
+    "command_issued_monotonic_ns": 59601001478717642,
+    "command_age_ns": 62673571,
+    "status": 3,
+    "reason": 1,
+    "output_valid": false,
+    "repeated": false,
+    "command": {
+      "schema_version": 1,
+      "session_id": 0,
+      "epoch": 0,
+      "sequence": 0,
+      "replay_only": true,
+      "configuration_sha256": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "snapshot_sequence": 0,
+      "compute_start_monotonic_ns": 0,
+      "compute_end_monotonic_ns": 0,
+      "status": 0,
+      "control_time_s": 0.0,
+      "task_time_s": 0.0,
+      "position_reference_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_velocity_target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "accepted_optimum": false,
+      "nonlinear_check_passed": false,
+      "primal_violation": 0.0,
+      "kkt_residual": 0.0,
+      "subproblems": 0
+    }
+  },
+  "final_dispatch": {
+    "session_id": 74613692,
+    "epoch": 1,
+    "sequence": 3226,
+    "scheduled_monotonic_ns": 59601001561302535,
+    "actual_monotonic_ns": 59601001561387339,
+    "source_sequence": 106,
+    "source_received_monotonic_ns": 59601001538683187,
+    "command_sequence": 25,
+    "command_issued_monotonic_ns": 59601001478717642,
+    "command_age_ns": 82669697,
+    "status": 3,
+    "reason": 1,
+    "output_valid": false,
+    "repeated": false,
+    "command": {
+      "schema_version": 1,
+      "session_id": 0,
+      "epoch": 0,
+      "sequence": 0,
+      "replay_only": true,
+      "configuration_sha256": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "snapshot_sequence": 0,
+      "compute_start_monotonic_ns": 0,
+      "compute_end_monotonic_ns": 0,
+      "status": 0,
+      "control_time_s": 0.0,
+      "task_time_s": 0.0,
+      "position_reference_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_velocity_target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "accepted_optimum": false,
+      "nonlinear_check_passed": false,
+      "primal_violation": 0.0,
+      "kkt_residual": 0.0,
+      "subproblems": 0
+    }
+  },
+  "all_sends": 30,
+  "normal_sends": 29,
+  "normal_repeats": 4,
+  "all_receipts": 30,
+  "individual_joint_commands": 60,
+  "per_joint_counter_range": [
+    1180,
+    1209
+  ],
+  "exact_send_receipt_identity_and_raw_joint_counter_value_time_matches": true,
+  "normal_send_waited_for_previous_actual_receipt": true,
+  "normal_output_after_output_fault": false,
+  "delivery_lag_sim_s": [
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783
+  ],
+  "stop_zero_send": {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 25,
+    "dispatch_sequence": 3225,
+    "sent_monotonic_ns": 59601001541547598,
+    "sim_s": 42.148,
+    "repeated": false,
+    "stop_zero": true,
+    "expected_counter": [
+      1209,
+      1209
+    ],
+    "joint_velocity": [
+      0.0,
+      0.0
+    ],
+    "coordinate_frame": 0,
+    "type_mask": 0,
+    "position_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocity_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 0.0
+  },
+  "stop_zero_receipt": {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 25,
+    "dispatch_sequence": 3225,
+    "observed_monotonic_ns": 59601001547676641,
+    "observation_sim_s": 42.156,
+    "joint_consumed": true,
+    "pva_send_returned": false,
+    "failed": false,
+    "consumed_counter": [
+      1209,
+      1209
+    ],
+    "consumed_sim_s": [
+      42.152,
+      42.152
+    ]
+  },
+  "stop_zero_send_after_output_fault_ms": 0.156385,
+  "stop_zero_receipt_after_output_fault_ms": 6.285428,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 59601001735648717
+  },
+  "no_legacy_publication_overlap": true,
+  "legacy_publication_records_checked": 3343,
+  "source_files": {
+    "isolated_live/sends.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/sends.json",
+      "bytes": 22176,
+      "sha256": "7277a92b8902b0e165df9d909f048fb14f1671d391d7e8650073115054ed892b"
+    },
+    "isolated_live/receipts.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/receipts.json",
+      "bytes": 11790,
+      "sha256": "ef71a5957f3bf5bf9def9a2aac03c370b152a5b195b23458b02ef24b4b9dacb7"
+    },
+    "isolated_live/events.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/events.json",
+      "bytes": 7426,
+      "sha256": "fe443147b429c999f06c82ae47a3e1dcc4a49be840da2ab2a4e2e9666dd25d3a"
+    },
+    "isolated_live/live_start.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/live_start.json",
+      "bytes": 7240,
+      "sha256": "22e3ab34deebb661669ff37b6d9b833153413faadaa0a1d08bf702d3d97e1124"
+    },
+    "isolated_live/lifecycle.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/lifecycle.json",
+      "bytes": 683,
+      "sha256": "c5c38a7c8e94b96485b7473926c8f0c8c1fe10799eb723f1ce2f8d88599fa10d"
+    },
+    "isolated_live/dispatch.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/dispatch.json",
+      "bytes": 5374460,
+      "sha256": "c347231d4a05e445d97788e342556f23efc043c174c59e1976e2512f462a1ddd"
+    },
+    "ts20_state.csv": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/ts20_state.csv",
+      "bytes": 5693961,
+      "sha256": "cf3f1a191ece25258a457ba21f460a2650423a310355d245021fc26433c45c55"
+    },
+    "control_execution_trace.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/control_execution_trace.jsonl",
+      "bytes": 5870048,
+      "sha256": "c089817edf4ebb33dc8194e2933bff5e6bd363811d717496dae4be9a96b79074"
+    },
+    "isolated_live/source_recording/diagnostics.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/source_recording/diagnostics.jsonl",
+      "bytes": 2317920,
+      "sha256": "029400517c6ba5950934b765a349fedc7c1ce7d19ae99324f69ca1d231631728"
+    }
+  },
+  "scope": "Original plugin consumption and command ownership for this failed attempt; not a full-hold or hardware qualification.",
+  "all_materialized_ros_fields_match_original_cdr": true,
+  "cdr_counts": {
+    "dispatch": 3226,
+    "sends": 30,
+    "events": 25,
+    "receipts": 30
+  },
+  "dispatch_tail": [
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3220,
+      "scheduled_monotonic_ns": 59601001441302535,
+      "actual_monotonic_ns": 59601001441403045,
+      "source_sequence": 89,
+      "source_received_monotonic_ns": 59601001437124045,
+      "command_sequence": 22,
+      "command_issued_monotonic_ns": 59601001416832022,
+      "command_age_ns": 24571023,
+      "status": 1,
+      "reason": 0,
+      "output_valid": true,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 74613692,
+        "epoch": 1,
+        "sequence": 22,
+        "replay_only": false,
+        "configuration_sha256": [
+          125,
+          160,
+          219,
+          8,
+          58,
+          204,
+          160,
+          90,
+          139,
+          231,
+          179,
+          135,
+          45,
+          182,
+          224,
+          150,
+          252,
+          148,
+          53,
+          101,
+          62,
+          239,
+          105,
+          138,
+          21,
+          112,
+          10,
+          109,
+          142,
+          153,
+          162,
+          134
+        ],
+        "snapshot_sequence": 22,
+        "compute_start_monotonic_ns": 59601001422487659,
+        "compute_end_monotonic_ns": 59601001439098241,
+        "status": 0,
+        "control_time_s": 42.008,
+        "task_time_s": 0.4960000000000022,
+        "position_reference_enu": [
+          6.279181338515044e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.010585727555411041,
+          -0.0019171049782524723,
+          -8.827905763885467e-05
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.009183302760100168,
+          -0.0016097390968809393,
+          7.814662077599523e-05
+        ],
+        "joint_velocity": [
+          0.04475576130385422,
+          -0.0024618048806559906
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.2500725161431774e-17,
+        "subproblems": 1
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3221,
+      "scheduled_monotonic_ns": 59601001461302535,
+      "actual_monotonic_ns": 59601001461373718,
+      "source_sequence": 93,
+      "source_received_monotonic_ns": 59601001460202798,
+      "command_sequence": 23,
+      "command_issued_monotonic_ns": 59601001434545886,
+      "command_age_ns": 26827832,
+      "status": 1,
+      "reason": 0,
+      "output_valid": true,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 74613692,
+        "epoch": 1,
+        "sequence": 23,
+        "replay_only": false,
+        "configuration_sha256": [
+          125,
+          160,
+          219,
+          8,
+          58,
+          204,
+          160,
+          90,
+          139,
+          231,
+          179,
+          135,
+          45,
+          182,
+          224,
+          150,
+          252,
+          148,
+          53,
+          101,
+          62,
+          239,
+          105,
+          138,
+          21,
+          112,
+          10,
+          109,
+          142,
+          153,
+          162,
+          134
+        ],
+        "snapshot_sequence": 23,
+        "compute_start_monotonic_ns": 59601001442265025,
+        "compute_end_monotonic_ns": 59601001459518894,
+        "status": 0,
+        "control_time_s": 42.028,
+        "task_time_s": 0.5159999999999982,
+        "position_reference_enu": [
+          6.279181338515044e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.00995214365580694,
+          -0.002551098987018032,
+          4.69518189633592e-06
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.008525458728459777,
+          -0.0022533803792168126,
+          0.00018161127779165457
+        ],
+        "joint_velocity": [
+          0.045442798230768716,
+          -0.0025790571558981274
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.949029909160572e-17,
+        "subproblems": 1
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3222,
+      "scheduled_monotonic_ns": 59601001481302535,
+      "actual_monotonic_ns": 59601001481371492,
+      "source_sequence": 97,
+      "source_received_monotonic_ns": 59601001481178937,
+      "command_sequence": 24,
+      "command_issued_monotonic_ns": 59601001457283091,
+      "command_age_ns": 24088401,
+      "status": 1,
+      "reason": 0,
+      "output_valid": true,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 74613692,
+        "epoch": 1,
+        "sequence": 24,
+        "replay_only": false,
+        "configuration_sha256": [
+          125,
+          160,
+          219,
+          8,
+          58,
+          204,
+          160,
+          90,
+          139,
+          231,
+          179,
+          135,
+          45,
+          182,
+          224,
+          150,
+          252,
+          148,
+          53,
+          101,
+          62,
+          239,
+          105,
+          138,
+          21,
+          112,
+          10,
+          109,
+          142,
+          153,
+          162,
+          134
+        ],
+        "snapshot_sequence": 24,
+        "compute_start_monotonic_ns": 59601001462159039,
+        "compute_end_monotonic_ns": 59601001476132502,
+        "status": 0,
+        "control_time_s": 42.048,
+        "task_time_s": 0.5360000000000014,
+        "position_reference_enu": [
+          6.279181338515044e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.009548069453971809,
+          -0.002470831670470028,
+          8.975931007288996e-05
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.008075746909611142,
+          -0.0021902694576415916,
+          0.0002840799622426227
+        ],
+        "joint_velocity": [
+          0.046002159241489995,
+          -0.0026911726974024274
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.0332320816460765e-17,
+        "subproblems": 1
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3223,
+      "scheduled_monotonic_ns": 59601001501302535,
+      "actual_monotonic_ns": 59601001501345922,
+      "source_sequence": 100,
+      "source_received_monotonic_ns": 59601001501274822,
+      "command_sequence": 24,
+      "command_issued_monotonic_ns": 59601001457283091,
+      "command_age_ns": 44062831,
+      "status": 2,
+      "reason": 0,
+      "output_valid": true,
+      "repeated": true,
+      "command": {
+        "schema_version": 1,
+        "session_id": 74613692,
+        "epoch": 1,
+        "sequence": 24,
+        "replay_only": false,
+        "configuration_sha256": [
+          125,
+          160,
+          219,
+          8,
+          58,
+          204,
+          160,
+          90,
+          139,
+          231,
+          179,
+          135,
+          45,
+          182,
+          224,
+          150,
+          252,
+          148,
+          53,
+          101,
+          62,
+          239,
+          105,
+          138,
+          21,
+          112,
+          10,
+          109,
+          142,
+          153,
+          162,
+          134
+        ],
+        "snapshot_sequence": 24,
+        "compute_start_monotonic_ns": 59601001462159039,
+        "compute_end_monotonic_ns": 59601001476132502,
+        "status": 0,
+        "control_time_s": 42.048,
+        "task_time_s": 0.5360000000000014,
+        "position_reference_enu": [
+          6.279181338515044e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.009548069453971809,
+          -0.002470831670470028,
+          8.975931007288996e-05
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.008075746909611142,
+          -0.0021902694576415916,
+          0.0002840799622426227
+        ],
+        "joint_velocity": [
+          0.046002159241489995,
+          -0.0026911726974024274
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.0332320816460765e-17,
+        "subproblems": 1
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3224,
+      "scheduled_monotonic_ns": 59601001521302535,
+      "actual_monotonic_ns": 59601001521387187,
+      "source_sequence": 103,
+      "source_received_monotonic_ns": 59601001519807833,
+      "command_sequence": 25,
+      "command_issued_monotonic_ns": 59601001478717642,
+      "command_age_ns": 42669545,
+      "status": 1,
+      "reason": 0,
+      "output_valid": true,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 74613692,
+        "epoch": 1,
+        "sequence": 25,
+        "replay_only": false,
+        "configuration_sha256": [
+          125,
+          160,
+          219,
+          8,
+          58,
+          204,
+          160,
+          90,
+          139,
+          231,
+          179,
+          135,
+          45,
+          182,
+          224,
+          150,
+          252,
+          148,
+          53,
+          101,
+          62,
+          239,
+          105,
+          138,
+          21,
+          112,
+          10,
+          109,
+          142,
+          153,
+          162,
+          134
+        ],
+        "snapshot_sequence": 25,
+        "compute_start_monotonic_ns": 59601001481927283,
+        "compute_end_monotonic_ns": 59601001502134879,
+        "status": 0,
+        "control_time_s": 42.072,
+        "task_time_s": 0.5600000000000023,
+        "position_reference_enu": [
+          6.279181338515044e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.009411970947969944,
+          -0.002722307695696625,
+          0.00015515107248411774
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.007905070795003325,
+          -0.0024543920531037763,
+          0.0003580547935015067
+        ],
+        "joint_velocity": [
+          0.04542697110920324,
+          -0.002815092373513863
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.0115480381963664e-17,
+        "subproblems": 1
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3225,
+      "scheduled_monotonic_ns": 59601001541302535,
+      "actual_monotonic_ns": 59601001541391213,
+      "source_sequence": 106,
+      "source_received_monotonic_ns": 59601001538683187,
+      "command_sequence": 25,
+      "command_issued_monotonic_ns": 59601001478717642,
+      "command_age_ns": 62673571,
+      "status": 3,
+      "reason": 1,
+      "output_valid": false,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 0,
+        "epoch": 0,
+        "sequence": 0,
+        "replay_only": true,
+        "configuration_sha256": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "snapshot_sequence": 0,
+        "compute_start_monotonic_ns": 0,
+        "compute_end_monotonic_ns": 0,
+        "status": 0,
+        "control_time_s": 0.0,
+        "task_time_s": 0.0,
+        "position_reference_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "velocity_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "joint_velocity": [
+          0.0,
+          0.0
+        ],
+        "accepted_optimum": false,
+        "nonlinear_check_passed": false,
+        "primal_violation": 0.0,
+        "kkt_residual": 0.0,
+        "subproblems": 0
+      }
+    },
+    {
+      "session_id": 74613692,
+      "epoch": 1,
+      "sequence": 3226,
+      "scheduled_monotonic_ns": 59601001561302535,
+      "actual_monotonic_ns": 59601001561387339,
+      "source_sequence": 106,
+      "source_received_monotonic_ns": 59601001538683187,
+      "command_sequence": 25,
+      "command_issued_monotonic_ns": 59601001478717642,
+      "command_age_ns": 82669697,
+      "status": 3,
+      "reason": 1,
+      "output_valid": false,
+      "repeated": false,
+      "command": {
+        "schema_version": 1,
+        "session_id": 0,
+        "epoch": 0,
+        "sequence": 0,
+        "replay_only": true,
+        "configuration_sha256": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "snapshot_sequence": 0,
+        "compute_start_monotonic_ns": 0,
+        "compute_end_monotonic_ns": 0,
+        "status": 0,
+        "control_time_s": 0.0,
+        "task_time_s": 0.0,
+        "position_reference_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "velocity_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "joint_velocity": [
+          0.0,
+          0.0
+        ],
+        "accepted_optimum": false,
+        "nonlinear_check_passed": false,
+        "primal_violation": 0.0,
+        "kkt_residual": 0.0,
+        "subproblems": 0
+      }
+    }
+  ],
+  "ulog": {
+    "kind": "hold23_ulog_recovery_extraction_v1",
+    "derived_analysis": true,
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/px4.ulg",
+    "source_bytes": 13726331,
+    "source_sha256": "c64f18fbf2ec7879f074f84da6546650d2f4d50aefb0ad1a737018bdbbff2bb7",
+    "timestamp_semantics": "Original PX4 ULog microseconds; no fitted conversion to host monotonic or simulation time.",
+    "nonfinite_semantics": "Nonfinite optional command parameters are preserved as NaN/+Inf/-Inf strings.",
+    "start_timestamp_us": 3856000,
+    "last_timestamp_us": 50776000,
+    "vehicle_status_rows": 105,
+    "vehicle_status_changes": [
+      {
+        "timestamp": 3700000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21556000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21592000,
+        "arming_state": 2,
+        "nav_state": 17,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 27100000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 38464000,
+        "arming_state": 2,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 43228000,
+        "arming_state": 2,
+        "nav_state": 5,
+        "failsafe": 1
+      },
+      {
+        "timestamp": 43900000,
+        "arming_state": 2,
+        "nav_state": 18,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 49780000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 50284000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      }
+    ],
+    "land_detector_rows": 57,
+    "land_detector_changes": [
+      {
+        "timestamp": 3656000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      {
+        "timestamp": 23212000,
+        "landed": 0,
+        "ground_contact": 1,
+        "maybe_landed": 0
+      },
+      {
+        "timestamp": 47764000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      {
+        "timestamp": 49836000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      }
+    ],
+    "vehicle_commands": [
+      {
+        "timestamp": 3696000,
+        "command": 211,
+        "param1": -4.2442584723514e-22,
+        "param2": 1.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21548000,
+        "command": 400,
+        "param1": 1.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 21568000,
+        "command": 22,
+        "param1": 0.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 38448000,
+        "command": 176,
+        "param1": 1.0,
+        "param2": 6.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 43484000,
+        "command": 1001,
+        "param1": 1.0,
+        "param2": 1.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 43484000,
+        "command": 1000,
+        "param1": "NaN",
+        "param2": "NaN",
+        "from_external": 0
+      },
+      {
+        "timestamp": 43484000,
+        "command": 1001,
+        "param1": -3.0,
+        "param2": -3.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 43884000,
+        "command": 21,
+        "param1": 0.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 44156000,
+        "command": 1001,
+        "param1": 1.0,
+        "param2": 1.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 44156000,
+        "command": 1000,
+        "param1": "NaN",
+        "param2": "NaN",
+        "from_external": 0
+      },
+      {
+        "timestamp": 44156000,
+        "command": 1001,
+        "param1": -3.0,
+        "param2": -3.0,
+        "from_external": 0
+      }
+    ],
+    "vehicle_command_acknowledgments": [
+      {
+        "timestamp": 3704000,
+        "command": 211,
+        "result": 5,
+        "from_external": 0
+      },
+      {
+        "timestamp": 4796000,
+        "command": 211,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 19504000,
+        "command": 511,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21540000,
+        "command": 511,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21556000,
+        "command": 400,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21580000,
+        "command": 22,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 38448000,
+        "command": 176,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 38452000,
+        "command": 176,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 43888000,
+        "command": 21,
+        "result": 0,
+        "from_external": 0
+      }
+    ],
+    "offboard_control_mode": {
+      "count": 49,
+      "first": {
+        "timestamp": 37456000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      },
+      "last": {
+        "timestamp": 42132000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      },
+      "changes": [
+        {
+          "timestamp": 37456000,
+          "position": 1,
+          "velocity": 1,
+          "acceleration": 1,
+          "attitude": 0,
+          "body_rate": 0
+        },
+        {
+          "timestamp": 42132000,
+          "position": 1,
+          "velocity": 1,
+          "acceleration": 1,
+          "attitude": 0,
+          "body_rate": 0
+        }
+      ]
+    },
+    "offboard_signal_lost_changes": [
+      {
+        "timestamp": 3712000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 37216000,
+        "offboard_control_signal_lost": 0
+      },
+      {
+        "timestamp": 43216000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 50320000,
+        "offboard_control_signal_lost": 1
+      }
+    ],
+    "recovery": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 47764000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 49780000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 50284000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 49836000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "scope": "Recovery and offboard-state evidence only; not full-window controller performance or command-by-command PVA acceptance."
+  }
+}

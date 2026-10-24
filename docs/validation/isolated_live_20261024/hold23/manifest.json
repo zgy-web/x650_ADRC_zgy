@@ -1,0 +1,208 @@
+{
+  "kind": "hold23_small_failure_archive_manifest_v1",
+  "scope": "Failed physical simulation attempt, derived review, not full-hold or hardware acceptance. Root manifest excludes itself.",
+  "large_sources_not_copied": "See remote_writer_recovery_review.json source_files and ulog source hash; retrieval_manifest.json also lists original full monitor and flight CSV excluded from this small archive.",
+  "files": [
+    {
+      "path": "controller_metadata.json",
+      "bytes": 342122,
+      "sha256": "3004b9ebb8811c24fbc5188368ad271672133da9517534203883d82a3475cd5f",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/controller_metadata.json"
+    },
+    {
+      "path": "diagnostic_parameters_before.json",
+      "bytes": 12624,
+      "sha256": "4d27a5e770aeafb8e53d49e56eee1f8180543e34eb008f9b0db72d82822eb2f5",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/diagnostic_parameters_before.json"
+    },
+    {
+      "path": "diagnostic_parameters_restored.json",
+      "bytes": 12634,
+      "sha256": "a470fc092ac24ca15bc69b5f3b378213ba39a31fec4352bc532cdb28c6452065",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/diagnostic_parameters_restored.json"
+    },
+    {
+      "path": "diagnostic_restore_journal_completed.json",
+      "bytes": 30523,
+      "sha256": "ede8f14e0310dbb3a0103440e93084cb55beb5b5b3cc7b5f200a948a5616deca",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/diagnostic_restore_journal_completed.json"
+    },
+    {
+      "path": "flight_tail.json",
+      "bytes": 3972,
+      "sha256": "f043af02b6e3bed1a0c1d788a9130c368b623902a6934ee387d425e6ffa8135d",
+      "role": "derived_analysis"
+    },
+    {
+      "path": "hold_v23.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23.exit"
+    },
+    {
+      "path": "isolated_live/events.json",
+      "bytes": 7426,
+      "sha256": "fe443147b429c999f06c82ae47a3e1dcc4a49be840da2ab2a4e2e9666dd25d3a",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/events.json"
+    },
+    {
+      "path": "isolated_live/execution_resources.json",
+      "bytes": 1527,
+      "sha256": "7d7666ce90d94615cda6fe8ef20fb875f8bb2d357f304a0e17b05d41b635679b",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/execution_resources.json"
+    },
+    {
+      "path": "isolated_live/fault_supervision.json",
+      "bytes": 531,
+      "sha256": "0a7fa14c994e22805afe007a773f61d838df696445e1d825d6062965ac7e74c0",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/fault_supervision.json"
+    },
+    {
+      "path": "isolated_live/ingress_timing.json",
+      "bytes": 49074,
+      "sha256": "d0348594a0bdc7b8ffa46b530bf6a47dd12e4a894e000b342a37fbeb87aa88bc",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/ingress_timing.json"
+    },
+    {
+      "path": "isolated_live/lifecycle.json",
+      "bytes": 683,
+      "sha256": "c5c38a7c8e94b96485b7473926c8f0c8c1fe10799eb723f1ce2f8d88599fa10d",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/lifecycle.json"
+    },
+    {
+      "path": "isolated_live/live_start.json",
+      "bytes": 7240,
+      "sha256": "22e3ab34deebb661669ff37b6d9b833153413faadaa0a1d08bf702d3d97e1124",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/live_start.json"
+    },
+    {
+      "path": "isolated_live/receipts.json",
+      "bytes": 11790,
+      "sha256": "ef71a5957f3bf5bf9def9a2aac03c370b152a5b195b23458b02ef24b4b9dacb7",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/receipts.json"
+    },
+    {
+      "path": "isolated_live/sends.json",
+      "bytes": 22176,
+      "sha256": "7277a92b8902b0e165df9d909f048fb14f1671d391d7e8650073115054ed892b",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/sends.json"
+    },
+    {
+      "path": "isolated_live/source_recording/manifest.json",
+      "bytes": 367,
+      "sha256": "df1b987ae69d8149be8788094ae4eff592d74634428e01e289148746c12ac8cc",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/source_recording/manifest.json"
+    },
+    {
+      "path": "isolated_live/source_recording_reconciled.json",
+      "bytes": 382,
+      "sha256": "412958d641ecabf5a12e7e839892cf9c8d5e98cc7dbc435ecb3c646f5e86e5b1",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/source_recording_reconciled.json"
+    },
+    {
+      "path": "isolated_live/source_timing.json",
+      "bytes": 10682,
+      "sha256": "777992a797767ef5b1a7058d9da5a8f13cefa5089233f1e3e579b34fc4c54dc2",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/source_timing.json"
+    },
+    {
+      "path": "isolated_live/worker_final.json",
+      "bytes": 4323,
+      "sha256": "6ce2040e58be4181ccb72261263210f4c07883c623a4517cd8b0eddaae16b3e5",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/worker_final.json"
+    },
+    {
+      "path": "isolated_live/worker_timing.json",
+      "bytes": 10533,
+      "sha256": "7ec63c238207b9807e9245d49423ff5c826a60f1e72882234f355b5779705b83",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/worker_timing.json"
+    },
+    {
+      "path": "launch/launch.json",
+      "bytes": 116919,
+      "sha256": "36f28085f6e8dc825241a58f4221c19e23e9c0e53ebd7ae22fb1acbe7f2eee8a",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_121323_13664/launch.json"
+    },
+    {
+      "path": "progress_v7.json",
+      "bytes": 447,
+      "sha256": "430b0611807e1381e41ac9fa06969e61474611649f0555b7a6152b1aa17acf67",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/progress_v7.json"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4956,
+      "sha256": "00fd20887c97ca48085353c6571e5ffe8145c31925ad5974e3e8a37652bf74e5",
+      "role": "documentation"
+    },
+    {
+      "path": "remote_writer_recovery_review.json",
+      "bytes": 33873,
+      "sha256": "e49cd7faa883dc3f225d00ec57be4f3ea27cb6e7620546e7239c230289281922",
+      "role": "derived_analysis"
+    },
+    {
+      "path": "resource_window.json",
+      "bytes": 7963,
+      "sha256": "c22d28f7617b9efa955b9b5ca0dd62b218ba08241a79686028ee9d40bcf14af7",
+      "role": "derived_analysis"
+    },
+    {
+      "path": "retrieval_manifest.json",
+      "bytes": 7089,
+      "sha256": "0730b2af86966c4a0fe7ca0c19c0c11ad489afee1efccec7908a00e3eceb12d6",
+      "role": "original_local_retrieval_manifest_bytes"
+    },
+    {
+      "path": "review_remote.py",
+      "bytes": 10948,
+      "sha256": "357158b331f79af04c85e98020aca42315b5351aecc7a1f7cd0d131cac5fd200",
+      "role": "review_script"
+    },
+    {
+      "path": "review_summary.json",
+      "bytes": 11252,
+      "sha256": "2065b06f8483da1c31a690efd72e924c9c2635d52e168ad49568061408535cb0",
+      "role": "derived_analysis"
+    },
+    {
+      "path": "review_ulog.py",
+      "bytes": 4602,
+      "sha256": "aec433756bac648e03a612e818c62449f6914fa1b829b686de5c568647ece380",
+      "role": "review_script"
+    },
+    {
+      "path": "run_manifest.json",
+      "bytes": 1523,
+      "sha256": "53d0bb4cab28eacee1414df0b2a168ac7a00fe87b2d696542ee8d72aab1bd2ec",
+      "role": "original_server_bytes",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/run_manifest.json"
+    },
+    {
+      "path": "summarize_review.py",
+      "bytes": 10884,
+      "sha256": "396d7c8dd7c83c997fb2732eb17fa4bf11a4d9e26fd8c6cf6b53c1f55cf0f7a0",
+      "role": "review_script"
+    }
+  ]
+}

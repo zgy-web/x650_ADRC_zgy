@@ -1,0 +1,147 @@
+{
+  "engine": {
+    "repo_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+    "task_config": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_121323_13664/task.json",
+      "sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286"
+    },
+    "initialization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/initialization.json",
+      "sha256": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1"
+    },
+    "synthetic_software_fixture_only": true,
+    "historical_reproduction_claimed": false,
+    "physical_flight_qualification": false,
+    "native_predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "abi": 1
+    },
+    "numerical_backend": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+      "library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/native_acceptance.json",
+      "software_proof_sha256": "445f44a2218bf6b058c4c9834217ecc63f40f305c592344db1c34757af377b3a"
+    },
+    "scope": "explicit PX4/Gazebo simulation; not hardware",
+    "constructor_only_template": true,
+    "actual_handoff_required": true,
+    "diagnostic_snapshot": "owned_allocation_once_v1",
+    "diagnostic_snapshot_scope": "private read-only live result; per-result descendants may alias; detached from controller and future steps before synchronous binary handoff",
+    "implementation": "frozen_cpp_numerics_with_python_adapter",
+    "native_mpc": true,
+    "replay_only": false,
+    "actuator_dispatch": false,
+    "requests": 26,
+    "accepted": 26,
+    "faulted": false,
+    "last_error": null,
+    "outer_deadline_s": 0.05,
+    "configuration_sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286"
+  },
+  "gc_enabled_before": true,
+  "gc_enabled_after": true,
+  "preflight_gc": {
+    "kind": "worker_preflight_full_gc_v1",
+    "generation": 2,
+    "explicit_collection": true,
+    "before_ready": true,
+    "start_monotonic_ns": 59600926672205144,
+    "end_monotonic_ns": 59600926690940279,
+    "duration_ns": 18735135,
+    "collected": 50,
+    "before": {
+      "enabled": true,
+      "counts": [
+        516,
+        10,
+        8
+      ],
+      "thresholds": [
+        700,
+        10,
+        10
+      ],
+      "stats": [
+        {
+          "collections": 219,
+          "collected": 460,
+          "uncollectable": 0
+        },
+        {
+          "collections": 19,
+          "collected": 10,
+          "uncollectable": 0
+        },
+        {
+          "collections": 1,
+          "collected": 62,
+          "uncollectable": 0
+        }
+      ],
+      "garbage_count": 0,
+      "frozen_count": 0
+    },
+    "after": {
+      "enabled": true,
+      "counts": [
+        2,
+        0,
+        0
+      ],
+      "thresholds": [
+        700,
+        10,
+        10
+      ],
+      "stats": [
+        {
+          "collections": 219,
+          "collected": 460,
+          "uncollectable": 0
+        },
+        {
+          "collections": 19,
+          "collected": 10,
+          "uncollectable": 0
+        },
+        {
+          "collections": 2,
+          "collected": 112,
+          "uncollectable": 0
+        }
+      ],
+      "garbage_count": 0,
+      "frozen_count": 0
+    },
+    "gc_policy_unchanged": true,
+    "scope": "one preflight setup-cycle collection; natural runtime GC remains enabled as observed; no future pause bound"
+  },
+  "gc_events": [
+    {
+      "generation": 2,
+      "start_ns": 59600926672211421,
+      "end_ns": 59600926690935334,
+      "collected": 50
+    },
+    {
+      "generation": 0,
+      "start_ns": 59601000944212734,
+      "end_ns": 59601000944273992,
+      "collected": 33
+    },
+    {
+      "generation": 0,
+      "start_ns": 59601000978548379,
+      "end_ns": 59601000978666711,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 59601001434538380,
+      "end_ns": 59601001434620429,
+      "collected": 0
+    }
+  ]
+}

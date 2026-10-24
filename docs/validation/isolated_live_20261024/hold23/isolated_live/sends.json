@@ -1,0 +1,1082 @@
+[
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 1,
+    "dispatch_sequence": 3196,
+    "sent_monotonic_ns": 59601000961531777,
+    "sim_s": 41.568,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1180,
+      1180
+    ],
+    "joint_velocity": [
+      0.0022704176234758133,
+      -0.00046874300300079014
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.00031148131555278996,
+      -0.00021542130923283458,
+      -0.000459497305214404
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 1,
+    "dispatch_sequence": 3197,
+    "sent_monotonic_ns": 59601000981574855,
+    "sim_s": 41.588,
+    "repeated": true,
+    "stop_zero": false,
+    "expected_counter": [
+      1181,
+      1181
+    ],
+    "joint_velocity": [
+      0.0022704176234758133,
+      -0.00046874300300079014
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.00031148131555278996,
+      -0.00021542130923283458,
+      -0.000459497305214404
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 2,
+    "dispatch_sequence": 3198,
+    "sent_monotonic_ns": 59601001001572675,
+    "sim_s": 41.608,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1182,
+      1182
+    ],
+    "joint_velocity": [
+      0.004821432916213159,
+      -0.0008902971235658695
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.00046564211604584665,
+      -6.344063992954002e-05,
+      -0.0006965309564432311
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 3,
+    "dispatch_sequence": 3199,
+    "sent_monotonic_ns": 59601001021607446,
+    "sim_s": 41.628,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1183,
+      1183
+    ],
+    "joint_velocity": [
+      0.013338329932907582,
+      -0.0020841285604975093
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0013636497375966213,
+      -2.8683381991646915e-06,
+      -0.0013405649186237598
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 4,
+    "dispatch_sequence": 3200,
+    "sent_monotonic_ns": 59601001041552213,
+    "sim_s": 41.648,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1184,
+      1184
+    ],
+    "joint_velocity": [
+      0.01606965384578838,
+      -0.002411736688757053
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0015580153993301389,
+      0.0004606118989699073,
+      -0.0014810877292042693
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 5,
+    "dispatch_sequence": 3201,
+    "sent_monotonic_ns": 59601001061564799,
+    "sim_s": 41.668,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1185,
+      1185
+    ],
+    "joint_velocity": [
+      0.02040298087945823,
+      -0.002844398793204328
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.001768350986057801,
+      0.0009578582938313768,
+      -0.001665293858792279
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 6,
+    "dispatch_sequence": 3202,
+    "sent_monotonic_ns": 59601001081538595,
+    "sim_s": 41.688,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1186,
+      1186
+    ],
+    "joint_velocity": [
+      0.023246870559210677,
+      -0.0032501285010826226
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.001741394480678097,
+      0.0024248683460643974,
+      -0.001815931205674126
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 7,
+    "dispatch_sequence": 3203,
+    "sent_monotonic_ns": 59601001101536936,
+    "sim_s": 41.708,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1187,
+      1187
+    ],
+    "joint_velocity": [
+      0.026401548398846127,
+      -0.0035544938231390068
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0013101285231464385,
+      0.003248446795812119,
+      -0.001896076324546882
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 8,
+    "dispatch_sequence": 3204,
+    "sent_monotonic_ns": 59601001121548762,
+    "sim_s": 41.728,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1188,
+      1188
+    ],
+    "joint_velocity": [
+      0.02896086102614795,
+      -0.0037974907441217652
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0008982212501753375,
+      0.004333621532116682,
+      -0.0019238874326582157
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 9,
+    "dispatch_sequence": 3205,
+    "sent_monotonic_ns": 59601001141681487,
+    "sim_s": 41.748,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1189,
+      1189
+    ],
+    "joint_velocity": [
+      0.03201507477482939,
+      -0.003962054886503872
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0005651537753988971,
+      0.00542514525427373,
+      -0.0018738832334027184
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 10,
+    "dispatch_sequence": 3206,
+    "sent_monotonic_ns": 59601001161593418,
+    "sim_s": 41.768,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1190,
+      1190
+    ],
+    "joint_velocity": [
+      0.03386399372012428,
+      -0.003988425312319482
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0005675376048825511,
+      0.006197727497627668,
+      -0.0017899198667297085
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 11,
+    "dispatch_sequence": 3207,
+    "sent_monotonic_ns": 59601001181619771,
+    "sim_s": 41.788,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1191,
+      1191
+    ],
+    "joint_velocity": [
+      0.035797952848806894,
+      -0.003966286294152434
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0005206853335014126,
+      0.007185262794395299,
+      -0.001637820858424511
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 12,
+    "dispatch_sequence": 3208,
+    "sent_monotonic_ns": 59601001201597236,
+    "sim_s": 41.808,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1192,
+      1192
+    ],
+    "joint_velocity": [
+      0.03765841023054423,
+      -0.0038805798013200523
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.0003949721416645207,
+      0.008046286206921193,
+      -0.0014584079248062699
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 13,
+    "dispatch_sequence": 3209,
+    "sent_monotonic_ns": 59601001221591473,
+    "sim_s": 41.828,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1193,
+      1193
+    ],
+    "joint_velocity": [
+      0.038284705073424304,
+      -0.0037938489059647644
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      0.00032359410033781577,
+      0.009316021099769107,
+      -0.0012684391576113982
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 14,
+    "dispatch_sequence": 3210,
+    "sent_monotonic_ns": 59601001241606669,
+    "sim_s": 41.848,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1194,
+      1194
+    ],
+    "joint_velocity": [
+      0.039554643445413595,
+      -0.0036300674525733077
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      4.602811983547259e-05,
+      0.010198921023972757,
+      -0.0010384117337177438
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 15,
+    "dispatch_sequence": 3211,
+    "sent_monotonic_ns": 59601001261691009,
+    "sim_s": 41.868,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1195,
+      1195
+    ],
+    "joint_velocity": [
+      0.040430139676192973,
+      -0.0035055390632844838
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.00032619624127142407,
+      0.010633529328699425,
+      -0.0008826460132386445
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 16,
+    "dispatch_sequence": 3212,
+    "sent_monotonic_ns": 59601001281578237,
+    "sim_s": 41.888,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1196,
+      1196
+    ],
+    "joint_velocity": [
+      0.041643307668381375,
+      -0.0033127891233013973
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.00037513696689199717,
+      0.011056356089438205,
+      -0.0006807892003655299
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 17,
+    "dispatch_sequence": 3213,
+    "sent_monotonic_ns": 59601001301674206,
+    "sim_s": 41.908,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1197,
+      1197
+    ],
+    "joint_velocity": [
+      0.04215601244257516,
+      -0.0031071311905426914
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0004188684539824489,
+      0.011588080699511156,
+      -0.0004677162655516024
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 17,
+    "dispatch_sequence": 3214,
+    "sent_monotonic_ns": 59601001321554738,
+    "sim_s": 41.928,
+    "repeated": true,
+    "stop_zero": false,
+    "expected_counter": [
+      1198,
+      1198
+    ],
+    "joint_velocity": [
+      0.04215601244257516,
+      -0.0031071311905426914
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0004188684539824489,
+      0.011588080699511156,
+      -0.0004677162655516024
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 18,
+    "dispatch_sequence": 3215,
+    "sent_monotonic_ns": 59601001341548249,
+    "sim_s": 41.948,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1199,
+      1199
+    ],
+    "joint_velocity": [
+      0.043150616785767,
+      -0.0028554471133274534
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -7.043436789318827e-05,
+      0.011942263679041654,
+      -0.0002411848259169096
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 19,
+    "dispatch_sequence": 3216,
+    "sent_monotonic_ns": 59601001361507620,
+    "sim_s": 41.968,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1200,
+      1200
+    ],
+    "joint_velocity": [
+      0.042957195890388065,
+      -0.0025678045720138295
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0008626920738916809,
+      0.012231613275056435,
+      2.485434612110521e-05
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 20,
+    "dispatch_sequence": 3217,
+    "sent_monotonic_ns": 59601001381679431,
+    "sim_s": 41.988,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1201,
+      1201
+    ],
+    "joint_velocity": [
+      0.04401602920859483,
+      -0.0024112963696900796
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0011516335611051747,
+      0.011588066941461639,
+      0.0001298194318647251
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 20,
+    "dispatch_sequence": 3218,
+    "sent_monotonic_ns": 59601001401571099,
+    "sim_s": 42.008,
+    "repeated": true,
+    "stop_zero": false,
+    "expected_counter": [
+      1202,
+      1202
+    ],
+    "joint_velocity": [
+      0.04401602920859483,
+      -0.0024112963696900796
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0011516335611051747,
+      0.011588066941461639,
+      0.0001298194318647251
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 21,
+    "dispatch_sequence": 3219,
+    "sent_monotonic_ns": 59601001421682718,
+    "sim_s": 42.028,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1203,
+      1203
+    ],
+    "joint_velocity": [
+      0.04433837744031036,
+      -0.0023188074185907853
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0012157611241849322,
+      0.011280316293510109,
+      0.00019386748758099052
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 22,
+    "dispatch_sequence": 3220,
+    "sent_monotonic_ns": 59601001441607056,
+    "sim_s": 42.048,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1204,
+      1204
+    ],
+    "joint_velocity": [
+      0.04475576130385422,
+      -0.0024618048806559906
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.0019171049782524723,
+      0.010585727555411041,
+      8.827905763885467e-05
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 23,
+    "dispatch_sequence": 3221,
+    "sent_monotonic_ns": 59601001461507614,
+    "sim_s": 42.068,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1205,
+      1205
+    ],
+    "joint_velocity": [
+      0.045442798230768716,
+      -0.0025790571558981274
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.002551098987018032,
+      0.00995214365580694,
+      -4.69518189633592e-06
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 24,
+    "dispatch_sequence": 3222,
+    "sent_monotonic_ns": 59601001481462502,
+    "sim_s": 42.088,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1206,
+      1206
+    ],
+    "joint_velocity": [
+      0.046002159241489995,
+      -0.0026911726974024274
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.002470831670470028,
+      0.009548069453971809,
+      -8.975931007288996e-05
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 24,
+    "dispatch_sequence": 3223,
+    "sent_monotonic_ns": 59601001501488377,
+    "sim_s": 42.108,
+    "repeated": true,
+    "stop_zero": false,
+    "expected_counter": [
+      1207,
+      1207
+    ],
+    "joint_velocity": [
+      0.046002159241489995,
+      -0.0026911726974024274
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.002470831670470028,
+      0.009548069453971809,
+      -8.975931007288996e-05
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 25,
+    "dispatch_sequence": 3224,
+    "sent_monotonic_ns": 59601001521568396,
+    "sim_s": 42.128,
+    "repeated": false,
+    "stop_zero": false,
+    "expected_counter": [
+      1208,
+      1208
+    ],
+    "joint_velocity": [
+      0.04542697110920324,
+      -0.002815092373513863
+    ],
+    "coordinate_frame": 1,
+    "type_mask": 2048,
+    "position_ned": [
+      3.814041305005844e-10,
+      6.279181338515044e-07,
+      -1.9848759269448943
+    ],
+    "velocity_ned": [
+      -0.002722307695696625,
+      0.009411970947969944,
+      -0.00015515107248411774
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 1.6745840311050415
+  },
+  {
+    "session_id": 74613692,
+    "epoch": 1,
+    "command_sequence": 25,
+    "dispatch_sequence": 3225,
+    "sent_monotonic_ns": 59601001541547598,
+    "sim_s": 42.148,
+    "repeated": false,
+    "stop_zero": true,
+    "expected_counter": [
+      1209,
+      1209
+    ],
+    "joint_velocity": [
+      0.0,
+      0.0
+    ],
+    "coordinate_frame": 0,
+    "type_mask": 0,
+    "position_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocity_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 0.0
+  }
+]

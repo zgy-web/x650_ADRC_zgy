@@ -1,0 +1,21 @@
+{
+  "kind": "isolated_fault_supervision_v1",
+  "session_id": 74613692,
+  "epoch": 1,
+  "first_fault": {
+    "topic": "dispatch",
+    "session_id": 74613692,
+    "epoch": 1,
+    "sequence": 3225,
+    "reason": 1,
+    "observed_monotonic_ns": 59601001542289775,
+    "producer_monotonic_ns": 59601001541391213,
+    "producer_to_observation_ns": 898562
+  },
+  "counts": {
+    "dispatch": 35,
+    "events": 25,
+    "ignored_identity": 0
+  },
+  "semantics": "independent executor, depth 1; first matching fault latched; observer only"
+}

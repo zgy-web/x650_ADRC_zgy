@@ -1,0 +1,7 @@
+{
+  "complete": false,
+  "stage": "waiting_for_hold23",
+  "fast_started": false,
+  "error": "AssertionError('Hold23 did not complete')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/progress_v7.py\", line 16, in <module>\n    assert (B/'hold_v23.exit').read_text().strip()=='0','Hold23 did not complete'\nAssertionError: Hold23 did not complete\n"
+}

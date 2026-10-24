@@ -1,0 +1,37 @@
+{
+  "started": true,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 59601001735648717
+  },
+  "error": "C++ output latched fault reason 1",
+  "processes": {
+    "recorder": {
+      "pid": 14390,
+      "returncode": 0
+    },
+    "source_recorder": {
+      "pid": 14391,
+      "returncode": 0
+    },
+    "worker": {
+      "pid": 14392,
+      "returncode": 0
+    },
+    "ingress": {
+      "pid": 14473,
+      "returncode": 0
+    },
+    "dispatcher": {
+      "pid": 14474,
+      "returncode": 0
+    },
+    "consumption": {
+      "pid": 14475,
+      "returncode": 0
+    }
+  },
+  "source_samples": 106,
+  "physical_acceptance_pending": true
+}
