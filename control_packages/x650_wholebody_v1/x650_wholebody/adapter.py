@@ -61,6 +61,35 @@ class ControllerAdapter:
         self._alpha_body = np.zeros(3)
         self._last_task_t = None
         self._initialized = False
+        self._owned_diagnostic_snapshot = False
+
+    def use_owned_diagnostic_snapshot(self):
+        """Opt in before stepping to the private live recorder ownership path.
+
+        Public/default commands keep their original independent nested copies.
+        The live worker only reads its diagnostics and serializes them before
+        the next step. It may share subtrees *within one owned result*, never
+        with the allocator or another step; callers must not mutate that live
+        result before the synchronous binary handoff completes.
+        """
+        if self._last_task_t is not None:
+            raise RuntimeError("Diagnostic ownership must be selected before the first step")
+        self._owned_diagnostic_snapshot = True
+
+    def _snapshot_diagnostics(self, allocation):
+        if self._owned_diagnostic_snapshot:
+            owned = deepcopy(allocation)
+            diagnostic = owned.get("diagnostics", {})
+            if not isinstance(diagnostic, dict):
+                # Do not turn an invalid list-of-pairs into a valid mapping
+                # merely because the private path uses dict() below.
+                raise TypeError("Allocator diagnostics must be a dictionary")
+            # Two distinct top-level dicts are essential: using the same dict
+            # here would create a cycle when 'allocation' is attached below.
+            # The entire graph was detached once; neither the controller nor
+            # future steps can modify its shared per-result descendants.
+            return dict(diagnostic), owned
+        return deepcopy(allocation.get("diagnostics", {})), deepcopy(allocation)
 
     def reset(self, p0, R0, q0, *, preserve_motion_filter=False):
         p0, R0, q0 = vector(p0, 3, "p0"), rotation_matrix(R0), vector(q0, 2, "q0")
@@ -132,9 +161,9 @@ class ControllerAdapter:
             # nominal trajectory acceleration nor arm reaction compensation.
             acceleration = np.zeros(3)
             saturated = False
-        diagnostic = deepcopy(allocation.get("diagnostics", {}))
+        diagnostic, recorded_allocation = self._snapshot_diagnostics(allocation)
         diagnostic.update(
-            allocation=deepcopy(allocation), filtered_alpha_body=alpha.copy(),
+            allocation=recorded_allocation, filtered_alpha_body=alpha.copy(),
             state_stamp_s=stamp, arm_feedforward=ff,
             nominal_acceleration_world=nominal_acceleration.copy(),
             arm_acceleration_world=ff["acceleration_world"].copy(),

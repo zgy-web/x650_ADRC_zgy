@@ -12,6 +12,8 @@ from x650_wholebody.native_optimization import NativeOptimization
 from x650_wholebody.native_mpc import NativeTs20MpcController
 from x650_wholebody.native_joint_prediction import NativeJointMatrices
 from x650_wholebody.mpc import MpcController,MpcSolveError
+from x650_wholebody.ts20 import POSITION_STEP_RAD,VELOCITY_STEP_RAD_S
+from test_ts20_prediction import packet,prediction
 
 LIB=os.environ.get("X650_NATIVE_OPTIMIZATION_LIBRARY")
 PREDICTOR=os.environ.get("X650_NATIVE_PREDICTION_LIBRARY")
@@ -149,6 +151,112 @@ class NativeGates(unittest.TestCase):
         b=c._problem(0.,.02,s,t)
         for key in ('A','b','H','g','C','lo','hi','offsets','jacobians'):
             np.testing.assert_allclose(a[key],b[key],atol=1e-9,rtol=1e-9,err_msg=key)
+
+    def test_batched_future_packets_preserve_bus_boundaries_and_sensitivities(self):
+        _,p,_,_=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        native=NativeJointMatrices(p,self.native)
+        rng=np.random.default_rng(20261024)
+        limits=np.array([.45,.3]);r=np.array([-.21,.17])
+        for count in (1,15,60):
+            nodes=np.cumsum(np.full(count,.02));nominal=rng.uniform(-.2,.2,(count,5))
+            for phase in (0.,.003):
+                for delta in (-1e-8,0.,1e-8):
+                    with self.subTest(count=count,phase=phase,delta=delta):
+                        t=phase+.04+delta
+                        sent=[{'send_time_s':phase+.02,'q_ref':r.copy(),'dq_ref':np.zeros(2),
+                               'tau_ff':np.zeros(2),'kp':p.kp.copy(),'kd':p.kd.copy()}]
+                        for sensitivity in (True,False):
+                            expected=p._future_packets(t,nodes,nominal,limits,r,deepcopy(sent),phase,
+                                                       sensitivities=sensitivity)
+                            actual=native._future_packets(t,nodes,nominal,limits,r,deepcopy(sent),phase,
+                                                          sensitivities=sensitivity)
+                            self.assertEqual(len(actual[0]),len(expected[0]))
+                            for a,b in zip(actual[0],expected[0]):
+                                self.assertEqual(a['send_time_s'],b['send_time_s'])
+                                for key in ('q_ref','dq_ref','tau_ff','kp','kd'):
+                                    np.testing.assert_array_equal(a[key],b[key],err_msg=key)
+                            if sensitivity:
+                                np.testing.assert_array_equal(actual[1],expected[1])
+                                np.testing.assert_array_equal(actual[2],expected[2])
+                            else:
+                                self.assertEqual(actual[1:],(None,None))
+
+    def test_batched_packets_keep_independent_mutable_fields(self):
+        _,p,_,_=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        native=NativeJointMatrices(p,self.native)
+        packets,P,V=native._future_packets(0.,np.array([.02,.04]),np.zeros((2,5)),
+                                           np.array([.45,.3]),np.zeros(2),[],0.)
+        saved=deepcopy(packets[1]);gains=p.kp.copy();second=P[1].copy()
+        for key in ('q_ref','dq_ref','tau_ff','kp','kd'):
+            packets[0][key][:]=99.
+            np.testing.assert_array_equal(packets[1][key],saved[key])
+        P[0][:]=99.;V[0][:]=99.
+        np.testing.assert_array_equal(P[1],second)
+        np.testing.assert_array_equal(p.kp,gains)
+
+    def test_nonuniform_horizon_and_half_lsb_packet_boundaries_are_exact(self):
+        _,p,_,_=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        native=NativeJointMatrices(p,self.native)
+        for first in (.012,.024):
+            nodes=np.cumsum([first,.04,.04,.04])
+            for toward in (-np.inf,0.,np.inf):
+                q=.5*POSITION_STEP_RAD;v=.5*VELOCITY_STEP_RAD_S
+                if toward:
+                    q,v=np.nextafter(q,toward),np.nextafter(v,toward)
+                nominal=np.tile([0.,0.,0.,v,-v],(len(nodes),1));r=np.array([q,-q])
+                sent=[packet(.02,q=r)]
+                for sensitivity in (False,True):
+                    a=p._future_packets(.02,nodes,nominal,np.array([.45,.3]),r,deepcopy(sent),0.,
+                                        sensitivities=sensitivity)
+                    b=native._future_packets(.02,nodes,nominal,np.array([.45,.3]),r,deepcopy(sent),0.,
+                                             sensitivities=sensitivity)
+                    self.assertGreater(b[0][1]['send_time_s'],.02)
+                    for pa,pb in zip(a[0],b[0]):
+                        self.assertEqual(pa['send_time_s'],pb['send_time_s'])
+                        for key in ('q_ref','dq_ref','tau_ff','kp','kd'):
+                            np.testing.assert_array_equal(pa[key],pb[key])
+                    if sensitivity:
+                        np.testing.assert_array_equal(a[1],b[1]);np.testing.assert_array_equal(a[2],b[2])
+                        np.testing.assert_array_equal(b[1][0],0.);np.testing.assert_array_equal(b[2][0],0.)
+
+    def test_batched_prediction_and_changed_candidate_preserve_complete_results(self):
+        _,p,_,_=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        native=NativeJointMatrices(p,self.native)
+        for first in (.012,.024):
+            nodes=np.cumsum([first,.04,.04,.04]);nominal=np.tile([0.,0.,0.,.09,-.07],(len(nodes),1))
+            a=prediction(p,nodes=nodes,nominal=nominal)
+            b=prediction(native,nodes=nodes,nominal=nominal)
+            for key in ('nodes','events','reference_nodes'):
+                self.assertEqual(len(a[key]),len(b[key]))
+                for ra,rb in zip(a[key],b[key]):
+                    for va,vb in zip(ra,rb):
+                        np.testing.assert_allclose(va,vb,atol=1e-12,rtol=1e-12)
+            candidate=-nominal
+            expected=p.candidate_rollout(a,candidate);actual=native.candidate_rollout(b,candidate)
+            for key in ('q','dq','modes','time_s','reference_nodes'):
+                np.testing.assert_array_equal(expected[key],actual[key])
+            for pa,pb in zip(expected['packets'],actual['packets']):
+                for key in pa:np.testing.assert_array_equal(pa[key],pb[key])
+
+    def test_batched_rollout_events_do_not_alias_public_arrays_or_inputs(self):
+        _,p,_,_=setup()
+        p.enable_native(PREDICTOR,expected_sha256=hashlib.sha256(Path(PREDICTOR).read_bytes()).hexdigest())
+        native=NativeJointMatrices(p,self.native)
+        q0,dq0=np.array([.01,-.01]),np.array([.1,-.1])
+        packets=[packet(-.005,q=(.02,-.03)),packet(0.,q=(.03,-.02))]
+        result=native.rollout(0.,q0,dq0,packets,[0.,.02,.04])
+        public=[q0,dq0,result['q'],result['dq'],result['modes']]
+        public.extend(event[key] for event in result['events'] for key in ('q','dq','modes'))
+        before=[value.copy() for value in public]
+        for i,left in enumerate(public):
+            for right in public[i+1:]:self.assertFalse(np.shares_memory(left,right))
+        result['events'][0]['q'][:]=99.
+        for value,original in zip(public,before):
+            if value is not result['events'][0]['q']:np.testing.assert_array_equal(value,original)
 
     def candidate_case(self):
         c,_,_,_=setup();N=c.nodes

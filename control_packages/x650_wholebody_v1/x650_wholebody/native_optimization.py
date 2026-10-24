@@ -79,15 +79,15 @@ class NativeOptimization:
         if P.ndim!=3 or P.shape!=V.shape or P.shape[:2]!=(len(sends),2):
             raise ValueError("Joint packet sensitivity shape")
         n=P.shape[2]
-        durations=np.diff(np.r_[start,bounds])
+        durations=np.diff(np.concatenate(([start],bounds)))
         transitions=np.empty((len(bounds),2,2,3))
-        for index,duration in enumerate(durations):
-            A,B=(predictor._transition(duration) if duration>0 else
-                 (np.broadcast_to(np.eye(2),(2,2,2)),np.zeros((2,2))))
-            transitions[index,:,:,:2]=A
-            transitions[index,:,:,2]=B
+        unchanged=(np.broadcast_to(np.eye(2),(2,2,2)),np.zeros((2,2)))
+        blocks=[predictor._transition(duration) if duration>0 else unchanged
+                for duration in durations]
+        transitions[:,:,:,:2]=np.asarray([block[0] for block in blocks])
+        transitions[:,:,:,2]=np.asarray([block[1] for block in blocks])
         # A held packet changes only after reaching its application boundary.
-        starts=np.r_[start,bounds[:-1]]
+        starts=np.concatenate(([start],bounds[:-1]))
         indices=np.maximum(0,np.searchsorted(sends,starts+1e-11,side="right")-1)
         forces = predictor.kp[None,:,None]*P+predictor.kd[None,:,None]*V
         query_index=np.searchsorted(bounds,queries).astype(np.int32)
@@ -98,7 +98,7 @@ class NativeOptimization:
                   transitions,array(forces[indices]),query_index,output)
         if not np.isfinite(output).all():
             raise ValueError("Nonfinite joint sensitivity output")
-        return list(output)
+        return output
 
     def assemble(self, controller, t, dt, state, target):
         c = controller
@@ -108,7 +108,7 @@ class NativeOptimization:
         origin = state.control_time_s-t
         if c._chain_clock_origin is not None and abs(origin-c._chain_clock_origin) > 1e-8:
             raise ValueError("Prediction-chain task/control time origin changed")
-        h = np.r_[dt, np.full(N-1, c.node_dt)]
+        h = np.full(N,c.node_dt); h[0] = dt
         times = np.cumsum(h)
         warm = c._warm_start(t, h)
         prediction = c._joint_prediction(t, times, h, state, warm)
@@ -117,12 +117,18 @@ class NativeOptimization:
         radius = min(c.actuator_predictor.trust_radius_normalized, .02)
         recent = [u for when, u in c._actuator_context["command_history"]
                   if when >= t-.05-age-c.max_dt]
-        joints = np.asarray([np.r_[q, dq, Q.ravel(), D.ravel()]
-                             for _,q,dq,Q,D in prediction["nodes"]])
-        references = np.asarray([np.r_[r, R.ravel()]
-                                 for _,r,R in prediction["reference_nodes"]])
-        x0 = np.r_[state.position, state.velocity, prediction["q_current"],
-                   prediction["dq_current"], vector(state.acceleration_enu,3,"acceleration")[:2]]
+        if len(prediction["nodes"]) != N or len(prediction["reference_nodes"]) != N:
+            raise ValueError("Native joint prediction must cover every horizon node")
+        # The packed ABI shape is fixed. Direct slices avoid per-node np.r_
+        # dtype inference and temporary concatenations, retaining exact order.
+        joints = np.empty((N,4+4*n))
+        for row,(_,q,dq,Q,D) in zip(joints,prediction["nodes"]):
+            row[:2],row[2:4],row[4:4+2*n],row[4+2*n:] = q,dq,Q.ravel(),D.ravel()
+        references = np.empty((N,2+2*n))
+        for row,(_,r,R) in zip(references,prediction["reference_nodes"]):
+            row[:2],row[2:] = r,R.ravel()
+        x0 = np.concatenate((state.position,state.velocity,prediction["q_current"],
+                   prediction["dq_current"],vector(state.acceleration_enu,3,"acceleration")[:2]))
         pieces = [[dt,c.node_dt,c.max_dt,age,radius],
                   [c.weights[k] for k in ("tip_position","tip_velocity","base_position",
                                          "joint_posture","input_nominal","input_delta")],

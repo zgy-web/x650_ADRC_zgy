@@ -1,7 +1,7 @@
 {
   "kind": "x650_isolated_live_protocol_v1",
   "simulation_only": true,
-  "execution_revision": 11,
+  "execution_revision": 13,
   "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
   "cpu_roles": {
     "source": [
@@ -31,7 +31,7 @@
   "next_solve_commit": "after_actual_writer_send_using_latest_causal_real_snapshot_with_original_times",
   "next_output_commit": "only_after_both_previous_joint_commands_consumed",
   "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
-  "frozen_hold_task_sha256": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1",
+  "frozen_hold_task_sha256": "9ef8c12c6a9591bdc80660710b0de25f8589defdf12b0362f9109444ff64cc4c",
   "frozen_numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
   "order": [
     "transport_and_consumption_contract",
@@ -68,5 +68,7 @@
   ],
   "numerical_convergence": "QP aggregate plus per-original-row 1e-10 numerical target; original 2e-7 external feasibility, weights and physical constraints unchanged",
   "ground_initialization": "construct cached lifecycle allocator and start idle transport on disarmed ground; actual LiveStart binds live reference/history after normal prestream",
-  "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged"
+  "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged",
+  "native_preparation": "native-only batch packet/sensitivity/query/ABI preparation and event packing; independent reference predictor and physical libraries restored byte-exact; same parameters/equations/quantization; fresh 344 regression/30 matrix/388 recorded-call qualification",
+  "live_diagnostic_snapshot": "one owned allocation deepcopy per result; two distinct top-level diagnostic dictionaries; read-only live subtree sharing; synchronous binary capture before next step; public default retains independent copies"
 }
