@@ -40,7 +40,11 @@ class PeriodicGate {
     t.age=command_issued_ && now>=command_issued_ ? now-command_issued_ : 0;
     if (stopped_) { t.status=STOPPED; return t; }
     if (!clock(now) || scheduled>now) fail(BACKWARD_CLOCK);
-    if (now>=scheduled && now-scheduled>PERIOD_NS) fail(MISSED_DEADLINE);
+    // READY has no command to execute. A late idle heartbeat cannot miss a
+    // control output deadline or poison the later live handoff. The first
+    // accepted command starts ACTIVE permanently (command_seq_ never resets);
+    // all active deadlines, leases and latched faults remain unchanged.
+    if (command_seq_ && now>=scheduled && now-scheduled>PERIOD_NS) fail(MISSED_DEADLINE);
     if (command_seq_ && !fault_) {
       if (!source_issued_ || now<source_issued_ || now-source_issued_>RX_AGE_NS) fail(STALE_SOURCE);
       else if (t.age>LEASE_NS) fail(STALE_COMMAND);

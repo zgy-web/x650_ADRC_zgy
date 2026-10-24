@@ -5,6 +5,7 @@ recovery. During active control it receives/validates feedback only; it never
 calls the optimizer or sends a joint/PVA command. No simulated plant is replaced.
 """
 from pathlib import Path
+from copy import deepcopy
 import base64
 import json
 import os
@@ -144,6 +145,92 @@ class LiveExtension(Ts20Extension):
             "joint_ack_semantics":"actual plugin consumed counters, values and times; not ROS publish return",
             "ownership":"legacy prestream -> C++ only -> zero consumed -> legacy recovery",
             "source_adapter":"independent of algorithm/output/diagnostic processes; existing PX4 estimated and causal TS20 validators"}
+        self._prepare_ground_transport(ctx,loop,meta)
+
+    @staticmethod
+    def _ground_state(ctx,loop):
+        status,land=ctx.node.data['status'],ctx.node.data['land']
+        result={'ground_landed':bool(land.landed),'ground_disarmed':int(status.arming_state)!=2,
+                'loop_strict_false':not loop.strict,'before_live_start':loop.task_start is None}
+        if not all(result.values()) or loop.offboard or loop.recovery:
+            raise RuntimeError('Isolated preparation requires disarmed ground before strict flight control')
+        return result
+
+    def _transport_ready(self):
+        return ((self.out/'worker_ready').exists() and self.start_pub.get_subscription_count()>=4
+                and all((self.out/(name+'_ready')).exists() for name in ('ingress','dispatcher','consumption'))
+                and self.source_pub.get_subscription_count()>=1 and self.message_counts.get('dispatch',0)>2)
+
+    def _assert_waiting_no_output(self):
+        if self.started or self.active or self.message_counts.get('sends',0):
+            raise RuntimeError('Isolated actuator output occurred before actual LiveStart')
+        tick=self.latest.get('dispatch')
+        if tick is None or tick.status!=0 or tick.output_valid:
+            raise RuntimeError('Dispatcher must remain idle without actuator output before handoff')
+        if self.failure:raise RuntimeError(self.failure)
+
+    def _prepare_ground_transport(self,ctx,loop,meta):
+        # The shared airborne build hook previously repeated software-proof
+        # hashing/library setup, followed by three process launches. Those
+        # synchronous operations left a measured 34 ms hole between pumps.
+        # Complete all of them before arming. No controller step or synthetic
+        # reset occurs; the shared lifecycle still supplies the actual anchor.
+        record={'kind':'isolated_ground_preparation_v1','start_monotonic_ns':time.monotonic_ns(),
+                **self._ground_state(ctx,loop),'initial_task_origin_s':0.}
+        start_cpu=time.thread_time_ns()
+        self.prepared_configuration=deepcopy(loop.cfg)
+        self.prepared_model=loop.model
+        self.prepared_pid=dict(loop.pid)
+        before=time.monotonic_ns()
+        self.prepared_allocator=super().build_allocator(loop.cfg,loop.model,loop.pid,
+                                                       shared.ConstantTarget(np.zeros(3)),loop)
+        record['allocator_prepare_ns']=time.monotonic_ns()-before
+        record['allocator_step_count']=int(self.prepared_allocator.step_count)
+        if record['allocator_step_count']!=0:raise RuntimeError('Ground constructor unexpectedly advanced controller')
+        self.prepared_allocator_claimed=False
+        common={'expected_session_id':self.session,'expected_epoch':1,'configuration_sha256':self.task_sha,'simulation_live':True}
+        gains=[loop.pid['MPC_XY_P'],loop.pid['MPC_XY_P'],loop.pid['MPC_Z_P']]
+        clients=list(ctx.vehicle.link.clients)
+        if len(clients)!=1:raise RuntimeError('Exactly one actual MAVLink peer required')
+        address=clients[0]
+        if not isinstance(address,tuple) or address[0]!='127.0.0.1':raise RuntimeError('Only discovered loopback SITL allowed')
+        before=time.monotonic_ns()
+        # Live ingress refuses source messages before LiveStart and replaces
+        # this construction-only origin with its real recorded send boundary.
+        self._launch('ingress',self._ros('flyarm_control_gateway','state_ingress',{**common,'position_gains':gains,'task_origin_s':0.,'ready_file':self.out/'ingress_ready'}))
+        self._launch('dispatcher',self._ros('flyarm_control_gateway','live_dispatcher',{**common,
+            'sitl_udp_port':int(address[1]),'sitl_socket_fd':ctx.vehicle.link.port.fileno(),
+            'sitl_system_id':int(ctx.vehicle.target[0]),'sitl_component_id':int(ctx.vehicle.target[1]),'ready_file':self.out/'dispatcher_ready'}))
+        self._launch('consumption',self._ros('flyarm_control_gateway','consumption_source',{**common,
+            'state_csv':self.runtime.states.path,'ready_file':self.out/'consumption_ready'}))
+        record['transport_launch_ns']=time.monotonic_ns()-before
+        deadline=time.monotonic()+60
+        while not self._transport_ready():
+            loop.pump()
+            self._alive()
+            self._ground_state(ctx,loop)
+            if self.message_counts.get('sends',0):raise RuntimeError('Ground transport sent an actuator command')
+            if time.monotonic()>deadline:raise TimeoutError('Ground live nodes not ready')
+        self._assert_waiting_no_output()
+        record.update(self._ground_state(ctx,loop),transport_ready=True,
+            allocator_constructed_no_step=self.prepared_allocator.step_count==0,
+            normal_output_count=self.message_counts.get('sends',0),
+            end_monotonic_ns=time.monotonic_ns(),thread_cpu_ns=time.thread_time_ns()-start_cpu)
+        self.preflight_transport=record
+        write(self.out/'preflight_transport.json',record)
+        meta['isolated_preflight_transport']=record
+
+    def build_allocator(self,cfg,model,pid,trajectory,loop):
+        # No hashing, imports, native construction or process startup at this
+        # airborne hook. Only attach the declared actual task reference.
+        if (not hasattr(self,'prepared_allocator') or self.prepared_allocator_claimed
+                or cfg!=self.prepared_configuration or model is not self.prepared_model
+                or dict(pid)!=self.prepared_pid or loop is not self.loop
+                or self.prepared_allocator.step_count!=0):
+            raise RuntimeError('Ground-prepared allocator identity/state differs at handoff')
+        self.prepared_allocator.trajectory=trajectory
+        self.prepared_allocator_claimed=True
+        return self.prepared_allocator
 
     def _launch(self,name,args):
         f=(self.out/(name+'.log')).open('x');self.logs.append(f)
@@ -166,27 +253,11 @@ class LiveExtension(Ts20Extension):
     def activate(self,ctx,loop,cfg,meta,rotation):
         self.validate_activation_stage(cfg)
         if not loop.sent_command_history or loop.task_start is not None:raise RuntimeError('Actual prestream required')
-        common={'expected_session_id':self.session,'expected_epoch':1,'configuration_sha256':self.task_sha,'simulation_live':True}
+        if not getattr(self,'preflight_transport',{}).get('transport_ready') or not self.prepared_allocator_claimed:
+            raise RuntimeError('Ground preparation must complete before actual handoff')
+        self._alive()
+        self._assert_waiting_no_output()
         gains=[loop.pid['MPC_XY_P'],loop.pid['MPC_XY_P'],loop.pid['MPC_Z_P']]
-        clients=list(ctx.vehicle.link.clients)
-        if len(clients)!=1:raise RuntimeError('Exactly one actual MAVLink peer required')
-        address=clients[0]
-        if not isinstance(address,tuple) or address[0]!='127.0.0.1':raise RuntimeError('Only discovered loopback SITL allowed')
-        self._launch('ingress',self._ros('flyarm_control_gateway','state_ingress',{**common,'position_gains':gains,'task_origin_s':float(loop.sent_command_history[-1][0]),'ready_file':self.out/'ingress_ready'}))
-        self._launch('dispatcher',self._ros('flyarm_control_gateway','live_dispatcher',{**common,
-            'sitl_udp_port':int(address[1]),'sitl_socket_fd':ctx.vehicle.link.port.fileno(),
-            'sitl_system_id':int(ctx.vehicle.target[0]),'sitl_component_id':int(ctx.vehicle.target[1]),'ready_file':self.out/'dispatcher_ready'}))
-        self._launch('consumption',self._ros('flyarm_control_gateway','consumption_source',{
-            'expected_session_id':self.session,'expected_epoch':1,'simulation_live':True,
-            'state_csv':self.runtime.states.path,'ready_file':self.out/'consumption_ready'}))
-        deadline=time.monotonic()+60
-        while not ((self.out/'worker_ready').exists() and self.start_pub.get_subscription_count()>=3
-                   and (self.out/'ingress_ready').exists() and (self.out/'dispatcher_ready').exists()
-                   and (self.out/'consumption_ready').exists()
-                   and self.source_pub.get_subscription_count()>=1 and self.message_counts.get('dispatch',0)>2):
-            loop.pump()
-            self._alive()
-            if time.monotonic()>deadline:raise TimeoutError('Live nodes not ready')
         # Exact legacy send boundary, then one-way transfer. No legacy joint
         # or PVA writes occur until the explicit C++ stop/consumption handshake.
         previous=loop.sent_command_history[-1][0]
@@ -199,8 +270,7 @@ class LiveExtension(Ts20Extension):
             if not threads or any(cpus!=expected for cpus in threads.values()):
                 raise RuntimeError('Owned process CPU isolation differs: '+name)
         write(self.out/'execution_affinity_at_handoff.json',observed)
-        if self.latest.get('dispatch') is None or self.latest['dispatch'].status!=0:
-            raise RuntimeError('Dispatcher did not remain healthy before live handoff')
+        self._assert_waiting_no_output()
         start=float(history[-1][0])
         s=self.msg.LiveStart();s.session_id=self.session;s.epoch=1;s.configuration_sha256=list(bytes.fromhex(self.task_sha))
         s.issued_monotonic_ns=time.monotonic_ns();s.origin_s=start

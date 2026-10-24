@@ -106,6 +106,24 @@ def check_preflight_gc(live,start):
                                           for g in final['gc_events'])}
 
 
+def check_preflight_transport(live,meta,start):
+    record=read(live/'preflight_transport.json')
+    require(record==meta.get('isolated_preflight_transport'),'Ground initialization evidence differs')
+    require(all(record.get(k) is True for k in ('ground_landed','ground_disarmed','loop_strict_false',
+        'before_live_start','allocator_constructed_no_step','transport_ready')),
+        'Allocator or transport was not prepared on the disarmed ground')
+    require(record['allocator_step_count']==0 and record['normal_output_count']==0
+            and record['initial_task_origin_s']==0.,'Preflight preparation advanced control or sent live output')
+    takeoff=meta['takeoff_state_transition']['before']['command_boundary_wall_monotonic_s']
+    require(0<record['start_monotonic_ns']<=record['end_monotonic_ns']<start['issued_monotonic_ns']
+            and record['end_monotonic_ns']/1e9<takeoff,
+            'Synchronous initialization did not finish before actual takeoff')
+    return {'verified':True,'duration_ms':(record['end_monotonic_ns']-record['start_monotonic_ns'])/1e6,
+            'allocator_prepare_ms':record['allocator_prepare_ns']/1e6,
+            'transport_launch_ms':record['transport_launch_ns']/1e6,
+            'no_allocator_step_or_live_output_before_handoff':True}
+
+
 def check_receipt_identity(sends,receipts,start):
     sent={s['dispatch_sequence']:s for s in sends}
     received={r['dispatch_sequence']:r for r in receipts}
@@ -297,6 +315,7 @@ def audit(launch,folder,out):
         require(lifecycle['started'] and lifecycle['error'] is None,'Execution did not start or failed')
         start=read(live/'live_start.json');window=[start['origin_s'],start['origin_s']+cfg['duration_s']]
         report['startup_gc']=check_preflight_gc(live,start)
+        report['ground_initialization']=check_preflight_transport(live,meta,start)
         require(abs(meta['task_end_sim_s']-window[1])<=.05,'Incomplete declared hold')
         report.update(stage='tip_hold',window_sim_s=window)
         report['recording']=reconcile_recording(live);require(report['recording']['complete'],'Diagnostic loss')

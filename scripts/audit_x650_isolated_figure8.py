@@ -54,6 +54,7 @@ def audit(launch,folder,out):
         require(lifecycle['started'] and lifecycle['error'] is None,'Execution did not start or failed')
         start=read(live/'live_start.json');window=[start['origin_s'],start['origin_s']+cfg['duration_s']]
         report['startup_gc']=check_preflight_gc(live,start)
+        report['ground_initialization']=check_preflight_transport(live,meta,start)
         require(abs(meta['task_end_sim_s']-window[1])<=.05,'Incomplete declared normal figure eight')
         report.update(stage='normal',window_sim_s=window,figure8_protocol=cfg['figure8_protocol'],
                       frozen_hold=cfg['frozen_hold'],isolated_live_hold=cfg['isolated_live_hold'])
