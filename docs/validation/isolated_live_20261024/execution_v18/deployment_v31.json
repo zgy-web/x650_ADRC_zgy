@@ -1,0 +1,44 @@
+{
+  "archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v31.zip",
+  "archive_sha256": "d11c8ad3b5ff7771db1a35b2afdfd933388ec7b12b196db2b67ddebb3b816162",
+  "before": {
+    "configs/experiments/x650_isolated_live_v1.json": {
+      "sha256": "67a5216fd4c8256490d6d1398387f364570352849728b1406fe7d82eeb2221f0",
+      "bytes": 5364
+    },
+    "simulations/x650_isolated_live_v1/run_case.py": {
+      "sha256": "6466ba710a83438a4eae7d67a9ebd66a9039a49e1d1dc510384af57fac4cc0b8",
+      "bytes": 36446
+    },
+    "simulations/x650_isolated_live_v1/source_activity.py": null,
+    "tests/unit/test_x650_isolated_source_activity.py": null,
+    "tests/unit/test_x650_supervision_lifecycle.py": {
+      "sha256": "12b018faebc3baa906033186fd812064cbca1f197be37677d0c8984fe372bd38",
+      "bytes": 7053
+    }
+  },
+  "files": {
+    "configs/experiments/x650_isolated_live_v1.json": {
+      "sha256": "49fe4e44f605c5ded701296bb7eeb1f2d867aae9ce561a205a2c10f72dc3234b",
+      "bytes": 5754
+    },
+    "simulations/x650_isolated_live_v1/run_case.py": {
+      "sha256": "d532cd0622ee8ee38dabc902bb1b1f4dad49d1f47b7d840026d0a50e9c6fc6c0",
+      "bytes": 38182
+    },
+    "simulations/x650_isolated_live_v1/source_activity.py": {
+      "sha256": "7fd172936abe654fee0d943ec03e609f1a5a6b4e5509f84088936b7aeb67cc1a",
+      "bytes": 11229
+    },
+    "tests/unit/test_x650_isolated_source_activity.py": {
+      "sha256": "5fbd7ba559fd2d4f8644fac6ee957ee8a1b02eea3e5dbd574f42d3a6bb679611",
+      "bytes": 10108
+    },
+    "tests/unit/test_x650_supervision_lifecycle.py": {
+      "sha256": "b288d0a5d6b3dc4a9631a6af1edd5ae9dce680caaf4a1bfb11f21111adf48ee5",
+      "bytes": 9092
+    }
+  },
+  "no_runtime": true,
+  "numerical_backend_unchanged": true
+}

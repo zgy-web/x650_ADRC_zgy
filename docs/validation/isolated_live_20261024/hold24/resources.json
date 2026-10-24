@@ -1,0 +1,1204 @@
+{
+  "source": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v24_resources.jsonl",
+    "bytes": 1625891,
+    "sha256": "037b4d813f31d4d8a5d69fed6ea5e399da55f2220dd9a147ac3b058ed6985ce2"
+  },
+  "derived_analysis": true,
+  "selection": "nearest outside bracket of LiveStart and first fault",
+  "original_row_indices_inclusive": [
+    2789,
+    2887
+  ],
+  "complete_original_rows": 3839,
+  "rows": [
+    {
+      "monotonic_ns": 59602886568366288,
+      "cpu.stat": "usage_usec 4122290116\nuser_usec 3659861965\nsystem_usec 462428150\nnr_periods 71113\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9399200\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5827573\n",
+      "frequency_khz": {
+        "87": "1516870",
+        "89": "2000003",
+        "91": "800000",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602886619863458,
+      "cpu.stat": "usage_usec 4122431629\nuser_usec 3659989531\nsystem_usec 462442097\nnr_periods 71114\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9399764\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5827676\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "1865282",
+        "91": "1188814",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602886670634790,
+      "cpu.stat": "usage_usec 4122620816\nuser_usec 3660168440\nsystem_usec 462452376\nnr_periods 71114\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9400131\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5827751\n",
+      "frequency_khz": {
+        "87": "1984486",
+        "89": "1183742",
+        "91": "2000000",
+        "97": "800004"
+      }
+    },
+    {
+      "monotonic_ns": 59602886722267027,
+      "cpu.stat": "usage_usec 4122799673\nuser_usec 3660338177\nsystem_usec 462461495\nnr_periods 71115\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9400579\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5827819\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800098",
+        "91": "1987594",
+        "97": "799996"
+      }
+    },
+    {
+      "monotonic_ns": 59602886773709017,
+      "cpu.stat": "usage_usec 4122984290\nuser_usec 3660515707\nsystem_usec 462468583\nnr_periods 71115\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9401127\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5827987\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "888453",
+        "91": "1955094",
+        "97": "800005"
+      }
+    },
+    {
+      "monotonic_ns": 59602886825266077,
+      "cpu.stat": "usage_usec 4123162668\nuser_usec 3660688603\nsystem_usec 462474065\nnr_periods 71116\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9401512\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828057\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800000",
+        "91": "1999057",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602886876621445,
+      "cpu.stat": "usage_usec 4123334395\nuser_usec 3660856914\nsystem_usec 462477481\nnr_periods 71116\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9401960\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828148\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800000",
+        "91": "1926959",
+        "97": "800197"
+      }
+    },
+    {
+      "monotonic_ns": 59602886927879238,
+      "cpu.stat": "usage_usec 4123515417\nuser_usec 3661032158\nsystem_usec 462483259\nnr_periods 71117\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9402367\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828228\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800022",
+        "91": "1955308",
+        "97": "800250"
+      }
+    },
+    {
+      "monotonic_ns": 59602886979342268,
+      "cpu.stat": "usage_usec 4123708660\nuser_usec 3661219610\nsystem_usec 462489050\nnr_periods 71117\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9402967\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828437\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800000",
+        "91": "1938851",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602887030765068,
+      "cpu.stat": "usage_usec 4123897108\nuser_usec 3661405936\nsystem_usec 462491172\nnr_periods 71118\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9403384\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828509\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "800000",
+        "91": "1951222",
+        "97": "800081"
+      }
+    },
+    {
+      "monotonic_ns": 59602887082343686,
+      "cpu.stat": "usage_usec 4124075738\nuser_usec 3661583998\nsystem_usec 462491739\nnr_periods 71118\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9403705\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5828571\n",
+      "frequency_khz": {
+        "87": "1687632",
+        "89": "799986",
+        "91": "1978175",
+        "97": "800279"
+      }
+    },
+    {
+      "monotonic_ns": 59602887133756410,
+      "cpu.stat": "usage_usec 4124257780\nuser_usec 3661761053\nsystem_usec 462496726\nnr_periods 71119\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9405178\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5829800\n",
+      "frequency_khz": {
+        "87": "1019264",
+        "89": "800000",
+        "91": "1927832",
+        "97": "800577"
+      }
+    },
+    {
+      "monotonic_ns": 59602887184603874,
+      "cpu.stat": "usage_usec 4124433800\nuser_usec 3661934988\nsystem_usec 462498812\nnr_periods 71119\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9405501\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5829877\n",
+      "frequency_khz": {
+        "87": "800131",
+        "89": "800000",
+        "91": "1959761",
+        "97": "800012"
+      }
+    },
+    {
+      "monotonic_ns": 59602887235763912,
+      "cpu.stat": "usage_usec 4124626667\nuser_usec 3662120749\nsystem_usec 462505918\nnr_periods 71120\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9405845\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5829968\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800000",
+        "91": "1952993",
+        "97": "800165"
+      }
+    },
+    {
+      "monotonic_ns": 59602887286786714,
+      "cpu.stat": "usage_usec 4124808210\nuser_usec 3662297813\nsystem_usec 462510396\nnr_periods 71120\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9406262\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830043\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800203",
+        "91": "1960762",
+        "97": "800053"
+      }
+    },
+    {
+      "monotonic_ns": 59602887337666060,
+      "cpu.stat": "usage_usec 4124995123\nuser_usec 3662475610\nsystem_usec 462519513\nnr_periods 71121\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9406676\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830119\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800046",
+        "91": "1955353",
+        "97": "799914"
+      }
+    },
+    {
+      "monotonic_ns": 59602887388383502,
+      "cpu.stat": "usage_usec 4125175215\nuser_usec 3662652707\nsystem_usec 462522507\nnr_periods 71121\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9407052\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830198\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800112",
+        "91": "1958641",
+        "97": "800052"
+      }
+    },
+    {
+      "monotonic_ns": 59602887439264510,
+      "cpu.stat": "usage_usec 4125369587\nuser_usec 3662843842\nsystem_usec 462525745\nnr_periods 71122\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9407561\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830286\n",
+      "frequency_khz": {
+        "87": "800011",
+        "89": "800007",
+        "91": "1942633",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602887489926567,
+      "cpu.stat": "usage_usec 4125564688\nuser_usec 3663028456\nsystem_usec 462536231\nnr_periods 71122\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9407973\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830389\n",
+      "frequency_khz": {
+        "87": "1961299",
+        "89": "800102",
+        "91": "1906922",
+        "97": "800237"
+      }
+    },
+    {
+      "monotonic_ns": 59602887540760862,
+      "cpu.stat": "usage_usec 4125770577\nuser_usec 3663227138\nsystem_usec 462543439\nnr_periods 71123\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9408381\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830505\n",
+      "frequency_khz": {
+        "87": "1997951",
+        "89": "800000",
+        "91": "799861",
+        "97": "800367"
+      }
+    },
+    {
+      "monotonic_ns": 59602887592227015,
+      "cpu.stat": "usage_usec 4125966806\nuser_usec 3663405585\nsystem_usec 462561220\nnr_periods 71123\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9408804\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830607\n",
+      "frequency_khz": {
+        "87": "1988847",
+        "89": "800023",
+        "91": "1944176",
+        "97": "800300"
+      }
+    },
+    {
+      "monotonic_ns": 59602887643488185,
+      "cpu.stat": "usage_usec 4126176318\nuser_usec 3663596280\nsystem_usec 462580038\nnr_periods 71124\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9409225\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830681\n",
+      "frequency_khz": {
+        "87": "800153",
+        "89": "799998",
+        "91": "1956678",
+        "97": "800008"
+      }
+    },
+    {
+      "monotonic_ns": 59602887695026921,
+      "cpu.stat": "usage_usec 4126383158\nuser_usec 3663797164\nsystem_usec 462585993\nnr_periods 71124\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9409615\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830764\n",
+      "frequency_khz": {
+        "87": "800023",
+        "89": "800000",
+        "91": "1999283",
+        "97": "800077"
+      }
+    },
+    {
+      "monotonic_ns": 59602887746530646,
+      "cpu.stat": "usage_usec 4126576652\nuser_usec 3663977221\nsystem_usec 462599431\nnr_periods 71125\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9410030\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830840\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800000",
+        "91": "2000001",
+        "97": "800037"
+      }
+    },
+    {
+      "monotonic_ns": 59602887797892523,
+      "cpu.stat": "usage_usec 4126774818\nuser_usec 3664171725\nsystem_usec 462603093\nnr_periods 71125\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9410428\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5830937\n",
+      "frequency_khz": {
+        "87": "799989",
+        "89": "800000",
+        "91": "2000001",
+        "97": "800030"
+      }
+    },
+    {
+      "monotonic_ns": 59602887849339926,
+      "cpu.stat": "usage_usec 4126961784\nuser_usec 3664351796\nsystem_usec 462609988\nnr_periods 71126\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9410804\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831009\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800048",
+        "91": "2000001",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602887900902473,
+      "cpu.stat": "usage_usec 4127164467\nuser_usec 3664539559\nsystem_usec 462624908\nnr_periods 71127\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9411211\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831091\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800002",
+        "91": "1982338",
+        "97": "800004"
+      }
+    },
+    {
+      "monotonic_ns": 59602887952279336,
+      "cpu.stat": "usage_usec 4127358516\nuser_usec 3664728598\nsystem_usec 462629917\nnr_periods 71127\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9411659\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831186\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800000",
+        "91": "2000001",
+        "97": "800117"
+      }
+    },
+    {
+      "monotonic_ns": 59602888003901686,
+      "cpu.stat": "usage_usec 4127554152\nuser_usec 3664912332\nsystem_usec 462641820\nnr_periods 71128\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9412100\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831305\n",
+      "frequency_khz": {
+        "87": "800000",
+        "89": "800000",
+        "91": "2000000",
+        "97": "800154"
+      }
+    },
+    {
+      "monotonic_ns": 59602888055369858,
+      "cpu.stat": "usage_usec 4127750935\nuser_usec 3665098893\nsystem_usec 462652041\nnr_periods 71128\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9412508\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831383\n",
+      "frequency_khz": {
+        "87": "800027",
+        "89": "800013",
+        "91": "2000001",
+        "97": "800012"
+      }
+    },
+    {
+      "monotonic_ns": 59602888107083579,
+      "cpu.stat": "usage_usec 4127945894\nuser_usec 3665282930\nsystem_usec 462662963\nnr_periods 71129\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9412920\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831467\n",
+      "frequency_khz": {
+        "87": "800005",
+        "89": "799996",
+        "91": "1980478",
+        "97": "800006"
+      }
+    },
+    {
+      "monotonic_ns": 59602888158756308,
+      "cpu.stat": "usage_usec 4128135862\nuser_usec 3665469705\nsystem_usec 462666157\nnr_periods 71129\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9413364\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831543\n",
+      "frequency_khz": {
+        "87": "800099",
+        "89": "800000",
+        "91": "1998788",
+        "97": "800069"
+      }
+    },
+    {
+      "monotonic_ns": 59602888210302471,
+      "cpu.stat": "usage_usec 4128321317\nuser_usec 3665652925\nsystem_usec 462668392\nnr_periods 71130\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9413777\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831623\n",
+      "frequency_khz": {
+        "87": "800028",
+        "89": "831690",
+        "91": "1998779",
+        "97": "800029"
+      }
+    },
+    {
+      "monotonic_ns": 59602888262672523,
+      "cpu.stat": "usage_usec 4128510330\nuser_usec 3665838399\nsystem_usec 462671930\nnr_periods 71130\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9414226\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5831701\n",
+      "frequency_khz": {
+        "87": "799980",
+        "89": "860235",
+        "91": "1998659",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602888314179289,
+      "cpu.stat": "usage_usec 4128701522\nuser_usec 3666019092\nsystem_usec 462682429\nnr_periods 71131\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9415057\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5832170\n",
+      "frequency_khz": {
+        "87": "800006",
+        "89": "805219",
+        "91": "1999081",
+        "97": "800002"
+      }
+    },
+    {
+      "monotonic_ns": 59602888365857844,
+      "cpu.stat": "usage_usec 4128897598\nuser_usec 3666200537\nsystem_usec 462697060\nnr_periods 71131\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9415550\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5832348\n",
+      "frequency_khz": {
+        "87": "907012",
+        "89": "873754",
+        "91": "1998132",
+        "97": "800212"
+      }
+    },
+    {
+      "monotonic_ns": 59602888417714675,
+      "cpu.stat": "usage_usec 4129068638\nuser_usec 3666369601\nsystem_usec 462699036\nnr_periods 71132\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9415995\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5832446\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000000",
+        "91": "1957500",
+        "97": "1635181"
+      }
+    },
+    {
+      "monotonic_ns": 59602888468452315,
+      "cpu.stat": "usage_usec 4129237606\nuser_usec 3666535016\nsystem_usec 462702590\nnr_periods 71132\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9418959\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5835144\n",
+      "frequency_khz": {
+        "87": "1998004",
+        "89": "2000000",
+        "91": "1999906",
+        "97": "1571724"
+      }
+    },
+    {
+      "monotonic_ns": 59602888519781474,
+      "cpu.stat": "usage_usec 4129408081\nuser_usec 3666697313\nsystem_usec 462710767\nnr_periods 71133\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.71 avg60=0.40 avg300=0.12 total=9419560\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5835379\n",
+      "frequency_khz": {
+        "87": "1999076",
+        "89": "2000000",
+        "91": "2000001",
+        "97": "1676915"
+      }
+    },
+    {
+      "monotonic_ns": 59602888570446482,
+      "cpu.stat": "usage_usec 4129597099\nuser_usec 3666864418\nsystem_usec 462732681\nnr_periods 71133\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9420050\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5835596\n",
+      "frequency_khz": {
+        "87": "1829274",
+        "89": "1919882",
+        "91": "1999673",
+        "97": "1519519"
+      }
+    },
+    {
+      "monotonic_ns": 59602888621262493,
+      "cpu.stat": "usage_usec 4129763791\nuser_usec 3667025584\nsystem_usec 462738206\nnr_periods 71134\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9421035\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5836279\n",
+      "frequency_khz": {
+        "87": "1999999",
+        "89": "2000000",
+        "91": "1998662",
+        "97": "1842050"
+      }
+    },
+    {
+      "monotonic_ns": 59602888672278387,
+      "cpu.stat": "usage_usec 4129927692\nuser_usec 3667187405\nsystem_usec 462740287\nnr_periods 71134\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9421482\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5836366\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000000",
+        "91": "1998090",
+        "97": "856753"
+      }
+    },
+    {
+      "monotonic_ns": 59602888723386874,
+      "cpu.stat": "usage_usec 4130079167\nuser_usec 3667338192\nsystem_usec 462740975\nnr_periods 71135\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9421942\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5836465\n",
+      "frequency_khz": {
+        "87": "2000004",
+        "89": "2000000",
+        "91": "2000000",
+        "97": "1329733"
+      }
+    },
+    {
+      "monotonic_ns": 59602888774143844,
+      "cpu.stat": "usage_usec 4130228359\nuser_usec 3667482915\nsystem_usec 462745444\nnr_periods 71135\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9422639\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5836765\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "1329711",
+        "91": "1974276",
+        "97": "1491295"
+      }
+    },
+    {
+      "monotonic_ns": 59602888824985482,
+      "cpu.stat": "usage_usec 4130377670\nuser_usec 3667627291\nsystem_usec 462750379\nnr_periods 71136\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9424248\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5838060\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000000",
+        "91": "1998891",
+        "97": "1999853"
+      }
+    },
+    {
+      "monotonic_ns": 59602888875858363,
+      "cpu.stat": "usage_usec 4130524289\nuser_usec 3667770181\nsystem_usec 462754107\nnr_periods 71136\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9424625\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5838135\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000000",
+        "91": "1998766",
+        "97": "2000069"
+      }
+    },
+    {
+      "monotonic_ns": 59602888926588124,
+      "cpu.stat": "usage_usec 4130675636\nuser_usec 3667846061\nsystem_usec 462829574\nnr_periods 71137\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9426785\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5839936\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "1999870",
+        "91": "1999224",
+        "97": "1987729"
+      }
+    },
+    {
+      "monotonic_ns": 59602888977471699,
+      "cpu.stat": "usage_usec 4130824303\nuser_usec 3667957185\nsystem_usec 462867117\nnr_periods 71137\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9427260\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5840032\n",
+      "frequency_khz": {
+        "87": "2000001",
+        "89": "2000000",
+        "91": "2000000",
+        "97": "1698839"
+      }
+    },
+    {
+      "monotonic_ns": 59602889028145856,
+      "cpu.stat": "usage_usec 4130964677\nuser_usec 3668029139\nsystem_usec 462935538\nnr_periods 71138\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9429055\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5841489\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000000",
+        "91": "2000000",
+        "97": "1917166"
+      }
+    },
+    {
+      "monotonic_ns": 59602889078943892,
+      "cpu.stat": "usage_usec 4131088890\nuser_usec 3668137378\nsystem_usec 462951511\nnr_periods 71138\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9430405\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5842449\n",
+      "frequency_khz": {
+        "87": "2000001",
+        "89": "2000000",
+        "91": "2000000",
+        "97": "1216795"
+      }
+    },
+    {
+      "monotonic_ns": 59602889129660761,
+      "cpu.stat": "usage_usec 4131219720\nuser_usec 3668256817\nsystem_usec 462962902\nnr_periods 71139\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9430891\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5842518\n",
+      "frequency_khz": {
+        "87": "1999975",
+        "89": "2000000",
+        "91": "1999970",
+        "97": "2000000"
+      }
+    },
+    {
+      "monotonic_ns": 59602889180420729,
+      "cpu.stat": "usage_usec 4131358949\nuser_usec 3668388655\nsystem_usec 462970293\nnr_periods 71139\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9432008\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843282\n",
+      "frequency_khz": {
+        "87": "2000001",
+        "89": "2000000",
+        "91": "2000005",
+        "97": "1999039"
+      }
+    },
+    {
+      "monotonic_ns": 59602889231354186,
+      "cpu.stat": "usage_usec 4131532106\nuser_usec 3668556919\nsystem_usec 462975187\nnr_periods 71140\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9432410\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843359\n",
+      "frequency_khz": {
+        "87": "1931830",
+        "89": "2000000",
+        "91": "2000000",
+        "97": "1127184"
+      }
+    },
+    {
+      "monotonic_ns": 59602889282448850,
+      "cpu.stat": "usage_usec 4131718261\nuser_usec 3668736723\nsystem_usec 462981538\nnr_periods 71140\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9432812\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843432\n",
+      "frequency_khz": {
+        "87": "1884799",
+        "89": "1999446",
+        "91": "1999802",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602889334041930,
+      "cpu.stat": "usage_usec 4131908679\nuser_usec 3668908655\nsystem_usec 463000024\nnr_periods 71141\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9433220\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843517\n",
+      "frequency_khz": {
+        "87": "1864935",
+        "89": "1976417",
+        "91": "800769",
+        "97": "800747"
+      }
+    },
+    {
+      "monotonic_ns": 59602889385607805,
+      "cpu.stat": "usage_usec 4132090304\nuser_usec 3669088473\nsystem_usec 463001830\nnr_periods 71141\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9433548\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843590\n",
+      "frequency_khz": {
+        "87": "800159",
+        "89": "1965146",
+        "91": "801163",
+        "97": "800306"
+      }
+    },
+    {
+      "monotonic_ns": 59602889437168177,
+      "cpu.stat": "usage_usec 4132282037\nuser_usec 3669269647\nsystem_usec 463012390\nnr_periods 71142\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9433930\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843663\n",
+      "frequency_khz": {
+        "87": "800129",
+        "89": "1949713",
+        "91": "805238",
+        "97": "824627"
+      }
+    },
+    {
+      "monotonic_ns": 59602889488737210,
+      "cpu.stat": "usage_usec 4132465935\nuser_usec 3669450580\nsystem_usec 463015355\nnr_periods 71142\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9434301\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843757\n",
+      "frequency_khz": {
+        "87": "800209",
+        "89": "1956215",
+        "91": "949237",
+        "97": "800026"
+      }
+    },
+    {
+      "monotonic_ns": 59602889540125764,
+      "cpu.stat": "usage_usec 4132656635\nuser_usec 3669634873\nsystem_usec 463021761\nnr_periods 71143\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9434688\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843834\n",
+      "frequency_khz": {
+        "87": "800130",
+        "89": "1977224",
+        "91": "800767",
+        "97": "805414"
+      }
+    },
+    {
+      "monotonic_ns": 59602889591438830,
+      "cpu.stat": "usage_usec 4132844366\nuser_usec 3669813850\nsystem_usec 463030515\nnr_periods 71143\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9435060\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843909\n",
+      "frequency_khz": {
+        "87": "800072",
+        "89": "1992180",
+        "91": "801184",
+        "97": "831556"
+      }
+    },
+    {
+      "monotonic_ns": 59602889643098355,
+      "cpu.stat": "usage_usec 4133047210\nuser_usec 3669999529\nsystem_usec 463047680\nnr_periods 71144\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9435443\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5843981\n",
+      "frequency_khz": {
+        "87": "800105",
+        "89": "1964262",
+        "91": "801028",
+        "97": "800652"
+      }
+    },
+    {
+      "monotonic_ns": 59602889694664341,
+      "cpu.stat": "usage_usec 4133238657\nuser_usec 3670188524\nsystem_usec 463050133\nnr_periods 71144\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9435834\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844055\n",
+      "frequency_khz": {
+        "87": "800151",
+        "89": "1999302",
+        "91": "800604",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602889745972532,
+      "cpu.stat": "usage_usec 4133429667\nuser_usec 3670366828\nsystem_usec 463062839\nnr_periods 71145\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9436197\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844133\n",
+      "frequency_khz": {
+        "87": "800164",
+        "89": "2000001",
+        "91": "800608",
+        "97": "800066"
+      }
+    },
+    {
+      "monotonic_ns": 59602889797885902,
+      "cpu.stat": "usage_usec 4133653996\nuser_usec 3670572943\nsystem_usec 463081053\nnr_periods 71145\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9436560\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844246\n",
+      "frequency_khz": {
+        "87": "800108",
+        "89": "1999306",
+        "91": "799435",
+        "97": "800310"
+      }
+    },
+    {
+      "monotonic_ns": 59602889849515253,
+      "cpu.stat": "usage_usec 4133859958\nuser_usec 3670771693\nsystem_usec 463088265\nnr_periods 71146\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9436911\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844348\n",
+      "frequency_khz": {
+        "87": "800160",
+        "89": "1999336",
+        "91": "800000",
+        "97": "800495"
+      }
+    },
+    {
+      "monotonic_ns": 59602889901456227,
+      "cpu.stat": "usage_usec 4134049493\nuser_usec 3670951820\nsystem_usec 463097673\nnr_periods 71147\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9437313\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844444\n",
+      "frequency_khz": {
+        "87": "800141",
+        "89": "2000001",
+        "91": "801156",
+        "97": "800135"
+      }
+    },
+    {
+      "monotonic_ns": 59602889952917520,
+      "cpu.stat": "usage_usec 4134243908\nuser_usec 3671143449\nsystem_usec 463100458\nnr_periods 71147\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9437682\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844510\n",
+      "frequency_khz": {
+        "87": "800144",
+        "89": "1999002",
+        "91": "800000",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890004463762,
+      "cpu.stat": "usage_usec 4134431052\nuser_usec 3671312475\nsystem_usec 463118576\nnr_periods 71148\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9438068\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844584\n",
+      "frequency_khz": {
+        "87": "800146",
+        "89": "2000001",
+        "91": "800000",
+        "97": "800017"
+      }
+    },
+    {
+      "monotonic_ns": 59602890055918416,
+      "cpu.stat": "usage_usec 4134618760\nuser_usec 3671494565\nsystem_usec 463124194\nnr_periods 71148\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9438468\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844655\n",
+      "frequency_khz": {
+        "87": "800067",
+        "89": "1999172",
+        "91": "800000",
+        "97": "800208"
+      }
+    },
+    {
+      "monotonic_ns": 59602890107347043,
+      "cpu.stat": "usage_usec 4134806556\nuser_usec 3671677185\nsystem_usec 463129370\nnr_periods 71149\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9438863\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844763\n",
+      "frequency_khz": {
+        "87": "800021",
+        "89": "1999776",
+        "91": "800000",
+        "97": "800074"
+      }
+    },
+    {
+      "monotonic_ns": 59602890158823506,
+      "cpu.stat": "usage_usec 4134995161\nuser_usec 3671860524\nsystem_usec 463134637\nnr_periods 71149\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9439250\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844839\n",
+      "frequency_khz": {
+        "87": "800096",
+        "89": "1941327",
+        "91": "800000",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890210195440,
+      "cpu.stat": "usage_usec 4135177191\nuser_usec 3672037571\nsystem_usec 463139619\nnr_periods 71150\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9439606\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844908\n",
+      "frequency_khz": {
+        "87": "800232",
+        "89": "1998989",
+        "91": "800000",
+        "97": "800074"
+      }
+    },
+    {
+      "monotonic_ns": 59602890261691129,
+      "cpu.stat": "usage_usec 4135389794\nuser_usec 3672231918\nsystem_usec 463157875\nnr_periods 71150\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9439970\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5844997\n",
+      "frequency_khz": {
+        "87": "800143",
+        "89": "1980616",
+        "91": "800000",
+        "97": "800611"
+      }
+    },
+    {
+      "monotonic_ns": 59602890313264782,
+      "cpu.stat": "usage_usec 4135604589\nuser_usec 3672438094\nsystem_usec 463166495\nnr_periods 71151\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9440361\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845099\n",
+      "frequency_khz": {
+        "87": "800105",
+        "89": "1948967",
+        "91": "800788",
+        "97": "834130"
+      }
+    },
+    {
+      "monotonic_ns": 59602890364718672,
+      "cpu.stat": "usage_usec 4135793078\nuser_usec 3672616841\nsystem_usec 463176237\nnr_periods 71151\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9440732\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845160\n",
+      "frequency_khz": {
+        "87": "800157",
+        "89": "1982920",
+        "91": "800000",
+        "97": "1967358"
+      }
+    },
+    {
+      "monotonic_ns": 59602890416071163,
+      "cpu.stat": "usage_usec 4135974617\nuser_usec 3672786735\nsystem_usec 463187882\nnr_periods 71152\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9441120\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845226\n",
+      "frequency_khz": {
+        "87": "800104",
+        "89": "1953791",
+        "91": "799825",
+        "97": "807914"
+      }
+    },
+    {
+      "monotonic_ns": 59602890467448522,
+      "cpu.stat": "usage_usec 4136153226\nuser_usec 3672952671\nsystem_usec 463200555\nnr_periods 71152\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9441559\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845292\n",
+      "frequency_khz": {
+        "87": "800161",
+        "89": "1999041",
+        "91": "800808",
+        "97": "799971"
+      }
+    },
+    {
+      "monotonic_ns": 59602890518976017,
+      "cpu.stat": "usage_usec 4136331065\nuser_usec 3673126449\nsystem_usec 463204615\nnr_periods 71153\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.76 avg60=0.42 avg300=0.13 total=9441954\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845353\n",
+      "frequency_khz": {
+        "87": "800099",
+        "89": "1999558",
+        "91": "800093",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890570316020,
+      "cpu.stat": "usage_usec 4136510891\nuser_usec 3673296600\nsystem_usec 463214291\nnr_periods 71153\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9442328\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845420\n",
+      "frequency_khz": {
+        "87": "1858165",
+        "89": "2000001",
+        "91": "801143",
+        "97": "800230"
+      }
+    },
+    {
+      "monotonic_ns": 59602890621824742,
+      "cpu.stat": "usage_usec 4136697759\nuser_usec 3673482433\nsystem_usec 463215325\nnr_periods 71154\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9442705\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845476\n",
+      "frequency_khz": {
+        "87": "2000000",
+        "89": "2000001",
+        "91": "800218",
+        "97": "799960"
+      }
+    },
+    {
+      "monotonic_ns": 59602890673478120,
+      "cpu.stat": "usage_usec 4136895052\nuser_usec 3673668546\nsystem_usec 463226505\nnr_periods 71154\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9443064\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845555\n",
+      "frequency_khz": {
+        "87": "1485112",
+        "89": "1998432",
+        "91": "800156",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890725018996,
+      "cpu.stat": "usage_usec 4137083279\nuser_usec 3673851550\nsystem_usec 463231729\nnr_periods 71155\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9443467\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845640\n",
+      "frequency_khz": {
+        "87": "846823",
+        "89": "1999128",
+        "91": "800384",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890776821543,
+      "cpu.stat": "usage_usec 4137283171\nuser_usec 3674044009\nsystem_usec 463239162\nnr_periods 71155\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9443840\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845714\n",
+      "frequency_khz": {
+        "87": "800509",
+        "89": "1998762",
+        "91": "800159",
+        "97": "800788"
+      }
+    },
+    {
+      "monotonic_ns": 59602890828480677,
+      "cpu.stat": "usage_usec 4137464750\nuser_usec 3674220205\nsystem_usec 463244545\nnr_periods 71156\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9444227\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845814\n",
+      "frequency_khz": {
+        "87": "800245",
+        "89": "2000001",
+        "91": "800323",
+        "97": "799930"
+      }
+    },
+    {
+      "monotonic_ns": 59602890880154619,
+      "cpu.stat": "usage_usec 4137652484\nuser_usec 3674397830\nsystem_usec 463254654\nnr_periods 71156\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9444641\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845895\n",
+      "frequency_khz": {
+        "87": "800739",
+        "89": "1958622",
+        "91": "800140",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602890930945420,
+      "cpu.stat": "usage_usec 4137855776\nuser_usec 3674581196\nsystem_usec 463274579\nnr_periods 71157\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9445026\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5845992\n",
+      "frequency_khz": {
+        "87": "800531",
+        "89": "1999555",
+        "91": "800011",
+        "97": "800003"
+      }
+    },
+    {
+      "monotonic_ns": 59602890982256333,
+      "cpu.stat": "usage_usec 4138064689\nuser_usec 3674772267\nsystem_usec 463292421\nnr_periods 71157\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9445418\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846092\n",
+      "frequency_khz": {
+        "87": "800642",
+        "89": "1999110",
+        "91": "800166",
+        "97": "800292"
+      }
+    },
+    {
+      "monotonic_ns": 59602891034124365,
+      "cpu.stat": "usage_usec 4138267015\nuser_usec 3674960622\nsystem_usec 463306393\nnr_periods 71158\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9445794\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846166\n",
+      "frequency_khz": {
+        "87": "800503",
+        "89": "1999278",
+        "91": "799929",
+        "97": "800030"
+      }
+    },
+    {
+      "monotonic_ns": 59602891085779033,
+      "cpu.stat": "usage_usec 4138449475\nuser_usec 3675142994\nsystem_usec 463306481\nnr_periods 71158\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9446147\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846236\n",
+      "frequency_khz": {
+        "87": "800542",
+        "89": "1998944",
+        "91": "800148",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602891137383720,
+      "cpu.stat": "usage_usec 4138628405\nuser_usec 3675310571\nsystem_usec 463317833\nnr_periods 71159\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9446581\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846314\n",
+      "frequency_khz": {
+        "87": "800722",
+        "89": "1999227",
+        "91": "800149",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602891188974203,
+      "cpu.stat": "usage_usec 4138814288\nuser_usec 3675470887\nsystem_usec 463343401\nnr_periods 71159\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9447002\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846391\n",
+      "frequency_khz": {
+        "87": "799992",
+        "89": "1998307",
+        "91": "800094",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602891241419182,
+      "cpu.stat": "usage_usec 4138996912\nuser_usec 3675611707\nsystem_usec 463385205\nnr_periods 71160\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9447455\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846471\n",
+      "frequency_khz": {
+        "87": "800001",
+        "89": "1961505",
+        "91": "905673",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602891292969700,
+      "cpu.stat": "usage_usec 4139200671\nuser_usec 3675815465\nsystem_usec 463385205\nnr_periods 71160\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9447849\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846585\n",
+      "frequency_khz": {
+        "87": "800344",
+        "89": "1930627",
+        "91": "1462834",
+        "97": "800276"
+      }
+    },
+    {
+      "monotonic_ns": 59602891344655339,
+      "cpu.stat": "usage_usec 4139411574\nuser_usec 3675999143\nsystem_usec 463412430\nnr_periods 71161\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9448235\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846692\n",
+      "frequency_khz": {
+        "87": "800681",
+        "89": "1958714",
+        "91": "800151",
+        "97": "800294"
+      }
+    },
+    {
+      "monotonic_ns": 59602891396465221,
+      "cpu.stat": "usage_usec 4139586593\nuser_usec 3676170448\nsystem_usec 463416144\nnr_periods 71161\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9448731\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846767\n",
+      "frequency_khz": {
+        "87": "800177",
+        "89": "1957089",
+        "91": "800189",
+        "97": "800000"
+      }
+    },
+    {
+      "monotonic_ns": 59602891448082963,
+      "cpu.stat": "usage_usec 4139771639\nuser_usec 3676354695\nsystem_usec 463416944\nnr_periods 71162\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449132\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846844\n",
+      "frequency_khz": {
+        "87": "801053",
+        "89": "1979988",
+        "91": "800151",
+        "97": "800015"
+      }
+    },
+    {
+      "monotonic_ns": 59602891499645988,
+      "cpu.stat": "usage_usec 4139937881\nuser_usec 3676508775\nsystem_usec 463429105\nnr_periods 71162\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449593\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846924\n",
+      "frequency_khz": {
+        "87": "800622",
+        "89": "1964757",
+        "91": "800129",
+        "97": "799962"
+      }
+    },
+    {
+      "monotonic_ns": 59602891551056842,
+      "cpu.stat": "usage_usec 4140109317\nuser_usec 3676675993\nsystem_usec 463433323\nnr_periods 71163\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449916\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846974\n",
+      "frequency_khz": {
+        "87": "800162",
+        "89": "2000002",
+        "91": "800270",
+        "97": "800082"
+      }
+    },
+    {
+      "monotonic_ns": 59602891602491365,
+      "cpu.stat": "usage_usec 4140230784\nuser_usec 3676792962\nsystem_usec 463437822\nnr_periods 71164\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9450291\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5847041\n",
+      "frequency_khz": {
+        "87": "800273",
+        "89": "1477107",
+        "91": "800947",
+        "97": "799999"
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "engine": {
+    "repo_root": "/root/autodl-tmp/safe-aerial-manipulator-testbed",
+    "task_config": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_124434_18155/task.json",
+      "sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181"
+    },
+    "initialization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/initialization.json",
+      "sha256": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1"
+    },
+    "synthetic_software_fixture_only": true,
+    "historical_reproduction_claimed": false,
+    "physical_flight_qualification": false,
+    "native_predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "abi": 1
+    },
+    "numerical_backend": {
+      "kind": "cpp_numerics_v1",
+      "library": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+      "library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+      "software_proof": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v5/native_acceptance.json",
+      "software_proof_sha256": "c42d5c843c8fef1ed0290ea0a448f287becb517a27024ff816db892e1121eeea"
+    },
+    "scope": "explicit PX4/Gazebo simulation; not hardware",
+    "constructor_only_template": true,
+    "actual_handoff_required": true,
+    "diagnostic_snapshot": "owned_allocation_once_v1",
+    "diagnostic_snapshot_scope": "private read-only live result; per-result descendants may alias; detached from controller and future steps before synchronous binary handoff",
+    "diagnostic_preparation": "zero-policy FF diagnostics and owned copy finish after proposal publication, before synchronous serialization and any next solve",
+    "implementation": "frozen_cpp_numerics_with_python_adapter",
+    "native_mpc": true,
+    "replay_only": false,
+    "actuator_dispatch": false,
+    "requests": 247,
+    "accepted": 247,
+    "faulted": false,
+    "last_error": null,
+    "outer_deadline_s": 0.05,
+    "configuration_sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181"
+  },
+  "gc_enabled_before": true,
+  "gc_enabled_after": true,
+  "preflight_gc": {
+    "kind": "worker_preflight_full_gc_v1",
+    "generation": 2,
+    "explicit_collection": true,
+    "before_ready": true,
+    "start_monotonic_ns": 59602806681717557,
+    "end_monotonic_ns": 59602806698240590,
+    "duration_ns": 16523033,
+    "collected": 66,
+    "before": {
+      "enabled": true,
+      "counts": [
+        124,
+        1,
+        1
+      ],
+      "thresholds": [
+        700,
+        10,
+        10
+      ],
+      "stats": [
+        {
+          "collections": 1002,
+          "collected": 441,
+          "uncollectable": 0
+        },
+        {
+          "collections": 91,
+          "collected": 46,
+          "uncollectable": 0
+        },
+        {
+          "collections": 8,
+          "collected": 95,
+          "uncollectable": 0
+        }
+      ],
+      "garbage_count": 0,
+      "frozen_count": 0
+    },
+    "after": {
+      "enabled": true,
+      "counts": [
+        2,
+        0,
+        0
+      ],
+      "thresholds": [
+        700,
+        10,
+        10
+      ],
+      "stats": [
+        {
+          "collections": 1002,
+          "collected": 441,
+          "uncollectable": 0
+        },
+        {
+          "collections": 91,
+          "collected": 46,
+          "uncollectable": 0
+        },
+        {
+          "collections": 9,
+          "collected": 161,
+          "uncollectable": 0
+        }
+      ],
+      "garbage_count": 0,
+      "frozen_count": 0
+    },
+    "gc_policy_unchanged": true,
+    "scope": "one preflight setup-cycle collection; natural runtime GC remains enabled as observed; no future pause bound"
+  },
+  "gc_events": [
+    {
+      "generation": 2,
+      "start_ns": 59602806681722316,
+      "end_ns": 59602806698237373,
+      "collected": 66
+    },
+    {
+      "generation": 0,
+      "start_ns": 59602886630569530,
+      "end_ns": 59602886630629855,
+      "collected": 33
+    },
+    {
+      "generation": 0,
+      "start_ns": 59602887409348477,
+      "end_ns": 59602887409390806,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 59602889184526848,
+      "end_ns": 59602889184573274,
+      "collected": 0
+    },
+    {
+      "generation": 0,
+      "start_ns": 59602890584425949,
+      "end_ns": 59602890584465880,
+      "collected": 0
+    }
+  ],
+  "diagnostic_completion_error": null
+}

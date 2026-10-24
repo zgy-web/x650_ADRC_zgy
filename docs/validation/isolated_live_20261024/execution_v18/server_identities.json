@@ -1,0 +1,53 @@
+{
+  "files": [
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v31.json",
+      "name": "deployment_v31.json",
+      "bytes": 1775,
+      "sha256": "56c93df9ee98d066dd537a890952a8e8623f7ecc5e8f56426160da7dc2b9973b"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v31_tests.log",
+      "name": "execution_v31_tests.log",
+      "bytes": 4512,
+      "sha256": "8904fceb9475444725a8fd2a588fa486fea1f11eb68f628d82fbc3666622cd69"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v31_tests.exit",
+      "name": "execution_v31_tests.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v31_ground_tests.log",
+      "name": "execution_v31_ground_tests.log",
+      "bytes": 955,
+      "sha256": "da6e971ce09fdfc884a824d940d9606cb3312e26bcd049fbc0812c4858dfbcc2"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v31_ground_tests.exit",
+      "name": "execution_v31_ground_tests.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_protocol_v18.json",
+      "name": "execution_protocol_v18.json",
+      "bytes": 5754,
+      "sha256": "49fe4e44f605c5ded701296bb7eeb1f2d867aae9ce561a205a2c10f72dc3234b"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prepare_hold_v25.py",
+      "name": "prepare_hold_v25.py",
+      "bytes": 3400,
+      "sha256": "08d80fbd75c2d8f1722344599a346003308fc78636633f480be80b2e56496b91"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/verify_source_activity_v1.py",
+      "name": "verify_source_activity_v1.py",
+      "bytes": 2542,
+      "sha256": "9e5c191022da43a3e0b0c78eb4dba4dcafdb0b38e879703bfab5bbc71b6ece13"
+    }
+  ],
+  "count": 8
+}

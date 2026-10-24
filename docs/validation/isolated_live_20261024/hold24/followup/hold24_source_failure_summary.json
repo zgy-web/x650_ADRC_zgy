@@ -1,0 +1,252 @@
+{
+  "derived_analysis": true,
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157",
+  "hold_accepted": false,
+  "source_count": 965,
+  "successful_pumps": 1658,
+  "worker_requests": 247,
+  "worker_accepted": 247,
+  "task_start_sim_s": 44.38,
+  "last_source": {
+    "sequence": 965,
+    "issued_ns": 59602891521603876,
+    "publish_return_ns": 59602891523943739,
+    "control_s": 49.3,
+    "joint_s": 49.3
+  },
+  "last_successful_pump": {
+    "begin_ns": 59602891520307342,
+    "drained_ns": 59602891521181835,
+    "end_ns": 59602891524004939,
+    "extra_callbacks": 4
+  },
+  "first_fault": {
+    "topic": "dispatch",
+    "session_id": 142803796,
+    "epoch": 1,
+    "sequence": 3333,
+    "reason": 2,
+    "observed_monotonic_ns": 59602891569411064,
+    "producer_monotonic_ns": 59602891552399967,
+    "producer_to_observation_ns": 17011097
+  },
+  "last_source_age_at_fault_ms": 30.796091,
+  "last_publish_duration_ms": 2.339863,
+  "last_completed_pump_to_observation_ms": 45.406125,
+  "max_completed_pump_ms": 8.915453,
+  "error": "RuntimeError('C++ output latched fault reason 2')",
+  "landed_and_disarmed": true,
+  "natural_gc_all_run_generation_peaks": [
+    {
+      "completed": 1017,
+      "max_wall_s": 0.00122002512216568,
+      "max_thread_cpu_s": 0.00030706100000088554,
+      "max_wall_event": {
+        "generation": 0,
+        "start_wall_monotonic_s": 59602824.88265369,
+        "stop_wall_monotonic_s": 59602824.88387366,
+        "start_perf_counter_s": 59602824.88265438,
+        "stop_perf_counter_s": 59602824.8838744,
+        "start_thread_cpu_s": 14.872240049,
+        "stop_thread_cpu_s": 14.872405303,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.00122002512216568,
+        "thread_cpu_s": 0.00016525400000055868,
+        "collected": 0,
+        "uncollectable": 0
+      },
+      "max_thread_cpu_event": {
+        "generation": 0,
+        "start_wall_monotonic_s": 59602920.82844155,
+        "stop_wall_monotonic_s": 59602920.828753136,
+        "start_perf_counter_s": 59602920.82844313,
+        "stop_perf_counter_s": 59602920.82875361,
+        "start_thread_cpu_s": 85.601017464,
+        "stop_thread_cpu_s": 85.601324525,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.00031048059463500977,
+        "thread_cpu_s": 0.00030706100000088554,
+        "collected": 132,
+        "uncollectable": 0
+      }
+    },
+    {
+      "completed": 92,
+      "max_wall_s": 0.005004115402698517,
+      "max_thread_cpu_s": 0.005005027999999356,
+      "max_wall_event": {
+        "generation": 1,
+        "start_wall_monotonic_s": 59602921.44515304,
+        "stop_wall_monotonic_s": 59602921.450157136,
+        "start_perf_counter_s": 59602921.445153296,
+        "stop_perf_counter_s": 59602921.45015741,
+        "start_thread_cpu_s": 86.216063452,
+        "stop_thread_cpu_s": 86.22106848,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.005004115402698517,
+        "thread_cpu_s": 0.005005027999999356,
+        "collected": 0,
+        "uncollectable": 0
+      },
+      "max_thread_cpu_event": {
+        "generation": 1,
+        "start_wall_monotonic_s": 59602921.44515304,
+        "stop_wall_monotonic_s": 59602921.450157136,
+        "start_perf_counter_s": 59602921.445153296,
+        "stop_perf_counter_s": 59602921.45015741,
+        "start_thread_cpu_s": 86.216063452,
+        "stop_thread_cpu_s": 86.22106848,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.005004115402698517,
+        "thread_cpu_s": 0.005005027999999356,
+        "collected": 0,
+        "uncollectable": 0
+      }
+    },
+    {
+      "completed": 8,
+      "max_wall_s": 0.08274926245212555,
+      "max_thread_cpu_s": 0.082583391,
+      "max_wall_event": {
+        "generation": 2,
+        "start_wall_monotonic_s": 59602921.93147791,
+        "stop_wall_monotonic_s": 59602922.01422644,
+        "start_perf_counter_s": 59602921.9314781,
+        "stop_perf_counter_s": 59602922.01422736,
+        "start_thread_cpu_s": 86.701110116,
+        "stop_thread_cpu_s": 86.783693507,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.08274926245212555,
+        "thread_cpu_s": 0.082583391,
+        "collected": 0,
+        "uncollectable": 0
+      },
+      "max_thread_cpu_event": {
+        "generation": 2,
+        "start_wall_monotonic_s": 59602921.93147791,
+        "stop_wall_monotonic_s": 59602922.01422644,
+        "start_perf_counter_s": 59602921.9314781,
+        "stop_perf_counter_s": 59602922.01422736,
+        "start_thread_cpu_s": 86.701110116,
+        "stop_thread_cpu_s": 86.783693507,
+        "start_thread_ident": 140198305220416,
+        "stop_thread_ident": 140198305220416,
+        "wall_s": 0.08274926245212555,
+        "thread_cpu_s": 0.082583391,
+        "collected": 0,
+        "uncollectable": 0
+      }
+    }
+  ],
+  "near_fault_resource_rows": [
+    {
+      "monotonic_ns": 59602891448082963,
+      "cpu.stat": "usage_usec 4139771639\nuser_usec 3676354695\nsystem_usec 463416944\nnr_periods 71162\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449132\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846844\n",
+      "frequency_khz": {
+        "87": "801053",
+        "89": "1979988",
+        "91": "800151",
+        "97": "800015"
+      }
+    },
+    {
+      "monotonic_ns": 59602891499645988,
+      "cpu.stat": "usage_usec 4139937881\nuser_usec 3676508775\nsystem_usec 463429105\nnr_periods 71162\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449593\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846924\n",
+      "frequency_khz": {
+        "87": "800622",
+        "89": "1964757",
+        "91": "800129",
+        "97": "799962"
+      }
+    },
+    {
+      "monotonic_ns": 59602891551056842,
+      "cpu.stat": "usage_usec 4140109317\nuser_usec 3676675993\nsystem_usec 463433323\nnr_periods 71163\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9449916\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5846974\n",
+      "frequency_khz": {
+        "87": "800162",
+        "89": "2000002",
+        "91": "800270",
+        "97": "800082"
+      }
+    },
+    {
+      "monotonic_ns": 59602891602491365,
+      "cpu.stat": "usage_usec 4140230784\nuser_usec 3676792962\nsystem_usec 463437822\nnr_periods 71164\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9450291\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5847041\n",
+      "frequency_khz": {
+        "87": "800273",
+        "89": "1477107",
+        "91": "800947",
+        "97": "799999"
+      }
+    },
+    {
+      "monotonic_ns": 59602891654004925,
+      "cpu.stat": "usage_usec 4140346846\nuser_usec 3676892959\nsystem_usec 463453886\nnr_periods 71164\nnr_throttled 19\nthrottled_usec 77426467\n",
+      "cpu.max": "1200000 100000\n",
+      "cpu.pressure": "some avg10=0.80 avg60=0.44 avg300=0.14 total=9452099\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=5847146\n",
+      "frequency_khz": {
+        "87": "800007",
+        "89": "917010",
+        "91": "800023",
+        "97": "800000"
+      }
+    }
+  ],
+  "source_activity_instrumentation_present": false,
+  "limits_of_inference": [
+    "The failing pump has no final stage record; its first supervision poll raised.",
+    "GC recent ring and all-run peaks continued during recovery; absence of overlap does not exclude a smaller earlier GC event.",
+    "Independent fault executor is polled by the same source thread; producer-to-observer time is not a measured DDS transport latency.",
+    "No source_activity artifact is created retrospectively."
+  ],
+  "original_inputs": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/source_timing.json",
+      "bytes": 97044,
+      "sha256": "e54d9d98439bec9a8a1831387a5fc82031c6b6a1136a4dc2c6b7db03cedb935b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/source_pump_timing.json",
+      "bytes": 159277,
+      "sha256": "7942b79ef42ff84dac33da27d23c574f2466bb42319a9f39e22d2a0d6e624459"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/worker_final.json",
+      "bytes": 4656,
+      "sha256": "13f1427f0a3032b80c1069fea74935ba3b89c88fd5eb26e9220d1414dbc2deac"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/fault_supervision.json",
+      "bytes": 537,
+      "sha256": "11b2b7d25f07c724d89d07c215f3391ca7d280e6fed4c86617c1d5af3b6eb9ce"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/controller_metadata.json",
+      "bytes": 346564,
+      "sha256": "b7d0f9601a6a430c4513e712f774516dd17b915205d250ac76d82c484c968863"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/loop_timing_evidence.json",
+      "bytes": 211990,
+      "sha256": "20b5bd3271baf1778006aa60d9b8663a7d364c11fcb5706d2a52016c8be9472e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v24_resources.jsonl",
+      "bytes": 1625891,
+      "sha256": "037b4d813f31d4d8a5d69fed6ea5e399da55f2220dd9a147ac3b058ed6985ce2"
+    }
+  ]
+}

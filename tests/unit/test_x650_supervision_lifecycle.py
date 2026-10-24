@@ -8,6 +8,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from simulations.x650_isolated_live_v1.supervision import FaultSupervisor
+from simulations.x650_isolated_live_v1.source_activity import SourceActivityTrace, Phase
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -124,6 +125,44 @@ class SupervisorLifecycleTests(unittest.TestCase):
         original.assert_not_called()
         extension.handle_active_pump.assert_not_called()
         self.assertEqual(extension.failure,'C++ output latched fault reason 1')
+
+    def test_first_supervision_exception_keeps_entry_failure_and_finally_trace(self):
+        extension=self.live()
+        trace=extension.source_activity=SourceActivityTrace(capacity=4,gc_capacity=8)
+        extension.activity_phase=Phase
+        trace.start_gc()
+        extension.supervisor.poll.side_effect=RuntimeError('source fault')
+        extension.loop_timing=NS(original={'original_pump':Mock()})
+        try:
+            with self.assertRaisesRegex(RuntimeError,'source fault'):extension.pump_actual()
+            self.assertEqual(len(extension.pump_times),0)
+            self.assertTrue(trace.frozen)
+            self.assertEqual(extension.activity_token,0)
+        finally:trace.close()
+        report=trace.report()
+        row=dict(zip(report['columns'],report['rows'][0]))
+        self.assertEqual(row['failed'],1)
+        self.assertEqual(row['failure_phase'],Phase.SUPERVISION)
+        self.assertGreaterEqual(row['end_ns'],row['failure_ns'])
+        self.assertGreaterEqual(row['failure_ns'],row['supervision_begin_ns'])
+        self.assertEqual(row['mavlink_ros_begin_ns'],0)
+        self.assertEqual(trace.begin(),0)
+        extension.loop_timing.original['original_pump'].assert_not_called()
+
+    def test_success_trace_extends_past_legacy_pump_append(self):
+        extension=self.live()
+        trace=extension.source_activity=SourceActivityTrace(capacity=4,gc_capacity=8)
+        extension.activity_phase=Phase
+        extension.loop_timing=NS(original={'original_pump':Mock()})
+        extension.pump_actual()
+        trace.close()
+        report=trace.report()
+        row=dict(zip(report['columns'],report['rows'][0]))
+        self.assertEqual(row['failed'],0)
+        self.assertEqual(row['completed'],1)
+        self.assertGreaterEqual(row['end_ns'],extension.pump_times[-1][2])
+        self.assertGreaterEqual(row['handle_done_begin_ns'],row['monitor_begin_ns'])
+        self.assertEqual(extension.activity_token,0)
 
     def test_recovery_releases_writer_before_legacy_and_skips_fault_rethrow(self):
         extension=self.live();extension.loop.recovery=True

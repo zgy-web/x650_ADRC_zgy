@@ -1,0 +1,57 @@
+test_capacity_overflow_is_explicit_and_retains_all_earlier_rows (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_end_failed_is_sufficient_and_preserves_failure_phase (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_external_freeze_keeps_open_finally_but_recovery_cannot_overwrite (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_first_supervision_exception_retains_begin_failure_and_finally (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_gc_records_raw_all_generations_threads_and_active_phase (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_gc_registration_does_not_change_policy_or_other_callbacks (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_invalid_capacity_and_gc_restart_after_freeze_are_rejected (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_materialization_requires_shutdown_and_returns_owned_json_data (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_repeated_mark_preserves_first_entry_with_separate_second_phase (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_stale_tokens_and_invalid_phases_cannot_corrupt_other_rows (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+test_unfinished_pump_and_overlap_are_not_silently_complete (test_x650_isolated_source_activity.SourceActivityTest) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.006s
+
+OK
+test_active_uses_actual_vehicle_parameter_and_stored_original_binding (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_fault_checked_before_main_pump (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_first_supervision_exception_keeps_entry_failure_and_finally_trace (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_real_helper_context_depth_identity_latch_and_idempotent_close (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_recovery_releases_writer_before_legacy_and_skips_fault_rethrow (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_success_trace_extends_past_legacy_pump_append (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+test_supervision_report_write_failure_occurs_after_all_children_stopped (test_x650_supervision_lifecycle.SupervisorLifecycleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.144s
+
+OK
+test_bad_zero_identity_times_out_without_claiming_consumption (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_bounded_release_verifies_identity_and_restores_legacy_only_after_death (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_confirmed_hold_requires_new_ack_and_new_source_state_no_outputs (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_missing_zero_or_unverified_exit_skips_mode_and_fold (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_old_ack_cached_status_old_source_or_identity_never_confirm (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_real_receive_only_pump_never_calls_legacy_or_arm (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_reject_immediately_returns_direct_land_without_retry (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_send_or_receive_exception_records_failure_and_does_not_block_land (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_shared_opt_in_hook_failure_never_prevents_land_branch (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_unconfirmed_killed_owner_keeps_receive_only_and_suppresses_land_zero_all (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+test_unstarted_control_skips_fold_and_does_not_touch_idle_cpp (test_x650_failed_recovery_handoff.FailedRecoveryHandoff) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.646s
+
+OK
+test_candidate_rejection_latches_original_time (test_x650_fault_supervision.FaultLatchTests) ... ok
+test_first_fault_survives_stopped_and_later_fault (test_x650_fault_supervision.FaultLatchTests) ... ok
+test_unrelated_session_or_epoch_cannot_poison (test_x650_fault_supervision.FaultLatchTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK

@@ -1,0 +1,301 @@
+{
+  "kind": "hold24_independent_failure_review_v1",
+  "full_hold_pass": false,
+  "scope": "Failed PX4/Gazebo complete-hold attempt; no hardware or full-hold acceptance.",
+  "run": "x650_isolated_live_v1_20261024_124523_18157",
+  "launch": "x650_isolated_launch_20261024_124434_18155",
+  "task_sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181",
+  "execution_revision": 17,
+  "normal_figure8_started_by_progress": false,
+  "fast_figure8_started": false,
+  "archived_original_files_verified": [
+    "controller_metadata.json",
+    "diagnostic_parameters_before.json",
+    "diagnostic_parameters_restored.json",
+    "diagnostic_restore_journal_completed.json",
+    "hold_v24.exit",
+    "isolated_live/events.json",
+    "isolated_live/fault_supervision.json",
+    "isolated_live/ingress_timing.json",
+    "isolated_live/lifecycle.json",
+    "isolated_live/live_start.json",
+    "isolated_live/receipts.json",
+    "isolated_live/sends.json",
+    "isolated_live/source_recording/manifest.json",
+    "isolated_live/source_timing.json",
+    "isolated_live/worker_final.json",
+    "isolated_live/worker_timing.json",
+    "launch/launch.json",
+    "launch/task.json",
+    "progress_v8.json",
+    "run_manifest.json"
+  ],
+  "first_writer_fault": {
+    "session_id": 142803796,
+    "epoch": 1,
+    "sequence": 3333,
+    "scheduled_monotonic_ns": 59602891552316012,
+    "actual_monotonic_ns": 59602891552399967,
+    "source_sequence": 965,
+    "source_received_monotonic_ns": 59602891523958312,
+    "command_sequence": 247,
+    "command_issued_monotonic_ns": 59602891521603876,
+    "command_age_ns": 30796091,
+    "status": 3,
+    "reason": 2,
+    "output_valid": false,
+    "repeated": false
+  },
+  "fault_name": "STALE_SOURCE",
+  "source_issue_age_ms": 30.796091,
+  "source_received_age_ms": 28.441655,
+  "source_issue_to_ingress_ms": 2.354436,
+  "source_last": {
+    "sequence": 965,
+    "issued_ns": 59602891521603876,
+    "publish_return_ns": 59602891523943739,
+    "control_s": 49.3,
+    "joint_s": 49.3
+  },
+  "ingress_last_source": {
+    "kind": 1,
+    "sequence": 965,
+    "entry_ns": 59602891523958312,
+    "gate_end_ns": 0,
+    "publish_end_ns": 0,
+    "source_sequence": 965,
+    "source_issued_ns": 59602891521603876,
+    "source_received_ns": 59602891523958312,
+    "latest_control_s": 49.3,
+    "last_control_s": 49.284,
+    "awaiting_output_sequence": 246,
+    "next_admission_ns": 59602891532631689,
+    "last_admitted_sequence": 246,
+    "released_sequence": 0,
+    "blocked_flags": 0,
+    "forward": false
+  },
+  "last_source_task_time_s": 4.919999999999995,
+  "fault_after_live_start_host_s": 4.959495189,
+  "supervisor_callback_latency_ms": 17.011097,
+  "source_issue_clock_is_freshness_anchor": true,
+  "worker": {
+    "requests": 247,
+    "numerically_accepted": 247,
+    "gate_accepted": 247,
+    "gate_rejected": 0,
+    "engine_median_ms": 9.747985,
+    "engine_max_ms": 13.832118,
+    "callback_median_ms": 12.035491,
+    "callback_max_ms": 16.173027,
+    "last_normal_sent_candidate": 246,
+    "candidate247_normal_sent": false,
+    "all_deferred_diagnostic_phase_orders_verified": true,
+    "diagnostic_completion_error": null,
+    "max_finish_diagnostics_ms": 3.592649,
+    "last_five": [
+      {
+        "sequence": 243,
+        "engine_ms": 9.044431,
+        "callback_ms": 10.861365,
+        "post_publish_ms": 1.75261,
+        "finish_diagnostics_ms": 1.310728
+      },
+      {
+        "sequence": 244,
+        "engine_ms": 9.109151,
+        "callback_ms": 10.922144,
+        "post_publish_ms": 1.748884,
+        "finish_diagnostics_ms": 1.312131
+      },
+      {
+        "sequence": 245,
+        "engine_ms": 11.275132,
+        "callback_ms": 13.066481,
+        "post_publish_ms": 1.726918,
+        "finish_diagnostics_ms": 1.293965
+      },
+      {
+        "sequence": 246,
+        "engine_ms": 9.057274,
+        "callback_ms": 10.833744,
+        "post_publish_ms": 1.713418,
+        "finish_diagnostics_ms": 1.280574
+      },
+      {
+        "sequence": 247,
+        "engine_ms": 9.051705,
+        "callback_ms": 10.888032,
+        "post_publish_ms": 1.77173,
+        "finish_diagnostics_ms": 1.326652
+      }
+    ]
+  },
+  "consumption_and_ownership": {
+    "all_sends": 247,
+    "normal_sends": 246,
+    "normal_repeats": 0,
+    "all_receipts": 247,
+    "individual_joint_commands": 494,
+    "per_joint_counter_range": [
+      1194,
+      1440
+    ],
+    "exact_send_receipt_identity_and_raw_joint_counter_value_time_matches": true,
+    "normal_send_waited_for_previous_actual_receipt": true,
+    "normal_output_after_output_fault": false,
+    "stop_zero_send_after_output_fault_ms": 0.133855,
+    "stop_zero_receipt_after_output_fault_ms": 6.799674,
+    "no_legacy_publication_overlap": true,
+    "legacy_publication_records_checked": 3397,
+    "all_materialized_ros_fields_match_original_cdr": true,
+    "cdr_counts": {
+      "dispatch": 3335,
+      "sends": 247,
+      "events": 247,
+      "receipts": 247
+    }
+  },
+  "recovery": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "all_six_processes_returned_zero": true,
+    "launch_runtime_closed": true,
+    "parameters_restored_exact_value_type_rawhex": 56,
+    "fresh_autonomous_hold_confirmed": true,
+    "hold_confirmation_ms": 52.17652767896652,
+    "release_after_fault_ms": 38.72482,
+    "release_duration_ms": 165.571675,
+    "ulog_status_rows": 120,
+    "px4_failsafe_observed": false,
+    "ulog_recovery": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 55044000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 57056000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 57560000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 57156000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "ulog_vehicle_status_changes": [
+      {
+        "timestamp": 3692000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 24428000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 24464000,
+        "arming_state": 2,
+        "nav_state": 17,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 30008000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 41336000,
+        "arming_state": 2,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 49568000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 50732000,
+        "arming_state": 2,
+        "nav_state": 18,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 57056000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 57560000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      }
+    ],
+    "ulog_offboard_signal_lost_changes": [
+      {
+        "timestamp": 3704000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 40088000,
+        "offboard_control_signal_lost": 0
+      },
+      {
+        "timestamp": 50432000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 58028000,
+        "offboard_control_signal_lost": 1
+      }
+    ],
+    "offboard_signal_lost_after_autonomous_hold_ms": 864.0,
+    "flight_final_armed": 0,
+    "flight_final_landed": 1
+  },
+  "resources": {
+    "bracket_samples": 99,
+    "bracket_duration_s": 5.034125077,
+    "cgroup_stat_deltas": {
+      "usage_usec": 17940668,
+      "user_usec": 16930997,
+      "system_usec": 1009672,
+      "nr_periods": 51,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "container_average_cpu_cores": 3.5638105381941427,
+    "cpu_max": "1200000 100000",
+    "limitations": "Container totals rule out added cgroup throttling in this bracket; no per-operation scheduling, CPU-frequency or GIL cause is established here."
+  },
+  "evidence_limitations": [
+    "Complete raw CDR/plugin/trace/ULog files remain at explicitly hashed server paths; the independent remote checks and excerpts are derived evidence, not original copies.",
+    "Supervisor timestamp is callback observation, not DDS network arrival or diagnostic-file write time.",
+    "ULog timestamps are original microseconds; no fitted mapping to host monotonic or simulation time is used.",
+    "All 247 calculations passed, but only 246 ordinary candidates were sent before the fault; this is not a complete 30 s acceptance.",
+    "This review establishes stale-source triggering and successful recorded recovery, not the source-mainloop pause mechanism."
+  ]
+}

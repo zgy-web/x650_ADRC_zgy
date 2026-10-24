@@ -1,7 +1,7 @@
 {
   "kind": "x650_isolated_live_protocol_v1",
   "simulation_only": true,
-  "execution_revision": 17,
+  "execution_revision": 18,
   "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
   "cpu_roles": {
     "source": [
@@ -31,7 +31,7 @@
   "next_solve_commit": "one next solve after matching actual writer send; retain send barrier, single pending candidate and original source times; no additional independent 20 ms physical minimum after the first solve",
   "next_output_commit": "only_after_both_previous_joint_commands_consumed",
   "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
-  "frozen_hold_task_sha256": "21185ea26e345968777b1fc3206fb45f0a3e0bd98e79abaa85ee63732736b63e",
+  "frozen_hold_task_sha256": "c04a3bbf484b4770d3c0425ec4b2613dc12008761f02e429187979c07534a181",
   "frozen_numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
   "order": [
     "transport_and_consumption_contract",
@@ -76,5 +76,6 @@
   "fault_supervision": "independent ROS node/executor; matching session and epoch; first fault latched with local callback observation time; complete evidence remains separate",
   "history_timestamp_consistency": "C++ command/packet future comparisons use the existing Python 1e-10 second task-relative arithmetic tolerance; source clocks, wall leases, dt limits and original timestamps unchanged",
   "rejected_input_evidence": "first rejected admission retained in bounded memory with original source identity; exact gate-input CDR and clocks written only at shutdown",
-  "failed_recovery_handoff": "failed runs release and verify the sole C++ writer and zero consumption, then require new PX4 ACK and fresh autonomous-Hold status within 350ms before folding; otherwise skip fold and use original LAND; unverified writer exit retains receive-only pumping with no legacy joint publisher; no hardware qualification"
+  "failed_recovery_handoff": "failed runs release and verify the sole C++ writer and zero consumption, then require new PX4 ACK and fresh autonomous-Hold status within 350ms before folding; otherwise skip fold and use original LAND; unverified writer exit retains receive-only pumping with no legacy joint publisher; no hardware qualification",
+  "source_activity_evidence": "preallocated scalar phase wall/thread-CPU and full natural-GC event buffers; pump entry/finally includes first-supervision exceptions; in-memory freeze before recovery; shutdown-only conversion and output; no GC policy, source issue time, receiver, cadence or deadline change"
 }

@@ -29,25 +29,43 @@ def write(p,value):
 
 
 class LiveExtension(Ts20Extension):
+    def _activity_mark(self, phase):
+        trace=getattr(self,'source_activity',None)
+        if trace is not None:
+            trace.mark(getattr(self,'activity_token',0),getattr(self.activity_phase,phase))
+
     def pump_actual(self):
         loop=self.loop
         if loop.recovery or not self.active:
             if self.active:self._release(loop)
             return loop.pump()
-        begin=time.monotonic_ns()
-        self._check_supervision()
-        # Keep the original MAVLink parser/heartbeat, then a time-bounded ROS
-        # drain instead of completing 32 callbacks before every source sample.
-        # Mixing .02 and 0 on this executor repeatedly resets rclpy's ready
-        # callback iterator; late-created evidence subscriptions can starve.
-        self.loop_timing.original['original_pump'](ros_timeout_s=0.)
-        until=time.monotonic_ns()+250_000
-        count=0
-        while count<32 and time.monotonic_ns()<until:
-            loop.ctx.node.spin_once(timeout_sec=0.);count+=1
-        drained=time.monotonic_ns()
-        self.handle_active_pump(loop,loop.monitor_now())
-        self.pump_times.append((begin,drained,time.monotonic_ns(),count))
+        trace=getattr(self,'source_activity',None)
+        token=trace.begin() if trace is not None else 0
+        self.activity_token=token
+        failed=True
+        try:
+            begin=time.monotonic_ns()
+            self._activity_mark('SUPERVISION')
+            self._check_supervision()
+            # Preserve the original receiver, drain and scheduling policy.
+            # Entry/finally evidence also survives an exception in the first
+            # supervisor poll, before the original successful-pump log exists.
+            self._activity_mark('MAVLINK_ROS')
+            self.loop_timing.original['original_pump'](ros_timeout_s=0.)
+            self._activity_mark('ROS_DRAIN')
+            until=time.monotonic_ns()+250_000
+            count=0
+            while count<32 and time.monotonic_ns()<until:
+                loop.ctx.node.spin_once(timeout_sec=0.);count+=1
+            drained=time.monotonic_ns()
+            self._activity_mark('MONITOR')
+            self.handle_active_pump(loop,loop.monitor_now())
+            self._activity_mark('HANDLE_DONE')
+            self.pump_times.append((begin,drained,time.monotonic_ns(),count))
+            failed=False
+        finally:
+            if trace is not None:trace.end(token,failed=failed)
+            self.activity_token=0
 
     def on_pump(self, loop, sim):
         super().on_pump(loop, sim)
@@ -87,6 +105,10 @@ class LiveExtension(Ts20Extension):
         self.source_sender=None
         self.supervisor=None
         self.pump_times=[]
+        from simulations.x650_isolated_live_v1.source_activity import SourceActivityTrace, Phase
+        self.source_activity=SourceActivityTrace()
+        self.activity_phase=Phase
+        self.activity_token=0
         self.failure=None;self.last_source=-1.;self.source_sequence=0
         init={'schema_version':1,'synthetic_software_fixture_only':True,'simulation_live':True,
             'deferred_actual_handoff':True,'task_origin_sim_s':0.,'anchor_position_enu':[0.,0.,0.],
@@ -287,6 +309,7 @@ class LiveExtension(Ts20Extension):
         s.history_command=np.asarray([v for t,v in history]).reshape(-1).tolist()+[0.]*(320-5*len(history))
         s.ref_alt=float(loop.fixed_reference.document['px4_reference_at_bind']['ref_alt']);s.yaw_ned=float(loop.yaw_ned)
         self.start_message=s;self.gains=gains
+        self.source_activity.start_gc()
         self.active=self.started=True
         loop.next_control=float('inf')
         ctx.vehicle._pump=self.pump_actual
@@ -320,7 +343,9 @@ class LiveExtension(Ts20Extension):
         if loop.recovery:
             self._release(loop)
             return False
+        self._activity_mark('ALIVE')
         self._alive()
+        self._activity_mark('SUPERVISION_SECOND')
         self._check_supervision()
         if self.failure:raise RuntimeError(self.failure)
         tick,event=self.latest.get('dispatch'),self.latest.get('events')
@@ -329,10 +354,13 @@ class LiveExtension(Ts20Extension):
         now=float(loop.ctx.node.estimator_clock_s)
         if now<=self.last_source:return True
         begin=time.monotonic_ns()
+        self._activity_mark('READ')
         now,state,joint_stamp=loop.read()
         t=now-loop.task_start
         if t<=0:return True
+        self._activity_mark('CONTEXT')
         context=self.runtime.context(state,t)
+        self._activity_mark('SNAPSHOT')
         s=self.msg.ControlSnapshot();s.schema_version=1;s.session_id=self.session;s.epoch=1
         self.source_sequence+=1;s.sequence=self.source_sequence;s.replay_only=False
         s.configuration_sha256=list(bytes.fromhex(self.task_sha));s.issued_monotonic_ns=begin
@@ -341,10 +369,12 @@ class LiveExtension(Ts20Extension):
         for field,value in [('position_enu',state.position),('velocity_enu',state.velocity),('omega_body_flu',state.omega_body),
             ('acceleration_enu',state.acceleration_enu),('rotation_row_major',state.rotation.reshape(-1)),('q',state.q),('dq',state.dq)]:
             setattr(s,field,np.asarray(value).tolist())
+        self._activity_mark('TARGET')
         desired=loop.trajectory.sample(t);loop.recorder.tip_target=desired[0].copy()
         s.target_position_enu=desired[0].tolist();s.target_velocity_enu=desired[1].tolist();s.target_acceleration_enu=desired[2].tolist()
         s.position_gains=self.gains;s.reference_time_s=float(context['reference_state']['time_s'])
         s.reference_r=np.asarray(context['reference_state']['r']).tolist();s.bus_origin_s=float(context['bus_origin_s'])
+        self._activity_mark('HISTORY')
         commands=context['command_history'];packets=context['packet_history']
         if not 1<=len(commands)<=64 or not 1<=len(packets)<=64:raise RuntimeError('Actual history exceeds bounded wire contract')
         s.command_count=len(commands);s.packet_count=len(packets)
@@ -353,10 +383,13 @@ class LiveExtension(Ts20Extension):
         s.packet_send_time_s=[float(x['send_time_s']) for x in packets]+[0.]*(64-len(packets))
         for field in ('q_ref','dq_ref','tau_ff','kp','kd'):
             setattr(s,'packet_'+field,np.asarray([x[field] for x in packets]).reshape(-1).tolist()+[0.]*(128-2*len(packets)))
+        self._activity_mark('PUBLISH')
         self.source_pub.publish(s)
         self.sources.append((int(s.sequence),int(s.issued_monotonic_ns),time.monotonic_ns(),float(now),float(joint_stamp)))
+        self._activity_mark('EVIDENCE')
         self._evidence({'kind':'feedback','value':{'sequence':int(s.sequence),'sim_s':float(now),'t_s':float(t),
             'phase':'measure','feedback':loop.feedback_diagnostics}})
+        self._activity_mark('EVIDENCE_DONE')
         self.last_source=now
         return True
 
@@ -526,6 +559,8 @@ class LiveExtension(Ts20Extension):
         finally:ctx.node.zero_all=original_zero
 
     def _release(self,loop,*,bounded_failed_recovery=False):
+        trace=getattr(self,'source_activity',None)
+        if trace is not None:trace.freeze()
         if bounded_failed_recovery:return self._release_for_failed_recovery(loop)
         if not self.active:return
         stop=self.msg.RuntimeStop();stop.session_id=self.session;stop.epoch=1
@@ -558,6 +593,8 @@ class LiveExtension(Ts20Extension):
             except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
 
     def finalize(self,meta,stage,out):
+        trace=getattr(self,'source_activity',None)
+        if trace is not None:trace.close()
         if self.active:self._release(self.loop)
         self._close_supervision()
         for name in ('ingress','worker','dispatcher','consumption','recorder'):self._stop_process(name)
@@ -575,6 +612,7 @@ class LiveExtension(Ts20Extension):
         except Exception as error:
             self.failure='Source recording reconciliation failed: '+repr(error)
         write(self.out/'source_pump_timing.json',{'columns':['begin_ns','drained_ns','end_ns','extra_callbacks'],'rows':self.pump_times})
+        if trace is not None:write(self.out/'source_activity.json',trace.report())
         report={'started':self.started,'release':getattr(self,'release',None),'error':self.failure,
             'processes':{name:{'pid':p.pid,'returncode':p.returncode} for name,p in self.procs.items()},
             'source_samples':len(self.sources),'physical_acceptance_pending':True}
@@ -585,6 +623,8 @@ class LiveExtension(Ts20Extension):
 
     def cleanup(self):
         # Also reached when startup fails before shared.execute can finalize.
+        trace=getattr(self,'source_activity',None)
+        if trace is not None:trace.close()
         if self.source_sender is not None:
             self.source_sender.close(self.out/'source_sender.json');self.source_sender=None
         for name in ('dispatcher','consumption','ingress','worker','recorder','source_recorder'):self._stop_process(name)

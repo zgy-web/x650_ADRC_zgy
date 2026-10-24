@@ -1,0 +1,31 @@
+{
+  "kind": "hold24_followup_local_collection_receipt",
+  "archive_server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v17_followup_hold24.zip",
+  "archive_bytes": 1080774,
+  "archive_sha256": "5abd83a3500f30634ac786f66e6d3904318c7fc4e32b6021472fc49d6352b5b3",
+  "verified_original_files": 137,
+  "external_large_files": [
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/dispatch.json",
+      "bytes": 5637613,
+      "sha256": "60b3a33fc246193ce09578ce66f5ebac9bbe8ae9cc5208f9a06aa82de2d07a26",
+      "archive_path": "runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/dispatch.json",
+      "reason": "above_compact_file_limit"
+    },
+    {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/feedback_sources.json",
+      "bytes": 6657824,
+      "sha256": "0d921b562d074230cd81468d45cec49a3196b36e37d9264884bb275049aba1d6",
+      "archive_path": "runs/x650_isolated_live_v1_20261024_124523_18157/isolated_live/feedback_sources.json",
+      "reason": "above_compact_file_limit"
+    }
+  ],
+  "manifest_sha256": "01275e42e697514e43e36c13386d8906c88f3361e9b8fa332ad17cdef4fd3142",
+  "all_included_files_sha256_verified": true,
+  "hold_passed": false,
+  "normal_started": false,
+  "fast_started": false,
+  "portable_complete_proof": false,
+  "local_directory": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\isolated_live_20261024\\hold24\\followup",
+  "captured_utc": "2026-10-24T05:14:30.169928+00:00"
+}

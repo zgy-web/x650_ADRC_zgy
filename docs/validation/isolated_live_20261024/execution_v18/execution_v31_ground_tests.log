@@ -1,0 +1,12 @@
+test_activation_contains_no_construct_launch_or_graph_discovery (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_airborne_build_only_claims_cached_controller_with_actual_trajectory (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_any_cpp_actuator_send_or_non_idle_dispatch_rejects_readiness (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_changed_identity_configuration_or_state_cannot_reuse_cache (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_ground_guards_precede_every_constructor_and_launch (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_ground_state_checked_again_while_waiting (test_x650_live_ground_preparation.GroundPreparation) ... ok
+test_prepares_before_arming_without_solve_or_synthetic_reset (test_x650_live_ground_preparation.GroundPreparation) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.023s
+
+OK
