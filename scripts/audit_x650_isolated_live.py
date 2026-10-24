@@ -80,13 +80,15 @@ def check_sources(launch,folder,meta):
     require(resources==d['execution_resources'] and resources['roles']==protocol['cpu_roles'],
             'Executed resource plan differs from declaration')
     observed=read(folder/'isolated_live/execution_affinity_at_handoff.json')
-    require(set(observed)=={'source','worker','dispatcher','ingress','consumption','recorder','source_recorder'},
-            'Owned resource evidence incomplete')
-    for role,threads in observed.items():
-        expected=resources['roles'].get(role,resources['background'])
-        require(threads and all(cpus==expected for cpus in threads.values()),'CPU role differs: '+role)
+    from flyarm_mpc_reference import worker_affinity
+    if protocol.get('worker_thread_roles') is not None:
+        helper='ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/worker_affinity.py'
+        require(helper in before and sha(Path(worker_affinity.__file__))==before[helper],
+                'Loaded worker placement verifier differs from archived execution source')
+    placement=worker_affinity.verify_execution_resource_evidence(folder/'isolated_live',resources,protocol,observed)
     return {'verified':True,'source_files':len(before),'task_sha256':sha(launch/'task.json'),
-            'native_library_sha256':protocol['frozen_numerical_library_sha256'],'new_execution_sources_archived':True}
+            'native_library_sha256':protocol['frozen_numerical_library_sha256'],'new_execution_sources_archived':True,
+            'worker_placement':placement}
 
 
 def check_preflight_gc(live,start):

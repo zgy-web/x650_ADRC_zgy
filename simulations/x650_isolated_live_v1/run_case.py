@@ -83,6 +83,9 @@ class LiveExtension(Ts20Extension):
         self.resources=json.loads(os.environ['FLYARM_EXECUTION_RESOURCES'])
         protocol=task.read(ROOT/'configs/experiments/x650_isolated_live_v1.json')
         if self.resources['roles']!=protocol['cpu_roles']:raise ValueError('Execution CPU plan differs')
+        from flyarm_mpc_reference.worker_affinity import validate_thread_roles
+        self.worker_thread_roles=validate_thread_roles(self.resources['roles']['worker'],protocol.get('worker_thread_roles'))
+        self.worker_affinity_ready=None;self.worker_affinity_handoff=None;self.affinity_handoff_observed=None
         # Limit only our own source threads. Child roles explicitly override
         # this affinity before imports, including both background recorders.
         for thread in Path('/proc/self/task').iterdir():
@@ -136,16 +139,30 @@ class LiveExtension(Ts20Extension):
             time.sleep(.01)
         from flyarm_mpc_reference.diagnostic_channel import DiagnosticSender
         self.source_sender=DiagnosticSender(source_sock)
+        worker_placement={}
+        if self.worker_thread_roles is not None:
+            # ROS CLI interprets YAML: quote JSON as a string parameter, not a map/list.
+            worker_placement={'worker_resource_mask_json':json.dumps(json.dumps(self.resources['roles']['worker'])),
+                'worker_thread_roles_json':json.dumps(json.dumps(self.worker_thread_roles))}
         self._launch('worker',self._ros('flyarm_mpc_reference','isolated_node',{
             'expected_session_id':self.session,'expected_epoch':1,'simulation_live':True,'repo_root':ROOT,
             'task_config':self.task_path,'task_config_sha256':self.task_sha,
             'initialization_manifest':self.out/'initialization.json','initialization_sha256':sha(self.out/'initialization.json'),
-            'output_dir':self.out,'diagnostic_socket':sock}))
+            'output_dir':self.out,'diagnostic_socket':sock,**worker_placement}))
         deadline=time.monotonic()+60
         while not (self.out/'worker_ready').exists():
             self._alive()
             if time.monotonic()>deadline:raise TimeoutError('Preflight worker not ready')
             time.sleep(.01)
+        if self.worker_thread_roles is not None:
+            # Static file/source validation is ground preflight work. The
+            # airborne handoff only compares actual identities against this.
+            from flyarm_mpc_reference.worker_affinity import verify_worker_evidence
+            evidence=task.read(self.out/'worker_affinity_ready.json')
+            pid=verify_worker_evidence(evidence,evidence['phases']['ready']['threads'],
+                self.resources['roles']['worker'],self.worker_thread_roles)
+            if pid!=self.procs['worker'].pid:raise RuntimeError('Worker ready evidence belongs to another process')
+            self.worker_affinity_ready=evidence
 
     def on_loop_ready(self,ctx,loop,meta,out):
         super().on_loop_ready(ctx,loop,meta,out)
@@ -293,12 +310,29 @@ class LiveExtension(Ts20Extension):
         ctx.vehicle.wait(lambda:loop.sent_command_history[-1][0]>previous,8.,'last legacy prestream send')
         history=loop.sent_command_history[-64:]
         observed={'source':self._affinity(os.getpid())}
-        observed.update({name:self._affinity(p.pid) for name,p in self.procs.items()})
+        for name,p in self.procs.items():
+            if name=='worker' and getattr(self,'worker_thread_roles',None) is not None:
+                from flyarm_mpc_reference.worker_affinity import thread_snapshot,verify_snapshot
+                begin=time.monotonic_ns();cpu_begin=time.thread_time_ns()
+                pid=p.pid
+                identity=thread_snapshot(pid)
+                if pid!=self.worker_affinity_ready['pid']:raise RuntimeError('Worker PID changed before handoff')
+                verify_snapshot(identity,pid,self.resources['roles']['worker'],self.worker_thread_roles,
+                    self.worker_affinity_ready['phases']['bound_before_ready']['threads'])
+                cpu_end=time.thread_time_ns();end=time.monotonic_ns()
+                observed[name]={tid:value['cpus'] for tid,value in identity.items()}
+                self.worker_affinity_handoff={'kind':'worker_thread_affinity_handoff_v1',
+                    'worker_pid':pid,'monotonic_ns':end,'threads':identity,
+                    'check_begin_ns':begin,'check_end_ns':end,'check_thread_cpu_begin_ns':cpu_begin,
+                    'check_thread_cpu_end_ns':cpu_end,'scope':'dynamic PID/TID/starttime/mask only; static source validation completed on ground; no handoff file I/O'}
+                continue
+            observed[name]=self._affinity(p.pid)
         for name,threads in observed.items():
+            if name=='worker' and self.worker_thread_roles is not None:continue
             expected=self.resources['roles'].get(name,self.resources['background'])
             if not threads or any(cpus!=expected for cpus in threads.values()):
                 raise RuntimeError('Owned process CPU isolation differs: '+name)
-        write(self.out/'execution_affinity_at_handoff.json',observed)
+        self.affinity_handoff_observed=observed
         self._assert_waiting_no_output()
         start=float(history[-1][0])
         s=self.msg.LiveStart();s.session_id=self.session;s.epoch=1;s.configuration_sha256=list(bytes.fromhex(self.task_sha))
@@ -602,6 +636,7 @@ class LiveExtension(Ts20Extension):
             self.source_sender.close(self.out/'source_sender.json');self.source_sender=None
         self._stop_process('source_recorder')
         for f in self.logs:f.close()
+        self._write_placement_evidence()
         from rosidl_runtime_py.convert import message_to_ordereddict
         if self.started:write(self.out/'live_start.json',message_to_ordereddict(self.start_message))
         write(self.out/'source_timing.json',{'columns':['sequence','issued_ns','publish_return_ns','control_s','joint_s'],'rows':self.sources})
@@ -632,6 +667,15 @@ class LiveExtension(Ts20Extension):
             if not f.closed:f.close()
         # A report-write failure must not prevent stopping owned processes.
         self._close_supervision()
+        self._write_placement_evidence()
+
+    def _write_placement_evidence(self):
+        # Only called after owned processes stop; report I/O cannot delay the
+        # airborne source pump or prevent their shutdown.
+        if getattr(self,'affinity_handoff_observed',None) is not None:
+            write(self.out/'execution_affinity_at_handoff.json',self.affinity_handoff_observed)
+        if getattr(self,'worker_affinity_handoff',None) is not None:
+            write(self.out/'worker_affinity_at_handoff.json',self.worker_affinity_handoff)
 
 
 def scenario():

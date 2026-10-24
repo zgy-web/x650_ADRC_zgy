@@ -1,0 +1,605 @@
+{
+  "kind": "worker_thread_placement_ros_software_v1",
+  "physical_validation": false,
+  "scope": "real ROS participant/executor and production placement/signal helper; no optimizer or physical execution validation",
+  "commands_published": false,
+  "helper_sha256": "0c1d45b63efd811e25ce12697c15d2d46becb56f59480bfdfefd8e6270333d71",
+  "probe_sha256": "883a6f78397749d29a8e3091583564bc9afebcde1595533a4a5ea04691a8a6f6",
+  "passed": true,
+  "dynamic_handoff_check": {
+    "wall_ns": 2680751,
+    "thread_cpu_ns": 2656607,
+    "threads": {
+      "25538": {
+        "start_ticks": 5960700532,
+        "cpus": [
+          87
+        ],
+        "comm": "python3"
+      },
+      "25539": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25540": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25541": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25542": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25543": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25544": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25545": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25546": {
+        "start_ticks": 5960700554,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25547": {
+        "start_ticks": 5960700555,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      },
+      "25548": {
+        "start_ticks": 5960700555,
+        "cpus": [
+          89,
+          91,
+          97
+        ],
+        "comm": "python3"
+      }
+    }
+  },
+  "sigint_ns": 59607005840942992,
+  "child_final": {
+    "passed": true,
+    "stop_requested": true,
+    "context_ok_before_shutdown": true,
+    "callbacks": [
+      [
+        59607005635525807,
+        59607005635548043,
+        25538,
+        87,
+        25538,
+        87
+      ],
+      [
+        59607005685686365,
+        59607005685718770,
+        25538,
+        87,
+        25538,
+        87
+      ],
+      [
+        59607005735485278,
+        59607005735499756,
+        25538,
+        87,
+        25538,
+        87
+      ],
+      [
+        59607005785607059,
+        59607005785631572,
+        25538,
+        87,
+        25538,
+        87
+      ],
+      [
+        59607005835655983,
+        59607005835688882,
+        25538,
+        87,
+        25538,
+        87
+      ],
+      [
+        59607005885649025,
+        59607005885682080,
+        25538,
+        87,
+        25538,
+        87
+      ]
+    ],
+    "placement": {
+      "kind": "worker_thread_affinity_v1",
+      "pid": 25538,
+      "executor_tid": 25538,
+      "source_sha256": "0c1d45b63efd811e25ce12697c15d2d46becb56f59480bfdfefd8e6270333d71",
+      "resource_mask": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "thread_roles": {
+        "executor": [
+          87
+        ],
+        "auxiliary": [
+          89,
+          91,
+          97
+        ]
+      },
+      "phases": {
+        "bound_before_ready": {
+          "monotonic_ns": 59607005585051312,
+          "threads": {
+            "25538": {
+              "start_ticks": 5960700532,
+              "cpus": [
+                87
+              ],
+              "comm": "python3"
+            },
+            "25539": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25540": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25541": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25542": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25543": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25544": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25545": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25546": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25547": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25548": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            }
+          }
+        },
+        "ready": {
+          "monotonic_ns": 59607005586258882,
+          "threads": {
+            "25538": {
+              "start_ticks": 5960700532,
+              "cpus": [
+                87
+              ],
+              "comm": "python3"
+            },
+            "25539": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25540": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25541": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25542": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25543": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25544": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25545": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25546": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25547": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25548": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            }
+          }
+        },
+        "live_start": {
+          "monotonic_ns": 59607005587826643,
+          "threads": {
+            "25538": {
+              "start_ticks": 5960700532,
+              "cpus": [
+                87
+              ],
+              "comm": "python3"
+            },
+            "25539": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25540": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25541": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25542": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25543": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25544": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25545": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25546": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25547": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25548": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            }
+          }
+        },
+        "final": {
+          "monotonic_ns": 59607005888204281,
+          "threads": {
+            "25538": {
+              "start_ticks": 5960700532,
+              "cpus": [
+                87
+              ],
+              "comm": "python3"
+            },
+            "25539": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25540": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25541": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25542": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25543": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25544": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25545": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25546": {
+              "start_ticks": 5960700554,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25547": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            },
+            "25548": {
+              "start_ticks": 5960700555,
+              "cpus": [
+                89,
+                91,
+                97
+              ],
+              "comm": "python3"
+            }
+          }
+        }
+      },
+      "complete": true,
+      "failure": null,
+      "scope": "strict TID/starttime and exact affinity at declared stages; no claim to observe short-lived auxiliary threads between stages; executor boundaries additionally check native TID, singleton affinity and actual CPU"
+    }
+  },
+  "returncode": 0,
+  "child_exited": true
+}

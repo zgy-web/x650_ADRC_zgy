@@ -70,6 +70,35 @@ def row_dict(trace):
 
 
 class WorkerTimingTests(unittest.TestCase):
+    def test_executor_cpu_samples_append_without_changing_payload_or_phase_order(self):
+        args, clock, order, packets, proposal = make_case()
+        observer = Mock(side_effect=[(101, 87), (101, 87)])
+        process_snapshot(*args, clock_ns=clock.now, thread_clock_ns=clock.thread, cpu_observer=observer)
+        row = row_dict(args[-1])
+        self.assertEqual((row['callback_native_tid_begin'], row['callback_native_tid_end']), (101, 101))
+        self.assertEqual((row['callback_actual_cpu_begin'], row['callback_actual_cpu_end']), (87, 87))
+        self.assertEqual(row['executor_affinity_checked'], 3)
+        self.assertEqual(order, ['engine', 'publish', 'snapshot_cdr', 'proposal_cdr', 'offer'])
+        self.assertEqual(pickle.loads(packets[0][1])['proposal_cdr'], pickle.dumps(proposal))
+
+    def test_bad_executor_entry_prevents_solve_and_still_records_failed_boundary(self):
+        args, clock, order, packets, _ = make_case()
+        observer = Mock(side_effect=[RuntimeError('wrong executor'), (101, 87)])
+        with self.assertRaisesRegex(RuntimeError, 'wrong executor'):
+            process_snapshot(*args, clock_ns=clock.now, thread_clock_ns=clock.thread, cpu_observer=observer)
+        self.assertEqual(order, []); self.assertEqual(packets, [])
+        self.assertTrue(args[0].faulted)
+        self.assertEqual(row_dict(args[-1])['executor_affinity_checked'], 2)
+
+    def test_bad_exit_fails_recording_after_publication_without_rewriting_command(self):
+        args, clock, order, packets, proposal = make_case()
+        observer = Mock(side_effect=[(101, 87), RuntimeError('placement drift')])
+        with self.assertRaisesRegex(RuntimeError, 'placement drift'):
+            process_snapshot(*args, clock_ns=clock.now, thread_clock_ns=clock.thread, cpu_observer=observer)
+        self.assertIn('publish', order); self.assertTrue(args[0].faulted)
+        self.assertEqual(pickle.loads(packets[0][1])['proposal_cdr'], pickle.dumps(proposal))
+        self.assertEqual(row_dict(args[-1])['executor_affinity_checked'], 1)
+
     def test_existing_publish_before_diagnostic_order_and_exact_record_preserved(self):
         args, clock, order, packets, proposal = make_case(publish_ns=50, serialize_ns=20, offer_ns=30)
         engine, capture, publisher, sender, snapshot, kind, serialize, trace = args

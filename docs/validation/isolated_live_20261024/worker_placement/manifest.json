@@ -1,0 +1,33 @@
+{
+  "kind": "worker_thread_placement_software_archive_v1",
+  "physical_acceptance": false,
+  "server_originals_unchanged": true,
+  "files": {
+    "report.json": {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/worker_placement_probe_v1/result/report.json",
+      "bytes": 13528,
+      "sha256": "a81cc9d1dcc5f99aba5246a4f086e23e556f037d778cfee5444c3ad072ac9c69",
+      "local_copy_verified": true
+    },
+    "ready.json": {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/worker_placement_probe_v1/result/ready.json",
+      "bytes": 4599,
+      "sha256": "75d002f9662447f49bebbea6add2e915d8cf63c16dd97e7eb90507d682e8cef5",
+      "local_copy_verified": true
+    },
+    "child_final.json": {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/worker_placement_probe_v1/result/child_final.json",
+      "bytes": 10206,
+      "sha256": "07f0e9fb75a019fc423f7583ccf7e390955b2d32e69ceb48a2387f60efb6667f",
+      "local_copy_verified": true
+    },
+    "child.log": {
+      "server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/worker_placement_probe_v1/result/child.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_copy_verified": true
+    }
+  },
+  "total_original_bytes": 28333,
+  "scope": "four complete original software ROS probe files; no flight/optimizer result; README and this manifest are local archive metadata"
+}

@@ -1,0 +1,231 @@
+{
+  "kind": "worker_thread_affinity_v1",
+  "pid": 25538,
+  "executor_tid": 25538,
+  "source_sha256": "0c1d45b63efd811e25ce12697c15d2d46becb56f59480bfdfefd8e6270333d71",
+  "resource_mask": [
+    87,
+    89,
+    91,
+    97
+  ],
+  "thread_roles": {
+    "executor": [
+      87
+    ],
+    "auxiliary": [
+      89,
+      91,
+      97
+    ]
+  },
+  "phases": {
+    "bound_before_ready": {
+      "monotonic_ns": 59607005585051312,
+      "threads": {
+        "25538": {
+          "start_ticks": 5960700532,
+          "cpus": [
+            87
+          ],
+          "comm": "python3"
+        },
+        "25539": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25540": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25541": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25542": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25543": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25544": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25545": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25546": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25547": {
+          "start_ticks": 5960700555,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25548": {
+          "start_ticks": 5960700555,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        }
+      }
+    },
+    "ready": {
+      "monotonic_ns": 59607005586258882,
+      "threads": {
+        "25538": {
+          "start_ticks": 5960700532,
+          "cpus": [
+            87
+          ],
+          "comm": "python3"
+        },
+        "25539": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25540": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25541": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25542": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25543": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25544": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25545": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25546": {
+          "start_ticks": 5960700554,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25547": {
+          "start_ticks": 5960700555,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        },
+        "25548": {
+          "start_ticks": 5960700555,
+          "cpus": [
+            89,
+            91,
+            97
+          ],
+          "comm": "python3"
+        }
+      }
+    }
+  },
+  "complete": true,
+  "failure": null,
+  "scope": "strict TID/starttime and exact affinity at declared stages; no claim to observe short-lived auxiliary threads between stages; executor boundaries additionally check native TID, singleton affinity and actual CPU"
+}
