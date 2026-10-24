@@ -7,6 +7,8 @@
 #include <rclcpp/wait_set.hpp>
 #include <fstream>
 #include <thread>
+#include <filesystem>
+#include <vector>
 #ifdef FLYARM_LIVE_SIM
 #include "flyarm_control_gateway/live_actuator.hpp"
 #endif
@@ -20,6 +22,7 @@ class PeriodicDispatcher final: public rclcpp::Node {
     hash_=wire::parse_hash(declare_parameter<std::string>("configuration_sha256",""));
     live_=declare_parameter<bool>("simulation_live",false);
     ready_file_=declare_parameter<std::string>("ready_file","");
+    waits_.reserve(10000); // fixed bounded evidence storage, never write in ACTIVE
 #ifdef FLYARM_LIVE_SIM
     if(live_) {
       actuator_=std::make_unique<wire::LiveActuator>(*this);
@@ -39,6 +42,25 @@ class PeriodicDispatcher final: public rclcpp::Node {
     events_=create_subscription<msg::GateEvent>(p+"/event",rclcpp::QoS(256).best_effort(),[](msg::GateEvent::SharedPtr){});
     stop_=create_subscription<msg::RuntimeStop>(p+"/stop",rclcpp::QoS(1).reliable(),[](msg::RuntimeStop::SharedPtr){});
     RCLCPP_INFO(get_logger(),"READY independent absolute 20 ms wait-set publisher; simulation_live=%s", live_ ? "true" : "false");
+  }
+  ~PeriodicDispatcher() override {
+    if(ready_file_.empty()) return;
+    try {
+      std::ofstream f(std::filesystem::path(ready_file_).parent_path()/"dispatch_wait.json");
+      f<<"{\"schema\":\"consumption_wait_v1\",\"complete\":true,\"overflow\":"
+       <<(wait_overflow_?"true":"false")<<",\"rows\":[";
+      for(std::size_t i=0;i<waits_.size();++i) {
+        const auto &w=waits_[i];if(i)f<<',';
+        f<<"{\"command_sequence\":"<<w.command<<",\"scheduled_ns\":"<<w.due
+         <<",\"begin_ns\":"<<w.begin<<",\"end_ns\":"<<w.end<<",\"deadline_ns\":"<<w.deadline
+         <<",\"prior_send_ns\":"<<w.prior_send<<",\"state_observed_begin_ns\":"<<w.observed_begin
+         <<",\"state_received_begin_ns\":"<<w.received_begin<<",\"state_observed_end_ns\":"<<w.observed_end
+         <<",\"state_received_end_ns\":"<<w.received_end<<",\"ack_completed_ns\":"<<w.ack
+         <<",\"reason\":"<<w.reason<<",\"released\":"<<(w.released?"true":"false")<<'}';
+      }
+      f<<"]}\n";f.close();
+      if(!f) std::cerr<<"Could not persist consumption wait evidence\n";
+    } catch(const std::exception &e) {std::cerr<<"Consumption wait evidence: "<<e.what()<<'\n';}
   }
   void run() {
 #ifdef FLYARM_LIVE_SIM
@@ -73,7 +95,12 @@ class PeriodicDispatcher final: public rclcpp::Node {
       if(now>=due_) {
         // Second bounded take closes the ready-input race after the wakeup.
         // It does not wait for a future candidate or extend a command lease.
-        drain(); now=wire::monotonic_ns(); publish_tick(now);
+        drain();
+#ifdef FLYARM_LIVE_SIM
+        if(live_ && actuator_->wait_policy()) await_consumption(wait);
+#endif
+        if(!rclcpp::ok()) break; // shutdown during ACK wait cannot send a new normal command
+        now=wire::monotonic_ns(); publish_tick(now);
         due_+=fcg::PeriodicGate::PERIOD_NS;
         while(due_<=now) due_+=fcg::PeriodicGate::PERIOD_NS;
       }
@@ -84,6 +111,39 @@ class PeriodicDispatcher final: public rclcpp::Node {
     }
   }
  private:
+#ifdef FLYARM_LIVE_SIM
+  void await_consumption(rclcpp::WaitSet &wait) {
+    WaitEvidence record; bool recording=false;
+    while(rclcpp::ok()) {
+      const auto now=wire::monotonic_ns();
+      const auto preview=gate_.preview(due_,now);
+      if(!preview.valid) break;
+      const auto ready=actuator_->readiness(now);
+      if(ready.fault!=fcg::PeriodicGate::NONE) {gate_.reject(ready.fault);break;}
+      if(recording && now>record.deadline) {gate_.reject(fcg::PeriodicGate::CONSUMPTION_TIMEOUT);break;}
+      if(!ready.pending) {record.released=true;break;}
+      if(!recording) {
+        if(waits_.size()==waits_.capacity()) {wait_overflow_=true;gate_.reject();break;}
+        recording=true;record.command=preview.command_sequence;record.due=due_;record.begin=now;
+        record.prior_send=actuator_->last_normal_send();record.observed_begin=actuator_->state_observed();
+        record.received_begin=actuator_->state_received();
+        record.deadline=std::min(gate_.wait_deadline(due_),ready.deadline);
+      }
+      // Later arrivals may tighten, never extend the first wait budget.
+      record.deadline=std::min({record.deadline,gate_.wait_deadline(due_),ready.deadline});
+      if(now>=record.deadline) {gate_.reject(fcg::PeriodicGate::CONSUMPTION_TIMEOUT);break;}
+      // Sleep until a real queued message or the earliest original deadline.
+      // The same due remains fixed. No command/counter/publish occurs here.
+      const auto result=wait.wait(std::chrono::nanoseconds(record.deadline-now));(void)result;
+      drain();
+    }
+    if(recording) {
+      record.end=wire::monotonic_ns();record.observed_end=actuator_->state_observed();
+      record.received_end=actuator_->state_received();record.ack=actuator_->ack_completed();
+      record.reason=gate_.preview(due_,record.end).reason;waits_.push_back(record);
+    }
+  }
+#endif
   void drain() {
     rclcpp::MessageInfo info;
 #ifdef FLYARM_LIVE_SIM
@@ -95,7 +155,8 @@ class PeriodicDispatcher final: public rclcpp::Node {
       }
       msg::ActuatorState a;
       for(int i=0;i<64 && actual_->take(a,info);++i) actuator_->state(a);
-      if(actuator_->failed()) gate_.reject();
+      actuator_->check_progress(wire::monotonic_ns());
+      if(actuator_->failed()) gate_.reject(actuator_->failure_reason());
     }
 #endif
     msg::RuntimeStop stop;
@@ -132,13 +193,22 @@ class PeriodicDispatcher final: public rclcpp::Node {
     out.command_age_ns=t.age;out.status=t.status;out.reason=t.reason;out.output_valid=t.valid;out.repeated=t.repeated;
     if(t.valid) out.command=command_;
 #ifdef FLYARM_LIVE_SIM
-    if(live_) actuator_->execute(out);
+    if(live_) {
+      actuator_->execute(out);
+      if(actuator_->failed()) gate_.reject(actuator_->failure_reason());
+    }
 #endif
     ticks_->publish(out);
   }
   std::uint64_t session_{},epoch_{},due_{};fcg::Hash hash_{};fcg::PeriodicGate gate_;
   msg::ControlProposal command_;
   bool live_{},active_phase_{};
+  struct WaitEvidence {
+    std::uint64_t command{},due{},begin{},end{},deadline{},prior_send{},observed_begin{},received_begin{},
+                  observed_end{},received_end{},ack{};
+    std::uint16_t reason{};bool released{};
+  };
+  std::vector<WaitEvidence> waits_;bool wait_overflow_{};
   std::string ready_file_;
 #ifdef FLYARM_LIVE_SIM
   std::unique_ptr<wire::LiveActuator> actuator_;

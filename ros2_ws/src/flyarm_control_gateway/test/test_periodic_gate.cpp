@@ -1,8 +1,49 @@
 #include "flyarm_control_gateway/periodic_gate.hpp"
+#include "flyarm_control_gateway/consumption_wait.hpp"
 #include <iostream>
 #include <stdexcept>
 using G=flyarm_control_gateway::PeriodicGate;
 void check(bool ok) { if (!ok) throw std::runtime_error("periodic gate check failed"); }
+void consumption_wait_contract() {
+  using flyarm_control_gateway::consumption_readiness;
+  constexpr std::uint64_t B=1'000'000'000, MS=1'000'000;
+  G g;g.source(1,B,B,B);check(g.accept(1,B,B));
+  auto t=g.tick(B,B);check(t.sequence==1 && t.valid && !t.repeated);
+  g.source(2,B+19*MS,B+19*MS,B+19*MS);check(g.accept(2,B+10*MS,B+19*MS));
+  // The real failure had receipt processing 22.570625 ms after prior send:
+  // inspection at due does not consume sequence 2 or count a repeated send.
+  auto p=g.preview(B+20*MS,B+20*MS);
+  check(p.valid && !p.repeated && p.sequence==0 && p.issued==B+10*MS);
+  auto r=consumption_readiness(B+20*MS,true,B+19*MS,B,true);
+  check(r.pending && r.fault==G::NONE && r.deadline==B+40*MS);
+  check(g.wait_deadline(B+20*MS)==B+40*MS);
+  const auto ack=B+22'570'625;
+  g.source(3,ack,ack,ack);
+  r=consumption_readiness(ack,true,ack,B,false);
+  check(!r.pending && r.fault==G::NONE);
+  t=g.tick(B+20*MS,ack);
+  check(t.sequence==2 && t.valid && !t.repeated && t.scheduled==B+20*MS && t.issued==B+10*MS);
+  check(g.preview(B+40*MS,B+40*MS).repeated);
+  // Physical state and actual-send gaps retain exact inclusive boundaries.
+  check(consumption_readiness(B+25*MS,true,B,0,true).fault==G::NONE);
+  check(consumption_readiness(B+25*MS+1,true,B,0,true).fault==G::STALE_ACTUATOR_STATE);
+  check(consumption_readiness(B+40*MS,true,B+40*MS,B,false).fault==G::NONE);
+  check(consumption_readiness(B+40*MS+1,true,B+40*MS+1,B,false).fault==G::ACTUAL_OUTPUT_GAP);
+  check(consumption_readiness(B,false,0,0,true).fault==G::STALE_ACTUATOR_STATE);
+  check(consumption_readiness(B,true,B+1,0,true).fault==G::STALE_ACTUATOR_STATE);
+  // Original issue time remains binding even if both actual streams refresh.
+  G lease;lease.source(1,B,B,B);check(lease.accept(1,B,B));
+  lease.source(2,B+49*MS,B+49*MS,B+49*MS);
+  check(lease.wait_deadline(B+40*MS)==B+50*MS);
+  check(lease.preview(B+40*MS,B+50*MS).valid);
+  check(lease.preview(B+40*MS,B+50*MS+1).reason==G::STALE_COMMAND);
+  G expired;expired.source(1,B,B,B);check(expired.accept(1,B,B));
+  expired.source(2,B+40*MS+1,B+40*MS+1,B+40*MS+1);
+  check(expired.preview(B+20*MS,B+40*MS+1).reason==G::MISSED_DEADLINE);
+  G rejected;rejected.reject(G::ACTUATOR_PROTOCOL);
+  check(rejected.tick(B,B).reason==G::ACTUATOR_PROTOCOL);
+  G stopped;stopped.stop();check(stopped.preview(B,B).status==G::STOPPED);
+}
 
 void idle_to_active_contract() {
   constexpr std::uint64_t B=1'000'000'000, PAUSE=120'000'000;
@@ -74,6 +115,7 @@ void idle_to_active_contract() {
 }
 
 int main() {
+  consumption_wait_contract();
   idle_to_active_contract();
   constexpr std::uint64_t B=1'000'000'000;
   G g; g.source(1,B,B,B); check(g.accept(1,B,B));

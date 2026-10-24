@@ -97,8 +97,8 @@ class StateIngress final : public rclcpp::Node {
       if(!live_ || s->session_id!=config_.session_id || s->epoch!=config_.epoch || stopped_ || output_fault_) return;
       const auto entry=wire::monotonic_ns();store_timing(timing(3,s->command_sequence,entry));
       // A plan may advance only after the independent writer actually sent
-      // it. Joint consumption is checked asynchronously by that writer BEFORE
-      // its next output. Do not serialize state sampling/optimization behind
+      // it. Joint consumption is checked asynchronously by that writer under
+      // its explicit transport policy. Do not serialize state sampling/optimization behind
       // a physical receipt: source context still uses only real consumed
       // commands and MIT packets, never this notification as a measurement.
       if(!s->stop_zero && s->command_sequence==awaiting_output_sequence_) {

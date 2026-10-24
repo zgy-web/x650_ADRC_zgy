@@ -1,0 +1,22 @@
+test_complete_candidate_plan_must_be_recorded (test_x650_cpp_hold_audit.NumericEvidenceTests.test_complete_candidate_plan_must_be_recorded) ... ok
+test_nan_and_deadline_and_fallback_rejected (test_x650_cpp_hold_audit.NumericEvidenceTests.test_nan_and_deadline_and_fallback_rejected) ... ok
+test_non_linear_candidate_cannot_pass_using_flag_alone (test_x650_cpp_hold_audit.NumericEvidenceTests.test_non_linear_candidate_cannot_pass_using_flag_alone) ... ok
+test_original_nonlinear_tolerances_not_tightened_to_envelope_margin (test_x650_cpp_hold_audit.NumericEvidenceTests.test_original_nonlinear_tolerances_not_tightened_to_envelope_margin) ... ok
+test_result_and_sent_wire_must_be_identical (test_x650_cpp_hold_audit.NumericEvidenceTests.test_result_and_sent_wire_must_be_identical) ... ok
+test_unsent_previous_command_is_not_silently_zeroed (test_x650_cpp_hold_audit.NumericEvidenceTests.test_unsent_previous_command_is_not_silently_zeroed) ... ok
+test_absolute_slot_cannot_be_skipped (test_x650_cpp_hold_audit.OutputTimingTests.test_absolute_slot_cannot_be_skipped) ... ok
+test_actual_publish_lease_is_checked_beyond_gate_tick (test_x650_cpp_hold_audit.OutputTimingTests.test_actual_publish_lease_is_checked_beyond_gate_tick) ... ok
+test_actual_send_barrier_rejects_self_reported_early_release (test_x650_cpp_hold_audit.OutputTimingTests.test_actual_send_barrier_rejects_self_reported_early_release) ... ok
+test_failed_prefix_retains_input_hashes_without_certificate (test_x650_cpp_hold_audit.OutputTimingTests.test_failed_prefix_retains_input_hashes_without_certificate) ... ok
+test_issued_clock_cannot_be_refreshed (test_x650_cpp_hold_audit.OutputTimingTests.test_issued_clock_cannot_be_refreshed) ... ok
+test_metadata_cannot_substitute_for_real_disarm (test_x650_cpp_hold_audit.OutputTimingTests.test_metadata_cannot_substitute_for_real_disarm) ... ok
+test_new_command_stream_does_not_require_per_send_ack (test_x650_cpp_hold_audit.OutputTimingTests.test_new_command_stream_does_not_require_per_send_ack) ... ok
+test_only_exact_same_candidate_repeat_is_a_single_ulog_value (test_x650_cpp_hold_audit.UlogValueViewTests.test_only_exact_same_candidate_repeat_is_a_single_ulog_value) ... ok
+test_same_clock_any_payload_or_feedback_difference_is_rejected (test_x650_cpp_hold_audit.UlogValueViewTests.test_same_clock_any_payload_or_feedback_difference_is_rejected) ... ok
+test_same_clock_different_candidate_or_nonrepeat_is_rejected (test_x650_cpp_hold_audit.UlogValueViewTests.test_same_clock_different_candidate_or_nonrepeat_is_rejected) ... ok
+test_same_payload_at_different_clock_remains_an_actual_value_row (test_x650_cpp_hold_audit.UlogValueViewTests.test_same_payload_at_different_clock_remains_an_actual_value_row) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.057s
+
+OK

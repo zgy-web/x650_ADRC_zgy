@@ -88,6 +88,29 @@ def physical_task(value):
     return result
 
 
+RUNTIME_INTERFACES = ('AcceptedCommand', 'ActuatorSend', 'ActuatorState',
+    'ControlProposal', 'ControlSnapshot', 'DispatchTick', 'DrainRequest',
+    'ExecutionReceipt', 'GateEvent', 'IngressStatus', 'LiveStart',
+    'RecordingReceipt', 'RuntimeStop', 'SourceBinding', 'SourceBindingAck')
+
+
+def verify_runtime_interfaces(module, serialize, deserialize):
+    """Detect an older overlay before starting Gazebo or taking ownership."""
+    missing = [name for name in RUNTIME_INTERFACES if not hasattr(module, name)]
+    require(not missing, 'ROS overlay is missing required interfaces: '+', '.join(missing))
+    checked = []
+    for name in RUNTIME_INTERFACES:
+        cls = getattr(module, name)
+        sample = cls()
+        wire = serialize(sample)
+        restored = deserialize(wire, cls)
+        require(type(restored) is cls and restored == sample,
+                'ROS interface serialization roundtrip failed: '+name)
+        checked.append(name)
+    return {'verified': True, 'python_module': str(module.__file__),
+            'serialization_roundtrips': checked, 'actuator_publishers_created': False}
+
+
 def finite_bounded(value, bound):
     return type(value) in (float, int) and math.isfinite(value) and 0 <= value <= bound
 
@@ -169,6 +192,57 @@ def verify_worker(report, startup, evidence, binaries):
     return checked_startup
 
 
+STREAM_CASES = frozenset({
+    'late_observer_23ms', 'late_observer_30ms', 'counter_jump',
+    'mixed_joint_batches', 'duplicate_and_old_observations', 'wrong_counter',
+    'wrong_velocity', 'counter_regression', 'missing_progress',
+    'one_joint_no_progress', 'missing_state', 'source_stale',
+    'stop_skips_unobserved', 'sigint_active',
+})
+
+
+def verify_transport(report, evidence, binaries):
+    """A strict stop-and-wait pass cannot qualify continuous output."""
+    require(report.get('passed') is True and report.get('zero_consumed') is True,
+            'Current dispatcher actual-consumption proof required')
+    binary = report.get('dispatcher_binary')
+    digest = report.get('dispatcher_sha256')
+    require(isinstance(binary, str) and Path(binary).is_absolute()
+            and isinstance(digest, str)
+            and binaries.get(str(Path(binary).resolve())) == digest,
+            'Installed dispatcher differs from transport proof')
+    require(report.get('consumption_policy') == 'latest_value_v1'
+            and type(report.get('consumption_progress_budget_ms')) is int
+            and report['consumption_progress_budget_ms'] == 40,
+            'Continuous-consumption policy proof required')
+    require(isinstance(report.get('streaming_contract_proof'), dict),
+            'Streaming contract proof missing')
+    contract = evidence.document(report['streaming_contract_proof'])
+    require(contract.get('kind') == 'cpp_latest_value_contract_v1'
+            and contract.get('passed') is True
+            and contract.get('sources_unchanged') is True
+            and contract.get('physical_acceptance') is False
+            and contract.get('consumption_policy') == 'latest_value_v1'
+            and type(contract.get('consumption_progress_budget_ms')) is int
+            and contract['consumption_progress_budget_ms'] == 40,
+            'Streaming software contract incomplete')
+    require(contract.get('dispatcher_binary') == binary
+            and contract.get('dispatcher_sha256') == digest,
+            'Streaming contract dispatcher differs')
+    cases = contract.get('cases', [])
+    require(len(cases) == len(STREAM_CASES)
+            and {case.get('name') for case in cases} == STREAM_CASES
+            and all(case.get('passed') is True for case in cases),
+            'Streaming positive/negative cases missing or failed')
+    require(all(case.get('binary') == binary and case.get('binary_sha256') == digest
+                for case in cases), 'Streaming cases used different dispatcher bytes')
+    sources = contract.get('sources', [])
+    require(isinstance(sources, list) and len(sources) > 0,
+            'Streaming source identities missing')
+    for source in sources:
+        evidence.artifact(source)
+
+
 def verify(manifest_path, *, task_path, startup_path, startup_sha256, protocol_path, binaries):
     evidence = Evidence()
     manifest = read(manifest_path)
@@ -191,6 +265,11 @@ def verify(manifest_path, *, task_path, startup_path, startup_sha256, protocol_p
     require(protocol.get('kind') == 'x650_cpp_live_protocol_v1' and protocol.get('simulation_only') is True
             and protocol.get('trajectory_kind') == 'hold' and task.get('stage') == 'tip_hold'
             and task.get('duration_s') == protocol.get('tip_hold_duration_s') == 30., 'Fresh complete hold protocol required')
+    require(protocol.get('execution_revision') == 2
+            and protocol.get('consumption_policy') == 'latest_value_v1'
+            and type(protocol.get('consumption_progress_budget_ms')) is int
+            and protocol['consumption_progress_budget_ms'] == 40,
+            'Explicit continuous-output protocol required')
     for key, expected in [('output_period_s', .02), ('command_age_max_s', .05), ('control_interval_max_s', .05),
                           ('source_wall_age_max_s', .025), ('core_compute_max_s', .05), ('output_interval_max_s', .04)]:
         require(protocol.get(key) == expected, 'Original transport policy changed: ' + key)
@@ -212,8 +291,7 @@ def verify(manifest_path, *, task_path, startup_path, startup_sha256, protocol_p
     require(build.get('unit_tests_passed') is True and build.get('ros_lifecycle_passed') is True
             and build.get('no_actuator_publishers') is True, 'Final raw source lifecycle/tests missing')
     transport = evidence.document(manifest['transport_proof'])
-    require(transport.get('passed') is True and transport.get('zero_consumed') is True
-            and binaries.get(str(Path(transport['dispatcher_binary']).resolve())) == transport.get('dispatcher_sha256'), 'Current dispatcher actual-consumption proof required')
+    verify_transport(transport, evidence, binaries)
     return {'kind': 'cpp_live_ground_admission_v1', 'ready': True, 'physical_hold_qualified': False,
             'qualification_manifest': identity(manifest_path), 'task_sha256': manifest['task_config']['sha256'],
             'startup_sha256': startup_sha256, 'protocol_sha256': manifest['protocol']['sha256'],

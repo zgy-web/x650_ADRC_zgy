@@ -1,0 +1,59 @@
+{
+  "kind": "complete_cpp_hold_audit_archive_v2",
+  "physical_acceptance": true,
+  "hardware_qualified": false,
+  "full_report_server_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_audit_v2/report.json",
+  "full_report_sha256": "701a666b79c4f2bd4ca037ce0f2989f60fda907617d2724cfcf6024f1592a8b4",
+  "original_failure_preserved": true,
+  "old_script_mapping": "audit_version_before_value_view_fix/mapping.json",
+  "new_script_mapping": [
+    {
+      "runtime_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_cpp_hold.py",
+      "archived_name": "audit_x650_cpp_hold.py",
+      "sha256": "6fb189dbcc7ec50e83216cc4a51d9c222b7429144a50ba338b8f058c569cb158"
+    },
+    {
+      "runtime_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_hold_audit.py",
+      "archived_name": "test_x650_cpp_hold_audit.py",
+      "sha256": "dc7f93040b75fe069c9465c51bd4d13cb41af7139f95d2b34189cc3d129f4bc5"
+    }
+  ],
+  "audit_tests_passed": 17,
+  "files": [
+    {
+      "relative_path": "audit_tests_17.txt",
+      "bytes": 2827,
+      "sha256": "fa94e6db7bb8d1e2f8b054737c41aff2ac39942fe1f167ec9fd29a64f9c558ea"
+    },
+    {
+      "relative_path": "audit_version_before_value_view_fix/audit_x650_cpp_hold.py",
+      "bytes": 32795,
+      "sha256": "9c3d794bc343b9afb99c1ccf01ab09376d98e2be3d81bd8710307aa8ffd06aac"
+    },
+    {
+      "relative_path": "audit_version_before_value_view_fix/mapping.json",
+      "bytes": 1226,
+      "sha256": "73d19516bba09dd38af018edbb2d09c9ce89589023fa688c5fad270b09d57bd5"
+    },
+    {
+      "relative_path": "audit_version_before_value_view_fix/test_x650_cpp_hold_audit.py",
+      "bytes": 7432,
+      "sha256": "e0715ecf88fb882dedf6c173fa9c4bd25cc14ab68db3ec73b666f87cf9b014ca"
+    },
+    {
+      "relative_path": "audit_x650_cpp_hold.py",
+      "bytes": 36008,
+      "sha256": "6fb189dbcc7ec50e83216cc4a51d9c222b7429144a50ba338b8f058c569cb158"
+    },
+    {
+      "relative_path": "report.json",
+      "bytes": 4636679,
+      "sha256": "701a666b79c4f2bd4ca037ce0f2989f60fda907617d2724cfcf6024f1592a8b4"
+    },
+    {
+      "relative_path": "test_x650_cpp_hold_audit.py",
+      "bytes": 10046,
+      "sha256": "dc7f93040b75fe069c9465c51bd4d13cb41af7139f95d2b34189cc3d129f4bc5"
+    }
+  ]
+}

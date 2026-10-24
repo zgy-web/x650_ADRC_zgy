@@ -1,0 +1,66 @@
+{
+  "frozen": true,
+  "physical_acceptance": false,
+  "files": [
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/CMakeLists.txt",
+      "bytes": 3611,
+      "sha256": "004956083eec021f7567a872d7447eca6744d9b5c9a4a2e4379c4586415bd8d7"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp",
+      "bytes": 4147,
+      "sha256": "23ca42362c8482af1e4b5eeb5a19d9773e91b8a26734f67ce4a0d23c35420eed"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_wait.hpp",
+      "bytes": 1087,
+      "sha256": "16802e0c8cda14cbcd8efa5a9bb56c7cb96ae8033ab5c7cf649a1a67f9053ce1"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_ledger.hpp",
+      "bytes": 4216,
+      "sha256": "a4afec496986a88fcc1dde6c8dc6e98807653e1b85f5dd1cd653779bb3d46e12"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/live_actuator.hpp",
+      "bytes": 15649,
+      "sha256": "f65e9c38c169adde3191122cacb016928ab686c56117b4f00c8cbf8736b7751c"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/src/periodic_dispatcher.cpp",
+      "bytes": 11675,
+      "sha256": "3edb057f1a0ecc8941e6d9bf7587cebbef478e3f4d1fe390fc968d08a88b1e06"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp",
+      "bytes": 18100,
+      "sha256": "98e93df433c98eaad0f293e72167a257952a21e283dfd0be822ef46b8379adf4"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/test/test_periodic_gate.cpp",
+      "bytes": 7392,
+      "sha256": "be861592260697d3b771805694a3875fbe763c0ad5fbdd34d5911500cbc36550"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/test/test_consumption_ledger.cpp",
+      "bytes": 3548,
+      "sha256": "6b82e7eb3ecbf46d8ebddc9ea43cdd7b5a5ed9f2438bef863fa8f751f9b94bfd"
+    },
+    {
+      "path": "scripts/probe_x650_consumption_wait.py",
+      "bytes": 11882,
+      "sha256": "496f2ab49240a0adc1134a1cd660427721aa962d0ac7d97ec6fc30eb2f800c2f"
+    },
+    {
+      "path": "scripts/probe_x650_streaming_transport.py",
+      "bytes": 16158,
+      "sha256": "68fbcce685a5d2bc001a9ac77bb5be44cd24d844435b158ea852b3c4d65ab651"
+    },
+    {
+      "path": "scripts/probe_x650_live_transport.py",
+      "bytes": 8768,
+      "sha256": "03a221ef6e4de688c52f3e35e079977a3995b4be1bd3dac37b5a57ebca657a31"
+    }
+  ]
+}

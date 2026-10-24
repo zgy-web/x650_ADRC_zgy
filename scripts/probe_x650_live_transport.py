@@ -9,7 +9,17 @@ from pathlib import Path
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--consumption-policy',choices=['strict_per_tick','bounded_wait_v1','latest_value_v1'],default='strict_per_tick')
+    p.add_argument('--streaming-contract-proof',type=Path);a=p.parse_args()
+    contract=None
+    if a.consumption_policy=='latest_value_v1':
+        if a.streaming_contract_proof is None:raise ValueError('Explicit completed streaming contract proof required')
+        import hashlib
+        data=a.streaming_contract_proof.read_bytes();proof=json.loads(data)
+        if not proof.get('passed') or proof.get('kind')!='cpp_latest_value_contract_v1' or proof.get('consumption_policy')!='latest_value_v1' or proof.get('consumption_progress_budget_ms')!=40:
+            raise ValueError('Streaming contract proof not passed/bound')
+        contract={'path':str(a.streaming_contract_proof.resolve()),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
     a.output.mkdir(parents=True,exist_ok=False)
     os.environ['ROS_DOMAIN_ID']='209'
     import rclpy
@@ -23,8 +33,8 @@ def main():
     pubs={key:n.create_publisher(typ,'/flyarm/isolated/v1/'+key,1 if key in ('live_start','stop') else q)
           for key,typ in [('live_start',msg.LiveStart),('stop',msg.RuntimeStop),('source_status',msg.IngressStatus),
                          ('actuator_state',msg.ActuatorState),('accepted',msg.AcceptedCommand),('event',msg.GateEvent)]}
-    counters=[100,200];velocity=[0.,0.];sim=[10.];receipts=[];ticks=[];sends=[]
-    def joint(m,j):counters[j]+=1;velocity[j]=float(m.data)
+    counters=[100,200];velocity=[0.,0.];sim=[10.];receipt_sim=[10.,10.];receipts=[];ticks=[];sends=[]
+    def joint(m,j):counters[j]+=1;velocity[j]=float(m.data);receipt_sim[j]=sim[0]
     subs=[n.create_subscription(Float64,'/arm/arm_joint_'+str(j+1)+'/cmd_vel',lambda m,j=j:joint(m,j),10) for j in range(2)]
     subs += [n.create_subscription(typ,'/flyarm/isolated/v1/'+key,lambda m,store=store:store.append(m),q)
              for typ,key,store in [(msg.ExecutionReceipt,'consumed',receipts),(msg.DispatchTick,'dispatch',ticks),(msg.ActuatorSend,'actuator_send',sends)]]
@@ -35,8 +45,11 @@ def main():
     inherited=socket.socket(socket.AF_INET,socket.SOCK_DGRAM);inherited.bind(('127.0.0.1',14550));inherited.setblocking(False)
     log=(a.output/'dispatcher.log').open('x')
     params={'expected_session_id':101,'expected_epoch':1,'configuration_sha256':"'"+'07'*32+"'",'simulation_live':True,
+            'consumption_policy':a.consumption_policy,'consumption_progress_budget_ms':40,
             'sitl_udp_port':peer.getsockname()[1],'sitl_socket_fd':inherited.fileno(),'sitl_system_id':1,'sitl_component_id':1}
     binary=Path(get_package_prefix('flyarm_control_gateway'))/'lib/flyarm_control_gateway/live_dispatcher'
+    if contract and hashlib.sha256(binary.read_bytes()).hexdigest()!=proof['dispatcher_sha256']:
+        raise ValueError('Streaming proof binary mismatch')
     command=[str(binary),'--ros-args']
     for k,v in params.items():command+=['-p',k+':='+str(v).lower() if isinstance(v,bool) else k+':='+str(v)]
     child=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,pass_fds=(inherited.fileno(),),start_new_session=True)
@@ -55,11 +68,15 @@ def main():
             s.received_monotonic_ns=now;s.source_issued_monotonic_ns=now;s.control_time_s=sim[0]
             pubs['source_status'].publish(s)
             ac=msg.ActuatorState();ac.session_id=101;ac.epoch=1;ac.observed_monotonic_ns=now;ac.sim_s=sim[0]
-            ac.consumed_counter=counters;ac.consumed_velocity=velocity;ac.consumed_sim_s=[sim[0],sim[0]]
+            ac.consumed_counter=counters;ac.consumed_velocity=velocity;ac.consumed_sim_s=receipt_sim
             pubs['actuator_state'].publish(ac)
             time.sleep(.001)
     import hashlib
     report={'passed':False,'scope':'software transport only; no physical plant',
+            'consumption_policy':a.consumption_policy,'consumption_progress_budget_ms':40,
+            'streaming_contract_proof':contract,
+            'probe_source':{'path':str(Path(__file__).resolve()),'bytes':Path(__file__).stat().st_size,
+                            'sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
             'dispatcher_binary':str(binary),'dispatcher_sha256':hashlib.sha256(binary.read_bytes()).hexdigest()}
     try:
         deadline=time.monotonic()+10

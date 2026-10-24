@@ -1,0 +1,19 @@
+{
+  "purpose": "Exact code used for the preserved failed audit; later script path updates do not alter this historical evidence",
+  "original_report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_audit/report.json",
+  "original_report_sha256": "907b2a530e1221834656495caa35619fed6711d8aefa202661f4fc4c4b821239",
+  "artifacts": [
+    {
+      "historical_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_cpp_hold.py",
+      "preserved_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_audit/audit_version_before_value_view_fix/audit_x650_cpp_hold.py",
+      "bytes": 32795,
+      "sha256": "9c3d794bc343b9afb99c1ccf01ab09376d98e2be3d81bd8710307aa8ffd06aac"
+    },
+    {
+      "historical_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tests/unit/test_x650_cpp_hold_audit.py",
+      "preserved_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_audit/audit_version_before_value_view_fix/test_x650_cpp_hold_audit.py",
+      "bytes": 7432,
+      "sha256": "e0715ecf88fb882dedf6c173fa9c4bd25cc14ab68db3ec73b666f87cf9b014ca"
+    }
+  ]
+}

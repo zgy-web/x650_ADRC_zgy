@@ -1,8 +1,9 @@
 """Actual-simulation C++ feedback/core adapter; Python owns lifecycle only.
 
-The existing prestream, actual-send admission, physical-consumption and recovery
-transactions remain unchanged. No Python optimizer or snapshot publisher exists
-on this adapter's ACTIVE path. Launch/software/physical qualification is separate.
+The prestream, actual-send admission and recovery transactions remain unchanged.
+Normal tracking uses explicit latest-value output with asynchronous consumption
+progress supervision. No Python optimizer or snapshot publisher exists on the
+ACTIVE path. Launch/software/physical qualification is separate.
 """
 from copy import deepcopy
 import base64
@@ -105,9 +106,28 @@ def binding_uint(value, bits):
     return result
 
 
+def dispatcher_parameters(protocol):
+    """Ground selection of the qualified streaming contract, never an auto fallback."""
+    if (protocol.get('execution_revision') != 2
+            or protocol.get('consumption_policy') != 'latest_value_v1'
+            or type(protocol.get('consumption_progress_budget_ms')) is not int
+            or protocol['consumption_progress_budget_ms'] != 40):
+        raise ValueError('Explicit latest-value dispatcher and 40 ms progress budget required')
+    return {name: protocol[name] for name in ('consumption_policy', 'consumption_progress_budget_ms')}
+
+
 class CppLiveExtension(LiveExtension):
+    def _ros(self, package, executable, params):
+        if package == 'flyarm_control_gateway' and executable == 'live_dispatcher':
+            additions = dispatcher_parameters(self.protocol)
+            if any(key in params and params[key] != value for key, value in additions.items()):
+                raise ValueError('Conflicting dispatcher policy overrides')
+            params = dict(params, **additions)
+        return super()._ros(package, executable, params)
+
     def prepare(self, out):
         self.protocol = task.read(Path(os.environ['FLYARM_CPP_PROTOCOL']))
+        dispatcher_parameters(self.protocol)
         self.resources = json.loads(os.environ['FLYARM_EXECUTION_RESOURCES'])
         if self.resources['roles'] != self.protocol['cpu_roles']:
             raise ValueError('C++ execution CPU plan differs from selected protocol')

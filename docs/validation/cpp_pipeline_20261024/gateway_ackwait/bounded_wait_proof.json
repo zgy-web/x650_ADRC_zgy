@@ -1,0 +1,558 @@
+{
+  "schema": "bounded_consumption_wait_software_v1",
+  "complete": true,
+  "passed": true,
+  "historical_bounded_wait_only": true,
+  "deployment_eligible": false,
+  "physical_validated": false,
+  "scope": "private-domain synthetic ROS/live_dispatcher and loopback UDP; no PX4/Gazebo/real actuator",
+  "binary": {
+    "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/install/flyarm_control_gateway/lib/flyarm_control_gateway/live_dispatcher",
+    "bytes": 2373904,
+    "sha256": "7658209b65487297d23a1ba06b4ed12c03b29002e90aaa8ba2634cf84b9ccf3c"
+  },
+  "cpp_ctest_count": 5,
+  "ros_wait_cases": 7,
+  "legacy_transport_passed": true,
+  "failed_probe_attempts_preserved": [
+    "consumption_probe_v1: numpy uint64 ROS setter",
+    "consumption_probe_v2: test closure nonlocal missing"
+  ],
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build.log",
+      "bytes": 44294,
+      "sha256": "f54e55b127c0e240034dc32aa7299ac60db9a654df6445ed8304f2d8489e86c4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build.sh",
+      "bytes": 678,
+      "sha256": "abfdd38e845a96e2440b2d58ad98a5de9882f5d68a247a5ab15bd1b321bf018e"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build_v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build_v2.log",
+      "bytes": 44294,
+      "sha256": "f54e55b127c0e240034dc32aa7299ac60db9a654df6445ed8304f2d8489e86c4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/build_v2.sh",
+      "bytes": 687,
+      "sha256": "31ebf77723d64f4f18d3bd4c10518ecfe2eef0e132cae0c0a47d8a6a9e2b17d6"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "fb2b624665fa84caace0ddaeeafc784632766cb56d64dc337b6cb8412dacf473"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/dispatcher.log",
+      "bytes": 207,
+      "sha256": "b4447f2b39aea55fdcc78eb2ff945301208a8d5833cf25659db04cd8aad63cee"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/ready.txt",
+      "bytes": 113,
+      "sha256": "8acb83ab8ad7e9268d9fa4873fdf326a726689b6f6b0422535b2536de6a30947"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/report.json",
+      "bytes": 1219,
+      "sha256": "9c8108dcababdcb7b0b1221372ca438066c32dc7d1705f95e67e2c4c7407a3ea"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/sends.json",
+      "bytes": 426,
+      "sha256": "5c65bcfe2b5f80670e85f52fc2e98fe8d1ac9ef3336ab8ee4ac20e217ba67da1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/late_ack/ticks.json",
+      "bytes": 2131,
+      "sha256": "09f8fd85b0f504a77feafda9dbda0c1d675fc22ffb9d8e078ac39e112631cf91"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1/report.json",
+      "bytes": 114,
+      "sha256": "0031e392339f23df7aad76016c333b3b4b75fc0edd097b49a3f0fff821eecfd7"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v1.log",
+      "bytes": 1115,
+      "sha256": "5f2b833099eb29b1df5baf12e56afb5ef1b88952888d1aaf5f517d0087ec77c4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/dispatch_wait.json",
+      "bytes": 489,
+      "sha256": "83dc320dbd1ee79cf10b9bd385e5238c9273346746e07d6fbd048792fb937f8f"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/dispatcher.log",
+      "bytes": 207,
+      "sha256": "104e81343762ec78f5a86f36332c860062f5c97f3e474a1df79745f4549bb2b4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/ready.txt",
+      "bytes": 113,
+      "sha256": "ff872c3c5ba38be9bf902f65e8649c413f2d980cd7d40591d53c44556ae5962d"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/receipts.json",
+      "bytes": 614,
+      "sha256": "451a010fa3070a14d7435e116ce68bd2ea9bd3d6e2f9645541f9072b267f1792"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/report.json",
+      "bytes": 1140,
+      "sha256": "96f68aa193c1a9cd1280a3a24754ca337feecb9aa00ad34a6145d220c85b4837"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/sends.json",
+      "bytes": 852,
+      "sha256": "d99219889a1f619d6965ab0031cdc0e7f14ef446693adc8e610973dc58df9858"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/late_ack/ticks.json",
+      "bytes": 3210,
+      "sha256": "c8753f6a37d1a9a5bec36de23e6d4542b96f5021fbde6873f95916cfce9737ed"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2/report.json",
+      "bytes": 114,
+      "sha256": "0031e392339f23df7aad76016c333b3b4b75fc0edd097b49a3f0fff821eecfd7"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v2.log",
+      "bytes": 858,
+      "sha256": "05283488722b2409bc5129b5aad1464e933a15f40b396314848d344562d04a9e"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/dispatch_wait.json",
+      "bytes": 489,
+      "sha256": "8e45185b71cd6a17e704cbf6f80971e9593af74230b4a261d890bed4fa4575a1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/dispatcher.log",
+      "bytes": 207,
+      "sha256": "5b42c816cd29aa35b9248d395523a54c9beb54211599d3a726f9a6fdd324ae47"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/ready.txt",
+      "bytes": 113,
+      "sha256": "fb4604720df318e21bf658ec5785e351cf18305285de6bf177cc4bac17241db4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/receipts.json",
+      "bytes": 922,
+      "sha256": "ebbe4b0597e921ce5461faedf0e160d82c5f2a6bab7a4cf8880aa958d68c2816"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/report.json",
+      "bytes": 1262,
+      "sha256": "2555a2a64506647fc7c0fd0c1a8e5616088a22d20688b49569b3ddbf59a53055"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/sends.json",
+      "bytes": 1253,
+      "sha256": "6a9e8c463c5cbf08495434ee2781aa7a95d38a5839dec44afc2a6498057fb4ef"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/late_ack/ticks.json",
+      "bytes": 11817,
+      "sha256": "fc9d1c138ac1a4564a6912a14fac4aec41ddd993436a7a9e3c4a58b4933627b0"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "b3e880a4e819720e0fd1c74b70e749c8d4bd603f9a03d83d0933a992b9bfb87c"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/dispatcher.log",
+      "bytes": 207,
+      "sha256": "2be78535258c1dea15ea9e89103db092785cdb3eb27f9bb34474512e3961b986"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/ready.txt",
+      "bytes": 113,
+      "sha256": "6602bea58408c667ebed45ebf689bf3f3593ba76b8a103395579bcbcae9a0430"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/report.json",
+      "bytes": 1211,
+      "sha256": "c6f80c5b79fa81a12196375dc6c7e0c3d92502a3957f5d92e5cda378f3154a25"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/sends.json",
+      "bytes": 827,
+      "sha256": "3282a6fc3fef1c0e10140deea3963407ca3e659a3594ac7be350f9038963e350"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/missing_ack/ticks.json",
+      "bytes": 9659,
+      "sha256": "e1593519eca1d4aca084701e14bce3be567a4cf4f442b09405b098553cd96454"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/report.json",
+      "bytes": 9751,
+      "sha256": "bad98f155cd72542f18d8e804f83afa1e73e4478597c3d3f9d7a1a181d2f47b3"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "7579391a293b6f5f37be26ba0bed0a6b32aff7027f4040ab4791afc833e9a9f4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/dispatcher.log",
+      "bytes": 207,
+      "sha256": "b473450a24568d071e88c1da65c8f5a0b51c4aaa24aee6ea526bc2b8cb71c330"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/ready.txt",
+      "bytes": 113,
+      "sha256": "616cac2250fc1d567a10480e829f1eca4f1e7736f42f42be26d6a2847029b31e"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/report.json",
+      "bytes": 1217,
+      "sha256": "05e9c76bfab804082707a7723fa50c943f9abd355730cc1e086d5dce37ff1d4b"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/sends.json",
+      "bytes": 426,
+      "sha256": "af79a7068f439ac2a07c06dee3790b1659bd7d674bcefd541be376eed80cc8e3"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/sigint_waiting/ticks.json",
+      "bytes": 2131,
+      "sha256": "850a1b104b54cff34e9531c332695abfa7d353f159530401470a4c1e07ed0089"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "9506a07f1bb004e1a68e62cf103c8ae7794dffa761484698d5056da013b61586"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/dispatcher.log",
+      "bytes": 207,
+      "sha256": "8d3994dda213b07d7850cd37d8990592f8e664c1bba0b19e932c0da5d220614c"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/ready.txt",
+      "bytes": 113,
+      "sha256": "0b02649f3c727db8fd5fc4291b24db45148ceac4409c9d877c2e1bbc80456aa7"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/report.json",
+      "bytes": 1212,
+      "sha256": "75f0652c4e3a705686eb65052d907209864b7846858e0b77290fa25327d73677"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/sends.json",
+      "bytes": 827,
+      "sha256": "416458977d7bd2d674de92d605b10a898ac097213f7e4ab2d5e56a64967e7b87"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/source_stale/ticks.json",
+      "bytes": 11811,
+      "sha256": "e65e228ac21a9086e91caf8ba6fe741fe2a9dd17b74bccca3eb1076276cb7304"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "ad1a0fec6812a8ccf7d8ed631d0c96b0567a6d57b312b8c62e3a922e4ca37341"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/dispatcher.log",
+      "bytes": 207,
+      "sha256": "de70f215b27762ae489256341c1a4bf9ab78a34a54814ff5a7aad7ab5680284e"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/ready.txt",
+      "bytes": 113,
+      "sha256": "740539eedadbe9f92c66591b2b75029d5bad85bd7675161ef9f72fa04403c7be"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/report.json",
+      "bytes": 1211,
+      "sha256": "d9a1114151ae765515c21fcd8de4cb26e4fa75d53b5536ee70adf1653de4d7d7"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/sends.json",
+      "bytes": 827,
+      "sha256": "1ad359c22bfcad7451e58570fccd2cd06deacb47b7ce333da0e205b89945bc62"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/state_stale/ticks.json",
+      "bytes": 11811,
+      "sha256": "e9a3a3d252477b0a4af2ca0802ffd814b522874958ae4f02505e78589c59f7b6"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "b341146b0f967df6f5432e4c5f1822e4e6beb23cc2ec54d52ee2899e21b4058f"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/dispatcher.log",
+      "bytes": 207,
+      "sha256": "a1ef073cc9895d69aa5eb6ed0764d904145104d91b837e530b8f7b8032f9d6ee"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/ready.txt",
+      "bytes": 113,
+      "sha256": "fe607605aef9961af8f481266a9d9305e6eda9908050468c012bd9145f90d9e1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/report.json",
+      "bytes": 1215,
+      "sha256": "ee0085c9663afb6d67f010513fe9ab78cf0fcc1846a94358d0c0045ff069c5b0"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/sends.json",
+      "bytes": 827,
+      "sha256": "9bb59e07cc5b000174481c292f3bda365be347adf94405518e3acc0fea8830e8"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/stop_waiting/ticks.json",
+      "bytes": 11810,
+      "sha256": "512e8383fbf18cb67c617382e30cb4a290bdf0a85d8f2e376a504e806afe1bf8"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/dispatch_wait.json",
+      "bytes": 474,
+      "sha256": "e42d67e91808b7391d0293f447e47ea277fa0e3275bef876e2043937729a0848"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/dispatcher.log",
+      "bytes": 207,
+      "sha256": "c5e2596c28e1cd0924f8125c73db89f781c39ddb3711476961481a43cdecf9c1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/ready.txt",
+      "bytes": 113,
+      "sha256": "5cb56d203460452975f377eb3960976821861bd1d36bc5abc1127036406418a6"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/receipts.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/report.json",
+      "bytes": 1226,
+      "sha256": "7e7c8f24b843b61b15f936d2f6c0c0d465fe0e8b8611448d2d6e8ebd8b79053b"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/sends.json",
+      "bytes": 827,
+      "sha256": "de1d8f04cd4dcec082bbfd9eeb2e9049aeb3c45d2fdde6c231ad1439e7dcb99c"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3/wrong_counter/ticks.json",
+      "bytes": 11812,
+      "sha256": "16407b6b4c9cf7a90bb6eb17fbfa6f1a17fd6ee6b4247064477a028ed65e6fbd"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/consumption_probe_v3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/probe_v1.sh",
+      "bytes": 808,
+      "sha256": "90fa639d372cbca621dd3717ae0bafb2c7a7c4c055ad988f57a59a195f6336e5"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/probe_v2.sh",
+      "bytes": 808,
+      "sha256": "217f186d15f15808bd3e645044bd926173b63c061df783fb9aafb692ffb0e153"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/probe_v3.sh",
+      "bytes": 808,
+      "sha256": "88ae270d3dff875b08d3e312634376dc99e9ad382589c2549d3023ed96af5969"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/CMakeLists.txt",
+      "bytes": 3316,
+      "sha256": "71a3ab6b8c31d10c56cf8de158c3c6ee9f9009f7fbd729f673bde94b58ba0687"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp",
+      "bytes": 1330,
+      "sha256": "217f0432f86d51f10dc711f2c627ab147cce319381b64cdb0078a4d48efe0aea"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_csv.hpp",
+      "bytes": 3486,
+      "sha256": "e8e363dabfc356aab014e1743e7ce0e5cfa1ad454560c05e0d6a26024818d1c4"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_lifecycle.hpp",
+      "bytes": 1619,
+      "sha256": "bf149ab3a3811efbf06407da851b62aa5c359137a9d28c25f861a47b47fe8c8a"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_wait.hpp",
+      "bytes": 1087,
+      "sha256": "16802e0c8cda14cbcd8efa5a9bb56c7cb96ae8033ab5c7cf649a1a67f9053ce1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/live_actuator.hpp",
+      "bytes": 8781,
+      "sha256": "247b3046ea9ba37f8b5bc77eb8381d534d82ce254cfa16c04266cf1fbf46980b"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp",
+      "bytes": 4078,
+      "sha256": "2c7b8eef1434fa3c30b440c317d149990446699f11053d82b9d1087e480c234e"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/runtime_wire.hpp",
+      "bytes": 3650,
+      "sha256": "9c833bea082b601a3fededaec21e814a9e99d2d76e3e2c20a824029abf0fa235"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp",
+      "bytes": 15271,
+      "sha256": "8447dc528219c5074cdafb387205a04be691290f6da42b89f4ac5ce44565477b"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/package.xml",
+      "bytes": 544,
+      "sha256": "a6bb72ebfc5d1e7e4d01fd3486e03d64a8616f632f0477fc06a2265a9c1e1f9a"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/src/consumption_source.cpp",
+      "bytes": 4399,
+      "sha256": "ff90aba24c9992d710f7f08b6d87a8c7a55984f8c30a2225218163698a486d01"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/src/periodic_dispatcher.cpp",
+      "bytes": 11592,
+      "sha256": "709f3d67d16176336e91d894bf2d5a4158133b61f46432327cc80bd22160febc"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/src/shadow_gateway.cpp",
+      "bytes": 6851,
+      "sha256": "48db5636e83c1ec9af95a8bbdb02f118745817ea4cad9d74d2e52dcaeead3daf"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp",
+      "bytes": 18087,
+      "sha256": "4011292d1d33fcca0b38ad9359c6ea16c4bac0151b792f369a12a96818b96716"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/test/test_admission_cadence.cpp",
+      "bytes": 3607,
+      "sha256": "521628c7bfacdf863c2c25b652877c29d5659dac29c92744fa21ea42b5d10fa1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/test/test_consumption_csv.cpp",
+      "bytes": 1151,
+      "sha256": "2a2e670fc02abf4fbcc0aaa77fafd7d990fda3496514fc812eb6bf9da9709632"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/test/test_consumption_lifecycle.cpp",
+      "bytes": 2245,
+      "sha256": "3c67f2bf4fdbd3cf8044ed928aa538fdcd1a65a25b2c662d1afeda5101299eff"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/test/test_periodic_gate.cpp",
+      "bytes": 7392,
+      "sha256": "be861592260697d3b771805694a3875fbe763c0ad5fbdd34d5911500cbc36550"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/ros2_ws/src/flyarm_control_gateway/test/test_shadow_gate.cpp",
+      "bytes": 22584,
+      "sha256": "c28a746a6d2957d703b41369ef853a0d21c77f58bc90c707525e68c5494e5228"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/scripts/probe_x650_consumption_wait.py",
+      "bytes": 11882,
+      "sha256": "496f2ab49240a0adc1134a1cd660427721aa962d0ac7d97ec6fc30eb2f800c2f"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/src/scripts/probe_x650_live_transport.py",
+      "bytes": 7269,
+      "sha256": "b645df16371fb5759da605ffe5ceeee343c745bf5aa4d5bc60424bf98edc40f1"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/transport_v1/dispatcher.log",
+      "bytes": 207,
+      "sha256": "bc8d47ed3823fe291e529c6d350954acbeefac666441e1db57e5585743a2e349"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/transport_v1/report.json",
+      "bytes": 3831,
+      "sha256": "0b0756a3b200c9222d2b2490c693f32caddfb9adc28524a7f8ff8a8d642a56ac"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/transport_v1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/transport_v1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_gateway_ackwait_20261024/transport_v1.sh",
+      "bytes": 782,
+      "sha256": "ea3bfa62590d2076f09ca8986ad4ae46fb7609eeda372a04cbf475546edbce8e"
+    }
+  ]
+}

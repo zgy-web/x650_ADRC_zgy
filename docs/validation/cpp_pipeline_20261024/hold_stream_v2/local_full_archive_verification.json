@@ -1,0 +1,11 @@
+{
+  "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/hold_stream_v2_full.zip",
+  "bytes": 49019171,
+  "sha256": "3a25ec4a9e0a76a24119386a0903ff1a1f6f80e920c86a3fb2ebbcd5fe244518",
+  "entries": 4731,
+  "uncompressed_bytes": 243664095,
+  "kind": "local_archive_verification_v1",
+  "all_entry_sizes_and_sha256_verified": true,
+  "embedded_external_manifest_equal": true,
+  "verified_originals": 4731
+}

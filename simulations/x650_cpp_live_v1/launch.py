@@ -40,6 +40,12 @@ def runtime_hashes(startup):
     return result
 
 
+def runtime_interfaces():
+    from flyarm_control_interfaces import msg
+    from rclpy.serialization import serialize_message, deserialize_message
+    return q.verify_runtime_interfaces(msg, serialize_message, deserialize_message)
+
+
 def source_hashes():
     paths = []
     for name in ('src/amsim', 'ros2_ws/src', 'control_packages/x650_wholebody_v1',
@@ -85,11 +91,13 @@ def main(argv=None):
     args = parser.parse_args(argv)
     protocol = q.read(args.protocol)
     resources = execution_resources(protocol)
+    interfaces = runtime_interfaces()
     startup = q.read(args.startup_manifest)
     binaries = runtime_hashes(startup)
     admission = q.verify(args.qualification_manifest, task_path=args.task,
                          startup_path=args.startup_manifest, startup_sha256=args.startup_sha256,
                          protocol_path=args.protocol, binaries=binaries)
+    admission['runtime_interfaces'] = interfaces
     cfg = task.validate_task_config(q.read(args.task))
     _, provenance = task.preflight(cfg)
     from amsim.scenario_registry import get

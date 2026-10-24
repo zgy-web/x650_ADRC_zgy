@@ -1,5 +1,6 @@
 #pragma once
 #include "shadow_gate.hpp"
+#include <algorithm>
 
 namespace flyarm_control_gateway {
 // No ROS, locks, dynamic allocation, disk I/O or Python on the decision path.
@@ -11,7 +12,10 @@ class PeriodicGate {
   static constexpr std::uint64_t RX_AGE_NS=25'000'000;
   enum Status : std::uint8_t { WAITING=0, NEW=1, REPEATED=2, FAULT=3, STOPPED=4 };
   enum Fault : std::uint16_t { NONE=0, STALE_COMMAND=1, STALE_SOURCE=2,
-    BACKWARD_CLOCK=3, GATE_REJECTED=4, BAD_COMMAND=5, MISSED_DEADLINE=6 };
+    BACKWARD_CLOCK=3, GATE_REJECTED=4, BAD_COMMAND=5, MISSED_DEADLINE=6,
+    CONSUMPTION_TIMEOUT=7, STALE_ACTUATOR_STATE=8, ACTUATOR_PROTOCOL=9,
+    ACTUATOR_SEND_FAILED=10, ACTUAL_OUTPUT_GAP=11, CONSUMPTION_PROGRESS_EXPIRED=12,
+    CONSUMPTION_LEDGER_OVERFLOW=13 };
   struct Tick { Status status{WAITING}; Fault reason{NONE}; bool valid{}, repeated{};
     std::uint64_t sequence{}, scheduled{}, actual{}, command_sequence{}, issued{}, age{}, source_sequence{}, source_received{}; };
 
@@ -30,11 +34,13 @@ class PeriodicGate {
     if (now-issued>LEASE_NS) { fail(STALE_COMMAND); return false; }
     command_seq_=seq; command_issued_=issued; return true;
   }
-  void reject() { fail(GATE_REJECTED); }
+  void reject(Fault reason=GATE_REJECTED) { fail(reason); }
   void stop() { stopped_=true; }
   bool faulted() const { return fault_!=NONE; }
-  Tick tick(std::uint64_t scheduled, std::uint64_t now) {
-    Tick t; t.sequence=++ticks_; t.scheduled=scheduled; t.actual=now;
+  // Inspection latches genuine clock/age failures, but never emits a tick,
+  // commits a command, renews its issue time, or changes the absolute phase.
+  Tick preview(std::uint64_t scheduled, std::uint64_t now) {
+    Tick t; t.scheduled=scheduled; t.actual=now;
     t.command_sequence=command_seq_; t.issued=command_issued_;
     t.source_sequence=source_seq_; t.source_received=source_received_;
     t.age=command_issued_ && now>=command_issued_ ? now-command_issued_ : 0;
@@ -52,7 +58,16 @@ class PeriodicGate {
     if (fault_) { t.status=FAULT; t.reason=fault_; return t; }
     if (!command_seq_) return t;
     t.valid=true; t.repeated=(last_sent_==command_seq_);
-    t.status=t.repeated?REPEATED:NEW; last_sent_=command_seq_; return t;
+    t.status=t.repeated?REPEATED:NEW; return t;
+  }
+  std::uint64_t wait_deadline(std::uint64_t scheduled) const {
+    return std::min({scheduled+PERIOD_NS, command_issued_+LEASE_NS,
+                     source_issued_+RX_AGE_NS});
+  }
+  Tick tick(std::uint64_t scheduled, std::uint64_t now) {
+    auto t=preview(scheduled,now); t.sequence=++ticks_;
+    if(t.valid) last_sent_=command_seq_;
+    return t;
   }
  private:
   bool clock(std::uint64_t now) {

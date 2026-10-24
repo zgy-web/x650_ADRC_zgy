@@ -1,0 +1,265 @@
+{
+  "kind": "offline_ack_vs_physical_adoption_counterexample_v1",
+  "physical_acceptance": false,
+  "scope": "Synthetic causal limit, not a plant experiment, timing benchmark, or online in-flight estimate",
+  "frozen_config": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\stream_causality\\startup_manifest.json",
+    "bytes": 6129,
+    "sha256": "b0c25cce7ba0665d2c865054bb66647887cc617173dfe490ad8209de20465dc7"
+  },
+  "sources": [
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\stream_causality\\probe_causality.py",
+      "bytes": 7195,
+      "sha256": "1b314c3c739fd21d6615463559e9709007e8c8c37bbfc56a8d65782060f5a854"
+    },
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\control_packages\\x650_wholebody_v1\\x650_wholebody\\ts20.py",
+      "bytes": 13684,
+      "sha256": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af"
+    },
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\control_packages\\x650_wholebody_v1\\x650_wholebody\\ts20_prediction.py",
+      "bytes": 38016,
+      "sha256": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66"
+    }
+  ],
+  "initial": {
+    "q": [
+      0.0,
+      0.0
+    ],
+    "dq": [
+      0.3,
+      0.2
+    ],
+    "r": [
+      0.0,
+      0.0
+    ],
+    "held_command": [
+      0.3,
+      0.2
+    ]
+  },
+  "commands": {
+    "prior_sent_at_s": -0.02,
+    "prior": [
+      0.31,
+      0.21
+    ],
+    "new_candidate": [
+      0.32,
+      0.22
+    ],
+    "command_delta_within_original_acceleration_limit": true
+  },
+  "ack_only": {
+    "first_ack_delivery_ms": [
+      4.0,
+      44.0
+    ],
+    "physical_schedule_unchanged": true,
+    "q_bit_exact": true,
+    "dq_bit_exact": true,
+    "current_predictor_vs_ideal_q_max": 0.0,
+    "current_predictor_vs_ideal_dq_max": 0.0
+  },
+  "actual_adoption_delayed": {
+    "prior_adopt_s": 0.008,
+    "candidate_adopt_s": 0.028,
+    "known_at_current_snapshot": false,
+    "omitted_unquantized_r_integral_rad": [
+      0.0003600000000000003,
+      0.0003600000000000001
+    ],
+    "q_difference_peak_rad": [
+      0.0005653612802812187,
+      0.0003697654632367252
+    ],
+    "dq_difference_peak_rad_s": [
+      0.02192321885309459,
+      0.017416796565190934
+    ],
+    "samples": [
+      {
+        "t_s": 0.02,
+        "predicted_q": [
+          0.001642097693002804,
+          0.0002929563845519898
+        ],
+        "actual_q": [
+          0.0013577022672267142,
+          0.0002929563845519898
+        ],
+        "predicted_dq": [
+          0.08953708375387767,
+          0.0
+        ],
+        "actual_dq": [
+          0.07322371896456595,
+          0.0
+        ]
+      },
+      {
+        "t_s": 0.04,
+        "predicted_q": [
+          0.0054212638674173775,
+          0.0009130715815134269
+        ],
+        "actual_q": [
+          0.0048564013701522055,
+          0.0007061881835440763
+        ],
+        "predicted_dq": [
+          0.27080162385568207,
+          0.08477815295664146
+        ],
+        "actual_dq": [
+          0.27202690226822734,
+          0.07459403343212453
+        ]
+      },
+      {
+        "t_s": 0.1,
+        "predicted_q": [
+          0.02366654549586155,
+          0.01271258653450972
+        ],
+        "actual_q": [
+          0.023278530922371147,
+          0.012349461054655186
+        ],
+        "predicted_dq": [
+          0.31797762731596524,
+          0.22356777793115656
+        ],
+        "actual_dq": [
+          0.31893423104810903,
+          0.22377635713140492
+        ]
+      },
+      {
+        "t_s": 0.3,
+        "predicted_q": [
+          0.08754101878449325,
+          0.05674003998347612
+        ],
+        "actual_q": [
+          0.08718099131169987,
+          0.05638001987049461
+        ],
+        "predicted_dq": [
+          0.3222153786304736,
+          0.2214085849033783
+        ],
+        "actual_dq": [
+          0.3222153230301893,
+          0.22141466764672244
+        ]
+      },
+      {
+        "t_s": 0.58,
+        "predicted_q": [
+          0.17714086369326226,
+          0.11834002780005884
+        ],
+        "actual_q": [
+          0.17678086245979283,
+          0.11798005946766262
+        ],
+        "predicted_dq": [
+          0.32222232077549107,
+          0.2214115525275614
+        ],
+        "actual_dq": [
+          0.32222101923309043,
+          0.2214146692867569
+        ]
+      }
+    ]
+  },
+  "bounded_adoption_scan": [
+    {
+      "each_publish_to_adopt_ms": 20.0,
+      "omitted_reference_rad": [
+        0.00020000000000000017,
+        0.00020000000000000017
+      ],
+      "q_peak_rad": [
+        0.00030638421016349754,
+        0.0002044838269711826
+      ],
+      "dq_peak_rad_s": [
+        0.01688898949123327,
+        0.006269729288105819
+      ],
+      "endpoint_fixed_body_geometric_upper_bound_mm": 0.2196322723327193
+    },
+    {
+      "each_publish_to_adopt_ms": 24.0,
+      "omitted_reference_rad": [
+        0.00028000000000000025,
+        0.00028000000000000014
+      ],
+      "q_peak_rad": [
+        0.00044239945794746684,
+        0.0002857696903034246
+      ],
+      "dq_peak_rad_s": [
+        0.019045674098974952,
+        0.012204072682085284
+      ],
+      "endpoint_fixed_body_geometric_upper_bound_mm": 0.31476212444696294
+    },
+    {
+      "each_publish_to_adopt_ms": 28.0,
+      "omitted_reference_rad": [
+        0.0003600000000000003,
+        0.0003600000000000001
+      ],
+      "q_peak_rad": [
+        0.0005653612802812187,
+        0.0003697654632367252
+      ],
+      "dq_peak_rad_s": [
+        0.02192321885309459,
+        0.017416796565190934
+      ],
+      "endpoint_fixed_body_geometric_upper_bound_mm": 0.4033900699638516
+    },
+    {
+      "each_publish_to_adopt_ms": 32.0,
+      "omitted_reference_rad": [
+        0.0004400000000000004,
+        0.00044000000000000007
+      ],
+      "q_peak_rad": [
+        0.0006867600395246221,
+        0.00046596908799406266
+      ],
+      "dq_peak_rad_s": [
+        0.02560504025563376,
+        0.02182561029040536
+      ],
+      "endpoint_fixed_body_geometric_upper_bound_mm": 0.4942102937370578
+    },
+    {
+      "each_publish_to_adopt_ms": 40.0,
+      "omitted_reference_rad": [
+        0.0006000000000000005,
+        0.0006
+      ],
+      "q_peak_rad": [
+        0.0008381287907724862,
+        0.0006525676062581719
+      ],
+      "dq_peak_rad_s": [
+        0.03248506554791915,
+        0.027918065298985995
+      ],
+      "endpoint_fixed_body_geometric_upper_bound_mm": 0.6241127364894103
+    }
+  ],
+  "conclusion": "ACK-only delay leaves the prediction unchanged. Genuine future adoption delay is missing from the current predictor; later state correction does not make this earlier prediction exact."
+}

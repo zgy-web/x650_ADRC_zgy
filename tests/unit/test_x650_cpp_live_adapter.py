@@ -38,6 +38,34 @@ class CppLiveAdapterTests(unittest.TestCase):
         item._activity_mark = Mock(); item._alive = Mock(); item._check_supervision = Mock(); item._release = Mock()
         return item
 
+    def test_streaming_policy_only_changes_cpp_dispatcher_arguments(self):
+        item = self.cls()
+        item.protocol = {'execution_revision': 2, 'consumption_policy': 'latest_value_v1',
+                         'consumption_progress_budget_ms': 40}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for executable in ('live_dispatcher', 'state_ingress'):
+                path = root/'lib/flyarm_control_gateway'/executable
+                path.parent.mkdir(parents=True, exist_ok=True); path.touch()
+            item.prefix = lambda _: directory
+            original = {'simulation_live': True}
+            result = item._ros('flyarm_control_gateway', 'live_dispatcher', original)
+            self.assertIn('consumption_policy:=latest_value_v1', result)
+            self.assertIn('consumption_progress_budget_ms:=40', result)
+            self.assertEqual(original, {'simulation_live': True})
+            ingress = item._ros('flyarm_control_gateway', 'state_ingress', original)
+            self.assertFalse(any('consumption_' in part for part in ingress))
+            with self.assertRaisesRegex(ValueError, 'Conflicting'):
+                item._ros('flyarm_control_gateway', 'live_dispatcher', {'consumption_policy': 'strict_per_tick'})
+
+    def test_streaming_selection_cannot_silently_reuse_old_contract(self):
+        valid = {'execution_revision': 2, 'consumption_policy': 'latest_value_v1',
+                 'consumption_progress_budget_ms': 40}
+        for key, bad in [('execution_revision', 1), ('consumption_policy', 'bounded_wait_v1'),
+                         ('consumption_progress_budget_ms', 60), ('consumption_progress_budget_ms', 40.)]:
+            with self.assertRaises(ValueError):
+                self.ns['dispatcher_parameters'](dict(valid, **{key: bad}))
+
     def test_active_monitor_never_reads_or_constructs_python_control_state(self):
         item = self.active()
         loop = NS(recovery=False, read=Mock(side_effect=AssertionError('Python state read forbidden')))

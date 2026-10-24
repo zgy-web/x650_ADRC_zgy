@@ -4,6 +4,7 @@ from pathlib import Path
 import json
 import tempfile
 import unittest
+from types import SimpleNamespace
 
 from simulations.x650_cpp_live_v1 import qualification as q
 
@@ -61,6 +62,59 @@ def worker_fixture():
 
 
 class CppQualificationTests(unittest.TestCase):
+    def test_missing_ros_overlay_is_detected_before_serialization(self):
+        module = SimpleNamespace(**{name: object for name in q.RUNTIME_INTERFACES if name != 'SourceBinding'})
+        def forbidden(*args): raise AssertionError('Should reject the overlay first')
+        with self.assertRaisesRegex(ValueError, 'missing required interfaces: SourceBinding'):
+            q.verify_runtime_interfaces(module, forbidden, forbidden)
+
+    def test_ros_type_support_mismatch_cannot_pass_preflight(self):
+        module = SimpleNamespace(__file__='messages.py', **{name: list for name in q.RUNTIME_INTERFACES})
+        with self.assertRaisesRegex(ValueError, 'serialization roundtrip'):
+            q.verify_runtime_interfaces(module, lambda x: b'', lambda data, cls: {})
+        result = q.verify_runtime_interfaces(module, lambda x: b'', lambda data, cls: [])
+        self.assertEqual(result['serialization_roundtrips'], list(q.RUNTIME_INTERFACES))
+
+    def stream_fixture(self):
+        binary = artifact('stream_dispatcher')
+        contract = {'kind': 'cpp_latest_value_contract_v1', 'passed': True,
+                    'sources_unchanged': True,
+                    'physical_acceptance': False, 'consumption_policy': 'latest_value_v1',
+                    'consumption_progress_budget_ms': 40,
+                    'dispatcher_binary': binary['path'], 'dispatcher_sha256': binary['sha256'],
+                    'cases': [{'name': name, 'passed': True, 'binary': binary['path'],
+                               'binary_sha256': binary['sha256']} for name in sorted(q.STREAM_CASES)],
+                    'sources': [artifact('source.cpp')]}
+        transport = {key: contract[key] for key in ('dispatcher_binary', 'dispatcher_sha256',
+                    'consumption_policy', 'consumption_progress_budget_ms')}
+        transport.update(passed=True, zero_consumed=True, streaming_contract_proof=artifact('stream_report'))
+        class Evidence:
+            def document(self, value): return contract
+            def artifact(self, value): return Path(value['path'])
+        return transport, contract, Evidence(), {binary['path']: binary['sha256']}
+
+    def test_strict_transport_pass_cannot_qualify_streaming(self):
+        transport, contract, evidence, binaries = self.stream_fixture()
+        q.verify_transport(transport, evidence, binaries)
+        for policy in ('strict_per_tick', 'bounded_wait_v1', None):
+            changed = deepcopy(transport); changed['consumption_policy'] = policy
+            with self.assertRaisesRegex(ValueError, 'policy proof'):
+                q.verify_transport(changed, evidence, binaries)
+
+    def test_streaming_proof_requires_actual_binary_and_all_cases(self):
+        for modification in ('binary', 'missing', 'duplicate', 'failed', 'budget', 'physical', 'case_binary', 'source_changed'):
+            transport, contract, evidence, binaries = self.stream_fixture()
+            if modification == 'binary': contract['dispatcher_sha256'] = 'b'*64
+            if modification == 'missing': contract['cases'].pop()
+            if modification == 'duplicate': contract['cases'][-1] = contract['cases'][0]
+            if modification == 'failed': contract['cases'][3]['passed'] = False
+            if modification == 'budget': contract['consumption_progress_budget_ms'] = 50
+            if modification == 'physical': contract['physical_acceptance'] = True
+            if modification == 'case_binary': contract['cases'][3]['binary_sha256'] = 'b'*64
+            if modification == 'source_changed': contract['sources_unchanged'] = False
+            with self.subTest(modification=modification), self.assertRaises(ValueError):
+                q.verify_transport(transport, evidence, binaries)
+
     def test_artifact_tamper_is_not_passed_by_existing_sha(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/'proof.json'; path.write_text('{}')
