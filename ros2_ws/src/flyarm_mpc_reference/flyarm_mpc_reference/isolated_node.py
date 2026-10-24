@@ -1,5 +1,6 @@
 """Frozen algorithm worker; no ROS sensor drains or periodic actuator loop."""
 import gc
+from array import array
 import json
 from pathlib import Path
 import time
@@ -8,6 +9,102 @@ from .live_factory import create_live_engine
 from .startup import write_startup_metadata
 from .node import _shutdown_ros
 from .diagnostic_channel import CaptureAdapter, DiagnosticSender
+
+
+class WorkerTimingTrace:
+    """Bounded scalar observations, written only after the executor stops.
+
+    All wall stamps use the same host monotonic clock as proposal/gate stamps.
+    Zero denotes a phase never reached; it must not be treated as a duration.
+    The callback never writes files, converts JSON, or copies diagnostic data
+    for this trace. Overflow is explicit and does not alter control behavior.
+    """
+    columns = (
+        'sequence', 'snapshot_issued_ns', 'callback_entry_ns',
+        'engine_return_ns', 'proposal_compute_end_ns',
+        'publish_begin_ns', 'publish_end_ns',
+        'snapshot_cdr_begin_ns', 'snapshot_cdr_end_ns',
+        'proposal_cdr_begin_ns', 'proposal_cdr_end_ns',
+        'offer_begin_ns', 'offer_end_ns',
+        'pickle_begin_ns', 'pickle_end_ns', 'socket_send_begin_ns',
+        'socket_send_end_ns', 'sender_end_ns', 'callback_exit_ns',
+        'callback_thread_cpu_begin_ns', 'callback_thread_cpu_end_ns',
+        'publish_thread_cpu_begin_ns', 'publish_thread_cpu_end_ns',
+        'diagnostic_offered')
+
+    def __init__(self, capacity=20000):
+        self.capacity = capacity
+        # Allocate the 3.84 MB default outside the executor. Retaining a new
+        # tracked list per callback would enlarge the runtime GC root set.
+        self._rows = array('Q', [0]) * (capacity * len(self.columns))
+        self.count = 0
+        self.dropped = 0
+
+    def append(self, row):
+        if self.count < self.capacity:
+            offset = self.count * len(self.columns)
+            self._rows[offset:offset + len(self.columns)] = array('Q', row)
+            self.count += 1
+        else:
+            self.dropped += 1
+
+    @property
+    def rows(self):
+        # Materialize Python rows only for final output or offline tests.
+        width = len(self.columns)
+        return [self._rows[i:i + width].tolist() for i in range(0, self.count * width, width)]
+
+    def write(self, path):
+        value = {'kind': 'isolated_worker_phase_timing_v1',
+            'clock': 'same-host monotonic_ns; thread_cpu columns use thread_time_ns',
+            'scope': 'observation only; does not identify DDS delivery until joined by sequence with gate receipt',
+            'columns': self.columns, 'rows': self.rows, 'capacity': self.capacity,
+            'dropped': self.dropped, 'complete': self.dropped == 0}
+        Path(path).write_text(json.dumps(value, separators=(',', ':'), allow_nan=False) + '\n')
+
+
+def process_snapshot(engine, capture, publisher, sender, snapshot, proposal_type,
+                     serialize, trace, *, clock_ns=time.monotonic_ns,
+                     thread_clock_ns=time.thread_time_ns):
+    """Preserve proposal-before-recording order and observe its actual phases.
+
+    Message construction and the allocator's owned diagnostic snapshot remain
+    inside engine.process. CDR copies and synchronous immutable pickle detach
+    occur after publish. They can occupy this single-threaded executor before
+    the next callback, but cannot retroactively delay this publish call.
+    """
+    entry = clock_ns()
+    row = [0] * len(WorkerTimingTrace.columns)
+    row[0:3] = (int(snapshot.sequence), int(snapshot.issued_monotonic_ns), entry)
+    row[19] = thread_clock_ns()
+    try:
+        capture.diagnostic = None
+        proposal = engine.process(snapshot, proposal_type)
+        row[3] = clock_ns()
+        row[4] = int(proposal.compute_end_monotonic_ns)
+        row[21] = thread_clock_ns()
+        row[5] = clock_ns()
+        publisher.publish(proposal)
+        row[6] = clock_ns()
+        row[22] = thread_clock_ns()
+        row[7] = clock_ns()
+        snapshot_cdr = serialize(snapshot)
+        row[8] = clock_ns()
+        row[9] = clock_ns()
+        proposal_cdr = serialize(proposal)
+        row[10] = clock_ns()
+        row[11] = clock_ns()
+        offered = sender.offer(int(snapshot.sequence), {'snapshot_cdr': snapshot_cdr,
+            'proposal_cdr': proposal_cdr, 'diagnostic': capture.diagnostic,
+            'error': engine.last_error})
+        row[12] = clock_ns()
+        row[23] = int(offered)
+        if sender.last_timing_ns is not None:
+            row[13:18] = sender.last_timing_ns
+    finally:
+        row[20] = thread_clock_ns()
+        row[18] = clock_ns()
+        trace.append(row)
 
 
 def collect_preflight_garbage(output, *, collector=gc, clock_ns=time.monotonic_ns):
@@ -70,6 +167,7 @@ def main(args=None):
             self.capture = CaptureAdapter(self.engine.adapter)
             self.engine.adapter = self.capture
             self.sender = DiagnosticSender(get("diagnostic_socket"))
+            self.timing = WorkerTimingTrace()
             self.gc_begin, self.gc_events = {}, []
             self.gc_was_enabled = gc.isenabled()
             gc.callbacks.append(self.gc_event)
@@ -98,18 +196,13 @@ def main(args=None):
                                        "end_ns": end, "collected": info["collected"]})
 
         def process(self, snapshot):
-            self.capture.diagnostic = None
-            proposal = self.engine.process(snapshot, ControlProposal)
-            # Candidate output precedes diagnostic packaging. No reference is
-            # committed by a recorder receipt, nor is a DDS send an actuator ACK.
-            self.proposals.publish(proposal)
-            self.sender.offer(int(snapshot.sequence), {"snapshot_cdr": serialize_message(snapshot),
-                "proposal_cdr": serialize_message(proposal), "diagnostic": self.capture.diagnostic,
-                "error": self.engine.last_error})
+            process_snapshot(self.engine, self.capture, self.proposals, self.sender,
+                snapshot, ControlProposal, serialize_message, self.timing)
 
         def finish(self):
             gc.callbacks.remove(self.gc_event)
             self.sender.close(self.out / "diagnostic_sender.json")
+            self.timing.write(self.out / "worker_timing.json")
             (self.out / "worker_final.json").write_text(json.dumps({"engine": self.engine.metadata(),
                 "gc_enabled_before": self.gc_was_enabled, "gc_enabled_after": gc.isenabled(),
                 "preflight_gc": getattr(self,'preflight_gc',None),

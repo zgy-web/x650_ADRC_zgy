@@ -7,7 +7,10 @@
 #include <flyarm_control_interfaces/msg/live_start.hpp>
 #include <flyarm_control_interfaces/msg/execution_receipt.hpp>
 #include <flyarm_control_interfaces/msg/actuator_send.hpp>
+#include <filesystem>
 #include <fstream>
+#include <iomanip>
+#include <vector>
 
 namespace wire=flyarm_runtime_wire;
 class StateIngress final : public rclcpp::Node {
@@ -16,6 +19,7 @@ class StateIngress final : public rclcpp::Node {
     fcg::Config config;
     live_=declare_parameter<bool>("simulation_live",false);
     ready_file_=declare_parameter<std::string>("ready_file","");
+    if(live_ && !ready_file_.empty()) timing_.reserve(TIMING_CAPACITY);
     config.replay_only=!live_;
     config.session_id=declare_parameter<std::int64_t>("expected_session_id",0);
     config.epoch=declare_parameter<std::int64_t>("expected_epoch",0);
@@ -46,19 +50,24 @@ class StateIngress final : public rclcpp::Node {
         invalid_source_=true; publish_source(now); return;
       }
       source_sequence_=s->sequence; source_time_=s->control_time_s;
-      latest_=*s; have_latest_=true; publish_source(now);
+      latest_=*s; have_latest_=true; latest_received_=now;
+      store_timing(timing(1,s->sequence,now)); publish_source(now);
       if(!next_admission_) next_admission_=now+20'000'000;
       admit_latest(now);
     });
     proposals_=create_subscription<msg::ControlProposal>(p+"/output/proposal",latest,[this](msg::ControlProposal::SharedPtr p) {
-      if(stopped_ || output_fault_) return;
+      auto trace=timing(2,p->sequence,wire::monotonic_ns());
+      if(stopped_ || output_fault_) {trace.blocked_flags=stopped_?1:2;store_timing(trace);return;}
       auto event=gate_->propose(wire::from_ros(*p),wire::monotonic_ns());
-      if(!event) return;
+      trace.gate_end_ns=wire::monotonic_ns();
+      if(!event) {store_timing(trace);return;}
       if(event->accepted) {
         msg::AcceptedCommand output; output.issued_monotonic_ns=pending_issued_; output.proposal=*p;
         awaiting_output_sequence_=p->sequence;
         accepted_->publish(output);
+        trace.publish_end_ns=wire::monotonic_ns();trace.forward=true;
       }
+      store_timing(trace);
       events_->publish(wire::to_ros(*event));
       admit_latest(wire::monotonic_ns());
     });
@@ -84,6 +93,7 @@ class StateIngress final : public rclcpp::Node {
     });
     sent_=create_subscription<msg::ActuatorSend>(p+"/actuator_send",rclcpp::QoS(64).best_effort(),[this](msg::ActuatorSend::SharedPtr s) {
       if(!live_ || s->session_id!=config_.session_id || s->epoch!=config_.epoch || stopped_ || output_fault_) return;
+      const auto entry=wire::monotonic_ns();store_timing(timing(3,s->command_sequence,entry));
       // A plan may advance only after the independent writer actually sent
       // it. Joint consumption is checked asynchronously by that writer BEFORE
       // its next output. Do not serialize state sampling/optimization behind
@@ -93,6 +103,10 @@ class StateIngress final : public rclcpp::Node {
         const auto now=wire::monotonic_ns();
         if(!s->sent_monotonic_ns || s->sent_monotonic_ns>now || now-s->sent_monotonic_ns>25'000'000 ||
            !std::isfinite(s->sim_s)) {output_fault_=true;publish_source(now);return;}
+        if(!cadence_.acknowledge_output(s->command_sequence)) {
+          output_fault_=true;publish_source(now);return;
+        }
+        auto trace=timing(5,s->command_sequence,entry);trace.forward=true;store_timing(trace);
         awaiting_output_sequence_=0;admit_latest(wire::monotonic_ns());
       }
     });
@@ -119,26 +133,75 @@ class StateIngress final : public rclcpp::Node {
     });
     RCLCPP_INFO(get_logger(),"READY isolated C++ state receiver; simulation_live=%d",live_);
   }
+  ~StateIngress() override {
+    if(!live_ || ready_file_.empty()) return;
+    try {
+      const auto path=std::filesystem::path(ready_file_).parent_path()/"ingress_timing.json";
+      std::ofstream f(path);f<<std::setprecision(17);
+      f<<"{\"kind\":\"isolated_ingress_timing_v1\",\"complete\":"<<(timing_overflow_?"false":"true")
+       <<",\"capacity\":"<<TIMING_CAPACITY<<",\"overflow\":"<<timing_overflow_
+       <<",\"columns\":[\"kind\",\"sequence\",\"entry_ns\",\"gate_end_ns\",\"publish_end_ns\","
+         "\"source_sequence\",\"source_issued_ns\",\"source_received_ns\",\"latest_control_s\",\"last_control_s\","
+         "\"awaiting_output_sequence\",\"next_admission_ns\",\"last_admitted_sequence\",\"released_sequence\",\"blocked_flags\",\"forward\"],\"rows\":[";
+      bool first=true;
+      for(const auto &t:timing_) {
+        if(!first)f<<',';
+        first=false;
+        f<<'['<<unsigned(t.kind)<<','<<t.sequence<<','<<t.entry_ns<<','<<t.gate_end_ns<<','<<t.publish_end_ns
+         <<','<<t.source_sequence<<','<<t.source_issued_ns<<','<<t.source_received_ns
+         <<','<<t.latest_control_s<<','<<t.last_control_s<<','<<t.awaiting_output_sequence<<','<<t.next_admission_ns
+         <<','<<t.last_admitted_sequence<<','<<t.released_sequence<<','<<t.blocked_flags<<','<<(t.forward?"true":"false")<<']';
+      }
+      f<<"]}\n";f.close();
+      if(!f)std::cerr<<"Could not persist ingress timing evidence\n";
+    } catch(const std::exception &e) {std::cerr<<"Ingress timing evidence: "<<e.what()<<'\n';}
+  }
  private:
+  struct Timing {
+    std::uint8_t kind{};std::uint64_t sequence{},entry_ns{},gate_end_ns{},publish_end_ns{};
+    std::uint64_t source_sequence{},source_issued_ns{},source_received_ns{};
+    double latest_control_s{},last_control_s{};
+    std::uint64_t awaiting_output_sequence{},next_admission_ns{},last_admitted_sequence{},released_sequence{};
+    std::uint16_t blocked_flags{};bool forward{};
+  };
+  Timing timing(std::uint8_t kind,std::uint64_t sequence,std::uint64_t entry) const {
+    Timing t;t.kind=kind;t.sequence=sequence;t.entry_ns=entry;
+    t.source_sequence=source_sequence_;t.source_issued_ns=latest_.issued_monotonic_ns;
+    t.source_received_ns=latest_received_;t.latest_control_s=latest_.control_time_s;t.last_control_s=last_control_;
+    t.awaiting_output_sequence=awaiting_output_sequence_;t.next_admission_ns=next_admission_;
+    t.last_admitted_sequence=cadence_.last_admitted();t.released_sequence=cadence_.released();return t;
+  }
+  void store_timing(const Timing &t) {
+    if(!live_ || ready_file_.empty())return;
+    if(timing_.size()<TIMING_CAPACITY)timing_.push_back(t);else ++timing_overflow_;
+  }
   void admit_latest(std::uint64_t now) {
-    if(stopped_ || output_fault_ || invalid_source_ || awaiting_output_sequence_ || !next_admission_ ||
-       !fcg::admission_due(live_,now,next_admission_,latest_.control_time_s,last_control_) ||
-       gate_->latched() || gate_->pending() || !have_latest_ || latest_.control_time_s<=last_control_) return;
+    auto trace=timing(4,gate_->next_sequence(),now);
+    trace.blocked_flags=(stopped_?1:0)|(output_fault_?2:0)|(invalid_source_?4:0)|
+      (awaiting_output_sequence_?8:0)|(!next_admission_?16:0)|
+      (!cadence_.due(live_,now,next_admission_,latest_.control_time_s,last_control_)?32:0)|
+      (gate_->latched()?64:0)|(gate_->pending()?128:0)|(!have_latest_?256:0)|
+      (latest_.control_time_s<=last_control_?512:0);
+    if(trace.blocked_flags) {store_timing(trace);return;}
     // Use the latest already received causal observation, including one
     // sampled before the send notification. Requiring another sensor frame
     // serializes reception behind actuation. Original issue/source stamps,
     // chronology, joint age and the 50 ms complete lease remain unchanged.
     auto s=latest_;
-    // Select one actual latest state only. Live control cadence follows the
-    // frozen 20 ms physical source clock; shadow fixtures use wall cadence.
-    // Both paths retain independent wall-age checks and actual model dt.
+    // First live solve waits for 20 ms physical time. Later solves follow a
+    // one-use actual-output acknowledgement, never an unsent candidate.
+    // State time, actual dt and all independent age checks stay unchanged.
     s.sequence=gate_->next_sequence(); s.dt_s=s.control_time_s-last_control_;
     auto a=gate_->admit(wire::from_ros(s),now);
+    trace.gate_end_ns=wire::monotonic_ns();
     if(a.event) events_->publish(wire::to_ros(*a.event));
     if(a.forward) {
+      cadence_.admitted(s.sequence);
       last_control_=s.control_time_s; pending_issued_=s.issued_monotonic_ns;
       next_admission_=now+20'000'000; admitted_->publish(s);
+      trace.publish_end_ns=wire::monotonic_ns();trace.forward=true;
     }
+    store_timing(trace);
   }
   void publish_source(std::uint64_t now) {
     msg::IngressStatus s; s.session_id=config_.session_id; s.epoch=config_.epoch;
@@ -147,6 +210,9 @@ class StateIngress final : public rclcpp::Node {
     s.faulted=invalid_source_ || output_fault_ || gate_->latched(); status_->publish(s);
   }
   fcg::Config config_; std::unique_ptr<fcg::ShadowGate> gate_;
+  fcg::AdmissionCadence cadence_;
+  static constexpr std::size_t TIMING_CAPACITY=32768;
+  std::vector<Timing> timing_;std::uint64_t timing_overflow_{},latest_received_{};
   bool live_{},started_{};
   std::string ready_file_;bool ready_written_{};
   rclcpp::Subscription<msg::LiveStart>::SharedPtr start_;

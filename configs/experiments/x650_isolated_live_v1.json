@@ -1,7 +1,7 @@
 {
   "kind": "x650_isolated_live_protocol_v1",
   "simulation_only": true,
-  "execution_revision": 13,
+  "execution_revision": 14,
   "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
   "cpu_roles": {
     "source": [
@@ -26,9 +26,9 @@
   "cpu_scope": "owned simulation processes only; SMT siblings excluded from owned background workloads; ordinary scheduler; host not reserved; Orin requires its own measurement",
   "source_evidence": "separate nonblocking recorder; no retained message/feedback graphs; natural GC unchanged",
   "model_control_cadence_s": 0.02,
-  "model_cadence_clock": "actual monotonic simulation source clock; never wall-time substitution",
+  "model_cadence_clock": "first admission waits 20 ms actual simulation time; subsequent admission uses a one-shot actual-send release and a strictly newer real source; model dt is always the measured source difference, not forced to 20 ms",
   "transport_deadline_clock": "same-host monotonic wall clock; unchanged thresholds",
-  "next_solve_commit": "after_actual_writer_send_using_latest_causal_real_snapshot_with_original_times",
+  "next_solve_commit": "one next solve after matching actual writer send; retain send barrier, single pending candidate and original source times; no additional independent 20 ms physical minimum after the first solve",
   "next_output_commit": "only_after_both_previous_joint_commands_consumed",
   "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
   "frozen_hold_task_sha256": "9ef8c12c6a9591bdc80660710b0de25f8589defdf12b0362f9109444ff64cc4c",
@@ -70,5 +70,6 @@
   "ground_initialization": "construct cached lifecycle allocator and start idle transport on disarmed ground; actual LiveStart binds live reference/history after normal prestream",
   "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged",
   "native_preparation": "native-only batch packet/sensitivity/query/ABI preparation and event packing; independent reference predictor and physical libraries restored byte-exact; same parameters/equations/quantization; fresh 344 regression/30 matrix/388 recorded-call qualification",
-  "live_diagnostic_snapshot": "one owned allocation deepcopy per result; two distinct top-level diagnostic dictionaries; read-only live subtree sharing; synchronous binary capture before next step; public default retains independent copies"
+  "live_diagnostic_snapshot": "one owned allocation deepcopy per result; two distinct top-level diagnostic dictionaries; read-only live subtree sharing; synchronous binary capture before next step; public default retains independent copies",
+  "execution_timing_evidence": "bounded in-memory stage timestamps written after shutdown; distinguish engine return, proposal publication, gate entry and diagnostic serialization; original DDS schemas and timestamps retained"
 }

@@ -142,6 +142,38 @@ class ReferenceEngineTests(unittest.TestCase):
         self.assertEqual(worker.accepted, 2)
         self.assertFalse(hasattr(adapter, "reset"))
 
+    def test_actual_output_paced_live_intervals_reach_adapter_without_retiming(self):
+        # C++ ingress owns output grants. The worker must keep actual source
+        # intervals and its unchanged clock/age contract, not normalize20ms.
+        count=4
+        worker,adapter=engine(clock=Mock(side_effect=[1_000_000_000+i*1_000_000 for i in range(2*count)]))
+        worker.simulation_live=True
+        adapter.reset=Mock();adapter.allocator=NS(prime_command_history=Mock())
+        start=NS(session_id=7,epoch=1,configuration_sha256=list(range(32)),origin_s=10.,
+            history_count=2,history_time_s=[9.98,10.]+[0.]*62,
+            history_command=[0.]*320,target_position_enu=[0.,0.,1.6],
+            anchor_position_enu=[0.,0.,2.],anchor_rotation_row_major=np.eye(3).reshape(-1),anchor_q=[0.,0.])
+        worker.begin_live(start)
+        previous=10.
+        for i,interval in enumerate((.020,.016,.020,.024),1):
+            s=snapshot();s.replay_only=False;s.sequence=i
+            s.control_time_s=previous+interval;s.task_time_s=s.control_time_s-10.
+            s.dt_s=s.control_time_s-previous
+            s.state_time_s=s.joint_time_s=s.control_time_s
+            s.reference_time_s=s.task_time_s
+            original=deepcopy(s)
+            self.assertEqual(worker.process(s,NS).status,0)
+            t,dt,state,target,context=adapter.calls[-1]
+            self.assertEqual(dt,original.dt_s)
+            self.assertEqual((t,state.control_time_s,state.joint_stamp_s),
+                             (original.task_time_s,original.control_time_s,original.joint_time_s))
+            self.assertEqual(context['reference_state']['time_s'],original.reference_time_s)
+            np.testing.assert_array_equal(context['command_history'][0][1],original.command_velocity[:2])
+            self.assertEqual(context['packet_history'][0]['send_time_s'],original.packet_send_time_s[0])
+            previous=s.control_time_s
+        self.assertEqual(worker.accepted,count)
+        self.assertEqual(len(adapter.calls),count)
+
     def test_identity_wrong_order_and_live_output_requests_are_rejected_before_solver(self):
         for name, value in (("schema_version", 2), ("session_id", 8), ("epoch", 2),
                             ("sequence", 2), ("replay_only", False), ("configuration_sha256", [0]*32)):

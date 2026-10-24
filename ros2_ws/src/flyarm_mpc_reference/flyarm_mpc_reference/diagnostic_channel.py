@@ -32,7 +32,7 @@ class CaptureAdapter:
 
 
 class DiagnosticSender:
-    def __init__(self, path):
+    def __init__(self, path, *, clock_ns=time.monotonic_ns):
         self.socket = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2 * MAX_PACKET)
         self.socket.setblocking(False)
@@ -40,19 +40,28 @@ class DiagnosticSender:
         self.attempts = self.sent = self.dropped = self.max_bytes = 0
         self.first_error = None
         self.timings_ns = []
+        self.clock_ns = clock_ns
+        # Local observation only. Never inserted into the candidate or used
+        # to change an admission, expiry, command, or recorder receipt.
+        self.last_timing_ns = None
 
     def offer(self, sequence, value):
-        begin = time.monotonic_ns()
+        begin = self.clock_ns()
+        pickle_end = send_begin = send_end = 0
+        self.last_timing_ns = None
         self.attempts += 1
         try:
             # Detach synchronously before the next allocator call can mutate an
             # array. Queueing a mutable Python object to a feeder thread is not
             # an immutable recording. There is no JSON conversion here.
             packet = HEADER.pack(MAGIC, sequence) + pickle.dumps(value, protocol=5)
+            pickle_end = self.clock_ns()
             self.max_bytes = max(self.max_bytes, len(packet))
             if len(packet) > MAX_PACKET:
                 raise ValueError("Diagnostic packet exceeds frozen channel capacity")
+            send_begin = self.clock_ns()
             written = self.socket.send(packet)
+            send_end = self.clock_ns()
             if written != len(packet):
                 raise RuntimeError("Partial Unix datagram")
             self.sent += 1
@@ -63,7 +72,9 @@ class DiagnosticSender:
                 self.first_error = {"sequence": sequence, "error": repr(error)}
             return False
         finally:
-            self.timings_ns.append(time.monotonic_ns() - begin)
+            end = self.clock_ns()
+            self.timings_ns.append(end - begin)
+            self.last_timing_ns = (begin, pickle_end, send_begin, send_end, end)
 
     def close(self, output):
         self.socket.close()

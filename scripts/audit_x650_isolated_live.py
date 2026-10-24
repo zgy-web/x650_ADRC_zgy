@@ -331,6 +331,8 @@ def audit(launch,folder,out):
             'receipts':msg.ExecutionReceipt,'events':msg.GateEvent},deserialize_message,message_to_ordereddict,compare_view)
         calls=load_calls(live);sends=read(live/'sends.json');receipts=read(live/'receipts.json');ticks=read(live/'dispatch.json')
         events=read(live/'events.json')
+        from x650_worker_phase_audit import verify_worker_phases
+        report['worker_phases']=verify_worker_phases(live,calls,events)
         require([t['sequence'] for t in ticks]==list(range(1,len(ticks)+1)),
                 'DDS observer missed or reordered a dispatch tick')
         require([e['sequence'] for e in events]==list(range(1,len(events)+1)),
