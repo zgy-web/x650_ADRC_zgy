@@ -1,0 +1,37 @@
+{
+  "hold17_failure.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v17_failure.json",
+    "sha256": "932c5314ee278f4e291af1bdd6e507577e40ac04da6adff29ce7451920ae866d",
+    "bytes": 1964
+  },
+  "hold18_failure.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v18_failure.json",
+    "sha256": "d600dfcb1e5e6e5a38f15c4b80d7c4c1d1d54b911def39b58a1aad00fcf6ddcd",
+    "bytes": 1529
+  },
+  "build_v23.log": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/build_v23.log",
+    "sha256": "efe046bdcc788d99c652f6380fba612636f8144d1e421975400ca87fe822cd2e",
+    "bytes": 45595
+  },
+  "transport_v10.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/transport_v10/report.json",
+    "sha256": "c51c0f3e309ae136aa1f3f7f2937807615b31cab8fd708c18fd4214db2eced8a",
+    "bytes": 3828
+  },
+  "consumption_startup_v1.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/report.json",
+    "sha256": "0f0062741cdcb5d3e33e36eeb33d9b250da56a1a78b5dc8a6f020d4f6d7c037a",
+    "bytes": 52897
+  },
+  "execution_protocol_rev11.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/configs/experiments/x650_isolated_live_v1.json",
+    "sha256": "abd525e0ae63225becf5c608e66cda7f1b7ce84f048ab2db035df7345062cb68",
+    "bytes": 3227
+  },
+  "deployment_v23.json": {
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/startup_v23_deploy.json",
+    "sha256": "3d4e7499f70c7098f9e6ea98795a73db8d3fce46fbf73cb6caa14c8cfa72f9e3",
+    "bytes": 1222
+  }
+}

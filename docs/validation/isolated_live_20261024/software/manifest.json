@@ -1,0 +1,42 @@
+{
+  "native_replay.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_replay_v1/replay_report.json",
+    "sha256": "5fb3c7c273a63bcc91a20d1e2f726e3bff9c5b700a34c3348e369509132f1f1c"
+  },
+  "native_acceptance.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_software_v1/native_acceptance.json",
+    "sha256": "a2d063faecfacd866febed35c7ede7b37e83d42c26b3894ff11a67c26a815f1c"
+  },
+  "software_acceptance.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_software_v1/software_acceptance.json",
+    "sha256": "61bd5f9fc872cc7da93dfe73e850ec1d8a435d8e42ac884f25c6b1f812268265"
+  },
+  "native_tests.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_software_v1/native_tests.json",
+    "sha256": "fbf6a3d0f96706515700c0c0171a97104ffb87f12852c4cfb74671e7f7b3e4a6"
+  },
+  "package_report.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_software_v1/package_report.json",
+    "sha256": "a15bba971e0e0e8458e1d491581a7b32417ec1f1acc0699fe2e75a0b1916c042"
+  },
+  "matrix_original_host.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261023/native_fix_software_v1/matrix/matrix_report.json",
+    "sha256": "4fc035ca5dd01b630d37de3b1732dbdbc2e8f263b6a9d786b320a3e761bbc374"
+  },
+  "matrix_new_host.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/new_host_matrix_v1/matrix_report.json",
+    "sha256": "ffc57e435ab3b3c7f711632a915c850bda480480f68274804e008b0c54587d7c"
+  },
+  "host.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/host_v1.json",
+    "sha256": "a9b5d86bab4eac4816d3fc0be407c7eabc7e3748e954520f71675048b9856dd9"
+  },
+  "quiet_task_cpp_v6.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/quiet_task_cpp_v6.json",
+    "sha256": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1"
+  },
+  "execution_protocol.json": {
+    "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/configs/experiments/x650_isolated_live_v1.json",
+    "sha256": "4bb933c875ddfedbcfd115b7c116bb8e8bdd8250a7e3bfff3b4ba175be0027a3"
+  }
+}

@@ -1,0 +1,11 @@
+test_complete_original_timestamps_and_asynchronous_gate (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+test_duplicate_or_malformed_ingress_trace_is_rejected (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+test_loss_overflow_and_impossible_phase_order_are_rejected (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+test_one_successful_pending_tail_is_allowed (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+test_original_timestamp_or_sequence_tamper_is_rejected (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+test_unrelated_duplicate_gate_or_non_tail_missing_event_is_rejected (test_x650_worker_phase_audit.PhaseAuditTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.008s
+
+OK

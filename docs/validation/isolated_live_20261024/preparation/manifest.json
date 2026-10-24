@@ -1,0 +1,35 @@
+{
+  "kind": "isolated_live_preparation_evidence_v1",
+  "scope": "small original reports only; no raw CDR or numeric state arrays copied; offline and synthetic boundaries retained",
+  "combined_deployment": "deployment_v24; full qualification pending at document update",
+  "files": {
+    "worker_analysis.json": {
+      "copied_from": "artifacts/isolated_live_20261024/hold_v19_worker_analysis.json",
+      "origin": "server-produced original report retrieved locally",
+      "bytes": 2642,
+      "sha256": "1ff5875270a5f0ebf617021b82d94ce2b398c8c3d5150ea9fe585541d69199c8",
+      "original_bytes_preserved": true
+    },
+    "preparation_optimization_v2.json": {
+      "copied_from": "artifacts/isolated_live_20261024/hold19_preparation_optimization_v2/report.json",
+      "origin": "server-produced original offline report retrieved locally; excludes combined single-copy adapter",
+      "bytes": 14637,
+      "sha256": "57ea308eb8fa252c844d652018a8c1c4dac75046d135d8cbc43ef7d976f5f02c",
+      "original_bytes_preserved": true
+    },
+    "ownership_copy_initial.json": {
+      "copied_from": "tmp/live_diagnostic_snapshot_v1/copy_benchmark.json",
+      "origin": "local synthetic copy-only benchmark; earlier implementation identity retained",
+      "bytes": 2265,
+      "sha256": "83efe255ddd35d571cc129834a506d65518f50f51f6c2e4454900e7a32531eb5",
+      "original_bytes_preserved": true
+    },
+    "ownership_copy_final.json": {
+      "copied_from": "tmp/live_diagnostic_snapshot_v1/copy_benchmark_final.json",
+      "origin": "local synthetic copy-only benchmark; final single-copy implementation identity",
+      "bytes": 2377,
+      "sha256": "1c8653b2be911951f7fad7aa958df3344c7bd6ce72f2bca622758c4c05b6f3c8",
+      "original_bytes_preserved": true
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "final_native_preparation_qualification_evidence_v1",
+  "files": {
+    "native_acceptance.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/native_acceptance.json",
+      "bytes": 15653,
+      "sha256": "f07527f471e3a0c272ac5b916c73f52e9ac7be55732f11cb9731a61dbf3a26fb"
+    },
+    "software_acceptance.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/software_acceptance.json",
+      "bytes": 17481,
+      "sha256": "d1bc683d1385663d6608142d45096e04e705a2847689ff005cc12906d53a1c26"
+    },
+    "native_tests.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/native_tests.json",
+      "bytes": 448,
+      "sha256": "278cda1d17cc5cb9f2df8281352c458aee892adebdf481f6f85d2f5cc6a53c36"
+    },
+    "package_report.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/package_report.json",
+      "bytes": 33916,
+      "sha256": "ee0f047274e2b8d5243ba776a19bc9a1c7949a994146e692fcc3d8871ffd761b"
+    },
+    "matrix.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/matrix/matrix_report.json",
+      "bytes": 43219,
+      "sha256": "fbbf123624aa6eac0b57f70ddd3d739a634e333d3f09b65380d25aba175c7840"
+    },
+    "recorded.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_replay_v3/replay_report.json",
+      "bytes": 451257,
+      "sha256": "061a71557b5ac56a0df12a7727e54cf5b2e98d57c9fdb878830313c8b091d63f"
+    },
+    "protocol.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_protocol_rev13.json",
+      "bytes": 3681,
+      "sha256": "d4be1cd462b1610328d40b805272da3dad178f12984563b135fbacba6b500f98"
+    },
+    "hold_task.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/quiet_task_cpp_v8.json",
+      "bytes": 6452,
+      "sha256": "9ef8c12c6a9591bdc80660710b0de25f8589defdf12b0362f9109444ff64cc4c"
+    },
+    "merged_engine.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/merged_engine_v2.json",
+      "bytes": 1250,
+      "sha256": "531465fa096b75753bfa7cc45d933896c41acf3a5eb0853e17a739dce2e9e511"
+    },
+    "deployment_v24.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v24.json",
+      "bytes": 2891,
+      "sha256": "25abe3cbb06d109c1c8d8e0076ef054970d4b715b34879e5a91c0d306df32ada"
+    },
+    "deployment_v25.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v25.json",
+      "bytes": 457,
+      "sha256": "69f0747d4c4ff4dc57d886c4e6d52120ea1b07ed0a1fe5d7b744af4ae644a0ad"
+    },
+    "installed_modules.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/reference_install_v24.json",
+      "bytes": 2278,
+      "sha256": "26bf71ba25f350ea06e757cba7fbca1a2e62a52a68d1635f3aaa30008d1b6597"
+    },
+    "qualification.log": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_qualify_v3.log",
+      "bytes": 6447,
+      "sha256": "d08b11aa410cf0e92e2e68e2b48fed2122ef54f6faef64a1b3c7578d56b549c1"
+    }
+  },
+  "physical_flight_qualified": false
+}

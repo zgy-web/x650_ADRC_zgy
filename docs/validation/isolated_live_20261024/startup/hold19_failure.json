@@ -1,0 +1,99 @@
+{
+  "kind": "x650_isolated_failed_attempt_v1",
+  "stage": "active_hold",
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_111153_4885",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886",
+  "protocol_revision": 11,
+  "task_sha256": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1",
+  "error": "RuntimeError('C++ output latched fault reason 1')",
+  "complete": false,
+  "task_start_sim_s": 41.164,
+  "landed_and_disarmed": true,
+  "diagnostic_parameters_restored": true,
+  "runtime_closed": true,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 59597310005422251
+  },
+  "first_active_ticks": [
+    {
+      "sequence": 3220,
+      "actual_monotonic_ns": 59597309651023801,
+      "command_sequence": 1,
+      "command_issued_monotonic_ns": 59597309624815241,
+      "command_age_ns": 26208560,
+      "status": 1,
+      "reason": 0
+    },
+    {
+      "sequence": 3221,
+      "actual_monotonic_ns": 59597309671103790,
+      "command_sequence": 1,
+      "command_issued_monotonic_ns": 59597309624815241,
+      "command_age_ns": 46288549,
+      "status": 2,
+      "reason": 0
+    },
+    {
+      "sequence": 3222,
+      "actual_monotonic_ns": 59597309691092475,
+      "command_sequence": 2,
+      "command_issued_monotonic_ns": 59597309646868692,
+      "command_age_ns": 44223783,
+      "status": 1,
+      "reason": 0
+    },
+    {
+      "sequence": 3223,
+      "actual_monotonic_ns": 59597309711088869,
+      "command_sequence": 2,
+      "command_issued_monotonic_ns": 59597309646868692,
+      "command_age_ns": 64220177,
+      "status": 3,
+      "reason": 1
+    }
+  ],
+  "accepted_events": [
+    {
+      "schema_version": 1,
+      "session_id": 566649977,
+      "epoch": 1,
+      "sequence": 1,
+      "snapshot_sequence": 1,
+      "proposal_sequence": 1,
+      "replay_only": false,
+      "accepted": true,
+      "reason": 0,
+      "received_monotonic_ns": 59597309650887599,
+      "roundtrip_ns": 26072358
+    },
+    {
+      "schema_version": 1,
+      "session_id": 566649977,
+      "epoch": 1,
+      "sequence": 2,
+      "snapshot_sequence": 2,
+      "proposal_sequence": 2,
+      "replay_only": false,
+      "accepted": true,
+      "reason": 0,
+      "received_monotonic_ns": 59597309674620264,
+      "roundtrip_ns": 27751572
+    }
+  ],
+  "normal_sends": 3,
+  "all_sends": 4,
+  "all_receipts": 4,
+  "source_pump_max_ms": 4.855864,
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/controller_metadata.json": "c4ef5fb9b58e52537c980c48770cb673599019417fc8ddce78f801890c99ad96",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/live_start.json": "ebf7ed8bb003edca7a5f1b8fc4f41d72104df0f2486348a2b3720ed3e2b60518",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/dispatch.json": "9c05549e16ee69fd35a9440d71781a7150854ca0304722676d4c078920a3945f",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/sends.json": "87609e689b72378c6e7a4dbb127888b9f7411f927fdc24899132d79eea2944da",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/receipts.json": "d33e950eed9377c95853b2a39fe2cd30d5c6cda2f75e7824c59aab0bc65bcd56",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/source_pump_timing.json": "d3b251e007ffe0e91466135d20c1ca26904a9ef388c6005d9fc1d6d2ad3b9292",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/lifecycle.json": "067ea2bde5e865310388323e608187c42dc8bcc5a7199dba72c2143c61b7c081",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_111153_4885/launch.json": "fa9078b6ae8ebbda72138d791153cb5e165f479e7bb3305fc7bd3691f5f4b3bf"
+  }
+}

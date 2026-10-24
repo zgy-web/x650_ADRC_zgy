@@ -1,0 +1,22 @@
+{
+  "kind": "x650_isolated_failed_attempt_v1",
+  "stage": "ground_preparation",
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_110238_3225",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_110327_3226",
+  "protocol_revision": 10,
+  "task_sha256": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1",
+  "error": "RuntimeError('Isolated consumption exited 1')",
+  "complete": false,
+  "task_start_sim_s": null,
+  "takeoff_transition_recorded": false,
+  "diagnostic_parameters_restored": true,
+  "runtime_closed": true,
+  "consumption_error": "Consumption reader polling gap exceeds 25 ms",
+  "cpp_actuator_send_count": 0,
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_110327_3226/controller_metadata.json": "e97a9d6f11b6c4caa3ba018d2fb7455c408c719742fe68f5488ff9d16e7ea4e5",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_110327_3226/isolated_live/consumption.log": "7989d1bf5726667fea3a9d391104093abe9a19b283010e587f6db70b8fb33ae2",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_110327_3226/isolated_live/sends.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_110238_3225/launch.json": "be0376a7678a9e3064eb977460a92b73df1eb4fd387159ded88dbc2465574e10"
+  }
+}

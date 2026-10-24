@@ -1,0 +1,152 @@
+{
+  "anchor": "snapshot210 issue_monotonic_ns",
+  "anchor_ns": 59598699154810076,
+  "rows": [
+    {
+      "sequence": 208,
+      "dt_ms": 19.99999999999602,
+      "issue_rel_ms": -39.950527,
+      "begin_rel_ms": -35.180961,
+      "end_rel_ms": -20.847971,
+      "gate_rel_ms": -20.752311,
+      "compute_ms": 14.33299,
+      "qp_ms": 0.3723427653312683,
+      "actual_sends_rel_ms": [
+        -15.821592
+      ]
+    },
+    {
+      "sequence": 209,
+      "dt_ms": 20.000000000003126,
+      "issue_rel_ms": -20.258095,
+      "begin_rel_ms": -15.064107,
+      "end_rel_ms": -1.946308,
+      "gate_rel_ms": -1.858863,
+      "compute_ms": 13.117799,
+      "qp_ms": 0.372961163520813,
+      "actual_sends_rel_ms": [
+        4.166217
+      ]
+    },
+    {
+      "sequence": 210,
+      "dt_ms": 19.99999999999602,
+      "issue_rel_ms": 0.0,
+      "begin_rel_ms": 4.781425,
+      "end_rel_ms": 21.795052,
+      "gate_rel_ms": 21.884233,
+      "compute_ms": 17.013627,
+      "qp_ms": 3.1351223587989807,
+      "actual_sends_rel_ms": [
+        24.178464,
+        44.220273
+      ]
+    },
+    {
+      "sequence": 211,
+      "dt_ms": 20.000000000003126,
+      "issue_rel_ms": 19.71437,
+      "begin_rel_ms": 24.805456,
+      "end_rel_ms": 39.173783,
+      "gate_rel_ms": 46.395216,
+      "compute_ms": 14.368327,
+      "qp_ms": 0.36691129207611084,
+      "actual_sends_rel_ms": [
+        64.208301
+      ]
+    },
+    {
+      "sequence": 212,
+      "dt_ms": 39.99999999999915,
+      "issue_rel_ms": 60.314488,
+      "begin_rel_ms": 65.199182,
+      "end_rel_ms": 86.475585,
+      "gate_rel_ms": null,
+      "compute_ms": 21.276403,
+      "qp_ms": 0.5737021565437317,
+      "actual_sends_rel_ms": []
+    }
+  ],
+  "slots": [
+    {
+      "slot": 3393,
+      "actual_rel_ms": -15.985679,
+      "command": 208,
+      "age_ms": 23.964848,
+      "status": 1,
+      "reason": 0,
+      "valid": true,
+      "repeated": false
+    },
+    {
+      "slot": 3394,
+      "actual_rel_ms": 4.008444,
+      "command": 209,
+      "age_ms": 24.266539,
+      "status": 1,
+      "reason": 0,
+      "valid": true,
+      "repeated": false
+    },
+    {
+      "slot": 3395,
+      "actual_rel_ms": 24.015667,
+      "command": 210,
+      "age_ms": 24.015667,
+      "status": 1,
+      "reason": 0,
+      "valid": true,
+      "repeated": false
+    },
+    {
+      "slot": 3396,
+      "actual_rel_ms": 44.023981,
+      "command": 210,
+      "age_ms": 44.023981,
+      "status": 2,
+      "reason": 0,
+      "valid": true,
+      "repeated": true
+    },
+    {
+      "slot": 3397,
+      "actual_rel_ms": 64.01292,
+      "command": 211,
+      "age_ms": 44.29855,
+      "status": 1,
+      "reason": 0,
+      "valid": true,
+      "repeated": false
+    },
+    {
+      "slot": 3398,
+      "actual_rel_ms": 84.014652,
+      "command": 211,
+      "age_ms": 64.300282,
+      "status": 3,
+      "reason": 1,
+      "valid": false,
+      "repeated": false
+    }
+  ],
+  "gc_live_us": [
+    50.904,
+    65.709,
+    54.146,
+    75.447,
+    53.83,
+    65.221,
+    70.608,
+    66.821
+  ],
+  "late211_gate_delivery_ms": 7.221433,
+  "round212_completion_after_fault_ms": 2.460933,
+  "inputs_sha256": {
+    "worker_final.json": "88ddec8ec449f35315428751a97a3d64c42d30d3f7a59c9a7a5e1d8988030739",
+    "events.json": "02efb0db39793f746502230d5f2b0fee6f5ab1228cbab8e15686ffe9b7a3e12b",
+    "dispatch.json": "ec69916666fadf5736acef3a872d14b05cb66996bab803dbc26f8c8f1b8ff35b",
+    "sends.json": "59cd79965521e75d3118d159b6dcf545dc86e205d0b21cd00ccf37fa849f26d1",
+    "receipts.json": "7d88889f3e9e41dd641f1a9038eaafeae01dd1ebf65a97db137d8021041ee2e9",
+    "recording/manifest.json": "a4185d866129552a66e5eafb0502b76fab100c7993ab0967a117a08460eb6adb"
+  }
+}

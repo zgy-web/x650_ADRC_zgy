@@ -1,0 +1,74 @@
+Starting >>> flyarm_control_gateway
+Finished <<< flyarm_control_gateway [38.6s]
+Starting >>> flyarm_mpc_reference
+Finished <<< flyarm_mpc_reference [1.47s]
+
+Summary: 2 packages finished [40.5s]
+Internal ctest changing into directory: /root/autodl-tmp/flyarm_ros2_live_v1_20261023/build/flyarm_control_gateway
+Test project /root/autodl-tmp/flyarm_ros2_live_v1_20261023/build/flyarm_control_gateway
+    Start 1: shadow_gate_synthetic
+1/5 Test #1: shadow_gate_synthetic ............   Passed    0.02 sec
+    Start 2: periodic_gate_contract
+2/5 Test #2: periodic_gate_contract ...........   Passed    0.00 sec
+    Start 3: consumption_csv_contract
+3/5 Test #3: consumption_csv_contract .........   Passed    0.00 sec
+    Start 4: consumption_startup_lifecycle
+4/5 Test #4: consumption_startup_lifecycle ....   Passed    0.00 sec
+    Start 5: actual_source_cadence
+5/5 Test #5: actual_source_cadence ............   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   0.03 sec
+test_actual_output_paced_live_intervals_reach_adapter_without_retiming (test_engine.ReferenceEngineTests) ... ok
+test_changed_gain_target_rotation_or_nonfinite_state_is_rejected (test_engine.ReferenceEngineTests) ... ok
+test_context_identity_and_task_time_are_bound (test_engine.ReferenceEngineTests) ... ok
+test_expired_snapshot_has_deadline_status_and_future_issue_is_input_error (test_engine.ReferenceEngineTests) ... ok
+test_future_and_stale_state_joint_and_wrong_interval_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_history_count_padding_future_order_and_reference_anchor_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_identity_wrong_order_and_live_output_requests_are_rejected_before_solver (test_engine.ReferenceEngineTests) ... ok
+test_input_file_hash_is_checked_before_json_or_configuration_loading (test_engine.ReferenceEngineTests) ... ok
+test_live_handoff_is_explicit_one_shot_and_primes_actual_history (test_engine.ReferenceEngineTests) ... ok
+test_live_mode_cannot_solve_before_handoff_or_accept_shadow_input (test_engine.ReferenceEngineTests) ... ok
+test_monotonic_sequential_messages_keep_controller_memory_without_reset (test_engine.ReferenceEngineTests) ... ok
+test_outer_deadline_covers_conversion_adapter_and_clears_output (test_engine.ReferenceEngineTests) ... ok
+test_prearm_template_is_replaced_before_any_solve (test_engine.ReferenceEngineTests) ... ok
+test_rejection_latches_and_does_not_run_next_controller (test_engine.ReferenceEngineTests) ... ok
+test_solver_failure_or_missing_quality_never_returns_a_fallback (test_engine.ReferenceEngineTests) ... ok
+test_valid_snapshot_calls_same_step_once_with_causal_owned_context (test_engine.ReferenceEngineTests) ... ok
+test_before_live_start_is_not_executable (test_figure8_engine.FigureEightEngineTests) ... ok
+test_moving_target_is_verified_at_same_task_time_without_phase_fit (test_figure8_engine.FigureEightEngineTests) ... ok
+test_one_handoff_installs_same_actual_center_and_preview_trajectory (test_figure8_engine.FigureEightEngineTests) ... ok
+test_complete_certificate_checks_original_artifacts_and_numerical_sources (test_figure8_engine.NormalAdmissionTests) ... ok
+test_controller_change_and_fast_are_not_admitted (test_figure8_engine.NormalAdmissionTests) ... ok
+test_declared_revision_selects_baseline_and_old_binding_is_rejected (test_figure8_engine.NormalAdmissionTests) ... ok
+test_old_or_partial_hold_pass_flag_is_insufficient (test_figure8_engine.NormalAdmissionTests) ... ok
+test_bounded_trace_overflow_is_reported_without_control_changes (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_existing_publish_before_diagnostic_order_and_exact_record_preserved (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_failed_publish_records_unreached_phases_and_does_not_offer (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_hold20_measured_tail_misses_slot_without_relaxing_original_lease (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_hold20_tail_can_be_distinguished_as_publish_or_post_publish_delivery (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_post_publish_recording_delays_next_callback_not_current_publish (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_sender_timestamps_do_not_change_wire_payload (test_isolated_worker_timing.WorkerTimingTests) ... ok
+test_all_command_and_record_fields_exactly_match_public_adapter (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_figure8_factory_early_return_also_selects_private_policy (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_hold_factory_selects_private_policy_before_live_handoff (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_later_allocator_steps_and_mutations_cannot_change_old_records (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_live_ownership_cannot_be_reconfigured_after_handoff_or_solve (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_live_result_owns_graph_without_self_cycle_or_controller_alias (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_modifying_an_owned_record_cannot_change_allocator_or_later_result (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_private_path_does_not_accept_invalid_list_of_diagnostic_pairs (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_public_default_keeps_independent_nested_mutation_behavior (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_real_diagnostic_sender_detaches_bytes_before_next_step (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_selecting_ownership_after_step_is_rejected (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_constructor_failure_still_shuts_down_owned_context (test_node_cleanup.CleanupTests) ... ok
+test_executor_failure_still_destroys_node_and_closes_context (test_node_cleanup.CleanupTests) ... ok
+test_external_shutdown_is_not_repeated (test_node_cleanup.CleanupTests) ... ok
+test_explicit_call_records_duration_counts_without_disabling_or_freezing (test_preflight_gc.PreflightGcTests) ... ok
+test_real_setup_cycle_is_collected_with_callbacks_and_policy_preserved (test_preflight_gc.PreflightGcTests) ... ok
+test_installed_sources_and_loaded_identity_are_recorded_without_overwrite (test_startup.StartupTests) ... ok
+
+----------------------------------------------------------------------
+Ran 47 tests in 0.357s
+
+OK

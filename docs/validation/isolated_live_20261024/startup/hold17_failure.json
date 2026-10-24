@@ -1,0 +1,48 @@
+{
+  "kind": "x650_pre_handoff_failure_v17",
+  "complete_hold": false,
+  "new_backend_executed": false,
+  "source_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_105700_1888",
+  "task_start_s": null,
+  "failure_event": "ts20_control_interval_rejected",
+  "phase": "settle",
+  "dt_s": 0.05600000000000449,
+  "sim_s": 41.484,
+  "error": "Control interval 0.0560s exceeds 0.05s",
+  "previous_exit": {
+    "wall_monotonic_s": 59596366.432873346,
+    "thread_cpu_s": 48.015243553,
+    "processed_clock_s": 41.444,
+    "clock_callback_sequence": 7257,
+    "position_callback_sequence": 1501,
+    "joint_callback_sequence": 1501
+  },
+  "rejected_entry": {
+    "wall_monotonic_s": 59596366.466925696,
+    "thread_cpu_s": 48.045928143,
+    "processed_clock_s": 41.444,
+    "clock_callback_sequence": 7257,
+    "position_callback_sequence": 1501,
+    "joint_callback_sequence": 1501
+  },
+  "pump_external_gap_wall_ms": 34.052349627017975,
+  "pump_external_gap_thread_cpu_ms": 30.6845899999999,
+  "diagnostic_parameters_restored": true,
+  "diagnostic_restore_pending": false,
+  "landed": true,
+  "armed": false,
+  "runtime_closed": true,
+  "live_started": false,
+  "max_gc_wall_ms": [
+    0.2850145101547241,
+    0.7220655679702759,
+    0.0
+  ],
+  "artifacts": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_105700_1888/controller_metadata.json": "32845a9601dfea0a20bcbfc0a6aafeb0237fa0c1cb7789fa56b19105b4be518e",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_105700_1888/control_failure_snapshot.json": "6ea2aa00a781981f8f0d58f08cca73469ca780ca0e12bfb59f2c62423c902ee0",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_105700_1888/loop_timing_evidence.json": "2b256d21620a4fc912917c1f581688e5ab6dafc29b634f8c7691321367954256"
+  },
+  "previous_pump_sequence": 3090,
+  "rejected_pump_sequence": 3091
+}

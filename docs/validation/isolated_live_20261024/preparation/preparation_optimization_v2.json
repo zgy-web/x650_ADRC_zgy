@@ -1,0 +1,451 @@
+{
+  "kind": "offline_recorded_numerical_preparation_optimization",
+  "no_flight": true,
+  "production_sources_modified": false,
+  "live_diagnostic_adapter": "original double-copy adapter still installed; combined ownership optimization not included",
+  "baseline_sources_sha256": {
+    "native_joint_prediction.py": "cda86d49638c8a84640df56a27c796bdf231ea289ec2430a96987e09b9060e91",
+    "native_optimization.py": "7484a1dc3ceab97b33a136283a4395c6a3b33e649230c062c312b33233e905a1",
+    "ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66"
+  },
+  "optimized_sources_sha256": {
+    "native_joint_prediction.py": "d1dc50044b4e7db023a746a24219f90d1862df9b54b388f636e51e97c700fd75",
+    "native_optimization.py": "4c46f27e7828738224d94f9d622ef67140823609cccbdef813628f119ff4892f",
+    "ts20_prediction.py": "2ad99b686294195f6eec554cf65a035c7d741a8e9033f2839a0ad8ccba359263"
+  },
+  "test_sha256": "de116631cab669607038b6e555881ca22b03dbfa640c7debf445f57af880e8f0",
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_111153_4885/task.json": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/initialization.json": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/live_start.json": "ebf7ed8bb003edca7a5f1b8fc4f41d72104df0f2486348a2b3720ed3e2b60518",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/recording/diagnostics.jsonl": "1b0a78397e3f8fd1f08445549aad86d84ec4781c4065c2bf2416a0c5dfc2b88a"
+  },
+  "reset_method": "Each sequence creates a fresh hash-verified engine from the actual task/initialization and LiveStart, then only substitutes the tested preparation methods. Three original CDR snapshots run in order with original actual packet history and times; only lease issued_monotonic_ns is rebased for offline execution. Each cycle resets all algorithm state.",
+  "timing_method": {
+    "cadence_ms": 20,
+    "absolute_due_times": true,
+    "late_cycles_not_reanchored": true,
+    "new_process": "fresh interpreter imports and engine construction then 0.5s idle, not a CPU-cache flush",
+    "warm": "same process fresh engine immediately after previous three-call replay; algorithm history is reset, not continued or invented",
+    "wall": "ControlProposal compute_end-compute_start",
+    "cpu": "thread_time_ns around the complete process call; slightly wider than internal wall interval",
+    "instrumentation": "none in final timing; phase and matrix-copy instrumentation recorded separately",
+    "fixed_original_affinity": [
+      87,
+      89,
+      91,
+      97
+    ]
+  },
+  "final_uninstrumented_replays": [
+    {
+      "mode": "original",
+      "pid": 6477,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 18.973416,
+          "process_thread_cpu_ms": 18.999,
+          "start_lateness_ms": 0.055769,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 18.039335,
+          "process_thread_cpu_ms": 18.05575,
+          "start_lateness_ms": 0.081527,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 13.140603,
+          "process_thread_cpu_ms": 13.155142,
+          "start_lateness_ms": 0.07494,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 19.800548,
+          "process_thread_cpu_ms": 19.808185,
+          "start_lateness_ms": 0.019715,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 18.035792,
+          "process_thread_cpu_ms": 18.056805,
+          "start_lateness_ms": 0.066516,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 14.053287,
+          "process_thread_cpu_ms": 14.072289,
+          "start_lateness_ms": 0.106776,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "optimized",
+      "pid": 6479,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 18.240134,
+          "process_thread_cpu_ms": 18.263039,
+          "start_lateness_ms": 0.033774,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 15.772972,
+          "process_thread_cpu_ms": 15.790076,
+          "start_lateness_ms": 0.068088,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 13.447819,
+          "process_thread_cpu_ms": 13.467749,
+          "start_lateness_ms": 0.098685,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 16.587721,
+          "process_thread_cpu_ms": 16.589788,
+          "start_lateness_ms": 0.014242,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 15.858099,
+          "process_thread_cpu_ms": 15.874464,
+          "start_lateness_ms": 0.081632,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 12.989314,
+          "process_thread_cpu_ms": 13.008804,
+          "start_lateness_ms": 0.096899,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "optimized",
+      "pid": 6480,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 19.107057,
+          "process_thread_cpu_ms": 19.131404,
+          "start_lateness_ms": 0.04459,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 17.105182,
+          "process_thread_cpu_ms": 17.125362,
+          "start_lateness_ms": 0.079974,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 16.1625,
+          "process_thread_cpu_ms": 16.188092,
+          "start_lateness_ms": 0.082421,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 17.117936,
+          "process_thread_cpu_ms": 17.14016,
+          "start_lateness_ms": 0.016689,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 16.701386,
+          "process_thread_cpu_ms": 16.720184,
+          "start_lateness_ms": 0.092393,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 13.413117,
+          "process_thread_cpu_ms": 13.430635,
+          "start_lateness_ms": 0.052225,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "original",
+      "pid": 6484,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 21.757646,
+          "process_thread_cpu_ms": 21.780378,
+          "start_lateness_ms": 0.03461,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 18.752959,
+          "process_thread_cpu_ms": 18.773434,
+          "start_lateness_ms": 1.873517,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 25.405952,
+          "process_thread_cpu_ms": 24.329841,
+          "start_lateness_ms": 0.706899,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 19.332542,
+          "process_thread_cpu_ms": 19.378059,
+          "start_lateness_ms": 0.084522,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 22.084088,
+          "process_thread_cpu_ms": 22.102639,
+          "start_lateness_ms": 0.066816,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 14.883874,
+          "process_thread_cpu_ms": 14.899411,
+          "start_lateness_ms": 2.255329,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "original",
+      "pid": 6496,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 22.988063,
+          "process_thread_cpu_ms": 23.020127,
+          "start_lateness_ms": 0.044152,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 20.68046,
+          "process_thread_cpu_ms": 20.704631,
+          "start_lateness_ms": 3.130983,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 16.88724,
+          "process_thread_cpu_ms": 16.909767,
+          "start_lateness_ms": 3.906358,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 21.125622,
+          "process_thread_cpu_ms": 21.171097,
+          "start_lateness_ms": 0.0891,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 19.013596,
+          "process_thread_cpu_ms": 19.033855,
+          "start_lateness_ms": 1.349358,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 18.613915,
+          "process_thread_cpu_ms": 18.641084,
+          "start_lateness_ms": 0.464711,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    },
+    {
+      "mode": "optimized",
+      "pid": 6498,
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "uninstrumented": true,
+      "rows": [
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 15.682323,
+          "process_thread_cpu_ms": 15.706339,
+          "start_lateness_ms": 0.04795,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 12.25417,
+          "process_thread_cpu_ms": 12.270626,
+          "start_lateness_ms": 0.100014,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "new_process_after_0.5s_idle",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 13.62333,
+          "process_thread_cpu_ms": 13.644734,
+          "start_lateness_ms": 0.110749,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 1,
+          "status": 0,
+          "compute_wall_ms": 14.494207,
+          "process_thread_cpu_ms": 14.49788,
+          "start_lateness_ms": 0.015089,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 2,
+          "status": 0,
+          "compute_wall_ms": 15.173524,
+          "process_thread_cpu_ms": 15.193511,
+          "start_lateness_ms": 0.07381,
+          "command_max_abs_error": 0.0
+        },
+        {
+          "cycle": "same_process_after_previous_replay",
+          "round": 3,
+          "status": 0,
+          "compute_wall_ms": 16.284564,
+          "process_thread_cpu_ms": 16.306811,
+          "start_lateness_ms": 0.090128,
+          "command_max_abs_error": 0.0
+        }
+      ]
+    }
+  ],
+  "matrix_comparison_max_error": 0.0,
+  "command_comparison_max_error": 0.0,
+  "native_tests_pass": true,
+  "notes": [
+    "This is offline timing evidence, not a new endpoint-hold acceptance.",
+    "Original 20 ms cadence, 50 ms lease and all numerical/physical acceptance thresholds remain unchanged."
+  ]
+}

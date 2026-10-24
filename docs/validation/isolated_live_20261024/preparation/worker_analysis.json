@@ -1,0 +1,43 @@
+{
+  "kind": "hold19_recorded_worker_analysis",
+  "no_new_flight": true,
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886",
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_111153_4885/task.json": "3759184e2e9086e032cecc680dab7da7391d0b56309fb82fc88bf2644c1e36e1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/initialization.json": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/live_start.json": "ebf7ed8bb003edca7a5f1b8fc4f41d72104df0f2486348a2b3720ed3e2b60518",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_111240_4886/isolated_live/recording/diagnostics.jsonl": "1b0a78397e3f8fd1f08445549aad86d84ec4781c4065c2bf2416a0c5dfc2b88a"
+  },
+  "actual_recorded_calls": [
+    {
+      "sequence": 1,
+      "control_time_s": 41.184,
+      "snapshot_to_compute_start_ms": 3.062098,
+      "compute_wall_ms": 22.873666,
+      "status": 0
+    },
+    {
+      "sequence": 2,
+      "control_time_s": 41.208,
+      "snapshot_to_compute_start_ms": 5.174271,
+      "compute_wall_ms": 22.468084,
+      "status": 0
+    },
+    {
+      "sequence": 3,
+      "control_time_s": 41.248,
+      "snapshot_to_compute_start_ms": 5.563437,
+      "compute_wall_ms": 21.412203,
+      "status": 0
+    }
+  ],
+  "diagnosis": [
+    "All three numerical proposals were accepted. No mathematical rejection caused this hold stop.",
+    "First two computations exceed the 20 ms dispatcher cadence; with serialized actual-send-before-next-request, the repeated command reaches the unchanged 50 ms freshness limit.",
+    "Both native optimization builds use -O3 -DNDEBUG -fPIC; the numerical backend is not accidentally built without optimization.",
+    "Lightweight phase profiling shows numerical preparation in Python dominating assembly: 8.1-8.9 ms total assembly versus 1.06-1.20 ms actual x650_assemble after the first optimization stage.",
+    "Natural gen0 collection durations in this run were 0.057 and 0.068 ms; no generation 1 or 2 collection during live control.",
+    "Single CPU 87 or 89 did not consistently remove timing outliers; original [87,89,91,97] affinity is retained in final uninstrumented evidence."
+  ],
+  "scope_limit": "Offline wrapper optimization does not itself accept full endpoint hold; actual feedback, consumed output and bounded ages still need fresh flight acceptance."
+}

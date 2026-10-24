@@ -1,0 +1,2242 @@
+{
+  "kind": "x650_consumption_startup_synthetic_probe_v1",
+  "passed": true,
+  "complete": true,
+  "synthetic_software_fixture_only": true,
+  "physical_validation": false,
+  "flight_accepted": false,
+  "hardware_qualified": false,
+  "eligible_as_stage_gate": false,
+  "scope": "ROS 2 consumption-source software lifecycle only; no Gazebo/PX4 or actuator I/O",
+  "domain_id": 218,
+  "localhost_only": true,
+  "timeout_s": 30.0,
+  "pause_s": 0.08,
+  "started_monotonic_ns": 59597162471014443,
+  "cases": [
+    {
+      "case": "ready_live_active",
+      "passed": true,
+      "synthetic_software_fixture_only": true,
+      "session_id": 572137493,
+      "epoch": 1,
+      "configuration_sha256": "d65b674af7ad8b4761e8a88a0b4b9075dec8375c91fda7924fd1b5ad8ffd861d",
+      "events": [
+        {
+          "event": "child_started",
+          "monotonic_ns": 59597163024941879
+        },
+        {
+          "event": "ready",
+          "monotonic_ns": 59597163062377193,
+          "csv_rows": 8
+        },
+        {
+          "event": "live_start_published",
+          "monotonic_ns": 59597163143726986,
+          "session_id": 572137494,
+          "epoch": 1,
+          "configuration_sha256": "d65b674af7ad8b4761e8a88a0b4b9075dec8375c91fda7924fd1b5ad8ffd861d",
+          "issued_monotonic_ns": 59597163143616318,
+          "origin_s": 10.104
+        },
+        {
+          "event": "live_start_published",
+          "monotonic_ns": 59597163185018255,
+          "session_id": 572137493,
+          "epoch": 2,
+          "configuration_sha256": "d65b674af7ad8b4761e8a88a0b4b9075dec8375c91fda7924fd1b5ad8ffd861d",
+          "issued_monotonic_ns": 59597163184953826,
+          "origin_s": 10.14
+        },
+        {
+          "event": "ready_pause_stopped",
+          "monotonic_ns": 59597163226537553,
+          "stopped_observed_ns": 59597163226535280
+        },
+        {
+          "event": "ready_pause_continued",
+          "monotonic_ns": 59597163307607568,
+          "stopped_duration_ns": 81054305
+        },
+        {
+          "event": "prestart_backlog_written",
+          "monotonic_ns": 59597163408563059,
+          "total_old_rows": 85,
+          "added_rows": 5
+        },
+        {
+          "event": "live_start_published",
+          "monotonic_ns": 59597163408957712,
+          "session_id": 572137493,
+          "epoch": 1,
+          "configuration_sha256": "d65b674af7ad8b4761e8a88a0b4b9075dec8375c91fda7924fd1b5ad8ffd861d",
+          "issued_monotonic_ns": 59597163408786535,
+          "origin_s": 10.34
+        },
+        {
+          "event": "first_new_row_completed",
+          "monotonic_ns": 59597163530404307,
+          "counter": [
+            1086,
+            2086
+          ],
+          "sim_s": 10.344
+        },
+        {
+          "event": "active_new_rows_verified",
+          "monotonic_ns": 59597163544509664,
+          "received_states": 3
+        },
+        {
+          "event": "active_pause_stopped",
+          "monotonic_ns": 59597163544837657,
+          "stopped_observed_ns": 59597163544833726
+        },
+        {
+          "event": "active_pause_continued",
+          "monotonic_ns": 59597163625072840,
+          "stopped_duration_ns": 80204781
+        },
+        {
+          "event": "expected_rejection_observed",
+          "monotonic_ns": 59597163742692149,
+          "exit_code": 1,
+          "expected": "Consumption reader polling gap exceeds 25 ms"
+        }
+      ],
+      "states": [
+        {
+          "received_monotonic_ns": 59597163532063431,
+          "session_id": 572137493,
+          "epoch": 1,
+          "observed_monotonic_ns": 59597163531239405,
+          "sim_s": 10.348,
+          "consumed_counter": [
+            1087,
+            2087
+          ],
+          "consumed_velocity": [
+            0.012,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.348,
+            10.348
+          ]
+        },
+        {
+          "received_monotonic_ns": 59597163535688284,
+          "session_id": 572137493,
+          "epoch": 1,
+          "observed_monotonic_ns": 59597163535239600,
+          "sim_s": 10.352,
+          "consumed_counter": [
+            1088,
+            2088
+          ],
+          "consumed_velocity": [
+            0.013000000000000001,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.352,
+            10.352
+          ]
+        },
+        {
+          "received_monotonic_ns": 59597163540531922,
+          "session_id": 572137493,
+          "epoch": 1,
+          "observed_monotonic_ns": 59597163540239525,
+          "sim_s": 10.356,
+          "consumed_counter": [
+            1089,
+            2089
+          ],
+          "consumed_velocity": [
+            0.014,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.356,
+            10.356
+          ]
+        }
+      ],
+      "csv_rows": [
+        {
+          "index": 1,
+          "sim_s": 10.004,
+          "counter": [
+            1001,
+            2001
+          ],
+          "velocity": [
+            0.011,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.004,
+            10.004
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163025016488
+        },
+        {
+          "index": 2,
+          "sim_s": 10.008,
+          "counter": [
+            1002,
+            2002
+          ],
+          "velocity": [
+            0.012,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.008,
+            10.008
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163029905672
+        },
+        {
+          "index": 3,
+          "sim_s": 10.012,
+          "counter": [
+            1003,
+            2003
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.012,
+            10.012
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163034722471
+        },
+        {
+          "index": 4,
+          "sim_s": 10.016,
+          "counter": [
+            1004,
+            2004
+          ],
+          "velocity": [
+            0.014,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.016,
+            10.016
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163039322471
+        },
+        {
+          "index": 5,
+          "sim_s": 10.02,
+          "counter": [
+            1005,
+            2005
+          ],
+          "velocity": [
+            0.01,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.02,
+            10.02
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163043915223
+        },
+        {
+          "index": 6,
+          "sim_s": 10.024,
+          "counter": [
+            1006,
+            2006
+          ],
+          "velocity": [
+            0.011,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.024,
+            10.024
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163048514317
+        },
+        {
+          "index": 7,
+          "sim_s": 10.028,
+          "counter": [
+            1007,
+            2007
+          ],
+          "velocity": [
+            0.012,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.028,
+            10.028
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163053098768
+        },
+        {
+          "index": 8,
+          "sim_s": 10.032,
+          "counter": [
+            1008,
+            2008
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.032,
+            10.032
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163057684819
+        },
+        {
+          "index": 9,
+          "sim_s": 10.036,
+          "counter": [
+            1009,
+            2009
+          ],
+          "velocity": [
+            0.014,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.036,
+            10.036
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163062390793
+        },
+        {
+          "index": 10,
+          "sim_s": 10.04,
+          "counter": [
+            1010,
+            2010
+          ],
+          "velocity": [
+            0.01,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.04,
+            10.04
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163066972220
+        },
+        {
+          "index": 11,
+          "sim_s": 10.044,
+          "counter": [
+            1011,
+            2011
+          ],
+          "velocity": [
+            0.011,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.044,
+            10.044
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163071545907
+        },
+        {
+          "index": 12,
+          "sim_s": 10.048,
+          "counter": [
+            1012,
+            2012
+          ],
+          "velocity": [
+            0.012,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.048,
+            10.048
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163076112952
+        },
+        {
+          "index": 13,
+          "sim_s": 10.052,
+          "counter": [
+            1013,
+            2013
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.052,
+            10.052
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163080675355
+        },
+        {
+          "index": 14,
+          "sim_s": 10.056,
+          "counter": [
+            1014,
+            2014
+          ],
+          "velocity": [
+            0.014,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.056,
+            10.056
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163085209171
+        },
+        {
+          "index": 15,
+          "sim_s": 10.06,
+          "counter": [
+            1015,
+            2015
+          ],
+          "velocity": [
+            0.01,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.06,
+            10.06
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163089773140
+        },
+        {
+          "index": 16,
+          "sim_s": 10.064,
+          "counter": [
+            1016,
+            2016
+          ],
+          "velocity": [
+            0.011,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.064,
+            10.064
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163094361828
+        },
+        {
+          "index": 17,
+          "sim_s": 10.068,
+          "counter": [
+            1017,
+            2017
+          ],
+          "velocity": [
+            0.012,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.068,
+            10.068
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163098945999
+        },
+        {
+          "index": 18,
+          "sim_s": 10.072,
+          "counter": [
+            1018,
+            2018
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.072,
+            10.072
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163103480529
+        },
+        {
+          "index": 19,
+          "sim_s": 10.076,
+          "counter": [
+            1019,
+            2019
+          ],
+          "velocity": [
+            0.014,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.076,
+            10.076
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163108049039
+        },
+        {
+          "index": 20,
+          "sim_s": 10.08,
+          "counter": [
+            1020,
+            2020
+          ],
+          "velocity": [
+            0.01,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.08,
+            10.08
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163112613411
+        },
+        {
+          "index": 21,
+          "sim_s": 10.084,
+          "counter": [
+            1021,
+            2021
+          ],
+          "velocity": [
+            0.011,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.084,
+            10.084
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163117184891
+        },
+        {
+          "index": 22,
+          "sim_s": 10.088,
+          "counter": [
+            1022,
+            2022
+          ],
+          "velocity": [
+            0.012,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.088,
+            10.088
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163121750429
+        },
+        {
+          "index": 23,
+          "sim_s": 10.092,
+          "counter": [
+            1023,
+            2023
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.092,
+            10.092
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163126323271
+        },
+        {
+          "index": 24,
+          "sim_s": 10.096,
+          "counter": [
+            1024,
+            2024
+          ],
+          "velocity": [
+            0.014,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.096,
+            10.096
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163130893801
+        },
+        {
+          "index": 25,
+          "sim_s": 10.1,
+          "counter": [
+            1025,
+            2025
+          ],
+          "velocity": [
+            0.01,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.1,
+            10.1
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163135465290
+        },
+        {
+          "index": 26,
+          "sim_s": 10.104,
+          "counter": [
+            1026,
+            2026
+          ],
+          "velocity": [
+            0.011,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.104,
+            10.104
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163140031679
+        },
+        {
+          "index": 27,
+          "sim_s": 10.108,
+          "counter": [
+            1027,
+            2027
+          ],
+          "velocity": [
+            0.012,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.108,
+            10.108
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163143748033
+        },
+        {
+          "index": 28,
+          "sim_s": 10.112,
+          "counter": [
+            1028,
+            2028
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.112,
+            10.112
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163148334847
+        },
+        {
+          "index": 29,
+          "sim_s": 10.116,
+          "counter": [
+            1029,
+            2029
+          ],
+          "velocity": [
+            0.014,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.116,
+            10.116
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163152901199
+        },
+        {
+          "index": 30,
+          "sim_s": 10.12,
+          "counter": [
+            1030,
+            2030
+          ],
+          "velocity": [
+            0.01,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.12,
+            10.12
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163157468553
+        },
+        {
+          "index": 31,
+          "sim_s": 10.124,
+          "counter": [
+            1031,
+            2031
+          ],
+          "velocity": [
+            0.011,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.124,
+            10.124
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163162039106
+        },
+        {
+          "index": 32,
+          "sim_s": 10.128,
+          "counter": [
+            1032,
+            2032
+          ],
+          "velocity": [
+            0.012,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.128,
+            10.128
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163166605693
+        },
+        {
+          "index": 33,
+          "sim_s": 10.132,
+          "counter": [
+            1033,
+            2033
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.132,
+            10.132
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163171169206
+        },
+        {
+          "index": 34,
+          "sim_s": 10.136,
+          "counter": [
+            1034,
+            2034
+          ],
+          "velocity": [
+            0.014,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.136,
+            10.136
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163175735041
+        },
+        {
+          "index": 35,
+          "sim_s": 10.14,
+          "counter": [
+            1035,
+            2035
+          ],
+          "velocity": [
+            0.01,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.14,
+            10.14
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163180301572
+        },
+        {
+          "index": 36,
+          "sim_s": 10.144,
+          "counter": [
+            1036,
+            2036
+          ],
+          "velocity": [
+            0.011,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.144,
+            10.144
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163185033428
+        },
+        {
+          "index": 37,
+          "sim_s": 10.148,
+          "counter": [
+            1037,
+            2037
+          ],
+          "velocity": [
+            0.012,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.148,
+            10.148
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163189611046
+        },
+        {
+          "index": 38,
+          "sim_s": 10.152,
+          "counter": [
+            1038,
+            2038
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.152,
+            10.152
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163194179094
+        },
+        {
+          "index": 39,
+          "sim_s": 10.156,
+          "counter": [
+            1039,
+            2039
+          ],
+          "velocity": [
+            0.014,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.156,
+            10.156
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163198753721
+        },
+        {
+          "index": 40,
+          "sim_s": 10.16,
+          "counter": [
+            1040,
+            2040
+          ],
+          "velocity": [
+            0.01,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.16,
+            10.16
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163203321240
+        },
+        {
+          "index": 41,
+          "sim_s": 10.164,
+          "counter": [
+            1041,
+            2041
+          ],
+          "velocity": [
+            0.011,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.164,
+            10.164
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163207889929
+        },
+        {
+          "index": 42,
+          "sim_s": 10.168,
+          "counter": [
+            1042,
+            2042
+          ],
+          "velocity": [
+            0.012,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.168,
+            10.168
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163212456773
+        },
+        {
+          "index": 43,
+          "sim_s": 10.172,
+          "counter": [
+            1043,
+            2043
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.172,
+            10.172
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163217021399
+        },
+        {
+          "index": 44,
+          "sim_s": 10.176,
+          "counter": [
+            1044,
+            2044
+          ],
+          "velocity": [
+            0.014,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.176,
+            10.176
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163221587124
+        },
+        {
+          "index": 45,
+          "sim_s": 10.18,
+          "counter": [
+            1045,
+            2045
+          ],
+          "velocity": [
+            0.01,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.18,
+            10.18
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163226550711
+        },
+        {
+          "index": 46,
+          "sim_s": 10.184,
+          "counter": [
+            1046,
+            2046
+          ],
+          "velocity": [
+            0.011,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.184,
+            10.184
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163231158742
+        },
+        {
+          "index": 47,
+          "sim_s": 10.188,
+          "counter": [
+            1047,
+            2047
+          ],
+          "velocity": [
+            0.012,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.188,
+            10.188
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163235726803
+        },
+        {
+          "index": 48,
+          "sim_s": 10.192,
+          "counter": [
+            1048,
+            2048
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.192,
+            10.192
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163240289807
+        },
+        {
+          "index": 49,
+          "sim_s": 10.196,
+          "counter": [
+            1049,
+            2049
+          ],
+          "velocity": [
+            0.014,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.196,
+            10.196
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163244850853
+        },
+        {
+          "index": 50,
+          "sim_s": 10.2,
+          "counter": [
+            1050,
+            2050
+          ],
+          "velocity": [
+            0.01,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.2,
+            10.2
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163249412153
+        },
+        {
+          "index": 51,
+          "sim_s": 10.204,
+          "counter": [
+            1051,
+            2051
+          ],
+          "velocity": [
+            0.011,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.204,
+            10.204
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163253972637
+        },
+        {
+          "index": 52,
+          "sim_s": 10.208,
+          "counter": [
+            1052,
+            2052
+          ],
+          "velocity": [
+            0.012,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.208,
+            10.208
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163258537984
+        },
+        {
+          "index": 53,
+          "sim_s": 10.212,
+          "counter": [
+            1053,
+            2053
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.212,
+            10.212
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163263093214
+        },
+        {
+          "index": 54,
+          "sim_s": 10.216,
+          "counter": [
+            1054,
+            2054
+          ],
+          "velocity": [
+            0.014,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.216,
+            10.216
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163267666976
+        },
+        {
+          "index": 55,
+          "sim_s": 10.22,
+          "counter": [
+            1055,
+            2055
+          ],
+          "velocity": [
+            0.01,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.22,
+            10.22
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163272225035
+        },
+        {
+          "index": 56,
+          "sim_s": 10.224,
+          "counter": [
+            1056,
+            2056
+          ],
+          "velocity": [
+            0.011,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.224,
+            10.224
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163276793701
+        },
+        {
+          "index": 57,
+          "sim_s": 10.228,
+          "counter": [
+            1057,
+            2057
+          ],
+          "velocity": [
+            0.012,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.228,
+            10.228
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163281350466
+        },
+        {
+          "index": 58,
+          "sim_s": 10.232,
+          "counter": [
+            1058,
+            2058
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.232,
+            10.232
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163285910505
+        },
+        {
+          "index": 59,
+          "sim_s": 10.236,
+          "counter": [
+            1059,
+            2059
+          ],
+          "velocity": [
+            0.014,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.236,
+            10.236
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163290472135
+        },
+        {
+          "index": 60,
+          "sim_s": 10.24,
+          "counter": [
+            1060,
+            2060
+          ],
+          "velocity": [
+            0.01,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.24,
+            10.24
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163295031249
+        },
+        {
+          "index": 61,
+          "sim_s": 10.244,
+          "counter": [
+            1061,
+            2061
+          ],
+          "velocity": [
+            0.011,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.244,
+            10.244
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163299596133
+        },
+        {
+          "index": 62,
+          "sim_s": 10.248,
+          "counter": [
+            1062,
+            2062
+          ],
+          "velocity": [
+            0.012,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.248,
+            10.248
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163304156156
+        },
+        {
+          "index": 63,
+          "sim_s": 10.252,
+          "counter": [
+            1063,
+            2063
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.252,
+            10.252
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163307620917
+        },
+        {
+          "index": 64,
+          "sim_s": 10.256,
+          "counter": [
+            1064,
+            2064
+          ],
+          "velocity": [
+            0.014,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.256,
+            10.256
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163312190470
+        },
+        {
+          "index": 65,
+          "sim_s": 10.26,
+          "counter": [
+            1065,
+            2065
+          ],
+          "velocity": [
+            0.01,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.26,
+            10.26
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163316753754
+        },
+        {
+          "index": 66,
+          "sim_s": 10.264,
+          "counter": [
+            1066,
+            2066
+          ],
+          "velocity": [
+            0.011,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.264,
+            10.264
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163321316828
+        },
+        {
+          "index": 67,
+          "sim_s": 10.268,
+          "counter": [
+            1067,
+            2067
+          ],
+          "velocity": [
+            0.012,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.268,
+            10.268
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163325882555
+        },
+        {
+          "index": 68,
+          "sim_s": 10.272,
+          "counter": [
+            1068,
+            2068
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.272,
+            10.272
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163330452249
+        },
+        {
+          "index": 69,
+          "sim_s": 10.276,
+          "counter": [
+            1069,
+            2069
+          ],
+          "velocity": [
+            0.014,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.276,
+            10.276
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163335014841
+        },
+        {
+          "index": 70,
+          "sim_s": 10.28,
+          "counter": [
+            1070,
+            2070
+          ],
+          "velocity": [
+            0.01,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.28,
+            10.28
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163339577387
+        },
+        {
+          "index": 71,
+          "sim_s": 10.284,
+          "counter": [
+            1071,
+            2071
+          ],
+          "velocity": [
+            0.011,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.284,
+            10.284
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163344140205
+        },
+        {
+          "index": 72,
+          "sim_s": 10.288,
+          "counter": [
+            1072,
+            2072
+          ],
+          "velocity": [
+            0.012,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.288,
+            10.288
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163348700429
+        },
+        {
+          "index": 73,
+          "sim_s": 10.292,
+          "counter": [
+            1073,
+            2073
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.292,
+            10.292
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163353262292
+        },
+        {
+          "index": 74,
+          "sim_s": 10.296,
+          "counter": [
+            1074,
+            2074
+          ],
+          "velocity": [
+            0.014,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.296,
+            10.296
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163357827488
+        },
+        {
+          "index": 75,
+          "sim_s": 10.3,
+          "counter": [
+            1075,
+            2075
+          ],
+          "velocity": [
+            0.01,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.3,
+            10.3
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163362389405
+        },
+        {
+          "index": 76,
+          "sim_s": 10.304,
+          "counter": [
+            1076,
+            2076
+          ],
+          "velocity": [
+            0.011,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.304,
+            10.304
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163366950978
+        },
+        {
+          "index": 77,
+          "sim_s": 10.308,
+          "counter": [
+            1077,
+            2077
+          ],
+          "velocity": [
+            0.012,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.308,
+            10.308
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163371478006
+        },
+        {
+          "index": 78,
+          "sim_s": 10.312,
+          "counter": [
+            1078,
+            2078
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.312,
+            10.312
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163376040670
+        },
+        {
+          "index": 79,
+          "sim_s": 10.316,
+          "counter": [
+            1079,
+            2079
+          ],
+          "velocity": [
+            0.014,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.316,
+            10.316
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163380605969
+        },
+        {
+          "index": 80,
+          "sim_s": 10.32,
+          "counter": [
+            1080,
+            2080
+          ],
+          "velocity": [
+            0.01,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.32,
+            10.32
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163385648306
+        },
+        {
+          "index": 81,
+          "sim_s": 10.324,
+          "counter": [
+            1081,
+            2081
+          ],
+          "velocity": [
+            0.011,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.324,
+            10.324
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163408349630
+        },
+        {
+          "index": 82,
+          "sim_s": 10.328,
+          "counter": [
+            1082,
+            2082
+          ],
+          "velocity": [
+            0.012,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.328,
+            10.328
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163408411391
+        },
+        {
+          "index": 83,
+          "sim_s": 10.332,
+          "counter": [
+            1083,
+            2083
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.332,
+            10.332
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163408460651
+        },
+        {
+          "index": 84,
+          "sim_s": 10.336,
+          "counter": [
+            1084,
+            2084
+          ],
+          "velocity": [
+            0.014,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.336,
+            10.336
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163408491937
+        },
+        {
+          "index": 85,
+          "sim_s": 10.34,
+          "counter": [
+            1085,
+            2085
+          ],
+          "velocity": [
+            0.01,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.34,
+            10.34
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163408522716
+        },
+        {
+          "index": 86,
+          "sim_s": 10.344,
+          "counter": [
+            1086,
+            2086
+          ],
+          "velocity": [
+            0.011,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.344,
+            10.344
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163489920684,
+          "completed_monotonic_ns": 59597163530398358
+        },
+        {
+          "index": 87,
+          "sim_s": 10.348,
+          "counter": [
+            1087,
+            2087
+          ],
+          "velocity": [
+            0.012,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.348,
+            10.348
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163530432713
+        },
+        {
+          "index": 88,
+          "sim_s": 10.352,
+          "counter": [
+            1088,
+            2088
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.352,
+            10.352
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163534735372
+        },
+        {
+          "index": 89,
+          "sim_s": 10.356,
+          "counter": [
+            1089,
+            2089
+          ],
+          "velocity": [
+            0.014,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.356,
+            10.356
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163539513466
+        }
+      ],
+      "private_domain_initial_graph_empty": true,
+      "command": [
+        "/usr/bin/taskset",
+        "--cpu-list",
+        "95",
+        "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source",
+        "--ros-args",
+        "-p",
+        "simulation_live:=true",
+        "-p",
+        "expected_session_id:=572137493",
+        "-p",
+        "expected_epoch:=1",
+        "-p",
+        "configuration_sha256:=\"d65b674af7ad8b4761e8a88a0b4b9075dec8375c91fda7924fd1b5ad8ffd861d\"",
+        "-p",
+        "state_csv:=\"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/SYNTHETIC_consumption.csv\"",
+        "-p",
+        "ready_file:=\"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/consumption_ready\""
+      ],
+      "child_pid": 4776,
+      "requested_cpu": 95,
+      "readiness_text": "actual complete plugin CSV; DDS matched; awaiting LiveStart and new-row barrier\n",
+      "actual_fixture_live_start_issued_ns": 59597163408786535,
+      "origin_s": 10.34,
+      "prestart_old_row_count": 85,
+      "ready_pause_ns": 81054305,
+      "ready_wrong_session_ignored": true,
+      "ready_wrong_epoch_ignored": true,
+      "expected_rejection": "Consumption reader polling gap exceeds 25 ms",
+      "rejection_exit_code": 1,
+      "exit_observed_before_cleanup": true,
+      "active_pause_ns": 80204781,
+      "zero_prestart_states": true,
+      "no_old_or_partial_rows_published": true,
+      "new_complete_rows_published": true,
+      "active_gap_rejected": true,
+      "semantics": "READY may stall without output; LiveStart EOF resync; only later complete synthetic rows become live; ACTIVE retains 25 ms guard",
+      "cleanup_actions": [],
+      "child_returncode_after_cleanup": 1,
+      "files": {
+        "SYNTHETIC_consumption.csv": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/SYNTHETIC_consumption.csv",
+          "sha256": "004d0795d471a3a1518c33068da6ed37adf1abeb176e72655482ae2e463fd4ca",
+          "bytes": 6665
+        },
+        "fixture_configuration.json": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/fixture_configuration.json",
+          "sha256": "6572e2996be5a6c0d18200af62d46e4580dc3b4237a333caf0ec15a1183e11a4",
+          "bytes": 332
+        },
+        "consumption.log": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/consumption.log",
+          "sha256": "7989d1bf5726667fea3a9d391104093abe9a19b283010e587f6db70b8fb33ae2",
+          "bytes": 45
+        },
+        "consumption_ready": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/ready_live_active/consumption_ready",
+          "sha256": "fede6fecbb62b1dbed05532968b932ac7ee9ab6b09b8cdf5a2ea715eae26f9c0",
+          "bytes": 80
+        }
+      }
+    },
+    {
+      "case": "wrong_configuration_hash",
+      "passed": true,
+      "synthetic_software_fixture_only": true,
+      "session_id": 1007151171,
+      "epoch": 1,
+      "configuration_sha256": "56f4e4a6b9d5c972493685c76d85bf96d86bfb054872e6d20bf2ac8490a3136f",
+      "events": [
+        {
+          "event": "child_started",
+          "monotonic_ns": 59597163789677154
+        },
+        {
+          "event": "ready",
+          "monotonic_ns": 59597163828456793,
+          "csv_rows": 8
+        },
+        {
+          "event": "live_start_published",
+          "monotonic_ns": 59597163869296316,
+          "session_id": 1007151171,
+          "epoch": 1,
+          "configuration_sha256": "16f4e4a6b9d5c972493685c76d85bf96d86bfb054872e6d20bf2ac8490a3136f",
+          "issued_monotonic_ns": 59597163869159199,
+          "origin_s": 10.068
+        },
+        {
+          "event": "expected_rejection_observed",
+          "monotonic_ns": 59597163980199850,
+          "exit_code": 1,
+          "expected": "Consumption LiveStart identity/origin invalid"
+        }
+      ],
+      "states": [],
+      "csv_rows": [
+        {
+          "index": 1,
+          "sim_s": 10.004,
+          "counter": [
+            1001,
+            2001
+          ],
+          "velocity": [
+            0.011,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.004,
+            10.004
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163789731277
+        },
+        {
+          "index": 2,
+          "sim_s": 10.008,
+          "counter": [
+            1002,
+            2002
+          ],
+          "velocity": [
+            0.012,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.008,
+            10.008
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163794620951
+        },
+        {
+          "index": 3,
+          "sim_s": 10.012,
+          "counter": [
+            1003,
+            2003
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.012,
+            10.012
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163799560806
+        },
+        {
+          "index": 4,
+          "sim_s": 10.016,
+          "counter": [
+            1004,
+            2004
+          ],
+          "velocity": [
+            0.014,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.016,
+            10.016
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163804364988
+        },
+        {
+          "index": 5,
+          "sim_s": 10.02,
+          "counter": [
+            1005,
+            2005
+          ],
+          "velocity": [
+            0.01,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.02,
+            10.02
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163809182467
+        },
+        {
+          "index": 6,
+          "sim_s": 10.024,
+          "counter": [
+            1006,
+            2006
+          ],
+          "velocity": [
+            0.011,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.024,
+            10.024
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163813969483
+        },
+        {
+          "index": 7,
+          "sim_s": 10.028,
+          "counter": [
+            1007,
+            2007
+          ],
+          "velocity": [
+            0.012,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.028,
+            10.028
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163818769526
+        },
+        {
+          "index": 8,
+          "sim_s": 10.032,
+          "counter": [
+            1008,
+            2008
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.032,
+            10.032
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163823567905
+        },
+        {
+          "index": 9,
+          "sim_s": 10.036,
+          "counter": [
+            1009,
+            2009
+          ],
+          "velocity": [
+            0.014,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.036,
+            10.036
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163828475930
+        },
+        {
+          "index": 10,
+          "sim_s": 10.04,
+          "counter": [
+            1010,
+            2010
+          ],
+          "velocity": [
+            0.01,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.04,
+            10.04
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163833247142
+        },
+        {
+          "index": 11,
+          "sim_s": 10.044,
+          "counter": [
+            1011,
+            2011
+          ],
+          "velocity": [
+            0.011,
+            -0.024
+          ],
+          "consumed_sim_s": [
+            10.044,
+            10.044
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163838010031
+        },
+        {
+          "index": 12,
+          "sim_s": 10.048,
+          "counter": [
+            1012,
+            2012
+          ],
+          "velocity": [
+            0.012,
+            -0.025
+          ],
+          "consumed_sim_s": [
+            10.048,
+            10.048
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163842766489
+        },
+        {
+          "index": 13,
+          "sim_s": 10.052,
+          "counter": [
+            1013,
+            2013
+          ],
+          "velocity": [
+            0.013000000000000001,
+            -0.026000000000000002
+          ],
+          "consumed_sim_s": [
+            10.052,
+            10.052
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163847549932
+        },
+        {
+          "index": 14,
+          "sim_s": 10.056,
+          "counter": [
+            1014,
+            2014
+          ],
+          "velocity": [
+            0.014,
+            -0.02
+          ],
+          "consumed_sim_s": [
+            10.056,
+            10.056
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163852315630
+        },
+        {
+          "index": 15,
+          "sim_s": 10.06,
+          "counter": [
+            1015,
+            2015
+          ],
+          "velocity": [
+            0.01,
+            -0.021
+          ],
+          "consumed_sim_s": [
+            10.06,
+            10.06
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163857072775
+        },
+        {
+          "index": 16,
+          "sim_s": 10.064,
+          "counter": [
+            1016,
+            2016
+          ],
+          "velocity": [
+            0.011,
+            -0.022
+          ],
+          "consumed_sim_s": [
+            10.064,
+            10.064
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163861827133
+        },
+        {
+          "index": 17,
+          "sim_s": 10.068,
+          "counter": [
+            1017,
+            2017
+          ],
+          "velocity": [
+            0.012,
+            -0.023
+          ],
+          "consumed_sim_s": [
+            10.068,
+            10.068
+          ],
+          "complete": true,
+          "write_monotonic_ns": 59597163866585835
+        }
+      ],
+      "command": [
+        "/usr/bin/taskset",
+        "--cpu-list",
+        "95",
+        "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source",
+        "--ros-args",
+        "-p",
+        "simulation_live:=true",
+        "-p",
+        "expected_session_id:=1007151171",
+        "-p",
+        "expected_epoch:=1",
+        "-p",
+        "configuration_sha256:=\"56f4e4a6b9d5c972493685c76d85bf96d86bfb054872e6d20bf2ac8490a3136f\"",
+        "-p",
+        "state_csv:=\"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/SYNTHETIC_consumption.csv\"",
+        "-p",
+        "ready_file:=\"/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/consumption_ready\""
+      ],
+      "child_pid": 4797,
+      "requested_cpu": 95,
+      "readiness_text": "actual complete plugin CSV; DDS matched; awaiting LiveStart and new-row barrier\n",
+      "expected_rejection": "Consumption LiveStart identity/origin invalid",
+      "rejection_exit_code": 1,
+      "exit_observed_before_cleanup": true,
+      "wrong_configuration_sha256_rejected": true,
+      "zero_states": true,
+      "cleanup_actions": [],
+      "child_returncode_after_cleanup": 1,
+      "files": {
+        "SYNTHETIC_consumption.csv": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/SYNTHETIC_consumption.csv",
+          "sha256": "c5202cacca603dd95b6d357bfd6d32d0a34db36f0ca973162ae417c5856662ce",
+          "bytes": 1202
+        },
+        "fixture_configuration.json": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/fixture_configuration.json",
+          "sha256": "4cdb4c0e505ff102c90dac61f6929932167be729a9e0857ccaa0c9e3a5351379",
+          "bytes": 340
+        },
+        "consumption.log": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/consumption.log",
+          "sha256": "d5714cbb8f0096d3895c62219604d9e9fb0c01f73f4bdb597ac380d57e484573",
+          "bytes": 46
+        },
+        "consumption_ready": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/consumption_startup_v1/wrong_configuration_hash/consumption_ready",
+          "sha256": "fede6fecbb62b1dbed05532968b932ac7ee9ab6b09b8cdf5a2ea715eae26f9c0",
+          "bytes": 80
+        }
+      }
+    }
+  ],
+  "probe_source": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/probe_x650_consumption_startup.py",
+    "sha256": "2254b675eec5622888fd2e0e9756b762ff0104466fd1a30bf5657eb4a2d93a10",
+    "bytes": 22534
+  },
+  "binary": {
+    "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source",
+    "sha256": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434",
+    "bytes": 684688
+  },
+  "binary_unchanged": true,
+  "finished_monotonic_ns": 59597164009572957
+}

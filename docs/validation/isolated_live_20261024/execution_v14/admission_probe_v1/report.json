@@ -1,0 +1,167 @@
+{
+  "kind": "x650_ingress_cadence_synthetic_probe_v1",
+  "passed": true,
+  "complete": true,
+  "synthetic_software_fixture_only": true,
+  "physical_validation": false,
+  "flight_accepted": false,
+  "hardware_qualified": false,
+  "eligible_as_stage_gate": false,
+  "domain_id": 219,
+  "binary": {
+    "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+    "sha256": "b4f22c6a4fe1078d83680b0b5606b45194e0cb316a57f95d5acac1c40761d8fe"
+  },
+  "probe_sha256": "c8b761dd6c522dfb29fd40446413ace15a16b117a0fefdfbf79a95022bdbafcf",
+  "events": [
+    {
+      "event": "first16ms_waited",
+      "monotonic_ns": 59599403045575437
+    },
+    {
+      "event": "actual_ACK_released16ms",
+      "monotonic_ns": 59599403056701543,
+      "dt_s": 0.016000000000000014,
+      "source_issued_ns": 59599403048036712
+    },
+    {
+      "event": "fixture_contract_completed",
+      "monotonic_ns": 59599403066753993
+    }
+  ],
+  "admitted": [
+    {
+      "sequence": 1,
+      "issued_ns": 59599403045994916,
+      "control_s": 10.02,
+      "dt_s": 0.019999999999999574,
+      "command_count": 1,
+      "packet_count": 2
+    },
+    {
+      "sequence": 2,
+      "issued_ns": 59599403048036712,
+      "control_s": 10.036,
+      "dt_s": 0.016000000000000014,
+      "command_count": 1,
+      "packet_count": 2
+    },
+    {
+      "sequence": 3,
+      "issued_ns": 59599403057766187,
+      "control_s": 10.056,
+      "dt_s": 0.019999999999999574,
+      "command_count": 1,
+      "packet_count": 2
+    },
+    {
+      "sequence": 4,
+      "issued_ns": 59599403062153049,
+      "control_s": 10.08,
+      "dt_s": 0.02400000000000091,
+      "command_count": 1,
+      "packet_count": 2
+    }
+  ],
+  "source_published": [
+    {
+      "sequence": 1,
+      "issued_ns": 59599403043089185,
+      "publish_return_ns": 59599403043185170,
+      "control_s": 10.016,
+      "task_s": 0.016
+    },
+    {
+      "sequence": 2,
+      "issued_ns": 59599403045994916,
+      "publish_return_ns": 59599403046068292,
+      "control_s": 10.02,
+      "task_s": 0.02
+    },
+    {
+      "sequence": 3,
+      "issued_ns": 59599403048036712,
+      "publish_return_ns": 59599403048094499,
+      "control_s": 10.036,
+      "task_s": 0.036
+    },
+    {
+      "sequence": 4,
+      "issued_ns": 59599403057766187,
+      "publish_return_ns": 59599403057824486,
+      "control_s": 10.056,
+      "task_s": 0.056
+    },
+    {
+      "sequence": 5,
+      "issued_ns": 59599403062153049,
+      "publish_return_ns": 59599403062216646,
+      "control_s": 10.08,
+      "task_s": 0.08
+    }
+  ],
+  "ack_published": [
+    {
+      "sequence": 1,
+      "session_id": 582992803,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403050348437,
+      "publish_return_ns": 59599403050411882
+    },
+    {
+      "sequence": 999,
+      "session_id": 582992802,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403052344136,
+      "publish_return_ns": 59599403052381736
+    },
+    {
+      "sequence": 1,
+      "session_id": 582992802,
+      "stop_zero": true,
+      "sent_monotonic_ns": 59599403054262259,
+      "publish_return_ns": 59599403054295279
+    },
+    {
+      "sequence": 1,
+      "session_id": 582992802,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403056163208,
+      "publish_return_ns": 59599403056194874
+    },
+    {
+      "sequence": 1,
+      "session_id": 582992802,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403058288322,
+      "publish_return_ns": 59599403058324185
+    },
+    {
+      "sequence": 2,
+      "session_id": 582992802,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403060101256,
+      "publish_return_ns": 59599403060142534
+    },
+    {
+      "sequence": 3,
+      "session_id": 582992802,
+      "stop_zero": false,
+      "sent_monotonic_ns": 59599403062720421,
+      "publish_return_ns": 59599403062757859
+    }
+  ],
+  "session_id": 582992802,
+  "epoch": 1,
+  "configuration_sha256": "5e96258830fd6330fe6dddb77993d9ad73dbe65038824a417c15dd67cd6c3bd3",
+  "own_pid": 9004,
+  "trace_sha256": "49ed3b8e902d4f099c42a2b7fbde85dcaca9785c209bbba01dcb45ed1b81bb3b",
+  "negative_ack_cases_passed": true,
+  "actual_dt_ms": [
+    19.999999999999574,
+    16.000000000000014,
+    19.999999999999574,
+    24.00000000000091
+  ],
+  "child_returncode": 0
+}

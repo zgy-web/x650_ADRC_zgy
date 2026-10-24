@@ -1,0 +1,59 @@
+{
+  "pass": true,
+  "modules": [
+    {
+      "name": "__init__.py",
+      "source_sha256": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+      "installed_sha256": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+      "equal": true
+    },
+    {
+      "name": "diagnostic_channel.py",
+      "source_sha256": "7e02d1773b55dea019518bb291cf5712cdba24fa465f8e4399b28eca4154e6f7",
+      "installed_sha256": "7e02d1773b55dea019518bb291cf5712cdba24fa465f8e4399b28eca4154e6f7",
+      "equal": true
+    },
+    {
+      "name": "engine.py",
+      "source_sha256": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570",
+      "installed_sha256": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570",
+      "equal": true
+    },
+    {
+      "name": "factory.py",
+      "source_sha256": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+      "installed_sha256": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+      "equal": true
+    },
+    {
+      "name": "figure8_factory.py",
+      "source_sha256": "60085f01dc298ab621c1ceb4fe59ddabc2d7ab679838dcb8fa0b8fcd6543c15b",
+      "installed_sha256": "60085f01dc298ab621c1ceb4fe59ddabc2d7ab679838dcb8fa0b8fcd6543c15b",
+      "equal": true
+    },
+    {
+      "name": "isolated_node.py",
+      "source_sha256": "6135c466fb1162502b6c3d8270e7a5e411d8b6b81813504859c00d27fd9d1619",
+      "installed_sha256": "6135c466fb1162502b6c3d8270e7a5e411d8b6b81813504859c00d27fd9d1619",
+      "equal": true
+    },
+    {
+      "name": "live_factory.py",
+      "source_sha256": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+      "installed_sha256": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+      "equal": true
+    },
+    {
+      "name": "node.py",
+      "source_sha256": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+      "installed_sha256": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+      "equal": true
+    },
+    {
+      "name": "startup.py",
+      "source_sha256": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039",
+      "installed_sha256": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039",
+      "equal": true
+    }
+  ]
+}

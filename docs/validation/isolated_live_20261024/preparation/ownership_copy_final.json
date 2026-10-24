@@ -1,0 +1,85 @@
+{
+  "kind": "local_diagnostic_copy_microbenchmark_v1",
+  "synthetic_fixture_only": true,
+  "physical_timing_claim": false,
+  "scope": "two copies versus one owned per-step snapshot; no allocator calculation, ROS or flight",
+  "fixture": "80 envelope rows, 15x10 prediction; ReusingAllocator test fixture",
+  "samples": [
+    {
+      "repeat": 0,
+      "owned": false,
+      "microseconds_per_snapshot": 1141.4324
+    },
+    {
+      "repeat": 0,
+      "owned": true,
+      "microseconds_per_snapshot": 562.1168
+    },
+    {
+      "repeat": 1,
+      "owned": true,
+      "microseconds_per_snapshot": 566.9716
+    },
+    {
+      "repeat": 1,
+      "owned": false,
+      "microseconds_per_snapshot": 1149.0744
+    },
+    {
+      "repeat": 2,
+      "owned": false,
+      "microseconds_per_snapshot": 1352.2931999999998
+    },
+    {
+      "repeat": 2,
+      "owned": true,
+      "microseconds_per_snapshot": 567.8924000000001
+    },
+    {
+      "repeat": 3,
+      "owned": true,
+      "microseconds_per_snapshot": 556.6664000000001
+    },
+    {
+      "repeat": 3,
+      "owned": false,
+      "microseconds_per_snapshot": 1138.4404
+    },
+    {
+      "repeat": 4,
+      "owned": false,
+      "microseconds_per_snapshot": 1158.436
+    },
+    {
+      "repeat": 4,
+      "owned": true,
+      "microseconds_per_snapshot": 591.7135999999999
+    },
+    {
+      "repeat": 5,
+      "owned": true,
+      "microseconds_per_snapshot": 561.1031999999999
+    },
+    {
+      "repeat": 5,
+      "owned": false,
+      "microseconds_per_snapshot": 1141.1884
+    }
+  ],
+  "median_us": {
+    "public_independent": 1145.2534,
+    "live_owned": 564.5442
+  },
+  "median_ratio_owned_over_public": 0.49294260990624433,
+  "implementation_sha256": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "24010bd0d66df5c5e261bd8f07c232f6f24949e119198aa5b1b7b35bbb72a4b7",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_live_diagnostic_snapshot.py": "ce7070264be92a727dc9b7b7b80052fc3c417c5df59b748d4cce7b99009e792c"
+  },
+  "validation": {
+    "ros_python_test_suite": 39,
+    "new_ownership_cases": 11,
+    "original_adapter_cases": 9,
+    "all_passed": true
+  }
+}

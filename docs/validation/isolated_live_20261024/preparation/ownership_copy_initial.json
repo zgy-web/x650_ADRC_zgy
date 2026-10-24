@@ -1,0 +1,79 @@
+{
+  "kind": "local_diagnostic_copy_microbenchmark_v1",
+  "synthetic_fixture_only": true,
+  "physical_timing_claim": false,
+  "scope": "two copies versus one owned per-step snapshot; no allocator calculation, ROS or flight",
+  "fixture": "test_live_diagnostic_snapshot.ReusingAllocator: 80 envelope rows, 15x10 prediction",
+  "samples": [
+    {
+      "repeat": 0,
+      "owned": false,
+      "microseconds_per_snapshot": 1317.1148
+    },
+    {
+      "repeat": 0,
+      "owned": true,
+      "microseconds_per_snapshot": 643.6071999999999
+    },
+    {
+      "repeat": 1,
+      "owned": true,
+      "microseconds_per_snapshot": 628.2104
+    },
+    {
+      "repeat": 1,
+      "owned": false,
+      "microseconds_per_snapshot": 1374.3368
+    },
+    {
+      "repeat": 2,
+      "owned": false,
+      "microseconds_per_snapshot": 1251.4688
+    },
+    {
+      "repeat": 2,
+      "owned": true,
+      "microseconds_per_snapshot": 576.3575999999999
+    },
+    {
+      "repeat": 3,
+      "owned": true,
+      "microseconds_per_snapshot": 560.6764000000001
+    },
+    {
+      "repeat": 3,
+      "owned": false,
+      "microseconds_per_snapshot": 1154.1096
+    },
+    {
+      "repeat": 4,
+      "owned": false,
+      "microseconds_per_snapshot": 1129.1624
+    },
+    {
+      "repeat": 4,
+      "owned": true,
+      "microseconds_per_snapshot": 564.9496
+    },
+    {
+      "repeat": 5,
+      "owned": true,
+      "microseconds_per_snapshot": 560.6891999999999
+    },
+    {
+      "repeat": 5,
+      "owned": false,
+      "microseconds_per_snapshot": 1140.2631999999999
+    }
+  ],
+  "median_us": {
+    "public_independent": 1202.7892000000002,
+    "live_owned": 570.6536
+  },
+  "median_ratio_owned_over_public": 0.4744419055309109,
+  "implementation_sha256": {
+    "control_packages\\x650_wholebody_v1\\x650_wholebody\\adapter.py": "313c8e2e7f9709841181617944472ce552e1a80d42620391adf3dc564f46752e",
+    "ros2_ws\\src\\flyarm_mpc_reference\\flyarm_mpc_reference\\live_factory.py": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+    "ros2_ws\\src\\flyarm_mpc_reference\\test\\test_live_diagnostic_snapshot.py": "698961d4b795f7c55d812b69117d9bd788ab0ea42f5e71d8018c31bc3dbe97aa"
+  }
+}

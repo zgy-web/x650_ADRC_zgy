@@ -1,0 +1,7 @@
+{
+  "sources": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "7ecbc58c94a2133d7f3b6f3d3b039150d3c4bf56e284dfc46f95479793474c29",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66"
+  },
+  "scope": "native-only preparation; independent reference restored byte-exact; original propagation model and native libraries unchanged"
+}

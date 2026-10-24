@@ -1,0 +1,133 @@
+{
+  "passed": true,
+  "installed_modules": [
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/__init__.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/__init__.py",
+      "sha256": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/diagnostic_channel.py",
+      "sha256": "a7deded69be944b83a0ab5d8dae6a00e78d2397fe2ad7c3e6520e32e019bf261"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/engine.py",
+      "sha256": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/factory.py",
+      "sha256": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/figure8_factory.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/figure8_factory.py",
+      "sha256": "60085f01dc298ab621c1ceb4fe59ddabc2d7ab679838dcb8fa0b8fcd6543c15b"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/isolated_node.py",
+      "sha256": "d29032aa3d7f79da3e5fefa99f29f3d7e4752b8c59a380b0205b9c4ee1ae1d2e"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/live_factory.py",
+      "sha256": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/node.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/node.py",
+      "sha256": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae"
+    },
+    {
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/startup.py",
+      "installed": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_mpc_reference/lib/python3.10/site-packages/flyarm_mpc_reference/startup.py",
+      "sha256": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039"
+    }
+  ],
+  "protocol": {
+    "kind": "x650_isolated_live_protocol_v1",
+    "simulation_only": true,
+    "execution_revision": 14,
+    "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
+    "cpu_roles": {
+      "source": [
+        17
+      ],
+      "worker": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "dispatcher": [
+        93
+      ],
+      "ingress": [
+        94
+      ],
+      "consumption": [
+        95
+      ]
+    },
+    "cpu_scope": "owned simulation processes only; SMT siblings excluded from owned background workloads; ordinary scheduler; host not reserved; Orin requires its own measurement",
+    "source_evidence": "separate nonblocking recorder; no retained message/feedback graphs; natural GC unchanged",
+    "model_control_cadence_s": 0.02,
+    "model_cadence_clock": "first admission waits 20 ms actual simulation time; subsequent admission uses a one-shot actual-send release and a strictly newer real source; model dt is always the measured source difference, not forced to 20 ms",
+    "transport_deadline_clock": "same-host monotonic wall clock; unchanged thresholds",
+    "next_solve_commit": "one next solve after matching actual writer send; retain send barrier, single pending candidate and original source times; no additional independent 20 ms physical minimum after the first solve",
+    "next_output_commit": "only_after_both_previous_joint_commands_consumed",
+    "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
+    "frozen_hold_task_sha256": "9ef8c12c6a9591bdc80660710b0de25f8589defdf12b0362f9109444ff64cc4c",
+    "frozen_numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+    "order": [
+      "transport_and_consumption_contract",
+      "complete_tip_hold",
+      "normal_figure_eight",
+      "fast_later"
+    ],
+    "tip_hold_duration_s": 30.0,
+    "output_period_s": 0.02,
+    "command_age_max_s": 0.05,
+    "control_interval_max_s": 0.05,
+    "source_wall_age_max_s": 0.025,
+    "output_interval_max_s": 0.04,
+    "tip_rms_max_m": 0.05,
+    "tip_peak_max_m": 0.1,
+    "tilt_max_deg": 8.0,
+    "numerical_replay_max_absolute_difference": 1e-07,
+    "requirements": [
+      "same_cpp_library_and_mpc_parameters",
+      "actual_joint_consumption_all_sent_counters",
+      "px4_wire_encoding_and_full_window_ulog",
+      "no_overlapping_output_owners",
+      "zero_consumed_before_recovery",
+      "landed_disarmed_and_parameters_restored",
+      "complete_independent_native_tip_record",
+      "no_diagnostic_loss",
+      "no_gate_or_output_fault"
+    ],
+    "incomplete_run_policy": "retain raw evidence, no certificate, do not advance to next stage",
+    "claims_excluded": [
+      "hardware_24v_validation",
+      "hard_realtime",
+      "full_body_torque_nmpc"
+    ],
+    "numerical_convergence": "QP aggregate plus per-original-row 1e-10 numerical target; original 2e-7 external feasibility, weights and physical constraints unchanged",
+    "ground_initialization": "construct cached lifecycle allocator and start idle transport on disarmed ground; actual LiveStart binds live reference/history after normal prestream",
+    "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged",
+    "native_preparation": "native-only batch packet/sensitivity/query/ABI preparation and event packing; independent reference predictor and physical libraries restored byte-exact; same parameters/equations/quantization; fresh 344 regression/30 matrix/388 recorded-call qualification",
+    "live_diagnostic_snapshot": "one owned allocation deepcopy per result; two distinct top-level diagnostic dictionaries; read-only live subtree sharing; synchronous binary capture before next step; public default retains independent copies",
+    "execution_timing_evidence": "bounded in-memory stage timestamps written after shutdown; distinguish engine return, proposal publication, gate entry and diagnostic serialization; original DDS schemas and timestamps retained"
+  },
+  "protocol_sha256": "c669828ce717945abda9578b964af2023c8c1ce6fb0025f028e171e951b4a3a6",
+  "binaries": {
+    "shadow_gateway": "3dbde4645f0e671a39e970898a493da3f5971ce91d81338a23155c18c8c91ca6",
+    "periodic_dispatcher": "7671eeb1d8c792d2f647e11eb5ff13356c4a617e41239c26672ee2a461b810b3",
+    "consumption_source": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434",
+    "live_dispatcher": "45b4477f3836f55c7287ff3d5aed27c01e44d9ab05bc6642467c6ce3533bc1bd",
+    "state_ingress": "b4f22c6a4fe1078d83680b0b5606b45194e0cb316a57f95d5acac1c40761d8fe"
+  }
+}

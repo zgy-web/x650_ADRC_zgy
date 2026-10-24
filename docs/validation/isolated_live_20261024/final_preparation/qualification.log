@@ -1,0 +1,98 @@
+test_changed_gain_target_rotation_or_nonfinite_state_is_rejected (test_engine.ReferenceEngineTests) ... ok
+test_context_identity_and_task_time_are_bound (test_engine.ReferenceEngineTests) ... ok
+test_expired_snapshot_has_deadline_status_and_future_issue_is_input_error (test_engine.ReferenceEngineTests) ... ok
+test_future_and_stale_state_joint_and_wrong_interval_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_history_count_padding_future_order_and_reference_anchor_are_rejected (test_engine.ReferenceEngineTests) ... ok
+test_identity_wrong_order_and_live_output_requests_are_rejected_before_solver (test_engine.ReferenceEngineTests) ... ok
+test_input_file_hash_is_checked_before_json_or_configuration_loading (test_engine.ReferenceEngineTests) ... ok
+test_live_handoff_is_explicit_one_shot_and_primes_actual_history (test_engine.ReferenceEngineTests) ... ok
+test_live_mode_cannot_solve_before_handoff_or_accept_shadow_input (test_engine.ReferenceEngineTests) ... ok
+test_monotonic_sequential_messages_keep_controller_memory_without_reset (test_engine.ReferenceEngineTests) ... ok
+test_outer_deadline_covers_conversion_adapter_and_clears_output (test_engine.ReferenceEngineTests) ... ok
+test_prearm_template_is_replaced_before_any_solve (test_engine.ReferenceEngineTests) ... ok
+test_rejection_latches_and_does_not_run_next_controller (test_engine.ReferenceEngineTests) ... ok
+test_solver_failure_or_missing_quality_never_returns_a_fallback (test_engine.ReferenceEngineTests) ... ok
+test_valid_snapshot_calls_same_step_once_with_causal_owned_context (test_engine.ReferenceEngineTests) ... ok
+test_before_live_start_is_not_executable (test_figure8_engine.FigureEightEngineTests) ... ok
+test_moving_target_is_verified_at_same_task_time_without_phase_fit (test_figure8_engine.FigureEightEngineTests) ... ok
+test_one_handoff_installs_same_actual_center_and_preview_trajectory (test_figure8_engine.FigureEightEngineTests) ... ok
+test_complete_certificate_checks_original_artifacts_and_numerical_sources (test_figure8_engine.NormalAdmissionTests) ... ok
+test_controller_change_and_fast_are_not_admitted (test_figure8_engine.NormalAdmissionTests) ... ok
+test_declared_revision_selects_baseline_and_old_binding_is_rejected (test_figure8_engine.NormalAdmissionTests) ... ok
+test_old_or_partial_hold_pass_flag_is_insufficient (test_figure8_engine.NormalAdmissionTests) ... ok
+test_all_command_and_record_fields_exactly_match_public_adapter (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_figure8_factory_early_return_also_selects_private_policy (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_hold_factory_selects_private_policy_before_live_handoff (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_later_allocator_steps_and_mutations_cannot_change_old_records (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_live_ownership_cannot_be_reconfigured_after_handoff_or_solve (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_live_result_owns_graph_without_self_cycle_or_controller_alias (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_modifying_an_owned_record_cannot_change_allocator_or_later_result (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_private_path_does_not_accept_invalid_list_of_diagnostic_pairs (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_public_default_keeps_independent_nested_mutation_behavior (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_real_diagnostic_sender_detaches_bytes_before_next_step (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_selecting_ownership_after_step_is_rejected (test_live_diagnostic_snapshot.LiveDiagnosticSnapshotTests) ... ok
+test_constructor_failure_still_shuts_down_owned_context (test_node_cleanup.CleanupTests) ... ok
+test_executor_failure_still_destroys_node_and_closes_context (test_node_cleanup.CleanupTests) ... ok
+test_external_shutdown_is_not_repeated (test_node_cleanup.CleanupTests) ... ok
+test_explicit_call_records_duration_counts_without_disabling_or_freezing (test_preflight_gc.PreflightGcTests) ... ok
+test_real_setup_cycle_is_collected_with_callbacks_and_policy_preserved (test_preflight_gc.PreflightGcTests) ... ok
+test_installed_sources_and_loaded_identity_are_recorded_without_overwrite (test_startup.StartupTests) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.263s
+
+OK
+{"completed": 1, "failures": 0}
+{"completed": 26, "failures": 0}
+{"completed": 51, "failures": 0}
+{"completed": 76, "failures": 0}
+{"completed": 101, "failures": 0}
+{"completed": 126, "failures": 0}
+{"completed": 151, "failures": 0}
+{"completed": 176, "failures": 0}
+{"completed": 201, "failures": 0}
+{"completed": 226, "failures": 0}
+{"completed": 251, "failures": 0}
+{"completed": 276, "failures": 0}
+{"completed": 301, "failures": 0}
+{"completed": 326, "failures": 0}
+{"completed": 351, "failures": 0}
+{"completed": 376, "failures": 0}
+{
+  "pass": true,
+  "passed": 388,
+  "total": 388,
+  "failures": []
+}
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpb1wpw93x
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpxrjohwqr
+X650_STAGE_START joint_probe pid_ff
+X650_STAGE_COMPLETE joint_probe /tmp/tmp8xg3l5q5
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpvrcaw_yt
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpm_h9qb_w
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpw0gcaz1z
+X650_STAGE_START response_probe pid_ff
+X650_STAGE_COMPLETE response_probe /tmp/tmpq8jpjfks
+{
+  "pass": true,
+  "tests": 344,
+  "matrix": 30,
+  "recorded": 388,
+  "native_acceptance": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/native_acceptance.json",
+    "sha256": "f07527f471e3a0c272ac5b916c73f52e9ac7be55732f11cb9731a61dbf3a26fb",
+    "bytes": 15653
+  },
+  "software_acceptance": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v3/software_acceptance.json",
+    "sha256": "d1bc683d1385663d6608142d45096e04e705a2847689ff005cc12906d53a1c26",
+    "bytes": 17481
+  }
+}

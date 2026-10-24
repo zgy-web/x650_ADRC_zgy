@@ -1,0 +1,22 @@
+{
+  "before": {
+    "configs/experiments/x650_isolated_live_v1.json": "d4be1cd462b1610328d40b805272da3dad178f12984563b135fbacba6b500f98",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp": "7becaaf4f824e6fbc4c21d913bf81eb6264922c71dbe666bd1733a3995ea3db1",
+    "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp": "f713cd9cd864c927b5f02f5c83825f936c3a4005bddddc12f4883f61afca222c",
+    "ros2_ws/src/flyarm_control_gateway/test/test_admission_cadence.cpp": "62ba8163c62eec4be674dd86033cf1607cbbe7e7fda12c941173d22ae632b5af",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py": "6135c466fb1162502b6c3d8270e7a5e411d8b6b81813504859c00d27fd9d1619",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py": "7e02d1773b55dea019518bb291cf5712cdba24fa465f8e4399b28eca4154e6f7",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_engine.py": "5c9908c39c63ba6a0e1678046e0f121b3706f78b7746c96c851d62f7da5c9371"
+  },
+  "after": {
+    "configs/experiments/x650_isolated_live_v1.json": "c669828ce717945abda9578b964af2023c8c1ce6fb0025f028e171e951b4a3a6",
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp": "217f0432f86d51f10dc711f2c627ab147cce319381b64cdb0078a4d48efe0aea",
+    "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp": "9b477f15859d791583e2cb9841059da56e2e94a018b256b186e5fb28b75bc3c8",
+    "ros2_ws/src/flyarm_control_gateway/test/test_admission_cadence.cpp": "521628c7bfacdf863c2c25b652877c29d5659dac29c92744fa21ea42b5d10fa1",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py": "d29032aa3d7f79da3e5fefa99f29f3d7e4752b8c59a380b0205b9c4ee1ae1d2e",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py": "a7deded69be944b83a0ab5d8dae6a00e78d2397fe2ad7c3e6520e32e019bf261",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_engine.py": "df5c0c22a8875f79fd62aed4eed056fb1a6f4a560a295989ace86034b53a35bd",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_isolated_worker_timing.py": "ff25fd0dc96e74e30c30639a1024d2edbadfa1e5feb429729364101f1dd3361a"
+  },
+  "archive_sha256": "3c5465ef4952caffa3cf97a37254085335d8522539ff7165bf4dd9048ffb0d0f"
+}

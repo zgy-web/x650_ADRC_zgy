@@ -1,0 +1,52 @@
+{
+  "previous_sources": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "cda86d49638c8a84640df56a27c796bdf231ea289ec2430a96987e09b9060e91",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "7484a1dc3ceab97b33a136283a4395c6a3b33e649230c062c312b33233e905a1",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+    "control_packages/x650_wholebody_v1/tests/test_native_optimization.py": "065cd4fbbb0a687614001fd28c28f67a2f8e6ed9b1d2fd77876fc498a148fc3c",
+    "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "b41f7012b3b5d6849f9cb8a285d80b7a46a56800f98177fe18e44b029fb45469",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py": "e6106328d50b529b4e6e7162fd36e317a50305438135896e09e8c2223319ee86",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_live_diagnostic_snapshot.py": null,
+    "scripts/render_x650_isolated_validation.py": null,
+    "tests/unit/test_x650_isolated_validation_render.py": null
+  },
+  "deployed_sources": {
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": {
+      "sha256": "d1dc50044b4e7db023a746a24219f90d1862df9b54b388f636e51e97c700fd75",
+      "bytes": 11216
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": {
+      "sha256": "4c46f27e7828738224d94f9d622ef67140823609cccbdef813628f119ff4892f",
+      "bytes": 11685
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": {
+      "sha256": "2ad99b686294195f6eec554cf65a035c7d741a8e9033f2839a0ad8ccba359263",
+      "bytes": 38691
+    },
+    "control_packages/x650_wholebody_v1/tests/test_native_optimization.py": {
+      "sha256": "de116631cab669607038b6e555881ca22b03dbfa640c7debf445f57af880e8f0",
+      "bytes": 16738
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": {
+      "sha256": "24010bd0d66df5c5e261bd8f07c232f6f24949e119198aa5b1b7b35bbb72a4b7",
+      "bytes": 12135
+    },
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py": {
+      "sha256": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+      "bytes": 2412
+    },
+    "ros2_ws/src/flyarm_mpc_reference/test/test_live_diagnostic_snapshot.py": {
+      "sha256": "ce7070264be92a727dc9b7b7b80052fc3c417c5df59b748d4cce7b99009e792c",
+      "bytes": 11179
+    },
+    "scripts/render_x650_isolated_validation.py": {
+      "sha256": "3c86ef12834fb5c3456cac4847df037a9e9e8b19365a9acf587786070d35b060",
+      "bytes": 27591
+    },
+    "tests/unit/test_x650_isolated_validation_render.py": {
+      "sha256": "5e753f03a55154dceb40ac36de9986f2d6a4e438e3804261a3b6bdff44d2c0b7",
+      "bytes": 13699
+    }
+  },
+  "archive_sha256": "d495c22ebf3205d8a640cc7ab669e67ce4a92cd1810e98b195221bc9f9fefade"
+}

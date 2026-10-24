@@ -1,0 +1,11 @@
+{
+  "ros2_ws/src/flyarm_control_gateway/CMakeLists.txt": "71a3ab6b8c31d10c56cf8de158c3c6ee9f9009f7fbd729f673bde94b58ba0687",
+  "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp": "75c0173b828e86e733f35397db46facdb20439baeafd579ab4ac28bbaa12519a",
+  "ros2_ws/src/flyarm_control_gateway/test/test_periodic_gate.cpp": "b292605304ae39e3823dfee70a803193d066e24c6545be9953e3c74f6d801596",
+  "ros2_ws/src/flyarm_control_gateway/src/consumption_source.cpp": "ff90aba24c9992d710f7f08b6d87a8c7a55984f8c30a2225218163698a486d01",
+  "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_lifecycle.hpp": "bf149ab3a3811efbf06407da851b62aa5c359137a9d28c25f861a47b47fe8c8a",
+  "ros2_ws/src/flyarm_control_gateway/test/test_consumption_lifecycle.cpp": "3c67f2bf4fdbd3cf8044ed928aa538fdcd1a65a25b2c662d1afeda5101299eff",
+  "simulations/x650_isolated_live_v1/run_case.py": "35724ae7575e47a029d77a72475d6fdacb93ef4d376f2a308a2715159a4d6bc5",
+  "tests/unit/test_x650_live_ground_preparation.py": "7ac9a167a106f5dd3d2d8ae3639b77a57f0619375887ef7a20e9d6717a6d74f9",
+  "configs/experiments/x650_isolated_live_v1.json": "abd525e0ae63225becf5c608e66cda7f1b7ce84f048ab2db035df7345062cb68"
+}

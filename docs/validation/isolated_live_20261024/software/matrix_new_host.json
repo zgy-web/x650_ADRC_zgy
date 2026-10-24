@@ -1,0 +1,1184 @@
+{
+  "kind": "native_numerics_matrix_v1",
+  "no_flight": true,
+  "complete": true,
+  "protocol": {
+    "kind": "native_numerics_equivalence_v1",
+    "matrix_absolute_tolerance": 1e-09,
+    "matrix_relative_tolerance": 1e-09,
+    "normalized_plan_peak_max": 1e-07,
+    "predicted_state_peak_max": 1e-07,
+    "objective_relative_scale_max": 1e-08,
+    "candidate_classification_equal": true,
+    "actual_mit_packets_required_equal": true,
+    "original_full_constraint_primal_max": 2e-07,
+    "original_full_constraint_stationarity_max": 0.002,
+    "original_total_controller_deadline_ms": 50.0,
+    "frozen_matrix_case_count": 30,
+    "previous_recordings_must_be_replayed": true,
+    "preserve_pid_weights_limits_and_candidate_policy": true,
+    "hold_after_software_acceptance_only": true,
+    "fast_figure_eight_after_full_hold_only": true
+  },
+  "deployment_sources": {
+    "scripts/validate_x650_native_numerics.py": "ea1f11f09b78f15e0e151f4b229d99d01161c9f214fafe6fd188ab05b2247f09",
+    "control_packages/x650_wholebody_v1/native/validation_protocol.json": "8ae9c71b1d767718605b326bfb7967cd0ff7bca822fccdd3168cc25ee65a7ca9",
+    "scripts/replay_x650_native_numerics.py": "00ae74e0fe19c8496a1829a2f7c0ad7c5e07010372d55bb07a148844453cdad9",
+    "simulations/x650_ts20_hold_v1/task.py": "7044528ad0772c625ede60976916d13da0ec97caaf39cbfdb687310b783a8116",
+    "simulations/x650_ts20_hold_v1/run_case.py": "79866fc012ca20bc867b88773782bce64d6632cb8ee9804d0103aa29d161211e",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/factory.py": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+    "control_packages/x650_wholebody_v1/tests/test_native_optimization.py": "065cd4fbbb0a687614001fd28c28f67a2f8e6ed9b1d2fd77876fc498a148fc3c",
+    "control_packages/x650_wholebody_v1/x650_wholebody/__init__.py": "ddf24a56592a5f46aac941f7af3a17d923d931de84eff08e3c2eb6bf762430db",
+    "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "b41f7012b3b5d6849f9cb8a285d80b7a46a56800f98177fe18e44b029fb45469",
+    "control_packages/x650_wholebody_v1/x650_wholebody/api.py": "cc3eb5db0455120f51a3edb499cef56f88773673b9b53a14ae1e715e1e10ae76",
+    "control_packages/x650_wholebody_v1/x650_wholebody/baseline.py": "d6ee21d254ee0fb6f089705dfa7b2cca36d14fe0c01b9ea9a76592355c8766c4",
+    "control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py": "3897d73898895eba8c5652670f8a7bff1a599736a1d94c31db6784fa2d0e8631",
+    "control_packages/x650_wholebody_v1/x650_wholebody/model.py": "266bf543c8546b5bd82738e0283c87853a1796d43f70a24c69f8ad9908276e5f",
+    "control_packages/x650_wholebody_v1/x650_wholebody/mpc.py": "d3a7bd90ef4146683fef9755640a9bee52d39aa2dc3988458ab87ff94d218c5b",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "cda86d49638c8a84640df56a27c796bdf231ea289ec2430a96987e09b9060e91",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py": "02be5ce82f9db3772a4a4b1a056fbaebf583a653517dac45c59cdff6ad2895c7",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "7484a1dc3ceab97b33a136283a4395c6a3b33e649230c062c312b33233e905a1",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py": "1772b757107020a426153c1864d8ba1eecdf7038e66e9422de9726907ae1aaa4",
+    "control_packages/x650_wholebody_v1/x650_wholebody/prediction_chain.py": "3df989b72ba0013c58d0d022347309a10244ee74cd4fa56655db5ccbddda2ac5",
+    "control_packages/x650_wholebody_v1/x650_wholebody/qp_constraints.py": "d43929741079bac62e064abcc7a073d09eef298753cfa38dd6a168fddbea535e",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20.py": "dd16c9dd05aa3986156f3b496a94ddad958370631aac2a118045f8204b38f2af",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py": "bd5558186381e622d36039f8b58314b5f63b709a0c5fc65a6f9e6e7d828fa830",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py": "f25e45d755c236cd46c0e4fd2e11fb23fe926bc1b7e286dd87c9ac03414b7b66",
+    "control_packages/x650_wholebody_v1/x650_wholebody/ts20_runtime.py": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080",
+    "control_packages/x650_wholebody_v1/native/CMakeLists.txt": "c8c866ff19bbcac3070f27413919f586c858c4be0ac0ea2660d80089274b07a9",
+    "control_packages/x650_wholebody_v1/native/optimization.cpp": "a2336e1ff69deea8c2268f4a1394dd6e3a8d34b134c0aed100afb353450b6759",
+    "control_packages/x650_wholebody_v1/native/regressions/README.md": "c45c1830a06aba8e19bc4e97606d488ac825885b1ffd53b9c88555bce6c9a77e",
+    "control_packages/x650_wholebody_v1/native/regressions/hold16_round1416_qp.npz": "b0588307e0901093ed25b9115b9ca4818a7f9009737bc7ffa10f733ae1a40946",
+    "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/Array.hh": "df5821f916b6dba3e6ace9478edb3933eea5af869f9753448e45427ea22db4c9",
+    "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/LICENSE": "6b3d5d656e94973e5120a0863e383ede61e2a0d3132267fd7ead0f5d87c9fb84",
+    "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc": "d4eb86b17f7f7103a3270e193881ca431485db6bea32bcd29a230c7f3ef15600",
+    "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.hh": "dc8be1735e25063ff45e76b0e63b8607ea73e595da5c063479b25cbaea326217",
+    "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/UPSTREAM.json": "63de4e5d948a23785128747e17cfd152c3b5e9e83b33218b8b9afdbe4fba3f14"
+  },
+  "native_library": {
+    "path": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+    "sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+    "abi": 1
+  },
+  "original_matrix": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/ts20_prediction_chain_20261022/benchmark_gain_kd025_matrix_v1.py",
+    "sha256": "a2768dd7b87d04e714d34243caa0073025c9db77188971f1d18a00bc74006e61",
+    "bytes": 3178
+  },
+  "rows": [
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.0,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 9.62964972193618e-35,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.961913028453743e-31,
+      "predicted_state_peak": 6.317050217590134e-32,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 8.5703882525232e-33,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 0
+      },
+      "reference_instrumented_ms": 29.092855751514435,
+      "native_instrumented_ms": 20.75628936290741,
+      "native_uninstrumented_ms": 16.65136218070984,
+      "native_outer_ms": 16.627155244350433
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.0,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 9.62964972193618e-35,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.961913028453743e-31,
+      "predicted_state_peak": 6.317050217590134e-32,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 8.5703882525232e-33,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 0
+      },
+      "reference_instrumented_ms": 27.985692024230957,
+      "native_instrumented_ms": 17.253771424293518,
+      "native_uninstrumented_ms": 16.51903986930847,
+      "native_outer_ms": 16.476355493068695
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.0,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.928729508540177e-19,
+        "H": 5.551115123125783e-17,
+        "g": 6.938893903907228e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 7.930164461608261e-17,
+      "predicted_state_peak": 1.9949319973733282e-17,
+      "objective_relative_scale_error": 4.33075716335973e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 2.7755575615628914e-17,
+        "kkt_stationarity_inf": 2.0383000842727483e-17,
+        "kkt_complementarity_inf": 4.175869452542024e-20,
+        "active_constraints": 22
+      },
+      "reference_instrumented_ms": 44.225312769412994,
+      "native_instrumented_ms": 22.856973111629486,
+      "native_uninstrumented_ms": 22.419072687625885,
+      "native_outer_ms": 22.378310561180115
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 9.62964972193618e-35,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7858280049669095e-31,
+      "predicted_state_peak": 6.162975822039155e-32,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 7.475015596652959e-33,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 0
+      },
+      "reference_instrumented_ms": 27.32260525226593,
+      "native_instrumented_ms": 17.066724598407745,
+      "native_uninstrumented_ms": 16.18461310863495,
+      "native_outer_ms": 16.054369509220123
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 9.62964972193618e-35,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7858280049669095e-31,
+      "predicted_state_peak": 6.162975822039155e-32,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 0.0,
+        "kkt_stationarity_inf": 7.475015596652959e-33,
+        "kkt_complementarity_inf": 0.0,
+        "active_constraints": 0
+      },
+      "reference_instrumented_ms": 27.56395936012268,
+      "native_instrumented_ms": 32.80509263277054,
+      "native_uninstrumented_ms": 16.69374108314514,
+      "native_outer_ms": 16.653314232826233
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.0,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.979551485375435e-19,
+        "H": 2.220446049250313e-16,
+        "g": 2.0816681711721685e-17,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 5.551115123125783e-16,
+      "predicted_state_peak": 3.400058012914542e-16,
+      "objective_relative_scale_error": 8.66160299506522e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 2.7755575615628914e-17,
+        "kkt_complementarity_inf": 6.262350126729919e-20,
+        "active_constraints": 22
+      },
+      "reference_instrumented_ms": 44.27023231983185,
+      "native_instrumented_ms": 22.8111669421196,
+      "native_uninstrumented_ms": 22.67322689294815,
+      "native_outer_ms": 22.627487778663635
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.0,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7848512203130333e-16,
+      "predicted_state_peak": 2.2898349882893854e-16,
+      "objective_relative_scale_error": 5.4203449798303446e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.752045533271357e-18,
+        "kkt_complementarity_inf": 2.3631716815929287e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 39.44920748472214,
+      "native_instrumented_ms": 19.800566136837006,
+      "native_uninstrumented_ms": 23.3781635761261,
+      "native_outer_ms": 23.224614560604095
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.0,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7848512203130333e-16,
+      "predicted_state_peak": 2.2898349882893854e-16,
+      "objective_relative_scale_error": 5.4203449798303446e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.752045533271357e-18,
+        "kkt_complementarity_inf": 2.3631716815929287e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 39.51810300350189,
+      "native_instrumented_ms": 19.909009337425232,
+      "native_uninstrumented_ms": 19.70643550157547,
+      "native_outer_ms": 19.66509222984314
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.0,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.928729508540177e-19,
+        "H": 5.551115123125783e-17,
+        "g": 1.3877787807814457e-17,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 1.5770213417970973e-16,
+      "predicted_state_peak": 7.632783294297951e-17,
+      "objective_relative_scale_error": 1.2979502095005746e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 2.3418766925686896e-17,
+        "kkt_complementarity_inf": 1.344061397936192e-19,
+        "active_constraints": 23
+      },
+      "reference_instrumented_ms": 49.65045303106308,
+      "native_instrumented_ms": 22.936195135116577,
+      "native_uninstrumented_ms": 22.33089506626129,
+      "native_outer_ms": 22.269003093242645
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7375405800591205e-16,
+      "predicted_state_peak": 2.2724877535296173e-16,
+      "objective_relative_scale_error": 8.130517469745518e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.48099499014998e-18,
+        "kkt_complementarity_inf": 2.3631716815929167e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 43.0864617228508,
+      "native_instrumented_ms": 20.55496722459793,
+      "native_uninstrumented_ms": 18.7692791223526,
+      "native_outer_ms": 18.64306628704071
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7375405800591205e-16,
+      "predicted_state_peak": 2.2724877535296173e-16,
+      "objective_relative_scale_error": 8.130517469745518e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.48099499014998e-18,
+        "kkt_complementarity_inf": 2.3631716815929167e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 29.042594134807587,
+      "native_instrumented_ms": 13.045869767665863,
+      "native_uninstrumented_ms": 12.916289269924164,
+      "native_outer_ms": 12.886911630630493
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.001,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.979551485375435e-19,
+        "H": 2.220446049250313e-16,
+        "g": 3.469446951953614e-17,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 9.272885489766932e-16,
+      "predicted_state_peak": 5.689893001203927e-16,
+      "objective_relative_scale_error": 8.653082294048661e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-17,
+        "kkt_stationarity_inf": 6.245004513516506e-17,
+        "kkt_complementarity_inf": 1.3939713025371205e-19,
+        "active_constraints": 23
+      },
+      "reference_instrumented_ms": 41.276976466178894,
+      "native_instrumented_ms": 16.3833349943161,
+      "native_uninstrumented_ms": 15.455737709999084,
+      "native_outer_ms": 15.407159924507141
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.0,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.816391647148975e-16,
+      "predicted_state_peak": 2.3245294578089215e-16,
+      "objective_relative_scale_error": 2.7101724899151723e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.752045533271357e-18,
+        "kkt_complementarity_inf": 2.363171681592918e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 33.48784148693085,
+      "native_instrumented_ms": 17.249763011932373,
+      "native_uninstrumented_ms": 16.548164188861847,
+      "native_outer_ms": 16.42046868801117
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.0,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.816391647148975e-16,
+      "predicted_state_peak": 2.3245294578089215e-16,
+      "objective_relative_scale_error": 2.7101724899151723e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 7.752045533271357e-18,
+        "kkt_complementarity_inf": 2.363171681592918e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 34.96015816926956,
+      "native_instrumented_ms": 14.231167733669281,
+      "native_uninstrumented_ms": 12.70652562379837,
+      "native_outer_ms": 12.67639547586441
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.0,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.928729508540177e-19,
+        "H": 5.551115123125783e-17,
+        "g": 2.0816681711721685e-17,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 7.930164461608261e-17,
+      "predicted_state_peak": 2.220446049250313e-16,
+      "objective_relative_scale_error": 3.2499264128610633e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.463672932855431e-17,
+        "kkt_complementarity_inf": 1.8219266101456932e-20,
+        "active_constraints": 22
+      },
+      "reference_instrumented_ms": 38.381390273571014,
+      "native_instrumented_ms": 20.533472299575806,
+      "native_uninstrumented_ms": 18.24888586997986,
+      "native_outer_ms": 18.118619918823242
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7690810068950623e-16,
+      "predicted_state_peak": 2.2898349882893854e-16,
+      "objective_relative_scale_error": 5.4203449798303446e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 6.776263578034403e-18,
+        "kkt_complementarity_inf": 2.3631716815929302e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 34.295178949832916,
+      "native_instrumented_ms": 18.806353211402893,
+      "native_uninstrumented_ms": 16.873106360435486,
+      "native_outer_ms": 16.74772799015045
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 1.3010426069826053e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 3.7690810068950623e-16,
+      "predicted_state_peak": 2.2898349882893854e-16,
+      "objective_relative_scale_error": 5.4203449798303446e-20,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 6.938893903907228e-18,
+        "kkt_stationarity_inf": 6.776263578034403e-18,
+        "kkt_complementarity_inf": 2.3631716815929302e-21,
+        "active_constraints": 11
+      },
+      "reference_instrumented_ms": 36.208853125572205,
+      "native_instrumented_ms": 17.198920249938965,
+      "native_uninstrumented_ms": 15.644125640392303,
+      "native_outer_ms": 15.606187283992767
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.001,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.979551485375435e-19,
+        "H": 2.220446049250313e-16,
+        "g": 3.469446951953614e-17,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.180795226942272e-16,
+      "predicted_state_peak": 1.249000902703301e-16,
+      "objective_relative_scale_error": 4.333283441006537e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 1.588356182691264e-17,
+        "kkt_complementarity_inf": 1.654241635655726e-20,
+        "active_constraints": 21
+      },
+      "reference_instrumented_ms": 30.167080461978912,
+      "native_instrumented_ms": 16.804926097393036,
+      "native_uninstrumented_ms": 15.962347388267517,
+      "native_outer_ms": 15.880987048149109
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.0,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.220446049250313e-15,
+      "predicted_state_peak": 1.3253287356462806e-15,
+      "objective_relative_scale_error": 4.3173822420256944e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 5.898059818321144e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 2.342829548986857e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 27.890078723430634,
+      "native_instrumented_ms": 14.481805264949799,
+      "native_uninstrumented_ms": 14.380969107151031,
+      "native_outer_ms": 14.261268079280853
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.0,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.220446049250313e-15,
+      "predicted_state_peak": 1.3253287356462806e-15,
+      "objective_relative_scale_error": 4.3173822420256944e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 5.898059818321144e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 2.342829548986857e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 34.16212648153305,
+      "native_instrumented_ms": 16.560137271881104,
+      "native_uninstrumented_ms": 16.340889036655426,
+      "native_outer_ms": 16.304776072502136
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.0,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.928729508540177e-19,
+        "H": 5.551115123125783e-17,
+        "g": 2.0816681711721685e-17,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 5.803438537813318e-16,
+      "predicted_state_peak": 3.3306690738754696e-16,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 1.249000902703301e-16,
+        "kkt_stationarity_inf": 8.326672684688674e-17,
+        "kkt_complementarity_inf": 8.096797020928953e-19,
+        "active_constraints": 22
+      },
+      "reference_instrumented_ms": 35.08676588535309,
+      "native_instrumented_ms": 18.077008426189423,
+      "native_uninstrumented_ms": 19.821979105472565,
+      "native_outer_ms": 19.76185292005539
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.1952137077815592e-15,
+      "predicted_state_peak": 1.3114509478384662e-15,
+      "objective_relative_scale_error": 1.7269528968102777e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 5.898059818321144e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 2.3428295489868455e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 34.41167622804642,
+      "native_instrumented_ms": 20.42059600353241,
+      "native_uninstrumented_ms": 17.977796494960785,
+      "native_outer_ms": 17.827138304710388
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.1952137077815592e-15,
+      "predicted_state_peak": 1.3114509478384662e-15,
+      "objective_relative_scale_error": 1.7269528968102777e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 5.898059818321144e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 2.3428295489868455e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 33.54942053556442,
+      "native_instrumented_ms": 13.76989483833313,
+      "native_uninstrumented_ms": 14.417633414268494,
+      "native_outer_ms": 14.383673667907715
+    },
+    {
+      "fixture": {
+        "position_deviation_m": -0.005,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.979551485375435e-19,
+        "H": 2.220446049250313e-16,
+        "g": 3.469446951953614e-17,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 1.91765795162527e-15,
+      "predicted_state_peak": 1.1379786002407855e-15,
+      "objective_relative_scale_error": 1.7167501469466145e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 4.163336342344337e-17,
+        "kkt_stationarity_inf": 7.090682208055199e-17,
+        "kkt_complementarity_inf": 3.3813004858953303e-19,
+        "active_constraints": 22
+      },
+      "reference_instrumented_ms": 39.13953900337219,
+      "native_instrumented_ms": 18.652580678462982,
+      "native_uninstrumented_ms": 16.144394874572754,
+      "native_outer_ms": 16.08109474182129
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.0,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.23306221998469e-15,
+      "predicted_state_peak": 1.3461454173580023e-15,
+      "objective_relative_scale_error": 4.3173822420256944e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 7.632783294297951e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 3.031897063394749e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 33.22165459394455,
+      "native_instrumented_ms": 16.947448253631592,
+      "native_uninstrumented_ms": 13.781420886516571,
+      "native_outer_ms": 13.668052852153778
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.0,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.23306221998469e-15,
+      "predicted_state_peak": 1.3461454173580023e-15,
+      "objective_relative_scale_error": 4.3173822420256944e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 7.632783294297951e-17,
+        "kkt_stationarity_inf": 4.0766001685454967e-17,
+        "kkt_complementarity_inf": 3.031897063394749e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 28.769485652446747,
+      "native_instrumented_ms": 14.805398881435394,
+      "native_uninstrumented_ms": 14.320604503154755,
+      "native_outer_ms": 14.288216829299927
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.0,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.928729508540177e-19,
+        "H": 5.551115123125783e-17,
+        "g": 2.0816681711721685e-17,
+        "C": 5.551115123125783e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 5.046468293750711e-16,
+      "predicted_state_peak": 3.0184188481996443e-16,
+      "objective_relative_scale_error": 8.654640304375175e-19,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 2.430984558619842e-17,
+        "kkt_complementarity_inf": 9.868377902809958e-21,
+        "active_constraints": 20
+      },
+      "reference_instrumented_ms": 35.21966189146042,
+      "native_instrumented_ms": 18.404453992843628,
+      "native_uninstrumented_ms": 16.418851912021637,
+      "native_outer_ms": 16.340874135494232
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "stuck"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.207829878515936e-15,
+      "predicted_state_peak": 1.3114509478384662e-15,
+      "objective_relative_scale_error": 2.5904293452154166e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 4.5102810375396984e-17,
+        "kkt_stationarity_inf": 3.946495907847236e-17,
+        "kkt_complementarity_inf": 1.995190066791734e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 28.821654617786407,
+      "native_instrumented_ms": 15.79129695892334,
+      "native_uninstrumented_ms": 14.097608625888824,
+      "native_outer_ms": 13.978436589241028
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "near_breakaway"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 0.0,
+        "H": 1.1102230246251565e-16,
+        "g": 6.938893903907228e-18,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 2.207829878515936e-15,
+      "predicted_state_peak": 1.3114509478384662e-15,
+      "objective_relative_scale_error": 2.5904293452154166e-18,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 4.5102810375396984e-17,
+        "kkt_stationarity_inf": 3.946495907847236e-17,
+        "kkt_complementarity_inf": 1.995190066791734e-19,
+        "active_constraints": 14
+      },
+      "reference_instrumented_ms": 30.85160255432129,
+      "native_instrumented_ms": 15.818431973457336,
+      "native_uninstrumented_ms": 17.095915973186493,
+      "native_outer_ms": 17.057225108146667
+    },
+    {
+      "fixture": {
+        "position_deviation_m": 0.005,
+        "source_age_s": 0.012,
+        "mode": "moving_warm"
+      },
+      "pass": true,
+      "matrix_peak_errors": {
+        "A": 3.469446951953614e-17,
+        "b": 6.979551485375435e-19,
+        "H": 2.220446049250313e-16,
+        "g": 6.938893903907228e-17,
+        "C": 2.7755575615628914e-17,
+        "lo": 0.0,
+        "hi": 0.0,
+        "offsets": 0.0,
+        "jacobians": 4.85722573273506e-17,
+        "linearization": 0.0,
+        "rotations": 0.0,
+        "first_lower": 0.0,
+        "first_upper": 0.0
+      },
+      "normalized_plan_peak": 7.380459879610415e-16,
+      "predicted_state_peak": 4.40619762898109e-16,
+      "objective_relative_scale_error": 0.0,
+      "candidate_and_mit_packets_equal": true,
+      "independent_python_quality": {
+        "primal_violation": 1.3877787807814457e-17,
+        "kkt_stationarity_inf": 4.163336342344337e-17,
+        "kkt_complementarity_inf": 9.880949396939108e-21,
+        "active_constraints": 20
+      },
+      "reference_instrumented_ms": 36.64706647396088,
+      "native_instrumented_ms": 19.34012770652771,
+      "native_uninstrumented_ms": 17.22521334886551,
+      "native_outer_ms": 17.143666744232178
+    }
+  ],
+  "passed": 30,
+  "total": 30,
+  "sources_unchanged": true,
+  "pass": true
+}
