@@ -1,7 +1,7 @@
 {
   "kind": "x650_isolated_live_protocol_v1",
   "simulation_only": true,
-  "execution_revision": 16,
+  "execution_revision": 17,
   "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
   "cpu_roles": {
     "source": [
@@ -31,7 +31,7 @@
   "next_solve_commit": "one next solve after matching actual writer send; retain send barrier, single pending candidate and original source times; no additional independent 20 ms physical minimum after the first solve",
   "next_output_commit": "only_after_both_previous_joint_commands_consumed",
   "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
-  "frozen_hold_task_sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286",
+  "frozen_hold_task_sha256": "21185ea26e345968777b1fc3206fb45f0a3e0bd98e79abaa85ee63732736b63e",
   "frozen_numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
   "order": [
     "transport_and_consumption_contract",
@@ -69,11 +69,12 @@
   "numerical_convergence": "QP aggregate plus per-original-row 1e-10 numerical target; original 2e-7 external feasibility, weights and physical constraints unchanged",
   "ground_initialization": "construct cached lifecycle allocator and start idle transport on disarmed ground; actual LiveStart binds live reference/history after normal prestream",
   "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged",
-  "native_preparation": "native-only batch packet/sensitivity/query/ABI preparation and event packing; independent reference predictor and physical libraries restored byte-exact; same parameters/equations/quantization; fresh 344 regression/30 matrix/388 recorded-call qualification",
-  "live_diagnostic_snapshot": "one owned numeric-graph clone per live result; same deepcopy ownership and memo semantics; public default retains independent deepcopy results; binary capture before next step",
+  "native_preparation": "native-only packed future MIT arrays and matrix rows; actual candidate propagation and all extrema retained; same C++ physical libraries and independent reference predictor; new source-bound full regression/30 matrix/388 historical qualification",
+  "live_diagnostic_snapshot": "private zero-FF live policy: candidate quality and actual command checked before publication; complete FF diagnostics and owned copy finish after publication and before synchronous immutable pickle or any next solve; completion failure locks worker and retains explicit incomplete-recording evidence",
   "execution_timing_evidence": "bounded in-memory stage timestamps written after shutdown; distinguish engine return, proposal publication, gate entry and diagnostic serialization; original DDS schemas and timestamps retained",
   "source_callback_dispatch": "active main executor always nonblocking with unchanged wait arguments; separate depth-one fault executor polled before main work; full-depth original evidence retained",
   "fault_supervision": "independent ROS node/executor; matching session and epoch; first fault latched with local callback observation time; complete evidence remains separate",
   "history_timestamp_consistency": "C++ command/packet future comparisons use the existing Python 1e-10 second task-relative arithmetic tolerance; source clocks, wall leases, dt limits and original timestamps unchanged",
-  "rejected_input_evidence": "first rejected admission retained in bounded memory with original source identity; exact gate-input CDR and clocks written only at shutdown"
+  "rejected_input_evidence": "first rejected admission retained in bounded memory with original source identity; exact gate-input CDR and clocks written only at shutdown",
+  "failed_recovery_handoff": "failed runs release and verify the sole C++ writer and zero consumption, then require new PX4 ACK and fresh autonomous-Hold status within 350ms before folding; otherwise skip fold and use original LAND; unverified writer exit retains receive-only pumping with no legacy joint publisher; no hardware qualification"
 }

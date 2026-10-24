@@ -1,0 +1,2064 @@
+{
+  "kind": "hold23_scratch_deferred_offline_pair_v1",
+  "variant": "packed",
+  "physical_run": false,
+  "qualification": false,
+  "injection": "Original constructor/begin_live validations finish, then scratch classes replace only three numerical objects in memory; no constructor/model/parameter changes",
+  "timing": "Phase-only, no cProfile; real process_snapshot, ROS CDR and synchronous Unix diagnostic send; no-op publisher excludes DDS. In deferred variant finish_diagnostics executes on first serializer entry, after publish returns and before any CDR/pickle.",
+  "pacing": "All 26 original snapshots in order, new process each pass, one preflight gen2 collection then .2 s idle; absolute 20 ms schedule without reset; only wall issue rebased",
+  "affinity": [
+    87,
+    89,
+    91,
+    97
+  ],
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "sources": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "477e0e2888ba5ef7d1515fe41342e651af79548472665f447cb71f8b47e9e635",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_packed_pair_v1/scratch/src/native_joint_prediction.py": "a66f3645224b708343188b43f4f74c2f135592438db27a12760478561e428fcf",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_packed_pair_v1/scratch/src/native_optimization.py": "8d1381ed359396aa74a2cc3a8c0f37768ba58ee06cb2d83e5fb28ce1ffc8ef10",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_packed_pair_v1/scratch/src/native_mpc.py": "653b1a9fd9fefd9df106a112cf60795ddc60faf0548887650f73d8d16dbd0c59",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_deferred_pair_v1/deferred_live_diagnostics.py": "3e0affe0074b45949e120d5466c57e38948e6860a8c4869f104cda68eb114094"
+  },
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_121323_13664/task.json": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/initialization.json": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/live_start.json": "22e3ab34deebb661669ff37b6d9b833153413faadaa0a1d08bf702d3d97e1124",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/recording/diagnostics.jsonl": "e3b8a98dfc1ff39214aca6e7d1aabd23d8c292c962259fc44761e0505891d4dc"
+  },
+  "rows": [
+    {
+      "sequence": 1,
+      "status": 0,
+      "engine_wall_ms": 12.673075,
+      "callback_proxy_wall_ms": 13.229175,
+      "callback_proxy_thread_cpu_ms": 13.210507,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.735537,
+          0.737222,
+          1
+        ],
+        "joint_prediction": [
+          2.945529,
+          2.9478,
+          1
+        ],
+        "assemble": [
+          4.793959,
+          4.795548,
+          1
+        ],
+        "qp": [
+          3.026058,
+          3.028189,
+          1
+        ],
+        "candidate": [
+          0.955467,
+          0.956867,
+          1
+        ],
+        "allocator": [
+          10.222386,
+          10.223242,
+          1
+        ],
+        "arm_ff": [
+          0.865067,
+          0.866062,
+          1
+        ],
+        "clone": [
+          0.196314,
+          0.196568,
+          1
+        ],
+        "adapter": [
+          11.545585,
+          11.546386,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 9.931646287441254,
+        "inner_allocator_thread_cpu_ms": 9.98086499999995,
+        "outer_thread_cpu_ms": 10.18880099999997,
+        "gc_collection_count_before": [
+          209,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          209,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.19430160522461
+      }
+    },
+    {
+      "sequence": 2,
+      "status": 0,
+      "engine_wall_ms": 11.030747,
+      "callback_proxy_wall_ms": 11.470497,
+      "callback_proxy_thread_cpu_ms": 11.461714,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.604573,
+          0.605387,
+          1
+        ],
+        "joint_prediction": [
+          2.373124,
+          2.375081,
+          1
+        ],
+        "assemble": [
+          4.039907,
+          4.041496,
+          1
+        ],
+        "qp": [
+          2.741432,
+          2.743477,
+          1
+        ],
+        "candidate": [
+          0.922608,
+          0.923545,
+          1
+        ],
+        "allocator": [
+          8.861587,
+          8.862452,
+          1
+        ],
+        "arm_ff": [
+          0.852132,
+          0.853208,
+          1
+        ],
+        "clone": [
+          0.192333,
+          0.192624,
+          1
+        ],
+        "adapter": [
+          10.150276,
+          10.151034,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.626990020275116,
+        "inner_allocator_thread_cpu_ms": 8.665381000000139,
+        "outer_thread_cpu_ms": 8.833794000000061,
+        "gc_collection_count_before": [
+          209,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          209,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.838266134262085
+      }
+    },
+    {
+      "sequence": 3,
+      "status": 0,
+      "engine_wall_ms": 11.784418,
+      "callback_proxy_wall_ms": 12.239742,
+      "callback_proxy_thread_cpu_ms": 12.231619,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.686135,
+          0.687266,
+          1
+        ],
+        "joint_prediction": [
+          2.491912,
+          2.494129,
+          1
+        ],
+        "assemble": [
+          4.158219,
+          4.159813,
+          1
+        ],
+        "qp": [
+          2.728156,
+          2.730012,
+          1
+        ],
+        "candidate": [
+          1.047475,
+          1.048727,
+          1
+        ],
+        "allocator": [
+          9.414772,
+          9.415449,
+          1
+        ],
+        "arm_ff": [
+          0.855331,
+          0.85637,
+          1
+        ],
+        "clone": [
+          0.282478,
+          0.282809,
+          1
+        ],
+        "adapter": [
+          10.825592,
+          10.826202,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.981041610240936,
+        "inner_allocator_thread_cpu_ms": 9.020444999999988,
+        "outer_thread_cpu_ms": 9.385171000000136,
+        "gc_collection_count_before": [
+          209,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.389467537403107
+      }
+    },
+    {
+      "sequence": 4,
+      "status": 0,
+      "engine_wall_ms": 10.800537,
+      "callback_proxy_wall_ms": 11.238698,
+      "callback_proxy_thread_cpu_ms": 11.231617,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.674367,
+          0.675459,
+          1
+        ],
+        "joint_prediction": [
+          2.269943,
+          2.271989,
+          1
+        ],
+        "assemble": [
+          3.897384,
+          3.898892,
+          1
+        ],
+        "qp": [
+          2.065298,
+          2.067363,
+          1
+        ],
+        "candidate": [
+          1.102745,
+          1.103937,
+          1
+        ],
+        "allocator": [
+          8.399483,
+          8.400067,
+          1
+        ],
+        "arm_ff": [
+          0.859285,
+          0.860459,
+          1
+        ],
+        "clone": [
+          0.32821,
+          0.328421,
+          1
+        ],
+        "adapter": [
+          9.862164,
+          9.862804,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.103296160697937,
+        "inner_allocator_thread_cpu_ms": 8.142917000000027,
+        "outer_thread_cpu_ms": 8.372242000000085,
+        "gc_collection_count_before": [
+          210,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.376404643058777
+      }
+    },
+    {
+      "sequence": 5,
+      "status": 0,
+      "engine_wall_ms": 11.251904,
+      "callback_proxy_wall_ms": 11.682743,
+      "callback_proxy_thread_cpu_ms": 11.67586,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.650361,
+          0.651511,
+          1
+        ],
+        "joint_prediction": [
+          2.366468,
+          2.368773,
+          1
+        ],
+        "assemble": [
+          3.980365,
+          3.981998,
+          1
+        ],
+        "qp": [
+          2.320132,
+          2.322155,
+          1
+        ],
+        "candidate": [
+          1.171626,
+          1.172817,
+          1
+        ],
+        "allocator": [
+          8.825629,
+          8.826419,
+          1
+        ],
+        "arm_ff": [
+          0.845759,
+          0.846852,
+          1
+        ],
+        "clone": [
+          0.390411,
+          0.390757,
+          1
+        ],
+        "adapter": [
+          10.338239,
+          10.339146,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.520975708961487,
+        "inner_allocator_thread_cpu_ms": 8.561160000000179,
+        "outer_thread_cpu_ms": 8.79816599999983,
+        "gc_collection_count_before": [
+          211,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.80221277475357
+      }
+    },
+    {
+      "sequence": 6,
+      "status": 0,
+      "engine_wall_ms": 11.108642,
+      "callback_proxy_wall_ms": 11.532021,
+      "callback_proxy_thread_cpu_ms": 11.525306,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.648354,
+          0.649496,
+          1
+        ],
+        "joint_prediction": [
+          2.4037,
+          2.405726,
+          1
+        ],
+        "assemble": [
+          4.039356,
+          4.040922,
+          1
+        ],
+        "qp": [
+          2.109859,
+          2.111729,
+          1
+        ],
+        "candidate": [
+          1.136927,
+          1.137964,
+          1
+        ],
+        "allocator": [
+          8.72415,
+          8.724813,
+          1
+        ],
+        "arm_ff": [
+          0.840712,
+          0.841662,
+          1
+        ],
+        "clone": [
+          0.359932,
+          0.360318,
+          1
+        ],
+        "adapter": [
+          10.19838,
+          10.19917,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.421346545219421,
+        "inner_allocator_thread_cpu_ms": 8.461660999999898,
+        "outer_thread_cpu_ms": 8.69568799999998,
+        "gc_collection_count_before": [
+          211,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.699953556060791
+      }
+    },
+    {
+      "sequence": 7,
+      "status": 0,
+      "engine_wall_ms": 13.007248,
+      "callback_proxy_wall_ms": 13.558831,
+      "callback_proxy_thread_cpu_ms": 13.551885,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.66725,
+          0.668352,
+          1
+        ],
+        "joint_prediction": [
+          2.407495,
+          2.409575,
+          1
+        ],
+        "assemble": [
+          4.370116,
+          4.37201,
+          1
+        ],
+        "qp": [
+          0.436976,
+          0.438848,
+          1
+        ],
+        "candidate": [
+          1.690983,
+          1.69346,
+          1
+        ],
+        "allocator": [
+          8.359757,
+          8.362509,
+          1
+        ],
+        "arm_ff": [
+          2.448963,
+          2.450429,
+          1
+        ],
+        "clone": [
+          0.633698,
+          0.632548,
+          1
+        ],
+        "adapter": [
+          11.940596,
+          11.941431,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 7.9825520515441895,
+        "inner_allocator_thread_cpu_ms": 8.076653999999905,
+        "outer_thread_cpu_ms": 8.31718299999995,
+        "gc_collection_count_before": [
+          212,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.323371410369873
+      }
+    },
+    {
+      "sequence": 8,
+      "status": 0,
+      "engine_wall_ms": 10.385735,
+      "callback_proxy_wall_ms": 10.707904,
+      "callback_proxy_thread_cpu_ms": 10.703173,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.753092,
+          0.754229,
+          1
+        ],
+        "joint_prediction": [
+          2.870755,
+          2.873018,
+          1
+        ],
+        "assemble": [
+          4.791658,
+          4.793187,
+          1
+        ],
+        "qp": [
+          0.393744,
+          0.395155,
+          1
+        ],
+        "candidate": [
+          1.35466,
+          1.355687,
+          1
+        ],
+        "allocator": [
+          8.0822,
+          8.082869,
+          1
+        ],
+        "arm_ff": [
+          0.766085,
+          0.766923,
+          1
+        ],
+        "clone": [
+          0.289999,
+          0.290183,
+          1
+        ],
+        "adapter": [
+          9.402051,
+          9.402322,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 7.732659578323364,
+        "inner_allocator_thread_cpu_ms": 7.776155999999812,
+        "outer_thread_cpu_ms": 8.052529999999836,
+        "gc_collection_count_before": [
+          213,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          213,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.056901395320892
+      }
+    },
+    {
+      "sequence": 9,
+      "status": 0,
+      "engine_wall_ms": 9.408225,
+      "callback_proxy_wall_ms": 9.846803,
+      "callback_proxy_thread_cpu_ms": 9.839584,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.679865,
+          0.681066,
+          1
+        ],
+        "joint_prediction": [
+          2.439396,
+          2.441634,
+          1
+        ],
+        "assemble": [
+          4.133119,
+          4.134732,
+          1
+        ],
+        "qp": [
+          0.311215,
+          0.312709,
+          1
+        ],
+        "candidate": [
+          1.203984,
+          1.205155,
+          1
+        ],
+        "allocator": [
+          6.931128,
+          6.931759,
+          1
+        ],
+        "arm_ff": [
+          0.840256,
+          0.841295,
+          1
+        ],
+        "clone": [
+          0.431802,
+          0.432069,
+          1
+        ],
+        "adapter": [
+          8.467723,
+          8.468319,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.639763712882996,
+        "inner_allocator_thread_cpu_ms": 6.6790869999999725,
+        "outer_thread_cpu_ms": 6.903777,
+        "gc_collection_count_before": [
+          214,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          214,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.907910108566284
+      }
+    },
+    {
+      "sequence": 10,
+      "status": 0,
+      "engine_wall_ms": 8.961846,
+      "callback_proxy_wall_ms": 9.362726,
+      "callback_proxy_thread_cpu_ms": 9.355287,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.623865,
+          0.624899,
+          1
+        ],
+        "joint_prediction": [
+          2.194372,
+          2.196493,
+          1
+        ],
+        "assemble": [
+          3.791894,
+          3.793376,
+          1
+        ],
+        "qp": [
+          0.305674,
+          0.306844,
+          1
+        ],
+        "candidate": [
+          1.171233,
+          1.17228,
+          1
+        ],
+        "allocator": [
+          6.515476,
+          6.516187,
+          1
+        ],
+        "arm_ff": [
+          0.808112,
+          0.809097,
+          1
+        ],
+        "clone": [
+          0.492123,
+          0.492612,
+          1
+        ],
+        "adapter": [
+          8.080321,
+          8.080982,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.228558719158173,
+        "inner_allocator_thread_cpu_ms": 6.26525499999997,
+        "outer_thread_cpu_ms": 6.48828800000012,
+        "gc_collection_count_before": [
+          214,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          214,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.492696702480316
+      }
+    },
+    {
+      "sequence": 11,
+      "status": 0,
+      "engine_wall_ms": 9.288865,
+      "callback_proxy_wall_ms": 9.720534,
+      "callback_proxy_thread_cpu_ms": 9.714031,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.713709,
+          0.715226,
+          1
+        ],
+        "joint_prediction": [
+          2.313522,
+          2.315583,
+          1
+        ],
+        "assemble": [
+          3.920051,
+          3.921177,
+          1
+        ],
+        "qp": [
+          0.310174,
+          0.311302,
+          1
+        ],
+        "candidate": [
+          1.211794,
+          1.213165,
+          1
+        ],
+        "allocator": [
+          6.764911,
+          6.765749,
+          1
+        ],
+        "arm_ff": [
+          0.836248,
+          0.837337,
+          1
+        ],
+        "clone": [
+          0.449964,
+          0.450243,
+          1
+        ],
+        "adapter": [
+          8.332336,
+          8.332832,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.461814045906067,
+        "inner_allocator_thread_cpu_ms": 6.500990000000151,
+        "outer_thread_cpu_ms": 6.737482000000128,
+        "gc_collection_count_before": [
+          215,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          215,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.741747260093689
+      }
+    },
+    {
+      "sequence": 12,
+      "status": 0,
+      "engine_wall_ms": 9.308806,
+      "callback_proxy_wall_ms": 9.747883,
+      "callback_proxy_thread_cpu_ms": 9.737262,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.641384,
+          0.642469,
+          1
+        ],
+        "joint_prediction": [
+          2.30433,
+          2.306414,
+          1
+        ],
+        "assemble": [
+          3.915679,
+          3.917037,
+          1
+        ],
+        "qp": [
+          0.312125,
+          0.31336,
+          1
+        ],
+        "candidate": [
+          1.246739,
+          1.247834,
+          1
+        ],
+        "allocator": [
+          6.797564,
+          6.798241,
+          1
+        ],
+        "arm_ff": [
+          0.829929,
+          0.830939,
+          1
+        ],
+        "clone": [
+          0.474443,
+          0.474852,
+          1
+        ],
+        "adapter": [
+          8.374893,
+          8.375541,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.491221487522125,
+        "inner_allocator_thread_cpu_ms": 6.529602000000079,
+        "outer_thread_cpu_ms": 6.769765999999899,
+        "gc_collection_count_before": [
+          216,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          216,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.773956120014191
+      }
+    },
+    {
+      "sequence": 13,
+      "status": 0,
+      "engine_wall_ms": 11.476948,
+      "callback_proxy_wall_ms": 11.899481,
+      "callback_proxy_thread_cpu_ms": 11.88874,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.644706,
+          0.645843,
+          1
+        ],
+        "joint_prediction": [
+          2.30927,
+          2.311473,
+          1
+        ],
+        "assemble": [
+          3.903658,
+          3.905026,
+          1
+        ],
+        "qp": [
+          2.442108,
+          2.444116,
+          1
+        ],
+        "candidate": [
+          1.256851,
+          1.257833,
+          1
+        ],
+        "allocator": [
+          8.949968,
+          8.950807,
+          1
+        ],
+        "arm_ff": [
+          0.837576,
+          0.838711,
+          1
+        ],
+        "clone": [
+          0.469025,
+          0.469479,
+          1
+        ],
+        "adapter": [
+          10.531865,
+          10.532585,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.642755448818207,
+        "inner_allocator_thread_cpu_ms": 8.68060100000001,
+        "outer_thread_cpu_ms": 8.922762000000084,
+        "gc_collection_count_before": [
+          217,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          217,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.926719427108765
+      }
+    },
+    {
+      "sequence": 14,
+      "status": 0,
+      "engine_wall_ms": 9.333603,
+      "callback_proxy_wall_ms": 9.751925,
+      "callback_proxy_thread_cpu_ms": 9.697545,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.769376,
+          0.770491,
+          1
+        ],
+        "joint_prediction": [
+          3.01079,
+          2.965655,
+          1
+        ],
+        "assemble": [
+          4.558862,
+          4.513456,
+          1
+        ],
+        "qp": [
+          0.228615,
+          0.229745,
+          1
+        ],
+        "candidate": [
+          0.996508,
+          0.9975,
+          1
+        ],
+        "allocator": [
+          7.131689,
+          7.084973,
+          1
+        ],
+        "arm_ff": [
+          0.599043,
+          0.599823,
+          1
+        ],
+        "clone": [
+          0.354831,
+          0.355059,
+          1
+        ],
+        "adapter": [
+          8.327352,
+          8.280564,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.789878010749817,
+        "inner_allocator_thread_cpu_ms": 6.772975999999931,
+        "outer_thread_cpu_ms": 7.063189999999997,
+        "gc_collection_count_before": [
+          217,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          218,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.113493978977203
+      }
+    },
+    {
+      "sequence": 15,
+      "status": 0,
+      "engine_wall_ms": 9.564389,
+      "callback_proxy_wall_ms": 9.985469,
+      "callback_proxy_thread_cpu_ms": 9.979024,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.64802,
+          0.649235,
+          1
+        ],
+        "joint_prediction": [
+          2.356618,
+          2.358479,
+          1
+        ],
+        "assemble": [
+          3.955491,
+          3.956842,
+          1
+        ],
+        "qp": [
+          0.310206,
+          0.311889,
+          1
+        ],
+        "candidate": [
+          1.442093,
+          1.443278,
+          1
+        ],
+        "allocator": [
+          7.039858,
+          7.04051,
+          1
+        ],
+        "arm_ff": [
+          0.832584,
+          0.833532,
+          1
+        ],
+        "clone": [
+          0.509157,
+          0.509522,
+          1
+        ],
+        "adapter": [
+          8.655558,
+          8.656119,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.731197237968445,
+        "inner_allocator_thread_cpu_ms": 6.770162000000024,
+        "outer_thread_cpu_ms": 7.012059000000015,
+        "gc_collection_count_before": [
+          218,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          218,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.016226649284363
+      }
+    },
+    {
+      "sequence": 16,
+      "status": 0,
+      "engine_wall_ms": 9.409104,
+      "callback_proxy_wall_ms": 9.846648,
+      "callback_proxy_thread_cpu_ms": 9.840313,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.641989,
+          0.643015,
+          1
+        ],
+        "joint_prediction": [
+          2.29876,
+          2.301011,
+          1
+        ],
+        "assemble": [
+          3.900525,
+          3.901867,
+          1
+        ],
+        "qp": [
+          0.316728,
+          0.31813,
+          1
+        ],
+        "candidate": [
+          1.330224,
+          1.331384,
+          1
+        ],
+        "allocator": [
+          6.890732,
+          6.891309,
+          1
+        ],
+        "arm_ff": [
+          0.823477,
+          0.824585,
+          1
+        ],
+        "clone": [
+          0.52444,
+          0.524671,
+          1
+        ],
+        "adapter": [
+          8.515997,
+          8.516519,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.573207676410675,
+        "inner_allocator_thread_cpu_ms": 6.6119519999998655,
+        "outer_thread_cpu_ms": 6.86317500000011,
+        "gc_collection_count_before": [
+          219,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          219,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.867259740829468
+      }
+    },
+    {
+      "sequence": 17,
+      "status": 0,
+      "engine_wall_ms": 9.61074,
+      "callback_proxy_wall_ms": 10.11789,
+      "callback_proxy_thread_cpu_ms": 10.111512,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.645499,
+          0.646637,
+          1
+        ],
+        "joint_prediction": [
+          2.354054,
+          2.356443,
+          1
+        ],
+        "assemble": [
+          4.038219,
+          4.039884,
+          1
+        ],
+        "qp": [
+          0.311664,
+          0.31309,
+          1
+        ],
+        "candidate": [
+          1.32559,
+          1.326899,
+          1
+        ],
+        "allocator": [
+          7.032563,
+          7.033388,
+          1
+        ],
+        "arm_ff": [
+          0.832379,
+          0.833541,
+          1
+        ],
+        "clone": [
+          0.537309,
+          0.53771,
+          1
+        ],
+        "adapter": [
+          8.693954,
+          8.695271,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.714239716529846,
+        "inner_allocator_thread_cpu_ms": 6.756352000000021,
+        "outer_thread_cpu_ms": 7.004680000000096,
+        "gc_collection_count_before": [
+          220,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          220,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.008828222751617
+      }
+    },
+    {
+      "sequence": 18,
+      "status": 0,
+      "engine_wall_ms": 12.428454,
+      "callback_proxy_wall_ms": 12.861689,
+      "callback_proxy_thread_cpu_ms": 12.856657,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.60459,
+          0.605688,
+          1
+        ],
+        "joint_prediction": [
+          5.238865,
+          5.241136,
+          1
+        ],
+        "assemble": [
+          6.873636,
+          6.875388,
+          1
+        ],
+        "qp": [
+          0.313753,
+          0.315222,
+          1
+        ],
+        "candidate": [
+          1.392788,
+          1.3942,
+          1
+        ],
+        "allocator": [
+          9.930816,
+          9.931563,
+          1
+        ],
+        "arm_ff": [
+          0.833191,
+          0.834242,
+          1
+        ],
+        "clone": [
+          0.561855,
+          0.562127,
+          1
+        ],
+        "adapter": [
+          11.600355,
+          11.601083,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 9.61044430732727,
+        "inner_allocator_thread_cpu_ms": 9.649567999999942,
+        "outer_thread_cpu_ms": 9.902907999999933,
+        "gc_collection_count_before": [
+          220,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          220,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          1,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.907074272632599
+      }
+    },
+    {
+      "sequence": 19,
+      "status": 0,
+      "engine_wall_ms": 9.205676,
+      "callback_proxy_wall_ms": 9.653981,
+      "callback_proxy_thread_cpu_ms": 9.647374,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.468539,
+          0.469314,
+          1
+        ],
+        "joint_prediction": [
+          2.371939,
+          2.374667,
+          1
+        ],
+        "assemble": [
+          3.946907,
+          3.948366,
+          1
+        ],
+        "qp": [
+          0.32568,
+          0.327188,
+          1
+        ],
+        "candidate": [
+          1.470634,
+          1.471937,
+          1
+        ],
+        "allocator": [
+          6.833788,
+          6.834711,
+          1
+        ],
+        "arm_ff": [
+          0.848672,
+          0.849935,
+          1
+        ],
+        "clone": [
+          0.590577,
+          0.590863,
+          1
+        ],
+        "adapter": [
+          8.522187,
+          8.522851,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.589993834495544,
+        "inner_allocator_thread_cpu_ms": 6.62766200000009,
+        "outer_thread_cpu_ms": 6.806584000000004,
+        "gc_collection_count_before": [
+          220,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.810575723648071
+      }
+    },
+    {
+      "sequence": 20,
+      "status": 0,
+      "engine_wall_ms": 11.525191,
+      "callback_proxy_wall_ms": 11.987494,
+      "callback_proxy_thread_cpu_ms": 11.980601,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.504169,
+          0.504875,
+          1
+        ],
+        "joint_prediction": [
+          2.291498,
+          2.293756,
+          1
+        ],
+        "assemble": [
+          3.852367,
+          3.854072,
+          1
+        ],
+        "qp": [
+          2.572409,
+          2.574522,
+          1
+        ],
+        "candidate": [
+          1.434859,
+          1.436104,
+          1
+        ],
+        "allocator": [
+          8.991216,
+          8.9921,
+          1
+        ],
+        "arm_ff": [
+          0.839835,
+          0.840955,
+          1
+        ],
+        "clone": [
+          0.689417,
+          0.68993,
+          1
+        ],
+        "adapter": [
+          10.774701,
+          10.775535,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.734792470932007,
+        "inner_allocator_thread_cpu_ms": 8.775013000000165,
+        "outer_thread_cpu_ms": 8.963413999999892,
+        "gc_collection_count_before": [
+          221,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.967645466327667
+      }
+    },
+    {
+      "sequence": 21,
+      "status": 0,
+      "engine_wall_ms": 9.915149,
+      "callback_proxy_wall_ms": 10.380709,
+      "callback_proxy_thread_cpu_ms": 10.373522,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.658326,
+          0.659689,
+          1
+        ],
+        "joint_prediction": [
+          2.41912,
+          2.421015,
+          1
+        ],
+        "assemble": [
+          4.043563,
+          4.044844,
+          1
+        ],
+        "qp": [
+          0.311596,
+          0.31303,
+          1
+        ],
+        "candidate": [
+          1.44083,
+          1.442152,
+          1
+        ],
+        "allocator": [
+          7.162602,
+          7.163395,
+          1
+        ],
+        "arm_ff": [
+          0.831226,
+          0.832316,
+          1
+        ],
+        "clone": [
+          0.71842,
+          0.719107,
+          1
+        ],
+        "adapter": [
+          9.000791,
+          9.001378,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.832487881183624,
+        "inner_allocator_thread_cpu_ms": 6.872615000000026,
+        "outer_thread_cpu_ms": 7.134309999999866,
+        "gc_collection_count_before": [
+          222,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          222,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.138639688491821
+      }
+    },
+    {
+      "sequence": 22,
+      "status": 0,
+      "engine_wall_ms": 9.795419,
+      "callback_proxy_wall_ms": 10.260948,
+      "callback_proxy_thread_cpu_ms": 10.244363,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.771314,
+          0.771393,
+          1
+        ],
+        "joint_prediction": [
+          2.240574,
+          2.242351,
+          1
+        ],
+        "assemble": [
+          3.791111,
+          3.792894,
+          1
+        ],
+        "qp": [
+          0.300354,
+          0.301728,
+          1
+        ],
+        "candidate": [
+          1.458198,
+          1.459627,
+          1
+        ],
+        "allocator": [
+          6.841449,
+          6.842067,
+          1
+        ],
+        "arm_ff": [
+          0.803747,
+          0.804835,
+          1
+        ],
+        "clone": [
+          0.631833,
+          0.63218,
+          1
+        ],
+        "adapter": [
+          8.544859,
+          8.545361,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.52603805065155,
+        "inner_allocator_thread_cpu_ms": 6.56545300000011,
+        "outer_thread_cpu_ms": 6.813705999999975,
+        "gc_collection_count_before": [
+          223,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          224,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.8180859088897705
+      }
+    },
+    {
+      "sequence": 23,
+      "status": 0,
+      "engine_wall_ms": 9.281201,
+      "callback_proxy_wall_ms": 9.742053,
+      "callback_proxy_thread_cpu_ms": 9.725381,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.600965,
+          0.602018,
+          1
+        ],
+        "joint_prediction": [
+          2.137832,
+          2.13982,
+          1
+        ],
+        "assemble": [
+          3.71488,
+          3.715871,
+          1
+        ],
+        "qp": [
+          0.290627,
+          0.291886,
+          1
+        ],
+        "candidate": [
+          1.419678,
+          1.421081,
+          1
+        ],
+        "allocator": [
+          6.68471,
+          6.685311,
+          1
+        ],
+        "arm_ff": [
+          0.771136,
+          0.772091,
+          1
+        ],
+        "clone": [
+          0.594171,
+          0.594464,
+          1
+        ],
+        "adapter": [
+          8.310177,
+          8.310712,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.386376917362213,
+        "inner_allocator_thread_cpu_ms": 6.42512900000014,
+        "outer_thread_cpu_ms": 6.6575450000001535,
+        "gc_collection_count_before": [
+          224,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          225,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.661556661128998
+      }
+    },
+    {
+      "sequence": 24,
+      "status": 0,
+      "engine_wall_ms": 9.776165,
+      "callback_proxy_wall_ms": 10.22767,
+      "callback_proxy_thread_cpu_ms": 10.210179,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.653076,
+          0.654335,
+          1
+        ],
+        "joint_prediction": [
+          2.355351,
+          2.357447,
+          1
+        ],
+        "assemble": [
+          4.020037,
+          4.021747,
+          1
+        ],
+        "qp": [
+          0.297569,
+          0.298659,
+          1
+        ],
+        "candidate": [
+          1.464493,
+          1.465894,
+          1
+        ],
+        "allocator": [
+          7.103045,
+          7.103741,
+          1
+        ],
+        "arm_ff": [
+          0.808356,
+          0.809483,
+          1
+        ],
+        "clone": [
+          0.621857,
+          0.622197,
+          1
+        ],
+        "adapter": [
+          8.808076,
+          8.808761,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.787106394767761,
+        "inner_allocator_thread_cpu_ms": 6.827206999999946,
+        "outer_thread_cpu_ms": 7.075657999999985,
+        "gc_collection_count_before": [
+          225,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          226,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.079742848873138
+      }
+    },
+    {
+      "sequence": 25,
+      "status": 0,
+      "engine_wall_ms": 11.011894,
+      "callback_proxy_wall_ms": 11.428853,
+      "callback_proxy_thread_cpu_ms": 11.412684,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.599242,
+          0.600369,
+          1
+        ],
+        "joint_prediction": [
+          2.16159,
+          2.163564,
+          1
+        ],
+        "assemble": [
+          3.640267,
+          3.641653,
+          1
+        ],
+        "qp": [
+          2.122315,
+          2.124353,
+          1
+        ],
+        "candidate": [
+          1.413477,
+          1.414781,
+          1
+        ],
+        "allocator": [
+          8.460647,
+          8.461259,
+          1
+        ],
+        "arm_ff": [
+          0.79709,
+          0.79831,
+          1
+        ],
+        "clone": [
+          0.606723,
+          0.607031,
+          1
+        ],
+        "adapter": [
+          10.122004,
+          10.122716,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.144758641719818,
+        "inner_allocator_thread_cpu_ms": 8.182770000000117,
+        "outer_thread_cpu_ms": 8.435042999999975,
+        "gc_collection_count_before": [
+          226,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          227,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.439034223556519
+      }
+    },
+    {
+      "sequence": 26,
+      "status": 0,
+      "engine_wall_ms": 9.132973,
+      "callback_proxy_wall_ms": 9.564125,
+      "callback_proxy_thread_cpu_ms": 9.547665,
+      "phases_wall_cpu_count": {
+        "decode": [
+          0.601624,
+          0.602603,
+          1
+        ],
+        "joint_prediction": [
+          2.144999,
+          2.146697,
+          1
+        ],
+        "assemble": [
+          3.631378,
+          3.633095,
+          1
+        ],
+        "qp": [
+          0.306721,
+          0.308372,
+          1
+        ],
+        "candidate": [
+          1.42429,
+          1.425599,
+          1
+        ],
+        "allocator": [
+          6.612974,
+          6.613734,
+          1
+        ],
+        "arm_ff": [
+          0.771567,
+          0.772579,
+          1
+        ],
+        "clone": [
+          0.608159,
+          0.608537,
+          1
+        ],
+        "adapter": [
+          8.255426,
+          8.25619,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 6.317034363746643,
+        "inner_allocator_thread_cpu_ms": 6.3524770000000785,
+        "outer_thread_cpu_ms": 6.586721000000129,
+        "gc_collection_count_before": [
+          227,
+          20,
+          2
+        ],
+        "gc_collection_count_after": [
+          228,
+          20,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 6.59073144197464
+      }
+    }
+  ]
+}

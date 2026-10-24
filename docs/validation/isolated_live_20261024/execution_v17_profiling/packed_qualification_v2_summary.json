@@ -1,0 +1,66 @@
+{
+  "kind": "scratch_packed_qualification_summary_v2",
+  "deployment_eligible": false,
+  "production_sources_changed": false,
+  "flight_run": false,
+  "passed": false,
+  "native_tests": {
+    "passed": true,
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scratch_overlay_only": true,
+    "deployment_eligible": false
+  },
+  "matrix": {
+    "pass": true,
+    "passed": 30,
+    "total": 30,
+    "sources_unchanged": true
+  },
+  "replay": {
+    "pass": false,
+    "passed": 385,
+    "total": 388,
+    "sources_unchanged": true
+  },
+  "failures": [
+    {
+      "index": 50,
+      "t_s": 1.6280000000000001,
+      "dt_s": 0.036000000000001364,
+      "error": "RuntimeError(\"reference instrumented call: MpcSolveError('TS20 total prepublication computation deadline exceeded'); outer_ms=59.33640897274017\")"
+    },
+    {
+      "index": 147,
+      "t_s": 4.864000000000004,
+      "dt_s": 0.036000000000001364,
+      "error": "RuntimeError(\"native instrumented call: MpcSolveError('TS20 total prepublication computation deadline exceeded'); outer_ms=104.87740486860275\")"
+    },
+    {
+      "index": 378,
+      "t_s": 12.759999999999998,
+      "dt_s": 0.031999999999996476,
+      "error": "RuntimeError(\"reference instrumented call: MpcSolveError('TS20 total prepublication computation deadline exceeded'); outer_ms=268.53639632463455\")"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v2/results_v2/native_tests.json",
+      "bytes": 147,
+      "sha256": "b1267eed30e0c31b11800da7e01d10ae53958facda34bba9a9fdd0ca8c76e701"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v2/results_v2/matrix/matrix_report.json",
+      "bytes": 6729776,
+      "sha256": "04f460b47a62f9826dc733a971420339de18e8a15218bcf0b79382b2c05f9cf0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v2/results_v2/replay/replay_report.json",
+      "bytes": 96490178,
+      "sha256": "ecab152b1aa251e588ae5072be0878a00936b9231737dc0f6f2d2c4ad454dd82"
+    }
+  ],
+  "next_action": "STOPPED. No automatic retry or merge. Failure timing needs diagnosis; failed calls have no completed numerical pair."
+}

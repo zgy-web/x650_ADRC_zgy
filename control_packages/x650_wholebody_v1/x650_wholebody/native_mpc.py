@@ -150,9 +150,25 @@ class NativeTs20MpcController(Ts20MpcController, NativeMpcStep):
     def _problem(self,t,dt,state,target):
         return self.native_optimization.assemble(self,t,dt,state,target)
 
+    def _joint_prediction(self,t,times,h,state,warm):
+        if not isinstance(self.actuator_predictor,NativeJointMatrices):
+            return super()._joint_prediction(t,times,h,state,warm)
+        context = self.context_provider(state,t) if self._frozen_context is None else self._frozen_context
+        required = {"reference_state","packet_history","command_history","bus_origin_s"}
+        if not isinstance(context,dict) or not required.issubset(context):
+            raise ValueError("Actual TS20 packet/reference/consumption context is incomplete")
+        self._actuator_context = context
+        return self.actuator_predictor._predict_packed(t,times,h,state,
+            context["command_history"],self.velocity_limit[3:],warm,
+            reference_state=context["reference_state"],packet_history=context["packet_history"],
+            bus_origin_s=context["bus_origin_s"],exact_local=self._linearization_plan is not None)
+
     def _validate_candidate(self, t, state, problem, plan, predicted):
         prediction = problem["joint_prediction"]
-        actual = self.actuator_predictor.candidate_rollout(prediction, plan)
+        if isinstance(self.actuator_predictor,NativeJointMatrices):
+            actual = self.actuator_predictor._candidate_packed(prediction,plan)
+        else:
+            actual = self.actuator_predictor.candidate_rollout(prediction,plan)
         node_indices = [int(np.argmin(abs(actual["time_s"]-(t+x))))
                         for x in np.cumsum(problem["h"])]
         q, dq = actual["q"][node_indices], actual["dq"][node_indices]

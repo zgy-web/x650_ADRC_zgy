@@ -1,0 +1,16 @@
+{
+  "server_archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v17_compact_archive.zip",
+  "archive_bytes": 837410,
+  "archive_sha256": "1c4da200cdee2c9ae4e7fd45c352483fe29568c7e673247ad8800d0c573900e8",
+  "verified_extracted_file_count": 25,
+  "local_directory": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\isolated_live_20261024\\execution_v17",
+  "formal_software_counts": {
+    "regression": 379,
+    "matrix": 30,
+    "recorded": 388
+  },
+  "flight_started": false,
+  "hold_passed": false,
+  "preflight_failed_snapshot": true,
+  "complete_portable_proof": false
+}

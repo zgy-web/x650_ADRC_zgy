@@ -19,6 +19,7 @@ sys.path[:0]=[str(ROOT),str(ROOT/"scripts"),str(ROOT/"control_packages/x650_whol
              str(ROOT/"src"),str(ROOT/"simulations/x650_wholebody_mpc_v1")]
 from validate_x650_ts20_causal_software import run_tests,test_files,identity,write_new
 from validate_x650_native_numerics import source_receipt
+from x650_wholebody.native_qualification import reject_draft_evidence,verify_numerical_evidence
 
 
 def main(argv=None):
@@ -35,6 +36,7 @@ def main(argv=None):
                 (args.native_library,args.native_sha256)):
         if identity(p)["sha256"]!=h:raise ValueError("Pinned artifact changed: "+str(p))
     prior=json.loads(args.previous_proof.read_text());recorded=json.loads(args.recorded_report.read_text())
+    reject_draft_evidence(prior);reject_draft_evidence(recorded)
     assert recorded["pass"] and recorded["total"]==recorded["passed"] and recorded["sources_unchanged"]
     native={"path":str(args.native_library.resolve()),"sha256":args.native_sha256,"abi":1}
     assert recorded["native_library"]==native
@@ -42,6 +44,7 @@ def main(argv=None):
         entry=prior[key];assert identity(entry["path"])["sha256"]==entry["sha256"]
     for name,sha in recorded["deployment_sources"].items():
         assert identity(ROOT/name)["sha256"]==sha,name
+    recorded_streamed=verify_numerical_evidence(ROOT,args.recorded_report,recorded,recorded["deployment_sources"])
     paths=set(prior["deployment_sources"])|set(source_receipt())|{Path(__file__).relative_to(ROOT).as_posix()}
     groups=test_files()
     paths.update(p.relative_to(ROOT).as_posix() for rows in groups.values() for p in rows)
@@ -71,9 +74,16 @@ def main(argv=None):
     assert all(identity(ROOT/p)["sha256"]==h for p,h in before.items())
     for report in (matrix,recorded):
         assert all(before.get(p)==h for p,h in report["deployment_sources"].items())
+    matrix_streamed=verify_numerical_evidence(ROOT,matrix_path,matrix,before)
+    # Reopen the recorded dependencies after regression/matrix execution too.
+    if recorded_streamed!=verify_numerical_evidence(ROOT,args.recorded_report,recorded,before):
+        raise ValueError("Recorded streamed evidence changed during qualification")
+    streamed_evidence={key:value for key,value in (("matrix",matrix_streamed),("recorded",recorded_streamed))
+                       if value is not None}
     proof={"kind":"native_numerics_software_acceptance_v1","pass":True,"no_flight":True,
            "native_library":native,"deployment_sources":before,
            "matrix":identity(matrix_path),"recorded":identity(args.recorded_report),
+           "streamed_evidence":streamed_evidence,
            "native_tests":identity(out/"native_tests.json"),
            "original_deadline_and_controller_limits_unchanged":True,"hardware_qualified":False,
            "orchestration":"Python/ROS; C++ matrix assembly, QP and candidate gates",

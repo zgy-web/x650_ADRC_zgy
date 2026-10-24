@@ -11,8 +11,11 @@ def _own_live_diagnostics(engine):
     if engine.requests or engine.live_started:
         raise ValueError('Live diagnostic ownership must be configured before handoff')
     engine.adapter.use_owned_diagnostic_snapshot()
+    from .deferred_diagnostics import DeferredLiveDiagnostics
+    engine.adapter = DeferredLiveDiagnostics(engine.adapter)
     engine._metadata.update(diagnostic_snapshot='owned_allocation_once_v1',
-        diagnostic_snapshot_scope='private read-only live result; per-result descendants may alias; detached from controller and future steps before synchronous binary handoff')
+        diagnostic_snapshot_scope='private read-only live result; per-result descendants may alias; detached from controller and future steps before synchronous binary handoff',
+        diagnostic_preparation='zero-policy FF diagnostics and owned copy finish after proposal publication, before synchronous serialization and any next solve')
     return engine
 
 

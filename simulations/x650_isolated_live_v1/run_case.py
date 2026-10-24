@@ -372,7 +372,161 @@ class LiveExtension(Ts20Extension):
             self.supervisor.close()
             write(self.out/'fault_supervision.json',self.supervisor.latch.report())
 
-    def _release(self,loop):
+    def _pump_recovery_receive_only(self):
+        """Receive navigation/ACK evidence without either actuator writer."""
+        loop=self.loop
+        self.loop_timing.original['original_pump'](ros_timeout_s=0.)
+        until=time.monotonic_ns()+250_000
+        for _ in range(32):
+            if time.monotonic_ns()>=until:break
+            loop.ctx.node.spin_once(timeout_sec=0.)
+        sim=loop.monitor_now()
+        loop.land_watchdog.observe(loop.ctx.node,sim)
+        if loop.status_watchdog is not None:
+            loop.status_watchdog.observe(loop.ctx.node,sim)
+
+    def _release_for_failed_recovery(self,loop):
+        # An unconfirmed exit must never enable the old joint/PVA publisher.
+        # NAV mode commands can still be sent while this receive-only pump
+        # obtains their confirmation. No stale MPC command is republished.
+        self.recovery_owner_unverified=True
+        loop.ctx.vehicle._pump=self._pump_recovery_receive_only
+        record={'zero_consumed':False,'writer_exited':False,'bounded_failed_recovery':True,
+                'receipt_budget_s':.15,'sigint_budget_s':.15,'sigkill_budget_s':.05,
+                'signals':[],'errors':[],'begin_monotonic_ns':time.monotonic_ns()}
+        self.release=record
+        try:
+            stop=self.msg.RuntimeStop();stop.session_id=self.session;stop.epoch=self.epoch
+            self.stop_pub.publish(stop)
+            deadline=time.monotonic()+.15
+            while time.monotonic()<deadline:
+                self._pump_recovery_receive_only()
+                sent,receipt=self.latest.get('sends'),self.latest.get('receipts')
+                if (sent is not None and receipt is not None and sent.stop_zero
+                        and sent.session_id==receipt.session_id==self.session
+                        and sent.epoch==receipt.epoch==self.epoch
+                        and receipt.dispatch_sequence==sent.dispatch_sequence
+                        and receipt.command_sequence==sent.command_sequence
+                        and list(sent.joint_velocity)==[0.,0.]
+                        and list(receipt.consumed_counter)==list(sent.expected_counter)
+                        and receipt.joint_consumed and not receipt.pva_send_returned and not receipt.failed):
+                    record['zero_consumed']=True;break
+                time.sleep(.001)
+        except Exception as exc:
+            record['errors'].append('zero receipt: '+repr(exc))
+        process=self.procs.get('dispatcher')
+        try:
+            if process is not None and process.poll() is None:
+                os.killpg(process.pid,signal.SIGINT);record['signals'].append('SIGINT')
+                try:process.wait(timeout=.15)
+                except subprocess.TimeoutExpired:
+                    os.killpg(process.pid,signal.SIGKILL);record['signals'].append('SIGKILL')
+                    process.wait(timeout=.05)
+        except Exception as exc:
+            record['errors'].append('writer exit: '+repr(exc))
+        record['writer_exited']=process is not None and process.poll() is not None
+        record['wall_monotonic_ns']=time.monotonic_ns()
+        self.active=False
+        self.recovery_owner_unverified=not record['writer_exited']
+        if record['writer_exited']:
+            loop.last=None;loop.next_control=loop.control_now()
+            loop.ctx.vehicle._pump=loop.pump
+        if not record['zero_consumed'] or not record['writer_exited']:
+            self.failure=self.failure or 'Failed-recovery output release was not fully verified'
+
+    @staticmethod
+    def _recovery_status(node):
+        status=node.data.get('status')
+        if status is None:return None
+        return {'callback_sequence':int(node.callback_sequences.get('status',0)),
+                'received_wall_monotonic_s':shared.receipt_time(node,'status'),
+                'timestamp_us':int(status.timestamp),'nav_state':int(status.nav_state),
+                'arming_state':int(status.arming_state),'failsafe':bool(status.failsafe)}
+
+    def before_failed_fold(self,ctx,loop,meta):
+        """Confirm PX4 autonomous hold before waiting for arm recovery."""
+        record={'kind':'isolated_failed_recovery_handoff_v1','confirmed':False,
+                'decision':'direct_land','confirmation_budget_s':.35,
+                'command':176,'parameters':[1.,4.,3.,0.,0.,0.,0.],
+                'expected_nav_state':4,'acks':[],
+                'clock_semantics':'host monotonic callback/ACK receipts; PX4 timestamp only compared for source progression',
+                'source_semantics':'VehicleAPI._pump accepts ACK only from its fixed PX4 target',
+                'scope':'failed experiment recovery only; no MPC continuation or hardware qualification'}
+        meta['failed_recovery_handoff']=record
+        loop.recovery=True
+        loop.offboard=loop.send_reference=loop.strict=False
+        if not self.started:
+            record['reason']='live_control_never_started'
+            return False
+        try:
+            if self.active:self._release(loop,bounded_failed_recovery=True)
+            record['release']=dict(getattr(self,'release',{}))
+            if not record['release'].get('writer_exited') or not record['release'].get('zero_consumed'):
+                record['reason']='writer_exit_or_zero_consumption_unverified'
+                return False
+            before=self._recovery_status(ctx.node)
+            target=tuple(ctx.vehicle.target or ())
+            if before is None or before['callback_sequence']<=0 or before['timestamp_us']<=0 or len(target)!=2:
+                record['reason']='missing_initial_status_or_target'
+                return False
+            record.update(before=before,target_system=int(target[0]),target_component=int(target[1]))
+            # Clear the old Offboard DO_SET_MODE ACK before this new request.
+            ctx.vehicle.ack.pop(176,None)
+            boundary=time.monotonic()
+            record['command_boundary_wall_monotonic_s']=boundary
+            ctx.vehicle._send_command(176,record['parameters'])
+            record['command_send_returned_wall_monotonic_s']=time.monotonic()
+            deadline=boundary+.35
+            last_ack=None;accepted=False
+            while time.monotonic()<deadline:
+                self._pump_recovery_receive_only()
+                observed=time.monotonic()
+                if observed>=deadline:break
+                if tuple(ctx.vehicle.target or ())!=target:
+                    record['reason']='px4_target_changed';return False
+                ack=ctx.vehicle.ack.get(176)
+                if ack is not None and ack!=last_ack:
+                    last_ack=ack
+                    record['acks'].append({'command':176,'received_wall_monotonic_s':float(ack[0]),
+                        'result':int(ack[1]),'target_system':target[0],'target_component':target[1]})
+                    if boundary<=float(ack[0])<=observed:
+                        if int(ack[1]) not in (0,5):
+                            record['reason']='mode_command_rejected';return False
+                        accepted=True
+                current=self._recovery_status(ctx.node)
+                record['last_status']=current
+                if (accepted and current is not None
+                        and current['callback_sequence']>before['callback_sequence']
+                        and boundary<current['received_wall_monotonic_s']<=observed
+                        and current['timestamp_us']>before['timestamp_us']
+                        and current['nav_state']==4 and current['arming_state']==2 and not current['failsafe']):
+                    record.update(confirmed=True,decision='fold_then_land',reason='new_ack_and_autonomous_hold_state',
+                                  confirmed_wall_monotonic_s=observed)
+                    return True
+                time.sleep(.001)
+            record['reason']='mode_confirmation_timeout'
+        except Exception as exc:
+            record['reason']='handoff_exception';record['error']=repr(exc)
+        finally:
+            record['finished_wall_monotonic_s']=time.monotonic()
+        return False
+
+    def land_after_failed_recovery(self,ctx,loop,meta):
+        if not getattr(self,'recovery_owner_unverified',False):
+            return ctx.vehicle.land()
+        # VehicleAPI.land normally starts with zero_all(). If writer death is
+        # unverified that would create a second joint writer. Suppress only
+        # this convenience publish; keep the original NAV_LAND/ACK/state path.
+        loop.ctx.vehicle._pump=self._pump_recovery_receive_only
+        original_zero=ctx.node.zero_all
+        def suppressed_zero():
+            meta['unverified_owner_land_zero_publish_suppressed']=True
+        ctx.node.zero_all=suppressed_zero
+        try:return ctx.vehicle.land()
+        finally:ctx.node.zero_all=original_zero
+
+    def _release(self,loop,*,bounded_failed_recovery=False):
+        if bounded_failed_recovery:return self._release_for_failed_recovery(loop)
         if not self.active:return
         stop=self.msg.RuntimeStop();stop.session_id=self.session;stop.epoch=1
         self.stop_pub.publish(stop)

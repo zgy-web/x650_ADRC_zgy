@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/launch.py", line 106, in <module>
+    if __name__=='__main__':main()
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_isolated_live_v1/launch.py", line 54, in main
+    cfg=task.validate_task_config(task.read(a.task));_,provenance=task.preflight(cfg)
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/task.py", line 341, in preflight
+    provenance["stage_gates"] = validate_stage_gates(cfg, provenance)
+  File "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_ts20_hold_v1/task.py", line 228, in validate_stage_gates
+    raise ValueError("TS20 certificate artifact changed: " + name)
+ValueError: TS20 certificate artifact changed: /root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py

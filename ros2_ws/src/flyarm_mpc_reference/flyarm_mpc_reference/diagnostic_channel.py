@@ -20,6 +20,7 @@ MAGIC = b"FARMLOG1"
 class CaptureAdapter:
     def __init__(self, adapter):
         self.adapter, self.diagnostic = adapter, None
+        self.completion_error = None
 
     def __getattr__(self, name):
         return getattr(self.adapter, name)
@@ -29,6 +30,23 @@ class CaptureAdapter:
         command = self.adapter.step(*args, **kwargs)
         self.diagnostic = command.diagnostics
         return command
+
+    def complete_diagnostic(self, sequence):
+        """Finish private deferred work after publication, before serialization.
+
+        Failure is an incomplete recording after publication, not a rejected
+        pre-publication candidate. It terminates the worker and leaves the
+        adapter pending so another stateful solve cannot start.
+        """
+        finish = getattr(self.adapter, 'finish_diagnostics', None)
+        if finish is None or self.diagnostic is None:
+            return
+        try:
+            self.diagnostic = finish()
+        except BaseException as error:
+            self.completion_error = {'sequence': int(sequence),
+                'after_publication': True, 'complete': False, 'error': repr(error)}
+            raise
 
 
 class DiagnosticSender:

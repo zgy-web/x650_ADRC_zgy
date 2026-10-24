@@ -1,0 +1,37 @@
+{
+  "installed_module_hashes": {
+    "__init__.py": "417b5eada7c9e5a5d142b1e3d83db1faaca4abd09ccc7b15578c3ddaecdfaa95",
+    "deferred_diagnostics.py": "4ccae16c93824fac525b972d9ad316b22434add7af727c6d22d284a1eb70349e",
+    "diagnostic_channel.py": "cbf19be43bd615b4096d8a4bf2cb5d4be8dd791dea5a73cf7f6175a68936a38b",
+    "engine.py": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570",
+    "factory.py": "ad70f1074acad10e4b41d90b9e184c70553d1ba6d1c7922d1b8124d49ab4c6a9",
+    "figure8_factory.py": "60085f01dc298ab621c1ceb4fe59ddabc2d7ab679838dcb8fa0b8fcd6543c15b",
+    "isolated_node.py": "e60f23c9b350b39759c01b88379844a8cfe0c29d9bd58361530c24e3faffe641",
+    "live_factory.py": "b542dfd6f0853b620f0745b1e82afbdc157ec32b57dc02a57b6bdf509c0be7c0",
+    "node.py": "6adcf8f5f4c06c861f727c94a479bd31f06a519f5978db539b1b1cc3fbbf3fae",
+    "startup.py": "04f5a31af19860fb80d8b60fa9c1320ccc63e987fc75a56c20957ab935123039"
+  },
+  "binaries": {
+    "state_ingress": {
+      "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+      "sha256": "8dcbf74c533b3c948f37d9062520482cde18b52257cf7930a445111cb30a11c3"
+    },
+    "live_dispatcher": {
+      "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/live_dispatcher",
+      "sha256": "45b4477f3836f55c7287ff3d5aed27c01e44d9ab05bc6642467c6ce3533bc1bd"
+    },
+    "consumption_source": {
+      "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source",
+      "sha256": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434"
+    }
+  },
+  "build_exit": 0,
+  "architecture_tests": {
+    "ros_python": 60,
+    "failed_recovery": 11,
+    "fault_supervision": 3,
+    "supervision_lifecycle": 5,
+    "ground_preparation": 7
+  },
+  "flight_started": false
+}

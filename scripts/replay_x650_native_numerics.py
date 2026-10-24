@@ -14,6 +14,7 @@ import sys
 import traceback
 import numpy as np
 from validate_x650_native_numerics import ROOT,PROTOCOL,pair,source_receipt,file_identity,plain
+from qualification_recording import RowEvidenceStore, NaturalGcTrace, verify_streamed_evidence
 from profile_x650_ts20_actual_step import ReplayTail
 from x650_wholebody.native_optimization import NativeOptimization
 from x650_wholebody.ts20_mpc import Ts20MpcController
@@ -77,6 +78,7 @@ def main(argv=None):
     sources=source_receipt()
     sources[Path(__file__).relative_to(ROOT).as_posix()]=file_identity(__file__)["sha256"]
     report={"kind":"native_numerics_recorded_calls_v1","no_flight":True,"complete":False,
+            "evidence_layout":"streamed_rows_v1",
             "inputs":identities,"historical_failure":file_identity(args.failure_evidence),
             "historical_failure_unchanged":True,"native_library":native.receipt,
             "deployment_sources":sources,"protocol":PROTOCOL,"rows":[]}
@@ -92,8 +94,12 @@ def main(argv=None):
             context_provider=lambda s,t:deepcopy(context),trajectory=lambda t:target,config=mpc_cfg)
         pool.append((c,p))
     build_index=0
+    store=RowEvidenceStore(args.output)
+    gc_trace=NaturalGcTrace()
+    gc_trace.__enter__()
     try:
         for index,(trace,dg) in enumerate(zip(traces,diagnostics)):
+            gc_trace.begin_row(index)
             row={"index":index,"t_s":trace["t_s"],"dt_s":trace["dt_s"],"pass":False}
             try:
                 assert abs(trace["t_s"]-dg["t_s"])<1e-9
@@ -117,20 +123,32 @@ def main(argv=None):
                         c._previous_stamp=traces[index-1]["state"]["stamp_s"]
                         c.step_count=index;c._chain_clock_origin=origin
                     return c,p,state,target
-                row.update(pair(build,native,trace["t_s"],trace["dt_s"]))
+                row.update(pair(build,native,trace["t_s"],trace["dt_s"],gc_trace=gc_trace))
                 row["pass"]=True
             except Exception as exc:
                 row.update(error=repr(exc),traceback=traceback.format_exc())
-            report["rows"].append(row)
+            finally:
+                row['natural_gc']=gc_trace.end_row()
+            report["rows"].append(store.write(index,row))
+            # The full packets/extrema evidence is durable; release this row.
+            del row
             if index%25==0:
                 print(json.dumps({"completed":index+1,"failures":sum(not v["pass"] for v in report["rows"])}),flush=True)
     finally:
+        gc_trace.__exit__(None,None,None)
         rt.close()
+    report['natural_gc']=gc_trace.write(args.output)
     report.update(complete=True,passed=sum(v["pass"] for v in report["rows"]),total=len(traces))
     report["pass"]=report["passed"]==len(traces)
     # Verify all actually loaded source files after the complete replay.
     report["sources_unchanged"]=all(file_identity(ROOT/p)["sha256"]==h for p,h in sources.items())
-    report["pass"]=report["pass"] and report["sources_unchanged"]
+    try:
+        report['row_evidence_verification']=verify_streamed_evidence(args.output,report)
+    except Exception as exc:
+        report['row_evidence_verification']=dict(passed=False,error=repr(exc),traceback=traceback.format_exc())
+    report["pass"]=(report["pass"] and report["sources_unchanged"]
+                    and report['natural_gc']['complete'] and report['natural_gc']['policy_unchanged']
+                    and report['row_evidence_verification']['passed'])
     (args.output/"replay_report.json").write_text(json.dumps(plain(report),indent=2,allow_nan=False))
     print(json.dumps({"pass":report["pass"],"passed":report["passed"],"total":len(traces),
                       "failures":[v for v in report["rows"] if not v["pass"]][:5]},indent=2))

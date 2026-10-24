@@ -1,0 +1,54 @@
+{"completed": 1, "failures": 0}
+{"completed": 26, "failures": 0}
+{"completed": 51, "failures": 0}
+{"completed": 76, "failures": 0}
+{"completed": 101, "failures": 0}
+{"completed": 126, "failures": 0}
+{"completed": 151, "failures": 0}
+{"completed": 176, "failures": 0}
+{"completed": 201, "failures": 0}
+{"completed": 226, "failures": 0}
+{"completed": 251, "failures": 0}
+{"completed": 276, "failures": 0}
+{"completed": 301, "failures": 0}
+{"completed": 326, "failures": 0}
+{"completed": 351, "failures": 0}
+{"completed": 376, "failures": 0}
+{
+  "pass": true,
+  "passed": 388,
+  "total": 388,
+  "failures": []
+}
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmptumeqnpz
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmp6iwf24bh
+X650_STAGE_START joint_probe pid_ff
+X650_STAGE_COMPLETE joint_probe /tmp/tmpegqo9yv0
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmpx1yo0gus
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmp39vwiyf2
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded /tmp/tmp2fkdhz_1
+X650_STAGE_START response_probe pid_ff
+X650_STAGE_COMPLETE response_probe /tmp/tmpcus65v8o
+{
+  "pass": true,
+  "tests": 379,
+  "matrix": 30,
+  "recorded": 388,
+  "native_acceptance": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v5/native_acceptance.json",
+    "sha256": "c42d5c843c8fef1ed0290ea0a448f287becb517a27024ff816db892e1121eeea",
+    "bytes": 16853
+  },
+  "software_acceptance": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v5/software_acceptance.json",
+    "sha256": "39efaf24481e2c878d3605afa2540071ffa71a541e44c18155c897989c29616f",
+    "bytes": 18294
+  }
+}

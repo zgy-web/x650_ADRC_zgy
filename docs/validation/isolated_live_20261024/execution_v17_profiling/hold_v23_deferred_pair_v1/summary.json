@@ -1,0 +1,459 @@
+{
+  "kind": "scratch_deferred_full_diagnostic_comparison_v1",
+  "physical_run": false,
+  "qualification": false,
+  "pairs": 3,
+  "order": "packed,packed_deferred sequentially, new process each time",
+  "excluded_diagnostic_keys": [
+    "compute_ms",
+    "elapsed_ms",
+    "solve_ms",
+    "ts20_timing_observation",
+    "ts20_total_compute_ms"
+  ],
+  "callback_scope": "real process_snapshot/CDR/pickle/Unix datagram; no-op DDS publisher; finish on first serializer entry after publish return, before snapshot CDR and pickle",
+  "rows": [
+    {
+      "pass": 1,
+      "variant": "packed",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 9.855284000000001,
+        "max": 13.007248,
+        "round25": 11.011894,
+        "round26": 9.132973
+      },
+      "callback_proxy_wall_ms": {
+        "median": 10.320828500000001,
+        "max": 13.558831,
+        "round25": 11.428853,
+        "round26": 9.564125
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 10.3089425,
+        "max": 13.551885,
+        "round25": 11.412684,
+        "round26": 9.547665
+      },
+      "allocator": {
+        "median": 7.1471455,
+        "max": 10.222386,
+        "round25": 8.460647,
+        "round26": 6.612974
+      },
+      "assemble": {
+        "median": 3.9679279999999997,
+        "max": 6.873636,
+        "round25": 3.640267,
+        "round26": 3.631378
+      },
+      "joint_prediction": {
+        "median": 2.3559845,
+        "max": 5.238865,
+        "round25": 2.16159,
+        "round26": 2.144999
+      },
+      "candidate": {
+        "median": 1.3279070000000002,
+        "max": 1.690983,
+        "round25": 1.413477,
+        "round26": 1.42429
+      },
+      "clone": {
+        "median": 0.50064,
+        "max": 0.71842,
+        "round25": 0.606723,
+        "round26": 0.608159
+      },
+      "arm_ff": {
+        "median": 0.8328875,
+        "max": 2.448963,
+        "round25": 0.79709,
+        "round26": 0.771567
+      },
+      "finish_diagnostics": {
+        "median": 0.0,
+        "max": 0,
+        "round25": 0,
+        "round26": 0
+      },
+      "postpublish_to_offer_ms_median": 0.415049
+    },
+    {
+      "pass": 1,
+      "variant": "packed_deferred",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 8.23669,
+        "max": 10.517046,
+        "round25": 10.181864,
+        "round26": 9.979271
+      },
+      "callback_proxy_wall_ms": {
+        "median": 10.194208,
+        "max": 12.562754,
+        "round25": 12.19901,
+        "round26": 12.302174
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 10.184284,
+        "max": 12.553191,
+        "round25": 12.191858,
+        "round26": 12.294715
+      },
+      "allocator": {
+        "median": 7.0855945,
+        "max": 9.368788,
+        "round25": 9.059385,
+        "round26": 8.641177
+      },
+      "assemble": {
+        "median": 3.8988845000000003,
+        "max": 5.301471,
+        "round25": 3.888489,
+        "round26": 4.841937
+      },
+      "joint_prediction": {
+        "median": 2.3155229999999998,
+        "max": 3.65118,
+        "round25": 2.305245,
+        "round26": 2.906581
+      },
+      "candidate": {
+        "median": 1.2994925,
+        "max": 1.833029,
+        "round25": 1.543734,
+        "round26": 1.833029
+      },
+      "clone": {
+        "median": 0.5096244999999999,
+        "max": 0.744872,
+        "round25": 0.648105,
+        "round26": 0.744872
+      },
+      "arm_ff": {
+        "median": 0.829962,
+        "max": 0.999992,
+        "round25": 0.826199,
+        "round26": 0.999992
+      },
+      "finish_diagnostics": {
+        "median": 1.3868165000000001,
+        "max": 1.800819,
+        "round25": 1.517319,
+        "round26": 1.800819
+      },
+      "postpublish_to_offer_ms_median": 1.8368509999999998
+    },
+    {
+      "pass": 2,
+      "variant": "packed",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 9.4772325,
+        "max": 12.116153,
+        "round25": 11.364896,
+        "round26": 9.379293
+      },
+      "callback_proxy_wall_ms": {
+        "median": 9.903702,
+        "max": 12.539993,
+        "round25": 11.792756,
+        "round26": 9.812349
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 9.897134999999999,
+        "max": 12.517945,
+        "round25": 11.785525,
+        "round26": 9.805509
+      },
+      "allocator": {
+        "median": 6.931437,
+        "max": 9.300197,
+        "round25": 8.798989,
+        "round26": 6.822351
+      },
+      "assemble": {
+        "median": 3.8993625,
+        "max": 5.291662,
+        "round25": 3.805424,
+        "round26": 3.765369
+      },
+      "joint_prediction": {
+        "median": 2.303673,
+        "max": 3.638676,
+        "round25": 2.261176,
+        "round26": 2.23568
+      },
+      "candidate": {
+        "median": 1.265517,
+        "max": 1.469052,
+        "round25": 1.466414,
+        "round26": 1.462862
+      },
+      "clone": {
+        "median": 0.50459,
+        "max": 0.676184,
+        "round25": 0.623316,
+        "round26": 0.631916
+      },
+      "arm_ff": {
+        "median": 0.8253429999999999,
+        "max": 0.84675,
+        "round25": 0.800803,
+        "round26": 0.79349
+      },
+      "finish_diagnostics": {
+        "median": 0.0,
+        "max": 0,
+        "round25": 0,
+        "round26": 0
+      },
+      "postpublish_to_offer_ms_median": 0.40551
+    },
+    {
+      "pass": 2,
+      "variant": "packed_deferred",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 8.2215565,
+        "max": 11.580715,
+        "round25": 9.64248,
+        "round26": 7.842684
+      },
+      "callback_proxy_wall_ms": {
+        "median": 10.0357755,
+        "max": 13.188462,
+        "round25": 11.521445,
+        "round26": 9.654891
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 10.028686,
+        "max": 13.161173,
+        "round25": 11.514106,
+        "round26": 9.648487
+      },
+      "allocator": {
+        "median": 7.100747500000001,
+        "max": 9.943754,
+        "round25": 8.576639,
+        "round26": 6.778453
+      },
+      "assemble": {
+        "median": 3.9197024999999996,
+        "max": 5.139173,
+        "round25": 3.71582,
+        "round26": 3.874385
+      },
+      "joint_prediction": {
+        "median": 2.3244404999999997,
+        "max": 3.533905,
+        "round25": 2.212926,
+        "round26": 2.302419
+      },
+      "candidate": {
+        "median": 1.2976055,
+        "max": 1.685487,
+        "round25": 1.441745,
+        "round26": 1.357748
+      },
+      "clone": {
+        "median": 0.5095864999999999,
+        "max": 0.809877,
+        "round25": 0.594501,
+        "round26": 0.58982
+      },
+      "arm_ff": {
+        "median": 0.8285245,
+        "max": 1.619393,
+        "round25": 0.774017,
+        "round26": 0.734326
+      },
+      "finish_diagnostics": {
+        "median": 1.3905750000000001,
+        "max": 2.509289,
+        "round25": 1.409125,
+        "round26": 1.361442
+      },
+      "postpublish_to_offer_ms_median": 1.8575105
+    },
+    {
+      "pass": 3,
+      "variant": "packed",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 9.408521,
+        "max": 12.122321,
+        "round25": 11.354983,
+        "round26": 9.33786
+      },
+      "callback_proxy_wall_ms": {
+        "median": 9.8395405,
+        "max": 12.565836,
+        "round25": 11.772789,
+        "round26": 9.765607
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 9.8329035,
+        "max": 12.544276,
+        "round25": 11.766084,
+        "round26": 9.758771
+      },
+      "allocator": {
+        "median": 6.911823,
+        "max": 9.302107,
+        "round25": 8.792773,
+        "round26": 6.782591
+      },
+      "assemble": {
+        "median": 3.8720095,
+        "max": 5.138943,
+        "round25": 3.795504,
+        "round26": 3.734505
+      },
+      "joint_prediction": {
+        "median": 2.289088,
+        "max": 3.554898,
+        "round25": 2.249751,
+        "round26": 2.211913
+      },
+      "candidate": {
+        "median": 1.2997345,
+        "max": 1.958182,
+        "round25": 1.458556,
+        "round26": 1.456493
+      },
+      "clone": {
+        "median": 0.501185,
+        "max": 0.678889,
+        "round25": 0.629308,
+        "round26": 0.632886
+      },
+      "arm_ff": {
+        "median": 0.8139955,
+        "max": 0.848534,
+        "round25": 0.803294,
+        "round26": 0.792502
+      },
+      "finish_diagnostics": {
+        "median": 0.0,
+        "max": 0,
+        "round25": 0,
+        "round26": 0
+      },
+      "postpublish_to_offer_ms_median": 0.402652
+    },
+    {
+      "pass": 3,
+      "variant": "packed_deferred",
+      "count": 26,
+      "status_max": 0,
+      "command_max_abs_error": 0.0,
+      "diagnostics_all_offered": true,
+      "engine_wall_ms": {
+        "median": 8.136792,
+        "max": 10.440892,
+        "round25": 10.002411,
+        "round26": 7.904772
+      },
+      "callback_proxy_wall_ms": {
+        "median": 9.8826485,
+        "max": 12.438539,
+        "round25": 11.92706,
+        "round26": 9.833705
+      },
+      "callback_proxy_thread_cpu_ms": {
+        "median": 9.8755515,
+        "max": 12.431686,
+        "round25": 11.915312,
+        "round26": 9.826938
+      },
+      "allocator": {
+        "median": 6.928914499999999,
+        "max": 9.290157,
+        "round25": 8.77319,
+        "round26": 6.831192
+      },
+      "assemble": {
+        "median": 3.8906745000000003,
+        "max": 5.108205,
+        "round25": 3.773028,
+        "round26": 3.766773
+      },
+      "joint_prediction": {
+        "median": 2.311979,
+        "max": 3.504882,
+        "round25": 2.245055,
+        "round26": 2.238177
+      },
+      "candidate": {
+        "median": 1.3131035,
+        "max": 1.69694,
+        "round25": 1.472947,
+        "round26": 1.484706
+      },
+      "clone": {
+        "median": 0.49447399999999997,
+        "max": 0.659504,
+        "round25": 0.616627,
+        "round26": 0.627128
+      },
+      "arm_ff": {
+        "median": 0.812812,
+        "max": 0.880974,
+        "round25": 0.803963,
+        "round26": 0.788578
+      },
+      "finish_diagnostics": {
+        "median": 1.3729144999999998,
+        "max": 1.538573,
+        "round25": 1.461735,
+        "round26": 1.456175
+      },
+      "postpublish_to_offer_ms_median": 1.814853
+    }
+  ],
+  "comparisons": [
+    {
+      "pass": 1,
+      "exact_all_commands_and_full_diagnostics_except_timing": true,
+      "difference_count": 0,
+      "first_differences": [],
+      "canonical_nontiming_sha256": "25af84fdd5fc60c8f18eb63b6a49baeba1f5c15584d70cc00cb1d034e3cbf527"
+    },
+    {
+      "pass": 2,
+      "exact_all_commands_and_full_diagnostics_except_timing": true,
+      "difference_count": 0,
+      "first_differences": [],
+      "canonical_nontiming_sha256": "25af84fdd5fc60c8f18eb63b6a49baeba1f5c15584d70cc00cb1d034e3cbf527"
+    },
+    {
+      "pass": 3,
+      "exact_all_commands_and_full_diagnostics_except_timing": true,
+      "difference_count": 0,
+      "first_differences": [],
+      "canonical_nontiming_sha256": "25af84fdd5fc60c8f18eb63b6a49baeba1f5c15584d70cc00cb1d034e3cbf527"
+    }
+  ],
+  "sources": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_deferred_pair_v1/probe_hold23_deferred.py": "efeca796fc894f04fede8df198bac57eff312a901fc4bd2bf4de92c9e4554346",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_deferred_pair_v1/deferred_live_diagnostics.py": "3e0affe0074b45949e120d5466c57e38948e6860a8c4869f104cda68eb114094"
+  },
+  "interpretation": "All commands and full diagnostics, including nested allocation, FF, measured alpha filter, candidate envelope, subproblem acceptance and predicted trajectories, match exactly in each pair after removing only listed timing observations. Proposal-readiness shifts earlier by deferring work; whole callback still completes all work and immutable diagnostic send. Offline scratch evidence does not establish real DDS or physical flight timing."
+}

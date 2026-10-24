@@ -1,0 +1,114 @@
+{
+  "files": {
+    "control_packages/x650_wholebody_v1/tests/test_native_packed_preparation.py": {
+      "sha256": "d484f4f02127a3957eaf1a41264a4d01ae02b40439e52917ce22b5c86b85b1e0",
+      "bytes": 7673
+    },
+    "control_packages/x650_wholebody_v1/tests/test_native_qualification.py": {
+      "sha256": "267c17f6fe02e57694b391187c13ca2b548284656492c99dcc6809a3165e0c21",
+      "bytes": 8823
+    },
+    "control_packages/x650_wholebody_v1/tests/test_packed_candidate_capture.py": {
+      "sha256": "e532d21fee5a9a40f0ec35cb49fd18a4769a1da72faad054b0b4c31b4db83b3c",
+      "bytes": 10886
+    },
+    "control_packages/x650_wholebody_v1/tests/test_qualification_recording.py": {
+      "sha256": "1fa0ba1bb0ad9573b846bac9c999ea65ae171da24847d2d218e77be1b7ba71fb",
+      "bytes": 10576
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": {
+      "sha256": "a66f3645224b708343188b43f4f74c2f135592438db27a12760478561e428fcf",
+      "bytes": 21717
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py": {
+      "sha256": "653b1a9fd9fefd9df106a112cf60795ddc60faf0548887650f73d8d16dbd0c59",
+      "bytes": 14434
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": {
+      "sha256": "8d1381ed359396aa74a2cc3a8c0f37768ba58ee06cb2d83e5fb28ce1ffc8ef10",
+      "bytes": 11924
+    },
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py": {
+      "sha256": "e86fe8d035ba9137f5c94be52f239bf33df2af9318a38e0d12e6f42318acc0b8",
+      "bytes": 6728
+    },
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/deferred_diagnostics.py": {
+      "sha256": "4ccae16c93824fac525b972d9ad316b22434add7af727c6d22d284a1eb70349e",
+      "bytes": 5188
+    },
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py": {
+      "sha256": "cbf19be43bd615b4096d8a4bf2cb5d4be8dd791dea5a73cf7f6175a68936a38b",
+      "bytes": 4309
+    },
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py": {
+      "sha256": "e60f23c9b350b39759c01b88379844a8cfe0c29d9bd58361530c24e3faffe641",
+      "bytes": 11231
+    },
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py": {
+      "sha256": "b542dfd6f0853b620f0745b1e82afbdc157ec32b57dc02a57b6bdf509c0be7c0",
+      "bytes": 2698
+    },
+    "ros2_ws/src/flyarm_mpc_reference/test/test_deferred_diagnostics.py": {
+      "sha256": "ba12e24441451091215a766711142282a7a63bb0e50b655c5549020624eda42f",
+      "bytes": 6741
+    },
+    "scripts/packed_candidate_capture.py": {
+      "sha256": "1e0ead87e3223c9c50ed0d0c9f523f0b71df9d804a108da0a77bb0833263f6f3",
+      "bytes": 9676
+    },
+    "scripts/qualification_recording.py": {
+      "sha256": "f461b182633ece7fdaa5fc1ea7423c9e843af284675e48204d00765d889327e6",
+      "bytes": 12050
+    },
+    "scripts/qualify_x650_native_backend.py": {
+      "sha256": "908c9a5615d7e06b26535e46111a3777d5791455e0e2baebab89f44b5404a4e4",
+      "bytes": 7243
+    },
+    "scripts/replay_x650_native_numerics.py": {
+      "sha256": "eef2cddfa97a51a40fb15fbe84303fc4a2eb14c6abd21b93918648a1b5426b07",
+      "bytes": 8849
+    },
+    "scripts/validate_x650_native_numerics.py": {
+      "sha256": "9d2f5055d2f27f74617b88b88a1a8e05e502d2f179443dff01c5aa371ff5b066",
+      "bytes": 13934
+    },
+    "simulations/x650_isolated_live_v1/run_case.py": {
+      "sha256": "6466ba710a83438a4eae7d67a9ebd66a9039a49e1d1dc510384af57fac4cc0b8",
+      "bytes": 36446
+    },
+    "simulations/x650_wholebody_mpc_v1/run_case.py": {
+      "sha256": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+      "bytes": 87999
+    },
+    "tests/unit/test_x650_failed_recovery_handoff.py": {
+      "sha256": "c461a1b4c7d35df8b17518defc16ae9f8c7e3b5f726e399b4987a7bd3efc57b1",
+      "bytes": 12210
+    }
+  },
+  "before": {
+    "control_packages/x650_wholebody_v1/tests/test_native_packed_preparation.py": null,
+    "control_packages/x650_wholebody_v1/tests/test_native_qualification.py": null,
+    "control_packages/x650_wholebody_v1/tests/test_packed_candidate_capture.py": null,
+    "control_packages/x650_wholebody_v1/tests/test_qualification_recording.py": null,
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "7ecbc58c94a2133d7f3b6f3d3b039150d3c4bf56e284dfc46f95479793474c29",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py": "02be5ce82f9db3772a4a4b1a056fbaebf583a653517dac45c59cdff6ad2895c7",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "4c46f27e7828738224d94f9d622ef67140823609cccbdef813628f119ff4892f",
+    "control_packages/x650_wholebody_v1/x650_wholebody/native_qualification.py": "1772b757107020a426153c1864d8ba1eecdf7038e66e9422de9726907ae1aaa4",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/deferred_diagnostics.py": null,
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py": "a7deded69be944b83a0ab5d8dae6a00e78d2397fe2ad7c3e6520e32e019bf261",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/isolated_node.py": "d29032aa3d7f79da3e5fefa99f29f3d7e4752b8c59a380b0205b9c4ee1ae1d2e",
+    "ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/live_factory.py": "26462f8fe2cf99fd49a59b9b1f8603380261b745dd765faa5f5f05efd813aa6d",
+    "ros2_ws/src/flyarm_mpc_reference/test/test_deferred_diagnostics.py": null,
+    "scripts/packed_candidate_capture.py": null,
+    "scripts/qualification_recording.py": null,
+    "scripts/qualify_x650_native_backend.py": "165af59dfc87edab6e1bdd0018ab5038b769543f857067e3f256c2f4f666ad3d",
+    "scripts/replay_x650_native_numerics.py": "00ae74e0fe19c8496a1829a2f7c0ad7c5e07010372d55bb07a148844453cdad9",
+    "scripts/validate_x650_native_numerics.py": "ea1f11f09b78f15e0e151f4b229d99d01161c9f214fafe6fd188ab05b2247f09",
+    "simulations/x650_isolated_live_v1/run_case.py": "fb92fe7e00ce86d6a3e28f9c37fbf5124e9181b1a9232529d7bb36c4fb4c8941",
+    "simulations/x650_wholebody_mpc_v1/run_case.py": "64433d5a635dbf21412ae8af8b05cbd673cbfcb22ddf267dae8380d71deb5cce",
+    "tests/unit/test_x650_failed_recovery_handoff.py": null
+  },
+  "backup": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v30_before",
+  "zip_sha256": "12cda408056e36158bd481478b51ccc0cc7df9d7969b80d4f1524a141fad2085",
+  "simulation_started": false
+}

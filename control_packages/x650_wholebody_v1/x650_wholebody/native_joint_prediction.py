@@ -26,14 +26,25 @@ class NativeJointMatrices(Ts20PredictionModel):
 
     def _rollout_native(self, start, q, dq, packets, times, *, track_extrema=False):
         sends = np.array([p["send_time_s"] for p in packets])
-        knots = np.ascontiguousarray(sends+self.delay_s)
-        boundaries = np.array(sorted(set([start, *times, *knots[(knots > start) & (knots <= times[-1])]])))
         # Assemble the same held forcing in packet order, with each multiply
         # and addition in the original order, without a NumPy operation per
         # scalar packet field.
         references = np.asarray([p["q_ref"] for p in packets])
         velocities = np.asarray([p["dq_ref"] for p in packets])
         torques = np.asarray([p["tau_ff"] for p in packets])
+        return self._rollout_native_arrays(start,q,dq,sends,references,velocities,torques,times,
+                                           track_extrema=track_extrema)
+
+    def _rollout_native_arrays(self,start,q,dq,sends,references,velocities,torques,times,
+                               *,track_extrema=False,materialize_events=True):
+        """Private validated-array propagation; public callers materialize all events.
+
+        Skipping ordinary boundary records never skips native propagation or
+        extrema collection. All arrays are owned until the synchronous call
+        completes; no reusable scratch storage escapes this method.
+        """
+        knots = np.ascontiguousarray(sends+self.delay_s)
+        boundaries = np.array(sorted(set([start,*times,*knots[(knots>start)&(knots<=times[-1])]])))
         forcing = np.ascontiguousarray(self.kp*references+self.kd*velocities+torques)
         parameters = np.array([self.J, self.b, self.Fc, self.offset, self.delay_s, self.Fs, self.delta, self.vs])
         gains, initial = np.r_[self.kp, self.kd], np.r_[q, dq]
@@ -49,7 +60,7 @@ class NativeJointMatrices(Ts20PredictionModel):
         owners = (parameters, gains, initial, knots, forcing, boundaries,
                   states, modes, zeros, envelope, extrema)
         code = self._native.ts20_prediction_batch(double(parameters), double(gains), self.max_step_s, start,
-            double(initial), double(knots), double(forcing), len(packets), double(boundaries), len(boundaries),
+            double(initial), double(knots), double(forcing), len(sends), double(boundaries), len(boundaries),
             int(track_extrema), double(states), integer(modes), integer(zeros),
             double(envelope), double(extrema), len(extrema), ctypes.byref(event_count), ctypes.byref(substeps), error, len(error))
         del owners  # Only after the synchronous native return.
@@ -61,28 +72,47 @@ class NativeJointMatrices(Ts20PredictionModel):
         # Copy the three event fields as batches. Public rows remain disjoint
         # from one another, from the separate query outputs, and from inputs;
         # mutating a returned event cannot change another public field.
-        event_q, event_dq, event_modes = states[:,:2].copy(), states[:,2:].copy(), modes.copy()
-        events = [{"time_s": float(when), "q": position, "dq": velocity,
-            "modes": mode, "zero_events": int(zero)}
-            for when, position, velocity, mode, zero in zip(boundaries,event_q,event_dq,event_modes,zeros)]
         detailed = [{"time_s": float(row[0]), "joint": int(row[1]),
             "kind": "velocity_zero" if row[2] == 1 else "acceleration_zero", "q": float(row[3]), "dq": float(row[4])}
             for row in extrema[:event_count.value]]
-        return {"time_s": times, "q": states[indices, :2], "dq": states[indices, 2:],
-            "modes": modes[indices], "events": events, "metadata": self.metadata(),
+        result = {"time_s": times, "q": states[indices, :2], "dq": states[indices, 2:],
+            "modes": modes[indices],
             "envelope": {"q_lower": envelope[:2], "q_upper": envelope[2:4],
                 "dq_lower": envelope[4:6], "dq_upper": envelope[6:8], "events": detailed,
                 "substeps": substeps.value, "collected": track_extrema,
                 "method": "all substep endpoints plus frozen-substep velocity/acceleration roots",
                 "continuous_published_model_bound_claimed": False, "max_step_s": self.max_step_s}}
+        if materialize_events:
+            event_q,event_dq,event_modes = states[:,:2].copy(),states[:,2:].copy(),modes.copy()
+            result.update(events=[{"time_s":float(when),"q":position,"dq":velocity,
+                "modes":mode,"zero_events":int(zero)}
+                for when,position,velocity,mode,zero in zip(boundaries,event_q,event_dq,event_modes,zeros)],
+                metadata=self.metadata())
+        else:
+            result["_boundaries"] = boundaries
+        return result
 
 
     def _future_packets(self, t, nodes, nominal, limits, r_now, packets, phase,
                         *, sensitivities=True):
         """Generate fixed-bus packets in one quantization call per field."""
+        data,P,V = self._future_packet_data(t,nodes,nominal,limits,r_now,
+            packets[-1]["send_time_s"] if packets else -np.inf,len(packets),phase,
+            sensitivities=sensitivities)
+        send_times,q_encoded,v_encoded = data
+        torque = np.zeros((len(send_times), 2))
+        gains_p = np.broadcast_to(self.kp, (len(send_times), 2)).copy()
+        gains_d = np.broadcast_to(self.kd, (len(send_times), 2)).copy()
+        for b, send in enumerate(send_times):
+            packets.append({"send_time_s": float(send), "q_ref": q_encoded[b], "dq_ref": v_encoded[b],
+                            "tau_ff": torque[b], "kp": gains_p[b], "kd": gains_d[b]})
+        return packets, P, V
+
+    def _future_packet_data(self,t,nodes,nominal,limits,r_now,last_send,sent_count,phase,
+                            *,sensitivities=True):
+        """Single bus-grid/integrator/quantizer definition for both representations."""
         n, h = len(nodes)*5, np.diff(np.concatenate(([0.], nodes)))
         relative_starts = np.concatenate(([0.], nodes[:-1]))
-        last_send = packets[-1]["send_time_s"] if packets else -np.inf
         first_bus = phase+math.ceil((t-phase)/self.bus_period_s-1e-9)*self.bus_period_s
         if first_bus <= last_send+1e-10:
             first_bus += self.bus_period_s
@@ -103,25 +133,48 @@ class NativeJointMatrices(Ts20PredictionModel):
                 prefix[i+1, :, i*5+3:i*5+5] = step*diagonal
             # Batch storage gives each packet its own disjoint slice while
             # avoiding hundreds of Python allocations in every control tick.
-            count = len(packets)+len(send_times)
+            count = sent_count+len(send_times)
             P = np.zeros((count, 2, n))
             V = np.zeros((count, 2, n))
-            rows = np.arange(len(packets), count)
-            P[len(packets):] = prefix[active]
+            rows = np.arange(sent_count, count)
+            P[sent_count:] = prefix[active]
             for joint in range(2):
                 columns = active*5+3+joint
                 P[rows, joint, columns] += partial*limits[joint]
                 V[rows, joint, columns] = limits[joint]
-        torque = np.zeros((len(send_times), 2))
-        gains_p = np.broadcast_to(self.kp, (len(send_times), 2)).copy()
-        gains_d = np.broadcast_to(self.kd, (len(send_times), 2)).copy()
-        for b, send in enumerate(send_times):
-            packets.append({"send_time_s": float(send), "q_ref": q_encoded[b], "dq_ref": v_encoded[b],
-                            "tau_ff": torque[b], "kp": gains_p[b], "kd": gains_d[b]})
-        return packets, P, V
+        return (send_times,q_encoded,v_encoded),P,V
+
+    @staticmethod
+    def _packet_arrays(packets):
+        return (np.array([p["send_time_s"] for p in packets]),
+                *[np.asarray([p[field] for p in packets]).reshape(-1,2)
+                  for field in ("q_ref","dq_ref","tau_ff")])
+
+    def _future_packed(self,t,nodes,nominal,limits,r_now,sent,phase,*,sensitivities=True):
+        sends,positions,velocities,torques = sent
+        data,P,V = self._future_packet_data(t,nodes,nominal,limits,r_now,
+            sends[-1] if len(sends) else -np.inf,len(sends),phase,sensitivities=sensitivities)
+        future,q,dq = data
+        packets = (np.concatenate((sends,future)),np.concatenate((positions,q)),
+                   np.concatenate((velocities,dq)),np.concatenate((torques,np.zeros((len(future),2)))))
+        return packets,P,V
 
     def predict(self, t, node_times, intervals, state, history, velocity_limits, nominal,
                 *, reference_state, packet_history, bus_origin_s=0., exact_local=False):
+        return self._predict(t,node_times,intervals,state,history,velocity_limits,nominal,
+            reference_state=reference_state,packet_history=packet_history,
+            bus_origin_s=bus_origin_s,exact_local=exact_local,packed=False)
+
+    def _predict_packed(self,t,node_times,intervals,state,history,velocity_limits,nominal,
+                        *,reference_state,packet_history,bus_origin_s=0.,exact_local=False):
+        # The rare exact-local relinearization continues through the complete
+        # existing representation and event finite-difference implementation.
+        return self._predict(t,node_times,intervals,state,history,velocity_limits,nominal,
+            reference_state=reference_state,packet_history=packet_history,
+            bus_origin_s=bus_origin_s,exact_local=exact_local,packed=not exact_local)
+
+    def _predict(self, t, node_times, intervals, state, history, velocity_limits, nominal,
+                 *, reference_state, packet_history, bus_origin_s, exact_local, packed):
         """Return legacy-chain compatible affine q/dq nodes/events and r state.
 
         All command/packet/reference times are task-relative. state timestamps
@@ -159,19 +212,38 @@ class NativeJointMatrices(Ts20PredictionModel):
         z_nom = nominal.reshape(-1)/np.tile(np.concatenate((np.ones(3), limits)), len(nodes))
         # At t, an already sent packet cannot be rewritten by this new solve.
         sent_packets = packets.copy()
-        packets, packet_sensitivities, velocity_sensitivities = self._future_packets(
-            t, nodes, nominal, limits, r_now, packets, phase)
+        if packed:
+            sent_arrays = self._packet_arrays(packets)
+            packet_arrays,packet_sensitivities,velocity_sensitivities = self._future_packed(
+                t,nodes,nominal,limits,r_now,sent_arrays,phase)
+            actual_sends = packet_arrays[0]
+        else:
+            packets, packet_sensitivities, velocity_sensitivities = self._future_packets(
+                t, nodes, nominal, limits, r_now, packets, phase)
+            actual_sends = np.array([p["send_time_s"] for p in packets])
         queries = np.array(sorted(set([t, *[t+x for x in nodes],
-                            *[p["send_time_s"]+self.delay_s for p in packets
-                              if t <= p["send_time_s"]+self.delay_s <= t+nodes[-1]]])))
+                            *[send+self.delay_s for send in actual_sends
+                              if t <= send+self.delay_s <= t+nodes[-1]]])))
         # Only external actual packets need revalidation; the future bus
         # packets are produced by our already validated plan/adapter here.
-        self._check_packet_clock(packets, start)
-        nominal_run = self._rollout_known(start, q0.copy(), dq0.copy(), packets, queries)
+        if packed:
+            # Identical fixed-bus/coverage conditions to _check_packet_clock;
+            # packet field and gain validation has already run above.
+            if (not len(actual_sends) or np.any(np.diff(actual_sends)<=0)
+                    or actual_sends[0]+self.delay_s>start+1e-10
+                    or np.any(np.abs((actual_sends-actual_sends[0])/self.bus_period_s
+                                     -np.rint((actual_sends-actual_sends[0])/self.bus_period_s))>1e-7)):
+                raise ValueError("Ordered fixed-grid MIT history must cover the initial delayed packet")
+            nominal_run = self._rollout_native_arrays(start,q0.copy(),dq0.copy(),*packet_arrays,
+                                                      queries,materialize_events=False)
+        else:
+            self._check_packet_clock(packets, start)
+            nominal_run = self._rollout_known(start, q0.copy(), dq0.copy(), packets, queries)
         # Sensitivity recurrence follows the same actual packet timing. Internal
         # PD acts continuously, unlike the independently held q_ref/dq_ref.
-        sends = np.array([p["send_time_s"] for p in packets])+self.delay_s
-        boundaries = sorted(set([start, *queries, *sends[(sends > start) & (sends <= queries[-1])]]))
+        sends = actual_sends+self.delay_s
+        boundaries = nominal_run["_boundaries"] if packed else sorted(set(
+            [start,*queries,*sends[(sends>start)&(sends<=queries[-1])]]))
         if exact_local:
             sensitivities = self._event_jacobian(start, q0, dq0, packets, queries,
                                                  packet_sensitivities, velocity_sensitivities)
@@ -196,8 +268,6 @@ class NativeJointMatrices(Ts20PredictionModel):
         Q, D = sensitivities[:, :, 0], sensitivities[:, :, 1]
         q_affine, dq_affine = nominal_run["q"]-Q@z_nom, nominal_run["dq"]-D@z_nom
         relative_times = queries-t
-        records = [(float(when), q, dq, qj.copy(), dj.copy()) for when,q,dq,qj,dj in
-                   zip(relative_times,q_affine,dq_affine,Q,D)]
         # Preserve the reference's first record satisfying the exact floating
         # subtraction/tolerance expression, using a batched comparison.
         lookup = np.concatenate(([0.], nodes))
@@ -205,7 +275,22 @@ class NativeJointMatrices(Ts20PredictionModel):
         if not np.all(np.any(matches,axis=0)):
             raise ValueError("Joint prediction query coverage")
         indices = np.argmax(matches,axis=0)
-        current = records[indices[0]]
+        context = {"t":t,"node_times":nodes.copy(),"initial_time_s":start,
+                   "initial_q":q0.copy(),"initial_dq":dq0.copy(),"sent_packets":sent_packets,
+                   "limits":limits.copy(),"r_current":r_now.copy(),"bus_origin_s":phase}
+        if packed:
+            context["_sent_arrays"] = sent_arrays
+            joint_rows = np.empty((len(nodes),4+4*n))
+            selected = indices[1:]
+            joint_rows[:,:2],joint_rows[:,2:4] = q_affine[selected],dq_affine[selected]
+            joint_rows[:,4:4+2*n] = Q[selected].reshape(len(nodes),2*n)
+            joint_rows[:,4+2*n:] = D[selected].reshape(len(nodes),2*n)
+            reference_rows = np.empty((len(nodes),2+2*n))
+        else:
+            records = [(float(when),q,dq,qj.copy(),dj.copy()) for when,q,dq,qj,dj in
+                       zip(relative_times,q_affine,dq_affine,Q,D)]
+        current_Q,current_D = (Q[indices[0]].copy(),D[indices[0]].copy()) if packed else (
+            records[indices[0]][3],records[indices[0]][4])
         # Add analytic continuous adapter r constraints at every horizon node;
         # endpoints suffice for the piecewise-linear unquantized reference.
         references = []
@@ -216,17 +301,42 @@ class NativeJointMatrices(Ts20PredictionModel):
             # inner loop; reuse it instead of rebuilding the first i terms.
             R[:, i*5+3:i*5+5] = h[i]*diagonal
             r += h[i]*nominal[i, 3:]
-            references.append((float(elapsed), r-R@z_nom, R.copy()))
-        return {"nodes": [records[index] for index in indices[1:]], "events": records,
-                "q_current": current[1]+current[3]@z_nom,
-                "dq_current": current[2]+current[4]@z_nom,
+            if packed:
+                reference_rows[i,:2],reference_rows[i,2:] = r-R@z_nom,R.ravel()
+            else:
+                references.append((float(elapsed), r-R@z_nom, R.copy()))
+        result = {"q_current":q_affine[indices[0]]+current_Q@z_nom,
+                "dq_current":dq_affine[indices[0]]+current_D@z_nom,
                 "r_current": r_now, "reference_nodes": references,
                 "measurement_age_s": age, "nominal_z": z_nom,
                 "nominal_q": nominal_run["q"], "nominal_dq": nominal_run["dq"],
-                "query_times_s": queries, "nominal_packets": packets,
+                "query_times_s": queries,
                 "nominal_modes": nominal_run["modes"],
-                "_context": {"t": t, "node_times": nodes.copy(), "initial_time_s": start,
-                    "initial_q": q0.copy(), "initial_dq": dq0.copy(), "sent_packets": sent_packets,
-                    "limits": limits.copy(), "r_current": r_now.copy(), "bus_origin_s": phase},
+                "_context":context,
                 "metadata": {**self.metadata(), "event_local_jacobian": bool(exact_local),
                     "event_fd_normalized_step": .0001 if exact_local else None}}
+        if packed:
+            result.update(_native_packed=True,native_joint_rows=joint_rows,
+                          native_reference_rows=reference_rows)
+        else:
+            result.update(nodes=[records[index] for index in indices[1:]],events=records,
+                          nominal_packets=packets)
+        return result
+
+    def _candidate_packed(self,prediction,candidate):
+        """Private controller check; all extrema and safety-envelope data retained."""
+        if not prediction.get("_native_packed"):
+            return self.candidate_rollout(prediction,candidate)
+        context = prediction["_context"]
+        t,nodes,limits = context["t"],context["node_times"],context["limits"]
+        candidate = _finite(candidate,"candidate plan",(len(nodes),5))
+        if np.any(np.abs(candidate[:,3:])>limits+1e-10):
+            raise ValueError("Candidate joint plan exceeds velocity limits")
+        packets,_,_ = self._future_packed(t,nodes,candidate,limits,context["r_current"],
+            context["_sent_arrays"],context["bus_origin_s"],sensitivities=False)
+        out = self._rollout_native_arrays(context["initial_time_s"],context["initial_q"].copy(),
+            context["initial_dq"].copy(),*packets,prediction["query_times_s"],
+            track_extrema=True,materialize_events=False)
+        out["reference_nodes"] = context["r_current"]+np.cumsum(
+            np.diff(np.r_[0.,nodes])[:,None]*candidate[:,3:],axis=0)
+        return out

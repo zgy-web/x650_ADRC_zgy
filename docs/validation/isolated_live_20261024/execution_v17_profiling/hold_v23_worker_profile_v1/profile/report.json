@@ -1,0 +1,4409 @@
+{
+  "kind": "hold23_original_input_engine_profile_v1",
+  "physical_run": false,
+  "mode": "profile",
+  "instrumentation": "phase wrappers measure wall/thread CPU; cProfile only rounds25/26 in profile mode; no timing acceptance claim",
+  "input_policy": "all 26 original CDR snapshots replayed sequentially from actual LiveStart, only wall issue time rebased",
+  "pacing": "20 ms absolute wall schedule after constructor/one preflight gen2 collection and .2 s idle; no cadence reset on overrun",
+  "affinity": [
+    87,
+    89,
+    91,
+    97
+  ],
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "sources": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py": "477e0e2888ba5ef7d1515fe41342e651af79548472665f447cb71f8b47e9e635",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py": "5ab194edb35bf020c032dbf3f844007f752295e23f4390a94d41285b50a49570",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py": "7ecbc58c94a2133d7f3b6f3d3b039150d3c4bf56e284dfc46f95479793474c29",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py": "4c46f27e7828738224d94f9d622ef67140823609cccbdef813628f119ff4892f"
+  },
+  "inputs": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_launch_20261024_121323_13664/task.json": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/live_start.json": "22e3ab34deebb661669ff37b6d9b833153413faadaa0a1d08bf702d3d97e1124",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/initialization.json": "53d074904e13ff64e32564b52eaa7ea11bddad265dd19d1d96aff4a4e49d1af1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_121409_13665/isolated_live/recording/diagnostics.jsonl": "e3b8a98dfc1ff39214aca6e7d1aabd23d8c292c962259fc44761e0505891d4dc"
+  },
+  "rows": [
+    {
+      "sequence": 1,
+      "status": 0,
+      "engine_wall_ms": 14.411692,
+      "call_wall_ms": 14.432926,
+      "call_thread_cpu_ms": 14.395999,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.190861,
+          0.193048,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.021421000000000003,
+          0.022917000000000003,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.21725399999999997,
+          0.22266600000000003,
+          25
+        ],
+        "state_construction": [
+          0.22733,
+          0.228082,
+          1
+        ],
+        "target_construction": [
+          0.018032,
+          0.01824,
+          1
+        ],
+        "engine_decode": [
+          0.70842,
+          0.708816,
+          1
+        ],
+        "context_bind": [
+          0.001974,
+          0.00228,
+          1
+        ],
+        "motion_validation": [
+          0.017735,
+          0.0183,
+          2
+        ],
+        "assemble": [
+          5.704826,
+          5.70676,
+          1
+        ],
+        "qp": [
+          3.062567,
+          3.064793,
+          1
+        ],
+        "candidate_validation": [
+          1.68796,
+          1.650851,
+          1
+        ],
+        "allocator_outer": [
+          11.943221,
+          11.905476,
+          1
+        ],
+        "motion_filter": [
+          0.017439,
+          0.017505,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.909864,
+          0.911183,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022652,
+          0.023077,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.197928,
+          0.198274,
+          1
+        ],
+        "command_construction": [
+          0.087234,
+          0.087691,
+          1
+        ],
+        "adapter_step": [
+          13.330319,
+          13.291895,
+          1
+        ],
+        "context_clear": [
+          0.002491,
+          0.002639,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 11.500604450702667,
+        "inner_allocator_thread_cpu_ms": 11.664239000000132,
+        "outer_thread_cpu_ms": 11.869812999999896,
+        "gc_collection_count_before": [
+          209,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 11.91440224647522
+      }
+    },
+    {
+      "sequence": 2,
+      "status": 0,
+      "engine_wall_ms": 13.524496,
+      "call_wall_ms": 13.541207,
+      "call_thread_cpu_ms": 13.543549,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.160447,
+          0.162146,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022656,
+          0.024658999999999997,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.253809,
+          0.260585,
+          25
+        ],
+        "state_construction": [
+          0.231109,
+          0.232016,
+          1
+        ],
+        "target_construction": [
+          0.021682,
+          0.021946,
+          1
+        ],
+        "engine_decode": [
+          0.792571,
+          0.792937,
+          1
+        ],
+        "context_bind": [
+          0.002347,
+          0.002554,
+          1
+        ],
+        "motion_validation": [
+          0.019612,
+          0.020287,
+          2
+        ],
+        "assemble": [
+          5.193784,
+          5.195535,
+          1
+        ],
+        "qp": [
+          2.776995,
+          2.778874,
+          1
+        ],
+        "candidate_validation": [
+          1.520288,
+          1.521537,
+          1
+        ],
+        "allocator_outer": [
+          10.996391,
+          10.997294,
+          1
+        ],
+        "motion_filter": [
+          0.024093,
+          0.024212,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.896884,
+          0.898088,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022222,
+          0.022581,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.195453,
+          0.195833,
+          1
+        ],
+        "command_construction": [
+          0.083406,
+          0.083839,
+          1
+        ],
+        "adapter_step": [
+          12.393355,
+          12.393607,
+          1
+        ],
+        "context_clear": [
+          0.00224,
+          0.002508,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 10.575063526630402,
+        "inner_allocator_thread_cpu_ms": 10.733097999999996,
+        "outer_thread_cpu_ms": 10.965037999999927,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.970786213874817
+      }
+    },
+    {
+      "sequence": 3,
+      "status": 0,
+      "engine_wall_ms": 14.856797,
+      "call_wall_ms": 14.874886,
+      "call_thread_cpu_ms": 14.87707,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.144874,
+          0.146263,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023002,
+          0.024911000000000003,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24725099999999997,
+          0.25373,
+          25
+        ],
+        "state_construction": [
+          0.217687,
+          0.218587,
+          1
+        ],
+        "target_construction": [
+          0.020166,
+          0.02046,
+          1
+        ],
+        "engine_decode": [
+          0.762686,
+          0.763081,
+          1
+        ],
+        "context_bind": [
+          0.002171,
+          0.002321,
+          1
+        ],
+        "motion_validation": [
+          0.019595,
+          0.020380000000000002,
+          2
+        ],
+        "assemble": [
+          5.440684,
+          5.443654,
+          1
+        ],
+        "qp": [
+          3.629942,
+          3.632491,
+          1
+        ],
+        "candidate_validation": [
+          1.659457,
+          1.661305,
+          1
+        ],
+        "allocator_outer": [
+          12.277492,
+          12.278525,
+          1
+        ],
+        "motion_filter": [
+          0.023524,
+          0.02385,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.896607,
+          0.897811,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022624,
+          0.023009,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.284345,
+          0.284792,
+          1
+        ],
+        "command_construction": [
+          0.085839,
+          0.086257,
+          1
+        ],
+        "adapter_step": [
+          13.768598,
+          13.768888,
+          1
+        ],
+        "context_clear": [
+          0.002149,
+          0.002419,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 11.821553111076355,
+        "inner_allocator_thread_cpu_ms": 11.996598999999941,
+        "outer_thread_cpu_ms": 12.24528200000008,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 12.250423431396484
+      }
+    },
+    {
+      "sequence": 4,
+      "status": 0,
+      "engine_wall_ms": 13.159205,
+      "call_wall_ms": 13.177127,
+      "call_thread_cpu_ms": 13.179197,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.155608,
+          0.157678,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023382,
+          0.025573999999999996,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.25100100000000003,
+          0.258125,
+          25
+        ],
+        "state_construction": [
+          0.230256,
+          0.231209,
+          1
+        ],
+        "target_construction": [
+          0.020673,
+          0.020994,
+          1
+        ],
+        "engine_decode": [
+          0.783839,
+          0.78413,
+          1
+        ],
+        "context_bind": [
+          0.002402,
+          0.002608,
+          1
+        ],
+        "motion_validation": [
+          0.020245,
+          0.020964,
+          2
+        ],
+        "assemble": [
+          5.119343,
+          5.121551,
+          1
+        ],
+        "qp": [
+          2.174133,
+          2.176389,
+          1
+        ],
+        "candidate_validation": [
+          1.677287,
+          1.679165,
+          1
+        ],
+        "allocator_outer": [
+          10.499117,
+          10.500041,
+          1
+        ],
+        "motion_filter": [
+          0.023966,
+          0.02415,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.883886,
+          0.885023,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021446,
+          0.021826,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.336687,
+          0.337143,
+          1
+        ],
+        "command_construction": [
+          0.084325,
+          0.084734,
+          1
+        ],
+        "adapter_step": [
+          12.029892,
+          12.030315,
+          1
+        ],
+        "context_clear": [
+          0.002405,
+          0.002756,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 10.065637528896332,
+        "inner_allocator_thread_cpu_ms": 10.237263999999913,
+        "outer_thread_cpu_ms": 10.46806400000011,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.473206639289856
+      }
+    },
+    {
+      "sequence": 5,
+      "status": 0,
+      "engine_wall_ms": 13.302483,
+      "call_wall_ms": 13.318844,
+      "call_thread_cpu_ms": 13.321024,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.152982,
+          0.154627,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022668,
+          0.024662,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24845799999999998,
+          0.255436,
+          25
+        ],
+        "state_construction": [
+          0.227099,
+          0.228016,
+          1
+        ],
+        "target_construction": [
+          0.021415,
+          0.021683,
+          1
+        ],
+        "engine_decode": [
+          0.774739,
+          0.775114,
+          1
+        ],
+        "context_bind": [
+          0.002569,
+          0.002787,
+          1
+        ],
+        "motion_validation": [
+          0.019902,
+          0.020624999999999998,
+          2
+        ],
+        "assemble": [
+          5.036821,
+          5.039285,
+          1
+        ],
+        "qp": [
+          2.320276,
+          2.322075,
+          1
+        ],
+        "candidate_validation": [
+          1.733505,
+          1.735439,
+          1
+        ],
+        "allocator_outer": [
+          10.605875,
+          10.606783,
+          1
+        ],
+        "motion_filter": [
+          0.023227,
+          0.023376,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.877658,
+          0.878784,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021564,
+          0.021956,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.392036,
+          0.392386,
+          1
+        ],
+        "command_construction": [
+          0.083623,
+          0.084108,
+          1
+        ],
+        "adapter_step": [
+          12.18649,
+          12.186751,
+          1
+        ],
+        "context_clear": [
+          0.002304,
+          0.002567,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 10.180309414863586,
+        "inner_allocator_thread_cpu_ms": 10.340221000000094,
+        "outer_thread_cpu_ms": 10.57592900000004,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.58090478181839
+      }
+    },
+    {
+      "sequence": 6,
+      "status": 0,
+      "engine_wall_ms": 12.939476,
+      "call_wall_ms": 12.956489,
+      "call_thread_cpu_ms": 12.958119,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.143038,
+          0.144748,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022319,
+          0.024390999999999996,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24686399999999997,
+          0.253686,
+          25
+        ],
+        "state_construction": [
+          0.222284,
+          0.22328,
+          1
+        ],
+        "target_construction": [
+          0.021152,
+          0.02146,
+          1
+        ],
+        "engine_decode": [
+          0.765082,
+          0.765514,
+          1
+        ],
+        "context_bind": [
+          0.002866,
+          0.003037,
+          1
+        ],
+        "motion_validation": [
+          0.019642,
+          0.020325,
+          2
+        ],
+        "assemble": [
+          5.011844,
+          5.01412,
+          1
+        ],
+        "qp": [
+          2.096573,
+          2.098763,
+          1
+        ],
+        "candidate_validation": [
+          1.679911,
+          1.681842,
+          1
+        ],
+        "allocator_outer": [
+          10.280707,
+          10.281679,
+          1
+        ],
+        "motion_filter": [
+          0.023355,
+          0.023531,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.889537,
+          0.890633,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021416,
+          0.021836,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.365406,
+          0.365699,
+          1
+        ],
+        "command_construction": [
+          0.085594,
+          0.086078,
+          1
+        ],
+        "adapter_step": [
+          11.843968,
+          11.844192,
+          1
+        ],
+        "context_clear": [
+          0.002357,
+          0.00257,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 9.860880672931671,
+        "inner_allocator_thread_cpu_ms": 10.016465999999946,
+        "outer_thread_cpu_ms": 10.250303000000072,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.255120694637299
+      }
+    },
+    {
+      "sequence": 7,
+      "status": 0,
+      "engine_wall_ms": 11.117267,
+      "call_wall_ms": 11.133682,
+      "call_thread_cpu_ms": 11.135381,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.146036,
+          0.147607,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022461,
+          0.024462,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.257436,
+          0.264721,
+          25
+        ],
+        "state_construction": [
+          0.221801,
+          0.222674,
+          1
+        ],
+        "target_construction": [
+          0.020442,
+          0.020741,
+          1
+        ],
+        "engine_decode": [
+          0.758279,
+          0.758699,
+          1
+        ],
+        "context_bind": [
+          0.002342,
+          0.002537,
+          1
+        ],
+        "motion_validation": [
+          0.019676,
+          0.020443,
+          2
+        ],
+        "assemble": [
+          4.92785,
+          4.930135,
+          1
+        ],
+        "qp": [
+          0.330419,
+          0.33196,
+          1
+        ],
+        "candidate_validation": [
+          1.71353,
+          1.715067,
+          1
+        ],
+        "allocator_outer": [
+          8.424897,
+          8.425718,
+          1
+        ],
+        "motion_filter": [
+          0.023249,
+          0.023424,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.881156,
+          0.882403,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021568,
+          0.021968,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.403042,
+          0.403429,
+          1
+        ],
+        "command_construction": [
+          0.083761,
+          0.084262,
+          1
+        ],
+        "adapter_step": [
+          10.013927,
+          10.014157,
+          1
+        ],
+        "context_clear": [
+          0.00219,
+          0.002342,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.019961416721344,
+        "inner_allocator_thread_cpu_ms": 8.161810999999908,
+        "outer_thread_cpu_ms": 8.39541899999996,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.400477468967438
+      }
+    },
+    {
+      "sequence": 8,
+      "status": 0,
+      "engine_wall_ms": 11.105027,
+      "call_wall_ms": 11.120867,
+      "call_thread_cpu_ms": 11.122639,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.145836,
+          0.147584,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023096,
+          0.024885,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24832400000000002,
+          0.25512000000000007,
+          25
+        ],
+        "state_construction": [
+          0.219137,
+          0.220039,
+          1
+        ],
+        "target_construction": [
+          0.02096,
+          0.021325,
+          1
+        ],
+        "engine_decode": [
+          0.753412,
+          0.753748,
+          1
+        ],
+        "context_bind": [
+          0.002282,
+          0.002518,
+          1
+        ],
+        "motion_validation": [
+          0.019674999999999998,
+          0.020353999999999997,
+          2
+        ],
+        "assemble": [
+          4.929208,
+          4.931675,
+          1
+        ],
+        "qp": [
+          0.33156,
+          0.333064,
+          1
+        ],
+        "candidate_validation": [
+          1.69277,
+          1.694254,
+          1
+        ],
+        "allocator_outer": [
+          8.407534,
+          8.408404,
+          1
+        ],
+        "motion_filter": [
+          0.023148,
+          0.023332,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.890315,
+          0.891595,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021387,
+          0.021711,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.401583,
+          0.401936,
+          1
+        ],
+        "command_construction": [
+          0.082877,
+          0.083349,
+          1
+        ],
+        "adapter_step": [
+          10.004912,
+          10.00513,
+          1
+        ],
+        "context_clear": [
+          0.004367,
+          0.003578,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 7.999032735824585,
+        "inner_allocator_thread_cpu_ms": 8.139590999999946,
+        "outer_thread_cpu_ms": 8.378445999999817,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.383288979530334
+      }
+    },
+    {
+      "sequence": 9,
+      "status": 0,
+      "engine_wall_ms": 11.556401,
+      "call_wall_ms": 11.573166,
+      "call_thread_cpu_ms": 11.574841,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.134709,
+          0.136004,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023064000000000005,
+          0.024983,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.25433,
+          0.26111100000000004,
+          25
+        ],
+        "state_construction": [
+          0.215103,
+          0.215998,
+          1
+        ],
+        "target_construction": [
+          0.020986,
+          0.021291,
+          1
+        ],
+        "engine_decode": [
+          0.742903,
+          0.743326,
+          1
+        ],
+        "context_bind": [
+          0.002189,
+          0.002353,
+          1
+        ],
+        "motion_validation": [
+          0.020307,
+          0.021173,
+          2
+        ],
+        "assemble": [
+          4.8833,
+          4.885454,
+          1
+        ],
+        "qp": [
+          0.317776,
+          0.31921,
+          1
+        ],
+        "candidate_validation": [
+          1.843094,
+          1.844888,
+          1
+        ],
+        "allocator_outer": [
+          8.596848,
+          8.597691,
+          1
+        ],
+        "motion_filter": [
+          0.026667,
+          0.026838,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          1.051462,
+          1.052791,
+          1
+        ],
+        "feedforward_saturation": [
+          0.025061,
+          0.025433,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.488614,
+          0.489241,
+          1
+        ],
+        "command_construction": [
+          0.100014,
+          0.100397,
+          1
+        ],
+        "adapter_step": [
+          10.474048,
+          10.474414,
+          1
+        ],
+        "context_clear": [
+          0.002581,
+          0.00278,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.166231215000153,
+        "inner_allocator_thread_cpu_ms": 8.31396299999998,
+        "outer_thread_cpu_ms": 8.565120999999953,
+        "gc_collection_count_before": [
+          210,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.570834994316101
+      }
+    },
+    {
+      "sequence": 10,
+      "status": 0,
+      "engine_wall_ms": 10.955112,
+      "call_wall_ms": 10.966929,
+      "call_thread_cpu_ms": 10.968353,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.128945,
+          0.129834,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.021573000000000005,
+          0.023577,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.269322,
+          0.27674400000000005,
+          25
+        ],
+        "state_construction": [
+          0.218389,
+          0.219304,
+          1
+        ],
+        "target_construction": [
+          0.0246,
+          0.024932,
+          1
+        ],
+        "engine_decode": [
+          0.815816,
+          0.816381,
+          1
+        ],
+        "context_bind": [
+          0.002306,
+          0.002587,
+          1
+        ],
+        "motion_validation": [
+          0.018002,
+          0.018668999999999998,
+          2
+        ],
+        "assemble": [
+          5.733775,
+          5.735411,
+          1
+        ],
+        "qp": [
+          0.262684,
+          0.263925,
+          1
+        ],
+        "candidate_validation": [
+          1.260348,
+          1.261491,
+          1
+        ],
+        "allocator_outer": [
+          8.665612,
+          8.666099,
+          1
+        ],
+        "motion_filter": [
+          0.016244,
+          0.016329,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.625176,
+          0.626014,
+          1
+        ],
+        "feedforward_saturation": [
+          0.01545,
+          0.015706,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.308353,
+          0.308763,
+          1
+        ],
+        "command_construction": [
+          0.062495,
+          0.062906,
+          1
+        ],
+        "adapter_step": [
+          9.864688,
+          9.864722,
+          1
+        ],
+        "context_clear": [
+          0.001695,
+          0.00189,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.265063166618347,
+        "inner_allocator_thread_cpu_ms": 8.380555000000012,
+        "outer_thread_cpu_ms": 8.643710999999943,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.647195994853973
+      }
+    },
+    {
+      "sequence": 11,
+      "status": 0,
+      "engine_wall_ms": 11.096026,
+      "call_wall_ms": 11.113402,
+      "call_thread_cpu_ms": 11.115354,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.131625,
+          0.133039,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022467,
+          0.024368,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24299300000000004,
+          0.25032299999999996,
+          25
+        ],
+        "state_construction": [
+          0.211513,
+          0.212501,
+          1
+        ],
+        "target_construction": [
+          0.020366,
+          0.020676,
+          1
+        ],
+        "engine_decode": [
+          0.728265,
+          0.728685,
+          1
+        ],
+        "context_bind": [
+          0.002182,
+          0.002403,
+          1
+        ],
+        "motion_validation": [
+          0.018862999999999998,
+          0.019933,
+          2
+        ],
+        "assemble": [
+          4.904777,
+          4.906724,
+          1
+        ],
+        "qp": [
+          0.308114,
+          0.309256,
+          1
+        ],
+        "candidate_validation": [
+          1.737294,
+          1.738839,
+          1
+        ],
+        "allocator_outer": [
+          8.38282,
+          8.383649,
+          1
+        ],
+        "motion_filter": [
+          0.023331,
+          0.023526,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.914603,
+          0.916327,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021978,
+          0.022576,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.448246,
+          0.448791,
+          1
+        ],
+        "command_construction": [
+          0.080703,
+          0.081171,
+          1
+        ],
+        "adapter_step": [
+          10.048792,
+          10.049015,
+          1
+        ],
+        "context_clear": [
+          0.009736,
+          0.010308,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 7.9824477434158325,
+        "inner_allocator_thread_cpu_ms": 8.119594999999924,
+        "outer_thread_cpu_ms": 8.354611999999983,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.359156548976898
+      }
+    },
+    {
+      "sequence": 12,
+      "status": 0,
+      "engine_wall_ms": 11.856237,
+      "call_wall_ms": 11.870883,
+      "call_thread_cpu_ms": 11.872546,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.134024,
+          0.13599,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022513000000000002,
+          0.024558000000000003,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.244578,
+          0.251253,
+          25
+        ],
+        "state_construction": [
+          0.21528,
+          0.216215,
+          1
+        ],
+        "target_construction": [
+          0.020124,
+          0.020393,
+          1
+        ],
+        "engine_decode": [
+          0.734115,
+          0.734512,
+          1
+        ],
+        "context_bind": [
+          0.002037,
+          0.002231,
+          1
+        ],
+        "motion_validation": [
+          0.019126999999999998,
+          0.019892,
+          2
+        ],
+        "assemble": [
+          4.952597,
+          4.954833,
+          1
+        ],
+        "qp": [
+          0.323318,
+          0.324597,
+          1
+        ],
+        "candidate_validation": [
+          2.401231,
+          2.402951,
+          1
+        ],
+        "allocator_outer": [
+          9.140623,
+          9.141569,
+          1
+        ],
+        "motion_filter": [
+          0.022913,
+          0.023102,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.889698,
+          0.892844,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022996,
+          0.023442,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.467879,
+          0.468283,
+          1
+        ],
+        "command_construction": [
+          0.081229,
+          0.081681,
+          1
+        ],
+        "adapter_step": [
+          10.802731,
+          10.80296,
+          1
+        ],
+        "context_clear": [
+          0.002355,
+          0.002517,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.728228509426117,
+        "inner_allocator_thread_cpu_ms": 8.867184999999944,
+        "outer_thread_cpu_ms": 9.112473000000065,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.11685824394226
+      }
+    },
+    {
+      "sequence": 13,
+      "status": 0,
+      "engine_wall_ms": 13.326568,
+      "call_wall_ms": 13.341243,
+      "call_thread_cpu_ms": 13.343018,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.13221,
+          0.133683,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.021673,
+          0.023739,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24224999999999994,
+          0.24897499999999997,
+          25
+        ],
+        "state_construction": [
+          0.214498,
+          0.215431,
+          1
+        ],
+        "target_construction": [
+          0.020473,
+          0.020729,
+          1
+        ],
+        "engine_decode": [
+          0.729633,
+          0.73003,
+          1
+        ],
+        "context_bind": [
+          0.002081,
+          0.002289,
+          1
+        ],
+        "motion_validation": [
+          0.019424999999999998,
+          0.020127,
+          2
+        ],
+        "assemble": [
+          4.955151,
+          4.957534,
+          1
+        ],
+        "qp": [
+          2.449253,
+          2.451327,
+          1
+        ],
+        "candidate_validation": [
+          1.768325,
+          1.770339,
+          1
+        ],
+        "allocator_outer": [
+          10.640216,
+          10.641209,
+          1
+        ],
+        "motion_filter": [
+          0.023212,
+          0.023336,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.88278,
+          0.88396,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021379,
+          0.021748,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.456005,
+          0.456417,
+          1
+        ],
+        "command_construction": [
+          0.082563,
+          0.08301,
+          1
+        ],
+        "adapter_step": [
+          12.282453,
+          12.282715,
+          1
+        ],
+        "context_clear": [
+          0.002078,
+          0.002261,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 10.2292001247406,
+        "inner_allocator_thread_cpu_ms": 10.370200000000107,
+        "outer_thread_cpu_ms": 10.611540000000197,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.61595231294632
+      }
+    },
+    {
+      "sequence": 14,
+      "status": 0,
+      "engine_wall_ms": 12.976523,
+      "call_wall_ms": 12.994818,
+      "call_thread_cpu_ms": 12.99692,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.143864,
+          0.145531,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023398999999999996,
+          0.025799,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.260288,
+          0.267229,
+          25
+        ],
+        "state_construction": [
+          0.225861,
+          0.226765,
+          1
+        ],
+        "target_construction": [
+          0.020231,
+          0.020525,
+          1
+        ],
+        "engine_decode": [
+          0.760784,
+          0.761103,
+          1
+        ],
+        "context_bind": [
+          0.002024,
+          0.002248,
+          1
+        ],
+        "motion_validation": [
+          0.020919,
+          0.021785,
+          2
+        ],
+        "assemble": [
+          5.697866,
+          5.699853,
+          1
+        ],
+        "qp": [
+          0.396686,
+          0.398072,
+          1
+        ],
+        "candidate_validation": [
+          2.243451,
+          2.245034,
+          1
+        ],
+        "allocator_outer": [
+          9.897161,
+          9.897928,
+          1
+        ],
+        "motion_filter": [
+          0.027282,
+          0.027464,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          1.071076,
+          1.07235,
+          1
+        ],
+        "feedforward_saturation": [
+          0.024326,
+          0.024905,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.54832,
+          0.548858,
+          1
+        ],
+        "command_construction": [
+          0.099835,
+          0.100291,
+          1
+        ],
+        "adapter_step": [
+          11.857721,
+          11.858174,
+          1
+        ],
+        "context_clear": [
+          0.00244,
+          0.002691,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 9.451568126678467,
+        "inner_allocator_thread_cpu_ms": 9.605405000000067,
+        "outer_thread_cpu_ms": 9.865043999999878,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.86991822719574
+      }
+    },
+    {
+      "sequence": 15,
+      "status": 0,
+      "engine_wall_ms": 10.509417,
+      "call_wall_ms": 10.522473,
+      "call_thread_cpu_ms": 10.523789,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.127578,
+          0.12842,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022350000000000002,
+          0.024498,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.27502000000000004,
+          0.28077100000000005,
+          25
+        ],
+        "state_construction": [
+          0.222127,
+          0.222984,
+          1
+        ],
+        "target_construction": [
+          0.024429,
+          0.024748,
+          1
+        ],
+        "engine_decode": [
+          0.821738,
+          0.822124,
+          1
+        ],
+        "context_bind": [
+          0.002184,
+          0.002491,
+          1
+        ],
+        "motion_validation": [
+          0.01888,
+          0.019516,
+          2
+        ],
+        "assemble": [
+          4.617292,
+          4.619075,
+          1
+        ],
+        "qp": [
+          0.306176,
+          0.307371,
+          1
+        ],
+        "candidate_validation": [
+          1.55508,
+          1.556766,
+          1
+        ],
+        "allocator_outer": [
+          7.960835,
+          7.961486,
+          1
+        ],
+        "motion_filter": [
+          0.018845,
+          0.019001,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.737673,
+          0.738607,
+          1
+        ],
+        "feedforward_saturation": [
+          0.018091,
+          0.018432,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.413524,
+          0.413831,
+          1
+        ],
+        "command_construction": [
+          0.069256,
+          0.069654,
+          1
+        ],
+        "adapter_step": [
+          9.398495,
+          9.398561,
+          1
+        ],
+        "context_clear": [
+          0.001958,
+          0.002146,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 7.5403377413749695,
+        "inner_allocator_thread_cpu_ms": 7.663736999999893,
+        "outer_thread_cpu_ms": 7.935782999999974,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 7.93958455324173
+      }
+    },
+    {
+      "sequence": 16,
+      "status": 0,
+      "engine_wall_ms": 11.421883,
+      "call_wall_ms": 11.436634,
+      "call_thread_cpu_ms": 11.43817,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.130733,
+          0.132183,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022889,
+          0.024832999999999994,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24585400000000002,
+          0.25281899999999996,
+          25
+        ],
+        "state_construction": [
+          0.211224,
+          0.212204,
+          1
+        ],
+        "target_construction": [
+          0.020302,
+          0.020612,
+          1
+        ],
+        "engine_decode": [
+          0.733003,
+          0.733371,
+          1
+        ],
+        "context_bind": [
+          0.002112,
+          0.002267,
+          1
+        ],
+        "motion_validation": [
+          0.019216999999999998,
+          0.020058,
+          2
+        ],
+        "assemble": [
+          4.981191,
+          4.983449,
+          1
+        ],
+        "qp": [
+          0.323761,
+          0.325065,
+          1
+        ],
+        "candidate_validation": [
+          1.825691,
+          1.827296,
+          1
+        ],
+        "allocator_outer": [
+          8.580804,
+          8.581605,
+          1
+        ],
+        "motion_filter": [
+          0.023097,
+          0.023216,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.951725,
+          0.953409,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022743,
+          0.023138,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.531288,
+          0.532011,
+          1
+        ],
+        "command_construction": [
+          0.083855,
+          0.084257,
+          1
+        ],
+        "adapter_step": [
+          10.373447,
+          10.373882,
+          1
+        ],
+        "context_clear": [
+          0.002067,
+          0.002264,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.169814944267273,
+        "inner_allocator_thread_cpu_ms": 8.304372000000004,
+        "outer_thread_cpu_ms": 8.551939000000175,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.556380867958069
+      }
+    },
+    {
+      "sequence": 17,
+      "status": 0,
+      "engine_wall_ms": 11.454307,
+      "call_wall_ms": 11.469038,
+      "call_thread_cpu_ms": 11.471083,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.134216,
+          0.135491,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022264999999999997,
+          0.024259,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24674300000000002,
+          0.253935,
+          25
+        ],
+        "state_construction": [
+          0.213268,
+          0.214136,
+          1
+        ],
+        "target_construction": [
+          0.019876,
+          0.020108,
+          1
+        ],
+        "engine_decode": [
+          0.731894,
+          0.732337,
+          1
+        ],
+        "context_bind": [
+          0.001931,
+          0.002139,
+          1
+        ],
+        "motion_validation": [
+          0.019575,
+          0.020384,
+          2
+        ],
+        "assemble": [
+          4.973851,
+          4.976141,
+          1
+        ],
+        "qp": [
+          0.327334,
+          0.328695,
+          1
+        ],
+        "candidate_validation": [
+          1.911196,
+          1.913061,
+          1
+        ],
+        "allocator_outer": [
+          8.6629,
+          8.66382,
+          1
+        ],
+        "motion_filter": [
+          0.022841,
+          0.022966,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.883198,
+          0.884557,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022175,
+          0.022548,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.545508,
+          0.546227,
+          1
+        ],
+        "command_construction": [
+          0.084097,
+          0.084628,
+          1
+        ],
+        "adapter_step": [
+          10.400249,
+          10.400488,
+          1
+        ],
+        "context_clear": [
+          0.002008,
+          0.002263,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.249141275882721,
+        "inner_allocator_thread_cpu_ms": 8.385016000000078,
+        "outer_thread_cpu_ms": 8.634223999999913,
+        "gc_collection_count_before": [
+          211,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.63858312368393
+      }
+    },
+    {
+      "sequence": 18,
+      "status": 0,
+      "engine_wall_ms": 11.381907,
+      "call_wall_ms": 11.396722,
+      "call_thread_cpu_ms": 11.39842,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.129917,
+          0.131368,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022225,
+          0.024168000000000002,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24332199999999998,
+          0.25056899999999993,
+          25
+        ],
+        "state_construction": [
+          0.214394,
+          0.215343,
+          1
+        ],
+        "target_construction": [
+          0.020262,
+          0.020563,
+          1
+        ],
+        "engine_decode": [
+          0.737232,
+          0.737668,
+          1
+        ],
+        "context_bind": [
+          0.001975,
+          0.002118,
+          1
+        ],
+        "motion_validation": [
+          0.019333,
+          0.020084,
+          2
+        ],
+        "assemble": [
+          4.941568,
+          4.943909,
+          1
+        ],
+        "qp": [
+          0.320236,
+          0.321579,
+          1
+        ],
+        "candidate_validation": [
+          1.858414,
+          1.860146,
+          1
+        ],
+        "allocator_outer": [
+          8.580097,
+          8.580917,
+          1
+        ],
+        "motion_filter": [
+          0.023413,
+          0.023574,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.877603,
+          0.878906,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021475,
+          0.021903,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.563693,
+          0.564435,
+          1
+        ],
+        "command_construction": [
+          0.084055,
+          0.084506,
+          1
+        ],
+        "adapter_step": [
+          10.330703,
+          10.330918,
+          1
+        ],
+        "context_clear": [
+          0.001892,
+          0.002049,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.154511451721191,
+        "inner_allocator_thread_cpu_ms": 8.290270000000044,
+        "outer_thread_cpu_ms": 8.551230999999992,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.555345237255096
+      }
+    },
+    {
+      "sequence": 19,
+      "status": 0,
+      "engine_wall_ms": 11.444586,
+      "call_wall_ms": 11.458695,
+      "call_thread_cpu_ms": 11.460242,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.131118,
+          0.132513,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.022406000000000002,
+          0.024315999999999997,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.243977,
+          0.25107999999999997,
+          25
+        ],
+        "state_construction": [
+          0.2117,
+          0.212626,
+          1
+        ],
+        "target_construction": [
+          0.019853,
+          0.0202,
+          1
+        ],
+        "engine_decode": [
+          0.727864,
+          0.728278,
+          1
+        ],
+        "context_bind": [
+          0.001966,
+          0.002116,
+          1
+        ],
+        "motion_validation": [
+          0.019423999999999997,
+          0.020073,
+          2
+        ],
+        "assemble": [
+          4.912202,
+          4.914255,
+          1
+        ],
+        "qp": [
+          0.309385,
+          0.310629,
+          1
+        ],
+        "candidate_validation": [
+          1.919252,
+          1.920801,
+          1
+        ],
+        "allocator_outer": [
+          8.601623,
+          8.60256,
+          1
+        ],
+        "motion_filter": [
+          0.023281,
+          0.023428,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.882614,
+          0.883852,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021547,
+          0.02201,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.602191,
+          0.602879,
+          1
+        ],
+        "command_construction": [
+          0.083125,
+          0.083691,
+          1
+        ],
+        "adapter_step": [
+          10.396624,
+          10.396876,
+          1
+        ],
+        "context_clear": [
+          0.002212,
+          0.002473,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.182913064956665,
+        "inner_allocator_thread_cpu_ms": 8.323453000000036,
+        "outer_thread_cpu_ms": 8.57324699999995,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.577711880207062
+      }
+    },
+    {
+      "sequence": 20,
+      "status": 0,
+      "engine_wall_ms": 14.521765,
+      "call_wall_ms": 14.53407,
+      "call_thread_cpu_ms": 14.535573,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.148167,
+          0.150344,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023528,
+          0.025870999999999998,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.2806560000000001,
+          0.28891400000000006,
+          25
+        ],
+        "state_construction": [
+          0.242969,
+          0.243945,
+          1
+        ],
+        "target_construction": [
+          0.024651,
+          0.025256,
+          1
+        ],
+        "engine_decode": [
+          0.872148,
+          0.87253,
+          1
+        ],
+        "context_bind": [
+          0.002063,
+          0.002308,
+          1
+        ],
+        "motion_validation": [
+          0.018272,
+          0.018924999999999997,
+          2
+        ],
+        "assemble": [
+          6.076471,
+          6.078477,
+          1
+        ],
+        "qp": [
+          3.088744,
+          3.090367,
+          1
+        ],
+        "candidate_validation": [
+          1.404803,
+          1.406139,
+          1
+        ],
+        "allocator_outer": [
+          12.040741,
+          12.041326,
+          1
+        ],
+        "motion_filter": [
+          0.016758,
+          0.016904,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.613147,
+          0.613977,
+          1
+        ],
+        "feedforward_saturation": [
+          0.014873,
+          0.015164,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.425808,
+          0.426134,
+          1
+        ],
+        "command_construction": [
+          0.060252,
+          0.060566,
+          1
+        ],
+        "adapter_step": [
+          13.348824,
+          13.34869,
+          1
+        ],
+        "context_clear": [
+          0.001835,
+          0.002068,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 11.590324342250824,
+        "inner_allocator_thread_cpu_ms": 11.72054400000011,
+        "outer_thread_cpu_ms": 12.018674000000118,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 12.02237606048584
+      }
+    },
+    {
+      "sequence": 21,
+      "status": 0,
+      "engine_wall_ms": 11.621697,
+      "call_wall_ms": 11.636478,
+      "call_thread_cpu_ms": 11.638236,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.12974,
+          0.130994,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.02247,
+          0.024359,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24505300000000002,
+          0.251696,
+          25
+        ],
+        "state_construction": [
+          0.211397,
+          0.212255,
+          1
+        ],
+        "target_construction": [
+          0.020221,
+          0.020502,
+          1
+        ],
+        "engine_decode": [
+          0.734996,
+          0.735405,
+          1
+        ],
+        "context_bind": [
+          0.001975,
+          0.00215,
+          1
+        ],
+        "motion_validation": [
+          0.019251,
+          0.019969,
+          2
+        ],
+        "assemble": [
+          4.946962,
+          4.949368,
+          1
+        ],
+        "qp": [
+          0.327508,
+          0.328868,
+          1
+        ],
+        "candidate_validation": [
+          1.941651,
+          1.943237,
+          1
+        ],
+        "allocator_outer": [
+          8.691753,
+          8.692632,
+          1
+        ],
+        "motion_filter": [
+          0.022911,
+          0.023097,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.932754,
+          0.934492,
+          1
+        ],
+        "feedforward_saturation": [
+          0.022651,
+          0.023035,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.629998,
+          0.630932,
+          1
+        ],
+        "command_construction": [
+          0.085643,
+          0.08621,
+          1
+        ],
+        "adapter_step": [
+          10.57004,
+          10.570439,
+          1
+        ],
+        "context_clear": [
+          0.001904,
+          0.002204,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.248835802078247,
+        "inner_allocator_thread_cpu_ms": 8.39843100000004,
+        "outer_thread_cpu_ms": 8.663247000000096,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.66788625717163
+      }
+    },
+    {
+      "sequence": 22,
+      "status": 0,
+      "engine_wall_ms": 11.575954,
+      "call_wall_ms": 11.590942,
+      "call_thread_cpu_ms": 11.58169,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.136853,
+          0.138523,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023327000000000007,
+          0.02537,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.245423,
+          0.252675,
+          25
+        ],
+        "state_construction": [
+          0.211199,
+          0.2121,
+          1
+        ],
+        "target_construction": [
+          0.020127,
+          0.02043,
+          1
+        ],
+        "engine_decode": [
+          0.728985,
+          0.728896,
+          1
+        ],
+        "context_bind": [
+          0.001994,
+          0.00217,
+          1
+        ],
+        "motion_validation": [
+          0.019197,
+          0.019972,
+          2
+        ],
+        "assemble": [
+          4.905877,
+          4.908293,
+          1
+        ],
+        "qp": [
+          0.313283,
+          0.314465,
+          1
+        ],
+        "candidate_validation": [
+          1.983616,
+          1.985228,
+          1
+        ],
+        "allocator_outer": [
+          8.689869,
+          8.679794,
+          1
+        ],
+        "motion_filter": [
+          0.023297,
+          0.023566,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.867443,
+          0.86879,
+          1
+        ],
+        "feedforward_saturation": [
+          0.021613,
+          0.021969,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.646378,
+          0.647181,
+          1
+        ],
+        "command_construction": [
+          0.085797,
+          0.086236,
+          1
+        ],
+        "adapter_step": [
+          10.513835,
+          10.503131,
+          1
+        ],
+        "context_clear": [
+          0.002139,
+          0.00234,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.26265662908554,
+        "inner_allocator_thread_cpu_ms": 8.405454999999895,
+        "outer_thread_cpu_ms": 8.650033999999973,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.665531873703003
+      }
+    },
+    {
+      "sequence": 23,
+      "status": 0,
+      "engine_wall_ms": 11.615697,
+      "call_wall_ms": 11.630479,
+      "call_thread_cpu_ms": 11.632709,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.141847,
+          0.14367,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.023750000000000004,
+          0.025759,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.24884699999999998,
+          0.25522599999999995,
+          25
+        ],
+        "state_construction": [
+          0.222818,
+          0.223908,
+          1
+        ],
+        "target_construction": [
+          0.020237,
+          0.020486,
+          1
+        ],
+        "engine_decode": [
+          0.74689,
+          0.747274,
+          1
+        ],
+        "context_bind": [
+          0.001917,
+          0.002124,
+          1
+        ],
+        "motion_validation": [
+          0.019702,
+          0.020393,
+          2
+        ],
+        "assemble": [
+          4.927921,
+          4.930396,
+          1
+        ],
+        "qp": [
+          0.333607,
+          0.335063,
+          1
+        ],
+        "candidate_validation": [
+          1.957882,
+          1.959734,
+          1
+        ],
+        "allocator_outer": [
+          8.679244,
+          8.680152,
+          1
+        ],
+        "motion_filter": [
+          0.023332,
+          0.023499,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.884521,
+          0.885816,
+          1
+        ],
+        "feedforward_saturation": [
+          0.020874,
+          0.021263,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.643385,
+          0.643946,
+          1
+        ],
+        "command_construction": [
+          0.086688,
+          0.087059,
+          1
+        ],
+        "adapter_step": [
+          10.521272,
+          10.521497,
+          1
+        ],
+        "context_clear": [
+          0.002614,
+          0.002806,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.265025913715363,
+        "inner_allocator_thread_cpu_ms": 8.405589000000102,
+        "outer_thread_cpu_ms": 8.651825999999918,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.656449615955353
+      }
+    },
+    {
+      "sequence": 24,
+      "status": 0,
+      "engine_wall_ms": 11.604556,
+      "call_wall_ms": 11.618941,
+      "call_thread_cpu_ms": 11.620617,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.135645,
+          0.136974,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.02345,
+          0.025553999999999997,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.246216,
+          0.25330099999999994,
+          25
+        ],
+        "state_construction": [
+          0.215546,
+          0.216555,
+          1
+        ],
+        "target_construction": [
+          0.019964,
+          0.020278,
+          1
+        ],
+        "engine_decode": [
+          0.733237,
+          0.733538,
+          1
+        ],
+        "context_bind": [
+          0.001898,
+          0.002129,
+          1
+        ],
+        "motion_validation": [
+          0.019719,
+          0.02055,
+          2
+        ],
+        "assemble": [
+          4.946812,
+          4.949151,
+          1
+        ],
+        "qp": [
+          0.324822,
+          0.326295,
+          1
+        ],
+        "candidate_validation": [
+          1.96224,
+          1.963966,
+          1
+        ],
+        "allocator_outer": [
+          8.690412,
+          8.691243,
+          1
+        ],
+        "motion_filter": [
+          0.02307,
+          0.023191,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          0.877438,
+          0.878806,
+          1
+        ],
+        "feedforward_saturation": [
+          0.027851,
+          0.028579,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          0.643979,
+          0.644562,
+          1
+        ],
+        "command_construction": [
+          0.089044,
+          0.089523,
+          1
+        ],
+        "adapter_step": [
+          10.535211,
+          10.535462,
+          1
+        ],
+        "context_clear": [
+          0.002063,
+          0.002281,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 8.272647857666016,
+        "inner_allocator_thread_cpu_ms": 8.414112999999945,
+        "outer_thread_cpu_ms": 8.662069999999966,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 8.66689532995224
+      }
+    },
+    {
+      "sequence": 25,
+      "status": 0,
+      "engine_wall_ms": 20.927019,
+      "call_wall_ms": 20.96665,
+      "call_thread_cpu_ms": 20.968969,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.358131,
+          0.359581,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.055427000000000004,
+          0.058456999999999995,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.444095,
+          0.4553940000000001,
+          25
+        ],
+        "state_construction": [
+          0.38345,
+          0.384727,
+          1
+        ],
+        "target_construction": [
+          0.040112,
+          0.040566,
+          1
+        ],
+        "engine_decode": [
+          1.47084,
+          1.471455,
+          1
+        ],
+        "context_bind": [
+          0.00478,
+          0.005267,
+          1
+        ],
+        "motion_validation": [
+          0.032096,
+          0.032711,
+          2
+        ],
+        "assemble": [
+          7.649264,
+          7.651264,
+          1
+        ],
+        "qp": [
+          3.006234,
+          3.008661,
+          1
+        ],
+        "candidate_validation": [
+          2.573864,
+          2.576184,
+          1
+        ],
+        "allocator_outer": [
+          15.92064,
+          15.921473,
+          1
+        ],
+        "motion_filter": [
+          0.03266,
+          0.032934,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          1.396305,
+          1.397705,
+          1
+        ],
+        "feedforward_saturation": [
+          0.032619,
+          0.032882,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          1.0066,
+          1.007228,
+          1
+        ],
+        "command_construction": [
+          0.111366,
+          0.111877,
+          1
+        ],
+        "adapter_step": [
+          18.780852,
+          18.780778,
+          1
+        ],
+        "context_clear": [
+          0.00461,
+          0.004944,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 14.902159571647644,
+        "inner_allocator_thread_cpu_ms": 15.059307000000022,
+        "outer_thread_cpu_ms": 15.863586999999901,
+        "gc_collection_count_before": [
+          212,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          213,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 15.87098091840744
+      },
+      "top_self": [
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 49,
+          "name": "call",
+          "calls": 5,
+          "self_ms": 4.02773,
+          "cumulative_ms": 4.410862000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 21,
+          "name": "_copy_numeric_diagnostics",
+          "calls": 1616,
+          "self_ms": 0.8498140000000001,
+          "cumulative_ms": 0.9962670000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 27,
+          "name": "_rollout_native",
+          "calls": 2,
+          "self_ms": 0.8231310000000001,
+          "cumulative_ms": 2.457476
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 80,
+          "name": "_future_packets",
+          "calls": 2,
+          "self_ms": 0.7601200000000001,
+          "cumulative_ms": 1.429863
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 280,
+          "self_ms": 0.728257,
+          "cumulative_ms": 0.728257
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 123,
+          "name": "predict",
+          "calls": 1,
+          "self_ms": 0.5079990000000001,
+          "cumulative_ms": 5.131041000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.asarray>",
+          "calls": 278,
+          "self_ms": 0.507434,
+          "cumulative_ms": 0.507434
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'copy' of 'numpy.ndarray' objects>",
+          "calls": 467,
+          "self_ms": 0.44472600000000007,
+          "cumulative_ms": 0.44472600000000007
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.core._multiarray_umath.implement_array_function>",
+          "calls": 283,
+          "self_ms": 0.433788,
+          "cumulative_ms": 3.3942620000000003
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 128,
+          "name": "deepcopy",
+          "calls": 179,
+          "self_ms": 0.385349,
+          "cumulative_ms": 0.8554950000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 65,
+          "name": "<listcomp>",
+          "calls": 2,
+          "self_ms": 0.34886000000000006,
+          "cumulative_ms": 0.34886000000000006
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_worker_profile_v1/probe_engine.py",
+          "line": 37,
+          "name": "measure",
+          "calls": 52,
+          "self_ms": 0.34315,
+          "cumulative_ms": 20.724572
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 32,
+          "name": "_borrow_native_pointer",
+          "calls": 52,
+          "self_ms": 0.28090600000000004,
+          "cumulative_ms": 0.45999900000000005
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1478,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.26349,
+          "cumulative_ms": 0.8105310000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 199,
+          "name": "<listcomp>",
+          "calls": 1,
+          "self_ms": 0.255799,
+          "cumulative_ms": 0.499613
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.array>",
+          "calls": 124,
+          "self_ms": 0.251367,
+          "cumulative_ms": 0.251367
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 103,
+          "name": "assemble",
+          "calls": 1,
+          "self_ms": 0.242851,
+          "cumulative_ms": 7.634555000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 68,
+          "name": "<listcomp>",
+          "calls": 2,
+          "self_ms": 0.24092400000000003,
+          "cumulative_ms": 0.24092400000000003
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 70,
+          "name": "joint_sensitivities",
+          "calls": 1,
+          "self_ms": 0.206894,
+          "cumulative_ms": 1.198442
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/fromnumeric.py",
+          "line": 69,
+          "name": "_wrapreduction",
+          "calls": 78,
+          "self_ms": 0.198538,
+          "cumulative_ms": 0.564805
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method builtins.sorted>",
+          "calls": 40,
+          "self_ms": 0.18513700000000002,
+          "cumulative_ms": 0.18513700000000002
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 21,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.18090100000000003,
+          "cumulative_ms": 14.924149000000002
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 31,
+          "name": "vector",
+          "calls": 25,
+          "self_ms": 0.17396000000000003,
+          "cumulative_ms": 0.36692100000000005
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 16,
+          "name": "array",
+          "calls": 27,
+          "self_ms": 0.16414,
+          "cumulative_ms": 0.29521500000000006
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1398,
+          "name": "moveaxis",
+          "calls": 36,
+          "self_ms": 0.15399900000000002,
+          "cumulative_ms": 0.44022100000000003
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 180,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.15014100000000002,
+          "cumulative_ms": 15.907686
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+          "line": 12,
+          "name": "arm_reaction_feedforward",
+          "calls": 1,
+          "self_ms": 0.14414000000000002,
+          "cumulative_ms": 1.389755
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1335,
+          "name": "normalize_axis_tuple",
+          "calls": 72,
+          "self_ms": 0.14363,
+          "cumulative_ms": 0.22466100000000003
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method builtins.round>",
+          "calls": 132,
+          "self_ms": 0.12995900000000002,
+          "cumulative_ms": 0.12995900000000002
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 85,
+          "name": "<listcomp>",
+          "calls": 1,
+          "self_ms": 0.12837500000000002,
+          "cumulative_ms": 0.34386000000000005
+        }
+      ],
+      "top_cumulative": [
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 214,
+          "name": "process",
+          "calls": 1,
+          "self_ms": 0.04472,
+          "cumulative_ms": 20.939886
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_worker_profile_v1/probe_engine.py",
+          "line": 37,
+          "name": "measure",
+          "calls": 52,
+          "self_ms": 0.34315,
+          "cumulative_ms": 20.724572
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py",
+          "line": 27,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.049821000000000004,
+          "cumulative_ms": 18.832602
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 170,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.035224,
+          "cumulative_ms": 18.762122
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 180,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.15014100000000002,
+          "cumulative_ms": 15.907686
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 21,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.18090100000000003,
+          "cumulative_ms": 14.924149000000002
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 150,
+          "name": "_problem",
+          "calls": 1,
+          "self_ms": 0.0026060000000000002,
+          "cumulative_ms": 7.65826
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 103,
+          "name": "assemble",
+          "calls": 1,
+          "self_ms": 0.242851,
+          "cumulative_ms": 7.634555000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 95,
+          "name": "_joint_prediction",
+          "calls": 1,
+          "self_ms": 0.07629,
+          "cumulative_ms": 5.209149000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 123,
+          "name": "predict",
+          "calls": 1,
+          "self_ms": 0.5079990000000001,
+          "cumulative_ms": 5.131041000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 49,
+          "name": "call",
+          "calls": 5,
+          "self_ms": 4.02773,
+          "cumulative_ms": 4.410862000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.core._multiarray_umath.implement_array_function>",
+          "calls": 283,
+          "self_ms": 0.433788,
+          "cumulative_ms": 3.3942620000000003
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 174,
+          "name": "solve",
+          "calls": 1,
+          "self_ms": 0.030341000000000003,
+          "cumulative_ms": 2.9990090000000005
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 153,
+          "name": "_validate_candidate",
+          "calls": 1,
+          "self_ms": 0.030857,
+          "cumulative_ms": 2.487039
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 336,
+          "name": "_rollout_known",
+          "calls": 2,
+          "self_ms": 0.011605,
+          "cumulative_ms": 2.469081
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 27,
+          "name": "_rollout_native",
+          "calls": 2,
+          "self_ms": 0.8231310000000001,
+          "cumulative_ms": 2.457476
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 624,
+          "name": "candidate_rollout",
+          "calls": 1,
+          "self_ms": 0.037604,
+          "cumulative_ms": 2.0949660000000003
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 129,
+          "name": "_decode",
+          "calls": 1,
+          "self_ms": 0.090229,
+          "cumulative_ms": 1.462809
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 80,
+          "name": "_future_packets",
+          "calls": 2,
+          "self_ms": 0.7601200000000001,
+          "cumulative_ms": 1.429863
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+          "line": 12,
+          "name": "arm_reaction_feedforward",
+          "calls": 1,
+          "self_ms": 0.14414000000000002,
+          "cumulative_ms": 1.389755
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 70,
+          "name": "joint_sensitivities",
+          "calls": 1,
+          "self_ms": 0.206894,
+          "cumulative_ms": 1.198442
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 117,
+          "name": "_snapshot_diagnostics",
+          "calls": 1,
+          "self_ms": 0.006707,
+          "cumulative_ms": 1.0033509999999999
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 21,
+          "name": "_copy_numeric_diagnostics",
+          "calls": 1616,
+          "self_ms": 0.8498140000000001,
+          "cumulative_ms": 0.9962670000000001
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 128,
+          "name": "deepcopy",
+          "calls": 179,
+          "self_ms": 0.385349,
+          "cumulative_ms": 0.8554950000000001
+        },
+        {
+          "file": "<__array_function__ internals>",
+          "line": 2,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.013005,
+          "cumulative_ms": 0.8418540000000001
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1478,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.26349,
+          "cumulative_ms": 0.8105310000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'extend' of 'list' objects>",
+          "calls": 8,
+          "self_ms": 0.022545000000000003,
+          "cumulative_ms": 0.748969
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 280,
+          "self_ms": 0.728257,
+          "cumulative_ms": 0.728257
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/model.py",
+          "line": 24,
+          "name": "rotation_matrix",
+          "calls": 5,
+          "self_ms": 0.078532,
+          "cumulative_ms": 0.7282090000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 46,
+          "name": "<genexpr>",
+          "calls": 151,
+          "self_ms": 0.054121,
+          "cumulative_ms": 0.7264240000000001
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 201,
+          "name": "_deepcopy_list",
+          "calls": 3,
+          "self_ms": 0.029014,
+          "cumulative_ms": 0.667891
+        },
+        {
+          "file": "<__array_function__ internals>",
+          "line": 2,
+          "name": "allclose",
+          "calls": 7,
+          "self_ms": 0.014741000000000002,
+          "cumulative_ms": 0.6313590000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'all' of 'numpy.ndarray' objects>",
+          "calls": 180,
+          "self_ms": 0.107421,
+          "cumulative_ms": 0.6151760000000001
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 2179,
+          "name": "allclose",
+          "calls": 7,
+          "self_ms": 0.017608000000000002,
+          "cumulative_ms": 0.6041460000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 193,
+          "name": "<dictcomp>",
+          "calls": 1,
+          "self_ms": 0.011066000000000001,
+          "cumulative_ms": 0.603942
+        }
+      ]
+    },
+    {
+      "sequence": 26,
+      "status": 0,
+      "engine_wall_ms": 16.416703,
+      "call_wall_ms": 16.490165,
+      "call_thread_cpu_ms": 16.491812,
+      "phases_wall_cpu_count": {
+        "empty_ros_proposal": [
+          0.283947,
+          0.284329,
+          1
+        ],
+        "engine_scalar_validation": [
+          0.047972,
+          0.050209,
+          9
+        ],
+        "engine_vector_conversion": [
+          0.36884300000000003,
+          0.378883,
+          25
+        ],
+        "state_construction": [
+          0.305635,
+          0.306745,
+          1
+        ],
+        "target_construction": [
+          0.034456,
+          0.034505,
+          1
+        ],
+        "engine_decode": [
+          1.183115,
+          1.183537,
+          1
+        ],
+        "context_bind": [
+          0.004058,
+          0.00426,
+          1
+        ],
+        "motion_validation": [
+          0.028719,
+          0.030085,
+          2
+        ],
+        "assemble": [
+          6.086017,
+          6.087147,
+          1
+        ],
+        "qp": [
+          0.365373,
+          0.366867,
+          1
+        ],
+        "candidate_validation": [
+          2.598643,
+          2.600194,
+          1
+        ],
+        "allocator_outer": [
+          11.539748,
+          11.540968,
+          1
+        ],
+        "motion_filter": [
+          0.032997,
+          0.033073,
+          1
+        ],
+        "arm_reaction_feedforward": [
+          1.385911,
+          1.38726,
+          1
+        ],
+        "feedforward_saturation": [
+          0.03723,
+          0.037775,
+          1
+        ],
+        "owned_diagnostic_clone": [
+          1.233034,
+          1.233828,
+          1
+        ],
+        "command_construction": [
+          0.127157,
+          0.127763,
+          1
+        ],
+        "adapter_step": [
+          14.620992,
+          14.621669,
+          1
+        ],
+        "context_clear": [
+          0.00497,
+          0.00539,
+          1
+        ]
+      },
+      "command_max_abs_error": 0.0,
+      "allocator_timing": {
+        "inner_allocator_compute_ms": 10.661140084266663,
+        "inner_allocator_thread_cpu_ms": 10.825854000000135,
+        "outer_thread_cpu_ms": 11.485154000000053,
+        "gc_collection_count_before": [
+          220,
+          18,
+          2
+        ],
+        "gc_collection_count_after": [
+          220,
+          18,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 11.492699384689331
+      },
+      "top_self": [
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 49,
+          "name": "call",
+          "calls": 5,
+          "self_ms": 1.146972,
+          "cumulative_ms": 1.519404
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 21,
+          "name": "_copy_numeric_diagnostics",
+          "calls": 1638,
+          "self_ms": 1.0411370000000002,
+          "cumulative_ms": 1.2214770000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 27,
+          "name": "_rollout_native",
+          "calls": 2,
+          "self_ms": 0.795413,
+          "cumulative_ms": 2.23598
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 80,
+          "name": "_future_packets",
+          "calls": 2,
+          "self_ms": 0.6823670000000001,
+          "cumulative_ms": 1.238271
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 272,
+          "self_ms": 0.599068,
+          "cumulative_ms": 0.599068
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.core._multiarray_umath.implement_array_function>",
+          "calls": 281,
+          "self_ms": 0.403766,
+          "cumulative_ms": 3.091966
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 123,
+          "name": "predict",
+          "calls": 1,
+          "self_ms": 0.396475,
+          "cumulative_ms": 3.988391
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.asarray>",
+          "calls": 260,
+          "self_ms": 0.38722300000000004,
+          "cumulative_ms": 0.38722300000000004
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'copy' of 'numpy.ndarray' objects>",
+          "calls": 460,
+          "self_ms": 0.33986000000000005,
+          "cumulative_ms": 0.33986000000000005
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_worker_profile_v1/probe_engine.py",
+          "line": 37,
+          "name": "measure",
+          "calls": 52,
+          "self_ms": 0.33802000000000004,
+          "cumulative_ms": 16.213261
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 128,
+          "name": "deepcopy",
+          "calls": 166,
+          "self_ms": 0.320898,
+          "cumulative_ms": 0.70857
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 65,
+          "name": "<listcomp>",
+          "calls": 2,
+          "self_ms": 0.30322600000000005,
+          "cumulative_ms": 0.30322600000000005
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 32,
+          "name": "_borrow_native_pointer",
+          "calls": 52,
+          "self_ms": 0.266075,
+          "cumulative_ms": 0.43232000000000004
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1478,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.24488900000000002,
+          "cumulative_ms": 0.806648
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.array>",
+          "calls": 124,
+          "self_ms": 0.222723,
+          "cumulative_ms": 0.222723
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 103,
+          "name": "assemble",
+          "calls": 1,
+          "self_ms": 0.222311,
+          "cumulative_ms": 6.071820000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 68,
+          "name": "<listcomp>",
+          "calls": 2,
+          "self_ms": 0.213929,
+          "cumulative_ms": 0.213929
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 199,
+          "name": "<listcomp>",
+          "calls": 1,
+          "self_ms": 0.189869,
+          "cumulative_ms": 0.353602
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 70,
+          "name": "joint_sensitivities",
+          "calls": 1,
+          "self_ms": 0.185836,
+          "cumulative_ms": 0.947385
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/fromnumeric.py",
+          "line": 69,
+          "name": "_wrapreduction",
+          "calls": 78,
+          "self_ms": 0.178824,
+          "cumulative_ms": 0.47353100000000004
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 21,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.168321,
+          "cumulative_ms": 10.681302
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method builtins.sorted>",
+          "calls": 40,
+          "self_ms": 0.164811,
+          "cumulative_ms": 0.164811
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1398,
+          "name": "moveaxis",
+          "calls": 36,
+          "self_ms": 0.162837,
+          "cumulative_ms": 0.455732
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 180,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.157671,
+          "cumulative_ms": 11.52843
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 31,
+          "name": "vector",
+          "calls": 25,
+          "self_ms": 0.148822,
+          "cumulative_ms": 0.30164
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1335,
+          "name": "normalize_axis_tuple",
+          "calls": 72,
+          "self_ms": 0.147193,
+          "cumulative_ms": 0.229022
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 16,
+          "name": "array",
+          "calls": 27,
+          "self_ms": 0.14222100000000001,
+          "cumulative_ms": 0.265484
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+          "line": 12,
+          "name": "arm_reaction_feedforward",
+          "calls": 1,
+          "self_ms": 0.141817,
+          "cumulative_ms": 1.379023
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/model.py",
+          "line": 17,
+          "name": "vector",
+          "calls": 38,
+          "self_ms": 0.11801,
+          "cumulative_ms": 0.243975
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/lib/index_tricks.py",
+          "line": 323,
+          "name": "__getitem__",
+          "calls": 8,
+          "self_ms": 0.108281,
+          "cumulative_ms": 0.400266
+        }
+      ],
+      "top_cumulative": [
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 214,
+          "name": "process",
+          "calls": 1,
+          "self_ms": 0.044383000000000006,
+          "cumulative_ms": 16.427925
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_worker_profile_v1/probe_engine.py",
+          "line": 37,
+          "name": "measure",
+          "calls": 52,
+          "self_ms": 0.33802000000000004,
+          "cumulative_ms": 16.213261
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/diagnostic_channel.py",
+          "line": 27,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.032933000000000004,
+          "cumulative_ms": 14.656493000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 170,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.03449700000000001,
+          "cumulative_ms": 14.598666000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 180,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.157671,
+          "cumulative_ms": 11.52843
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 21,
+          "name": "step",
+          "calls": 1,
+          "self_ms": 0.168321,
+          "cumulative_ms": 10.681302
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 150,
+          "name": "_problem",
+          "calls": 1,
+          "self_ms": 0.0025830000000000002,
+          "cumulative_ms": 6.094241
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 103,
+          "name": "assemble",
+          "calls": 1,
+          "self_ms": 0.222311,
+          "cumulative_ms": 6.071820000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 95,
+          "name": "_joint_prediction",
+          "calls": 1,
+          "self_ms": 0.07145800000000001,
+          "cumulative_ms": 4.061178
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 123,
+          "name": "predict",
+          "calls": 1,
+          "self_ms": 0.396475,
+          "cumulative_ms": 3.988391
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<built-in method numpy.core._multiarray_umath.implement_array_function>",
+          "calls": 281,
+          "self_ms": 0.403766,
+          "cumulative_ms": 3.091966
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_mpc.py",
+          "line": 153,
+          "name": "_validate_candidate",
+          "calls": 1,
+          "self_ms": 0.030438000000000003,
+          "cumulative_ms": 2.495284
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 336,
+          "name": "_rollout_known",
+          "calls": 2,
+          "self_ms": 0.009420000000000001,
+          "cumulative_ms": 2.2454
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 27,
+          "name": "_rollout_native",
+          "calls": 2,
+          "self_ms": 0.795413,
+          "cumulative_ms": 2.23598
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction.py",
+          "line": 624,
+          "name": "candidate_rollout",
+          "calls": 1,
+          "self_ms": 0.03421,
+          "cumulative_ms": 2.086694
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 49,
+          "name": "call",
+          "calls": 5,
+          "self_ms": 1.146972,
+          "cumulative_ms": 1.519404
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/feedforward.py",
+          "line": 12,
+          "name": "arm_reaction_feedforward",
+          "calls": 1,
+          "self_ms": 0.141817,
+          "cumulative_ms": 1.379023
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_joint_prediction.py",
+          "line": 80,
+          "name": "_future_packets",
+          "calls": 2,
+          "self_ms": 0.6823670000000001,
+          "cumulative_ms": 1.238271
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 117,
+          "name": "_snapshot_diagnostics",
+          "calls": 1,
+          "self_ms": 0.006946,
+          "cumulative_ms": 1.228818
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 21,
+          "name": "_copy_numeric_diagnostics",
+          "calls": 1638,
+          "self_ms": 1.0411370000000002,
+          "cumulative_ms": 1.2214770000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_reference/flyarm_mpc_reference/engine.py",
+          "line": 129,
+          "name": "_decode",
+          "calls": 1,
+          "self_ms": 0.08021,
+          "cumulative_ms": 1.176052
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py",
+          "line": 70,
+          "name": "joint_sensitivities",
+          "calls": 1,
+          "self_ms": 0.185836,
+          "cumulative_ms": 0.947385
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'extend' of 'list' objects>",
+          "calls": 8,
+          "self_ms": 0.029036000000000003,
+          "cumulative_ms": 0.919498
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+          "line": 46,
+          "name": "<genexpr>",
+          "calls": 153,
+          "self_ms": 0.066253,
+          "cumulative_ms": 0.8904620000000001
+        },
+        {
+          "file": "<__array_function__ internals>",
+          "line": 2,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.013742,
+          "cumulative_ms": 0.839952
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 1478,
+          "name": "cross",
+          "calls": 12,
+          "self_ms": 0.24488900000000002,
+          "cumulative_ms": 0.806648
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 128,
+          "name": "deepcopy",
+          "calls": 166,
+          "self_ms": 0.320898,
+          "cumulative_ms": 0.70857
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/model.py",
+          "line": 24,
+          "name": "rotation_matrix",
+          "calls": 5,
+          "self_ms": 0.07513500000000001,
+          "cumulative_ms": 0.6848460000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/mpc.py",
+          "line": 240,
+          "name": "_nominal",
+          "calls": 1,
+          "self_ms": 0.09027700000000001,
+          "cumulative_ms": 0.6049230000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "name": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 272,
+          "self_ms": 0.599068,
+          "cumulative_ms": 0.599068
+        },
+        {
+          "file": "<__array_function__ internals>",
+          "line": 2,
+          "name": "allclose",
+          "calls": 7,
+          "self_ms": 0.013698000000000002,
+          "cumulative_ms": 0.574806
+        },
+        {
+          "file": "/usr/lib/python3/dist-packages/numpy/core/numeric.py",
+          "line": 2179,
+          "name": "allclose",
+          "calls": 7,
+          "self_ms": 0.016264,
+          "cumulative_ms": 0.550226
+        },
+        {
+          "file": "<__array_function__ internals>",
+          "line": 2,
+          "name": "isclose",
+          "calls": 8,
+          "self_ms": 0.012688000000000001,
+          "cumulative_ms": 0.5455650000000001
+        },
+        {
+          "file": "/usr/lib/python3.10/copy.py",
+          "line": 201,
+          "name": "_deepcopy_list",
+          "calls": 3,
+          "self_ms": 0.024759,
+          "cumulative_ms": 0.5377860000000001
+        },
+        {
+          "file": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+          "line": 193,
+          "name": "<dictcomp>",
+          "calls": 1,
+          "self_ms": 0.010376,
+          "cumulative_ms": 0.531041
+        }
+      ]
+    }
+  ]
+}

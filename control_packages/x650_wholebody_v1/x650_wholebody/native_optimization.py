@@ -117,16 +117,20 @@ class NativeOptimization:
         radius = min(c.actuator_predictor.trust_radius_normalized, .02)
         recent = [u for when, u in c._actuator_context["command_history"]
                   if when >= t-.05-age-c.max_dt]
-        if len(prediction["nodes"]) != N or len(prediction["reference_nodes"]) != N:
-            raise ValueError("Native joint prediction must cover every horizon node")
         # The packed ABI shape is fixed. Direct slices avoid per-node np.r_
         # dtype inference and temporary concatenations, retaining exact order.
-        joints = np.empty((N,4+4*n))
-        for row,(_,q,dq,Q,D) in zip(joints,prediction["nodes"]):
-            row[:2],row[2:4],row[4:4+2*n],row[4+2*n:] = q,dq,Q.ravel(),D.ravel()
-        references = np.empty((N,2+2*n))
-        for row,(_,r,R) in zip(references,prediction["reference_nodes"]):
-            row[:2],row[2:] = r,R.ravel()
+        if prediction.get("_native_packed"):
+            joints = array(prediction["native_joint_rows"],(N,4+4*n))
+            references = array(prediction["native_reference_rows"],(N,2+2*n))
+        else:
+            if len(prediction["nodes"]) != N or len(prediction["reference_nodes"]) != N:
+                raise ValueError("Native joint prediction must cover every horizon node")
+            joints = np.empty((N,4+4*n))
+            for row,(_,q,dq,Q,D) in zip(joints,prediction["nodes"]):
+                row[:2],row[2:4],row[4:4+2*n],row[4+2*n:] = q,dq,Q.ravel(),D.ravel()
+            references = np.empty((N,2+2*n))
+            for row,(_,r,R) in zip(references,prediction["reference_nodes"]):
+                row[:2],row[2:] = r,R.ravel()
         x0 = np.concatenate((state.position,state.velocity,prediction["q_current"],
                    prediction["dq_current"],vector(state.acceleration_enu,3,"acceleration")[:2]))
         pieces = [[dt,c.node_dt,c.max_dt,age,radius],

@@ -30,11 +30,12 @@ class WorkerTimingTrace:
         'socket_send_end_ns', 'sender_end_ns', 'callback_exit_ns',
         'callback_thread_cpu_begin_ns', 'callback_thread_cpu_end_ns',
         'publish_thread_cpu_begin_ns', 'publish_thread_cpu_end_ns',
-        'diagnostic_offered')
+        'diagnostic_offered', 'diagnostic_complete_begin_ns',
+        'diagnostic_complete_end_ns')
 
     def __init__(self, capacity=20000):
         self.capacity = capacity
-        # Allocate the 3.84 MB default outside the executor. Retaining a new
+        # Allocate the 4.16 MB default outside the executor. Retaining a new
         # tracked list per callback would enlarge the runtime GC root set.
         self._rows = array('Q', [0]) * (capacity * len(self.columns))
         self.count = 0
@@ -68,10 +69,10 @@ def process_snapshot(engine, capture, publisher, sender, snapshot, proposal_type
                      thread_clock_ns=time.thread_time_ns):
     """Preserve proposal-before-recording order and observe its actual phases.
 
-    Message construction and the allocator's owned diagnostic snapshot remain
-    inside engine.process. CDR copies and synchronous immutable pickle detach
-    occur after publish. They can occupy this single-threaded executor before
-    the next callback, but cannot retroactively delay this publish call.
+    Message construction and every optimizer/candidate quality check remain
+    inside engine.process. The live zero-policy adapter completes its FF
+    diagnostics and owned copy only after publish. CDR and immutable pickle
+    detach still finish synchronously before the next callback can run.
     """
     entry = clock_ns()
     row = [0] * len(WorkerTimingTrace.columns)
@@ -87,6 +88,16 @@ def process_snapshot(engine, capture, publisher, sender, snapshot, proposal_type
         publisher.publish(proposal)
         row[6] = clock_ns()
         row[22] = thread_clock_ns()
+        complete = getattr(capture, 'complete_diagnostic', None)
+        if complete is not None:
+            row[24] = clock_ns()
+            try:
+                complete(int(snapshot.sequence))
+            except BaseException:
+                engine.faulted = True
+                engine.last_error = 'Post-publication diagnostic completion failed'
+                raise
+            row[25] = clock_ns()
         row[7] = clock_ns()
         snapshot_cdr = serialize(snapshot)
         row[8] = clock_ns()
@@ -206,7 +217,8 @@ def main(args=None):
             (self.out / "worker_final.json").write_text(json.dumps({"engine": self.engine.metadata(),
                 "gc_enabled_before": self.gc_was_enabled, "gc_enabled_after": gc.isenabled(),
                 "preflight_gc": getattr(self,'preflight_gc',None),
-                "gc_events": self.gc_events}, indent=2, allow_nan=False) + "\n")
+                "gc_events": self.gc_events,
+                "diagnostic_completion_error": self.capture.completion_error}, indent=2, allow_nan=False) + "\n")
 
     rclpy.init(args=args)
     node = executor = None

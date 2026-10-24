@@ -904,6 +904,25 @@ def restore_folded(ctx, loop):
     ctx.vehicle.wait(folded, 90., "folded q0 before landing")
 
 
+def prepare_failed_fold(ctx, loop, meta, extension):
+    """Optional execution-owner handoff before a failed experiment folds.
+
+    A rejected/failed hook skips the blocking fold, never the existing LAND
+    operation. Scenarios without this hook retain their previous lifecycle.
+    """
+    hook = getattr(extension, "before_failed_fold", None)
+    if not callable(hook):
+        return True
+    try:
+        permitted = hook(ctx, loop, meta) is True
+    except BaseException as exc:
+        meta["failed_recovery_handoff_error"] = repr(exc)
+        permitted = False
+    if not permitted:
+        meta["fold_skipped_for_direct_land"] = True
+    return permitted
+
+
 def ground_gate(ctx, loop, native, cfg, model_sha256, source_sha256, out):
     """Verify native ground stability before any arming/takeoff call."""
     loop.recorder.phase = "ground_ready"
@@ -1237,8 +1256,9 @@ def execute(cfg, model_spec, provenance, out, *, extension=None):
                         if upper_research:
                             loop.disable_upper_feedback()
                             meta["upper_feedback_disabled_for_failed_recovery"] = True
-                        restore_folded(ctx, loop)
-                        meta["folded_before_landing"] = True
+                        if error is None or prepare_failed_fold(ctx, loop, meta, extension):
+                            restore_folded(ctx, loop)
+                            meta["folded_before_landing"] = True
                 except BaseException as exc:
                     meta["fold_recovery_error"] = repr(exc)
                     if error is None:
@@ -1254,8 +1274,12 @@ def execute(cfg, model_spec, provenance, out, *, extension=None):
                             loop.disable_upper_feedback()
                     landing_marker = None
                     meta["landing_command_attempted"] = True
+                    land_operation = ctx.vehicle.land
+                    failed_land = getattr(extension, "land_after_failed_recovery", None)
+                    if error is not None and callable(failed_land):
+                        land_operation = lambda: failed_land(ctx, loop, meta)
                     landing_marker, marker_error = perform_nav_operation(ctx, mavutil.mavlink.MAV_CMD_NAV_LAND,
-                        ctx.vehicle.land)
+                        land_operation)
                     meta["landing_api_returned"] = True
                     if marker_error is not None:
                         meta["landing_marker_error"] = repr(marker_error)

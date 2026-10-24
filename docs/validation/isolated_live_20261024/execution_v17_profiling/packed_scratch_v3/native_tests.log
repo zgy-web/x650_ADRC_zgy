@@ -1,0 +1,30 @@
+test_exact_local_uses_complete_existing_event_path (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_full_matrix_assembly_and_candidate_check_match_public_path (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_packed_candidates_recompute_without_mutating_measurement_or_nominal (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_packed_rows_match_public_nonuniform_and_changed_candidate (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_private_packet_arrays_exact_at_half_lsb_and_sent_now (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_private_prediction_rejects_bad_grid_future_packets_and_stale_measurement (test_native_packed_preparation.NativePackedPreparation) ... ok
+test_actual_packet_query_or_extremum_difference_fails_comparison (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_actual_single_execution_and_full_results_compare_without_replay (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_altered_candidate_result_or_missing_extrema_are_rejected (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_exact_local_fallback_is_captured_once_at_native_boundary (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_exception_restores_original_instance_overrides (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_inputs_results_and_plan_are_owned_after_original_call (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_missing_or_double_propagation_cannot_be_promoted_to_evidence (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_nominal_propagation_outside_candidate_is_not_mislabelled (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_packed_expansion_uses_owned_boundary_arrays_not_mutated_sources (test_packed_candidate_capture.CandidateCaptureTests) ... ok
+test_bound_full_rows_and_gc_trace_are_reopened_and_verified (test_qualification_recording.QualificationRecordingTests) ... ok
+test_failed_row_is_retained_and_existing_evidence_cannot_be_overwritten (test_qualification_recording.QualificationRecordingTests) ... ok
+test_full_evidence_is_owned_by_file_not_summary_or_store (test_qualification_recording.QualificationRecordingTests) ... ok
+test_gc_scope_row_and_failure_clocks_preserve_policy_and_callbacks (test_qualification_recording.QualificationRecordingTests) ... ok
+test_missing_or_changed_external_artifacts_cannot_pass (test_qualification_recording.QualificationRecordingTests) ... ok
+test_outside_scope_events_are_not_misattributed_to_controller (test_qualification_recording.QualificationRecordingTests) ... ok
+test_overflow_is_explicit_and_capacity_never_grows (test_qualification_recording.QualificationRecordingTests) ... ok
+test_rebound_candidate_or_gc_payload_still_requires_complete_evidence (test_qualification_recording.QualificationRecordingTests) ... ok
+test_scopes_cannot_nest_or_escape_a_row_and_write_requires_closed_trace (test_qualification_recording.QualificationRecordingTests) ... ok
+test_summary_identity_and_row_order_are_checked_beyond_file_hash (test_qualification_recording.QualificationRecordingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.106s
+
+OK

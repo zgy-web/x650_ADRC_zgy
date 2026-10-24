@@ -1,0 +1,281 @@
+{
+  "kind": "packed_scratch_v3_summary",
+  "passed": true,
+  "scratch_only": true,
+  "deployment_eligible": false,
+  "flight_accepted": false,
+  "production_certificate": false,
+  "native_tests": {
+    "passed": true,
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scratch_overlay_only": true,
+    "deployment_eligible": false
+  },
+  "full_evidence_required_for_reverification": true,
+  "original_server_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v3/results_v3",
+  "compact_archive_contains_all_evidence": false,
+  "results": {
+    "matrix": {
+      "passed": 30,
+      "total": 30,
+      "pass_": true,
+      "sources_unchanged": true,
+      "row_evidence_verification": {
+        "passed": true,
+        "rows": 30,
+        "candidates": 30,
+        "artifact_identity": "path+bytes+sha256",
+        "complete_gc_trace_verified": true
+      },
+      "report": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v3/results_v3/matrix/matrix_report.json",
+        "bytes": 171242,
+        "sha256": "7d4ef29d6b0f9f7493d67c5d33e2898e1920cda4ef54a330b9dc5f655a850e06"
+      },
+      "gc": {
+        "events": 548,
+        "overflow": false,
+        "policy_before": {
+          "enabled": true,
+          "thresholds": [
+            700,
+            10,
+            10
+          ],
+          "frozen_count": 0
+        },
+        "policy_after": {
+          "enabled": true,
+          "thresholds": [
+            700,
+            10,
+            10
+          ],
+          "frozen_count": 0
+        },
+        "phase_start_counts": [
+          {
+            "generation": 0,
+            "scope": 0,
+            "count": 181
+          },
+          {
+            "generation": 0,
+            "scope": 1,
+            "count": 38
+          },
+          {
+            "generation": 0,
+            "scope": 2,
+            "count": 30
+          },
+          {
+            "generation": 1,
+            "scope": 0,
+            "count": 19
+          },
+          {
+            "generation": 1,
+            "scope": 1,
+            "count": 1
+          },
+          {
+            "generation": 1,
+            "scope": 2,
+            "count": 3
+          },
+          {
+            "generation": 2,
+            "scope": 0,
+            "count": 1
+          },
+          {
+            "generation": 2,
+            "scope": 1,
+            "count": 1
+          }
+        ],
+        "longest_gc": [
+          {
+            "generation": 2,
+            "row_index": 16,
+            "scope": 0,
+            "elapsed_ms": 13.733532
+          },
+          {
+            "generation": 2,
+            "row_index": 2,
+            "scope": 1,
+            "elapsed_ms": 11.269436
+          },
+          {
+            "generation": 1,
+            "row_index": 0,
+            "scope": 0,
+            "elapsed_ms": 0.742155
+          },
+          {
+            "generation": 1,
+            "row_index": -1,
+            "scope": 0,
+            "elapsed_ms": 0.322386
+          },
+          {
+            "generation": 1,
+            "row_index": -1,
+            "scope": 0,
+            "elapsed_ms": 0.314852
+          }
+        ]
+      },
+      "step_timing": {
+        "reference": {
+          "count": 30,
+          "wall_peak_ms": 42.191062,
+          "thread_cpu_peak_ms": 42.190777
+        },
+        "native": {
+          "count": 30,
+          "wall_peak_ms": 13.676009,
+          "thread_cpu_peak_ms": 13.676326
+        },
+        "native_uninstrumented": {
+          "count": 30,
+          "wall_peak_ms": 11.46469,
+          "thread_cpu_peak_ms": 11.464288
+        }
+      },
+      "full_row_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v3/results_v3/matrix/row_evidence"
+    },
+    "replay": {
+      "passed": 388,
+      "total": 388,
+      "pass_": true,
+      "sources_unchanged": true,
+      "row_evidence_verification": {
+        "passed": true,
+        "rows": 388,
+        "candidates": 388,
+        "artifact_identity": "path+bytes+sha256",
+        "complete_gc_trace_verified": true
+      },
+      "report": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v3/results_v3/replay/replay_report.json",
+        "bytes": 1886343,
+        "sha256": "638cf100b47883702db4c5522931e0043993442de052b55aa661a644e1d321de"
+      },
+      "gc": {
+        "events": 6590,
+        "overflow": false,
+        "policy_before": {
+          "enabled": true,
+          "thresholds": [
+            700,
+            10,
+            10
+          ],
+          "frozen_count": 0
+        },
+        "policy_after": {
+          "enabled": true,
+          "thresholds": [
+            700,
+            10,
+            10
+          ],
+          "frozen_count": 0
+        },
+        "phase_start_counts": [
+          {
+            "generation": 0,
+            "scope": 0,
+            "count": 2352
+          },
+          {
+            "generation": 0,
+            "scope": 1,
+            "count": 339
+          },
+          {
+            "generation": 0,
+            "scope": 2,
+            "count": 306
+          },
+          {
+            "generation": 1,
+            "scope": 0,
+            "count": 213
+          },
+          {
+            "generation": 1,
+            "scope": 1,
+            "count": 32
+          },
+          {
+            "generation": 1,
+            "scope": 2,
+            "count": 28
+          },
+          {
+            "generation": 2,
+            "scope": 0,
+            "count": 22
+          },
+          {
+            "generation": 2,
+            "scope": 1,
+            "count": 3
+          }
+        ],
+        "longest_gc": [
+          {
+            "generation": 2,
+            "row_index": 3,
+            "scope": 0,
+            "elapsed_ms": 20.31327
+          },
+          {
+            "generation": 2,
+            "row_index": -1,
+            "scope": 0,
+            "elapsed_ms": 18.387033
+          },
+          {
+            "generation": 2,
+            "row_index": -1,
+            "scope": 0,
+            "elapsed_ms": 18.120407
+          },
+          {
+            "generation": 2,
+            "row_index": 387,
+            "scope": 0,
+            "elapsed_ms": 17.404481
+          },
+          {
+            "generation": 2,
+            "row_index": 240,
+            "scope": 0,
+            "elapsed_ms": 17.385664
+          }
+        ]
+      },
+      "step_timing": {
+        "reference": {
+          "count": 388,
+          "wall_peak_ms": 39.730701,
+          "thread_cpu_peak_ms": 39.729338
+        },
+        "native": {
+          "count": 388,
+          "wall_peak_ms": 12.950224,
+          "thread_cpu_peak_ms": 12.950446
+        }
+      },
+      "full_row_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/tmp/packed_native_proposal_v3/results_v3/replay/row_evidence"
+    }
+  }
+}

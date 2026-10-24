@@ -1,0 +1,3 @@
+SCRATCH QUALIFICATION ONLY. NOT A PRODUCTION CERTIFICATE OR FLIGHT ACCEPTANCE.
+This compact archive excludes all 418 full row-evidence files. Main reports bind those server files by absolute path/size/SHA256. They must remain available to reverify the numerical proof. This archive alone is insufficient.
+V1 and V2 failed runs remain in their original server directories. V3 ran each stage once. No GC disable/collect or deadline relaxation.
