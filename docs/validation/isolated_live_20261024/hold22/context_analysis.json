@@ -1,0 +1,140 @@
+{
+  "kind": "hold22_context_roundoff_reconstruction_v1",
+  "physical_run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859",
+  "original_worker_requests": 18,
+  "last_events": [
+    {
+      "schema_version": 1,
+      "session_id": 727269705,
+      "epoch": 1,
+      "sequence": 17,
+      "snapshot_sequence": 17,
+      "proposal_sequence": 17,
+      "replay_only": false,
+      "accepted": true,
+      "reason": 0,
+      "received_monotonic_ns": 59600486338433581,
+      "roundtrip_ns": 22129478
+    },
+    {
+      "schema_version": 1,
+      "session_id": 727269705,
+      "epoch": 1,
+      "sequence": 18,
+      "snapshot_sequence": 18,
+      "proposal_sequence": 18,
+      "replay_only": false,
+      "accepted": true,
+      "reason": 0,
+      "received_monotonic_ns": 59600486356240607,
+      "roundtrip_ns": 20193801
+    },
+    {
+      "schema_version": 1,
+      "session_id": 727269705,
+      "epoch": 1,
+      "sequence": 19,
+      "snapshot_sequence": 19,
+      "proposal_sequence": 0,
+      "replay_only": false,
+      "accepted": false,
+      "reason": 15,
+      "received_monotonic_ns": 59600486362438554,
+      "roundtrip_ns": 0
+    }
+  ],
+  "rejected_admission": {
+    "kind": 4,
+    "sequence": 19,
+    "entry_ns": 59600486362438554,
+    "gate_end_ns": 59600486362442784,
+    "publish_end_ns": 0,
+    "source_sequence": 77,
+    "source_issued_ns": 59600486359861138,
+    "source_received_ns": 59600486362228861,
+    "latest_control_s": 41.94,
+    "last_control_s": 41.916,
+    "awaiting_output_sequence": 0,
+    "next_admission_ns": 59600486362387957,
+    "last_admitted_sequence": 18,
+    "released_sequence": 18,
+    "blocked_flags": 0,
+    "forward": false
+  },
+  "reconstructed_contexts": [
+    {
+      "original_rejected_snapshot_cdr": false,
+      "now": 41.916,
+      "joint": 41.916,
+      "task_time_s": 0.3399999999999963,
+      "origin_s": 41.576,
+      "reference_time_s": 0.3399999999999963,
+      "command_time_s": [
+        0.3240000000000052
+      ],
+      "packet_time_s": [
+        0.3340000000000032,
+        0.33899999999999864
+      ],
+      "bus_origin_s": -38.156,
+      "strict_gate_context_violations": [],
+      "padding": "reconstructed serialization uses zero padding; rejected original padding was not captured",
+      "actual_accepted18_context_matches": {
+        "counts": true,
+        "joint_stamp": true,
+        "reference_time": true,
+        "reference_r": true,
+        "bus_origin": true,
+        "command_times": true,
+        "command_values": true,
+        "packet_times": true,
+        "q_ref": true,
+        "dq_ref": true,
+        "tau_ff": true,
+        "kp": true,
+        "kd": true
+      }
+    },
+    {
+      "original_rejected_snapshot_cdr": false,
+      "now": 41.94,
+      "joint": 41.94,
+      "task_time_s": 0.3639999999999972,
+      "origin_s": 41.576,
+      "reference_time_s": 0.3639999999999972,
+      "command_time_s": [
+        0.3440000000000012
+      ],
+      "packet_time_s": [
+        0.35900000000000176,
+        0.3640000000000043
+      ],
+      "bus_origin_s": -38.156,
+      "strict_gate_context_violations": [
+        {
+          "predicate": "packet_future",
+          "index": 1,
+          "delta_s": 7.105427357601002e-15
+        }
+      ],
+      "padding": "reconstructed serialization uses zero padding; rejected original padding was not captured",
+      "actual_feedback_joint_matches": {
+        "q": true,
+        "dq": true,
+        "joint_stamp": true
+      }
+    }
+  ],
+  "limitation": "Original source77/rejected admission19 CDR was not retained. Reconstruction reads complete postflight logs using the unchanged causal provider; this does not recover the original CSV read cursor. Accepted18 matches its original CDR exactly.",
+  "comparison": "Existing provider and Python worker accept history <=task+1e-10; old C++ gate used <=task with no epsilon.",
+  "inputs_sha256": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/ts20_state.csv": "b3f17ed81c309be6e774ec3a83f748929d0b5b947363878f3804f61b1ff149f1",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/ts20_packets.csv": "edb433d28d1ab0027f936d668c50d54faab72276c09ab23b3f795016242ff349",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/live_start.json": "457f400ea5fce521c9bf449059d77189949f78ec8584d539956b74667b4bcb00",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/events.json": "521a13e6523dbfb0bbd7e27a834ae22fe509681b3eb76fbfd2a1e46298881488",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/ingress_timing.json": "98b82936e11b0aafb787c32b4c069e2c49af1f71dfe58972de1c0fd0e8ba2a93",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/feedback_sources.json": "ccb7aef99d8144a4a97f8b5df5c977882e580194c875fe20f1e2a247af493376",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/recording/diagnostics.jsonl": "09892b2404647e0a6861c35ac7e9545442fa758e1a2bd3a4919bc339d7fcd3b9",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_runtime.py": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080"
+  }
+}

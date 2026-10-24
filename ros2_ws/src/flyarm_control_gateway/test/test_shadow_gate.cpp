@@ -198,6 +198,54 @@ int main() {
       };
       for (const auto & change : changes) reject_input(change, fcg::Reason::CONTEXT);
     }, passed);
+    run("recorded_hold22_bus_instant_roundoff_preserves_original_stamps", [] {
+      // Original CSV: send 41.940000000000005; estimator/source 41.94.
+      // At origin 41.576 their task times differ by 7.105427357601002e-15 s.
+      const double origin=41.576, control=41.94, send=41.940000000000005;
+      auto input=snapshot();
+      input.control_time_s=control; input.task_time_s=control-origin; input.dt_s=.024;
+      input.state_time_s=41.936; input.joint_time_s=control;
+      input.reference_time_s=control-origin; input.bus_origin_s=-38.156;
+      input.command_time_s[0]=41.920000000000002-origin;
+      input.packet_count=2;
+      input.packet_send_time_s[0]=41.935000000000002-origin;
+      input.packet_send_time_s[1]=send-origin;
+      input.packet_kp[2]=6.;input.packet_kp[3]=6.;input.packet_kd[2]=.25;input.packet_kd[3]=.25;
+      require(input.packet_send_time_s[1]>input.task_time_s,"recorded roundoff was not reproduced");
+      require(input.packet_send_time_s[1]-input.task_time_s==7.105427357601002e-15,
+              "recorded bus/control timestamp difference changed");
+      const auto original=input;
+      fcg::ShadowGate gate(config());
+      require(gate.admit(input,RECEIPT).forward,"same bus instant rejected as future");
+      require(input.control_time_s==original.control_time_s && input.task_time_s==original.task_time_s &&
+              input.packet_send_time_s==original.packet_send_time_s && input.command_time_s==original.command_time_s,
+              "timestamp was clamped or rewritten");
+      require(gate.propose(proposal(input),RETURN)->accepted,"preserved snapshot failed proposal check");
+    }, passed);
+    run("history_numeric_epsilon_has_exact_inclusive_upper_boundary", [] {
+      constexpr double epsilon=1e-10;
+      for (bool command : {false,true}) for (double task : {0.,1.02}) {
+        const double upper=task+epsilon;
+        for (double at : {task-epsilon,task,std::nextafter(upper,-INFINITY),upper}) {
+          auto input=snapshot();input.task_time_s=task;
+          input.reference_time_s=input.joint_time_s-(input.control_time_s-task);
+          input.command_time_s[0]=task;input.packet_send_time_s[0]=task;
+          (command?input.command_time_s[0]:input.packet_send_time_s[0])=at;
+          fcg::ShadowGate gate(config());
+          require(gate.admit(input,RECEIPT).forward,"existing history epsilon boundary rejected");
+        }
+        for (double at : {std::nextafter(upper,INFINITY),task+2*epsilon,task+.001}) {
+          auto input=snapshot();input.task_time_s=task;
+          input.reference_time_s=input.joint_time_s-(input.control_time_s-task);
+          input.command_time_s[0]=task;input.packet_send_time_s[0]=task;
+          (command?input.command_time_s[0]:input.packet_send_time_s[0])=at;
+          fcg::ShadowGate gate(config());
+          const auto result=gate.admit(input,RECEIPT);
+          require(!result.forward,"genuinely future history was forwarded");
+          rejected(result.event,fcg::Reason::CONTEXT);
+        }
+      }
+    }, passed);
     run("snapshot_context_copy_is_immutable", [] {
       fcg::ShadowGate gate(config()); auto input=snapshot(); auto output=proposal(input);
       require(gate.admit(input, RECEIPT).forward, "setup rejected");

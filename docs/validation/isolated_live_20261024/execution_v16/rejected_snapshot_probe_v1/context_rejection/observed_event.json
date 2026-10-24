@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "session_id": 845285855,
+  "epoch": 1,
+  "sequence": 1,
+  "snapshot_sequence": 1,
+  "proposal_sequence": 0,
+  "replay_only": false,
+  "accepted": false,
+  "reason": 15,
+  "received_monotonic_ns": 59600868443180397,
+  "roundtrip_ns": 0
+}

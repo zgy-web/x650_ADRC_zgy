@@ -1,7 +1,7 @@
 {
   "kind": "x650_isolated_live_protocol_v1",
   "simulation_only": true,
-  "execution_revision": 15,
+  "execution_revision": 16,
   "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
   "cpu_roles": {
     "source": [
@@ -73,5 +73,7 @@
   "live_diagnostic_snapshot": "one owned numeric-graph clone per live result; same deepcopy ownership and memo semantics; public default retains independent deepcopy results; binary capture before next step",
   "execution_timing_evidence": "bounded in-memory stage timestamps written after shutdown; distinguish engine return, proposal publication, gate entry and diagnostic serialization; original DDS schemas and timestamps retained",
   "source_callback_dispatch": "active main executor always nonblocking with unchanged wait arguments; separate depth-one fault executor polled before main work; full-depth original evidence retained",
-  "fault_supervision": "independent ROS node/executor; matching session and epoch; first fault latched with local callback observation time; complete evidence remains separate"
+  "fault_supervision": "independent ROS node/executor; matching session and epoch; first fault latched with local callback observation time; complete evidence remains separate",
+  "history_timestamp_consistency": "C++ command/packet future comparisons use the existing Python 1e-10 second task-relative arithmetic tolerance; source clocks, wall leases, dt limits and original timestamps unchanged",
+  "rejected_input_evidence": "first rejected admission retained in bounded memory with original source identity; exact gate-input CDR and clocks written only at shutdown"
 }

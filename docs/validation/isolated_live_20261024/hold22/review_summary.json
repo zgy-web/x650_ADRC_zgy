@@ -1,0 +1,697 @@
+{
+  "kind": "hold22_independent_failure_performance_recovery_review_v1",
+  "derived_analysis": true,
+  "full_hold_passed": false,
+  "eligible_for_figure8": false,
+  "run": "x650_isolated_live_v1_20261024_120535_11859",
+  "launch": "x650_isolated_launch_20261024_120448_11858",
+  "task_sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286",
+  "numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+  "numerical_proof_sha256": "445f44a2218bf6b058c4c9834217ecc63f40f305c592344db1c34757af377b3a",
+  "reported_error": "RuntimeError('C++ candidate gate rejected reason 15')",
+  "task_start_sim_s": 41.576,
+  "last_worker_task_time_s": 0.3399999999999963,
+  "requested_hold_s": 30.0,
+  "first_rejected_gate": {
+    "schema_version": 1,
+    "session_id": 727269705,
+    "epoch": 1,
+    "sequence": 19,
+    "snapshot_sequence": 19,
+    "proposal_sequence": 0,
+    "replay_only": false,
+    "accepted": false,
+    "reason": 15,
+    "received_monotonic_ns": 59600486362438554,
+    "roundtrip_ns": 0
+  },
+  "supervision": {
+    "exact_observation_record": {
+      "kind": "isolated_fault_supervision_v1",
+      "session_id": 727269705,
+      "epoch": 1,
+      "first_fault": {
+        "topic": "events",
+        "session_id": 727269705,
+        "epoch": 1,
+        "sequence": 19,
+        "reason": 15,
+        "observed_monotonic_ns": 59600486363700719,
+        "producer_monotonic_ns": 59600486362438554,
+        "producer_to_observation_ns": 1262165
+      },
+      "counts": {
+        "dispatch": 23,
+        "events": 19,
+        "ignored_identity": 0
+      },
+      "semantics": "independent executor, depth 1; first matching fault latched; observer only"
+    },
+    "producer_to_callback_ms": 1.262165,
+    "semantics": "Independent supervisor callback timestamp minus gate producer timestamp; unlike hold21 this is not recorder sink time."
+  },
+  "worker": {
+    "count": 18,
+    "all_numerically_accepted": true,
+    "candidate19_never_entered_worker": true,
+    "engine_wall_ms": {
+      "minimum": 12.599626,
+      "p50": 12.88293,
+      "p95": 15.888851799999998,
+      "p99": 17.317390359999997,
+      "maximum": 17.674525
+    },
+    "whole_callback_wall_ms": {
+      "minimum": 13.118769,
+      "p50": 13.423705,
+      "p95": 16.456291499999995,
+      "p99": 17.888432699999996,
+      "maximum": 18.246468
+    },
+    "whole_callback_thread_cpu_ms": {
+      "minimum": 13.112811,
+      "p50": 13.417828,
+      "p95": 16.450560649999996,
+      "p99": 17.882688929999997,
+      "maximum": 18.240721
+    },
+    "snapshot_to_callback_ms": {
+      "minimum": 2.727102,
+      "p50": 3.6665385,
+      "p95": 6.596969699999999,
+      "p99": 6.79898274,
+      "maximum": 6.849486
+    },
+    "proposal_publish_wall_ms": {
+      "minimum": 0.065058,
+      "p50": 0.0701295,
+      "p95": 0.08723249999999999,
+      "p99": 0.09285609999999998,
+      "maximum": 0.094262
+    },
+    "qp_ms": {
+      "minimum": 0.3682374954223633,
+      "p50": 0.37635117769241333,
+      "p95": 3.058101609349249,
+      "p99": 3.918998613953588,
+      "maximum": 4.134222865104675
+    },
+    "gc_generation_counts_after_handoff": {
+      "0": 2
+    },
+    "gc_max_us_after_handoff": 67.072,
+    "qualification_limit": "18 actual calls only; this short rejected run is not a sustained deadline or full-hold acceptance."
+  },
+  "source_and_ingress": {
+    "source_count": 77,
+    "pump_count": 129,
+    "source_issue_to_publish_return_ms": {
+      "minimum": 1.960468,
+      "p50": 2.329985,
+      "p95": 2.4986518,
+      "p99": 2.606921799999999,
+      "maximum": 2.718809
+    },
+    "source_issue_to_ingress_entry_ms": {
+      "minimum": 1.979113,
+      "p50": 2.362776,
+      "p95": 2.5235612,
+      "p99": 2.6394553199999993,
+      "maximum": 2.756281
+    },
+    "source_sim_progress_step_s": {
+      "minimum": 0.003999999999997783,
+      "p50": 0.003999999999997783,
+      "p95": 0.008000000000002672,
+      "p99": 0.009000000000002117,
+      "maximum": 0.012000000000000455
+    },
+    "source_issue_intervals_ms": {
+      "minimum": 3.355504,
+      "p50": 4.136537499999999,
+      "p95": 6.817096749999999,
+      "p99": 7.34252,
+      "maximum": 7.850849
+    },
+    "pump_wall_ms": {
+      "minimum": 1.146655,
+      "p50": 3.651091,
+      "p95": 4.2296118,
+      "p99": 4.38698932,
+      "maximum": 5.316817
+    },
+    "extra_callback_counts": {
+      "4": 27,
+      "3": 26,
+      "2": 55,
+      "1": 21
+    },
+    "last_source": {
+      "sequence": 77,
+      "issued_ns": 59600486359861138,
+      "publish_return_ns": 59600486362163335,
+      "control_s": 41.94,
+      "joint_s": 41.94
+    },
+    "last_normal_send": {
+      "session_id": 727269705,
+      "epoch": 1,
+      "command_sequence": 18,
+      "dispatch_sequence": 3145,
+      "sent_monotonic_ns": 59600486362351292,
+      "sim_s": 41.956,
+      "repeated": false,
+      "stop_zero": false,
+      "expected_counter": [
+        1200,
+        1200
+      ],
+      "joint_velocity": [
+        -0.027365038592235498,
+        -0.0013308717323321454
+      ],
+      "coordinate_frame": 1,
+      "type_mask": 2048,
+      "position_ned": [
+        3.814041305005844e-10,
+        6.279181338532391e-07,
+        -1.987335870239419
+      ],
+      "velocity_ned": [
+        -0.001312550887840677,
+        -0.005005667851982066,
+        -3.1521328138947965e-06
+      ],
+      "acceleration_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_ned": 1.6724292039871216
+    },
+    "last_source_wall_age_at_gate_rejection_ms": 2.577416,
+    "last_source_clock_behind_latest_actual_send_sim_ms": 16.000000000005343,
+    "gate19_related_ingress_tail": [
+      {
+        "kind": 1,
+        "sequence": 77,
+        "entry_ns": 59600486362228861,
+        "gate_end_ns": 0,
+        "publish_end_ns": 0,
+        "source_sequence": 77,
+        "source_issued_ns": 59600486359861138,
+        "source_received_ns": 59600486362228861,
+        "latest_control_s": 41.94,
+        "last_control_s": 41.916,
+        "awaiting_output_sequence": 18,
+        "next_admission_ns": 59600486362387957,
+        "last_admitted_sequence": 18,
+        "released_sequence": 0,
+        "blocked_flags": 0,
+        "forward": false
+      },
+      {
+        "kind": 4,
+        "sequence": 19,
+        "entry_ns": 59600486362228861,
+        "gate_end_ns": 0,
+        "publish_end_ns": 0,
+        "source_sequence": 77,
+        "source_issued_ns": 59600486359861138,
+        "source_received_ns": 59600486362228861,
+        "latest_control_s": 41.94,
+        "last_control_s": 41.916,
+        "awaiting_output_sequence": 18,
+        "next_admission_ns": 59600486362387957,
+        "last_admitted_sequence": 18,
+        "released_sequence": 0,
+        "blocked_flags": 40,
+        "forward": false
+      },
+      {
+        "kind": 3,
+        "sequence": 18,
+        "entry_ns": 59600486362438177,
+        "gate_end_ns": 0,
+        "publish_end_ns": 0,
+        "source_sequence": 77,
+        "source_issued_ns": 59600486359861138,
+        "source_received_ns": 59600486362228861,
+        "latest_control_s": 41.94,
+        "last_control_s": 41.916,
+        "awaiting_output_sequence": 18,
+        "next_admission_ns": 59600486362387957,
+        "last_admitted_sequence": 18,
+        "released_sequence": 0,
+        "blocked_flags": 0,
+        "forward": false
+      },
+      {
+        "kind": 5,
+        "sequence": 18,
+        "entry_ns": 59600486362438177,
+        "gate_end_ns": 0,
+        "publish_end_ns": 0,
+        "source_sequence": 77,
+        "source_issued_ns": 59600486359861138,
+        "source_received_ns": 59600486362228861,
+        "latest_control_s": 41.94,
+        "last_control_s": 41.916,
+        "awaiting_output_sequence": 18,
+        "next_admission_ns": 59600486362387957,
+        "last_admitted_sequence": 18,
+        "released_sequence": 18,
+        "blocked_flags": 0,
+        "forward": true
+      },
+      {
+        "kind": 4,
+        "sequence": 19,
+        "entry_ns": 59600486362438554,
+        "gate_end_ns": 59600486362442784,
+        "publish_end_ns": 0,
+        "source_sequence": 77,
+        "source_issued_ns": 59600486359861138,
+        "source_received_ns": 59600486362228861,
+        "latest_control_s": 41.94,
+        "last_control_s": 41.916,
+        "awaiting_output_sequence": 0,
+        "next_admission_ns": 59600486362387957,
+        "last_admitted_sequence": 18,
+        "released_sequence": 18,
+        "blocked_flags": 0,
+        "forward": false
+      }
+    ],
+    "rejected_candidate19_snapshot_cdr_available": false,
+    "interpretation": "The reported 16ms difference is a clock observation, not an identified rejection predicate. Fresh wall receipt does not by itself establish all context-history invariants. Exact context rejection predicate is investigated separately; reconstruction must not be presented as original rejected CDR, and this report does not attribute the failure to solver timeout."
+  },
+  "resource_monitor": {
+    "source_sha256": "cb0f05b3881893e77a6a1ed4e1f5fb7e2b8bffef460679cbfae8dfae979b569b",
+    "retrieved_rows": 3141,
+    "retrieved_snapshot_first_ns": 59600373012563908,
+    "retrieved_snapshot_last_ns": 59600534655157885,
+    "monitor_start_relative_to_live_start_s": -112.971132546,
+    "covers_entire_live_start_to_gate_rejection": true,
+    "active_window_ms": 378.7421,
+    "samples_strictly_inside_window": 7,
+    "bracketing_samples": [
+      {
+        "monotonic_ns": 59600485958316123,
+        "cpu.stat": "usage_usec 2313478357\nuser_usec 2064572077\nsystem_usec 248906280\nnr_periods 47154\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6408030\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4094963\n",
+        "frequency_khz": {
+          "87": "800063",
+          "89": "800244",
+          "91": "799988",
+          "97": "800004"
+        }
+      },
+      {
+        "monotonic_ns": 59600486009811359,
+        "cpu.stat": "usage_usec 2313622988\nuser_usec 2064709842\nsystem_usec 248913146\nnr_periods 47155\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6408677\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095066\n",
+        "frequency_khz": {
+          "87": "811390",
+          "89": "1464229",
+          "91": "800001",
+          "97": "864826"
+        }
+      },
+      {
+        "monotonic_ns": 59600486061498433,
+        "cpu.stat": "usage_usec 2313809293\nuser_usec 2064888197\nsystem_usec 248921096\nnr_periods 47155\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6409030\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095135\n",
+        "frequency_khz": {
+          "87": "2543444",
+          "89": "1981172",
+          "91": "800012",
+          "97": "1812455"
+        }
+      },
+      {
+        "monotonic_ns": 59600486113833974,
+        "cpu.stat": "usage_usec 2313995486\nuser_usec 2065067464\nsystem_usec 248928021\nnr_periods 47156\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6409422\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095213\n",
+        "frequency_khz": {
+          "87": "2499050",
+          "89": "1965687",
+          "91": "800000",
+          "97": "934815"
+        }
+      },
+      {
+        "monotonic_ns": 59600486165303856,
+        "cpu.stat": "usage_usec 2314180489\nuser_usec 2065249771\nsystem_usec 248930717\nnr_periods 47156\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6409785\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095285\n",
+        "frequency_khz": {
+          "87": "2551738",
+          "89": "1997925",
+          "91": "1943568",
+          "97": "800098"
+        }
+      },
+      {
+        "monotonic_ns": 59600486216896780,
+        "cpu.stat": "usage_usec 2314370129\nuser_usec 2065433440\nsystem_usec 248936689\nnr_periods 47157\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6410163\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095365\n",
+        "frequency_khz": {
+          "87": "2534979",
+          "89": "1853890",
+          "91": "1999038",
+          "97": "800000"
+        }
+      },
+      {
+        "monotonic_ns": 59600486268622718,
+        "cpu.stat": "usage_usec 2314555242\nuser_usec 2065614964\nsystem_usec 248940278\nnr_periods 47157\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6410509\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095432\n",
+        "frequency_khz": {
+          "87": "2544039",
+          "89": "800336",
+          "91": "1999201",
+          "97": "799988"
+        }
+      },
+      {
+        "monotonic_ns": 59600486320255253,
+        "cpu.stat": "usage_usec 2314756884\nuser_usec 2065810667\nsystem_usec 248946217\nnr_periods 47158\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6410861\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095502\n",
+        "frequency_khz": {
+          "87": "2461744",
+          "89": "800000",
+          "91": "1999473",
+          "97": "973070"
+        }
+      },
+      {
+        "monotonic_ns": 59600486371894783,
+        "cpu.stat": "usage_usec 2314949502\nuser_usec 2066000212\nsystem_usec 248949289\nnr_periods 47158\nnr_throttled 17\nthrottled_usec 67108616\n",
+        "cpu.max": "1200000 100000\n",
+        "cpu.pressure": "some avg10=0.80 avg60=0.47 avg300=0.20 total=6411236\nfull avg10=0.04 avg60=0.03 avg300=0.06 total=4095570\n",
+        "frequency_khz": {
+          "87": "1247407",
+          "89": "800150",
+          "91": "1998849",
+          "97": "800018"
+        }
+      }
+    ],
+    "bracketing_interval_ms": 413.57866,
+    "cgroup_cpu_stat_deltas": {
+      "nr_periods": 4,
+      "nr_throttled": 0,
+      "throttled_usec": 0
+    },
+    "bracket_average_cgroup_used_cores": 3.5571105143577766,
+    "sample_spacing_ms": {
+      "minimum": 51.469882,
+      "p50": 51.6360325,
+      "p95": 52.122179949999996,
+      "p99": 52.29286879,
+      "maximum": 52.335541
+    },
+    "worker_cpu_frequency_snapshot_khz": {
+      "87": {
+        "minimum": 800063.0,
+        "p50": 2499050.0,
+        "p95": 2548658.4,
+        "p99": 2551122.08,
+        "maximum": 2551738.0
+      },
+      "89": {
+        "minimum": 800000.0,
+        "p50": 1464229.0,
+        "p95": 1991223.8,
+        "p99": 1996584.76,
+        "maximum": 1997925.0
+      },
+      "91": {
+        "minimum": 799988.0,
+        "p50": 1943568.0,
+        "p95": 1999364.2,
+        "p99": 1999451.24,
+        "maximum": 1999473.0
+      },
+      "97": {
+        "minimum": 799988.0,
+        "p50": 800098.0,
+        "p95": 1476700.9999999998,
+        "p99": 1745304.2,
+        "maximum": 1812455.0
+      }
+    },
+    "limits": "Retrieved file snapshot, not a claim that monitoring has ended. Bracketing cgroup counters show no new quota throttling in this interval. About 50ms frequency snapshots do not identify the precise CPU/frequency of each worker callback or bound sub-sample scheduling delays."
+  },
+  "consumption": {
+    "all_sends": 19,
+    "normal_sends": 18,
+    "normal_repeats": 0,
+    "all_receipts": 19,
+    "individual_joint_commands": 38,
+    "per_joint_counter_range": [
+      1183,
+      1201
+    ],
+    "exact_send_receipt_identity_and_raw_joint_counter_value_time_matches": true,
+    "normal_output_after_gate_rejection": false,
+    "stop_zero_send_after_gate_rejection_ms": 19.817549,
+    "stop_zero_receipt_after_gate_rejection_ms": 24.194013,
+    "stop_zero_send": {
+      "session_id": 727269705,
+      "epoch": 1,
+      "command_sequence": 18,
+      "dispatch_sequence": 3146,
+      "sent_monotonic_ns": 59600486382256103,
+      "sim_s": 41.976,
+      "repeated": false,
+      "stop_zero": true,
+      "expected_counter": [
+        1201,
+        1201
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "coordinate_frame": 0,
+      "type_mask": 0,
+      "position_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_ned": 0.0
+    },
+    "stop_zero_receipt": {
+      "session_id": 727269705,
+      "epoch": 1,
+      "command_sequence": 18,
+      "dispatch_sequence": 3146,
+      "observed_monotonic_ns": 59600486386632567,
+      "observation_sim_s": 41.984,
+      "joint_consumed": true,
+      "pva_send_returned": false,
+      "failed": false,
+      "consumed_counter": [
+        1201,
+        1201
+      ],
+      "consumed_sim_s": [
+        41.980000000000004,
+        41.980000000000004
+      ]
+    },
+    "no_legacy_publication_overlap": true,
+    "legacy_publication_records_checked": 3290
+  },
+  "dispatcher_fault": {
+    "session_id": 727269705,
+    "epoch": 1,
+    "sequence": 3146,
+    "scheduled_monotonic_ns": 59600486382017040,
+    "actual_monotonic_ns": 59600486382104334,
+    "source_sequence": 77,
+    "source_received_monotonic_ns": 59600486362228861,
+    "command_sequence": 18,
+    "command_issued_monotonic_ns": 59600486336046806,
+    "command_age_ns": 46057528,
+    "status": 3,
+    "reason": 4,
+    "output_valid": false,
+    "repeated": false
+  },
+  "dispatcher_fault_semantics": "reason4 GATE_REJECTED, command age46.057528ms; this is not the prior STALE_COMMAND lease fault.",
+  "recovery": {
+    "release": {
+      "zero_consumed": true,
+      "writer_exited": true,
+      "wall_monotonic_ns": 59600486554799015
+    },
+    "landed_and_disarmed": true,
+    "final_flight_sample": {
+      "sim_time_s": "50.768",
+      "phase": "landed",
+      "world_x_m": "-0.003446074850562464",
+      "world_y_m": "-0.0025169105681008895",
+      "world_z_m": "0.36970518303435773",
+      "world_qx": "1.1758396115201362e-07",
+      "world_qy": "-9.193543933205773e-08",
+      "world_qz": "-0.007962806694862707",
+      "world_qw": "0.9999682963521983",
+      "q1_rad": "-0.0008911590067467144",
+      "q2_rad": "1.1622050873213474e-08",
+      "q1_velocity_rad_s": "-2.0330327697322366e-10",
+      "q2_velocity_rad_s": "2.4974790533569524e-10",
+      "joint_stamp_s": "50.764",
+      "joint_age_s": "0.003999999999997783",
+      "frame_id": "world",
+      "child_frame_id": "amsim_urdf_x650_2link_v2_flight/model_frame",
+      "armed": "0",
+      "landed": "1",
+      "failsafe": "0",
+      "nav_state": "14",
+      "target_world_x_m": "6.279181337979136e-07",
+      "target_world_y_m": "3.8140413714229476e-10",
+      "target_world_z_m": "2.3697058951589294",
+      "tip_target_world_x_m": "-0.005707331595517566",
+      "tip_target_world_y_m": "0.04077992476653528",
+      "tip_target_world_z_m": "2.0397049763758632"
+    },
+    "ulog_source_sha256": "e2d564e4559f9ecc3344bd167ff9c1b17ab47e00eb56d68055694486c5d60751",
+    "ulog_any_recorded_failsafe": false,
+    "ulog_status_changes": [
+      {
+        "timestamp": 3672000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21648000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21684000,
+        "arming_state": 2,
+        "nav_state": 17,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 27180000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 38556000,
+        "arming_state": 2,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 42492000,
+        "arming_state": 2,
+        "nav_state": 18,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 48828000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 49332000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      }
+    ],
+    "ulog_offboard_lost_changes": [
+      {
+        "timestamp": 3732000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 37296000,
+        "offboard_control_signal_lost": 0
+      },
+      {
+        "timestamp": 43032000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 49476000,
+        "offboard_control_signal_lost": 1
+      }
+    ],
+    "ulog_recovery": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 46820000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 48828000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 49332000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 48852000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "ulog_interpretation": "ULog records AUTO_LAND nav18 at42.492s before offboard signal lost at43.032s; every recorded vehicle_status has failsafe0. These are original ULog microseconds/1e6, without host-time fitting.",
+    "restored_typed_parameter_count": 56,
+    "synchronous_save_returncode": 0,
+    "runtime_closed": true,
+    "owned_process_returncodes": {
+      "recorder": 0,
+      "source_recorder": 0,
+      "worker": 0,
+      "ingress": 0,
+      "dispatcher": 0,
+      "consumption": 0
+    }
+  },
+  "evidence_scope": {
+    "software_numerical_acceptance": "18 in-run proposal checks and their exact raw CDR, not a replacement for full frozen-backend qualification.",
+    "simulated_physical_acceptance": "Original TS20 plugin consumption and PX4 ULog recovery verified. Full endpoint-hold performance failed; no hardware or all-fault-scenarios qualification.",
+    "large_originals": "ULog, TS20 state, raw CDR and publication trace remained on server; exact SHA/bytes recorded in the remote review files. No large archive produced."
+  }
+}

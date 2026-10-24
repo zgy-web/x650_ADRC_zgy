@@ -7,6 +7,8 @@
 #include <flyarm_control_interfaces/msg/live_start.hpp>
 #include <flyarm_control_interfaces/msg/execution_receipt.hpp>
 #include <flyarm_control_interfaces/msg/actuator_send.hpp>
+#include <rclcpp/serialization.hpp>
+#include <rclcpp/serialized_message.hpp>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -135,6 +137,9 @@ class StateIngress final : public rclcpp::Node {
   }
   ~StateIngress() override {
     if(!live_ || ready_file_.empty()) return;
+    // Serialize only at shutdown. A rejected admission never reaches worker
+    // CDR recording, so retain its exact fixed-size gate input separately.
+    persist_rejected_snapshot();
     try {
       const auto path=std::filesystem::path(ready_file_).parent_path()/"ingress_timing.json";
       std::ofstream f(path);f<<std::setprecision(17);
@@ -157,6 +162,54 @@ class StateIngress final : public rclcpp::Node {
     } catch(const std::exception &e) {std::cerr<<"Ingress timing evidence: "<<e.what()<<'\n';}
   }
  private:
+  struct RejectedSnapshot {
+    bool present{};
+    msg::ControlSnapshot snapshot;
+    fcg::Event event;
+    std::uint64_t source_sequence{},source_received_ns{},checked_ns{},gate_return_ns{};
+  };
+  void retain_rejected_snapshot(const msg::ControlSnapshot &snapshot,const fcg::Event &event,
+                                std::uint64_t checked,std::uint64_t returned) {
+    if(rejected_.present || !live_ || ready_file_.empty()) return;
+    // Both messages use only fixed scalar/array fields. This one failure-only
+    // copy neither serializes nor performs file I/O in a callback.
+    rejected_.snapshot=snapshot;rejected_.event=event;
+    rejected_.source_sequence=source_sequence_;rejected_.source_received_ns=latest_received_;
+    rejected_.checked_ns=checked;rejected_.gate_return_ns=returned;rejected_.present=true;
+  }
+  void persist_rejected_snapshot() const noexcept {
+    if(!rejected_.present) return;
+    try {
+      const auto directory=std::filesystem::path(ready_file_).parent_path();
+      rclcpp::Serialization<msg::ControlSnapshot> serialization;
+      rclcpp::SerializedMessage serialized;
+      serialization.serialize_message(&rejected_.snapshot,&serialized);
+      const auto &cdr=serialized.get_rcl_serialized_message();
+      std::ofstream payload(directory/"rejected_snapshot.cdr",std::ios::binary);
+      payload.write(reinterpret_cast<const char *>(cdr.buffer),static_cast<std::streamsize>(cdr.buffer_length));
+      payload.close();
+      if(!payload) throw std::runtime_error("Could not persist rejected snapshot CDR");
+      const auto &s=rejected_.snapshot;const auto &e=rejected_.event;
+      std::ofstream metadata(directory/"rejected_snapshot.json");
+      metadata<<"{\"kind\":\"isolated_rejected_snapshot_v1\",\"complete\":true,"
+        "\"ros_type\":\"flyarm_control_interfaces/msg/ControlSnapshot\","
+        "\"snapshot_semantics\":\"exact_gate_input_after_admission_sequence_and_actual_dt_assignment\","
+        "\"payload\":\"rejected_snapshot.cdr\",\"bytes\":"<<cdr.buffer_length
+        <<",\"session_id\":"<<s.session_id<<",\"epoch\":"<<s.epoch
+        <<",\"sequence\":"<<s.sequence<<",\"source_sequence\":"<<rejected_.source_sequence
+        <<",\"source_issued_monotonic_ns\":"<<s.issued_monotonic_ns
+        <<",\"source_received_monotonic_ns\":"<<rejected_.source_received_ns
+        <<",\"checked_monotonic_ns\":"<<rejected_.checked_ns
+        <<",\"gate_return_monotonic_ns\":"<<rejected_.gate_return_ns
+        <<",\"event_received_monotonic_ns\":"<<e.received_monotonic_ns
+        <<",\"event_sequence\":"<<e.sequence<<",\"reason\":"<<static_cast<unsigned>(e.reason)
+        <<",\"forward\":false,\"configuration_sha256\":\"";
+      for(const auto byte:s.configuration_sha256)
+        metadata<<std::hex<<std::setw(2)<<std::setfill('0')<<static_cast<unsigned>(byte);
+      metadata<<"\"}\n";metadata.close();
+      if(!metadata) throw std::runtime_error("Could not persist rejected snapshot metadata");
+    } catch(const std::exception &e) {std::cerr<<"Rejected snapshot evidence: "<<e.what()<<'\n';}
+  }
   struct Timing {
     std::uint8_t kind{};std::uint64_t sequence{},entry_ns{},gate_end_ns{},publish_end_ns{};
     std::uint64_t source_sequence{},source_issued_ns{},source_received_ns{};
@@ -194,6 +247,7 @@ class StateIngress final : public rclcpp::Node {
     s.sequence=gate_->next_sequence(); s.dt_s=s.control_time_s-last_control_;
     auto a=gate_->admit(wire::from_ros(s),now);
     trace.gate_end_ns=wire::monotonic_ns();
+    if(a.event && !a.forward) retain_rejected_snapshot(s,*a.event,now,trace.gate_end_ns);
     if(a.event) events_->publish(wire::to_ros(*a.event));
     if(a.forward) {
       cadence_.admitted(s.sequence);
@@ -213,6 +267,7 @@ class StateIngress final : public rclcpp::Node {
   fcg::AdmissionCadence cadence_;
   static constexpr std::size_t TIMING_CAPACITY=32768;
   std::vector<Timing> timing_;std::uint64_t timing_overflow_{},latest_received_{};
+  RejectedSnapshot rejected_;
   bool live_{},started_{};
   std::string ready_file_;bool ready_written_{};
   rclcpp::Subscription<msg::LiveStart>::SharedPtr start_;

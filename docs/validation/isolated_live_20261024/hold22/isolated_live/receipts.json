@@ -1,0 +1,363 @@
+[
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 1,
+    "dispatch_sequence": 3128,
+    "observed_monotonic_ns": 59600486026572663,
+    "observation_sim_s": 41.624,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1183,
+      1183
+    ],
+    "consumed_sim_s": [
+      41.620000000000005,
+      41.620000000000005
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 2,
+    "dispatch_sequence": 3129,
+    "observed_monotonic_ns": 59600486046578421,
+    "observation_sim_s": 41.644,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1184,
+      1184
+    ],
+    "consumed_sim_s": [
+      41.64,
+      41.64
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 3,
+    "dispatch_sequence": 3130,
+    "observed_monotonic_ns": 59600486066607685,
+    "observation_sim_s": 41.664,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1185,
+      1185
+    ],
+    "consumed_sim_s": [
+      41.660000000000004,
+      41.660000000000004
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 4,
+    "dispatch_sequence": 3131,
+    "observed_monotonic_ns": 59600486086577472,
+    "observation_sim_s": 41.684,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1186,
+      1186
+    ],
+    "consumed_sim_s": [
+      41.68,
+      41.68
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 5,
+    "dispatch_sequence": 3132,
+    "observed_monotonic_ns": 59600486106577013,
+    "observation_sim_s": 41.704,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1187,
+      1187
+    ],
+    "consumed_sim_s": [
+      41.7,
+      41.7
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 6,
+    "dispatch_sequence": 3133,
+    "observed_monotonic_ns": 59600486126628119,
+    "observation_sim_s": 41.724,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1188,
+      1188
+    ],
+    "consumed_sim_s": [
+      41.72,
+      41.72
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 7,
+    "dispatch_sequence": 3134,
+    "observed_monotonic_ns": 59600486146623878,
+    "observation_sim_s": 41.744,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1189,
+      1189
+    ],
+    "consumed_sim_s": [
+      41.74,
+      41.74
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 8,
+    "dispatch_sequence": 3135,
+    "observed_monotonic_ns": 59600486166631762,
+    "observation_sim_s": 41.764,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1190,
+      1190
+    ],
+    "consumed_sim_s": [
+      41.760000000000005,
+      41.760000000000005
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 9,
+    "dispatch_sequence": 3136,
+    "observed_monotonic_ns": 59600486186620996,
+    "observation_sim_s": 41.784,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1191,
+      1191
+    ],
+    "consumed_sim_s": [
+      41.78,
+      41.78
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 10,
+    "dispatch_sequence": 3137,
+    "observed_monotonic_ns": 59600486206600036,
+    "observation_sim_s": 41.804,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1192,
+      1192
+    ],
+    "consumed_sim_s": [
+      41.800000000000004,
+      41.800000000000004
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 11,
+    "dispatch_sequence": 3138,
+    "observed_monotonic_ns": 59600486226614548,
+    "observation_sim_s": 41.824,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1193,
+      1193
+    ],
+    "consumed_sim_s": [
+      41.82,
+      41.82
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 12,
+    "dispatch_sequence": 3139,
+    "observed_monotonic_ns": 59600486246922218,
+    "observation_sim_s": 41.844,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1194,
+      1194
+    ],
+    "consumed_sim_s": [
+      41.84,
+      41.84
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 13,
+    "dispatch_sequence": 3140,
+    "observed_monotonic_ns": 59600486266648595,
+    "observation_sim_s": 41.864,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1195,
+      1195
+    ],
+    "consumed_sim_s": [
+      41.86,
+      41.86
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 14,
+    "dispatch_sequence": 3141,
+    "observed_monotonic_ns": 59600486286593165,
+    "observation_sim_s": 41.884,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1196,
+      1196
+    ],
+    "consumed_sim_s": [
+      41.88,
+      41.88
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 15,
+    "dispatch_sequence": 3142,
+    "observed_monotonic_ns": 59600486306619198,
+    "observation_sim_s": 41.904,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1197,
+      1197
+    ],
+    "consumed_sim_s": [
+      41.900000000000006,
+      41.900000000000006
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 16,
+    "dispatch_sequence": 3143,
+    "observed_monotonic_ns": 59600486326680716,
+    "observation_sim_s": 41.924,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1198,
+      1198
+    ],
+    "consumed_sim_s": [
+      41.92,
+      41.92
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 17,
+    "dispatch_sequence": 3144,
+    "observed_monotonic_ns": 59600486346619816,
+    "observation_sim_s": 41.944,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1199,
+      1199
+    ],
+    "consumed_sim_s": [
+      41.940000000000005,
+      41.940000000000005
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 18,
+    "dispatch_sequence": 3145,
+    "observed_monotonic_ns": 59600486366619199,
+    "observation_sim_s": 41.964,
+    "joint_consumed": true,
+    "pva_send_returned": true,
+    "failed": false,
+    "consumed_counter": [
+      1200,
+      1200
+    ],
+    "consumed_sim_s": [
+      41.96,
+      41.96
+    ]
+  },
+  {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 18,
+    "dispatch_sequence": 3146,
+    "observed_monotonic_ns": 59600486386632567,
+    "observation_sim_s": 41.984,
+    "joint_consumed": true,
+    "pva_send_returned": false,
+    "failed": false,
+    "consumed_counter": [
+      1201,
+      1201
+    ],
+    "consumed_sim_s": [
+      41.980000000000004,
+      41.980000000000004
+    ]
+  }
+]

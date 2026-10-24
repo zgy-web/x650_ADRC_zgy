@@ -1,0 +1,878 @@
+{
+  "kind": "hold22_physical_consumption_review_v1",
+  "derived_analysis": true,
+  "full_hold_pass": false,
+  "recovery_checks_passed": true,
+  "first_rejected_gate_event": {
+    "schema_version": 1,
+    "session_id": 727269705,
+    "epoch": 1,
+    "sequence": 19,
+    "snapshot_sequence": 19,
+    "proposal_sequence": 0,
+    "replay_only": false,
+    "accepted": false,
+    "reason": 15,
+    "received_monotonic_ns": 59600486362438554,
+    "roundtrip_ns": 0
+  },
+  "dispatch_status_counts": {
+    "0": 3127,
+    "1": 18,
+    "3": 1
+  },
+  "first_dispatch_fault": {
+    "session_id": 727269705,
+    "epoch": 1,
+    "sequence": 3146,
+    "scheduled_monotonic_ns": 59600486382017040,
+    "actual_monotonic_ns": 59600486382104334,
+    "source_sequence": 77,
+    "source_received_monotonic_ns": 59600486362228861,
+    "command_sequence": 18,
+    "command_issued_monotonic_ns": 59600486336046806,
+    "command_age_ns": 46057528,
+    "status": 3,
+    "reason": 4,
+    "output_valid": false,
+    "repeated": false,
+    "command": {
+      "schema_version": 1,
+      "session_id": 0,
+      "epoch": 0,
+      "sequence": 0,
+      "replay_only": true,
+      "configuration_sha256": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "snapshot_sequence": 0,
+      "compute_start_monotonic_ns": 0,
+      "compute_end_monotonic_ns": 0,
+      "status": 0,
+      "control_time_s": 0.0,
+      "task_time_s": 0.0,
+      "position_reference_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_velocity_target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "accepted_optimum": false,
+      "nonlinear_check_passed": false,
+      "primal_violation": 0.0,
+      "kkt_residual": 0.0,
+      "subproblems": 0
+    }
+  },
+  "final_dispatch": {
+    "session_id": 727269705,
+    "epoch": 1,
+    "sequence": 3146,
+    "scheduled_monotonic_ns": 59600486382017040,
+    "actual_monotonic_ns": 59600486382104334,
+    "source_sequence": 77,
+    "source_received_monotonic_ns": 59600486362228861,
+    "command_sequence": 18,
+    "command_issued_monotonic_ns": 59600486336046806,
+    "command_age_ns": 46057528,
+    "status": 3,
+    "reason": 4,
+    "output_valid": false,
+    "repeated": false,
+    "command": {
+      "schema_version": 1,
+      "session_id": 0,
+      "epoch": 0,
+      "sequence": 0,
+      "replay_only": true,
+      "configuration_sha256": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "snapshot_sequence": 0,
+      "compute_start_monotonic_ns": 0,
+      "compute_end_monotonic_ns": 0,
+      "status": 0,
+      "control_time_s": 0.0,
+      "task_time_s": 0.0,
+      "position_reference_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_feedforward_enu": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_velocity_target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "accepted_optimum": false,
+      "nonlinear_check_passed": false,
+      "primal_violation": 0.0,
+      "kkt_residual": 0.0,
+      "subproblems": 0
+    }
+  },
+  "all_sends": 19,
+  "normal_sends": 18,
+  "normal_repeats": 0,
+  "all_receipts": 19,
+  "individual_joint_commands": 38,
+  "per_joint_counter_range": [
+    1183,
+    1201
+  ],
+  "exact_send_receipt_identity_and_raw_joint_counter_value_time_matches": true,
+  "normal_send_waited_for_previous_actual_receipt": true,
+  "normal_output_after_gate_rejection": false,
+  "delivery_lag_sim_s": [
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.0040000000000048885,
+    0.003999999999997783,
+    0.003999999999997783,
+    0.0040000000000048885,
+    0.0040000000000048885
+  ],
+  "stop_zero_send": {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 18,
+    "dispatch_sequence": 3146,
+    "sent_monotonic_ns": 59600486382256103,
+    "sim_s": 41.976,
+    "repeated": false,
+    "stop_zero": true,
+    "expected_counter": [
+      1201,
+      1201
+    ],
+    "joint_velocity": [
+      0.0,
+      0.0
+    ],
+    "coordinate_frame": 0,
+    "type_mask": 0,
+    "position_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocity_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "acceleration_ned": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "yaw_ned": 0.0
+  },
+  "stop_zero_receipt": {
+    "session_id": 727269705,
+    "epoch": 1,
+    "command_sequence": 18,
+    "dispatch_sequence": 3146,
+    "observed_monotonic_ns": 59600486386632567,
+    "observation_sim_s": 41.984,
+    "joint_consumed": true,
+    "pva_send_returned": false,
+    "failed": false,
+    "consumed_counter": [
+      1201,
+      1201
+    ],
+    "consumed_sim_s": [
+      41.980000000000004,
+      41.980000000000004
+    ]
+  },
+  "stop_zero_send_after_gate_rejection_ms": 19.817549,
+  "stop_zero_receipt_after_gate_rejection_ms": 24.194013,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 59600486554799015
+  },
+  "no_legacy_publication_overlap": true,
+  "legacy_publication_records_checked": 3290,
+  "worker_diagnostics": [
+    {
+      "sequence": 1,
+      "solve_ms": 0.41121989488601685,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 10.629266500473022,
+        "inner_allocator_thread_cpu_ms": 10.856116999999887,
+        "outer_thread_cpu_ms": 11.169956000000036,
+        "gc_collection_count_before": [
+          219,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          220,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 11.17733120918274
+      }
+    },
+    {
+      "sequence": 2,
+      "solve_ms": 0.38101524114608765,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.518168866634369,
+        "inner_allocator_thread_cpu_ms": 9.705625000000051,
+        "outer_thread_cpu_ms": 10.000588999999893,
+        "gc_collection_count_before": [
+          220,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          1,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.007187724113464
+      }
+    },
+    {
+      "sequence": 3,
+      "solve_ms": 0.3809034824371338,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.336665272712708,
+        "inner_allocator_thread_cpu_ms": 9.527687000000062,
+        "outer_thread_cpu_ms": 9.83130199999982,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.837619960308075
+      }
+    },
+    {
+      "sequence": 4,
+      "solve_ms": 0.3807544708251953,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.423837065696716,
+        "inner_allocator_thread_cpu_ms": 9.589949999999847,
+        "outer_thread_cpu_ms": 9.889529000000064,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.895898401737213
+      }
+    },
+    {
+      "sequence": 5,
+      "solve_ms": 0.3755614161491394,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.462319314479828,
+        "inner_allocator_thread_cpu_ms": 9.65281699999987,
+        "outer_thread_cpu_ms": 9.954302999999998,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.960316121578217
+      }
+    },
+    {
+      "sequence": 6,
+      "solve_ms": 0.37563592195510864,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.518168866634369,
+        "inner_allocator_thread_cpu_ms": 9.671594000000061,
+        "outer_thread_cpu_ms": 9.97448099999998,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.99121367931366
+      }
+    },
+    {
+      "sequence": 7,
+      "solve_ms": 0.3744065761566162,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.553097188472748,
+        "inner_allocator_thread_cpu_ms": 9.745744000000167,
+        "outer_thread_cpu_ms": 10.053187000000019,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.059714317321777
+      }
+    },
+    {
+      "sequence": 8,
+      "solve_ms": 0.37025660276412964,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.442389011383057,
+        "inner_allocator_thread_cpu_ms": 9.630344000000068,
+        "outer_thread_cpu_ms": 9.935837000000003,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.942255914211273
+      }
+    },
+    {
+      "sequence": 9,
+      "solve_ms": 0.372864305973053,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.419143199920654,
+        "inner_allocator_thread_cpu_ms": 9.56788300000011,
+        "outer_thread_cpu_ms": 9.871825999999917,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.890757501125336
+      }
+    },
+    {
+      "sequence": 10,
+      "solve_ms": 0.3721490502357483,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.331949055194855,
+        "inner_allocator_thread_cpu_ms": 9.49387700000015,
+        "outer_thread_cpu_ms": 9.808562000000132,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.814441204071045
+      }
+    },
+    {
+      "sequence": 11,
+      "solve_ms": 0.3682374954223633,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.312383830547333,
+        "inner_allocator_thread_cpu_ms": 9.472998000000121,
+        "outer_thread_cpu_ms": 9.786993000000077,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.792819619178772
+      }
+    },
+    {
+      "sequence": 12,
+      "solve_ms": 2.7397647500038147,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 11.781126260757446,
+        "inner_allocator_thread_cpu_ms": 11.941393999999939,
+        "outer_thread_cpu_ms": 12.237789000000054,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 12.24372535943985
+      }
+    },
+    {
+      "sequence": 13,
+      "solve_ms": 0.3716796636581421,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.461648762226105,
+        "inner_allocator_thread_cpu_ms": 9.622693999999932,
+        "outer_thread_cpu_ms": 9.944563999999989,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.950615465641022
+      }
+    },
+    {
+      "sequence": 14,
+      "solve_ms": 0.3752186894416809,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.573407471179962,
+        "inner_allocator_thread_cpu_ms": 9.73532399999999,
+        "outer_thread_cpu_ms": 10.051379000000082,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.057233273983002
+      }
+    },
+    {
+      "sequence": 15,
+      "solve_ms": 4.134222865104675,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 14.212332665920258,
+        "inner_allocator_thread_cpu_ms": 14.389380999999979,
+        "outer_thread_cpu_ms": 14.709612000000094,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 14.71683382987976
+      }
+    },
+    {
+      "sequence": 16,
+      "solve_ms": 0.377066433429718,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.516038000583649,
+        "inner_allocator_thread_cpu_ms": 9.677834000000107,
+        "outer_thread_cpu_ms": 9.99007900000004,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 9.996041655540466
+      }
+    },
+    {
+      "sequence": 17,
+      "solve_ms": 2.8681978583335876,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 12.067936360836029,
+        "inner_allocator_thread_cpu_ms": 12.232725000000055,
+        "outer_thread_cpu_ms": 12.560773000000136,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 12.566857039928436
+      }
+    },
+    {
+      "sequence": 18,
+      "solve_ms": 0.3817230463027954,
+      "accepted_optimum": true,
+      "timing": {
+        "inner_allocator_compute_ms": 9.734384715557098,
+        "inner_allocator_thread_cpu_ms": 9.897000000000045,
+        "outer_thread_cpu_ms": 10.222036999999906,
+        "gc_collection_count_before": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_after": [
+          221,
+          19,
+          2
+        ],
+        "gc_collection_count_delta": [
+          0,
+          0,
+          0
+        ],
+        "gc_policy_changed": false,
+        "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+        "outer_compute_ms": 10.228030383586884
+      }
+    }
+  ],
+  "source_files": {
+    "isolated_live/sends.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/sends.json",
+      "bytes": 14031,
+      "sha256": "7ea65e8772ad9ce4494fa5132b2d8366b406cf037510a37aa390038b84c2fbf3"
+    },
+    "isolated_live/receipts.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/receipts.json",
+      "bytes": 7490,
+      "sha256": "51aa3aa081bbeffce39e7b4a63d6951d6bdc62ec0854db1c7ffda6bef0f6f3a0"
+    },
+    "isolated_live/events.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/events.json",
+      "bytes": 5651,
+      "sha256": "521a13e6523dbfb0bbd7e27a834ae22fe509681b3eb76fbfd2a1e46298881488"
+    },
+    "isolated_live/live_start.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/live_start.json",
+      "bytes": 7204,
+      "sha256": "457f400ea5fce521c9bf449059d77189949f78ec8584d539956b74667b4bcb00"
+    },
+    "isolated_live/lifecycle.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/lifecycle.json",
+      "bytes": 686,
+      "sha256": "8e4d28ed4ac0540d70513a89618bafa3257aac030b140e1058df22d98ee87bb1"
+    },
+    "ts20_state.csv": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/ts20_state.csv",
+      "bytes": 5578572,
+      "sha256": "b3f17ed81c309be6e774ec3a83f748929d0b5b947363878f3804f61b1ff149f1"
+    },
+    "control_execution_trace.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/control_execution_trace.jsonl",
+      "bytes": 5782014,
+      "sha256": "6f3e40ac8626a0bb92ab909e27acc4ef35f99ef34abbc9b7a18689d9185349d7"
+    },
+    "isolated_live/dispatch.json": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/dispatch.json",
+      "bytes": 5240536,
+      "sha256": "663c47581163f33c4fb63c2bdea98dc88cd4e94cb7a7ac4b5946556e640d0b0f"
+    },
+    "isolated_live/recording/diagnostics.jsonl": {
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/recording/diagnostics.jsonl",
+      "bytes": 946470,
+      "sha256": "09892b2404647e0a6861c35ac7e9545442fa758e1a2bd3a4919bc339d7fcd3b9"
+    }
+  },
+  "scope": "Original plugin consumption and command ownership for this failed attempt; not a full-hold or hardware qualification."
+}

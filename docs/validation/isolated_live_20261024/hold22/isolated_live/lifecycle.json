@@ -1,0 +1,37 @@
+{
+  "started": true,
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "wall_monotonic_ns": 59600486554799015
+  },
+  "error": "C++ candidate gate rejected reason 15",
+  "processes": {
+    "recorder": {
+      "pid": 12574,
+      "returncode": 0
+    },
+    "source_recorder": {
+      "pid": 12575,
+      "returncode": 0
+    },
+    "worker": {
+      "pid": 12576,
+      "returncode": 0
+    },
+    "ingress": {
+      "pid": 12642,
+      "returncode": 0
+    },
+    "dispatcher": {
+      "pid": 12643,
+      "returncode": 0
+    },
+    "consumption": {
+      "pid": 12644,
+      "returncode": 0
+    }
+  },
+  "source_samples": 77,
+  "physical_acceptance_pending": true
+}

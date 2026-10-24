@@ -1,0 +1,123 @@
+{
+  "files": [
+    {
+      "path": "deployment_v29.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v29.json",
+      "sha256": "62c1fd8f0ba543018fc239a7cc3c2bfde8a3a6f2038ce9aa76624d9117f29562",
+      "bytes": 1436,
+      "kind": "original"
+    },
+    {
+      "path": "execution_protocol_v16.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_protocol_v16.json",
+      "sha256": "5bc999793ef3383a524aeaefbd85d5590df72fa2a248c0ba801a3a3a7efc7b7f",
+      "bytes": 4906,
+      "kind": "original"
+    },
+    {
+      "path": "execution_v29_build.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v29_build.log",
+      "sha256": "c3fbe290fe1c14bc3559ad353f5543054c96338bb02e7c60954c46ded9334f67",
+      "bytes": 44890,
+      "kind": "original"
+    },
+    {
+      "path": "execution_v29_build.exit",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_v29_build.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "kind": "original"
+    },
+    {
+      "path": "hold_v23_preflight.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v23_preflight.log",
+      "sha256": "a138ef7f9a2b9703943688635c00521730f028ffecb7111d79e13dbaead449f9",
+      "bytes": 99,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/report.json",
+      "sha256": "db69e4daf420545b0c6a2fced64370dd07d51b0c54e664b1d3d2fe81c2f1c621",
+      "bytes": 1535,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/ingress.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/ingress.log",
+      "sha256": "3aadbd57a22ef2eeab75c1482083a68e4df5edc058fe6d5c8ec79f6cbfd6f94f",
+      "bytes": 180,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/ingress_ready",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/ingress_ready",
+      "sha256": "762b9167a91310d48fb56f1e092ab5dc3e2db12fa6c3653c5af5022d36c97483",
+      "bytes": 29,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/rejected_snapshot.cdr",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/rejected_snapshot.cdr",
+      "sha256": "b1bc74d5d592f1a0808d8d2b2f2031cf0c7fa8f0417cff4f82751c5ae2bac039",
+      "bytes": 7628,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/rejected_snapshot.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/rejected_snapshot.json",
+      "sha256": "214e18117b166232401ee76db372d767ce1d55a4618c5209db058bf4d0372545",
+      "bytes": 687,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/ingress_timing.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/ingress_timing.json",
+      "sha256": "a879ec44689dd6de960ff185be206be9e764821c33113af827fff6419197cdf6",
+      "bytes": 814,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/expected_source.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/expected_source.json",
+      "sha256": "5982547a89d1a9ced39c4cd2edcdce733a27c4af801b14085658854a5d5960ce",
+      "bytes": 9689,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/decoded_gate_input.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/decoded_gate_input.json",
+      "sha256": "83eb484cf792cf5d9dccf2d9de5104fdb987cd21638f690a28d089dc0d8f942a",
+      "bytes": 9703,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/context_rejection/observed_event.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/context_rejection/observed_event.json",
+      "sha256": "ed85b690b5e522d5a483d56b31fc3f4f2fd6a2e5517cb736aae37abd21505177",
+      "bytes": 264,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/wrong_session_only/ingress.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/wrong_session_only/ingress.log",
+      "sha256": "28fde7850191b77881da7a60005189b1c8524a44d78b8caab46c3467f3647424",
+      "bytes": 180,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/wrong_session_only/ingress_ready",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/wrong_session_only/ingress_ready",
+      "sha256": "762b9167a91310d48fb56f1e092ab5dc3e2db12fa6c3653c5af5022d36c97483",
+      "bytes": 29,
+      "kind": "original"
+    },
+    {
+      "path": "rejected_snapshot_probe_v1/wrong_session_only/ingress_timing.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/rejected_snapshot_probe_v1/wrong_session_only/ingress_timing.json",
+      "sha256": "114858a1c65d91c1a427f4ed4f68a384873912b9a673f972d5f0191fb5e16989",
+      "bytes": 581,
+      "kind": "original"
+    }
+  ]
+}

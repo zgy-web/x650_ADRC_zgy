@@ -231,6 +231,11 @@ class ShadowGate {
     return std::all_of(values.begin()+used, values.end(), [](double value) { return value == 0.; });
   }
   static bool context(const Snapshot & value) {
+    // Match the existing Ts20Runtime/ReferenceEngine task-relative history
+    // comparison. Independently formed simulation timestamps can straddle
+    // the same bus instant by one binary64 ULP after origin subtraction.
+    // This does not alter source ages, dt, wall leases or original stamps.
+    constexpr double HISTORY_TIME_EPS_S = 1e-10;
     if (value.command_count < 1 || value.command_count > 64 || value.packet_count < 1 || value.packet_count > 64 ||
         !near(value.reference_time_s, value.joint_time_s-(value.control_time_s-value.task_time_s))) return false;
     if (!padding_zero(value.command_time_s, value.command_count) ||
@@ -242,13 +247,13 @@ class ShadowGate {
         !padding_zero(value.packet_kp, 2*value.packet_count) ||
         !padding_zero(value.packet_kd, 2*value.packet_count)) return false;
     for (std::size_t i = 0; i < value.command_count; ++i) {
-      if (value.command_time_s[i] > value.task_time_s ||
+      if (value.command_time_s[i] > value.task_time_s+HISTORY_TIME_EPS_S ||
           (i && value.command_time_s[i] < value.command_time_s[i-1])) return false;
       for (std::size_t joint = 0; joint < 2; ++joint)
         if (std::abs(value.command_velocity[2*i+joint]) > JOINT_LIMIT[joint]) return false;
     }
     for (std::size_t i = 0; i < value.packet_count; ++i) {
-      if (value.packet_send_time_s[i] > value.task_time_s || value.packet_send_time_s[i] < value.bus_origin_s ||
+      if (value.packet_send_time_s[i] > value.task_time_s+HISTORY_TIME_EPS_S || value.packet_send_time_s[i] < value.bus_origin_s ||
           (i && value.packet_send_time_s[i] <= value.packet_send_time_s[i-1])) return false;
       for (std::size_t joint = 0; joint < 2; ++joint)
         if (value.packet_kp[2*i+joint] < 0. || value.packet_kd[2*i+joint] < 0.) return false;

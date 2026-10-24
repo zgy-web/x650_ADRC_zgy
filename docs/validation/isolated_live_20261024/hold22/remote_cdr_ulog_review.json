@@ -1,0 +1,1876 @@
+{
+  "ulog": {
+    "kind": "hold22_ulog_recovery_extraction_v1",
+    "derived_analysis": true,
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/px4.ulg",
+    "source_bytes": 13418331,
+    "source_sha256": "e2d564e4559f9ecc3344bd167ff9c1b17ab47e00eb56d68055694486c5d60751",
+    "timestamp_semantics": "Original PX4 ULog microseconds; no fitted conversion to host monotonic or simulation time.",
+    "nonfinite_semantics": "Nonfinite optional command parameters are preserved as NaN/+Inf/-Inf strings.",
+    "start_timestamp_us": 3860000,
+    "last_timestamp_us": 49824000,
+    "vehicle_status_rows": 103,
+    "vehicle_status_changes": [
+      {
+        "timestamp": 3672000,
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21648000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 21684000,
+        "arming_state": 2,
+        "nav_state": 17,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 27180000,
+        "arming_state": 2,
+        "nav_state": 4,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 38556000,
+        "arming_state": 2,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 42492000,
+        "arming_state": 2,
+        "nav_state": 18,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 48828000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      {
+        "timestamp": 49332000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      }
+    ],
+    "land_detector_rows": 56,
+    "land_detector_changes": [
+      {
+        "timestamp": 3684000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      {
+        "timestamp": 23300000,
+        "landed": 0,
+        "ground_contact": 1,
+        "maybe_landed": 0
+      },
+      {
+        "timestamp": 46820000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      {
+        "timestamp": 48852000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      }
+    ],
+    "vehicle_commands": [
+      {
+        "timestamp": 3728000,
+        "command": 211,
+        "param1": 2.3259005832443336e-11,
+        "param2": 1.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21636000,
+        "command": 400,
+        "param1": 1.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 21660000,
+        "command": 22,
+        "param1": 0.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 38532000,
+        "command": 176,
+        "param1": 1.0,
+        "param2": 6.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 42468000,
+        "command": 21,
+        "param1": 0.0,
+        "param2": 0.0,
+        "from_external": 1
+      },
+      {
+        "timestamp": 42748000,
+        "command": 1001,
+        "param1": 1.0,
+        "param2": 1.0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 42748000,
+        "command": 1000,
+        "param1": "NaN",
+        "param2": "NaN",
+        "from_external": 0
+      },
+      {
+        "timestamp": 42748000,
+        "command": 1001,
+        "param1": -3.0,
+        "param2": -3.0,
+        "from_external": 0
+      }
+    ],
+    "vehicle_command_acknowledgments": [
+      {
+        "timestamp": 3732000,
+        "command": 211,
+        "result": 5,
+        "from_external": 0
+      },
+      {
+        "timestamp": 4828000,
+        "command": 211,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 19592000,
+        "command": 511,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21624000,
+        "command": 511,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21648000,
+        "command": 400,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 21672000,
+        "command": 22,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 38532000,
+        "command": 176,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 38544000,
+        "command": 176,
+        "result": 0,
+        "from_external": 0
+      },
+      {
+        "timestamp": 42480000,
+        "command": 21,
+        "result": 0,
+        "from_external": 0
+      }
+    ],
+    "offboard_control_mode": {
+      "count": 48,
+      "first": {
+        "timestamp": 37456000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      },
+      "last": {
+        "timestamp": 41960000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      },
+      "changes": [
+        {
+          "timestamp": 37456000,
+          "position": 1,
+          "velocity": 1,
+          "acceleration": 1,
+          "attitude": 0,
+          "body_rate": 0
+        },
+        {
+          "timestamp": 41960000,
+          "position": 1,
+          "velocity": 1,
+          "acceleration": 1,
+          "attitude": 0,
+          "body_rate": 0
+        }
+      ]
+    },
+    "offboard_signal_lost_changes": [
+      {
+        "timestamp": 3732000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 37296000,
+        "offboard_control_signal_lost": 0
+      },
+      {
+        "timestamp": 43032000,
+        "offboard_control_signal_lost": 1
+      },
+      {
+        "timestamp": 49476000,
+        "offboard_control_signal_lost": 1
+      }
+    ],
+    "recovery": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 46820000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 48828000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 49332000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 48852000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "scope": "Recovery and offboard-state evidence only; not full-window controller performance or command-by-command PVA acceptance."
+  },
+  "cdr": {
+    "kind": "hold22_original_cdr_review_v1",
+    "derived_analysis": true,
+    "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/source_recording/diagnostics.jsonl",
+    "source_sha256": "0aebdbc2df84eaf087734acc3dec94af78b31dad9dd64f7bba36194371bd8b0a",
+    "worker_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_120535_11859/isolated_live/recording/diagnostics.jsonl",
+    "worker_sha256": "09892b2404647e0a6861c35ac7e9545442fa758e1a2bd3a4919bc339d7fcd3b9",
+    "all_materialized_ros_fields_match_original_cdr": true,
+    "counts": {
+      "dispatch": 3146,
+      "sends": 19,
+      "events": 19,
+      "receipts": 19
+    },
+    "all_worker_candidates_numerically_accepted": true,
+    "candidates": [
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 1,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 1,
+          "compute_start_monotonic_ns": 59600486007789173,
+          "compute_end_monotonic_ns": 59600486021757917,
+          "status": 0,
+          "control_time_s": 41.6,
+          "task_time_s": 0.02400000000000091,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0004028459297055523,
+            -0.0002957402473908084,
+            0.0006960381008504777
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            5.5734420388439214e-05,
+            0.0005074364767109238,
+            0.0012827361295761628
+          ],
+          "joint_velocity": [
+            -0.0011086255633779934,
+            -0.0007167391619885274
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 5.583641188300348e-18,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 1,
+          "issued_monotonic_ns": 59600486004809748,
+          "control_time_s": 41.6,
+          "task_time_s": 0.02400000000000091,
+          "dt_s": 0.02400000000000091
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 2,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 2,
+          "compute_start_monotonic_ns": 59600486022886407,
+          "compute_end_monotonic_ns": 59600486035523923,
+          "status": 0,
+          "control_time_s": 41.616,
+          "task_time_s": 0.03999999999999915,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0005799026896387678,
+            -0.0004400560685788934,
+            0.0009848600157277173
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.00011506246657958156,
+            0.00034039502292812485,
+            0.0015579681854446133
+          ],
+          "joint_velocity": [
+            -0.002294394775022672,
+            -0.0012233520661264743
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 7.047314121155779e-18,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 2,
+          "issued_monotonic_ns": 59600486019808514,
+          "control_time_s": 41.616,
+          "task_time_s": 0.03999999999999915,
+          "dt_s": 0.015999999999998238
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 3,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 3,
+          "compute_start_monotonic_ns": 59600486042813118,
+          "compute_end_monotonic_ns": 59600486055754318,
+          "status": 0,
+          "control_time_s": 41.632,
+          "task_time_s": 0.055999999999997385,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0005392485913820558,
+            -0.0003106504629293189,
+            0.00126246242014701
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -6.899614731947364e-05,
+            0.0004483460591961048,
+            0.0018226959865924217
+          ],
+          "joint_velocity": [
+            -0.003905436767926672,
+            -0.0017224183840382206
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 1.1709383462843448e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 3,
+          "issued_monotonic_ns": 59600486039590305,
+          "control_time_s": 41.632,
+          "task_time_s": 0.055999999999997385,
+          "dt_s": 0.015999999999998238
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 4,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 4,
+          "compute_start_monotonic_ns": 59600486063049632,
+          "compute_end_monotonic_ns": 59600486075620875,
+          "status": 0,
+          "control_time_s": 41.652,
+          "task_time_s": 0.07600000000000051,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0005373209175094135,
+            -0.0003571528870270508,
+            0.0015663774905517345
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -5.7809995032327246e-05,
+            0.0003718703542763068,
+            0.0021096833378809353
+          ],
+          "joint_velocity": [
+            -0.005990068151128945,
+            -0.0022924858662495035
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 1.6696713456276768e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 4,
+          "issued_monotonic_ns": 59600486058723829,
+          "control_time_s": 41.652,
+          "task_time_s": 0.07600000000000051,
+          "dt_s": 0.020000000000003126
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 5,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 5,
+          "compute_start_monotonic_ns": 59600486083010470,
+          "compute_end_monotonic_ns": 59600486095685966,
+          "status": 0,
+          "control_time_s": 41.672,
+          "task_time_s": 0.09599999999999653,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.00035620267547603623,
+            -0.000596422352040831,
+            0.0017676775408423592
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            0.00013134133775338027,
+            0.0001046871002315253,
+            0.002292386739001638
+          ],
+          "joint_velocity": [
+            -0.00854428522097714,
+            -0.002731127639751963
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 2.3852447794681098e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 5,
+          "issued_monotonic_ns": 59600486079136035,
+          "control_time_s": 41.672,
+          "task_time_s": 0.09599999999999653,
+          "dt_s": 0.01999999999999602
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 6,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 6,
+          "compute_start_monotonic_ns": 59600486102985299,
+          "compute_end_monotonic_ns": 59600486115749328,
+          "status": 0,
+          "control_time_s": 41.688,
+          "task_time_s": 0.11200000000000188,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0003517435229790993,
+            -0.0007127040496825216,
+            0.0018388802869497077
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            0.0001404025508458382,
+            -2.954221347339083e-05,
+            0.002347615440309182
+          ],
+          "joint_velocity": [
+            -0.010586579778274086,
+            -0.002973397317980994
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 1.691355389077387e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 6,
+          "issued_monotonic_ns": 59600486099003178,
+          "control_time_s": 41.688,
+          "task_time_s": 0.11200000000000188,
+          "dt_s": 0.016000000000005343
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 7,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 7,
+          "compute_start_monotonic_ns": 59600486123049318,
+          "compute_end_monotonic_ns": 59600486135901503,
+          "status": 0,
+          "control_time_s": 41.708,
+          "task_time_s": 0.1319999999999979,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0005220906527717087,
+            -0.0012033771724064702,
+            0.001846298007406415
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -2.3870338941049242e-05,
+            -0.0005482470190232753,
+            0.002325707675536397
+          ],
+          "joint_velocity": [
+            -0.013085307578009426,
+            -0.003157357283111504
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 3.686287386450715e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 7,
+          "issued_monotonic_ns": 59600486119527824,
+          "control_time_s": 41.708,
+          "task_time_s": 0.1319999999999979,
+          "dt_s": 0.01999999999999602
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 8,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 8,
+          "compute_start_monotonic_ns": 59600486142786266,
+          "compute_end_monotonic_ns": 59600486155557218,
+          "status": 0,
+          "control_time_s": 41.728,
+          "task_time_s": 0.15200000000000102,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.000558108524335619,
+            -0.0013689380087368963,
+            0.0017891548846198993
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -5.682695324061212e-05,
+            -0.0007329569706553614,
+            0.0022466300434725375
+          ],
+          "joint_velocity": [
+            -0.01583025468418168,
+            -0.003253226265126883
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 1.8648277366750676e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 8,
+          "issued_monotonic_ns": 59600486140027208,
+          "control_time_s": 41.728,
+          "task_time_s": 0.15200000000000102,
+          "dt_s": 0.020000000000003126
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 9,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 9,
+          "compute_start_monotonic_ns": 59600486162682985,
+          "compute_end_monotonic_ns": 59600486175399569,
+          "status": 0,
+          "control_time_s": 41.748,
+          "task_time_s": 0.17199999999999704,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0009100659429478276,
+            -0.001345590543432099,
+            0.001663916251657052
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0004038017000985118,
+            -0.0007361044215465603,
+            0.0020858670422235575
+          ],
+          "joint_velocity": [
+            -0.017968914916094748,
+            -0.003229141423806907
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 2.992397996059992e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 9,
+          "issued_monotonic_ns": 59600486159319986,
+          "control_time_s": 41.748,
+          "task_time_s": 0.17199999999999704,
+          "dt_s": 0.01999999999999602
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 10,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 10,
+          "compute_start_monotonic_ns": 59600486182877948,
+          "compute_end_monotonic_ns": 59600486195468795,
+          "status": 0,
+          "control_time_s": 41.768,
+          "task_time_s": 0.19200000000000017,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0013769606035821734,
+            -0.0012514411705955755,
+            0.001478075231160205
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0008683187990034885,
+            -0.0006576160117675669,
+            0.0018726078851300308
+          ],
+          "joint_velocity": [
+            -0.01945214273950896,
+            -0.003125591036792174
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 3.361026734705064e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 10,
+          "issued_monotonic_ns": 59600486179435278,
+          "control_time_s": 41.768,
+          "task_time_s": 0.19200000000000017,
+          "dt_s": 0.020000000000003126
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 11,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 11,
+          "compute_start_monotonic_ns": 59600486202815330,
+          "compute_end_monotonic_ns": 59600486215370194,
+          "status": 0,
+          "control_time_s": 41.788,
+          "task_time_s": 0.2119999999999962,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0018627244741877408,
+            -0.0012202994157172842,
+            0.0012504064326873728
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.001352459749821279,
+            -0.0006477813484326474,
+            0.0016003548123652064
+          ],
+          "joint_velocity": [
+            -0.020421841452068445,
+            -0.002925866667316342
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 1.8431436932253575e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 11,
+          "issued_monotonic_ns": 59600486198691320,
+          "control_time_s": 41.788,
+          "task_time_s": 0.2119999999999962,
+          "dt_s": 0.01999999999999602
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 12,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 12,
+          "compute_start_monotonic_ns": 59600486222699283,
+          "compute_end_monotonic_ns": 59600486237807282,
+          "status": 0,
+          "control_time_s": 41.804,
+          "task_time_s": 0.22800000000000153,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.0018798177140250663,
+            -0.001408703712564389,
+            0.0010631399317568306
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0013692611859269577,
+            -0.000849339208601109,
+            0.0013811402218350548
+          ],
+          "joint_velocity": [
+            -0.021859249196983573,
+            -0.0027396286242894136
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 4.9873299934333204e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 12,
+          "issued_monotonic_ns": 59600486218084763,
+          "control_time_s": 41.804,
+          "task_time_s": 0.22800000000000153,
+          "dt_s": 0.016000000000005343
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 13,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 13,
+          "compute_start_monotonic_ns": 59600486242704706,
+          "compute_end_monotonic_ns": 59600486255524401,
+          "status": 0,
+          "control_time_s": 41.82,
+          "task_time_s": 0.24399999999999977,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.002281339237784033,
+            -0.0016220344865664458,
+            0.0008648029040132432
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0017688290568833706,
+            -0.0010816746061195705,
+            0.0011329737110592408
+          ],
+          "joint_velocity": [
+            -0.0230627802798976,
+            -0.0024926180549873374
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 2.42861286636753e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 13,
+          "issued_monotonic_ns": 59600486237689399,
+          "control_time_s": 41.82,
+          "task_time_s": 0.24399999999999977,
+          "dt_s": 0.015999999999998238
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 14,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 14,
+          "compute_start_monotonic_ns": 59600486262794204,
+          "compute_end_monotonic_ns": 59600486275779700,
+          "status": 0,
+          "control_time_s": 41.836,
+          "task_time_s": 0.259999999999998,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.002454012554104431,
+            -0.0017512980635819649,
+            0.000661462602968562
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0019394909900438445,
+            -0.0012233599422903267,
+            0.0008972084832567472
+          ],
+          "joint_velocity": [
+            -0.024733502666921113,
+            -0.002236854348977626
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 4.380176776841438e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 14,
+          "issued_monotonic_ns": 59600486256204200,
+          "control_time_s": 41.836,
+          "task_time_s": 0.259999999999998,
+          "dt_s": 0.015999999999998238
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 15,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 15,
+          "compute_start_monotonic_ns": 59600486282865837,
+          "compute_end_monotonic_ns": 59600486300489873,
+          "status": 0,
+          "control_time_s": 41.86,
+          "task_time_s": 0.2839999999999989,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.004033925164711823,
+            -0.0017784682957183646,
+            0.000352880268243777
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0035151891186714274,
+            -0.0012694195584175008,
+            0.000544518711398173
+          ],
+          "joint_velocity": [
+            -0.02536430609934228,
+            -0.0018643381345688633
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 3.469446951953614e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 15,
+          "issued_monotonic_ns": 59600486279359668,
+          "control_time_s": 41.86,
+          "task_time_s": 0.2839999999999989,
+          "dt_s": 0.02400000000000091
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 16,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 16,
+          "compute_start_monotonic_ns": 59600486302854530,
+          "compute_end_monotonic_ns": 59600486315713158,
+          "status": 0,
+          "control_time_s": 41.884,
+          "task_time_s": 0.30799999999999983,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.004567766520751986,
+            -0.0012319340938620168,
+            0.00013512079019066618
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.004048247520564085,
+            -0.0007338322267396079,
+            0.0003014868639602966
+          ],
+          "joint_velocity": [
+            -0.025841901396754425,
+            -0.0015819647528404336
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 2.7755575615628914e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 16,
+          "issued_monotonic_ns": 59600486299853240,
+          "control_time_s": 41.884,
+          "task_time_s": 0.30799999999999983,
+          "dt_s": 0.02400000000000091
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 17,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 17,
+          "compute_start_monotonic_ns": 59600486322786000,
+          "compute_end_monotonic_ns": 59600486338312397,
+          "status": 0,
+          "control_time_s": 41.896,
+          "task_time_s": 0.3200000000000003,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.004462769082391719,
+            -0.001134762304764355,
+            9.600151147818795e-05
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.0039433946292863516,
+            -0.00064963892978377,
+            0.000230419495648209
+          ],
+          "joint_velocity": [
+            -0.026720467645972936,
+            -0.001485437004201084
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 3.469446951953614e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 17,
+          "issued_monotonic_ns": 59600486316304103,
+          "control_time_s": 41.896,
+          "task_time_s": 0.3200000000000003,
+          "dt_s": 0.012000000000000455
+        }
+      },
+      {
+        "proposal": {
+          "schema_version": 1,
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 18,
+          "replay_only": false,
+          "configuration_sha256": [
+            125,
+            160,
+            219,
+            8,
+            58,
+            204,
+            160,
+            90,
+            139,
+            231,
+            179,
+            135,
+            45,
+            182,
+            224,
+            150,
+            252,
+            148,
+            53,
+            101,
+            62,
+            239,
+            105,
+            138,
+            21,
+            112,
+            10,
+            109,
+            142,
+            153,
+            162,
+            134
+          ],
+          "snapshot_sequence": 18,
+          "compute_start_monotonic_ns": 59600486342937879,
+          "compute_end_monotonic_ns": 59600486356126812,
+          "status": 0,
+          "control_time_s": 41.916,
+          "task_time_s": 0.3399999999999963,
+          "position_reference_enu": [
+            6.279181338532391e-07,
+            3.814041305005844e-10,
+            2.369705895158929
+          ],
+          "velocity_feedforward_enu": [
+            -0.005005667851982066,
+            -0.001312550887840677,
+            3.1521328138947965e-06
+          ],
+          "acceleration_feedforward_enu": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity_target": [
+            -0.004484989489080937,
+            -0.0008349917379992649,
+            0.00012040397928860334
+          ],
+          "joint_velocity": [
+            -0.027365038592235498,
+            -0.0013308717323321454
+          ],
+          "accepted_optimum": true,
+          "nonlinear_check_passed": true,
+          "primal_violation": 0.0,
+          "kkt_residual": 4.0549161250957866e-17,
+          "subproblems": 1
+        },
+        "snapshot": {
+          "session_id": 727269705,
+          "epoch": 1,
+          "sequence": 18,
+          "issued_monotonic_ns": 59600486336046806,
+          "control_time_s": 41.916,
+          "task_time_s": 0.3399999999999963,
+          "dt_s": 0.01999999999999602
+        }
+      }
+    ],
+    "scope": "Byte-decoded message content and numerical status; not a full-hold pass or an execution receipt for every candidate."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "nonblocking_diagnostic_sender_v1",
+  "attempts": 18,
+  "sent": 18,
+  "dropped": 0,
+  "first_error": null,
+  "max_packet_bytes": 23740,
+  "capacity_bytes": 196608,
+  "offer_ns": [
+    388660,
+    354546,
+    551614,
+    352472,
+    363276,
+    369284,
+    380141,
+    376328,
+    364809,
+    364917,
+    362706,
+    375473,
+    381530,
+    384436,
+    396877,
+    373910,
+    395623,
+    394581
+  ],
+  "complete": true
+}

@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp",
+      "old_sha256": "1163520f26f0786b7215aefac3a29eccb805295605d49de9aa75e66587f6f427",
+      "sha256": "8447dc528219c5074cdafb387205a04be691290f6da42b89f4ac5ce44565477b"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp",
+      "old_sha256": "9b477f15859d791583e2cb9841059da56e2e94a018b256b186e5fb28b75bc3c8",
+      "sha256": "4011292d1d33fcca0b38ad9359c6ea16c4bac0151b792f369a12a96818b96716"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_control_gateway/test/test_shadow_gate.cpp",
+      "old_sha256": "fae40e78f9c436c6304c647adc7789edeeccbc706801929370605c5e47e54dd7",
+      "sha256": "c28a746a6d2957d703b41369ef853a0d21c77f58bc90c707525e68c5494e5228"
+    },
+    {
+      "path": "scripts/probe_x650_rejected_snapshot.py",
+      "old_sha256": null,
+      "sha256": "728b31e1758e09a4bd448767f6a5c0377780d08a9d572ccb1e585c45e27660d4"
+    },
+    {
+      "path": "tests/unit/test_x650_rejected_snapshot_probe.py",
+      "old_sha256": null,
+      "sha256": "323d887ea6a20ab6e6a4ac5dd74dea2bce2e6b11f77982d7a030b9ab8b84abed"
+    },
+    {
+      "path": "configs/experiments/x650_isolated_live_v1.json",
+      "old_sha256": "3097556ae513a72a0ebe6f1578d5fc1b2110cc94dfe28775f04c4cd983fad3e4",
+      "sha256": "5bc999793ef3383a524aeaefbd85d5590df72fa2a248c0ba801a3a3a7efc7b7f"
+    }
+  ]
+}

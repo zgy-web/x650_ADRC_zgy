@@ -1,0 +1,47 @@
+{
+  "kind": "x650_rejected_snapshot_synthetic_probe_v1",
+  "passed": true,
+  "complete": true,
+  "synthetic_software_fixture_only": true,
+  "physical_validation": false,
+  "flight_accepted": false,
+  "hardware_qualified": false,
+  "eligible_as_stage_gate": false,
+  "domain_id": 219,
+  "binary": {
+    "path": "/root/autodl-tmp/flyarm_ros2_live_v1_20261023/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+    "sha256": "8dcbf74c533b3c948f37d9062520482cde18b52257cf7930a445111cb30a11c3"
+  },
+  "probe_sha256": "728b31e1758e09a4bd448767f6a5c0377780d08a9d572ccb1e585c45e27660d4",
+  "cases": [
+    {
+      "case": "context_rejection",
+      "own_pid": 13565,
+      "session_id": 845285855,
+      "epoch": 1,
+      "configuration_sha256": "6c0a6645e6ea0d994bf736ac04d96ca9e6745c78124d322ceff729e610eac663",
+      "child_returncode": 0,
+      "all_decoded_fields_equal": true,
+      "field_count": 36,
+      "allowed_rewrites": [
+        "sequence",
+        "dt_s"
+      ],
+      "source_sequence": 42,
+      "admission_sequence": 1,
+      "actual_dt_s": 0.019999999999999574,
+      "payload_sha256": "b1bc74d5d592f1a0808d8d2b2f2031cf0c7fa8f0417cff4f82751c5ae2bac039",
+      "passed": true
+    },
+    {
+      "case": "wrong_session_only",
+      "own_pid": 13578,
+      "session_id": 139609151,
+      "epoch": 1,
+      "configuration_sha256": "29644dd71d90e8cdde131d6dda8b26292e7ae27b69f6a8bec400299835b1ee39",
+      "child_returncode": 0,
+      "no_foreign_session_evidence": true,
+      "passed": true
+    }
+  ]
+}
