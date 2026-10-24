@@ -1,0 +1,296 @@
+{
+  "kind": "unarmed_background_readiness_v1",
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "eligible_as_flight_gate": false,
+  "passed": true,
+  "duration_wall_s": 23.427899092435837,
+  "clock_source": "ROS /clock receipts",
+  "snapshot_protocol": "latest asynchronous callbacks; no source-time synchronization",
+  "sim_time_s": 10.196,
+  "failure": null,
+  "ground_disarmed_verified": true,
+  "missing_streams": [],
+  "streams_without_sequence_progress": [],
+  "missing_fields": {},
+  "streams_without_clock_receipt": [],
+  "wall_stale_streams": [],
+  "topics": {
+    "clock": {
+      "first_sequence": 1,
+      "last_sequence": 1461,
+      "first_seen_wall_s": 59607039.08158544,
+      "first_received_sim_s": 4.356,
+      "new_callback_observations": 1461,
+      "max_wall_age_s": 0.029805153608322144,
+      "max_sim_age_s": 0.0,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.48608797,
+      "received_sim_s": 10.196,
+      "last_wall_age_s": 0.011400476098060608,
+      "last_sim_age_s": 0.0,
+      "message_type": "Clock",
+      "last_fields": {
+        "clock": {
+          "sec": 10,
+          "nanosec": 196000000
+        }
+      }
+    },
+    "joints": {
+      "first_sequence": 1,
+      "last_sequence": 292,
+      "first_seen_wall_s": 59607039.131429434,
+      "first_received_sim_s": 4.364,
+      "new_callback_observations": 292,
+      "max_wall_age_s": 0.10952123999595642,
+      "max_sim_age_s": 0.02000000000000135,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.46966849,
+      "received_sim_s": 10.184,
+      "last_wall_age_s": 0.027819953858852386,
+      "last_sim_age_s": 0.012000000000000455,
+      "message_type": "JointState",
+      "last_fields": {
+        "name": [
+          "arm_joint_1",
+          "arm_joint_2",
+          "link_002_joint",
+          "link_003_joint",
+          "link_004_joint",
+          "link_005_joint"
+        ],
+        "position": [
+          -1.372893988232998e-09,
+          1.6856474778510979e-09,
+          -1.3799179599489736e-19,
+          -8.441451138672558e-19,
+          -7.512267817704292e-19,
+          -2.05749599670463e-18
+        ],
+        "velocity": [
+          -2.0343532400335542e-10,
+          2.4974932659229366e-10,
+          -5.72146704826566e-19,
+          -2.7293162476198803e-18,
+          -2.851527996532481e-18,
+          -3.3454723131724663e-19
+        ],
+        "header": {
+          "stamp": {
+            "sec": 10,
+            "nanosec": 184000000
+          },
+          "frame_id": ""
+        }
+      }
+    },
+    "land": {
+      "first_sequence": 1,
+      "last_sequence": 2,
+      "first_seen_wall_s": 59607061.68336332,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 2,
+      "max_wall_age_s": 0.7254055961966515,
+      "max_sim_age_s": 0.44399999999999906,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607061.77208285,
+      "received_sim_s": 9.752,
+      "last_wall_age_s": 0.7254055961966515,
+      "last_sim_age_s": 0.44399999999999906,
+      "message_type": "VehicleLandDetected",
+      "last_fields": {
+        "landed": true
+      }
+    },
+    "attitude": {
+      "first_sequence": 1,
+      "last_sequence": 27,
+      "first_seen_wall_s": 59607061.68415695,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 27,
+      "max_wall_age_s": 0.04561692476272583,
+      "max_sim_age_s": 0.02400000000000091,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.495005496,
+      "received_sim_s": 10.196,
+      "last_wall_age_s": 0.0024829506874084473,
+      "last_sim_age_s": 0.0,
+      "message_type": "VehicleAttitude",
+      "last_fields": {
+        "timestamp": 1792821388483209,
+        "timestamp_sample": 1792821388483209,
+        "q": [
+          0.6694332957267761,
+          -0.00035358811146579683,
+          0.00046276027569547296,
+          0.7428719997406006
+        ],
+        "quat_reset_counter": 1
+      }
+    },
+    "angular_velocity": {
+      "first_sequence": 1,
+      "last_sequence": 27,
+      "first_seen_wall_s": 59607061.68480485,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 27,
+      "max_wall_age_s": 0.04566578567028046,
+      "max_sim_age_s": 0.02400000000000091,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.495655194,
+      "received_sim_s": 10.196,
+      "last_wall_age_s": 0.0018332526087760925,
+      "last_sim_age_s": 0.0,
+      "message_type": "VehicleAngularVelocity",
+      "last_fields": {
+        "timestamp": 1792821388483209,
+        "timestamp_sample": 1792821388483209,
+        "xyz": [
+          0.0007638506940566003,
+          -0.0005506055895239115,
+          0.00028638707590289414
+        ]
+      }
+    },
+    "estimator_flags": {
+      "first_sequence": 1,
+      "last_sequence": 2,
+      "first_seen_wall_s": 59607061.68650389,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 2,
+      "max_wall_age_s": 0.6492915600538254,
+      "max_sim_age_s": 0.39199999999999946,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607061.84819689,
+      "received_sim_s": 9.804,
+      "last_wall_age_s": 0.6492915600538254,
+      "last_sim_age_s": 0.39199999999999946,
+      "message_type": "EstimatorStatusFlags",
+      "last_fields": {
+        "timestamp": 1792821388087209,
+        "timestamp_sample": 1792821387935209,
+        "cs_ev_pos": false,
+        "cs_ev_vel": false,
+        "cs_ev_hgt": false,
+        "cs_gnss_pos": true,
+        "cs_gnss_vel": true,
+        "cs_gps_hgt": true,
+        "cs_baro_hgt": true,
+        "cs_inertial_dead_reckoning": false,
+        "cs_wind_dead_reckoning": false
+      }
+    },
+    "position": {
+      "first_sequence": 1,
+      "last_sequence": 27,
+      "first_seen_wall_s": 59607061.688703485,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 27,
+      "max_wall_age_s": 0.043841369450092316,
+      "max_sim_age_s": 0.02400000000000091,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.49432364,
+      "received_sim_s": 10.196,
+      "last_wall_age_s": 0.0031648054718971252,
+      "last_sim_age_s": 0.0,
+      "message_type": "VehicleLocalPosition",
+      "last_fields": {
+        "timestamp": 1792821388479209,
+        "timestamp_sample": 1792821388479209,
+        "x": 0.009968413971364498,
+        "y": -0.039496708661317825,
+        "z": 0.01823464035987854,
+        "vx": 0.005213407799601555,
+        "vy": -0.013030190020799637,
+        "vz": 0.02091064676642418,
+        "xy_valid": true,
+        "z_valid": true,
+        "v_xy_valid": true,
+        "v_z_valid": true,
+        "heading_good_for_control": false,
+        "dead_reckoning": false,
+        "ref_lat": 47.397970858664294,
+        "ref_lon": 8.546164103163337,
+        "ref_alt": 0.34373196959495544,
+        "ref_timestamp": 4776000,
+        "xy_global": true,
+        "z_global": true,
+        "xy_reset_counter": 4,
+        "z_reset_counter": 2,
+        "heading_reset_counter": 1,
+        "vxy_reset_counter": 3,
+        "vz_reset_counter": 2
+      }
+    },
+    "status": {
+      "first_sequence": 1,
+      "last_sequence": 2,
+      "first_seen_wall_s": 59607061.69011516,
+      "first_received_sim_s": 9.696,
+      "new_callback_observations": 2,
+      "max_wall_age_s": 0.8056198731064796,
+      "max_sim_age_s": 0.5,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607062.49748845,
+      "received_wall_s": 59607062.49744526,
+      "received_sim_s": 10.196,
+      "last_wall_age_s": 4.318356513977051e-05,
+      "last_sim_age_s": 0.0,
+      "message_type": "VehicleStatus",
+      "last_fields": {
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": false
+      }
+    }
+  },
+  "commands_published": false,
+  "parameters_written": false,
+  "runtime_started_or_stopped": false,
+  "exit_reason": "fresh_complete_ground_snapshot",
+  "minimum_wall_s": 10.0,
+  "timeout_wall_s": 60.0,
+  "land_max_final_wall_age_s": 1.0,
+  "original_stream_max_final_wall_age_s": 4.0,
+  "model": {
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "joint_names": [
+      "arm_joint_1",
+      "arm_joint_2"
+    ],
+    "source": "urdf_flight",
+    "base_link": "base_link",
+    "px4_sys_autostart": "4996",
+    "initial_joint_positions": {
+      "arm_joint_1": 0.0,
+      "arm_joint_2": 0.0
+    },
+    "flight_ready": true
+  },
+  "runtime_pid": 25662,
+  "runtime_meta": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/runtime_20261024_135549/runtime.json",
+  "source_sha256": "216b987948db6af8597afd09ced4f36faed794c3b15be44568525841638e1294",
+  "reused_probe": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/probe_px4_estimator_telemetry.py",
+    "sha256": "496194aa9a9bdf679b918f627499334944b5df53fdde1a1c75207fe5bfdcff15"
+  },
+  "scope": "connectivity/background-readiness diagnostic only; no flight acceptance; original predicates unchanged",
+  "observed_sim_over_wall": 0.2495246370510038
+}

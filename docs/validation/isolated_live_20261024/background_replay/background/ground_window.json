@@ -1,0 +1,296 @@
+{
+  "kind": "unarmed_background_readiness_v1",
+  "schema_version": 1,
+  "diagnostic_only": true,
+  "eligible_as_flight_gate": false,
+  "passed": true,
+  "duration_wall_s": 41.06264244765043,
+  "clock_source": "ROS /clock receipts",
+  "snapshot_protocol": "latest asynchronous callbacks; no source-time synchronization",
+  "sim_time_s": 21.82,
+  "failure": null,
+  "ground_disarmed_verified": true,
+  "missing_streams": [],
+  "streams_without_sequence_progress": [],
+  "missing_fields": {},
+  "streams_without_clock_receipt": [],
+  "wall_stale_streams": [],
+  "topics": {
+    "joints": {
+      "first_sequence": 1,
+      "last_sequence": 566,
+      "first_seen_wall_s": 59607063.22409321,
+      "first_received_sim_s": null,
+      "new_callback_observations": 566,
+      "max_wall_age_s": 0.14808256924152374,
+      "max_sim_age_s": 0.020000000000003126,
+      "callbacks_before_clock_observed": 1,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.26586125,
+      "received_sim_s": 21.804,
+      "last_wall_age_s": 0.020164504647254944,
+      "last_sim_age_s": 0.01600000000000179,
+      "message_type": "JointState",
+      "last_fields": {
+        "name": [
+          "arm_joint_1",
+          "arm_joint_2",
+          "link_002_joint",
+          "link_003_joint",
+          "link_004_joint",
+          "link_005_joint"
+        ],
+        "position": [
+          -3.7368109551365616e-09,
+          4.587732734513785e-09,
+          -5.911622850012197e-18,
+          -6.451194216778436e-18,
+          -6.262900535136853e-18,
+          -7.873442475660208e-18
+        ],
+        "velocity": [
+          -2.0343620354263975e-10,
+          2.497491528159135e-10,
+          -1.9035217578491742e-19,
+          4.352583218437015e-19,
+          8.008090410746714e-19,
+          -9.1018868231141e-19
+        ],
+        "header": {
+          "stamp": {
+            "sec": 21,
+            "nanosec": 804000000
+          },
+          "frame_id": ""
+        }
+      }
+    },
+    "clock": {
+      "first_sequence": 1,
+      "last_sequence": 2828,
+      "first_seen_wall_s": 59607063.23312133,
+      "first_received_sim_s": 10.512,
+      "new_callback_observations": 2828,
+      "max_wall_age_s": 0.03422769904136658,
+      "max_sim_age_s": 0.0,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.28383961,
+      "received_sim_s": 21.82,
+      "last_wall_age_s": 0.0021861419081687927,
+      "last_sim_age_s": 0.0,
+      "message_type": "Clock",
+      "last_fields": {
+        "clock": {
+          "sec": 21,
+          "nanosec": 820000000
+        }
+      }
+    },
+    "attitude": {
+      "first_sequence": 1,
+      "last_sequence": 566,
+      "first_seen_wall_s": 59607063.256073,
+      "first_received_sim_s": 10.52,
+      "new_callback_observations": 566,
+      "max_wall_age_s": 0.1781286597251892,
+      "max_sim_age_s": 0.02400000000000091,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.28025118,
+      "received_sim_s": 21.816,
+      "last_wall_age_s": 0.005774572491645813,
+      "last_sim_age_s": 0.004000000000001336,
+      "message_type": "VehicleAttitude",
+      "last_fields": {
+        "timestamp": 1792821431307398,
+        "timestamp_sample": 1792821431303398,
+        "q": [
+          0.6702348589897156,
+          0.00011264198110438883,
+          -7.675501547055319e-05,
+          0.7421491146087646
+        ],
+        "quat_reset_counter": 1
+      }
+    },
+    "angular_velocity": {
+      "first_sequence": 1,
+      "last_sequence": 566,
+      "first_seen_wall_s": 59607063.25624585,
+      "first_received_sim_s": 10.52,
+      "new_callback_observations": 566,
+      "max_wall_age_s": 0.17824555933475494,
+      "max_sim_age_s": 0.02400000000000091,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.280882925,
+      "received_sim_s": 21.816,
+      "last_wall_age_s": 0.005142830312252045,
+      "last_sim_age_s": 0.004000000000001336,
+      "message_type": "VehicleAngularVelocity",
+      "last_fields": {
+        "timestamp": 1792821431324121,
+        "timestamp_sample": 1792821431324121,
+        "xyz": [
+          -0.0006327859009616077,
+          -0.000691112712956965,
+          0.0008717706659808755
+        ]
+      }
+    },
+    "position": {
+      "first_sequence": 1,
+      "last_sequence": 566,
+      "first_seen_wall_s": 59607063.256925784,
+      "first_received_sim_s": 10.52,
+      "new_callback_observations": 566,
+      "max_wall_age_s": 0.17377742379903793,
+      "max_sim_age_s": 0.02800000000000047,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.27958914,
+      "received_sim_s": 21.816,
+      "last_wall_age_s": 0.0064366161823272705,
+      "last_sim_age_s": 0.004000000000001336,
+      "message_type": "VehicleLocalPosition",
+      "last_fields": {
+        "timestamp": 1792821431320121,
+        "timestamp_sample": 1792821431320121,
+        "x": 0.04500437155365944,
+        "y": -0.0547461174428463,
+        "z": -0.0978773832321167,
+        "vx": -0.0005247516091912985,
+        "vy": -0.005664109718054533,
+        "vz": -0.024363499134778976,
+        "xy_valid": true,
+        "z_valid": true,
+        "v_xy_valid": true,
+        "v_z_valid": true,
+        "heading_good_for_control": false,
+        "dead_reckoning": false,
+        "ref_lat": 47.397970858664294,
+        "ref_lon": 8.546164103163337,
+        "ref_alt": 0.34373196959495544,
+        "ref_timestamp": 4776000,
+        "xy_global": true,
+        "z_global": true,
+        "xy_reset_counter": 4,
+        "z_reset_counter": 2,
+        "heading_reset_counter": 1,
+        "vxy_reset_counter": 3,
+        "vz_reset_counter": 2
+      }
+    },
+    "status": {
+      "first_sequence": 1,
+      "last_sequence": 23,
+      "first_seen_wall_s": 59607063.800473414,
+      "first_received_sim_s": 10.7,
+      "new_callback_observations": 23,
+      "max_wall_age_s": 3.309332139790058,
+      "max_sim_age_s": 0.5080000000000009,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.24557882,
+      "received_sim_s": 21.788,
+      "last_wall_age_s": 0.040446937084198,
+      "last_sim_age_s": 0.03200000000000003,
+      "message_type": "VehicleStatus",
+      "last_fields": {
+        "arming_state": 1,
+        "nav_state": 4,
+        "failsafe": false
+      }
+    },
+    "land": {
+      "first_sequence": 1,
+      "last_sequence": 12,
+      "first_seen_wall_s": 59607063.95080633,
+      "first_received_sim_s": 10.756,
+      "new_callback_observations": 12,
+      "max_wall_age_s": 5.496520601212978,
+      "max_sim_age_s": 1.0040000000000013,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.21658863,
+      "received_sim_s": 21.768,
+      "last_wall_age_s": 0.06943712383508682,
+      "last_sim_age_s": 0.0519999999999996,
+      "message_type": "VehicleLandDetected",
+      "last_fields": {
+        "landed": true
+      }
+    },
+    "estimator_flags": {
+      "first_sequence": 1,
+      "last_sequence": 12,
+      "first_seen_wall_s": 59607064.09348803,
+      "first_received_sim_s": 10.804,
+      "new_callback_observations": 12,
+      "max_wall_age_s": 5.593143031001091,
+      "max_sim_age_s": 1.0080000000000027,
+      "callbacks_before_clock_observed": 0,
+      "missing_fields": [],
+      "last_seen_wall_s": 59607104.286025755,
+      "received_wall_s": 59607104.285945006,
+      "received_sim_s": 21.82,
+      "last_wall_age_s": 8.074939250946045e-05,
+      "last_sim_age_s": 0.0,
+      "message_type": "EstimatorStatusFlags",
+      "last_fields": {
+        "timestamp": 1792821431369436,
+        "timestamp_sample": 1792821431217436,
+        "cs_ev_pos": false,
+        "cs_ev_vel": false,
+        "cs_ev_hgt": false,
+        "cs_gnss_pos": true,
+        "cs_gnss_vel": true,
+        "cs_gps_hgt": true,
+        "cs_baro_hgt": true,
+        "cs_inertial_dead_reckoning": false,
+        "cs_wind_dead_reckoning": false
+      }
+    }
+  },
+  "commands_published": false,
+  "parameters_written": false,
+  "runtime_started_or_stopped": false,
+  "exit_reason": "fresh_complete_ground_snapshot",
+  "minimum_wall_s": 40.0,
+  "timeout_wall_s": 55.0,
+  "land_max_final_wall_age_s": 1.0,
+  "original_stream_max_final_wall_age_s": 4.0,
+  "model": {
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "model_sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+    "joint_names": [
+      "arm_joint_1",
+      "arm_joint_2"
+    ],
+    "source": "urdf_flight",
+    "base_link": "base_link",
+    "px4_sys_autostart": "4996",
+    "initial_joint_positions": {
+      "arm_joint_1": 0.0,
+      "arm_joint_2": 0.0
+    },
+    "flight_ready": true
+  },
+  "runtime_pid": 25662,
+  "runtime_meta": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/runtime_20261024_135549/runtime.json",
+  "source_sha256": "216b987948db6af8597afd09ced4f36faed794c3b15be44568525841638e1294",
+  "reused_probe": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/probe_px4_estimator_telemetry.py",
+    "sha256": "496194aa9a9bdf679b918f627499334944b5df53fdde1a1c75207fe5bfdcff15"
+  },
+  "scope": "connectivity/background-readiness diagnostic only; no flight acceptance; original predicates unchanged",
+  "observed_sim_over_wall": 0.27546412029756046
+}

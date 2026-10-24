@@ -1,0 +1,272 @@
+[
+  {
+    "monotonic_ns": 59607062784756314,
+    "cpu_stat": "usage_usec 5095229443\nuser_usec 4495216880\nsystem_usec 600012563\nnr_periods 112830\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "800077"
+  },
+  {
+    "monotonic_ns": 59607063306324644,
+    "cpu_stat": "usage_usec 5096850109\nuser_usec 4496678766\nsystem_usec 600171343\nnr_periods 112836\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1994448"
+  },
+  {
+    "monotonic_ns": 59607063807961824,
+    "cpu_stat": "usage_usec 5098205058\nuser_usec 4497949748\nsystem_usec 600255309\nnr_periods 112841\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2000000"
+  },
+  {
+    "monotonic_ns": 59607064309750616,
+    "cpu_stat": "usage_usec 5099540696\nuser_usec 4499180142\nsystem_usec 600360553\nnr_periods 112846\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2000000"
+  },
+  {
+    "monotonic_ns": 59607064811306130,
+    "cpu_stat": "usage_usec 5100858856\nuser_usec 4500406770\nsystem_usec 600452085\nnr_periods 112851\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2144237"
+  },
+  {
+    "monotonic_ns": 59607065313008500,
+    "cpu_stat": "usage_usec 5102123097\nuser_usec 4501510855\nsystem_usec 600612242\nnr_periods 112856\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2628518"
+  },
+  {
+    "monotonic_ns": 59607065814614177,
+    "cpu_stat": "usage_usec 5103373105\nuser_usec 4502634983\nsystem_usec 600738121\nnr_periods 112861\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2634776"
+  },
+  {
+    "monotonic_ns": 59607066316323927,
+    "cpu_stat": "usage_usec 5104633250\nuser_usec 4503809945\nsystem_usec 600823304\nnr_periods 112866\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2610989"
+  },
+  {
+    "monotonic_ns": 59607066817769947,
+    "cpu_stat": "usage_usec 5105855763\nuser_usec 4504987640\nsystem_usec 600868122\nnr_periods 112871\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2792372"
+  },
+  {
+    "monotonic_ns": 59607067319720474,
+    "cpu_stat": "usage_usec 5107175637\nuser_usec 4506222205\nsystem_usec 600953432\nnr_periods 112876\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2833630"
+  },
+  {
+    "monotonic_ns": 59607067821455166,
+    "cpu_stat": "usage_usec 5108429774\nuser_usec 4507423994\nsystem_usec 601005780\nnr_periods 112881\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "3070667"
+  },
+  {
+    "monotonic_ns": 59607068323115675,
+    "cpu_stat": "usage_usec 5109237000\nuser_usec 4508147200\nsystem_usec 601089799\nnr_periods 112886\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "3263577"
+  },
+  {
+    "monotonic_ns": 59607068824645235,
+    "cpu_stat": "usage_usec 5110260228\nuser_usec 4509078846\nsystem_usec 601181382\nnr_periods 112891\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2137634"
+  },
+  {
+    "monotonic_ns": 59607069326031480,
+    "cpu_stat": "usage_usec 5111252385\nuser_usec 4509981647\nsystem_usec 601270737\nnr_periods 112896\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2035250"
+  },
+  {
+    "monotonic_ns": 59607069827461641,
+    "cpu_stat": "usage_usec 5112282864\nuser_usec 4510925640\nsystem_usec 601357223\nnr_periods 112901\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2199770"
+  },
+  {
+    "monotonic_ns": 59607070329105702,
+    "cpu_stat": "usage_usec 5113316684\nuser_usec 4511889240\nsystem_usec 601427444\nnr_periods 112906\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2108147"
+  },
+  {
+    "monotonic_ns": 59607070830642796,
+    "cpu_stat": "usage_usec 5114426931\nuser_usec 4512941695\nsystem_usec 601485235\nnr_periods 112911\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2019854"
+  },
+  {
+    "monotonic_ns": 59607071332284787,
+    "cpu_stat": "usage_usec 5115724243\nuser_usec 4514101135\nsystem_usec 601623107\nnr_periods 112916\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1975139"
+  },
+  {
+    "monotonic_ns": 59607071833977983,
+    "cpu_stat": "usage_usec 5116944777\nuser_usec 4515248286\nsystem_usec 601696491\nnr_periods 112921\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2212418"
+  },
+  {
+    "monotonic_ns": 59607072335694234,
+    "cpu_stat": "usage_usec 5118061232\nuser_usec 4516307411\nsystem_usec 601753821\nnr_periods 112926\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2320004"
+  },
+  {
+    "monotonic_ns": 59607072837319805,
+    "cpu_stat": "usage_usec 5119178817\nuser_usec 4517369437\nsystem_usec 601809380\nnr_periods 112931\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2256027"
+  },
+  {
+    "monotonic_ns": 59607073338967154,
+    "cpu_stat": "usage_usec 5120276042\nuser_usec 4518395887\nsystem_usec 601880155\nnr_periods 112936\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2099717"
+  },
+  {
+    "monotonic_ns": 59607073840748504,
+    "cpu_stat": "usage_usec 5121424060\nuser_usec 4519462397\nsystem_usec 601961663\nnr_periods 112941\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2277337"
+  },
+  {
+    "monotonic_ns": 59607074342489404,
+    "cpu_stat": "usage_usec 5122495222\nuser_usec 4520463946\nsystem_usec 602031276\nnr_periods 112946\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2283706"
+  },
+  {
+    "monotonic_ns": 59607074844035357,
+    "cpu_stat": "usage_usec 5123537272\nuser_usec 4521468843\nsystem_usec 602068429\nnr_periods 112951\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2212265"
+  },
+  {
+    "monotonic_ns": 59607075345604220,
+    "cpu_stat": "usage_usec 5124536091\nuser_usec 4522420841\nsystem_usec 602115249\nnr_periods 112956\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2022286"
+  },
+  {
+    "monotonic_ns": 59607075847125717,
+    "cpu_stat": "usage_usec 5125565569\nuser_usec 4523396073\nsystem_usec 602169495\nnr_periods 112961\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2099847"
+  },
+  {
+    "monotonic_ns": 59607076348793546,
+    "cpu_stat": "usage_usec 5126602188\nuser_usec 4524388804\nsystem_usec 602213383\nnr_periods 112966\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2168185"
+  },
+  {
+    "monotonic_ns": 59607076850452813,
+    "cpu_stat": "usage_usec 5127691003\nuser_usec 4525405689\nsystem_usec 602285313\nnr_periods 112971\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2064093"
+  },
+  {
+    "monotonic_ns": 59607077352014940,
+    "cpu_stat": "usage_usec 5128781380\nuser_usec 4526379678\nsystem_usec 602401701\nnr_periods 112976\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2038117"
+  },
+  {
+    "monotonic_ns": 59607077853439216,
+    "cpu_stat": "usage_usec 5129798725\nuser_usec 4527338021\nsystem_usec 602460703\nnr_periods 112981\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1897777"
+  },
+  {
+    "monotonic_ns": 59607078355061538,
+    "cpu_stat": "usage_usec 5130843946\nuser_usec 4528332154\nsystem_usec 602511792\nnr_periods 112986\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2282275"
+  },
+  {
+    "monotonic_ns": 59607078856768480,
+    "cpu_stat": "usage_usec 5131936295\nuser_usec 4529325736\nsystem_usec 602610559\nnr_periods 112991\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2340779"
+  },
+  {
+    "monotonic_ns": 59607079357955943,
+    "cpu_stat": "usage_usec 5132986351\nuser_usec 4530301990\nsystem_usec 602684360\nnr_periods 112996\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2260572"
+  },
+  {
+    "monotonic_ns": 59607079859641740,
+    "cpu_stat": "usage_usec 5134057264\nuser_usec 4531282615\nsystem_usec 602774649\nnr_periods 113001\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2248770"
+  },
+  {
+    "monotonic_ns": 59607080360946507,
+    "cpu_stat": "usage_usec 5135092702\nuser_usec 4532256205\nsystem_usec 602836497\nnr_periods 113006\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2160476"
+  },
+  {
+    "monotonic_ns": 59607080862404586,
+    "cpu_stat": "usage_usec 5136096025\nuser_usec 4533197667\nsystem_usec 602898357\nnr_periods 113011\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2256240"
+  },
+  {
+    "monotonic_ns": 59607081363951619,
+    "cpu_stat": "usage_usec 5137157028\nuser_usec 4534204287\nsystem_usec 602952740\nnr_periods 113016\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2258453"
+  },
+  {
+    "monotonic_ns": 59607081865598535,
+    "cpu_stat": "usage_usec 5138279251\nuser_usec 4535231131\nsystem_usec 603048120\nnr_periods 113021\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2034227"
+  },
+  {
+    "monotonic_ns": 59607082366943313,
+    "cpu_stat": "usage_usec 5139364342\nuser_usec 4536258061\nsystem_usec 603106280\nnr_periods 113026\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1975694"
+  },
+  {
+    "monotonic_ns": 59607082868163303,
+    "cpu_stat": "usage_usec 5140397192\nuser_usec 4537246045\nsystem_usec 603151147\nnr_periods 113031\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1970008"
+  },
+  {
+    "monotonic_ns": 59607083369174558,
+    "cpu_stat": "usage_usec 5141410579\nuser_usec 4538208532\nsystem_usec 603202047\nnr_periods 113036\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1918083"
+  },
+  {
+    "monotonic_ns": 59607083870664099,
+    "cpu_stat": "usage_usec 5142480331\nuser_usec 4539189806\nsystem_usec 603290524\nnr_periods 113041\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2069698"
+  },
+  {
+    "monotonic_ns": 59607084371993669,
+    "cpu_stat": "usage_usec 5143518769\nuser_usec 4540192241\nsystem_usec 603326527\nnr_periods 113046\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2215534"
+  },
+  {
+    "monotonic_ns": 59607084873482197,
+    "cpu_stat": "usage_usec 5144514461\nuser_usec 4541141485\nsystem_usec 603372976\nnr_periods 113051\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2178254"
+  },
+  {
+    "monotonic_ns": 59607085375105334,
+    "cpu_stat": "usage_usec 5145551789\nuser_usec 4542116268\nsystem_usec 603435521\nnr_periods 113056\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "1974672"
+  },
+  {
+    "monotonic_ns": 59607085876720868,
+    "cpu_stat": "usage_usec 5146575484\nuser_usec 4543116405\nsystem_usec 603459079\nnr_periods 113061\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2074802"
+  },
+  {
+    "monotonic_ns": 59607086378364885,
+    "cpu_stat": "usage_usec 5147624640\nuser_usec 4544113291\nsystem_usec 603511348\nnr_periods 113066\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2126268"
+  },
+  {
+    "monotonic_ns": 59607086880212724,
+    "cpu_stat": "usage_usec 5148692682\nuser_usec 4545127576\nsystem_usec 603565105\nnr_periods 113071\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2069676"
+  },
+  {
+    "monotonic_ns": 59607087382250425,
+    "cpu_stat": "usage_usec 5149721524\nuser_usec 4546093474\nsystem_usec 603628049\nnr_periods 113076\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2138869"
+  },
+  {
+    "monotonic_ns": 59607087883873901,
+    "cpu_stat": "usage_usec 5150919038\nuser_usec 4547176512\nsystem_usec 603742525\nnr_periods 113081\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2061778"
+  },
+  {
+    "monotonic_ns": 59607088385565752,
+    "cpu_stat": "usage_usec 5152122390\nuser_usec 4548221620\nsystem_usec 603900770\nnr_periods 113086\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2253115"
+  },
+  {
+    "monotonic_ns": 59607088887251939,
+    "cpu_stat": "usage_usec 5153273283\nuser_usec 4549262612\nsystem_usec 604010670\nnr_periods 113091\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2252780"
+  },
+  {
+    "monotonic_ns": 59607089388984341,
+    "cpu_stat": "usage_usec 5154382812\nuser_usec 4550304675\nsystem_usec 604078136\nnr_periods 113096\nnr_throttled 19\nthrottled_usec 77426467\n",
+    "cpu87_khz": "2210340"
+  }
+]
