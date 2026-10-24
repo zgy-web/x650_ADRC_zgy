@@ -1,0 +1,4804 @@
+{
+  "kind": "hold21_original_cdr_review_v1",
+  "derived_analysis": true,
+  "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_114955_9089/isolated_live/source_recording/diagnostics.jsonl",
+  "source_sha256": "d999bd43bf44d516fcc4c6c5ad8df97c47775dbf092df94da7693cf6009664bc",
+  "worker_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_114955_9089/isolated_live/recording/diagnostics.jsonl",
+  "worker_sha256": "573cb1ae93d1b2512cac0f31cb01a677e164982a10ae9809a976cfcce05e1a1e",
+  "all_materialized_ros_fields_match_original_cdr": true,
+  "counts": {
+    "dispatch": 3088,
+    "sends": 56,
+    "receipts": 56,
+    "events": 54
+  },
+  "all_worker_candidates_numerically_accepted": true,
+  "candidates": [
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 1,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 1,
+        "compute_start_monotonic_ns": 59599540310448669,
+        "compute_end_monotonic_ns": 59599540324736718,
+        "status": 0,
+        "control_time_s": 40.928,
+        "task_time_s": 0.01999999999999602,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.00010868948595773353,
+          0.0008748807566271838,
+          0.0004750329491347389
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.00024904257699386576,
+          0.0016383041575740416,
+          0.0008673304289259316
+        ],
+        "joint_velocity": [
+          -0.0006071284011199857,
+          -0.0004972240632286212
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 5.637851296924623e-18,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 1,
+        "issued_monotonic_ns": 59599540307278292,
+        "control_time_s": 40.928,
+        "task_time_s": 0.01999999999999602,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 2,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 2,
+        "compute_start_monotonic_ns": 59599540325866401,
+        "compute_end_monotonic_ns": 59599540338995800,
+        "status": 0,
+        "control_time_s": 40.944,
+        "task_time_s": 0.036000000000001364,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          2.5695460540042575e-05,
+          0.0006310398377753388,
+          0.0007291904369760324
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0001836135657786341,
+          0.0013804086062692911,
+          0.0011229184282418344
+        ],
+        "joint_velocity": [
+          -0.0011914998348856235,
+          -0.000932904108657379
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.919567357652976e-18,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 2,
+        "issued_monotonic_ns": 59599540322039323,
+        "control_time_s": 40.944,
+        "task_time_s": 0.036000000000001364,
+        "dt_s": 0.016000000000005343
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 3,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 3,
+        "compute_start_monotonic_ns": 59599540345752903,
+        "compute_end_monotonic_ns": 59599540358836570,
+        "status": 0,
+        "control_time_s": 40.964,
+        "task_time_s": 0.055999999999997385,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          7.680167430955688e-05,
+          0.00038227828480394887,
+          0.0010445844632653296
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.00026203527968876654,
+          0.0011088804454208014,
+          0.0014416503146385535
+        ],
+        "joint_velocity": [
+          -0.0024423200641567255,
+          -0.0014779713693677016
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.5720931501039814e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 3,
+        "issued_monotonic_ns": 59599540341932967,
+        "control_time_s": 40.964,
+        "task_time_s": 0.055999999999997385,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 4,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 4,
+        "compute_start_monotonic_ns": 59599540365796998,
+        "compute_end_monotonic_ns": 59599540378704928,
+        "status": 0,
+        "control_time_s": 40.984,
+        "task_time_s": 0.07600000000000051,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.00028771412021581897,
+          0.0005100092715559354,
+          0.0012971284719156444
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0004919894121114592,
+          0.0012207112530942033,
+          0.0016961016719216808
+        ],
+        "joint_velocity": [
+          -0.004019963446787401,
+          -0.0019513851687719605
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.723881454251952e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 4,
+        "issued_monotonic_ns": 59599540361851789,
+        "control_time_s": 40.984,
+        "task_time_s": 0.07600000000000051,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 5,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 5,
+        "compute_start_monotonic_ns": 59599540385834877,
+        "compute_end_monotonic_ns": 59599540398732961,
+        "status": 0,
+        "control_time_s": 41.004,
+        "task_time_s": 0.09599999999999653,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.000630138731683042,
+          0.0008160308588829107,
+          0.0014902916414796543
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0008542317935559292,
+          0.0015116299374848875,
+          0.001890218515802097
+        ],
+        "joint_velocity": [
+          -0.005965137953462156,
+          -0.0023554506548679145
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.8431436932253575e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 5,
+        "issued_monotonic_ns": 59599540381990986,
+        "control_time_s": 41.004,
+        "task_time_s": 0.09599999999999653,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 6,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 6,
+        "compute_start_monotonic_ns": 59599540405947434,
+        "compute_end_monotonic_ns": 59599540419159606,
+        "status": 0,
+        "control_time_s": 41.024,
+        "task_time_s": 0.11599999999999966,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.0010483592454809485,
+          0.0011273408503339277,
+          0.0016184301051280613
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0013031407340372727,
+          0.001803983690537027,
+          0.0020164496308176915
+        ],
+        "joint_velocity": [
+          -0.008355706492948579,
+          -0.00268147147159416
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.187554387107383e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 6,
+        "issued_monotonic_ns": 59599540402093244,
+        "control_time_s": 41.024,
+        "task_time_s": 0.11599999999999966,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 7,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 7,
+        "compute_start_monotonic_ns": 59599540425826808,
+        "compute_end_monotonic_ns": 59599540439442151,
+        "status": 0,
+        "control_time_s": 41.044,
+        "task_time_s": 0.13599999999999568,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.0011649000981732416,
+          0.0011128757683919641,
+          0.0016734615982183683
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0014522399046649577,
+          0.001773987317652506,
+          0.0020643285665349516
+        ],
+        "joint_velocity": [
+          -0.010699587594521855,
+          -0.0029130100654293956
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.710505431213761e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 7,
+        "issued_monotonic_ns": 59599540421774870,
+        "control_time_s": 41.044,
+        "task_time_s": 0.13599999999999568,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 8,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 8,
+        "compute_start_monotonic_ns": 59599540446048149,
+        "compute_end_monotonic_ns": 59599540459818657,
+        "status": 0,
+        "control_time_s": 41.064,
+        "task_time_s": 0.1559999999999988,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.0010853605765657466,
+          0.0003432016590299196,
+          0.0016697170974740768
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0013953245727972008,
+          0.0009935948264612891,
+          0.0020543851827340195
+        ],
+        "joint_velocity": [
+          -0.0132526078769334,
+          -0.0030714020347242647
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.1250362580715887e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 8,
+        "issued_monotonic_ns": 59599540442561147,
+        "control_time_s": 41.064,
+        "task_time_s": 0.1559999999999988,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 9,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 9,
+        "compute_start_monotonic_ns": 59599540465910144,
+        "compute_end_monotonic_ns": 59599540479582569,
+        "status": 0,
+        "control_time_s": 41.084,
+        "task_time_s": 0.17600000000000193,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.001014958092986652,
+          0.0007812252202224576,
+          0.001610199340444049
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0013621789062004104,
+          0.0014144633474643352,
+          0.0019796086366414916
+        ],
+        "joint_velocity": [
+          -0.015859367653717257,
+          -0.0031291870575893203
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.230922474006803e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 9,
+        "issued_monotonic_ns": 59599540462422466,
+        "control_time_s": 41.084,
+        "task_time_s": 0.17600000000000193,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 10,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 10,
+        "compute_start_monotonic_ns": 59599540486080415,
+        "compute_end_monotonic_ns": 59599540499535421,
+        "status": 0,
+        "control_time_s": 41.104,
+        "task_time_s": 0.19599999999999795,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.0005497659804165111,
+          0.0006391481077104352,
+          0.0015004202313536443
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.0009232841050062846,
+          0.001262288730951249,
+          0.0018564780871213995
+        ],
+        "joint_velocity": [
+          -0.017875764966971602,
+          -0.0031221618178908788
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.9949319973733282e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 10,
+        "issued_monotonic_ns": 59599540482307113,
+        "control_time_s": 41.104,
+        "task_time_s": 0.19599999999999795,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 11,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 11,
+        "compute_start_monotonic_ns": 59599540506092654,
+        "compute_end_monotonic_ns": 59599540519605871,
+        "status": 0,
+        "control_time_s": 41.124,
+        "task_time_s": 0.21600000000000108,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          0.0001918167433004244,
+          0.0007971012463281624,
+          0.0013701699609428846
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.000604261994426817,
+          0.0014047414898043591,
+          0.0017033396331168898
+        ],
+        "joint_velocity": [
+          -0.019880271416785545,
+          -0.0030581693932125727
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.7564075194265172e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 11,
+        "issued_monotonic_ns": 59599540502096925,
+        "control_time_s": 41.124,
+        "task_time_s": 0.21600000000000108,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 12,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 12,
+        "compute_start_monotonic_ns": 59599540525874659,
+        "compute_end_monotonic_ns": 59599540539561437,
+        "status": 0,
+        "control_time_s": 41.144,
+        "task_time_s": 0.2359999999999971,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.000170853841916334,
+          0.0008311550108606525,
+          0.0012184321773720751
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          0.00026803904623407085,
+          0.0014285617190339377,
+          0.0015344357118507678
+        ],
+        "joint_velocity": [
+          -0.022035209280096005,
+          -0.002956360667142805
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.168404344971009e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 12,
+        "issued_monotonic_ns": 59599540521773909,
+        "control_time_s": 41.144,
+        "task_time_s": 0.2359999999999971,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 13,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 13,
+        "compute_start_monotonic_ns": 59599540545963310,
+        "compute_end_monotonic_ns": 59599540559644106,
+        "status": 0,
+        "control_time_s": 41.164,
+        "task_time_s": 0.2560000000000002,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0007759807885540299,
+          0.0009808539300184473,
+          0.0010563648130780669
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.00029589847931190576,
+          0.001563986917926664,
+          0.001343758118064572
+        ],
+        "joint_velocity": [
+          -0.023875099003587565,
+          -0.0028066354120896107
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.949029909160572e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 13,
+        "issued_monotonic_ns": 59599540542517698,
+        "control_time_s": 41.164,
+        "task_time_s": 0.2560000000000002,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 14,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 14,
+        "compute_start_monotonic_ns": 59599540565928339,
+        "compute_end_monotonic_ns": 59599540579651178,
+        "status": 0,
+        "control_time_s": 41.184,
+        "task_time_s": 0.27599999999999625,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0015737270237597607,
+          0.0005727843110117645,
+          0.0008854463382958195
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0010656849181520265,
+          0.0011468085655320641,
+          0.0011537661569541997
+        ],
+        "joint_velocity": [
+          -0.02529095269947427,
+          -0.0026497935236823858
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.6129272356900657e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 14,
+        "issued_monotonic_ns": 59599540562575656,
+        "control_time_s": 41.184,
+        "task_time_s": 0.27599999999999625,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 15,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 15,
+        "compute_start_monotonic_ns": 59599540585718882,
+        "compute_end_monotonic_ns": 59599540599621982,
+        "status": 0,
+        "control_time_s": 41.204,
+        "task_time_s": 0.2959999999999994,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.002113925855115057,
+          0.0007149890323889603,
+          0.000740104796628701
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0015634979441753074,
+          0.0012723104678524961,
+          0.000981244897269503
+        ],
+        "joint_velocity": [
+          -0.027063990126645093,
+          -0.0024840633512718583
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.642919299551295e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 15,
+        "issued_monotonic_ns": 59599540581975412,
+        "control_time_s": 41.204,
+        "task_time_s": 0.2959999999999994,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 16,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 16,
+        "compute_start_monotonic_ns": 59599540605660745,
+        "compute_end_monotonic_ns": 59599540620137726,
+        "status": 0,
+        "control_time_s": 41.224,
+        "task_time_s": 0.3159999999999954,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0026609255478157994,
+          0.0009165135705257303,
+          0.0006062277923062039
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0020811278152397827,
+          0.0014636131937091155,
+          0.0008292480809352872
+        ],
+        "joint_velocity": [
+          -0.028872525299383164,
+          -0.0023238001910492797
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.0440741033709315e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 16,
+        "issued_monotonic_ns": 59599540601895499,
+        "control_time_s": 41.224,
+        "task_time_s": 0.3159999999999954,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 17,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 17,
+        "compute_start_monotonic_ns": 59599540625573143,
+        "compute_end_monotonic_ns": 59599540639491439,
+        "status": 0,
+        "control_time_s": 41.24,
+        "task_time_s": 0.33200000000000074,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0030930978000673808,
+          0.0010520480352015577,
+          0.0005039199840369261
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.002513300067491364,
+          0.001599147658384943,
+          0.0007269402726660094
+        ],
+        "joint_velocity": [
+          -0.030128537610032806,
+          -0.002213997643078418
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.2985086056692694e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 17,
+        "issued_monotonic_ns": 59599540619217562,
+        "control_time_s": 41.24,
+        "task_time_s": 0.33200000000000074,
+        "dt_s": 0.016000000000005343
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 18,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 18,
+        "compute_start_monotonic_ns": 59599540645743821,
+        "compute_end_monotonic_ns": 59599540660009556,
+        "status": 0,
+        "control_time_s": 41.264,
+        "task_time_s": 0.35600000000000165,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0037996196967741798,
+          0.0008974139757826909,
+          0.00044207562836838445
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0031452315223155602,
+          0.0014223836839383566,
+          0.000627902618657624
+        ],
+        "joint_velocity": [
+          -0.03231355957644986,
+          -0.0020877722130262177
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.2959746043559335e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 18,
+        "issued_monotonic_ns": 59599540642437169,
+        "control_time_s": 41.264,
+        "task_time_s": 0.35600000000000165,
+        "dt_s": 0.02400000000000091
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 19,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 19,
+        "compute_start_monotonic_ns": 59599540665673126,
+        "compute_end_monotonic_ns": 59599540679866384,
+        "status": 0,
+        "control_time_s": 41.284,
+        "task_time_s": 0.37599999999999767,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0045148000095588696,
+          0.0006277605656004486,
+          0.00044039524718394475
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0038140057518258603,
+          0.0011381709983517199,
+          0.0006128707970434968
+        ],
+        "joint_velocity": [
+          -0.03370418248541699,
+          -0.002065122559737624
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.469446951953614e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 19,
+        "issued_monotonic_ns": 59599540662674033,
+        "control_time_s": 41.284,
+        "task_time_s": 0.37599999999999767,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 20,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 20,
+        "compute_start_monotonic_ns": 59599540685655384,
+        "compute_end_monotonic_ns": 59599540699998135,
+        "status": 0,
+        "control_time_s": 41.304,
+        "task_time_s": 0.3960000000000008,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.00531675566497524,
+          0.0006489263460006014,
+          0.0004648180806783609
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004584255662726307,
+          0.0011483593844764178,
+          0.0006325252589558817
+        ],
+        "joint_velocity": [
+          -0.034451183674937526,
+          -0.002091395747574836
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.642919299551295e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 20,
+        "issued_monotonic_ns": 59599540682290904,
+        "control_time_s": 41.304,
+        "task_time_s": 0.3960000000000008,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 21,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 21,
+        "compute_start_monotonic_ns": 59599540705899239,
+        "compute_end_monotonic_ns": 59599540720295170,
+        "status": 0,
+        "control_time_s": 41.324,
+        "task_time_s": 0.4159999999999968,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006128198186379632,
+          0.0003486608729630207,
+          0.000554336691532893
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005349913089278972,
+          0.0008310261856500028,
+          0.0007215670326522107
+        ],
+        "joint_velocity": [
+          -0.034980141792280865,
+          -0.002211670579451435
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.5561831257524545e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 21,
+        "issued_monotonic_ns": 59599540702077430,
+        "control_time_s": 41.324,
+        "task_time_s": 0.4159999999999968,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 22,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 22,
+        "compute_start_monotonic_ns": 59599540725885903,
+        "compute_end_monotonic_ns": 59599540740245175,
+        "status": 0,
+        "control_time_s": 41.344,
+        "task_time_s": 0.43599999999999994,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006645826719358175,
+          0.0004250910216487724,
+          0.0007076874906186935
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005837360036592335,
+          0.0008945672025938434,
+          0.0008801630404782455
+        ],
+        "joint_velocity": [
+          -0.035738796401980105,
+          -0.0024136986043254956
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.0766001685454967e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 22,
+        "issued_monotonic_ns": 59599540721805312,
+        "control_time_s": 41.344,
+        "task_time_s": 0.43599999999999994,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 23,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 23,
+        "compute_start_monotonic_ns": 59599540745781843,
+        "compute_end_monotonic_ns": 59599540760180926,
+        "status": 0,
+        "control_time_s": 41.364,
+        "task_time_s": 0.45599999999999596,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007124396087277853,
+          0.0007742227902892865,
+          0.0008835320850932961
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006270351342666025,
+          0.001226790833387447,
+          0.0010684054010661294
+        ],
+        "joint_velocity": [
+          -0.03623141091495134,
+          -0.002662361183545884
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.7321894746634712e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 23,
+        "issued_monotonic_ns": 59599540741768682,
+        "control_time_s": 41.364,
+        "task_time_s": 0.45599999999999596,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 24,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 24,
+        "compute_start_monotonic_ns": 59599540765501086,
+        "compute_end_monotonic_ns": 59599540779819942,
+        "status": 0,
+        "control_time_s": 41.384,
+        "task_time_s": 0.4759999999999991,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007644729505260999,
+          0.000526135637564666,
+          0.001046290660162186
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006759847238682154,
+          0.0009684298059962167,
+          0.0012397470449826756
+        ],
+        "joint_velocity": [
+          -0.03653206401432333,
+          -0.0029033112055529696
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.469446951953614e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 24,
+        "issued_monotonic_ns": 59599540762521990,
+        "control_time_s": 41.384,
+        "task_time_s": 0.4759999999999991,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 25,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 25,
+        "compute_start_monotonic_ns": 59599540785763991,
+        "compute_end_monotonic_ns": 59599540800436319,
+        "status": 0,
+        "control_time_s": 41.404,
+        "task_time_s": 0.4960000000000022,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.008113780742089944,
+          0.0005836293280874758,
+          0.001159362539426304
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007184171715247203,
+          0.001009098691668817,
+          0.0013609251559362466
+        ],
+        "joint_velocity": [
+          -0.036449816209964625,
+          -0.00309499271070052
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.677979366039196e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 25,
+        "issued_monotonic_ns": 59599540782506924,
+        "control_time_s": 41.404,
+        "task_time_s": 0.4960000000000022,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 26,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 26,
+        "compute_start_monotonic_ns": 59599540805777649,
+        "compute_end_monotonic_ns": 59599540820424120,
+        "status": 0,
+        "control_time_s": 41.424,
+        "task_time_s": 0.5159999999999982,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.00816652525789508,
+          0.0010318894796927526,
+          0.0012415557222120698
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007207273240866833,
+          0.001446397568154935,
+          0.001445025687354825
+        ],
+        "joint_velocity": [
+          -0.03685740860323179,
+          -0.0032287391546019823
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.7755575615628914e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 26,
+        "issued_monotonic_ns": 59599540802421210,
+        "control_time_s": 41.424,
+        "task_time_s": 0.5159999999999982,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 27,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 27,
+        "compute_start_monotonic_ns": 59599540825569568,
+        "compute_end_monotonic_ns": 59599540840309175,
+        "status": 0,
+        "control_time_s": 41.444,
+        "task_time_s": 0.5360000000000014,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.008460579931105997,
+          0.0011242192211426518,
+          0.0012583770402465398
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007455799896267604,
+          0.0015237624839696464,
+          0.0014599396567564825
+        ],
+        "joint_velocity": [
+          -0.03657403650356978,
+          -0.0032995218991820506
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.7484525072507537e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 27,
+        "issued_monotonic_ns": 59599540822026505,
+        "control_time_s": 41.444,
+        "task_time_s": 0.5360000000000014,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 28,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 28,
+        "compute_start_monotonic_ns": 59599540845837538,
+        "compute_end_monotonic_ns": 59599540860692786,
+        "status": 0,
+        "control_time_s": 41.464,
+        "task_time_s": 0.5559999999999974,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.008427950166851382,
+          0.001064929430981637,
+          0.0012345206893513657
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007392947958146364,
+          0.0014543916683961656,
+          0.0014294075856464646
+        ],
+        "joint_velocity": [
+          -0.03685071507545398,
+          -0.003295700474212492
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.163336342344337e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 28,
+        "issued_monotonic_ns": 59599540842337433,
+        "control_time_s": 41.464,
+        "task_time_s": 0.5559999999999974,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 29,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 29,
+        "compute_start_monotonic_ns": 59599540865744381,
+        "compute_end_monotonic_ns": 59599540880627385,
+        "status": 0,
+        "control_time_s": 41.484,
+        "task_time_s": 0.5760000000000005,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.008579713918374615,
+          0.0008397450829991783,
+          0.0011289427997126912
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007497668767653996,
+          0.0012143725263257935,
+          0.0013066635583124776
+        ],
+        "joint_velocity": [
+          -0.03656041868447831,
+          -0.003185359807394635
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.4936649967166602e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 29,
+        "issued_monotonic_ns": 59599540862180157,
+        "control_time_s": 41.484,
+        "task_time_s": 0.5760000000000005,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 30,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 30,
+        "compute_start_monotonic_ns": 59599540885622894,
+        "compute_end_monotonic_ns": 59599540902609719,
+        "status": 0,
+        "control_time_s": 41.504,
+        "task_time_s": 0.5959999999999965,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.00822323108371064,
+          0.0010437827070439397,
+          0.00099380561082282
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.007107822541996253,
+          0.0014078718441244995,
+          0.001154360231727294
+        ],
+        "joint_velocity": [
+          -0.037140068521719735,
+          -0.002999555270947526
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.3852447794681098e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 30,
+        "issued_monotonic_ns": 59599540882006427,
+        "control_time_s": 41.504,
+        "task_time_s": 0.5959999999999965,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 31,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 31,
+        "compute_start_monotonic_ns": 59599540905630172,
+        "compute_end_monotonic_ns": 59599540920574357,
+        "status": 0,
+        "control_time_s": 41.524,
+        "task_time_s": 0.6159999999999997,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007996454697112729,
+          0.0011263617763434036,
+          0.000813863132086808
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0068254405406069155,
+          0.0014737534582030855,
+          0.0009419928262334694
+        ],
+        "joint_velocity": [
+          -0.037585456326913035,
+          -0.0027239310351838083
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.3852447794681098e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 31,
+        "issued_monotonic_ns": 59599540901954165,
+        "control_time_s": 41.524,
+        "task_time_s": 0.6159999999999997,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 32,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 32,
+        "compute_start_monotonic_ns": 59599540925975887,
+        "compute_end_monotonic_ns": 59599540941042402,
+        "status": 0,
+        "control_time_s": 41.544,
+        "task_time_s": 0.6359999999999957,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007887152658463409,
+          0.0014682558043253072,
+          0.0006129939131757408
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.00667606058378571,
+          0.0018051051432377,
+          0.0007177585865704491
+        ],
+        "joint_velocity": [
+          -0.037430650173616194,
+          -0.0024472035525762064
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.2551405187698492e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 32,
+        "issued_monotonic_ns": 59599540921652986,
+        "control_time_s": 41.544,
+        "task_time_s": 0.6359999999999957,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 33,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 33,
+        "compute_start_monotonic_ns": 59599540945711360,
+        "compute_end_monotonic_ns": 59599540960563352,
+        "status": 0,
+        "control_time_s": 41.564,
+        "task_time_s": 0.6559999999999988,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007855976537744109,
+          0.0011729633473155912,
+          0.00044871957623200426
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006602684014207483,
+          0.0014998993221599093,
+          0.0005315497403493688
+        ],
+        "joint_velocity": [
+          -0.037348038356188704,
+          -0.0022036550801237662
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.729655473350135e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 33,
+        "issued_monotonic_ns": 59599540941624926,
+        "control_time_s": 41.564,
+        "task_time_s": 0.6559999999999988,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 34,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 34,
+        "compute_start_monotonic_ns": 59599540965873115,
+        "compute_end_monotonic_ns": 59599540980781385,
+        "status": 0,
+        "control_time_s": 41.584,
+        "task_time_s": 0.6760000000000019,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.00798898995287839,
+          0.0008230194035007039,
+          0.0003003130639272312
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006671570061759621,
+          0.0011329017810105056,
+          0.0003531024870777989
+        ],
+        "joint_velocity": [
+          -0.03678689870044274,
+          -0.0019712903888632026
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.929879867024198e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 34,
+        "issued_monotonic_ns": 59599540962394331,
+        "control_time_s": 41.584,
+        "task_time_s": 0.6760000000000019,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 35,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 35,
+        "compute_start_monotonic_ns": 59599540985860063,
+        "compute_end_monotonic_ns": 59599541000726759,
+        "status": 0,
+        "control_time_s": 41.604,
+        "task_time_s": 0.695999999999998,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.008002107249587128,
+          0.000884580418863105,
+          0.00019301716554412918
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006619521397426336,
+          0.0011737745919556653,
+          0.00021910370783532186
+        ],
+        "joint_velocity": [
+          -0.03632522320340998,
+          -0.0017781326090930626
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.5561831257524545e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 35,
+        "issued_monotonic_ns": 59599540982660920,
+        "control_time_s": 41.604,
+        "task_time_s": 0.695999999999998,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 36,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 36,
+        "compute_start_monotonic_ns": 59599541006007691,
+        "compute_end_monotonic_ns": 59599541020854516,
+        "status": 0,
+        "control_time_s": 41.624,
+        "task_time_s": 0.7160000000000011,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007751517323660969,
+          0.0011956401549520432,
+          0.00012871202103675387
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.006323520683917641,
+          0.0014710081286437033,
+          0.00014001661142364966
+        ],
+        "joint_velocity": [
+          -0.036294896749595795,
+          -0.0016267811884282724
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.90059381963448e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 36,
+        "issued_monotonic_ns": 59599541002382415,
+        "control_time_s": 41.624,
+        "task_time_s": 0.7160000000000011,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 37,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 37,
+        "compute_start_monotonic_ns": 59599541026002096,
+        "compute_end_monotonic_ns": 59599541040766319,
+        "status": 0,
+        "control_time_s": 41.644,
+        "task_time_s": 0.7359999999999971,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007722801209195116,
+          0.001450972296349752,
+          0.00011401895996917997
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0062233860346851575,
+          0.0017073558023825374,
+          0.0001086342498189664
+        ],
+        "joint_velocity": [
+          -0.03579124264130111,
+          -0.0015539420044185948
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.686287386450715e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 37,
+        "issued_monotonic_ns": 59599541022148847,
+        "control_time_s": 41.644,
+        "task_time_s": 0.7359999999999971,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 38,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 38,
+        "compute_start_monotonic_ns": 59599541045797050,
+        "compute_end_monotonic_ns": 59599541062698264,
+        "status": 0,
+        "control_time_s": 41.664,
+        "task_time_s": 0.7560000000000002,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007410126856250301,
+          0.001238125503296035,
+          0.0001595501163007395
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005861914157120013,
+          0.001482392629386776,
+          0.0001479665230938853
+        ],
+        "joint_velocity": [
+          -0.03613662339409227,
+          -0.0015333135630176157
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.3444106938820255e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 38,
+        "issued_monotonic_ns": 59599541041989067,
+        "control_time_s": 41.664,
+        "task_time_s": 0.7560000000000002,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 39,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 39,
+        "compute_start_monotonic_ns": 59599541065726272,
+        "compute_end_monotonic_ns": 59599541080516197,
+        "status": 0,
+        "control_time_s": 41.684,
+        "task_time_s": 0.7759999999999962,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007356470407816289,
+          0.001399277337256143,
+          0.0002466380037284724
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005730057737035872,
+          0.0016237197120883937,
+          0.00023171655041419635
+        ],
+        "joint_velocity": [
+          -0.03583281838919249,
+          -0.001602592178042314
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.8163916471489756e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 39,
+        "issued_monotonic_ns": 59599541061751541,
+        "control_time_s": 41.684,
+        "task_time_s": 0.7759999999999962,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 40,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 40,
+        "compute_start_monotonic_ns": 59599541085713776,
+        "compute_end_monotonic_ns": 59599541100467956,
+        "status": 0,
+        "control_time_s": 41.704,
+        "task_time_s": 0.7959999999999994,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007258678790461985,
+          0.0015863479653890934,
+          0.00036946295097737127
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005578470605961152,
+          0.0017979815001258896,
+          0.00035740252061231394
+        ],
+        "joint_velocity": [
+          -0.035520955297658245,
+          -0.0017299514868803435
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.3852447794681098e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 40,
+        "issued_monotonic_ns": 59599541081686611,
+        "control_time_s": 41.704,
+        "task_time_s": 0.7959999999999994,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 41,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 41,
+        "compute_start_monotonic_ns": 59599541105931766,
+        "compute_end_monotonic_ns": 59599541120700386,
+        "status": 0,
+        "control_time_s": 41.724,
+        "task_time_s": 0.8159999999999954,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007292028059961689,
+          0.0015613867441362152,
+          0.0005139832042879226
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.005529478690723173,
+          0.001755294059283271,
+          0.0005095521684541153
+        ],
+        "joint_velocity": [
+          -0.03506969955947958,
+          -0.0019070217160194385
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.2851325826310784e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 41,
+        "issued_monotonic_ns": 59599541102288545,
+        "control_time_s": 41.724,
+        "task_time_s": 0.8159999999999954,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 42,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 42,
+        "compute_start_monotonic_ns": 59599541125663500,
+        "compute_end_monotonic_ns": 59599541140569312,
+        "status": 0,
+        "control_time_s": 41.74,
+        "task_time_s": 0.8320000000000007,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0072238220738498355,
+          0.0015259359737320205,
+          0.0006252965677814785
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0054612727046113195,
+          0.0017198432888790762,
+          0.0006208655319476712
+        ],
+        "joint_velocity": [
+          -0.034609892180007956,
+          -0.002045522829172448
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.7755575615628914e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 42,
+        "issued_monotonic_ns": 59599541120280973,
+        "control_time_s": 41.74,
+        "task_time_s": 0.8320000000000007,
+        "dt_s": 0.016000000000005343
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 43,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 43,
+        "compute_start_monotonic_ns": 59599541146077936,
+        "compute_end_monotonic_ns": 59599541161004393,
+        "status": 0,
+        "control_time_s": 41.76,
+        "task_time_s": 0.8519999999999968,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007198241338320207,
+          0.001593666213746472,
+          0.0007909631854360081
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.0052918358813246694,
+          0.0017516591086118973,
+          0.0008084666588795445
+        ],
+        "joint_velocity": [
+          -0.03461770613579278,
+          -0.00226740914873206
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.8214596497756474e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 43,
+        "issued_monotonic_ns": 59599541140300334,
+        "control_time_s": 41.76,
+        "task_time_s": 0.8519999999999968,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 44,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 44,
+        "compute_start_monotonic_ns": 59599541165889865,
+        "compute_end_monotonic_ns": 59599541180994284,
+        "status": 0,
+        "control_time_s": 41.784,
+        "task_time_s": 0.8759999999999977,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006848253950959733,
+          0.001751331223302531,
+          0.0010037013667601926
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004880446839768508,
+          0.001894418764754369,
+          0.001028834234734979
+        ],
+        "joint_velocity": [
+          -0.03501148000258786,
+          -0.0025178781188086737
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.230922474006803e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 44,
+        "issued_monotonic_ns": 59599541162308867,
+        "control_time_s": 41.784,
+        "task_time_s": 0.8759999999999977,
+        "dt_s": 0.02400000000000091
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 45,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 45,
+        "compute_start_monotonic_ns": 59599541186042379,
+        "compute_end_monotonic_ns": 59599541198414775,
+        "status": 0,
+        "control_time_s": 41.804,
+        "task_time_s": 0.8960000000000008,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006854952282800669,
+          0.0013817656058510396,
+          0.0011168762840644921
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004791009970486177,
+          0.0015020539831538415,
+          0.0011505922208869348
+        ],
+        "joint_velocity": [
+          -0.035126845700146625,
+          -0.0026741243092345724
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.163336342344337e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 45,
+        "issued_monotonic_ns": 59599541182476317,
+        "control_time_s": 41.804,
+        "task_time_s": 0.8960000000000008,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 46,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 46,
+        "compute_start_monotonic_ns": 59599541205814829,
+        "compute_end_monotonic_ns": 59599541218151918,
+        "status": 0,
+        "control_time_s": 41.824,
+        "task_time_s": 0.9159999999999968,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006943555033877042,
+          0.0013726609659851013,
+          0.00118582881099853
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004813645945352495,
+          0.0014764417167074037,
+          0.0012233594450865976
+        ],
+        "joint_velocity": [
+          -0.03474135969406743,
+          -0.0028026726858638427
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.168404344971009e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 46,
+        "issued_monotonic_ns": 59599541202639992,
+        "control_time_s": 41.824,
+        "task_time_s": 0.9159999999999968,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 47,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 47,
+        "compute_start_monotonic_ns": 59599541225962822,
+        "compute_end_monotonic_ns": 59599541240305390,
+        "status": 0,
+        "control_time_s": 41.844,
+        "task_time_s": 0.9359999999999999,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006689897592189416,
+          0.0014646233625166694,
+          0.0012505649431846983
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004458792495734644,
+          0.0015440994323337588,
+          0.0012900029259055785
+        ],
+        "joint_velocity": [
+          -0.035340664907323946,
+          -0.002870997530782081
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.2959746043559335e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 47,
+        "issued_monotonic_ns": 59599541222270648,
+        "control_time_s": 41.844,
+        "task_time_s": 0.9359999999999999,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 48,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 48,
+        "compute_start_monotonic_ns": 59599541246074711,
+        "compute_end_monotonic_ns": 59599541258563725,
+        "status": 0,
+        "control_time_s": 41.864,
+        "task_time_s": 0.955999999999996,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006852712721045387,
+          0.0011794309150866746,
+          0.0012404217179914708
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004552348006119409,
+          0.0012435987977381243,
+          0.0012779523520795384
+        ],
+        "joint_velocity": [
+          -0.035008301525423405,
+          -0.002900894683661251
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 1.7672495411513722e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 48,
+        "issued_monotonic_ns": 59599541242111543,
+        "control_time_s": 41.864,
+        "task_time_s": 0.955999999999996,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 49,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 49,
+        "compute_start_monotonic_ns": 59599541265786957,
+        "compute_end_monotonic_ns": 59599541278143035,
+        "status": 0,
+        "control_time_s": 41.884,
+        "task_time_s": 0.9759999999999991,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.0068976184603849345,
+          0.0009089336144555261,
+          0.001229813506473631
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004492520038924254,
+          0.0009491952849249981,
+          0.001261145257505058
+        ],
+        "joint_velocity": [
+          -0.035182212278003805,
+          -0.0028945401098846085
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.423544863740858e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 49,
+        "issued_monotonic_ns": 59599541262425704,
+        "control_time_s": 41.884,
+        "task_time_s": 0.9759999999999991,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 50,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 50,
+        "compute_start_monotonic_ns": 59599541285618789,
+        "compute_end_monotonic_ns": 59599541298086161,
+        "status": 0,
+        "control_time_s": 41.904,
+        "task_time_s": 0.9960000000000022,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006808093312264587,
+          0.0010392098607354754,
+          0.0012077060377825048
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004330997172356158,
+          0.0010641082437586838,
+          0.0012333157429154943
+        ],
+        "joint_velocity": [
+          -0.03543495779493254,
+          -0.0028664239932076558
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.992397996059992e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 50,
+        "issued_monotonic_ns": 59599541282285749,
+        "control_time_s": 41.904,
+        "task_time_s": 0.9960000000000022,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 51,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 51,
+        "compute_start_monotonic_ns": 59599541305629608,
+        "compute_end_monotonic_ns": 59599541318205943,
+        "status": 0,
+        "control_time_s": 41.924,
+        "task_time_s": 1.0159999999999982,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006880826026552451,
+          0.000886614901803821,
+          0.0011710487637349237
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004330243344305641,
+          0.0008966700916011253,
+          0.0011899827486530695
+        ],
+        "joint_velocity": [
+          -0.03540410208413607,
+          -0.002835113473173536
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.7321894746634712e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 51,
+        "issued_monotonic_ns": 59599541302320853,
+        "control_time_s": 41.924,
+        "task_time_s": 1.0159999999999982,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 52,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 52,
+        "compute_start_monotonic_ns": 59599541325929042,
+        "compute_end_monotonic_ns": 59599541338283004,
+        "status": 0,
+        "control_time_s": 41.944,
+        "task_time_s": 1.0360000000000014,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007052862133476348,
+          0.0010337561908088549,
+          0.0011083687146125553
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004390936835316121,
+          0.0010208049190612775,
+          0.0011168122820502324
+        ],
+        "joint_velocity": [
+          -0.035120009244564314,
+          -0.002773253053130164
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.5344990823027445e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 52,
+        "issued_monotonic_ns": 59599541322347320,
+        "control_time_s": 41.944,
+        "task_time_s": 1.0360000000000014,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 53,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 53,
+        "compute_start_monotonic_ns": 59599541345714203,
+        "compute_end_monotonic_ns": 59599541358036326,
+        "status": 0,
+        "control_time_s": 41.964,
+        "task_time_s": 1.0559999999999974,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.006997180371231012,
+          0.0008454676605425876,
+          0.0010592034250234525
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004260393176854534,
+          0.0008181694367905444,
+          0.001058110249297067
+        ],
+        "joint_velocity": [
+          -0.03551359937103307,
+          -0.002684878936762481
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 4.163336342344337e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 53,
+        "issued_monotonic_ns": 59599541342846915,
+        "control_time_s": 41.964,
+        "task_time_s": 1.0559999999999974,
+        "dt_s": 0.01999999999999602
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 54,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 54,
+        "compute_start_monotonic_ns": 59599541365899169,
+        "compute_end_monotonic_ns": 59599541392735533,
+        "status": 0,
+        "control_time_s": 41.984,
+        "task_time_s": 1.0760000000000005,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.00734119927325216,
+          0.0006939717132468563,
+          0.0009808167351603048
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.004490626871634939,
+          0.0006444989115475362,
+          0.0009654184446878255
+        ],
+        "joint_velocity": [
+          -0.03503965299894987,
+          -0.0026065370453997165
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 2.1250362580715887e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 54,
+        "issued_monotonic_ns": 59599541361724324,
+        "control_time_s": 41.984,
+        "task_time_s": 1.0760000000000005,
+        "dt_s": 0.020000000000003126
+      }
+    },
+    {
+      "proposal": {
+        "schema_version": 1,
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 55,
+        "replay_only": false,
+        "configuration_sha256": [
+          158,
+          248,
+          193,
+          44,
+          106,
+          149,
+          145,
+          189,
+          200,
+          6,
+          96,
+          113,
+          11,
+          13,
+          226,
+          95,
+          133,
+          137,
+          222,
+          253,
+          241,
+          43,
+          3,
+          98,
+          249,
+          16,
+          148,
+          68,
+          255,
+          100,
+          204,
+          76
+        ],
+        "snapshot_sequence": 55,
+        "compute_start_monotonic_ns": 59599541405841077,
+        "compute_end_monotonic_ns": 59599541428893392,
+        "status": 0,
+        "control_time_s": 42.024,
+        "task_time_s": 1.1159999999999997,
+        "position_reference_enu": [
+          6.279181338532391e-07,
+          3.814041305005844e-10,
+          2.3697058951589294
+        ],
+        "velocity_feedforward_enu": [
+          -0.007815532975138482,
+          0.0008785784715355713,
+          0.0009212094664376918
+        ],
+        "acceleration_feedforward_enu": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "base_velocity_target": [
+          -0.00477340992063442,
+          0.0007914801133293525,
+          0.0008900755497445095
+        ],
+        "joint_velocity": [
+          -0.03434457775020359,
+          -0.002552382450922969
+        ],
+        "accepted_optimum": true,
+        "nonlinear_check_passed": true,
+        "primal_violation": 0.0,
+        "kkt_residual": 3.3176586478056436e-17,
+        "subproblems": 1
+      },
+      "snapshot": {
+        "session_id": 1704133274,
+        "epoch": 1,
+        "sequence": 55,
+        "issued_monotonic_ns": 59599541401927774,
+        "control_time_s": 42.024,
+        "task_time_s": 1.1159999999999997,
+        "dt_s": 0.03999999999999915
+      }
+    }
+  ],
+  "scope": "Byte-decoded message content and numerical status; not a full-hold pass or an execution receipt for every candidate."
+}

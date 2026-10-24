@@ -1,6 +1,6 @@
 # X650 冻结 MPC 的执行隔离与真机迁移测试方法
 
-更新日期：2026-10-24。本文规定可重复的测试流程、运行时边界及证据等级；[软件隔离测试](validation/isolated_runtime_20261023/README.md)、[历史实际接入记录](validation/isolated_live_20261023/README.md)与[新容器及当前修订记录](validation/isolated_live_20261024/README.md)分别归档。**native 数值版本 `c22078a` 已完成 344/30/388 资格，但 v8/revision 13 的 hold_v20 实际保持因指令年龄达到 64.300 ms 而失败；212 次计算数值成功，224 组发送/消费及退出恢复已核实。当前 revision 14 修订实际发送确认后的准入节拍并增加有界阶段时间记录，已通过构建、47 项 ROS Python、5 项 CTest、6 项审计、传输合同及真实 ROS 进程准入探针。hold21/progress_v5 已启动，完整物理结果待取得，没有新的完整保持或普通八字资格。** 原数值库、v8 任务及数值证明保持不变；此前失败与历史通过按各自身份保留，快速八字继续后置。仿真通过不等于真机可飞。
+更新日期：2026-10-24。本文规定可重复的测试流程、运行时边界及证据等级；[历史实际接入记录](validation/isolated_live_20261023/README.md)与[当前修订记录](validation/isolated_live_20261024/README.md)分别归档。**当前revision15 / v9修复ROS回调饥饿并隔离故障监督，组合源码已重新通过53项ROS Python、344/30/388资格及15项生命周期测试；hold22正在执行，尚无新的完整保持或普通八字资格。** hold21失败与消费、恢复证据已归档；数值模型、参数及原保护门限保持，快速八字后置。
 
 ## 1. 本次修复的对象与冻结边界
 
@@ -187,15 +187,23 @@ deployment_v24 的服务器 ROS Python 39/39 已通过，首轮 `preparation_rep
 
 这些结果证明本次失败链和退出恢复，不替代完整保持、PX4 全窗 ULog、物理末端精度或所有 pending-zero 故障场景的验收。后续 revision 14 的实际发送提交语义、20 ms 输出周期和 50 ms 寿命保持，执行层修改须重新绑定并验收。hold_v19/hold_v20 均保留失败状态，新保持通过后才执行普通八字完整 32 秒，快速八字继续后置。
 
-### 5.4 revision 14 执行准备已完成，hold21 结果待取得
+### 5.4 revision 14 执行准备与 hold21 失败
 
 本次只调整上述准入节拍和阶段时间观察，native 数值实现仍为 `c22078a`，数值库 SHA `b9cbdf78…`、v8 任务 SHA `9ef8c12c…`、数值证明 SHA `f07527f4…` 均未变。344 项回归、30 个矩阵工况和 388 条记录继续使用已经归档的对应资格；没有把本次执行层测试重复计为重新执行这组数值验收。
 
 服务器 `build_v26.exit=0`，两个包构建汇总 40.5 s，CTest **5/5**、ROS Python **47/47** 通过，见[构建原日志](validation/isolated_live_20261024/execution_v14/build_v26.log)。阶段时间审计 **6/6** 通过，包含时间/序号篡改、重复/缺失、溢出与单个尾候选边界，见[审计测试日志](validation/isolated_live_20261024/execution_v14/execution_audit_v26_test.log)。[安装核对](validation/isolated_live_20261024/execution_v14/installation_v26.json)确认 9 个已安装模块与部署源码字节一致，并绑定 revision 14 协议和二进制；`state_ingress` SHA-256 为 `b4f22c6a4fe1078d83680b0b5606b45194e0cb316a57f95d5acac1c40761d8fe`。
 
-[transport_v11](validation/isolated_live_20261024/execution_v14/transport_v11/report.json) 软件合同通过，7 次发送、7 次回执及停止零速确认，活动输出间隔 19.999414–20.057059 ms；报告明确没有物理 plant。[admission_probe_v1](validation/isolated_live_20261024/execution_v14/admission_probe_v1/report.json) 在真实 ROS 进程上使用同一 ingress 二进制，证明首轮 16 ms 不准入、后续 16/20/24 ms 状态间隔与原 issue 时间保真，并通过错误/重复 ACK 及未发送不推进检查，子进程退出码 0。该探针使用合成状态/ACK，明确不具有物理飞行资格；入口为 [`probe_x650_ingress_cadence.py`](../scripts/probe_x650_ingress_cadence.py)。部署清单及上述报告共 6 份、26126 字节，服务器原样副本及 SHA-256 见[revision 14 证据清单](validation/isolated_live_20261024/execution_v14/manifest.json)。**hold21/progress_v5 已启动，完整物理结果待取得；这些执行准备检查不表示新的实际保持通过。**
+[transport_v11](validation/isolated_live_20261024/execution_v14/transport_v11/report.json) 软件合同通过，7 次发送、7 次回执及停止零速确认，活动输出间隔 19.999414–20.057059 ms；报告明确没有物理 plant。[admission_probe_v1](validation/isolated_live_20261024/execution_v14/admission_probe_v1/report.json) 在真实 ROS 进程上使用同一 ingress 二进制，证明首轮 16 ms 不准入、后续 16/20/24 ms 状态间隔与原 issue 时间保真，并通过错误/重复 ACK 及未发送不推进检查，子进程退出码 0。该探针使用合成状态/ACK，明确不具有物理飞行资格；入口为 [`probe_x650_ingress_cadence.py`](../scripts/probe_x650_ingress_cadence.py)。部署清单及上述报告共 6 份、26126 字节，服务器原样副本及 SHA-256 见[revision 14 证据清单](validation/isolated_live_20261024/execution_v14/manifest.json)。**hold21 已因指令过期失败并完成恢复，普通八字未启动；这些执行准备检查不表示新的实际保持通过。**
 
 后续普通八字使用 [`x650_isolated_figure8_v1`](../simulations/x650_isolated_figure8_v1/README.md)，沿用冻结算法和参数，采用 X±0.25 m、Z±0.10 m、12 秒/圈两圈的原解析参考，总窗口 32 秒。入口额外核验本次完整 live 保持证书及原始证据，再将实际 LiveStart 中心绑定到同一条算法前瞻/目标参考。该入口和门槛已建立，**普通八字结果尚待验证；快速八字仍未准入**。目标机和异常退出边界另行测试，不因普通轨迹入口存在而自动通过。
+
+### 5.5 监督回调与完整记录分开，revision15重新验收
+
+hold21阶段时间记录将两类问题分开：连续engine计算26.923/23.137ms赶不上当前发送槽；Python故障订阅因同一ROS executor交替使用不同wait参数而饥饿，未及时得知C++已停止。原件、实际关节消费及ULog恢复复核见[hold21分析](validation/isolated_live_20261024/hold21/ANALYSIS.md)。
+
+运行时现在只在active路径统一主executor的零超时调用，保持原VehicleAPI默认行为；另设独立的depth1故障监督Node/Executor，在反馈处理前优先读取同会话故障并锁存。完整记录仍使用原深队列和原始CDR，不能将其最新已处理记录当作实时监督状态。真实DDS探针复现旧回调饥饿；新独立监督2.679ms发现故障，统一等待的深队列仍延迟159.375ms。新`fault_supervision.json`记录首次故障的producer时间、本地callback观察时间及身份，新的保持/八字审计要求该监督实际接收过两个主题且没有故障。
+
+live私有诊断快照采用类型明确的数值图复制，保留原deepcopy所有权和memo语义，公共默认接口不变。6项新复制测试和ROS Python53项通过；15项监督/地面/恢复测试通过。组合源码重新取得344项回归、30矩阵、388历史记录全部通过，原样证据见[revision15清单](validation/isolated_live_20261024/execution_v15/manifest.json)。CPU/频率对照显示离线时间受运行状态影响，未修改资源计划或把最快组当作保证。hold22正在执行；完整物理保持通过后才进行普通八字，不能据软件检查提前宣布闭环通过。
 
 ## 6. 真机迁移的可替换部分
 

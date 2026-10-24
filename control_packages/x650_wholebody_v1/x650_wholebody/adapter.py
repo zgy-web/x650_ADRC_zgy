@@ -14,6 +14,44 @@ from .feedforward import arm_reaction_feedforward
 from .model import vector, rotation_matrix
 
 
+_DIAGNOSTIC_ATOMS = frozenset((type(None), bool, int, float, complex, str, bytes))
+_DIAGNOSTIC_MISSING = object()
+
+
+def _copy_numeric_diagnostics(value, memo=None):
+    """Detach a diagnostic graph using its common numeric/container types.
+
+    This is the private owned-result path, not a replacement for public
+    deepcopy behavior. Memoization retains repeated references and cycles.
+    Object arrays, container subclasses and any unfamiliar type still use
+    deepcopy with the same memo, preserving their own copy protocol.
+    """
+    kind = type(value)
+    if kind in _DIAGNOSTIC_ATOMS:
+        return value
+    if memo is None:
+        memo = {}
+    identity = id(value)
+    saved = memo.get(identity, _DIAGNOSTIC_MISSING)
+    if saved is not _DIAGNOSTIC_MISSING:
+        return saved
+    if kind is dict:
+        result = {}
+        memo[identity] = result
+        for key, item in value.items():
+            result[_copy_numeric_diagnostics(key, memo)] = _copy_numeric_diagnostics(item, memo)
+    elif kind is list:
+        result = []
+        memo[identity] = result
+        result.extend(_copy_numeric_diagnostics(item, memo) for item in value)
+    elif kind is np.ndarray and not value.dtype.hasobject:
+        result = value.copy(order='K')
+        memo[identity] = result
+    else:
+        result = deepcopy(value, memo)
+    return result
+
+
 def clip_norm(value, maximum):
     value = vector(value, 3, "acceleration")
     norm = float(np.linalg.norm(value))
@@ -78,7 +116,7 @@ class ControllerAdapter:
 
     def _snapshot_diagnostics(self, allocation):
         if self._owned_diagnostic_snapshot:
-            owned = deepcopy(allocation)
+            owned = _copy_numeric_diagnostics(allocation)
             diagnostic = owned.get("diagnostics", {})
             if not isinstance(diagnostic, dict):
                 # Do not turn an invalid list-of-pairs into a valid mapping

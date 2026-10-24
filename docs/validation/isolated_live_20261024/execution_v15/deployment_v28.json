@@ -1,0 +1,61 @@
+{
+  "zip_sha256": "368d5224310511aa2e6f85e3d859c0c9e970f8b06f20814f0a7549d027c68a3f",
+  "files": [
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/adapter.py",
+      "before": "24010bd0d66df5c5e261bd8f07c232f6f24949e119198aa5b1b7b35bbb72a4b7",
+      "after": "477e0e2888ba5ef7d1515fe41342e651af79548472665f447cb71f8b47e9e635"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_mpc_reference/test/test_numeric_diagnostic_copy.py",
+      "before": null,
+      "after": "6c289f34f5db44f3d4f0e8a9906ebd73fa68fb5736d3fd72448a00e0ab01f1fb"
+    },
+    {
+      "path": "src/amsim/api/vehicle.py",
+      "before": "96eaefd2e354de751603b32159f89b3d39bdc70e54dd07f20fd4ffd7a83e11c4",
+      "after": "14eb72bdc8e2853938ea740f019cbca343feeb6881bd8c485856b8301276fb06"
+    },
+    {
+      "path": "simulations/x650_isolated_live_v1/run_case.py",
+      "before": "35724ae7575e47a029d77a72475d6fdacb93ef4d376f2a308a2715159a4d6bc5",
+      "after": "fb92fe7e00ce86d6a3e28f9c37fbf5124e9181b1a9232529d7bb36c4fb4c8941"
+    },
+    {
+      "path": "simulations/x650_isolated_live_v1/supervision.py",
+      "before": null,
+      "after": "9266a78710d984e11afb9fca6629d4d4e0a6d14edae3d336e6b40708c1fcfcc5"
+    },
+    {
+      "path": "tests/unit/test_x650_fault_supervision.py",
+      "before": null,
+      "after": "db5f560b0f6d00a4e3488890b5aec6decd9a35670c58db670f1be0688d76366c"
+    },
+    {
+      "path": "scripts/audit_x650_isolated_live.py",
+      "before": "2894924cdc9e53a724802f1bbe6b5a9b8d32e826d5cd472cdc488203e5506fc9",
+      "after": "fb05c52889f454cca7992a267074996008207177172d649bc6d0f41999ba2b56"
+    },
+    {
+      "path": "scripts/audit_x650_isolated_figure8.py",
+      "before": "2299b24d6997b21c5365a0ffc1a5f3712b87bb64b675f5c15143771eb963c714",
+      "after": "906eac7f5bb8ab6dea572fcc6c775ebcf530732c111dbf1ae265ed1767f0d9e4"
+    },
+    {
+      "path": "scripts/probe_x650_ros_callback_fairness.py",
+      "before": null,
+      "after": "7d6d1f5c555e1c83b39ed8acbdd3318e200069f5dc1878df8245a054d9757c9a"
+    },
+    {
+      "path": "tests/unit/test_x650_live_ground_preparation.py",
+      "before": "7ac9a167a106f5dd3d2d8ae3639b77a57f0619375887ef7a20e9d6717a6d74f9",
+      "after": "176c90fbcffd49f82b0cefeac4fdd71c99837314da32bfa2c34bf218ddf132e2"
+    },
+    {
+      "path": "tests/unit/test_x650_supervision_lifecycle.py",
+      "before": null,
+      "after": "12b018faebc3baa906033186fd812064cbca1f197be37677d0c8984fe372bd38"
+    }
+  ],
+  "unactivated_v27_archive_retained": true
+}

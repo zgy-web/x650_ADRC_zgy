@@ -2,7 +2,7 @@
 
 更新日期：2026-10-24。本目录承接[历史实际接入记录](../isolated_live_20261023/README.md)，保存新 QP 库的完整软件资格证据、新容器资源与计时结果，以及后续实际仿真验收状态。
 
-**最终 native 预测准备与单次诊断复制版本 `c22078a` 已通过 ROS Python 39/39、344 项回归、30/30 矩阵及 388/388 原记录，独立参考预测器保持原字节。但 v8/revision 13 的 hold_v20 实际保持失败：212 次计算数值成功，候选交付错过输出槽，旧指令年龄达到 64.300 ms；全部 224 组发送/消费及退出恢复已核实，不授予完整保持资格。revision 14 已修订实际发送确认后的准入节拍并增加有界阶段时间记录；构建、47 项 ROS Python、5 项 CTest、6 项时间审计、传输合同及真实 ROS 进程准入探针通过。hold21/progress_v5 已启动，完整物理结论待取得；原数值库、v8 任务和数值证明不变。普通八字仍须等待新的完整保持，快速八字继续后置。**
+**当前执行版本为 revision15 / v9：修复ROS回调饥饿，增加独立故障监督，并优化私有诊断图复制。组合源码重新通过53项ROS Python、344项回归、30个矩阵工况、388条历史记录，另有15项监督/生命周期测试。hold21因连续计算超时导致旧指令过期，已完整归档消费与恢复证据；hold22已启动，尚无新的完整保持通过结论。通过全窗验收后才继续普通八字，快速八字后置。**
 
 历史 hold_v15 的完整保持属于第 7 版和原数值库；它不作为本次新库、新协议的阶段准入。hold_v16 的 QP 失败、normal_v1 的 GC/时序失败、hold_v17 的交接初始化失败、hold_v18 的地面初始化失败以及 hold_v19/hold_v20 的活动指令过期失败均保留，不覆盖为通过结果。
 
@@ -124,7 +124,7 @@ dispatcher 的新生命周期及活动门限边界用例已在本机实际编译
 | hold_v18 | revision 10，同一新 QP 库 | 地面消费读取器超时退出，未起飞/无 LiveStart，参数已恢复、运行时已关闭 | 否 |
 | hold_v19 | revision 11，同一新 QP 库 | 地面准备和真实接管成功，活动指令寿命超期，已完成停止与恢复；`complete=false` | 否 |
 | hold_v20 | revision 13、v8 任务，native 准备及复制优化 | 212 次计算数值成功，活动指令过期失败；224 组发送/消费及停止恢复已核实 | 否 |
-| hold21 | revision 14，同一 v8 任务与数值后端 | 构建、合同与真实 ROS 准入探针通过；progress_v5 已启动，完整物理结果待取得 | 否 |
+| hold21 | revision 14，同一 v8 任务与数值后端 | 约1.1秒后旧指令年龄63.318ms触发保护；全部56组发送/消费及恢复已核实 | 否 |
 | 普通八字 | 必须继承通过的新 hold 同版本 | 待新的完整保持证书 | 否 |
 | 快速八字 | 后续独立阶段 | 未启动 | 否 |
 
@@ -234,7 +234,7 @@ C++ ingress 使用有界预留内存记录来源、准入、候选门和实际�
 | 软件传输合同 | `transport_v11` 通过，7 次发送、7 次回执、停止零速已消费；活动间隔 19.999414–20.057059 ms | [`transport_v11/report.json`](execution_v14/transport_v11/report.json) |
 | 真实 ROS 进程准入探针 | `admission_probe_v1` 通过、子进程退出码 0；首轮 16 ms 不准入，后续 16/20/24 ms 来源时间差原样传递；错误/重复确认及未发送候选不推进 | [`admission_probe_v1/report.json`](execution_v14/admission_probe_v1/report.json) |
 
-本次 `state_ingress` 二进制 SHA-256 为 `b4f22c6a4fe1078d83680b0b5606b45194e0cb316a57f95d5acac1c40761d8fe`，revision 14 协议 SHA-256 为 `c669828ce717945abda9578b964af2023c8c1ce6fb0025f028e171e951b4a3a6`，均见安装报告。6 份原样文件的来源路径、字节数及哈希见[清单](execution_v14/manifest.json)。准入探针使用真正运行的 ROS 进程和同一二进制，但输入为合成状态/ACK；报告明确 `physical_validation=false`、`eligible_as_stage_gate=false`，不算物理反馈验收。探针入口为 [`probe_x650_ingress_cadence.py`](../../../scripts/probe_x650_ingress_cadence.py)。**hold21/progress_v5 已启动，完整物理结果待取得，revision 14 尚无完整保持通过结论。**
+本次 `state_ingress` 二进制 SHA-256 为 `b4f22c6a4fe1078d83680b0b5606b45194e0cb316a57f95d5acac1c40761d8fe`，revision 14 协议 SHA-256 为 `c669828ce717945abda9578b964af2023c8c1ce6fb0025f028e171e951b4a3a6`，均见安装报告。6 份原样文件的来源路径、字节数及哈希见[清单](execution_v14/manifest.json)。准入探针使用真正运行的 ROS 进程和同一二进制，但输入为合成状态/ACK；报告明确 `physical_validation=false`、`eligible_as_stage_gate=false`，不算物理反馈验收。探针入口为 [`probe_x650_ingress_cadence.py`](../../../scripts/probe_x650_ingress_cadence.py)。**hold21已因指令过期失败并恢复，revision14没有完整保持通过结论。**
 
 只有在修复后的版本重新完成所需软件/数值与传输检查，并在新的运行中取得完整 30 秒、全部关节实际消费、PX4 全窗 ULog 编码、单一输出所有者、停止零速确认、降落上锁与参数恢复、独立物理末端和全量数值重放通过后，才能补入新的保持通过报告。hold_v18、hold_v19 和 hold_v20 均维持失败状态；正常恢复、软件回归通过或输出进程一直存活都不能替代完整保持结论。
 
@@ -249,3 +249,18 @@ C++ ingress 使用有界预留内存记录来源、准入、候选门和实际�
 待确认普通关节命令与停止零速重叠的 pending-zero 边界仍未完整认证：最新消费计数可能越过待确认记录，导致停止零速回执不能建立。当前缺少回执会拒绝该次验收，停止新写入者后由原恢复流程接管；这不等于已经取得真机故障停止资格。该边界及通信断流必须另做实际故障注入验证。
 
 工程架构与测试层次见[执行隔离及测试方法](../../X650_EXECUTION_ISOLATION_AND_TEST_METHOD.md)。
+
+
+### hold21 与 revision 15：明确区分计算超期和故障观察延迟
+
+hold21（launch `20261024_114909_9088`）在真实接管后约 1.1 秒触发原指令年龄保护，未完成保持，普通八字未启动。[原件清单](hold21/manifest.json)及[独立分析](hold21/ANALYSIS.md)包含55次计算、全部关节消费和恢复过程；完整原始CDR、ULog及启动源码归档在该目录。第54/55次engine墙钟耗时为26.923411/23.136564 ms，发布至ingress没有hold20的7ms长尾；第54条首次下发时年龄43.316650 ms，下一槽达到63.318013 ms。56组发送/消费匹配（含停止零速），最终落地解除武装，56项参数恢复，运行时关闭。失败片段不授予末端保持证书。
+
+另一个已复现的问题是Python故障观察被饿死：主执行器交替调用`spin_once(.02)`和`spin_once(0)`，导致Humble就绪回调迭代器反复重建。ACTIVE段546条连续反馈之间没有四类ROS观察回调，故障直到恢复后才进入记录端。1158.116454 ms是故障产生至记录进程接收的延迟，不是DDS到达延迟。修复保留原VehicleAPI默认等待，仅active路径统一为0；独立Node/Executor、depth1的故障监督在主pump前处理并锁存首次同会话故障，完整证据的depth4000和原始CDR继续保留。
+
+[真实ROS回调探针](execution_v15/ros_callback_fairness_v5/report.json)直接使用待部署VehicleAPI和FaultSupervisor：混合等待时8个订阅的服务次数为`[160,160,0,0,0,0,0,0]`，统一0后为`[43,43,43,43,43,42,42,42]`；独立监督在主执行器仍饥饿时以2.678924 ms锁存故障，后续STOPPED未覆盖它。统一等待本身仍有159.374813 ms深队列延迟，不能替代独立监督。软件探针使用私有DDS域、空MAVLink假链接，无仿真或执行端。早期v4错误地假设统一等待能保证50ms内发现深队列故障，该失败报告保留在服务器；v5没有改控制门限。
+
+私有live诊断复制改为按数值图类型复制，保留memo、别名、数组独立所有权及未知类型deepcopy协议。公共默认双副本行为不变。[真实诊断复制微基准](execution_v15/hold_v21_worker_profile_v1/copy_report.json)中位减少约0.8ms；这不是完整控制周期的改进保证。新增6项复制语义测试，ROS Python **53/53**；监督、生命周期与地面准备 **3+5+7**项通过。
+
+[CPU/频率对照](execution_v15/hold_v21_affinity_probe_v1/summary.json)保留三组各55条原记录的一次回放：生产mask、单核87、单核89的中位/最大engine分别为14.481/16.966、11.191/13.277、14.542/17.039 ms；更快的单核87组频率也更高，因此不能归因于单核绑定。回放仅一个线程，实际worker有11线程及Gazebo背景负载；资源协议未改变，未挑选最佳组作为实时上界。
+
+revision15 / v9任务已以当前源码重新取得 **344项回归、30/30矩阵、388/388历史记录**，零跳过，见[资格原日志](execution_v15/preparation_qualify_v4.log)及[15份原样报告清单](execution_v15/manifest.json)。独立参考预测器、两个native库、MPC参数、20ms输出、50ms指令寿命、25ms来源年龄及实际发送提交屏障均未改变。任务SHA为`7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286`，协议SHA为`3097556ae513a72a0ebe6f1578d5fc1b2110cc94dfe28775f04c4cd983fad3e4`。hold22已启动，当前尚无完整通过结论；通过独立全窗验收后才准入普通八字，快速八字继续后置。

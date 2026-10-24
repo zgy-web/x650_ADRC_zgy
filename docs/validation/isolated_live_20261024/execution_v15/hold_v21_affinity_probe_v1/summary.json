@@ -1,0 +1,337 @@
+{
+  "kind": "hold21_affinity_environment_comparison_v1",
+  "physical_flight": false,
+  "order": [
+    "production_mask",
+    "single87",
+    "single89"
+  ],
+  "repeats_per_mask": 1,
+  "production_parameters_changed": false,
+  "actual_worker": {
+    "startup_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_114955_9089/isolated_live/worker_startup.json",
+    "startup_sha256": "6117bdf1af87013697a9a8bdc3f530ea823630230ad359a25d955d78bbde480d",
+    "python": {
+      "executable": "/usr/bin/python3",
+      "version": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]"
+    },
+    "dependencies": {
+      "numpy": {
+        "version": "1.21.5",
+        "path": "/usr/lib/python3/dist-packages/numpy/__init__.py",
+        "sha256": "02e54b39a5825a5eb95c74639b22593a8af816212f9bb1fdcb78f17112a5d27f",
+        "bytes": 15899
+      },
+      "scipy": {
+        "version": "1.8.0",
+        "path": "/usr/lib/python3/dist-packages/scipy/__init__.py",
+        "sha256": "60ed47e9b610957b899d4b97a9760c4b9f7532fd67954897a322cb00aeb65122",
+        "bytes": 5745
+      }
+    },
+    "native_predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "bytes": 25112
+    },
+    "native_optimization": {
+      "path": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+      "sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+      "bytes": 331600
+    },
+    "affinity": {
+      "9779": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9780": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9781": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9782": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9783": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9784": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9785": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9786": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9787": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9788": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "9789": [
+        87,
+        89,
+        91,
+        97
+      ]
+    },
+    "thread_environment_provenance": "launcher _launch sets OPENBLAS_NUM_THREADS=OMP_NUM_THREADS=MKL_NUM_THREADS=1; runtime environment was not separately recorded and exited PID cannot be inspected"
+  },
+  "probes": [
+    {
+      "affinity": [
+        87,
+        89,
+        91,
+        97
+      ],
+      "thread_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "threadpools": null,
+      "thread_count": 1,
+      "native_optimization": {
+        "path": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+        "sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+        "abi": 1
+      },
+      "cgroup_before": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1957905112\nuser_usec 1738510595\nsystem_usec 219394516\nnr_periods 42988\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "cgroup_after": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1958752792\nuser_usec 1739327816\nsystem_usec 219424976\nnr_periods 42999\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "mask": "87_89_91_97",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v21_affinity_probe_v1/87_89_91_97/phase_report.json",
+      "sha256": "cd03dfb42b1f848ce10f9e61a2838fad851e28caf3e38057e1902c9726cb9286",
+      "cpu_topology": [
+        {
+          "processor": "87",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "26",
+          "cpu MHz": "2000.002"
+        },
+        {
+          "processor": "89",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "28",
+          "cpu MHz": "800.000"
+        },
+        {
+          "processor": "91",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "30",
+          "cpu MHz": "800.000"
+        },
+        {
+          "processor": "97",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "1",
+          "core id": "1",
+          "cpu MHz": "800.000"
+        }
+      ],
+      "all_status_zero": true,
+      "command_max_abs_error": 0.0,
+      "observed_cpus": [
+        87
+      ],
+      "start_end_migrations": 0,
+      "timing_ms": {
+        "median": 14.480569,
+        "p95": 16.631809,
+        "max": 16.966376
+      }
+    },
+    {
+      "affinity": [
+        87
+      ],
+      "thread_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "threadpools": null,
+      "thread_count": 1,
+      "native_optimization": {
+        "path": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+        "sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+        "abi": 1
+      },
+      "cgroup_before": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1960019518\nuser_usec 1740424644\nsystem_usec 219594874\nnr_periods 43012\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "cgroup_after": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1960682282\nuser_usec 1741087408\nsystem_usec 219594874\nnr_periods 43023\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "mask": "87",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v21_affinity_probe_v1/87/phase_report.json",
+      "sha256": "2f7bf0c13826ac81aaf3db74d2146c1eb9f3b2c86a789978dc8bae11b5c580e9",
+      "cpu_topology": [
+        {
+          "processor": "87",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "26",
+          "cpu MHz": "2583.017"
+        },
+        {
+          "processor": "89",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "28",
+          "cpu MHz": "800.000"
+        },
+        {
+          "processor": "91",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "30",
+          "cpu MHz": "2200.000"
+        },
+        {
+          "processor": "97",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "1",
+          "core id": "1",
+          "cpu MHz": "800.000"
+        }
+      ],
+      "all_status_zero": true,
+      "command_max_abs_error": 0.0,
+      "observed_cpus": [
+        87
+      ],
+      "start_end_migrations": 0,
+      "timing_ms": {
+        "median": 11.190839,
+        "p95": 12.211113,
+        "max": 13.277137
+      }
+    },
+    {
+      "affinity": [
+        89
+      ],
+      "thread_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "threadpools": null,
+      "thread_count": 1,
+      "native_optimization": {
+        "path": "/root/autodl-tmp/x650_native_optimization_build_v3/libx650_optimization.so",
+        "sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+        "abi": 1
+      },
+      "cgroup_before": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1962384062\nuser_usec 1742506477\nsystem_usec 219877584\nnr_periods 43038\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "cgroup_after": {
+        "cpu.max": "1200000 100000\n",
+        "cpu.stat": "usage_usec 1963228568\nuser_usec 1743312675\nsystem_usec 219915892\nnr_periods 43049\nnr_throttled 7\nthrottled_usec 27073884\n",
+        "cpuset.cpus.effective": "0-127\n"
+      },
+      "mask": "89",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v21_affinity_probe_v1/89/phase_report.json",
+      "sha256": "042906e81c51eb8dbe378bc250f17aade9df058c0e8fc3cec0f3299dba5c28ed",
+      "cpu_topology": [
+        {
+          "processor": "87",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "26",
+          "cpu MHz": "2100.000"
+        },
+        {
+          "processor": "89",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "28",
+          "cpu MHz": "1997.970"
+        },
+        {
+          "processor": "91",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "0",
+          "core id": "30",
+          "cpu MHz": "800.000"
+        },
+        {
+          "processor": "97",
+          "model name": "Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz",
+          "physical id": "1",
+          "core id": "1",
+          "cpu MHz": "800.000"
+        }
+      ],
+      "all_status_zero": true,
+      "command_max_abs_error": 0.0,
+      "observed_cpus": [
+        89
+      ],
+      "start_end_migrations": 0,
+      "timing_ms": {
+        "median": 14.542162,
+        "p95": 16.664221,
+        "max": 17.039157
+      }
+    }
+  ],
+  "limitations": [
+    "sequential rather than simultaneous CPU/frequency comparisons; cannot attribute observed rate difference solely to affinity",
+    "offline engine has one thread while actual rclpy worker had eleven threads at handoff",
+    "offline no Gazebo/PX4/ROS traffic background; observed source-context and solver work identical but execution environment differs",
+    "current scaling_cur_freq is read-only sampled sysfs information, not a per-call cycle counter or guaranteed CPU rate",
+    "cgroup throttling counts have no event timestamps; changes outside timed loops cannot be assigned to hold21"
+  ]
+}

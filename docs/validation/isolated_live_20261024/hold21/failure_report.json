@@ -1,0 +1,373 @@
+{
+  "kind": "hold21_failed_attempt_independent_review_v1",
+  "derived_analysis": true,
+  "complete": false,
+  "passed": false,
+  "eligible_for_normal_figure8": false,
+  "scope": "Failed partial hold: independently verified CDR, physical joint consumption, observer delay, runtime recovery and PX4 ULog recovery; no full-hold performance acceptance.",
+  "protocol_revision": 14,
+  "task_sha256": "9ef8c12c6a9591bdc80660710b0de25f8589defdf12b0362f9109444ff64cc4c",
+  "native_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+  "native_proof_sha256": "f07527f471e3a0c272ac5b916c73f52e9ac7be55732f11cb9731a61dbf3a26fb",
+  "task_start_sim_s": 40.908,
+  "requested_hold_s": 30.0,
+  "last_worker_task_time_s": 1.1159999999999997,
+  "reported_python_error": "RuntimeError('PX4 failsafe or unexpected offboard exit')",
+  "scenario_returncode": 1,
+  "launch_exit_code": 2,
+  "fault": {
+    "sequence": 3031,
+    "actual_monotonic_ns": 59599541425042337,
+    "source_sequence": 282,
+    "source_received_monotonic_ns": 59599541424393289,
+    "command_sequence": 54,
+    "command_issued_monotonic_ns": 59599541361724324,
+    "command_age_ns": 63318013,
+    "status": 3,
+    "reason": 1,
+    "output_valid": false
+  },
+  "worker": {
+    "count": 55,
+    "all_numerically_accepted": true,
+    "gate_accepted_count": 54,
+    "candidate55_not_forwarded_or_sent": true,
+    "engine_wall_ms": {
+      "minimum": 12.373555,
+      "p50": 14.39572,
+      "p95": 16.9879256,
+      "p99": 24.878513620000003,
+      "maximum": 26.923411
+    },
+    "actual_failure_phases": [
+      {
+        "sequence": 54,
+        "snapshot_to_callback_ms": 4.105565,
+        "callback_to_engine_return_wall_ms": 26.923411,
+        "whole_callback_wall_ms": 27.810362,
+        "whole_callback_thread_cpu_ms": 27.800822,
+        "proposal_publish_wall_ms": 0.09912,
+        "proposal_publish_thread_cpu_ms": 0.101615,
+        "proposal_compute_end_after_fault_ms": -32.306804,
+        "engine_return_after_fault_ms": -32.289037,
+        "qp_ms": 3.7514641880989075,
+        "allocator_timing": {
+          "inner_allocator_compute_ms": 20.0001522898674,
+          "inner_allocator_thread_cpu_ms": 20.240531999999867,
+          "outer_thread_cpu_ms": 20.74436699999982,
+          "gc_collection_count_before": [
+            222,
+            19,
+            2
+          ],
+          "gc_collection_count_after": [
+            223,
+            19,
+            2
+          ],
+          "gc_collection_count_delta": [
+            1,
+            0,
+            0
+          ],
+          "gc_policy_changed": false,
+          "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+          "outer_compute_ms": 20.753785967826843
+        },
+        "ingress_records": [
+          {
+            "kind": 2,
+            "sequence": 54,
+            "entry_ns": 59599541392887872,
+            "gate_end_ns": 59599541392888745,
+            "publish_end_ns": 59599541392902375,
+            "source_sequence": 274,
+            "source_issued_ns": 59599541390436478,
+            "source_received_ns": 59599541392861724,
+            "latest_control_s": 42.012,
+            "last_control_s": 41.984,
+            "awaiting_output_sequence": 0,
+            "next_admission_ns": 59599541385234254,
+            "last_admitted_sequence": 54,
+            "released_sequence": 0,
+            "blocked_flags": 0,
+            "forward": true
+          },
+          {
+            "kind": 3,
+            "sequence": 54,
+            "entry_ns": 59599541405281119,
+            "gate_end_ns": 0,
+            "publish_end_ns": 0,
+            "source_sequence": 277,
+            "source_issued_ns": 59599541401927774,
+            "source_received_ns": 59599541404428648,
+            "latest_control_s": 42.024,
+            "last_control_s": 41.984,
+            "awaiting_output_sequence": 54,
+            "next_admission_ns": 59599541385234254,
+            "last_admitted_sequence": 54,
+            "released_sequence": 0,
+            "blocked_flags": 0,
+            "forward": false
+          }
+        ],
+        "proposal_publish_end_to_ingress_entry_ms": 0.030093,
+        "gate_event_exists": true,
+        "normal_send_exists": true
+      },
+      {
+        "sequence": 55,
+        "snapshot_to_callback_ms": 3.84627,
+        "callback_to_engine_return_wall_ms": 23.136564,
+        "whole_callback_wall_ms": 24.0258,
+        "whole_callback_thread_cpu_ms": 24.016608,
+        "proposal_publish_wall_ms": 0.094914,
+        "proposal_publish_thread_cpu_ms": 0.097283,
+        "proposal_compute_end_after_fault_ms": 3.851055,
+        "engine_return_after_fault_ms": 3.868271,
+        "qp_ms": 0.5891025066375732,
+        "allocator_timing": {
+          "inner_allocator_compute_ms": 16.139954328536987,
+          "inner_allocator_thread_cpu_ms": 16.390458000000052,
+          "outer_thread_cpu_ms": 16.936623999999956,
+          "gc_collection_count_before": [
+            223,
+            19,
+            2
+          ],
+          "gc_collection_count_after": [
+            223,
+            19,
+            2
+          ],
+          "gc_collection_count_delta": [
+            0,
+            0,
+            0
+          ],
+          "gc_policy_changed": false,
+          "scope": "outer MPC before rejection-only evidence copies; last inner allocator call CPU time; process-wide GC collection counts",
+          "outer_compute_ms": 16.946732997894287
+        },
+        "ingress_records": [
+          {
+            "kind": 2,
+            "sequence": 55,
+            "entry_ns": 59599541429036853,
+            "gate_end_ns": 0,
+            "publish_end_ns": 0,
+            "source_sequence": 282,
+            "source_issued_ns": 59599541422002863,
+            "source_received_ns": 59599541424393289,
+            "latest_control_s": 42.044,
+            "last_control_s": 42.024,
+            "awaiting_output_sequence": 0,
+            "next_admission_ns": 59599541425281333,
+            "last_admitted_sequence": 55,
+            "released_sequence": 0,
+            "blocked_flags": 2,
+            "forward": false
+          }
+        ],
+        "proposal_publish_end_to_ingress_entry_ms": 0.026567,
+        "gate_event_exists": false,
+        "normal_send_exists": false
+      }
+    ],
+    "gc_generation_counts_after_live_start": {
+      "0": 4
+    },
+    "gc_max_us_after_live_start": 95.608,
+    "timing_scope": "26.923/23.137 ms are callback-entry to engine-return wall intervals; 27.801/24.017 ms CPU measurements cover the whole callback, not the identical interval. Offline replay/profile timing is not substituted for actual-run timing."
+  },
+  "observer": {
+    "source_evidence_rows": 3800,
+    "dropped": 0,
+    "first_feedback_evidence_sequence": 2974,
+    "last_feedback_evidence_sequence": 3519,
+    "consecutive_feedback_without_any_ros_observer_record": 546,
+    "last_feedback_sim_s": 43.1,
+    "last_feedback_sink_after_fault_ms": 1055.55088,
+    "first_post_feedback_observer_sink_after_fault_ms": 1082.962259,
+    "first_fault_evidence_sequence": 3743,
+    "first_fault_sink_monotonic_ns": 59599542583158791,
+    "fault_to_sink_ms": 1158.116454,
+    "sink_semantics": "Recorder received_ns is sampled after recvmsg and unpickle, not DDS arrival or callback entry. Exact callback-entry latency was not recorded.",
+    "active_pump_count": 669,
+    "extra_callbacks_each_active_pump": 1,
+    "source_sender_offer_max_ms": 0.112494,
+    "mechanism": "Archived VehicleAPI uses spin_once(0.02), active extra drain uses spin_once(0) with 250us budget. Installed rclpy resets its ready-callback iterator when kwargs change. All late-added ROS observation callbacks were starved throughout the recorded feedback block and were drained during recovery. This is more specific than queue depth alone.",
+    "remediation_scope": "Use consistent executor timeout arguments and separately prioritize a sticky, latest-value fault supervisor; retain complete deep-queue CDR evidence. Prove notification latency under realistic high-rate callbacks before another stage claim."
+  },
+  "consumption": {
+    "all_send_and_receipt_identities_verified": true,
+    "all_raw_counter_velocity_and_timestamp_matches": true,
+    "all_sends": 56,
+    "normal_sends": 55,
+    "repeated_normal_sends": 1,
+    "all_receipts": 56,
+    "individual_joint_commands": 112,
+    "per_joint_counter_range": [
+      1181,
+      1236
+    ],
+    "actual_delivery_lag_sim_s": {
+      "minimum": 0.003999999999997783,
+      "p50": 0.0040000000000048885,
+      "p95": 0.0058000000000038455,
+      "p99": 0.011560000000000702,
+      "maximum": 0.012000000000000455
+    },
+    "normal_output_after_fault": false,
+    "normal_pva_fields_match_original_proposal": true,
+    "normal_output_waited_for_previous_receipt": true,
+    "no_overlapping_legacy_output": true,
+    "legacy_publication_records_checked": 3266
+  },
+  "recovery": {
+    "zero_send": {
+      "session_id": 1704133274,
+      "epoch": 1,
+      "command_sequence": 54,
+      "dispatch_sequence": 3031,
+      "sent_monotonic_ns": 59599541425188903,
+      "sim_s": 42.044,
+      "repeated": false,
+      "stop_zero": true,
+      "expected_counter": [
+        1236,
+        1236
+      ],
+      "joint_velocity": [
+        0.0,
+        0.0
+      ],
+      "coordinate_frame": 0,
+      "type_mask": 0,
+      "position_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_ned": 0.0
+    },
+    "zero_receipt": {
+      "session_id": 1704133274,
+      "epoch": 1,
+      "command_sequence": 54,
+      "dispatch_sequence": 3031,
+      "observed_monotonic_ns": 59599541432188607,
+      "observation_sim_s": 42.052,
+      "joint_consumed": true,
+      "pva_send_returned": false,
+      "failed": false,
+      "consumed_counter": [
+        1236,
+        1236
+      ],
+      "consumed_sim_s": [
+        42.048,
+        42.048
+      ]
+    },
+    "zero_send_after_fault_ms": 0.146566,
+    "zero_consumption_receipt_after_fault_ms": 7.14627,
+    "release": {
+      "zero_consumed": true,
+      "writer_exited": true,
+      "wall_monotonic_ns": 59599542746938964
+    },
+    "landed_and_disarmed": true,
+    "final_flight_sample": {
+      "sim_time_s": "51.576",
+      "phase": "landed",
+      "world_x_m": "-0.0032520069023957007",
+      "world_y_m": "0.0012654501729445356",
+      "world_z_m": "0.36970512458692856",
+      "world_qx": "3.5237709964724235e-08",
+      "world_qy": "-1.7173698196616142e-07",
+      "world_qz": "-0.014171059038192784",
+      "world_qw": "0.9998995855013169",
+      "q1_rad": "2.426143806130995e-07",
+      "q2_rad": "1.1803164670582254e-08",
+      "q1_velocity_rad_s": "-2.034351473861205e-10",
+      "q2_velocity_rad_s": "2.497490197598818e-10",
+      "joint_stamp_s": "51.572",
+      "joint_age_s": "0.003999999999997783",
+      "frame_id": "world",
+      "child_frame_id": "amsim_urdf_x650_2link_v2_flight/model_frame",
+      "armed": "0",
+      "landed": "1",
+      "failsafe": "0",
+      "nav_state": "14",
+      "target_world_x_m": "6.279181337979136e-07",
+      "target_world_y_m": "3.8140413714229476e-10",
+      "target_world_z_m": "2.3697058951589294",
+      "tip_target_world_x_m": "-0.005710337201393804",
+      "tip_target_world_y_m": "0.040700981740924076",
+      "tip_target_world_z_m": "2.039695282562744"
+    },
+    "ulog_recovery_independently_verified": true,
+    "ulog_recovery": {
+      "armed_seen": true,
+      "airborne_seen": true,
+      "land_command_present": true,
+      "first_landed_report_after_land_command": {
+        "timestamp": 47576000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "first_not_armed_report_after_land_command": {
+        "timestamp": 49592000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_status": {
+        "timestamp": 50096000,
+        "arming_state": 1,
+        "nav_state": 14,
+        "failsafe": 0
+      },
+      "final_land_detector": {
+        "timestamp": 49648000,
+        "landed": 1,
+        "ground_contact": 1,
+        "maybe_landed": 1
+      },
+      "landed_and_not_armed_at_log_end": true
+    },
+    "restored_typed_parameter_count": 56,
+    "synchronous_parameter_save_returncode": 0,
+    "runtime_closed": true,
+    "owned_process_returncodes": {
+      "recorder": 0,
+      "source_recorder": 0,
+      "worker": 0,
+      "ingress": 0,
+      "dispatcher": 0,
+      "consumption": 0
+    },
+    "pending_zero_all_hardware_fault_scenarios_qualified": false
+  },
+  "provenance": {
+    "all_archive_entry_hashes_match": true,
+    "archived_launch_source_files_verified": 175,
+    "sources_unchanged": true,
+    "runtime_binaries_unchanged": true,
+    "raw_cdr_content_verified": true,
+    "ulog_original_sha256": "cf803b0288caba019f12dbd2196b8f49698ce9903f715b7612a51ed0f0735580"
+  }
+}

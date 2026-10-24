@@ -33,6 +33,7 @@ class GroundPreparation(unittest.TestCase):
     def fixture(self):
         ext=LiveExtension()
         ext.active=ext.started=False;ext.failure=None;ext.session=12;ext.task_sha='a'*64
+        ext.supervisor=None
         ext.latest={'dispatch':NS(status=0,output_valid=False)};ext.message_counts={'dispatch':3}
         ext.out=Path('/unused');ext.constructed=[]
         ext.allocator_fixture=NS(step_count=0,step=Mock(side_effect=AssertionError('no ground solve')),

@@ -1,0 +1,77 @@
+{
+  "kind": "x650_isolated_live_protocol_v1",
+  "simulation_only": true,
+  "execution_revision": 15,
+  "worker_startup_gc": "explicit full collection after construction before READY and parameter transaction; automatic GC remains enabled with unchanged thresholds during control",
+  "cpu_roles": {
+    "source": [
+      17
+    ],
+    "worker": [
+      87,
+      89,
+      91,
+      97
+    ],
+    "dispatcher": [
+      93
+    ],
+    "ingress": [
+      94
+    ],
+    "consumption": [
+      95
+    ]
+  },
+  "cpu_scope": "owned simulation processes only; SMT siblings excluded from owned background workloads; ordinary scheduler; host not reserved; Orin requires its own measurement",
+  "source_evidence": "separate nonblocking recorder; no retained message/feedback graphs; natural GC unchanged",
+  "model_control_cadence_s": 0.02,
+  "model_cadence_clock": "first admission waits 20 ms actual simulation time; subsequent admission uses a one-shot actual-send release and a strictly newer real source; model dt is always the measured source difference, not forced to 20 ms",
+  "transport_deadline_clock": "same-host monotonic wall clock; unchanged thresholds",
+  "next_solve_commit": "one next solve after matching actual writer send; retain send barrier, single pending candidate and original source times; no additional independent 20 ms physical minimum after the first solve",
+  "next_output_commit": "only_after_both_previous_joint_commands_consumed",
+  "consumption_supervision": "independent_cpp_actual_complete_physics_rows",
+  "frozen_hold_task_sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286",
+  "frozen_numerical_library_sha256": "b9cbdf78c76e92f973800e07c6219611759fcb4471a1a39192c5cbf30f5e2e48",
+  "order": [
+    "transport_and_consumption_contract",
+    "complete_tip_hold",
+    "normal_figure_eight",
+    "fast_later"
+  ],
+  "tip_hold_duration_s": 30.0,
+  "output_period_s": 0.02,
+  "command_age_max_s": 0.05,
+  "control_interval_max_s": 0.05,
+  "source_wall_age_max_s": 0.025,
+  "output_interval_max_s": 0.04,
+  "tip_rms_max_m": 0.05,
+  "tip_peak_max_m": 0.1,
+  "tilt_max_deg": 8.0,
+  "numerical_replay_max_absolute_difference": 1e-07,
+  "requirements": [
+    "same_cpp_library_and_mpc_parameters",
+    "actual_joint_consumption_all_sent_counters",
+    "px4_wire_encoding_and_full_window_ulog",
+    "no_overlapping_output_owners",
+    "zero_consumed_before_recovery",
+    "landed_disarmed_and_parameters_restored",
+    "complete_independent_native_tip_record",
+    "no_diagnostic_loss",
+    "no_gate_or_output_fault"
+  ],
+  "incomplete_run_policy": "retain raw evidence, no certificate, do not advance to next stage",
+  "claims_excluded": [
+    "hardware_24v_validation",
+    "hard_realtime",
+    "full_body_torque_nmpc"
+  ],
+  "numerical_convergence": "QP aggregate plus per-original-row 1e-10 numerical target; original 2e-7 external feasibility, weights and physical constraints unchanged",
+  "ground_initialization": "construct cached lifecycle allocator and start idle transport on disarmed ground; actual LiveStart binds live reference/history after normal prestream",
+  "transport_lifecycle": "READY has no actuator output or active-output deadline; actual LiveStart starts consumption freshness supervision with backlog resynchronization; first accepted candidate starts dispatcher output deadlines; active faults remain latched and original thresholds unchanged",
+  "native_preparation": "native-only batch packet/sensitivity/query/ABI preparation and event packing; independent reference predictor and physical libraries restored byte-exact; same parameters/equations/quantization; fresh 344 regression/30 matrix/388 recorded-call qualification",
+  "live_diagnostic_snapshot": "one owned numeric-graph clone per live result; same deepcopy ownership and memo semantics; public default retains independent deepcopy results; binary capture before next step",
+  "execution_timing_evidence": "bounded in-memory stage timestamps written after shutdown; distinguish engine return, proposal publication, gate entry and diagnostic serialization; original DDS schemas and timestamps retained",
+  "source_callback_dispatch": "active main executor always nonblocking with unchanged wait arguments; separate depth-one fault executor polled before main work; full-depth original evidence retained",
+  "fault_supervision": "independent ROS node/executor; matching session and epoch; first fault latched with local callback observation time; complete evidence remains separate"
+}

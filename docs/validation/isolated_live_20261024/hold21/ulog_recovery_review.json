@@ -1,0 +1,316 @@
+{
+  "kind": "hold21_ulog_recovery_extraction_v1",
+  "derived_analysis": true,
+  "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_isolated_live_v1_20261024_114955_9089/px4.ulg",
+  "source_bytes": 13521181,
+  "source_sha256": "cf803b0288caba019f12dbd2196b8f49698ce9903f715b7612a51ed0f0735580",
+  "timestamp_semantics": "Original PX4 ULog microseconds; no fitted conversion to host monotonic or simulation time.",
+  "nonfinite_semantics": "Nonfinite optional command parameters are preserved as NaN/+Inf/-Inf strings.",
+  "start_timestamp_us": 3856000,
+  "last_timestamp_us": 50588000,
+  "vehicle_status_rows": 106,
+  "vehicle_status_changes": [
+    {
+      "timestamp": 3704000,
+      "arming_state": 1,
+      "nav_state": 4,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 20936000,
+      "arming_state": 2,
+      "nav_state": 4,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 20960000,
+      "arming_state": 2,
+      "nav_state": 17,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 26468000,
+      "arming_state": 2,
+      "nav_state": 4,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 37856000,
+      "arming_state": 2,
+      "nav_state": 14,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 43052000,
+      "arming_state": 2,
+      "nav_state": 5,
+      "failsafe": 1
+    },
+    {
+      "timestamp": 44504000,
+      "arming_state": 2,
+      "nav_state": 18,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 49592000,
+      "arming_state": 1,
+      "nav_state": 14,
+      "failsafe": 0
+    },
+    {
+      "timestamp": 50096000,
+      "arming_state": 1,
+      "nav_state": 14,
+      "failsafe": 0
+    }
+  ],
+  "land_detector_rows": 56,
+  "land_detector_changes": [
+    {
+      "timestamp": 3716000,
+      "landed": 1,
+      "ground_contact": 1,
+      "maybe_landed": 1
+    },
+    {
+      "timestamp": 22584000,
+      "landed": 0,
+      "ground_contact": 1,
+      "maybe_landed": 0
+    },
+    {
+      "timestamp": 47576000,
+      "landed": 1,
+      "ground_contact": 1,
+      "maybe_landed": 1
+    },
+    {
+      "timestamp": 49648000,
+      "landed": 1,
+      "ground_contact": 1,
+      "maybe_landed": 1
+    }
+  ],
+  "vehicle_commands": [
+    {
+      "timestamp": 3700000,
+      "command": 211,
+      "param1": -1.0909204300230836e-19,
+      "param2": 1.0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 20932000,
+      "command": 400,
+      "param1": 1.0,
+      "param2": 0.0,
+      "from_external": 1
+    },
+    {
+      "timestamp": 20944000,
+      "command": 22,
+      "param1": 0.0,
+      "param2": 0.0,
+      "from_external": 1
+    },
+    {
+      "timestamp": 37840000,
+      "command": 176,
+      "param1": 1.0,
+      "param2": 6.0,
+      "from_external": 1
+    },
+    {
+      "timestamp": 43304000,
+      "command": 1001,
+      "param1": 1.0,
+      "param2": 1.0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 43304000,
+      "command": 1000,
+      "param1": "NaN",
+      "param2": "NaN",
+      "from_external": 0
+    },
+    {
+      "timestamp": 43304000,
+      "command": 1001,
+      "param1": -3.0,
+      "param2": -3.0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 44480000,
+      "command": 21,
+      "param1": 0.0,
+      "param2": 0.0,
+      "from_external": 1
+    },
+    {
+      "timestamp": 44760000,
+      "command": 1001,
+      "param1": 1.0,
+      "param2": 1.0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 44760000,
+      "command": 1000,
+      "param1": "NaN",
+      "param2": "NaN",
+      "from_external": 0
+    },
+    {
+      "timestamp": 44760000,
+      "command": 1001,
+      "param1": -3.0,
+      "param2": -3.0,
+      "from_external": 0
+    }
+  ],
+  "vehicle_command_acknowledgments": [
+    {
+      "timestamp": 3716000,
+      "command": 211,
+      "result": 5,
+      "from_external": 0
+    },
+    {
+      "timestamp": 4800000,
+      "command": 211,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 18900000,
+      "command": 511,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 20924000,
+      "command": 511,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 20936000,
+      "command": 400,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 20948000,
+      "command": 22,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 37840000,
+      "command": 176,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 37844000,
+      "command": 176,
+      "result": 0,
+      "from_external": 0
+    },
+    {
+      "timestamp": 44492000,
+      "command": 21,
+      "result": 0,
+      "from_external": 0
+    }
+  ],
+  "offboard_control_mode": {
+    "count": 54,
+    "first": {
+      "timestamp": 36888000,
+      "position": 1,
+      "velocity": 1,
+      "acceleration": 1,
+      "attitude": 0,
+      "body_rate": 0
+    },
+    "last": {
+      "timestamp": 42024000,
+      "position": 1,
+      "velocity": 1,
+      "acceleration": 1,
+      "attitude": 0,
+      "body_rate": 0
+    },
+    "changes": [
+      {
+        "timestamp": 36888000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      },
+      {
+        "timestamp": 42024000,
+        "position": 1,
+        "velocity": 1,
+        "acceleration": 1,
+        "attitude": 0,
+        "body_rate": 0
+      }
+    ]
+  },
+  "offboard_signal_lost_changes": [
+    {
+      "timestamp": 3728000,
+      "offboard_control_signal_lost": 1
+    },
+    {
+      "timestamp": 36596000,
+      "offboard_control_signal_lost": 0
+    },
+    {
+      "timestamp": 43040000,
+      "offboard_control_signal_lost": 1
+    },
+    {
+      "timestamp": 50132000,
+      "offboard_control_signal_lost": 1
+    }
+  ],
+  "recovery": {
+    "armed_seen": true,
+    "airborne_seen": true,
+    "land_command_present": true,
+    "first_landed_report_after_land_command": {
+      "timestamp": 47576000,
+      "landed": 1,
+      "ground_contact": 1,
+      "maybe_landed": 1
+    },
+    "first_not_armed_report_after_land_command": {
+      "timestamp": 49592000,
+      "arming_state": 1,
+      "nav_state": 14,
+      "failsafe": 0
+    },
+    "final_status": {
+      "timestamp": 50096000,
+      "arming_state": 1,
+      "nav_state": 14,
+      "failsafe": 0
+    },
+    "final_land_detector": {
+      "timestamp": 49648000,
+      "landed": 1,
+      "ground_contact": 1,
+      "maybe_landed": 1
+    },
+    "landed_and_not_armed_at_log_end": true
+  },
+  "scope": "Recovery and offboard-state evidence only; not full-window controller performance or command-by-command PVA acceptance."
+}

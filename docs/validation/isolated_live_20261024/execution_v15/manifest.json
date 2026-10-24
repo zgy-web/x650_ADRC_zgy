@@ -1,0 +1,95 @@
+{
+  "files": [
+    {
+      "path": "deployment_v28.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/deployment_v28.json",
+      "bytes": 2499,
+      "sha256": "a7a1e628908648c4bda88b3bbb1e8799e8fc5e508f3f9ce39f9594572bfb9ea2"
+    },
+    {
+      "path": "preparation_qualify_v4.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_qualify_v4.log",
+      "bytes": 10248,
+      "sha256": "f34962a07c64f5b30393fcc4f24b165d5f07a3fb3ea9b70cc51a989903524ab5"
+    },
+    {
+      "path": "quiet_task_cpp_v9.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/quiet_task_cpp_v9.json",
+      "bytes": 6452,
+      "sha256": "7da0db083acca05a8be7b3872db6e096fc9435653eef698a15700a6d8e99a286"
+    },
+    {
+      "path": "execution_protocol_v15.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/execution_protocol_v15.json",
+      "bytes": 4513,
+      "sha256": "3097556ae513a72a0ebe6f1578d5fc1b2110cc94dfe28775f04c4cd983fad3e4"
+    },
+    {
+      "path": "hold_v22_preflight.log",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v22_preflight.log",
+      "bytes": 99,
+      "sha256": "a138ef7f9a2b9703943688635c00521730f028ffecb7111d79e13dbaead449f9"
+    },
+    {
+      "path": "prepare_hold_v22_status.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/prepare_hold_v22_status.json",
+      "bytes": 237,
+      "sha256": "5dbe52f9cc16677058c51b00ee59fc99e66fd157460d99578ea64fcbefbe8333"
+    },
+    {
+      "path": "ros_callback_fairness_v5/report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/ros_callback_fairness_v5/report.json",
+      "bytes": 448592,
+      "sha256": "c0f1c94f3a44f786b3deef1789c852dd4e984160e9a16b26ab614683ee569ac9"
+    },
+    {
+      "path": "preparation_replay_v4/replay_report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_replay_v4/replay_report.json",
+      "bytes": 451328,
+      "sha256": "0b4818cefc2c0900065e18ac9de3b33f71a42281573f3cf86cb9d5a8cd0cc153"
+    },
+    {
+      "path": "preparation_software_v4/native_tests.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/native_tests.json",
+      "bytes": 448,
+      "sha256": "8826b1254291fa4157b778639b20c37d516bc6189d3cc65d8b59b44b29f42b7b"
+    },
+    {
+      "path": "preparation_software_v4/package_report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/package_report.json",
+      "bytes": 33915,
+      "sha256": "373334aed42f0ff0062bb2492ddb3b845018adc8d920b9bfd536de26cc4a3430"
+    },
+    {
+      "path": "preparation_software_v4/matrix/matrix_report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/matrix/matrix_report.json",
+      "bytes": 43216,
+      "sha256": "44989b565a563fa064a2bf4aa15bf497476d01f8d42d064eef7505b0c02b81fd"
+    },
+    {
+      "path": "preparation_software_v4/native_acceptance.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/native_acceptance.json",
+      "bytes": 15653,
+      "sha256": "445f44a2218bf6b058c4c9834217ecc63f40f305c592344db1c34757af377b3a"
+    },
+    {
+      "path": "preparation_software_v4/software_acceptance.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/software_acceptance.json",
+      "bytes": 17481,
+      "sha256": "3901515091a6ba477fe4b37bee4bf084ada8274558cebf05affaf4715ee4fdff"
+    },
+    {
+      "path": "hold_v21_worker_profile_v1/copy_report.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v21_worker_profile_v1/copy_report.json",
+      "bytes": 1228,
+      "sha256": "73e8d3928bcdb5231030bc94fa9c4f169e6cdee1dd47ad6e3e2d05b15390b91b"
+    },
+    {
+      "path": "hold_v21_affinity_probe_v1/summary.json",
+      "source": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/hold_v21_affinity_probe_v1/summary.json",
+      "bytes": 10447,
+      "sha256": "8f9cee71f906b24d45a29795cf15680723aaefa4930a1ac4127cc927560ec766"
+    }
+  ],
+  "scope": "original software and preparation reports; no full flight certificate"
+}

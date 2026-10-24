@@ -25,8 +25,8 @@ class VehicleAPI:
         self.global_time = 0.0
         self.heartbeat_time = 0.0
 
-    def _pump(self):
-        self.node.spin_once(timeout_sec=0.02)
+    def _pump(self, ros_timeout_s=0.02):
+        self.node.spin_once(timeout_sec=ros_timeout_s)
         now = time.monotonic()
 
         for _ in range(500):

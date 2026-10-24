@@ -35,9 +35,12 @@ class LiveExtension(Ts20Extension):
             if self.active:self._release(loop)
             return loop.pump()
         begin=time.monotonic_ns()
+        self._check_supervision()
         # Keep the original MAVLink parser/heartbeat, then a time-bounded ROS
         # drain instead of completing 32 callbacks before every source sample.
-        self.loop_timing.original['original_pump']()
+        # Mixing .02 and 0 on this executor repeatedly resets rclpy's ready
+        # callback iterator; late-created evidence subscriptions can starve.
+        self.loop_timing.original['original_pump'](ros_timeout_s=0.)
         until=time.monotonic_ns()+250_000
         count=0
         while count<32 and time.monotonic_ns()<until:
@@ -82,6 +85,7 @@ class LiveExtension(Ts20Extension):
         self.sources=[]
         self.latest={};self.message_counts={};self.evidence_sequence=0
         self.source_sender=None
+        self.supervisor=None
         self.pump_times=[]
         self.failure=None;self.last_source=-1.;self.source_sequence=0
         init={'schema_version':1,'synthetic_software_fixture_only':True,'simulation_live':True,
@@ -125,6 +129,8 @@ class LiveExtension(Ts20Extension):
         super().on_loop_ready(ctx,loop,meta,out)
         from rclpy.qos import QoSProfile, ReliabilityPolicy
         msg=self.msg
+        from simulations.x650_isolated_live_v1.supervision import FaultSupervisor
+        self.supervisor=FaultSupervisor(ctx.node.context,msg,self.session,self.epoch)
         self.source_pub=ctx.node.create_publisher(msg.ControlSnapshot,"/flyarm/isolated/v1/source",QoSProfile(depth=1,reliability=ReliabilityPolicy.BEST_EFFORT))
         self.start_pub=ctx.node.create_publisher(msg.LiveStart,"/flyarm/isolated/v1/live_start",1)
         self.stop_pub=ctx.node.create_publisher(msg.RuntimeStop,"/flyarm/isolated/v1/stop",1)
@@ -162,6 +168,7 @@ class LiveExtension(Ts20Extension):
                 and self.source_pub.get_subscription_count()>=1 and self.message_counts.get('dispatch',0)>2)
 
     def _assert_waiting_no_output(self):
+        self._check_supervision()
         if self.started or self.active or self.message_counts.get('sends',0):
             raise RuntimeError('Isolated actuator output occurred before actual LiveStart')
         tick=self.latest.get('dispatch')
@@ -314,6 +321,7 @@ class LiveExtension(Ts20Extension):
             self._release(loop)
             return False
         self._alive()
+        self._check_supervision()
         if self.failure:raise RuntimeError(self.failure)
         tick,event=self.latest.get('dispatch'),self.latest.get('events')
         if tick is not None and tick.status==3:raise RuntimeError('C++ output latched fault reason '+str(tick.reason))
@@ -352,6 +360,18 @@ class LiveExtension(Ts20Extension):
         self.last_source=now
         return True
 
+    def _check_supervision(self):
+        if self.supervisor is not None:
+            error=self.supervisor.poll()
+            if error:
+                if self.failure is None:self.failure=error
+                raise RuntimeError(error)
+
+    def _close_supervision(self):
+        if self.supervisor is not None:
+            self.supervisor.close()
+            write(self.out/'fault_supervision.json',self.supervisor.latch.report())
+
     def _release(self,loop):
         if not self.active:return
         stop=self.msg.RuntimeStop();stop.session_id=self.session;stop.epoch=1
@@ -385,6 +405,7 @@ class LiveExtension(Ts20Extension):
 
     def finalize(self,meta,stage,out):
         if self.active:self._release(self.loop)
+        self._close_supervision()
         for name in ('ingress','worker','dispatcher','consumption','recorder'):self._stop_process(name)
         if self.source_sender is not None:
             self.source_sender.close(self.out/'source_sender.json');self.source_sender=None
@@ -415,6 +436,8 @@ class LiveExtension(Ts20Extension):
         for name in ('dispatcher','consumption','ingress','worker','recorder','source_recorder'):self._stop_process(name)
         for f in self.logs:
             if not f.closed:f.close()
+        # A report-write failure must not prevent stopping owned processes.
+        self._close_supervision()
 
 
 def scenario():

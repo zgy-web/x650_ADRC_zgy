@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "tests": 344,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "all original package/interface/auditor/shared-loop groups plus native negative/gate tests",
+  "report": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/isolated_live_20261024/preparation_software_v4/package_report.json",
+    "sha256": "373334aed42f0ff0062bb2492ddb3b845018adc8d920b9bfd536de26cc4a3430",
+    "bytes": 33915
+  }
+}

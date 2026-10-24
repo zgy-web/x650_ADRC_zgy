@@ -1,0 +1,55 @@
+{
+  "kind": "hold21_owned_diagnostic_copy_probe_v1",
+  "physical_flight": false,
+  "production_sources_changed": false,
+  "affinity": [
+    87,
+    89,
+    91,
+    97
+  ],
+  "rows": [
+    {
+      "sequence": 54,
+      "copy_pickle_bytes_identical": true,
+      "times": {
+        "deepcopy": {
+          "median_cpu_ms": 1.4955295,
+          "p95_cpu_ms": 1.509208,
+          "max_cpu_ms": 1.519033
+        },
+        "typed_copy": {
+          "median_cpu_ms": 0.703306,
+          "p95_cpu_ms": 0.712752,
+          "max_cpu_ms": 0.727519
+        },
+        "pickle_clone": {
+          "median_cpu_ms": 0.4345075,
+          "p95_cpu_ms": 0.458369,
+          "max_cpu_ms": 0.562948
+        }
+      }
+    },
+    {
+      "sequence": 55,
+      "copy_pickle_bytes_identical": true,
+      "times": {
+        "deepcopy": {
+          "median_cpu_ms": 1.526137,
+          "p95_cpu_ms": 1.544293,
+          "max_cpu_ms": 1.606385
+        },
+        "typed_copy": {
+          "median_cpu_ms": 0.72277,
+          "p95_cpu_ms": 0.72957,
+          "max_cpu_ms": 0.744467
+        },
+        "pickle_clone": {
+          "median_cpu_ms": 0.4365945,
+          "p95_cpu_ms": 0.466361,
+          "max_cpu_ms": 0.539531
+        }
+      }
+    }
+  ]
+}

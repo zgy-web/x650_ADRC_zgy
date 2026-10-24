@@ -106,6 +106,18 @@ def check_preflight_gc(live,start):
                                           for g in final['gc_events'])}
 
 
+def check_fault_supervision(live,start):
+    record=read(live/'fault_supervision.json')
+    require(record.get('kind')=='isolated_fault_supervision_v1'
+            and all(record.get(k)==start[k] for k in ('session_id','epoch')),
+            'Fault supervisor identity differs')
+    require(record.get('first_fault') is None,'Independent supervisor observed a latched fault')
+    require(record['counts']['dispatch']>0 and record['counts']['events']>0
+            and record['counts']['ignored_identity']==0,'Fault supervisor was not connected to this run')
+    return {'verified':True,'counts':record['counts'],'first_fault':None,
+            'scope':'latest-value supervision; complete evidence is reconciled independently'}
+
+
 def check_preflight_transport(live,meta,start):
     record=read(live/'preflight_transport.json')
     require(record==meta.get('isolated_preflight_transport'),'Ground initialization evidence differs')
@@ -316,6 +328,7 @@ def audit(launch,folder,out):
         start=read(live/'live_start.json');window=[start['origin_s'],start['origin_s']+cfg['duration_s']]
         report['startup_gc']=check_preflight_gc(live,start)
         report['ground_initialization']=check_preflight_transport(live,meta,start)
+        report['fault_supervision']=check_fault_supervision(live,start)
         require(abs(meta['task_end_sim_s']-window[1])<=.05,'Incomplete declared hold')
         report.update(stage='tip_hold',window_sim_s=window)
         report['recording']=reconcile_recording(live);require(report['recording']['complete'],'Diagnostic loss')
