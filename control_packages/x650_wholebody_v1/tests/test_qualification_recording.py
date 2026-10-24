@@ -1,11 +1,13 @@
 """No-library tests for bounded observation and streamed full evidence."""
 import gc
+import ast
 from copy import deepcopy
 import hashlib
 import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 from unittest.mock import patch
 import weakref
@@ -16,7 +18,101 @@ SPEC = importlib.util.spec_from_file_location('qualification_recording_under_tes
 recording = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(recording)
 
 
+class FakeCollector:
+    def __init__(self, enabled=True, change_policy=False):
+        self.enabled=enabled;self.change_policy=change_policy;self.calls=[];self.garbage=[]
+    def isenabled(self): return self.enabled
+    def get_count(self): return (3,2,1) if not self.calls else (0,0,0)
+    def get_threshold(self): return (701,10,10) if self.calls and self.change_policy else (700,10,10)
+    def get_stats(self): return [{'collections':len(self.calls),'collected':4,'uncollectable':0}]*3
+    def get_freeze_count(self): return 0
+    def collect(self,generation): self.calls.append(generation);return 4
+
+
+def preparation():
+    return dict(fixture_index=0,fixture={'amplitude':.005},actions=['constructor','promote'],
+                controller_steps_before=0,controller_steps_after=0,discarded_before_collection=True)
+
+
 class QualificationRecordingTests(unittest.TestCase):
+    def test_startup_collects_once_preserves_policy_and_cannot_repeat(self):
+        with tempfile.TemporaryDirectory() as output:
+            fake=FakeCollector();clock=iter([10,25])
+            result=recording.collect_startup_garbage(output,preparation(),collector=fake,clock_ns=lambda:next(clock))
+            self.assertEqual(fake.calls,[2]);self.assertEqual(result['duration_ns'],15)
+            self.assertEqual(result['collected'],4);self.assertTrue(result['gc_policy_unchanged'])
+            self.assertEqual(recording.verified_json(result['artifact'],output),{k:v for k,v in result.items() if k!='artifact'})
+            with self.assertRaises(FileExistsError):recording.collect_startup_garbage(output,preparation(),collector=fake)
+            self.assertEqual(fake.calls,[2])
+
+    def test_startup_disabled_or_changed_policy_fails_closed(self):
+        for fake,expected_calls in ((FakeCollector(False),[]),(FakeCollector(change_policy=True),[2])):
+            with self.subTest(enabled=fake.enabled),tempfile.TemporaryDirectory() as output:
+                with self.assertRaises(RuntimeError):recording.collect_startup_garbage(output,preparation(),collector=fake)
+                self.assertEqual(fake.calls,expected_calls)
+        with tempfile.TemporaryDirectory() as output:
+            invalid=preparation();invalid['controller_steps_after']=1;fake=FakeCollector()
+            with self.assertRaises(ValueError):recording.collect_startup_garbage(output,invalid,collector=fake)
+            self.assertEqual(fake.calls,[])
+
+    def test_matrix_preparation_has_no_steps_and_releases_objects_before_collection(self):
+        sys.path.insert(0,str(PATH.parent))
+        import validate_x650_native_numerics as validator
+        calls=[];refs=[]
+        class Controller:
+            step_count=0
+            def step(self,*args): raise AssertionError('Startup must not step')
+        def build(spec):
+            calls.append('construct');c=Controller();refs.append(weakref.ref(c));return c,object(),object(),object()
+        def promote(c,native): calls.append('promote')
+        def collect(output,entry):
+            calls.append('collect');self.assertTrue(all(ref() is None for ref in refs))
+            self.assertEqual(entry['controller_steps_before'],0);self.assertEqual(entry['controller_steps_after'],0)
+            return entry
+        with patch.object(validator,'promote',promote),patch.object(validator,'collect_startup_garbage',collect):
+            result=validator.prepare_matrix_startup(build,{'mode':'stuck'},object(),Path('unused'))
+        self.assertEqual(calls,['construct','promote','collect']);self.assertEqual(result['fixture'],{'mode':'stuck'})
+        with patch.object(validator,'collect_startup_garbage') as collector:
+            with self.assertRaises(RuntimeError):
+                validator.prepare_matrix_startup(lambda spec:(_ for _ in ()).throw(RuntimeError('construction failed')),{},None,None)
+            collector.assert_not_called()
+
+    def test_matrix_main_places_single_startup_before_natural_trace_and_outside_loop(self):
+        tree=ast.parse((PATH.parent/'validate_x650_native_numerics.py').read_text())
+        main=next(node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='main')
+        calls=[node for node in ast.walk(main) if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='prepare_matrix_startup']
+        self.assertEqual(len(calls),1)
+        trace=next(node for node in ast.walk(main) if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='NaturalGcTrace')
+        self.assertLess(calls[0].lineno,trace.lineno)
+        for loop in (node for node in ast.walk(main) if isinstance(node,(ast.For,ast.While))):
+            self.assertNotIn(calls[0],list(ast.walk(loop)))
+
+    def test_startup_artifact_and_trace_window_are_bound(self):
+        with tempfile.TemporaryDirectory() as output:
+            startup=recording.collect_startup_garbage(output,preparation(),collector=FakeCollector())
+            report=self.fixture(output)
+            report.update(startup_gc=startup,startup_timing_condition=recording.STARTUP_TIMING_CONDITION)
+            self.assertTrue(recording.verify_streamed_evidence(output,report)['startup_gc_verified'])
+            self.assertLessEqual(startup['end_perf_counter_ns'],report['natural_gc']['window_start_perf_counter_ns'])
+
+    def test_invalid_startup_evidence_cannot_be_hidden_by_rebinding_hash(self):
+        for mode in ('policy','count','late','fixture','summary','missing'):
+            with self.subTest(mode=mode),tempfile.TemporaryDirectory() as output:
+                startup=recording.collect_startup_garbage(output,preparation(),collector=FakeCollector())
+                report=self.fixture(output);report.update(startup_gc=startup,startup_timing_condition=recording.STARTUP_TIMING_CONDITION)
+                path=Path(startup['artifact']['path']);record=json.loads(path.read_text())
+                if mode=='missing':path.unlink()
+                elif mode=='summary':startup['collected']+=1
+                else:
+                    if mode=='policy':record['after']['thresholds'][0]+=1
+                    elif mode=='count':record['explicit_collection_count']=2
+                    elif mode=='late':
+                        record['end_perf_counter_ns']=report['natural_gc']['window_end_perf_counter_ns']+1
+                        record['duration_ns']=record['end_perf_counter_ns']-record['start_perf_counter_ns']
+                    else:record['preparation']['fixture']={'amplitude':.01}
+                    path.write_text(json.dumps(record));report['startup_gc']=record|{'artifact':recording.identity(path)}
+                with self.assertRaises((ValueError,FileNotFoundError)):recording.verify_streamed_evidence(output,report)
+
     def test_full_evidence_is_owned_by_file_not_summary_or_store(self):
         with tempfile.TemporaryDirectory() as output:
             store = recording.RowEvidenceStore(output)

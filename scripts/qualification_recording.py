@@ -1,7 +1,8 @@
 """Bounded natural-GC observation and per-row evidence for offline qualification.
 
-This module does not change collection policy or controller deadlines. Full
-evidence is written only after the measured controller calls have returned.
+Runtime observation does not change collection policy or controller deadlines.
+An explicit, separately recorded setup-only collection is available before the
+natural trace starts, matching the online worker's pre-READY preparation.
 """
 from contextlib import contextmanager
 import gc
@@ -23,6 +24,47 @@ def plain(value):
 def identity(path):
     data = path.read_bytes()
     return dict(path=str(path.resolve()), bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+
+
+STARTUP_TIMING_CONDITION = 'single_preflight_full_gc_v1'
+
+
+def collect_startup_garbage(output, preparation, *, collector=gc, clock_ns=perf_counter_ns):
+    """One setup-only collect(2); never called from a row or measured step.
+
+    Preserve the online collect_preflight_garbage semantics and fail closed
+    when natural collection is disabled or its policy changes. This does not
+    bound any subsequent natural-GC pause or establish hard real time.
+    """
+    path = Path(output)/'startup_gc.json'
+    if path.exists(): raise FileExistsError('Startup GC evidence already exists')
+    if (preparation.get('fixture_index') != 0 or preparation.get('actions') != ['constructor','promote']
+            or preparation.get('controller_steps_before') != 0 or preparation.get('controller_steps_after') != 0
+            or preparation.get('discarded_before_collection') is not True):
+        raise ValueError('Startup must prepare only fixture zero with no controller steps')
+    def snapshot():
+        return dict(enabled=collector.isenabled(), counts=list(collector.get_count()),
+                    thresholds=list(collector.get_threshold()), stats=collector.get_stats(),
+                    garbage_count=len(collector.garbage), frozen_count=collector.get_freeze_count())
+    before = snapshot()
+    if not before['enabled']: raise RuntimeError('Natural GC must be enabled before qualification')
+    start = clock_ns()
+    collected = collector.collect(2)
+    end = clock_ns()
+    after = snapshot()
+    unchanged = all(before[key] == after[key] for key in ('enabled','thresholds','frozen_count'))
+    report = dict(kind='qualification_startup_full_gc_v1', generation=2,
+        explicit_collection_count=1, before_natural_trace=True, controller_steps=0,
+        start_perf_counter_ns=start, end_perf_counter_ns=end, duration_ns=end-start,
+        collected=int(collected), before=before, after=after, gc_policy_unchanged=unchanged,
+        preparation=plain(preparation),
+        timing_condition=STARTUP_TIMING_CONDITION,
+        scope='setup-only full collection; continuous rows retain natural GC and original deadlines; no hard-real-time claim')
+    with path.open('x',encoding='utf-8') as stream:
+        json.dump(report,stream,indent=2,allow_nan=False);stream.write('\n')
+    if not unchanged or not after['enabled']:
+        raise RuntimeError('GC policy changed during startup collection')
+    return report | {'artifact':identity(path)}
 
 
 class RowEvidenceStore:
@@ -85,6 +127,7 @@ class NaturalGcTrace:
 
     def __enter__(self):
         if self._callback_handle is not None: raise RuntimeError('GC trace already active')
+        self.window_start_ns = perf_counter_ns()
         self.before = self.policy()
         self._callback_handle = self._callback
         gc.callbacks.append(self._callback_handle)
@@ -95,6 +138,7 @@ class NaturalGcTrace:
         gc.callbacks.remove(self._callback_handle)
         self._callback_handle = None
         self.after = self.policy()
+        self.window_end_ns = perf_counter_ns()
 
     def begin_row(self, index):
         if self.active_row != -1: raise RuntimeError('GC row already active')
@@ -146,7 +190,10 @@ class NaturalGcTrace:
                       scopes=dict(self.SCOPES), events=self.buffer[:self.used].tolist(),
                       policy_before=self.before, policy_after=self.after,
                       policy_unchanged=self.before == self.after,
-                      requested_collection=False, disabled_collection=False)
+                      window_start_perf_counter_ns=self.window_start_ns,
+                      window_end_perf_counter_ns=self.window_end_ns,
+                      requested_collection=False, disabled_collection=False,
+                      collection_claim_scope='this natural trace window only; any explicit startup collection is separate')
         path = Path(output)/'natural_gc_trace.json'
         with path.open('x', encoding='utf-8') as stream:
             json.dump(report, stream, indent=2, allow_nan=False)
@@ -175,6 +222,31 @@ def verify_streamed_evidence(output, report):
     Production qualification and deployment preflight must call this verifier
     too after integration; hashing only the compact report is insufficient.
     """
+    startup = None
+    if 'startup_gc' in report or 'startup_timing_condition' in report:
+        if report.get('startup_timing_condition') != STARTUP_TIMING_CONDITION:
+            raise ValueError('Unknown startup timing condition')
+        summary = report['startup_gc']
+        startup = verified_json(summary['artifact'],output)
+        if startup != {k:v for k,v in summary.items() if k != 'artifact'}:
+            raise ValueError('Startup GC summary differs from its bound artifact')
+        if (startup.get('kind') != 'qualification_startup_full_gc_v1'
+                or startup.get('timing_condition') != STARTUP_TIMING_CONDITION
+                or startup.get('generation') != 2 or startup.get('explicit_collection_count') != 1
+                or startup.get('before_natural_trace') is not True or startup.get('controller_steps') != 0
+                or startup.get('gc_policy_unchanged') is not True
+                or not startup['before']['enabled'] or not startup['after']['enabled']
+                or any(startup['before'][key] != startup['after'][key] for key in ('enabled','thresholds','frozen_count'))
+                or startup['collected'] < 0 or startup['duration_ns'] < 0
+                or startup['start_perf_counter_ns'] <= 0
+                or startup['duration_ns'] != startup['end_perf_counter_ns']-startup['start_perf_counter_ns']):
+            raise ValueError('Startup GC policy, order or collection count differs')
+        preparation = startup['preparation']
+        if (preparation.get('fixture_index') != 0 or preparation.get('actions') != ['constructor','promote']
+                or preparation.get('controller_steps_before') != 0 or preparation.get('controller_steps_after') != 0
+                or preparation.get('discarded_before_collection') is not True
+                or not report['rows'] or preparation.get('fixture') != report['rows'][0].get('fixture')):
+            raise ValueError('Startup preparation differs from the first frozen fixture')
     gc_summary = report['natural_gc']
     trace = verified_json(gc_summary['artifact'], output)
     if {k:v for k,v in trace.items() if k != 'events'} != {k:v for k,v in gc_summary.items() if k != 'artifact'}:
@@ -185,6 +257,12 @@ def verify_streamed_evidence(output, report):
             or trace['requested_collection'] or trace['disabled_collection']):
         raise ValueError('Natural GC evidence incomplete or collection policy changed')
     events = trace['events']
+    if startup is not None:
+        if (any(trace['policy_before'][key] != startup['after'][key] for key in ('enabled','thresholds','frozen_count'))
+                or trace.get('window_start_perf_counter_ns',0) < startup['end_perf_counter_ns']
+                or trace.get('window_end_perf_counter_ns',0) < trace['window_start_perf_counter_ns']
+                or any(event[0] < startup['end_perf_counter_ns'] for event in events)):
+            raise ValueError('Natural GC trace precedes startup or changed startup policy')
     if (trace['events_seen'] != trace['events_recorded'] or len(events) != trace['events_recorded']
             or len(events) > trace['capacity'] or trace['columns'] != list(NaturalGcTrace.COLUMNS)):
         raise ValueError('GC event count/schema differs')
@@ -225,6 +303,8 @@ def verify_streamed_evidence(output, report):
                 or row_gc['events'] != [event for event in events if event[3] == index]):
             raise ValueError('Per-row GC events differ from complete trace')
         for span in row_gc['step_spans']:
+            if startup is not None and span['start_perf_counter_ns'] < startup['end_perf_counter_ns']:
+                raise ValueError('Measured controller step precedes startup collection')
             if (span['row_index'] != index or span['end_perf_counter_ns'] < span['start_perf_counter_ns']
                     or span['end_thread_time_ns'] < span['start_thread_time_ns']
                     or span['wall_elapsed_ns'] != span['end_perf_counter_ns']-span['start_perf_counter_ns']
@@ -236,5 +316,7 @@ def verify_streamed_evidence(output, report):
                     raise ValueError('GC event outside its controller step span')
         # Explicitly release the complete graph before the next file read.
         del row, evidence, expected
-    return dict(passed=True, rows=len(rows), candidates=candidates,
-                artifact_identity='path+bytes+sha256', complete_gc_trace_verified=True)
+    result = dict(passed=True, rows=len(rows), candidates=candidates,
+                  artifact_identity='path+bytes+sha256', complete_gc_trace_verified=True)
+    if startup is not None: result['startup_gc_verified'] = True
+    return result

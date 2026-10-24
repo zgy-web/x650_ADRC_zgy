@@ -24,7 +24,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/"scripts"),str(ROOT/"control_packages/x650_wholebody_v1")]
 from profile_x650_ts20_matrix_fixture import plain, file_identity
 from packed_candidate_capture import CandidateExecutionCapture, compare_execution_records
-from qualification_recording import RowEvidenceStore, NaturalGcTrace, verify_streamed_evidence
+from qualification_recording import (RowEvidenceStore, NaturalGcTrace, verify_streamed_evidence,
+                                     collect_startup_garbage, STARTUP_TIMING_CONDITION)
 from x650_wholebody.native_mpc import NativeTs20MpcController
 from x650_wholebody.native_optimization import NativeOptimization
 from x650_wholebody.native_joint_prediction import NativeJointMatrices
@@ -233,6 +234,20 @@ def source_receipt():
     return {p.relative_to(ROOT).as_posix():file_identity(p)["sha256"] for p in paths}
 
 
+def prepare_matrix_startup(build, spec, native, output):
+    # Complete frozen setup imports and native wrapper construction, without
+    # _problem/predict/step or a warmed plan. Drop this preparation-only fixture.
+    prepared = build(spec)
+    before = prepared[0].step_count
+    promote(prepared[0], native)
+    after = prepared[0].step_count
+    del prepared
+    preparation = dict(fixture_index=0,fixture=plain(spec),actions=['constructor','promote'],
+                       controller_steps_before=before,controller_steps_after=after,
+                       discarded_before_collection=True)
+    return collect_startup_garbage(output,preparation)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--matrix-script",type=Path,required=True)
@@ -251,6 +266,8 @@ def main(argv=None):
               "protocol":PROTOCOL,"deployment_sources":sources,
               "native_library":native.receipt,"original_matrix":file_identity(args.matrix_script),"rows":[]}
     store = RowEvidenceStore(args.output)
+    report['startup_timing_condition'] = STARTUP_TIMING_CONDITION
+    report['startup_gc'] = prepare_matrix_startup(build, fixtures[0], native, args.output)
     with NaturalGcTrace() as gc_trace:
         for index,spec in enumerate(fixtures):
             gc_trace.begin_row(index)
