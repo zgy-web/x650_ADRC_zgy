@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "zip_entries_verified": 227,
+  "archive": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\source_and_adapter_proofs_v1.zip",
+    "bytes": 26083598,
+    "sha256": "b8818abe372c38c7032493d4786fd17269003d1ae916f8f703d0f22e46aa3eea"
+  },
+  "manifest": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\source_and_adapter_proofs_v1.manifest.json",
+    "bytes": 1161095,
+    "sha256": "8a0fd05bebd13be3f836a559722db61cbf2299a79a6426e78d7bc99503c66b70"
+  },
+  "copied_audit_reports": [
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\source_independent_audit_v2\\hold_v1_source_audit.json",
+      "bytes": 754276,
+      "sha256": "d80d3e406f4d6f01b93eec8f8a3f0c4d9b77d7b1aa0960b642c95f49caa4d940"
+    },
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\source_independent_audit_v2\\software_probe_normal_report.json",
+      "bytes": 4999,
+      "sha256": "888d4bf93e857169ee13ea9ded07f6109731e74efd65dfb89d6236fde3a1c819"
+    },
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\cpp_pipeline_20261024\\source_independent_audit_v2\\software_probe_report.json",
+      "bytes": 1847,
+      "sha256": "1dec107e195ac7053a78d8fe5e41d7db6a9ef2b3dca4e62f76a9f240bd2984de"
+    }
+  ],
+  "source_scripts_match_archive": true,
+  "historical_references_explicitly_not_current_qualification": 2
+}

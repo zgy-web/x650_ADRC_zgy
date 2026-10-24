@@ -1,0 +1,119 @@
+{
+  "kind": "cpp_raw_source_evidence_audit_v1",
+  "record_integrity_passed": true,
+  "passed": true,
+  "clean_source_stop": true,
+  "complete_physical_hold_qualified": false,
+  "hardware_qualified": false,
+  "source_failure": "",
+  "original_wire_records": 115,
+  "source_snapshots": 1,
+  "original_worker_snapshots_verified": 1,
+  "worker_link_checked": true,
+  "raw_callback_counts": {
+    "position": 22,
+    "attitude": 22,
+    "angular_velocity": 22,
+    "estimator_flags": 22,
+    "clock": 22
+  },
+  "maximum_absolute_error": {
+    "position_enu": 0.0,
+    "velocity_enu": 0.0,
+    "acceleration_enu": 0.0,
+    "rotation_row_major": 0.0,
+    "omega_body_flu": 0.0,
+    "state_time_s": 0.0,
+    "joint_time_s": 0.0,
+    "q": 0.0,
+    "dq": 0.0,
+    "reference_r": 0.0,
+    "reference_time_s": 0.0,
+    "bus_origin_s": 0.0,
+    "position_gains": 0.0,
+    "target_position_enu": 0.0,
+    "target_velocity_enu": 0.0,
+    "target_acceleration_enu": 0.0,
+    "actual_consumed_commands": 0.0,
+    "actual_mit_packets": 0.0
+  },
+  "issue_to_publish_ms": {
+    "min": 0.189331,
+    "max": 0.189331
+  },
+  "trajectory_scope": "hold only; nonzero trajectory velocity/acceleration rejected",
+  "csv_visibility_limitation": "The original source did not record per-poll CSV byte offsets. This audit reconstructs the prefix ending at the recorded selected joint row and last actual MIT packet. It proves original values and causal history, but does not prove that no newer complete row was file-visible at that poll.",
+  "offline_oracle_timing": "Not a deployment deadline; no GC/deadline policy changed",
+  "scope": "Original source selection/frames/actual-history/worker-input evidence; not full physical hold or safety certification",
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/normal/evidence/source_final.json",
+      "bytes": 599,
+      "sha256": "3e00a66e19e235c3246a9bafd83964d68dcf0d710c54b33e1b5a553ce83b127d"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/normal/evidence/source_wire.cdr",
+      "bytes": 24536,
+      "sha256": "5408a6904d7542695be49645a345c7f95e13ad0a2bbecbdc5c6cac62476f2f79"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/normal/evidence/source_selections.csv",
+      "bytes": 299,
+      "sha256": "4d77205f3daad613af5983c5dcd17e29d5e4efa51618a00711047e14883fab0a"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/normal/state.csv",
+      "bytes": 1105,
+      "sha256": "2e53013a8d7858b6286c5d30df0e8b3a540de54ee6e8ce63b66a6ab2dd8db0dc"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/normal/packets.csv",
+      "bytes": 458,
+      "sha256": "e8e913f6eeb27350f2acfbd13ad490c3cd968382ac9cc69fa024cc9c084ccdae"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/audit_x650_cpp_source.py",
+      "bytes": 27532,
+      "sha256": "1519eddffd9da5fb1e2872f38a169ce53ee492f9b00af5ddfe05e1e27dfa6af4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/estimated_feedback.py",
+      "bytes": 23484,
+      "sha256": "312ccc060320ba1af4008f2582a6de4212934d7630c2b653d4e55ca8a0dc7090"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/x650_wholebody/ts20_runtime.py",
+      "bytes": 16368,
+      "sha256": "db2314ebad895527b57dea9b824cdc2190d1c1180de64fd488e52a0957906080"
+    }
+  ],
+  "worker_input_identities": [
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/artificial_worker_fixture/native_records/000001.snapshot.cdr",
+      "bytes": 7628,
+      "sha256": "d45e2bb9cbd0abe87b67c89309a5966b572930325224cc5bd0d6b65befe3635b"
+    }
+  ],
+  "worker_recording_identities": [
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/artificial_worker_fixture/diagnostic_sender.json",
+      "bytes": 77,
+      "sha256": "88b65f591f045c8d141cc27b2e2405091487385169f8f19720c977eafba0cb87"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/artificial_worker_fixture/worker_timing.json",
+      "bytes": 174,
+      "sha256": "9f2a7edd9c0a91a7f66fd337ae4332c3fb99cca2b99b4d02666dbf70c7777860"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/artificial_worker_fixture/worker_live_start.cdr",
+      "bytes": 3300,
+      "sha256": "bbb6960dafaa59834a4ca41eed4977425ecd82e3e68b0cae8b927ff6ac87b0cb"
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/artificial_worker_fixture/native_records/000001.json",
+      "bytes": 273,
+      "sha256": "a265c1fa08cc325013fbd41f0492ed01146a76c2553b08ed5c405ad6ef639188"
+    }
+  ]
+}

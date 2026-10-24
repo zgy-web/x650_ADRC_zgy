@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "positive_cases": 1,
+  "negative_cases_rejected": {
+    "joint_q": "ValueError('q: differs by 0.009999999999999995')",
+    "packet_tau": "ValueError('actual_mit_packets: differs by 1.0')",
+    "unused_history": "ValueError('Nonzero unused source history: command_time_s')",
+    "source_sequence": "ValueError('Source snapshot identity/order differs')",
+    "bad_binding_hash": "ValueError('Source did not complete actual handoff')",
+    "duplicate_binding": "ValueError('Source did not complete actual handoff')",
+    "unbound_start": "ValueError('Source did not complete actual handoff')",
+    "missing_worker_tail": "ValueError('No original worker input CDR')",
+    "worker_value_changed_with_updated_digest": "ValueError('Worker input mutated source field: q')"
+  },
+  "scope": "Existing actual synthetic-ROS source CDR, explicitly artificial worker linkage fixtures; no new ROS node/worker/plant",
+  "source_probe_report": {
+    "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/ros_binding_probe_v1/report.json",
+    "bytes": 4790,
+    "sha256": "475c08d54e34354fde985384d15b5c17593f857797c52ba10ab4b29058fcde0c"
+  },
+  "audit_script": {
+    "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/audit_x650_cpp_source.py",
+    "bytes": 27532,
+    "sha256": "1519eddffd9da5fb1e2872f38a169ce53ee492f9b00af5ddfe05e1e27dfa6af4"
+  },
+  "probe_script": {
+    "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/probe_x650_cpp_source_audit.py",
+    "bytes": 5963,
+    "sha256": "534b223856a130bdf0b037774ea5c3d582a6df430e72e0aa60c5eccab527587b"
+  },
+  "normal_report": {
+    "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/audit_v2/software_probe/normal_report.json",
+    "bytes": 4999,
+    "sha256": "888d4bf93e857169ee13ea9ded07f6109731e74efd65dfb89d6236fde3a1c819"
+  }
+}

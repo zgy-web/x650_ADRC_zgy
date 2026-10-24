@@ -1,0 +1,18 @@
+{
+  "archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/source_and_adapter_proofs_v1.zip",
+    "bytes": 26083598,
+    "sha256": "b8818abe372c38c7032493d4786fd17269003d1ae916f8f703d0f22e46aa3eea"
+  },
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_pipeline_20261024/source_and_adapter_proofs_v1.manifest.json",
+    "bytes": 1161095,
+    "sha256": "8a0fd05bebd13be3f836a559722db61cbf2299a79a6426e78d7bc99503c66b70"
+  },
+  "files": 227,
+  "uncompressed_source_bytes": 145171870,
+  "compressed_below_50_mb": true,
+  "all_entries_sha256_verified": true,
+  "external_current_hold_artifacts": 2759,
+  "historical_reference_mismatches": 2
+}
