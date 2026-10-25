@@ -1,0 +1,77 @@
+{
+  "kind": "x650_orin_nx_cpu_fixed_snapshot_measurement_v1",
+  "complete": true,
+  "numerical_checks_passed": true,
+  "real_board_compute_measured": true,
+  "physical_flight_qualified": false,
+  "cuda_acceleration_implemented": false,
+  "board": "NVIDIA Jetson Orin NX",
+  "system": "Ubuntu22.04.5 / Jetson Linux36.5.0 / CUDA12.6",
+  "cpu": 2,
+  "power_mode": "MAXN (pre-existing)",
+  "clock_policy": "schedutil, unchanged; CPU maximum observed configuration 1984 MHz",
+  "input_scope": "48 frozen synthetic mathematical snapshots from accepted fast validation; independently restored controller Memory, not 1198 real flight snapshots or a continuous loop",
+  "case_count": 48,
+  "measured_rounds": 250,
+  "warmup_rounds": 5,
+  "warmup_samples": 240,
+  "wall": {
+    "sample_count": 12000,
+    "mean_ms": 5.593372778666667,
+    "min_ms": 4.14912,
+    "p50_ms": 5.534336,
+    "p95_ms": 6.88832,
+    "p99_ms": 7.048384,
+    "p999_ms": 7.103968,
+    "max_ms": 7.236192
+  },
+  "thread_cpu": {
+    "sample_count": 12000,
+    "mean_ms": 5.572010701333332,
+    "min_ms": 4.129856,
+    "p50_ms": 5.487264,
+    "p95_ms": 6.866272,
+    "p99_ms": 7.022368,
+    "p999_ms": 7.072864,
+    "max_ms": 7.13552
+  },
+  "exceeded_20ms_count": 0,
+  "exceeded_50ms_count": 0,
+  "core_error_count": 0,
+  "oracle_max_absolute_error": 2.6977725609000913e-13,
+  "cold_core_first_call_ms": 8.925984,
+  "subproblem_counts": [
+    1
+  ],
+  "timing_boundary": "Original production Core::step, including its allocations, prediction, assembly, QP, candidate checks, output and successful Memory commit; excludes restore, parsing, network, ROS and logging",
+  "scheduling_note": "Wall time retains actual preemption/memory effects; thread CPU is supplementary, not a replacement for deployment latency",
+  "telemetry_note": "Only pre/post inventory snapshots, no continuous temperature/frequency trace or thermal-throttling guarantee",
+  "limits": "No higher-relinearization stress, full local control stack, networked loop, actuator hardware or worst-case timing qualification",
+  "nx_storage": {
+    "retained_code_files": 4,
+    "retained_code_bytes": 518048,
+    "input_output_storage": "stdin/RAM/stdout; results only workstation",
+    "ram_build_removed": true
+  },
+  "raw_output": {
+    "name": "native_stdout.json",
+    "bytes": 24364054,
+    "sha256": "fb0967e5d2d6d242525a02ac7f31771705342d07b6ff6a5267d8313c20ac4ec9"
+  },
+  "input": {
+    "name": "input.json",
+    "bytes": 272347,
+    "sha256": "bb4d6d90505d0420717d9cb8c360a4aa90f4bf44040673ebc2cd0384137ae954"
+  },
+  "independent_review": {
+    "name": "report.json",
+    "bytes": 27192,
+    "sha256": "166b1046dbdfca587438b192db22a943f5a58cc492c1120355dbdf99b9aa6972"
+  },
+  "loaded_code_sha256": {
+    "executable": "6ae0aa76a7388f1174cf9726778863f3584b040fbea1352d3e2bb8c52fd8b6f9",
+    "core_library": "151c20774808b59b9514bdc88ed02f39aa09097b4aec5e88eb14145238e82c0c",
+    "optimization_library": "e73071e92bebf68fcbff014fea29858c7d500c22f06382410b336d854ce3f3eb",
+    "predictor": "c99f203b2d3ec0ad68492d469a4f68e6c1353c5418b894a604532563e4f69fec"
+  }
+}

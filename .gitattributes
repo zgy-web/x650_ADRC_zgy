@@ -49,3 +49,7 @@ scenarios/x650_cpp_robust*.yaml -text whitespace=cr-at-eol
 scripts/*x650*robustness*.py -text whitespace=cr-at-eol
 scripts/plot_x650_wrench_failure.py -text whitespace=cr-at-eol
 tests/unit/*x650*robustness*.py -text whitespace=cr-at-eol
+# Preserve exact cross-host benchmark and protocol tool bytes.
+control_packages/x650_wholebody_v1/benchmark/** -text whitespace=cr-at-eol,-blank-at-eof
+scripts/*x650_orin*.py -text whitespace=cr-at-eol,-blank-at-eof
+tests/unit/*x650_orin*.py -text whitespace=cr-at-eol,-blank-at-eof
