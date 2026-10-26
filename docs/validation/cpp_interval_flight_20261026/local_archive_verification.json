@@ -1,0 +1,23 @@
+{
+  "kind": "x650_interval_flight_local_archive_verification_v1",
+  "passed": true,
+  "physical_acceptance": false,
+  "full_archive_sha256": "a6b4e29d320fb3e3ccc87bef51e27936f6a01a87e2d2747b71cec0b3fb2ebfbe",
+  "full_archive_bytes": 36913317,
+  "verified_members": 4164,
+  "crc_passed": true,
+  "all_delivery_files_verified": true,
+  "executed_and_audit_sources_match_local": [
+    "scripts\\audit_x650_interval_robustness.py",
+    "scripts\\plot_x650_recovery_disturbance.py",
+    "scripts\\probe_x650_interval_worker.py",
+    "scripts\\x650_cpp_interval_sequence.cpp",
+    "simulations\\x650_cpp_interval_v1\\__init__.py",
+    "simulations\\x650_cpp_interval_v1\\launch.py",
+    "simulations\\x650_cpp_interval_v1\\qualification.py",
+    "tests\\unit\\test_x650_cpp_interval_qualification.py",
+    "tests\\unit\\test_x650_interval_robustness_audit.py",
+    "tests\\unit\\test_x650_interval_worker_probe.py"
+  ],
+  "scope": "Integrity and current source byte identity only; physical test remains incomplete/failed"
+}

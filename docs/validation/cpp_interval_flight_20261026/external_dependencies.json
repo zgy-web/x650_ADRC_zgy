@@ -1,0 +1,20 @@
+{
+  "scope": "Prior immutable software proof is already delivered separately; use the identified archive for prior fixed-input/native proof, not a new physical result",
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/delivery_v3/interval_evidence_v3.zip",
+      "bytes": 67834622,
+      "sha256": "dc1fc495702c6d3d82b1a897a9678a140a2647ea39ff68b9b602a6e20fc50340"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/delivery_v3/software_summary.json",
+      "bytes": 1785,
+      "sha256": "d8339a4b208bd2774ed3b2c0829213a22b0fe065083166576d298fe512e8d226"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/regression_v3/report.json",
+      "bytes": 350427,
+      "sha256": "26b61b47a3bbdf39b8a66d1fcabac9852ccdd68a2fc9c0da6bfed437d41b4395"
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "kind": "x650_interval_flight_timing_failure_diagnostic_v1",
+  "complete_diagnostic": true,
+  "full_24s_certificate": false,
+  "physical_acceptance": false,
+  "originals_modified": false,
+  "launch_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925",
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949",
+  "inputs": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/launch.json",
+      "bytes": 63135,
+      "sha256": "e9ac12ff83608396a5f3c25b0a1255952be1d35065903a2ec351541e3486d784"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/protocol.json",
+      "bytes": 6312,
+      "sha256": "16e1fb80312f43caef3760392fd67a5ceeda4f2c528becc24d114c5027e16401"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/source_manifest.json",
+      "bytes": 34670,
+      "sha256": "d5cc138979e5f6088b8358a4b34c13666f4ad2ba7970cda7145f7f70c81b0e60"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/runtime_binary_manifest.json",
+      "bytes": 2290,
+      "sha256": "3607ca86f10f964a73a98f4969ce3dc10ecd8a615117826e6c373765efe47f63"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/worker_timing.json",
+      "bytes": 86488,
+      "sha256": "f21a4fcc620c641cda27f35f6bc36cd3c9db6942fe080cd29af881f612a876d2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/dispatch.json",
+      "bytes": 5871498,
+      "sha256": "5dcd816984c49cd9d68e0633f1ac006311c542971cbd02826b8728f2f8dc84c0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/sends.json",
+      "bytes": 338990,
+      "sha256": "12f5fb5b58c8fff66140c1328fce0ffa8ef3a447d3743a45ae863055909eb44a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/events.json",
+      "bytes": 136520,
+      "sha256": "1c09c6f7991fbfd56a1e8c6be8c934276e7027c121f5516fe07934eae6d72113"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/ingress_timing.json",
+      "bytes": 987911,
+      "sha256": "72cc91f3c141739545be6d1404d0fe83538da807436d9d380cb684ad60ec095c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/cpp_source/source_selections.csv",
+      "bytes": 322562,
+      "sha256": "8634f9e93e4e167afc6a83a29d1980908d92e1b9a09447a1dee0fbca349e1e2f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/live_start.json",
+      "bytes": 7219,
+      "sha256": "471829c9e25245ef7c5227d821266fd5c7f18533c58919130181677ab7cf64ab"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/worker_final.json",
+      "bytes": 315,
+      "sha256": "d9f5b9c58a5d310a9925022ce2d069772c185a85839c0971b18fa639189d9c9a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/lifecycle.json",
+      "bytes": 911,
+      "sha256": "60e83a09a4272a5a0635e7d9dfc287d8ae27ae7fd6f80d76b79320cb0dbb111a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/native_records/000453.json",
+      "bytes": 12602,
+      "sha256": "296708390690e62125d687e3a7142acd4238d791afa19cd6fd41e0eb5511f0b8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/native_records/000454.json",
+      "bytes": 40289,
+      "sha256": "5a08f669d977d40b1736f85dae4aee6e349dad9920cf263c30e959a489dc8e15"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/isolated_live/native_records/000455.json",
+      "bytes": 47202,
+      "sha256": "d5ada018ace64c31c8b0e4c293ef210ebd7926d6841a002e7ff93bd9985c6179"
+    }
+  ],
+  "executed_source_bindings": {
+    "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp": {
+      "sha256": "98e93df433c98eaad0f293e72167a257952a21e283dfd0be822ef46b8379adf4",
+      "archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/sources.zip",
+      "archive_entry": "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp"
+    },
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp": {
+      "sha256": "217f0432f86d51f10dc711f2c627ab147cce319381b64cdb0078a4d48efe0aea",
+      "archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/sources.zip",
+      "archive_entry": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp"
+    },
+    "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp": {
+      "sha256": "23ca42362c8482af1e4b5eeb5a19d9773e91b8a26734f67ce4a0d23c35420eed",
+      "archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/sources.zip",
+      "archive_entry": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp"
+    },
+    "control_packages/x650_wholebody_v1/native/mpc_core.cpp": {
+      "sha256": "d23dc36704bb85ccd3ab3e52a4c5eaa1feffea64d093ac53c6fbff6a80ff1706",
+      "archive": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_interval_launch_20261026_201556_15925/sources.zip",
+      "archive_entry": "control_packages/x650_wholebody_v1/native/mpc_core.cpp"
+    }
+  },
+  "clock": "same-host CLOCK_MONOTONIC; relative timeline anchored at candidate 453 original snapshot issue",
+  "calls": [
+    {
+      "sequence": 453,
+      "task_time_s": 9.100000000000001,
+      "source_sequence": 2251,
+      "source_issue_to_callback_ms": 3.158975,
+      "core_reported_ms": 13.614186,
+      "core_wall_ms": 13.641752,
+      "callback_wall_ms": 13.781555,
+      "thread_cpu_ms": 13.779606,
+      "subproblems": 1,
+      "interval_rows": 0,
+      "core_accepted": true,
+      "ingress_accepted": true,
+      "actually_sent": true
+    },
+    {
+      "sequence": 454,
+      "task_time_s": 9.120000000000005,
+      "source_sequence": 2256,
+      "source_issue_to_callback_ms": 3.14067,
+      "core_reported_ms": 28.794379,
+      "core_wall_ms": 28.813573,
+      "callback_wall_ms": 28.928829,
+      "thread_cpu_ms": 28.927356,
+      "subproblems": 2,
+      "interval_rows": 25,
+      "core_accepted": true,
+      "ingress_accepted": true,
+      "actually_sent": true
+    },
+    {
+      "sequence": 455,
+      "task_time_s": 9.160000000000004,
+      "source_sequence": 2266,
+      "source_issue_to_callback_ms": 2.10177,
+      "core_reported_ms": 33.642022,
+      "core_wall_ms": 33.665687,
+      "callback_wall_ms": 33.783619,
+      "thread_cpu_ms": 33.782296,
+      "subproblems": 2,
+      "interval_rows": 32,
+      "core_accepted": true,
+      "ingress_accepted": false,
+      "actually_sent": false
+    }
+  ],
+  "timeline": [
+    {
+      "event": "source_issue",
+      "monotonic_ns": 98411096855460381,
+      "relative_to_453_source_ms": 0.0,
+      "candidate_sequence": 453,
+      "source_sequence": 2251,
+      "task_time_s": 9.100000000000001
+    },
+    {
+      "event": "actual_send_released_next_admission",
+      "monotonic_ns": 98411096858377249,
+      "relative_to_453_source_ms": 2.916868,
+      "candidate_sequence": 453,
+      "previous_candidate_sequence": 452
+    },
+    {
+      "event": "worker_callback_entry",
+      "monotonic_ns": 98411096858619356,
+      "relative_to_453_source_ms": 3.158975,
+      "candidate_sequence": 453
+    },
+    {
+      "event": "core_begin",
+      "monotonic_ns": 98411096858644243,
+      "relative_to_453_source_ms": 3.183862,
+      "candidate_sequence": 453
+    },
+    {
+      "event": "core_end",
+      "monotonic_ns": 98411096872285995,
+      "relative_to_453_source_ms": 16.825614,
+      "candidate_sequence": 453
+    },
+    {
+      "event": "worker_publish_end",
+      "monotonic_ns": 98411096872339160,
+      "relative_to_453_source_ms": 16.878779,
+      "candidate_sequence": 453
+    },
+    {
+      "event": "ingress_gate_accepted",
+      "monotonic_ns": 98411096872405931,
+      "relative_to_453_source_ms": 16.94555,
+      "candidate_sequence": 453,
+      "roundtrip_ms": 16.94555,
+      "reason": 0
+    },
+    {
+      "event": "source_issue",
+      "monotonic_ns": 98411096875454970,
+      "relative_to_453_source_ms": 19.994589,
+      "candidate_sequence": 454,
+      "source_sequence": 2256,
+      "task_time_s": 9.120000000000005
+    },
+    {
+      "event": "first_actual_writer_send",
+      "monotonic_ns": 98411096878260498,
+      "relative_to_453_source_ms": 22.800117,
+      "candidate_sequence": 453,
+      "dispatch_sequence": 3425
+    },
+    {
+      "event": "actual_send_released_next_admission",
+      "monotonic_ns": 98411096878374589,
+      "relative_to_453_source_ms": 22.914208,
+      "candidate_sequence": 454,
+      "previous_candidate_sequence": 453
+    },
+    {
+      "event": "worker_callback_entry",
+      "monotonic_ns": 98411096878595640,
+      "relative_to_453_source_ms": 23.135259,
+      "candidate_sequence": 454
+    },
+    {
+      "event": "core_begin",
+      "monotonic_ns": 98411096878615861,
+      "relative_to_453_source_ms": 23.15548,
+      "candidate_sequence": 454
+    },
+    {
+      "event": "core_end",
+      "monotonic_ns": 98411096907429434,
+      "relative_to_453_source_ms": 51.969053,
+      "candidate_sequence": 454
+    },
+    {
+      "event": "worker_publish_end",
+      "monotonic_ns": 98411096907483138,
+      "relative_to_453_source_ms": 52.022757,
+      "candidate_sequence": 454
+    },
+    {
+      "event": "ingress_gate_accepted",
+      "monotonic_ns": 98411096907539958,
+      "relative_to_453_source_ms": 52.079577,
+      "candidate_sequence": 454,
+      "roundtrip_ms": 32.084988,
+      "reason": 0
+    },
+    {
+      "event": "source_issue",
+      "monotonic_ns": 98411096916517471,
+      "relative_to_453_source_ms": 61.05709,
+      "candidate_sequence": 455,
+      "source_sequence": 2266,
+      "task_time_s": 9.160000000000004
+    },
+    {
+      "event": "last_valid_dispatch",
+      "monotonic_ns": 98411096918128055,
+      "relative_to_453_source_ms": 62.667674,
+      "dispatch_sequence": 3427,
+      "candidate_sequence": 454,
+      "candidate_age_ms": 42.673085
+    },
+    {
+      "event": "first_actual_writer_send",
+      "monotonic_ns": 98411096918303798,
+      "relative_to_453_source_ms": 62.843417,
+      "candidate_sequence": 454,
+      "dispatch_sequence": 3427
+    },
+    {
+      "event": "actual_send_released_next_admission",
+      "monotonic_ns": 98411096918419155,
+      "relative_to_453_source_ms": 62.958774,
+      "candidate_sequence": 455,
+      "previous_candidate_sequence": 454
+    },
+    {
+      "event": "worker_callback_entry",
+      "monotonic_ns": 98411096918619241,
+      "relative_to_453_source_ms": 63.15886,
+      "candidate_sequence": 455
+    },
+    {
+      "event": "core_begin",
+      "monotonic_ns": 98411096918638973,
+      "relative_to_453_source_ms": 63.178592,
+      "candidate_sequence": 455
+    },
+    {
+      "event": "candidate_454_absolute_50ms_lease_expiry",
+      "monotonic_ns": 98411096925454970,
+      "relative_to_453_source_ms": 69.994589,
+      "candidate_sequence": 454
+    },
+    {
+      "event": "fault_dispatch",
+      "monotonic_ns": 98411096938167140,
+      "relative_to_453_source_ms": 82.706759,
+      "dispatch_sequence": 3428,
+      "candidate_sequence": 454,
+      "reason": 1,
+      "candidate_age_ms": 62.71217
+    },
+    {
+      "event": "core_end",
+      "monotonic_ns": 98411096952304660,
+      "relative_to_453_source_ms": 96.844279,
+      "candidate_sequence": 455
+    },
+    {
+      "event": "worker_publish_end",
+      "monotonic_ns": 98411096952360846,
+      "relative_to_453_source_ms": 96.900465,
+      "candidate_sequence": 455
+    }
+  ],
+  "fault": {
+    "dispatch_sequence": 3428,
+    "reason": 1,
+    "reason_name": "STALE_COMMAND",
+    "output_valid": false,
+    "candidate_sequence": 454,
+    "candidate_age_ms": 62.71217,
+    "candidate_age_limit_ms": 50.0,
+    "fresh_source_sequence": 2271,
+    "source_issue_age_ms": 1.589747,
+    "source_receive_age_ms": 1.400341,
+    "source_age_limit_ms": 25.0,
+    "next_candidate_455_core_finish_after_fault_ms": 14.13752,
+    "next_candidate_455_issue_age_at_fault_ms": 21.649669
+  },
+  "causal_findings": [
+    "The source remained fresh at the fault; 25 ms source freshness did not cause this stop.",
+    "Two consecutive native-safe solves took about 29 ms and 34 ms. The prior candidate was first physically sent at age 42.673 ms; its next 20 ms slot would exceed the unchanged 50 ms issue-based lease.",
+    "The actual-first-send barrier released candidate 455 only after 454 really reached the writer. No requests were skipped: 1..455 Core requests and accepted results; input 455 used the latest available causal source when actual send released it.",
+    "Candidate 455 was completed after the stop. Ingress marked its late arrival blocked by stopped lifecycle, not an optimizer infeasibility.",
+    "A per-call Core duration below 50 ms is necessary but does not establish schedulability of the sequential 20 ms output pipeline."
+  ],
+  "actual_first_send_barrier_scope": "Actual writer send, not per-joint consumption RTT. Commands are consumed asynchronously under the original progress watchdog.",
+  "why_not_remove_first_send_barrier": [
+    "Core commits previous_command and its warm plan when it returns. Ingress currently prevents the next solve from treating a never-sent candidate as the last applied command.",
+    "Removing the barrier alone could let candidate 455 use previous_command 454 before 454 is actually selected/sent; the original snapshot still describes actual consumed 453. Slew/stopping/reference-history and Memory would then refer to different execution histories.",
+    "A safe speculative design needs separate candidate/planned state and actual adopted state, explicit dispatch reservation or send-time commit, and a pending-command schedule modeled without fabricating consumption receipts. This is a separately tested architecture change."
+  ],
+  "unchanged_gate_next_steps": [
+    "Retain this failed experiment and its actual safe exit; do not rerun until a specific implementation change has an independently checked timing effect.",
+    "For the present one-first-send-per-step contract, optimize consecutive repair-call end-to-end latency sufficiently to meet the next available absolute output slot (about 21.6 ms from the 455 input issue in this trace), including admission and DDS overhead. Preserve all bounds and exact output equivalence.",
+    "Profile/copy-reuse the repeated canonical rollouts, observer/sensitivity construction and matrix work within each repair; no public hard bound, command lease or control parameter change is required merely to remove duplicated computation.",
+    "If latency cannot be reduced enough, design and qualify a separate planned-versus-adopted asynchronous transaction with explicit pending-input prediction before relaxing this ownership barrier; do not silently bypass it."
+  ],
+  "scope": "Read-only derivation from one incomplete actual flight. No controller, lease, source timestamp, candidate, or original record was changed. This is not a full-window acceptance certificate."
+}

@@ -81,3 +81,8 @@ control_packages/x650_wholebody_v1/native/test_interval*.cpp -text whitespace=cr
 scripts/*x650_interval*.py -text whitespace=cr-at-eol
 tests/unit/test_x650_interval*.py -text whitespace=cr-at-eol
 docs/validation/cpp_interval_hard_20261026/** -text -whitespace
+# ABI 3 physical admission, worker probe and the new failed-run evidence.
+simulations/x650_cpp_interval_v1/** -text whitespace=cr-at-eol
+scripts/x650_cpp_interval_sequence.cpp -text whitespace=cr-at-eol
+tests/unit/test_x650_cpp_interval_qualification.py -text whitespace=cr-at-eol
+docs/validation/cpp_interval_flight_20261026/** -text -whitespace

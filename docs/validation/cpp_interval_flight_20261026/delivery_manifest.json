@@ -1,0 +1,153 @@
+{
+  "kind": "x650_interval_flight_delivery_v1",
+  "archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/interval_flight_evidence.zip",
+    "bytes": 36913317,
+    "sha256": "a6b4e29d320fb3e3ccc87bef51e27936f6a01a87e2d2747b71cec0b3fb2ebfbe"
+  },
+  "members": 4166,
+  "uncompressed_bytes": 150614026,
+  "parts": [
+    {
+      "name": "interval_flight_evidence.zip.part01",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/interval_flight_evidence.zip.part01",
+      "bytes": 36913317,
+      "sha256": "a6b4e29d320fb3e3ccc87bef51e27936f6a01a87e2d2747b71cec0b3fb2ebfbe"
+    }
+  ],
+  "originals_unchanged_after_archive": true,
+  "source_names": [
+    "simulations/x650_cpp_interval_v1/__init__.py",
+    "simulations/x650_cpp_interval_v1/qualification.py",
+    "simulations/x650_cpp_interval_v1/launch.py",
+    "scripts/audit_x650_interval_robustness.py",
+    "scripts/probe_x650_interval_worker.py",
+    "scripts/x650_cpp_interval_sequence.cpp",
+    "scripts/plot_x650_recovery_disturbance.py",
+    "tests/unit/test_x650_cpp_interval_qualification.py",
+    "tests/unit/test_x650_interval_worker_probe.py",
+    "tests/unit/test_x650_interval_robustness_audit.py"
+  ],
+  "files": [
+    {
+      "name": "actual_worker_probe.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/actual_worker_probe.json",
+      "bytes": 1221861,
+      "sha256": "6c6a6899cd79be93a6ae9aeb87b7fe65f9486098120ad09666ba623c16a86e24"
+    },
+    {
+      "name": "archive_manifest.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/archive_manifest.json",
+      "bytes": 1507278,
+      "sha256": "ae6757469a74867ab31ee548d96692759281546700d1bc1860b9a9dedc63e86f"
+    },
+    {
+      "name": "audit_tests_final.log",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/audit_tests_final.log",
+      "bytes": 5600,
+      "sha256": "99ea7d1447fc849cdb28e086a84ee1ccdd5de36892e336704f195c659e4cfbab"
+    },
+    {
+      "name": "endpoint_recovery.pdf",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/endpoint_recovery.pdf",
+      "bytes": 120486,
+      "sha256": "e4c017e7f4bfd430d0003f589c464235203bb64dfa851ad590aac41528b05d9b"
+    },
+    {
+      "name": "endpoint_recovery.png",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/endpoint_recovery.png",
+      "bytes": 353585,
+      "sha256": "1af534f2dad5bfa7aa19d56021bd7dc8fe6d076d66442da376cb25b167f73e01"
+    },
+    {
+      "name": "external_dependencies.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/external_dependencies.json",
+      "bytes": 954,
+      "sha256": "cb02966e7543070f72db2e4b1e1af8713b3965f0f46b74a94d845dbc734b2009"
+    },
+    {
+      "name": "independent_review.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/independent_review.json",
+      "bytes": 21019,
+      "sha256": "fa03d67d57ded16d119d29418d7b426f71f121e3ed361f640ab1c12139ba1665"
+    },
+    {
+      "name": "interval_flight_evidence.zip.part01",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/interval_flight_evidence.zip.part01",
+      "bytes": 36913317,
+      "sha256": "a6b4e29d320fb3e3ccc87bef51e27936f6a01a87e2d2747b71cec0b3fb2ebfbe"
+    },
+    {
+      "name": "interval_prefix_check.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/interval_prefix_check.json",
+      "bytes": 427701,
+      "sha256": "1be0298a0139a3f49f7749658f2cf556469f59c80b771e9b6567319b1ce46fc0"
+    },
+    {
+      "name": "joints_and_backend.pdf",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/joints_and_backend.pdf",
+      "bytes": 120020,
+      "sha256": "2332ef9ef992128a6fff04e9ec027677492c181b1bc9edad462a714363fdec56"
+    },
+    {
+      "name": "joints_and_backend.png",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/joints_and_backend.png",
+      "bytes": 358930,
+      "sha256": "e8231be12f38c3c19c75d191f970fcf723241baa0a74fc98b89097ec7d5f8467"
+    },
+    {
+      "name": "native_chart_data.csv",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/native_chart_data.csv",
+      "bytes": 723154,
+      "sha256": "0509f0f41166ad3a941de1c86a3fb7578c90e8faeb57429c107085a04c3e11bf"
+    },
+    {
+      "name": "physical_audit.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/physical_audit.json",
+      "bytes": 781953,
+      "sha256": "8521c143e5fa0e888a6ec6b028cf4886d65ace141a5e452dcdf3cda14834a30c"
+    },
+    {
+      "name": "plot_manifest.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/plot_manifest.json",
+      "bytes": 283860,
+      "sha256": "613437ba2974d9e9fac824c66d003f7899a5983016eaef8e3482348b53790ebe"
+    },
+    {
+      "name": "plot_tests.log",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/plot_tests.log",
+      "bytes": 98,
+      "sha256": "caf56757b18b52a7c892a24609a6f4ec6e8900c554da434531b573fc2a87250b"
+    },
+    {
+      "name": "sequence_oracle.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/sequence_oracle.json",
+      "bytes": 102094,
+      "sha256": "db59915b3260a78b4951e93059336581a824725cfb641ab689b6e607d2650229"
+    },
+    {
+      "name": "software_acceptance.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/software_acceptance.json",
+      "bytes": 4739,
+      "sha256": "221feb21c15018a78b15716efe231d811c10b8fb8a77e8a350b543a4ab3cfbcf"
+    },
+    {
+      "name": "tests.log",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/tests.log",
+      "bytes": 99,
+      "sha256": "6c296cf13624a8795753789bfa1a51e5c4a1df1c5ca3e91da1f9a15a05373be9"
+    },
+    {
+      "name": "timing_failure.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/timing_failure.json",
+      "bytes": 16206,
+      "sha256": "4813889f6cd966a6215171096c9d1baed681d5e8f3c1accd43e516796bbd6824"
+    },
+    {
+      "name": "worker_chart_data.json",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/delivery_v1/worker_chart_data.json",
+      "bytes": 137067,
+      "sha256": "054ab0333d529e58e7862b2172eeecadd5d74ee5680122f4cba5fcc9b4f32121"
+    }
+  ]
+}

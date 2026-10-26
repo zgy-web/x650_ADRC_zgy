@@ -1,0 +1,43 @@
+test_actual_cut_metadata_and_packet_encoding_are_checked_without_full_qp_claim (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_actual_history_changes_cannot_be_replaced_by_current_state (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_appended_cut_index_uses_actual_dynamic_base_not_fixed230 (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_budget_and_no_slack_dimensions_remain_original (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_changed_gradient_encoding_or_anchor_are_rejected (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_changed_risk_encoding_and_grid_are_rejected (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_dynamic_base_count_bounds_and_integer_shape_are_required (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_feasible_constant_zero_rows_may_be_omitted_without_claiming_full_matrix_proof (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_final_native_envelope_and_original_padding_cannot_be_waived (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_incomplete_physical_run_cannot_issue_acceptance (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_no_interval_event_is_valid_without_fabricating_recovery (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_original_violation_trigger_and_source_identity_are_required (tests.unit.test_x650_interval_robustness_audit.IntervalFlightAuditTests) ... ok
+test_native_rejection_diagnostics_are_preserved_without_success_relabelling (tests.unit.test_x650_recovery_robustness_audit.IncompletePhysicalExperimentTests) ... ok
+test_partial_run_preserves_original_failure_but_never_becomes_certificate (tests.unit.test_x650_recovery_robustness_audit.IncompletePhysicalExperimentTests) ... ok
+test_prefix_metrics_exclude_takeover_and_landing_after_original_snapshot (tests.unit.test_x650_recovery_robustness_audit.IncompletePhysicalExperimentTests) ... ok
+test_actual_centre_reference_envelope_and_nonlinear_reserve_are_checked (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_actual_final_nonlinear_reserve_cannot_be_replaced_by_pass_flag (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_centre_and_full_call_share_original_deadline (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_centre_cannot_reset_reference_or_ignore_slew (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_changed_radius_or_fake_projection_is_rejected (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_horizon_budget_and_untriggered_extra_evidence_are_rejected (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_no_recovery_is_an_observation_not_a_required_fabricated_event (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_projection_requires_actual_attempt_and_success_in_correct_order (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_trusted_centre_actual_stopping_reserve_and_envelope_are_checked (tests.unit.test_x650_recovery_robustness_audit.RuntimeRecoveryEvidenceTests) ... ok
+test_added_query_or_rewritten_integration_grid_cannot_hide_peak (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_appended_hard_cut_has_same_canonical_anchor_and_original_trust_rows (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_changed_cut_row_or_missing_centre_evidence_is_rejected (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_complete_normal_arithmetic_graph_does_not_claim_native_repropagation (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_anchor_bias_uses_actual_rounding_not_zero_or_full_lsb (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_bound_and_matching_qp_rewrite_cannot_hide_tampering (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_risk_range_and_missing_guard_evidence_are_rejected (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_half_lsb_kernel_telescopes_and_actual_history_is_not_perturbed (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_original_full_row_quality_and_no_slack_dimension_are_required (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_original_trust_location_survives_new_matrix_tail (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_rejection_verifies_full_rollback_without_control_pass_claim (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_risk_batch_requires_real_trigger_and_unchanged_sliding_range (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_tampered_padding_or_final_envelope_is_rejected (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_wrong_hash_library_or_committed_memory_is_rejected (tests.unit.test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.793s
+
+OK

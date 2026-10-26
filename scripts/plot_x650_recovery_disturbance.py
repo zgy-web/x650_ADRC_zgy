@@ -143,7 +143,9 @@ def load(launch, audit=None):
         calls.append(dict(sequence=sequence, task_time_s=snapshot['task_time_s'],
             error=item.get('error', ''), core_ms=d.get('compute_ms'),
             recovery_triggered=d.get('recovery_triggered'),
-            recovery_attempts=len(d.get('recovery_attempts', [])), subproblems=d.get('subproblems')))
+            recovery_attempts=len(d.get('recovery_attempts', [])),
+            interval_repairs=len(d['interval_repairs']) if 'interval_repairs' in d else None,
+            interval_rows=d.get('interval_rows'), subproblems=d.get('subproblems')))
     require(calls and all(b['sequence'] > a['sequence'] and b['task_time_s'] > a['task_time_s']
         for a,b in zip(calls, calls[1:])), 'Repeated/out-of-order actual worker calls')
     cutoff, cutoff_source = controlled_cutoff(launch_record, metadata, stage, calls, duration)
@@ -176,7 +178,8 @@ def load(launch, audit=None):
     report = None
     if audit is not None:
         report = read(bind('audit', audit))
-        require(report.get('kind') == 'x650_cpp_recovery_robustness_stage_certificate_v1', 'Wrong audit kind')
+        require(report.get('kind') in ('x650_cpp_recovery_robustness_stage_certificate_v1',
+            'x650_cpp_interval_robustness_stage_certificate_v1'), 'Wrong audit kind')
         require(PurePosixPath(str(report['source_run_directory']).replace('\\','/')).name == run.name,
                 'Audit belongs to a different recorded run')
         for name in ('native_trace', 'actual_task', 'live_start'):
@@ -289,19 +292,21 @@ def render(data, output):
         known=[c for c in calls if c['recovery_triggered'] is not None]
         if known:
             for triggered,level,label,color in ((False,0,'Normal call','#999999'),(True,1,'Recovery invoked','#009E73')):
-                chosen=[c for c in known if c['recovery_triggered'] is triggered]
-                eventaxis.scatter([c['task_time_s'] for c in chosen],[level]*len(chosen),s=8,label=label,color=color)
-            for c in known:
-                if c['recovery_triggered']:
-                    eventaxis.annotate('%d QP / %d centre'%(c['subproblems'],c['recovery_attempts']),
-                        (c['task_time_s'],1),xytext=(0,8),textcoords='offset points',fontsize=7,rotation=30)
+                chosen=[c for c in known if c['recovery_triggered'] is triggered
+                        and (triggered or not c.get('interval_repairs'))]
+                eventaxis.scatter([c['task_time_s'] for c in chosen],[level]*len(chosen),s=8,
+                    label=label+' (%d calls)'%len(chosen),color=color)
         else:
             eventaxis.text(.02,.5,'Recovery telemetry absent in this recorded backend; no zero-recovery claim',
                            transform=eventaxis.transAxes,color='#555555')
+        interval=[c for c in calls if c.get('interval_repairs')]
+        if interval:
+            eventaxis.scatter([c['task_time_s'] for c in interval],[1.5]*len(interval),marker='^',
+                color='#0072B2',s=22,label='Interval hard-constraint repair (%d calls)'%len(interval))
         failed=[c for c in calls if c['error']]
-        if failed:eventaxis.scatter([c['task_time_s'] for c in failed],[1.5]*len(failed),marker='x',color='#B00020',s=50,label='Rejected actual call')
+        if failed:eventaxis.scatter([c['task_time_s'] for c in failed],[2]*len(failed),marker='x',color='#B00020',s=50,label='Rejected actual call')
         eventaxis.set(title='Actual native recovery events (internal centre generation is not an actuator command)',
-                      ylabel='Event',xlabel='Task time [s]',ylim=(-.3,2.0),yticks=[0,1,1.5],yticklabels=['normal','recovery','rejected'])
+                      ylabel='Event',xlabel='Task time [s]',ylim=(-.3,2.5),yticks=[0,1,1.5,2],yticklabels=['normal','centre','interval','rejected'])
         shade(eventaxis)
         if known or failed:eventaxis.legend(loc='upper left',fontsize=8,ncol=3)
         title(fig,'Actual joints and C++ worker timing');save(fig,'joints_and_backend')

@@ -1,0 +1,586 @@
+{
+  "kind": "x650_interval_failed_flight_independent_review_v2",
+  "physical_acceptance": false,
+  "complete_24s": false,
+  "input_receipts_sha256": "c4f0626c3ed3568a87ec5d2b50281219557a52bfec894023279c5512186edf4d",
+  "prefix_proof": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/interval_prefix_check_v2.json",
+    "sha256": "1be0298a0139a3f49f7749658f2cf556469f59c80b771e9b6567319b1ce46fc0",
+    "bytes": 427701
+  },
+  "run_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949",
+  "auditor": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_interval_robustness.py",
+    "sha256": "72956359c4503e116cae7d6f20e225ecb7332653ae830f67ad5ede0460736190",
+    "bytes": 34264
+  },
+  "scope": "Read-only audit of actual bounded prefix and safe exit; does not override the failed original whole-task certificate",
+  "all_actual_numeric_candidates": {
+    "passed": true,
+    "calls": 455,
+    "scope": "Original owning outputs matched to actual proposal CDR, plan/horizon/slew/command gates and hard final envelope; no full QP matrix recaptured"
+  },
+  "interval_events_checked": {
+    "verified": true,
+    "calls_checked": 455,
+    "interval_calls": 2,
+    "calls": [
+      {
+        "sequence": 454,
+        "task_time_s": 9.120000000000005,
+        "control_subproblems": 2,
+        "interval_repairs": 1,
+        "interval_rows": 25,
+        "core_ms": 28.794379,
+        "final_native_envelope": [
+          -0.1317531912140923,
+          -0.19253240016462822,
+          0.05107876449043831,
+          -0.05307361812011504,
+          -0.41494276075253966,
+          0.20484990300670658,
+          -0.26981499415053883,
+          0.31909755853607774
+        ]
+      },
+      {
+        "sequence": 455,
+        "task_time_s": 9.160000000000004,
+        "control_subproblems": 2,
+        "interval_repairs": 1,
+        "interval_rows": 32,
+        "core_ms": 33.642022,
+        "final_native_envelope": [
+          -0.1608593695514227,
+          -0.1788806405729669,
+          0.033846705197407886,
+          -0.03020565330348476,
+          -0.4186347130366963,
+          0.21908740558605588,
+          -0.2870840536251884,
+          0.31923869189016674
+        ]
+      }
+    ],
+    "original_base_rows": {
+      "allowed_min": 140,
+      "allowed_max": 230,
+      "observed_min": 224,
+      "observed_max": 230,
+      "observed_counts": {
+        "224": 1,
+        "230": 454
+      },
+      "full_base_matrix_independently_verified": false,
+      "scope": "Compact dynamic count range and appended cut identities only; original full base matrix/zero-row omission remains bound by qualified assembly implementation"
+    },
+    "hard_q_padding_rad": 0.0003,
+    "hard_dq_padding_rad_s": 0.03,
+    "feasibility_tolerance": 2e-07,
+    "no_slack_variables": true,
+    "control_qp_budget": 3,
+    "core_budget_ms": 50.0,
+    "canonical_query_grid_unchanged_by_design": true,
+    "compact_capture_scope": "Copied actual interval events and final native envelopes with independently recomputed sliding gradients and future-packet encoding kernels; full QP rows and native dense pieces remain bound by software admission, not recaptured or rerun here"
+  },
+  "trusted_centre_events_checked": {
+    "verified": true,
+    "normal_calls": 449,
+    "recovery_calls": 6,
+    "projection_solves": 0,
+    "calls": [
+      {
+        "sequence": 376,
+        "task_time_s": 7.520000000000003,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 10.235658
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 19.811719
+      },
+      {
+        "sequence": 381,
+        "task_time_s": 7.640000000000001,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 8.493887
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 16.80434
+      },
+      {
+        "sequence": 382,
+        "task_time_s": 7.660000000000004,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 7.99319
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 15.861241
+      },
+      {
+        "sequence": 386,
+        "task_time_s": 7.740000000000002,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 8.160032
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 15.919245
+      },
+      {
+        "sequence": 387,
+        "task_time_s": 7.760000000000005,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 7.610522
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 15.792517
+      },
+      {
+        "sequence": 425,
+        "task_time_s": 8.520000000000003,
+        "centre_attempts": 1,
+        "trusted_centres": [
+          {
+            "kind": "slew_limited_brake",
+            "plan_violation": 1.3877787807814457e-17,
+            "envelope_violation": 0.0,
+            "nonlinear_stopping_violation": 0.0,
+            "elapsed_ms": 12.07841
+          }
+        ],
+        "projection_solves": 0,
+        "control_subproblems": 2,
+        "final_nonlinear_stopping_violation": 0.0,
+        "core_ms": 24.657309
+      }
+    ],
+    "initial_trust_radius": 0.02,
+    "core_budget_ms": 50.0,
+    "recovery_core_ms": {
+      "count": 6,
+      "minimum": 15.792517,
+      "median": 16.3617925,
+      "p95": 23.4459115,
+      "p99": 24.415029500000003,
+      "maximum": 24.657309
+    },
+    "compact_capture_scope": "Copied actual native centre/final nodes, extrema and integrated reference; full QP rows and model rollout are independently bound by software admission, not recaptured/reconstructed here"
+  },
+  "prefix_checker_limit": {
+    "original_result": false,
+    "error": "ValueError('Actual interval shape, original QP rows or no-slack dimensions changed')",
+    "explanation": "Original C++ assembly legitimately removes feasible constant zero rows; compact checker fixed230-base assumption rejects early untriggered calls. The original failed prefix result is retained; selected interval calls have full230 base and were checked separately. No control thresholds or original audit were changed.",
+    "corrected": true,
+    "corrected_result": true,
+    "corrected_base_rows": {
+      "allowed_min": 140,
+      "allowed_max": 230,
+      "observed_min": 224,
+      "observed_max": 230,
+      "observed_counts": {
+        "224": 1,
+        "230": 454
+      },
+      "full_base_matrix_independently_verified": false,
+      "scope": "Compact dynamic count range and appended cut identities only; original full base matrix/zero-row omission remains bound by qualified assembly implementation"
+    },
+    "scope": "The v1 defect and original failed result remain archived; v2 checks dynamic count range and appended cuts. Compact still does not expose the full base matrix or independently prove constant-row omission."
+  },
+  "consumption": {
+    "passed": true,
+    "kind": "streaming_consumption_accounting_v1",
+    "scope": "physics-boundary adoption accounting; not motor ACK, bus-application or flight qualification",
+    "complete_physical_hold_qualified": false,
+    "mapping_assumptions": [
+      "exclusive writer during epoch",
+      "ordered exactly-once per-joint bridge delivery",
+      "initial legacy publications drained before the frozen send baseline"
+    ],
+    "mapping_limit": "Float64 has no wire identity; assumptions are not proven by counters alone.",
+    "full_physics_rows": 15781,
+    "epoch_physics_rows": 2291,
+    "initial_counter": [
+      1188,
+      1188
+    ],
+    "send_count": 459,
+    "observed_receipt_count": 458,
+    "joint_counts": [
+      {
+        "adopted": 458,
+        "superseded_before_physics_adoption": 1
+      },
+      {
+        "adopted": 458,
+        "superseded_before_physics_adoption": 1
+      }
+    ],
+    "both_joint_values_observed_together": 458,
+    "same_physics_boundary_adoptions": 440,
+    "all_sends_applied": false,
+    "zero_consumed": true,
+    "no_overlapping_legacy_publications": true,
+    "adoption_lag_sim_s": {
+      "min": 0.0,
+      "max": 0.020000000000003126
+    },
+    "lag_clock_note": "Plugin adoption minus latest plugin observation at send; not wall transit latency."
+  },
+  "online_ledger": {
+    "passed": true,
+    "original_baseline_cdr_verified": true,
+    "rows": 459,
+    "progress_budget_ms": 40,
+    "actual_state_age_limit_ms": 25,
+    "per_joint_progress_observation_ms": {
+      "min": 1.272754,
+      "max": 12.194475
+    },
+    "stop_progress_observation_ms": [
+      2.320973,
+      2.320973
+    ],
+    "stop_limit_scope": "Existing release timeout is separate; the tracking progress watchdog stops after STOP.",
+    "ignored_old_states": 0,
+    "scope": "online observation/progress bookkeeping; status 2 is not an adoption acknowledgement"
+  },
+  "prefix_exit": {
+    "verified": true,
+    "ulog_status_final_s": 65.072,
+    "ulog_land_final_s": 64.648,
+    "final_observation_sim_s": 66.54,
+    "ulog_arming_state": 1,
+    "ulog_landed": true,
+    "recovery_failsafe_samples": 0
+  },
+  "parameter_restore": {
+    "verified": true,
+    "applied_control_42": {
+      "MC_ROLL_P": 4.0,
+      "MC_PITCH_P": 4.0,
+      "MC_YAW_P": 2.799999952316284,
+      "MC_AIRMODE": 0.0,
+      "MC_ROLLRATE_P": 0.15000000596046448,
+      "MC_ROLLRATE_I": 0.20000000298023224,
+      "MC_ROLLRATE_D": 0.003000000026077032,
+      "MC_ROLLRATE_FF": 0.0,
+      "MC_ROLLRATE_K": 1.0,
+      "MC_PITCHRATE_P": 0.15000000596046448,
+      "MC_PITCHRATE_I": 0.20000000298023224,
+      "MC_PITCHRATE_D": 0.003000000026077032,
+      "MC_PITCHRATE_FF": 0.0,
+      "MC_PITCHRATE_K": 1.0,
+      "MC_YAWRATE_P": 0.20000000298023224,
+      "MC_YAWRATE_I": 0.10000000149011612,
+      "MC_YAWRATE_D": 0.0,
+      "MC_YAWRATE_FF": 0.0,
+      "MC_YAWRATE_K": 1.0,
+      "MPC_XY_P": 0.949999988079071,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.200000047683716,
+      "MPC_XY_VEL_I_ACC": 0.4000000059604645,
+      "MPC_XY_VEL_D_ACC": 0.20000000298023224,
+      "MPC_Z_VEL_P_ACC": 4.800000190734863,
+      "MPC_Z_VEL_I_ACC": 2.0,
+      "MPC_Z_VEL_D_ACC": 0.0,
+      "MPC_THR_MIN": 0.11999999731779099,
+      "MPC_THR_MAX": 1.0,
+      "MPC_THR_HOVER": 0.4499668478965759,
+      "MPC_USE_HTE": 1.0,
+      "MPC_TILTMAX_AIR": 45.0,
+      "MPC_TILTMAX_LND": 12.0,
+      "MPC_XY_VEL_MAX": 12.0,
+      "MPC_Z_VEL_MAX_UP": 3.0,
+      "MPC_Z_VEL_MAX_DN": 1.5,
+      "MPC_ACC_HOR_MAX": 5.0,
+      "MPC_ACC_UP_MAX": 4.0,
+      "MPC_ACC_DOWN_MAX": 3.0,
+      "MPC_JERK_MAX": 8.0,
+      "MPC_TKO_SPEED": 1.5,
+      "MPC_LAND_SPEED": 0.699999988079071
+    },
+    "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+    "exact_typed_restore_verified": true,
+    "synchronous_storage_save_verified": true,
+    "write_allowlist": {
+      "EKF2_EV_CTRL": 7,
+      "EKF2_EV_NOISE_MD": 1,
+      "EKF2_EVP_NOISE": 0.01,
+      "EKF2_EVV_NOISE": 0.01,
+      "EKF2_GPS_CTRL": 0,
+      "EKF2_BARO_CTRL": 0,
+      "EKF2_HGT_REF": 3,
+      "MPC_XY_P": 0.95,
+      "MPC_Z_P": 1.0,
+      "MPC_XY_VEL_P_ACC": 2.2,
+      "MPC_Z_VEL_P_ACC": 4.8
+    },
+    "write_attempt_count": 22,
+    "all_other_recorded_parameters_protected": true
+  },
+  "prefix_error": {
+    "t_end": 9.160000000000004,
+    "samples": 2291,
+    "peak_m": 0.19761728839106263,
+    "peak_task_s": 9.160000000000004,
+    "last_m": 0.19761728839106263,
+    "rmse_m": 0.048807015903913994,
+    "pre_pulse_1s_peak_m": 0.013341724459051693,
+    "observed_post_pulse_peak_m": 0.19761728839106263,
+    "continuous_10mm_1s_observed_start": null,
+    "confirmed_at": null,
+    "full_original_recovery_window_observed": false,
+    "same_time": true,
+    "no_phase_alignment": true,
+    "original_peak_limit_m": 0.1,
+    "observed_prefix_peak_within_original_limit": false
+  },
+  "px4_commands_prefix": {
+    "verified": true,
+    "control_interface": "raw_ev_world_pva_v2",
+    "measurement_sends": 458,
+    "received_rows": 459,
+    "source_snapshot_identity_max_abs_m_s": 5.551115123125783e-17,
+    "received_pva_matches_actual_sends": true,
+    "all_measurement_sends_observed": true,
+    "causal_delivery_allowance_s": 0.1,
+    "clock_boundary_allowance_s": 0.008,
+    "pva_float_tolerance": 2e-05,
+    "matched_delivery_range_s": [
+      -7.105427357601002e-15,
+      0.015999999999998238
+    ],
+    "internal_minus_received_pva_reconstruction": {
+      "unit": "m/s",
+      "sample_count": 1145,
+      "duration_s": 9.152000000000001,
+      "rmse_3d": 0.002454267142222888,
+      "rmse_xy": 0.001768868152172674,
+      "rmse_z": 0.0017013326146359889,
+      "axis_rmse": [
+        0.0017533928774514703,
+        0.00023346939215499436,
+        0.001701332614635989
+      ],
+      "peak_3d": 0.0270860165706633,
+      "peak_xy": 0.019975007261144217,
+      "peak_abs_z": 0.026603862643241882,
+      "mean_vector": [
+        2.868485485023424e-05,
+        -5.113225291769216e-07,
+        3.502715021186408e-05
+      ],
+      "mean_vector_norm": 4.5276744587838257e-05,
+      "centered_rms_3d": 0.0024538494700764406,
+      "sample_p95_3d": 0.005536645078972221,
+      "coordinate_system": "world ENU",
+      "no_offset_or_phase_fit": true
+    },
+    "internal_minus_original_time_logical_velocity": {
+      "unit": "m/s",
+      "sample_count": 1145,
+      "duration_s": 9.152000000000001,
+      "rmse_3d": 0.007960003300542765,
+      "rmse_xy": 0.006837219241840357,
+      "rmse_z": 0.004076037976228839,
+      "axis_rmse": [
+        0.006833861857269667,
+        0.00021424069815699983,
+        0.00407603797622884
+      ],
+      "peak_3d": 0.027561413131350482,
+      "peak_xy": 0.025941842830330946,
+      "peak_abs_z": 0.009809331251529746,
+      "mean_vector": [
+        0.002641114756251518,
+        1.3452461796764776e-05,
+        0.000308603103042086
+      ],
+      "mean_vector_norm": 0.0026591171466532107,
+      "centered_rms_3d": 0.007502716077863175,
+      "sample_p95_3d": 0.016280931553869643,
+      "coordinate_system": "world ENU",
+      "no_offset_or_phase_fit": true
+    },
+    "axis_rms_acceptance_limit_m_s": [
+      0.015,
+      0.015,
+      0.01
+    ],
+    "reconstructed_velocity_within_actual_px4_limits": true,
+    "saturation_scope": "Speed-bound check and internal/reconstructed residuals; no unsupported claim that every inner-loop actuator avoided saturation",
+    "zero_acceleration_feedforward": true,
+    "time_alignment": "Original send simulation timestamps and raw ULog HRT; no estimated time shift or delay compensation",
+    "complete_24s": false,
+    "scope": "Original upper command/ULog matching on executed prefix only",
+    "distinct_value_proof": {
+      "actual_normal_send_count": 458,
+      "distinct_pva_value_row_count": 458,
+      "equivalent_repeated_publication_count": 0,
+      "equivalent_repeated_publications": [],
+      "original_send_records_preserved": true,
+      "original_derived_rows_preserved": true,
+      "timestamps_changed": false,
+      "scope": "Only the ULog value-matching view folds exact same-clock, same-candidate repeated payloads and feedback; this is not a per-publication PX4 acknowledgement"
+    }
+  },
+  "release": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "bounded_failed_recovery": true,
+    "receipt_budget_s": 0.15,
+    "sigint_budget_s": 0.15,
+    "sigkill_budget_s": 0.05,
+    "signals": [
+      "SIGINT"
+    ],
+    "errors": [],
+    "begin_monotonic_ns": 98411096951876085,
+    "wall_monotonic_ns": 98411097107646956
+  },
+  "pulse_status": {
+    "state": "ABORTED",
+    "reason": "stop_path observed",
+    "anchored": true,
+    "task_rows": 2298,
+    "first_task_sim_s": 47.144,
+    "last_task_sim_s": 56.332,
+    "impulse_force_Ns_couple_Nms": [
+      0.9000000000000007,
+      0,
+      0,
+      0,
+      -3.7747582837255325e-18,
+      0
+    ]
+  },
+  "evidence": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/native_trace.csv",
+      "sha256": "657a0042124c4eef526c003968791fe36a5ff9f2905ac8a36a41a221f1d62956",
+      "bytes": 8865975
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/ts20_state.csv",
+      "sha256": "b1613dd2b027ac6c35d745f4468fc4f560b0d9fc01bd0a4f15638f35339104e8",
+      "bytes": 7668462
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/px4.ulg",
+      "sha256": "2904b80db0f0063b37b4af2bd7e486f2474702849c90e658e1887d55e8947ee9",
+      "bytes": 17911537
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/flight_samples.csv",
+      "sha256": "754dd2af47f408c5ffe65fe294c3b79d7b0ad3e5e1f38ab2be864b55c5e39af9",
+      "bytes": 408579
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/controller_metadata.json",
+      "sha256": "617d24c066acb11e80624ddf52ff267bc07e1dcb2c7c438a8489e40e76573fc3",
+      "bytes": 238902
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/diagnostic_parameters_restored.json",
+      "sha256": "359c72c927430ded3ccb93fef457c39c86799304cde015f9f02b28b5a04ca90f",
+      "bytes": 12638
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/physical_disturbance/applied_wrench.csv",
+      "sha256": "03a80935374b47ca20eea1f682602608d206dcaed534d76cb120362e35d82fb4",
+      "bytes": 1377694
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_201639_15949/physical_disturbance/applied_wrench.csv.status.json",
+      "sha256": "54a8203bff6486474646d6e30a6dcda72018dfb9dd9e005a8a545546812eefeb",
+      "bytes": 963
+    }
+  ],
+  "previous_review": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/independent_review_v1.json",
+    "sha256": "767d998ddd946b543c48e877763242e369140eaae0dff485d926463f6117c5a4",
+    "bytes": 18255
+  },
+  "prefix_proof_v1": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_flight_20261026/interval_prefix_check_v1.json",
+    "sha256": "0b6a02866bd6ea6a9c6af773a6357eb87a0812cb142f6b87d58b0c17b56fd19f",
+    "bytes": 424913
+  },
+  "continuous_send_prefix": {
+    "scope": "Only actual normal sends and dispatcher slots strictly before the first latched fault; not full24s execution qualification",
+    "normal_send_count": 458,
+    "stop_send_count": 1,
+    "first_fault_dispatch_sequence": 3428,
+    "max_actual_send_gap_ms": 37.800449,
+    "min_actual_send_gap_ms": 1.935513,
+    "normal_send_gap_within_original_40ms": true,
+    "nominal_slot_count": 458,
+    "all_nominal_differences_20ms": true,
+    "last_normal_command_sequence": 454,
+    "strict_original_prefix_tick_check": {
+      "verified": true,
+      "actual_send_gap_ms": {
+        "count": 457,
+        "minimum": 1.935513,
+        "median": 20.005718,
+        "p95": 20.21023,
+        "p99": 22.44173324,
+        "maximum": 37.800449
+      },
+      "command_age_ms": {
+        "count": 458,
+        "minimum": 6.60858,
+        "median": 22.626414,
+        "p95": 26.021225799999996,
+        "p99": 42.626661930000004,
+        "maximum": 45.639651
+      },
+      "original_absolute_period_ns": 20000000,
+      "normal_sends": 458
+    }
+  }
+}
