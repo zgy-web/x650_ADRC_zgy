@@ -61,3 +61,6 @@ control_packages/x650_wholebody_v1/native/test_mpc_core.cpp -text whitespace=cr-
 scripts/*x650*recovery* -text whitespace=cr-at-eol
 tests/unit/*x650*recovery* -text whitespace=cr-at-eol
 docs/validation/cpp_recovery_20261026/** -text -whitespace
+# Preserve new admission bytes and the original physical-retry evidence.
+simulations/x650_cpp_recovery_v1/** -text whitespace=cr-at-eol
+docs/validation/cpp_recovery_flight_20261026/** -text -whitespace

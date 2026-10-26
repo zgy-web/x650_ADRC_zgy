@@ -1,0 +1,46 @@
+{
+  "kind": "x650_recovery_flight_archive_delivery_v1",
+  "complete": true,
+  "archive_only": true,
+  "acceptance_granted": false,
+  "source_inputs_unchanged": true,
+  "zip_member_sha256_verified": true,
+  "zip_crc_verified": true,
+  "part_reconstruction_verified": true,
+  "part_size_bytes": 41943040,
+  "original_directory_count": 4,
+  "input_file_count": 5263,
+  "input_total_bytes": 319926150,
+  "archive": {
+    "name": "recovery_flight_evidence.zip",
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_flight_20261026/delivery_v1/recovery_flight_evidence.zip",
+    "bytes": 69526737,
+    "sha256": "1821ec9d0bb075aef00cf7246ca783ebc8df70f151a59c9825ed69e6df256a31",
+    "git_blob_sha1": "dfc711b6bec1cd0d0bff88c7e7bc852b5ed0b85e"
+  },
+  "archive_manifest": {
+    "name": "archive_manifest.json",
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_flight_20261026/delivery_v1/archive_manifest.json",
+    "bytes": 2431324,
+    "sha256": "4dfe5ea5e60b3a8a8b707fed593476644e8f5841f0060677be848c8df98267f4",
+    "git_blob_sha1": "98bec680398b752a8969f4252716216f8dc52276"
+  },
+  "parts": [
+    {
+      "name": "recovery_flight_evidence.zip.part01",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_flight_20261026/delivery_v1/recovery_flight_evidence.zip.part01",
+      "bytes": 41943040,
+      "sha256": "ab3d68e331bdabf1dcd1ab55830d679d40bdcab51d29021dffbec9caec57781b",
+      "git_blob_sha1": "e5a4f344ea9f26feca4c69875b3dc29d349ff001"
+    },
+    {
+      "name": "recovery_flight_evidence.zip.part02",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_flight_20261026/delivery_v1/recovery_flight_evidence.zip.part02",
+      "bytes": 27583697,
+      "sha256": "89aee7b6c07fd16fc3b1b08f94447b47eaeeb9d9844a1c5b95311b421bb2b152",
+      "git_blob_sha1": "bbc1d85c064ac3fc4742025a5ac473583870b4d0"
+    }
+  ],
+  "git_transfer_scope": "Commit archive_manifest.json, delivery_manifest.json and the ordered parts. The full ZIP is locally verified but not required as a Git blob. delivery_manifest intentionally omits its own hash.",
+  "private_meshes_included": false
+}

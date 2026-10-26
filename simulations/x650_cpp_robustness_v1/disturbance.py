@@ -10,8 +10,10 @@ import hashlib
 import importlib.util
 import json
 import math
+import os
 from pathlib import Path
 import time
+import uuid
 
 ROOT = Path(__file__).resolve().parents[2]
 PLUGIN_DIR = ROOT / 'benchmark/whole_body_closed_loop_v1'
@@ -87,6 +89,27 @@ def _write_new(path, value):
     with Path(path).open('x', encoding='utf-8', newline='\n') as stream:
         json.dump(value, stream, indent=2, allow_nan=False)
         stream.write('\n')
+
+
+def _publish_start_marker(path, text):
+    """Expose only a closed complete marker, without replacing an old marker.
+
+    Gazebo polls the final name from its independent physics thread. Creating
+    that name before writing its value permits an empty-file read. A closed
+    same-directory staging inode becomes visible through one exclusive hard
+    link operation; EEXIST preserves the previous experiment's marker.
+    """
+    path = Path(path)
+    staging = path.with_name('.' + path.name + '.' + uuid.uuid4().hex + '.staging')
+    created = False
+    try:
+        with staging.open('x', encoding='ascii', newline='\n') as stream:
+            created = True
+            stream.write(text)
+        os.link(staging, path)
+    finally:
+        if created:
+            staging.unlink()
 
 
 class DisturbanceMixin:
@@ -169,8 +192,7 @@ class DisturbanceMixin:
             raise RuntimeError('External-wrench immutable activation already exceeds 50 ms sim budget')
         begin_ns = time.monotonic_ns()
         marker = self.wrench_dir / 'disturbance_start.txt'
-        with marker.open('x', encoding='ascii', newline='\n') as stream:
-            stream.write('t0_sim_s=' + format(float(start), '.17g') + '\n')
+        _publish_start_marker(marker, 't0_sim_s=' + format(float(start), '.17g') + '\n')
         end_ns = time.monotonic_ns()
         after = float(loop.monitor_now())
         receipt = {'kind': 'x650_robust_wrench_arm_receipt_v1', 'origin_s': float(start),

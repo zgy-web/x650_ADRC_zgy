@@ -1,0 +1,95 @@
+{
+  "kind": "x650_wrench_activation_failure_v1",
+  "attempt": "physical_v1",
+  "physical_disturbance_valid": false,
+  "root_cause": "Start marker was visible between exclusive creation and write/close. Physics observed an empty payload; std::stod failed before immutable origin anchoring.",
+  "status": {
+    "state": "FAILED",
+    "reason": "stod",
+    "ready": true,
+    "anchored": false,
+    "complete": true,
+    "success": false,
+    "t0_sim_s": -1,
+    "duration_s": 24,
+    "rows": 6961,
+    "task_rows": 0,
+    "first_task_sim_s": -1,
+    "last_task_sim_s": -1,
+    "max_step_dt_s": 0.004,
+    "max_enqueue_component_error": 0,
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+    "link": "base_link",
+    "force_frame": "world ENU",
+    "free_couple_frame": "world ENU",
+    "application_point": "base_link own center of mass, not whole-system CoM",
+    "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+    "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+    "impulse_force_Ns_couple_Nms": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "expected_impulse_force_Ns_couple_Nms": [
+      0,
+      0,
+      0,
+      0,
+      0.015999999999999945,
+      0
+    ]
+  },
+  "receipt": {
+    "kind": "x650_robust_wrench_arm_receipt_v1",
+    "origin_s": 47.952,
+    "observed_before_sim_s": 47.952,
+    "observed_after_sim_s": 47.952,
+    "begin_monotonic_ns": 98395904695639623,
+    "end_monotonic_ns": 98395904696455289,
+    "activation_lag_s": 0.0,
+    "max_activation_lag_s": 0.05,
+    "start_marker": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/disturbance_start.txt",
+      "sha256": "1673a0862667b5d5c5cafcef10d1f5609e69fb68fd8c8193ace83c3472712197",
+      "bytes": 28
+    },
+    "same_origin_as_live_start": true,
+    "clock_semantics": "loop physical monitor maximum and immutable LiveStart origin; native plugin independently rejects late activation"
+  },
+  "marker_creation_to_close_ms": 0.815666,
+  "task_rows_zero": true,
+  "original_files_untouched": true,
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/applied_wrench.csv.status.json",
+      "bytes": 837,
+      "sha256": "d46bba55816ef91935637619d7d8751456bbd65e94552b8b46243e5b46d2679b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/arm_receipt.json",
+      "bytes": 741,
+      "sha256": "9f851c23b2e2eeb87713603c5398095227697b3578fdde8bf920cb7a87c78cca"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/disturbance_start.txt",
+      "bytes": 28,
+      "sha256": "1673a0862667b5d5c5cafcef10d1f5609e69fb68fd8c8193ace83c3472712197"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/ground_ready.json",
+      "bytes": 4710,
+      "sha256": "4311461b6e82b520ae691618080dcd174306ce4880160deda7a4db5646bcba31"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_160337_6729/physical_disturbance/applied_wrench.csv",
+      "bytes": 996804,
+      "sha256": "884ab4ace2d5f5b96700a29fe055a70c53e512784c53349d0c4561c524b1579d"
+    }
+  ],
+  "control_result_scope": "1198 normal calls and successful landing do not qualify an external-wrench run",
+  "repair_scope": "Atomic exclusive publication of a closed marker only; task/plugin/Core/QP/TS20/limits and timing unchanged",
+  "observed_unix": 1793002468.9272535
+}

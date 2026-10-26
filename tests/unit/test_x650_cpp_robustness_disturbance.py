@@ -100,6 +100,85 @@ class RuntimeProof(unittest.TestCase):
                 d.verify_runtime_binding(value, plugin_dir=directory)
 
 
+class AtomicStartMarker(unittest.TestCase):
+    def test_physics_reader_cannot_see_open_empty_or_partial_staging_file(self):
+        with space() as out:
+            marker=out/'disturbance_start.txt';text='t0_sim_s=100.004\n'
+            original_open,original_link=Path.open,d.os.link
+            observations=[];closed=[]
+            def observe(label):
+                observations.append(label)
+                self.assertFalse(marker.exists(),label)
+            class Writer:
+                def __init__(self,stream):self.stream=stream
+                def __enter__(self):return self
+                def write(self,value):
+                    observe('before_write')
+                    count=self.stream.write(value[:4])
+                    self.stream.flush()
+                    observe('partial_staging_bytes')
+                    count+=self.stream.write(value[4:])
+                    observe('complete_but_open_staging')
+                    return count
+                def __exit__(self,*args):
+                    result=self.stream.__exit__(*args)
+                    closed.append(self.stream.closed)
+                    observe('closed_before_publication')
+                    return result
+            def open_observed(path,*args,**kwargs):
+                stream=original_open(path,*args,**kwargs)
+                if args and args[0]=='x' and path.name.endswith('.staging'):
+                    observe('created_empty_staging')
+                    return Writer(stream)
+                return stream
+            def publish(source,target):
+                self.assertEqual(closed,[True])
+                self.assertEqual(Path(source).read_text(),text)
+                self.assertEqual(Path(target),marker)
+                observe('immediately_before_atomic_link')
+                original_link(source,target)
+                self.assertEqual(marker.read_text(),text)
+            with patch.object(Path,'open',open_observed),patch.object(d.os,'link',side_effect=publish):
+                d._publish_start_marker(marker,text)
+            self.assertIn('partial_staging_bytes',observations)
+            self.assertEqual(marker.read_text(),text)
+            self.assertEqual(list(out.iterdir()),[marker])
+
+    def test_existing_final_marker_is_never_replaced_and_staging_is_removed(self):
+        with space() as out:
+            marker=out/'disturbance_start.txt';marker.write_bytes(b't0_sim_s=99\n')
+            before=d.identity(marker)
+            with self.assertRaises(FileExistsError):d._publish_start_marker(marker,'t0_sim_s=100\n')
+            self.assertEqual(d.identity(marker),before)
+            self.assertEqual(list(out.iterdir()),[marker])
+
+    def test_failed_partial_write_never_exposes_final_name(self):
+        with space() as out:
+            marker=out/'disturbance_start.txt';original_open=Path.open
+            class FailingWriter:
+                def __init__(self,stream):self.stream=stream
+                def __enter__(self):return self
+                def write(self,value):
+                    self.stream.write(value[:4]);self.stream.flush()
+                    raise OSError('synthetic staging write failure')
+                def __exit__(self,*args):return self.stream.__exit__(*args)
+            def opened(path,*args,**kwargs):
+                stream=original_open(path,*args,**kwargs)
+                return FailingWriter(stream) if args and args[0]=='x' else stream
+            with patch.object(Path,'open',opened),self.assertRaisesRegex(OSError,'staging write failure'):
+                d._publish_start_marker(marker,'t0_sim_s=100\n')
+            self.assertFalse(marker.exists());self.assertEqual(list(out.iterdir()),[])
+
+    def test_exclusive_staging_collision_preserves_foreign_original_file(self):
+        with space() as out:
+            marker=out/'disturbance_start.txt'
+            staging=out/'.disturbance_start.txt.fixed.staging';staging.write_bytes(b'original collision evidence')
+            before=d.identity(staging)
+            with patch.object(d.uuid,'uuid4',return_value=SimpleNamespace(hex='fixed')):
+                with self.assertRaises(FileExistsError):d._publish_start_marker(marker,'t0_sim_s=100\n')
+            self.assertFalse(marker.exists());self.assertEqual(d.identity(staging),before)
+
+
 class Lifecycle(unittest.TestCase):
     def fixture(self, out):
         directory, binding = runtime(out)

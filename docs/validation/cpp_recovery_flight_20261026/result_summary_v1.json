@@ -1,0 +1,552 @@
+{
+  "kind": "x650_recovery_flight_summary_v1",
+  "full_24s_passed": false,
+  "physical_acceptance": false,
+  "controlled_cutoff_task_s": 8.604,
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_recovery_launch_20261026_161743_8169",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_robust_wrench_v1_20261026_161824_8191",
+  "same_original_task_sha256": "7b168599e2a182f1a3d3dd860b88d2f87cfb0c23ca258964c0126f4c499af388",
+  "endpoint_prefix": {
+    "position_rmse_m": 0.02317539563181013,
+    "position_max_m": 0.1279058168782942,
+    "axis_rmse_m": [
+      0.022700005680663382,
+      0.002622845618878798,
+      0.003863856318278727
+    ],
+    "sample_count": 2152,
+    "interval_task_s": [
+      0.0,
+      8.604
+    ],
+    "duration_s": 8.604,
+    "same_time": true,
+    "no_phase_alignment": true
+  },
+  "actual_joint_q_ranges_rad": [
+    [
+      -0.23525308709678744,
+      0.31932962661689857
+    ],
+    [
+      -0.32921119106582225,
+      1.1421120023764277e-08
+    ]
+  ],
+  "actual_joint_dq_ranges_rad_s": [
+    [
+      -0.19047378141219448,
+      0.2756613925739335
+    ],
+    [
+      -0.18060289419049336,
+      0.07569573082087015
+    ]
+  ],
+  "actual_tilt_peak_deg": 4.239993249535697,
+  "safety_peak_limit_m": 0.1,
+  "endpoint_peak_limit_passed": false,
+  "rejected_call": {
+    "sequence": 429,
+    "task_time_s": 8.604,
+    "error": "TS20 nonlinear candidate rejected before command publication",
+    "current_actual_q_rad": [
+      0.31862892408680277,
+      -0.3276416846334596
+    ],
+    "current_actual_dq_rad_s": [
+      -0.07504303673299609,
+      0.07419432896483572
+    ],
+    "native_diagnostics": {
+      "accepted": false,
+      "active_constraints": 51,
+      "actual_bounds": false,
+      "candidate_substeps": 600,
+      "capture_semantics": "owning values from the actual native call, moved after publication; no extra prediction or solver call",
+      "compute_ms": 12.971842,
+      "dq_linearization_error": 0.011499447170251254,
+      "kkt_complementarity": 2.424625099330532e-16,
+      "kkt_stationarity": 4.440892098500626e-16,
+      "nonlinear_passed": false,
+      "objective": 0.0,
+      "previous_plan_fallback": false,
+      "primal_violation": 6.5156213757688874e-15,
+      "q_linearization_error": 0.0002957957079438023,
+      "qp_columns": 75,
+      "qp_rows": 230,
+      "recovery_reason": "",
+      "recovery_stopping_violation": 0.0,
+      "recovery_triggered": false,
+      "recovery_trust_radius": 0.0,
+      "solver_mode": 1,
+      "subproblems": 1
+    },
+    "future_candidate_envelope": [
+      0.14411855819169614,
+      -0.3276416846334596,
+      0.31862892408680277,
+      -0.21259990182139493,
+      -0.42798841183906533,
+      0.07419432896483572,
+      -0.07504303673299609,
+      0.2579894105881522
+    ],
+    "rejected_not_sent": true
+  },
+  "execution_diagnostic": {
+    "accepted_prefix_numeric": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "calls": 428,
+        "all_original_raw_identities_checked": true,
+        "actual_numeric_and_wire_bounds_checked": true,
+        "core_compute_ms": {
+          "count": 428,
+          "minimum": 2.003081,
+          "median": 5.0997265,
+          "p95": 11.170427149999998,
+          "p99": 12.86234695,
+          "maximum": 20.746151
+        }
+      }
+    },
+    "native_recovery_centres": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "normal_calls": 426,
+        "recovery_calls": 2,
+        "projection_solves": 0,
+        "calls": [
+          {
+            "sequence": 379,
+            "task_time_s": 7.588000000000001,
+            "centre_attempts": 1,
+            "trusted_centres": [
+              {
+                "kind": "slew_limited_brake",
+                "plan_violation": 1.3877787807814457e-17,
+                "envelope_violation": 0.0,
+                "nonlinear_stopping_violation": 0.0,
+                "elapsed_ms": 10.801102
+              }
+            ],
+            "projection_solves": 0,
+            "control_subproblems": 2,
+            "final_nonlinear_stopping_violation": 0.0,
+            "core_ms": 20.746151
+          },
+          {
+            "sequence": 383,
+            "task_time_s": 7.684000000000005,
+            "centre_attempts": 1,
+            "trusted_centres": [
+              {
+                "kind": "slew_limited_brake",
+                "plan_violation": 1.3877787807814457e-17,
+                "envelope_violation": 0.0,
+                "nonlinear_stopping_violation": 0.0,
+                "elapsed_ms": 7.824612
+              }
+            ],
+            "projection_solves": 0,
+            "control_subproblems": 2,
+            "final_nonlinear_stopping_violation": 0.0,
+            "core_ms": 16.586565
+          }
+        ],
+        "initial_trust_radius": 0.02,
+        "core_budget_ms": 50.0,
+        "recovery_core_ms": {
+          "count": 2,
+          "minimum": 16.586565,
+          "median": 18.666358000000002,
+          "p95": 20.5381717,
+          "p99": 20.70455514,
+          "maximum": 20.746151
+        },
+        "compact_capture_scope": "Copied actual native centre/final nodes, extrema and integrated reference; full QP rows and model rollout are independently bound by software admission, not recaptured/reconstructed here"
+      }
+    },
+    "prefix_timing": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "actual_send_gap_ms": {
+          "count": 429,
+          "minimum": 6.491016,
+          "median": 20.002071,
+          "p95": 20.373933599999994,
+          "p99": 25.29902684,
+          "maximum": 33.424757
+        },
+        "command_age_ms": {
+          "count": 430,
+          "minimum": 12.155337,
+          "median": 20.357574,
+          "p95": 24.332078199999998,
+          "p99": 31.573440589999944,
+          "maximum": 48.219766
+        },
+        "original_absolute_period_ns": 20000000,
+        "normal_sends": 430
+      }
+    },
+    "actual_send_barrier": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "actual_send_barrier_pairs": 427,
+        "scope": "Actual ActuatorSend CDR -> ingress kind5 -> next admission -> original worker callback"
+      }
+    },
+    "actual_joint_consumption": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "passed": true,
+        "kind": "streaming_consumption_accounting_v1",
+        "scope": "physics-boundary adoption accounting; not motor ACK, bus-application or flight qualification",
+        "complete_physical_hold_qualified": false,
+        "mapping_assumptions": [
+          "exclusive writer during epoch",
+          "ordered exactly-once per-joint bridge delivery",
+          "initial legacy publications drained before the frozen send baseline"
+        ],
+        "mapping_limit": "Float64 has no wire identity; assumptions are not proven by counters alone.",
+        "full_physics_rows": 15909,
+        "epoch_physics_rows": 2152,
+        "initial_counter": [
+          1174,
+          1174
+        ],
+        "send_count": 431,
+        "observed_receipt_count": 430,
+        "joint_counts": [
+          {
+            "adopted": 431
+          },
+          {
+            "adopted": 431
+          }
+        ],
+        "both_joint_values_observed_together": 431,
+        "same_physics_boundary_adoptions": 430,
+        "all_sends_applied": true,
+        "zero_consumed": true,
+        "no_overlapping_legacy_publications": true,
+        "adoption_lag_sim_s": {
+          "min": 0.0,
+          "max": 0.020000000000003126
+        },
+        "lag_clock_note": "Plugin adoption minus latest plugin observation at send; not wall transit latency."
+      }
+    },
+    "online_consumption_ledger": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "passed": true,
+        "original_baseline_cdr_verified": true,
+        "rows": 431,
+        "progress_budget_ms": 40,
+        "actual_state_age_limit_ms": 25,
+        "per_joint_progress_observation_ms": {
+          "min": 2.118989,
+          "max": 25.30404
+        },
+        "stop_progress_observation_ms": [
+          5.952817,
+          5.952817
+        ],
+        "stop_limit_scope": "Existing release timeout is separate; the tracking progress watchdog stops after STOP.",
+        "ignored_old_states": 0,
+        "scope": "online observation/progress bookkeeping; status 2 is not an adoption acknowledgement"
+      }
+    },
+    "ulog_exit_after_rejection": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "ulog_status_final_s": 65.556,
+        "ulog_land_final_s": 65.132,
+        "final_observation_sim_s": 67.044,
+        "ulog_arming_state": 1,
+        "ulog_landed": true,
+        "recovery_failsafe_samples": 0
+      }
+    },
+    "typed_parameter_restoration": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "applied_control_42": {
+          "MC_ROLL_P": 4.0,
+          "MC_PITCH_P": 4.0,
+          "MC_YAW_P": 2.799999952316284,
+          "MC_AIRMODE": 0.0,
+          "MC_ROLLRATE_P": 0.15000000596046448,
+          "MC_ROLLRATE_I": 0.20000000298023224,
+          "MC_ROLLRATE_D": 0.003000000026077032,
+          "MC_ROLLRATE_FF": 0.0,
+          "MC_ROLLRATE_K": 1.0,
+          "MC_PITCHRATE_P": 0.15000000596046448,
+          "MC_PITCHRATE_I": 0.20000000298023224,
+          "MC_PITCHRATE_D": 0.003000000026077032,
+          "MC_PITCHRATE_FF": 0.0,
+          "MC_PITCHRATE_K": 1.0,
+          "MC_YAWRATE_P": 0.20000000298023224,
+          "MC_YAWRATE_I": 0.10000000149011612,
+          "MC_YAWRATE_D": 0.0,
+          "MC_YAWRATE_FF": 0.0,
+          "MC_YAWRATE_K": 1.0,
+          "MPC_XY_P": 0.949999988079071,
+          "MPC_Z_P": 1.0,
+          "MPC_XY_VEL_P_ACC": 2.200000047683716,
+          "MPC_XY_VEL_I_ACC": 0.4000000059604645,
+          "MPC_XY_VEL_D_ACC": 0.20000000298023224,
+          "MPC_Z_VEL_P_ACC": 4.800000190734863,
+          "MPC_Z_VEL_I_ACC": 2.0,
+          "MPC_Z_VEL_D_ACC": 0.0,
+          "MPC_THR_MIN": 0.11999999731779099,
+          "MPC_THR_MAX": 1.0,
+          "MPC_THR_HOVER": 0.4499668478965759,
+          "MPC_USE_HTE": 1.0,
+          "MPC_TILTMAX_AIR": 45.0,
+          "MPC_TILTMAX_LND": 12.0,
+          "MPC_XY_VEL_MAX": 12.0,
+          "MPC_Z_VEL_MAX_UP": 3.0,
+          "MPC_Z_VEL_MAX_DN": 1.5,
+          "MPC_ACC_HOR_MAX": 5.0,
+          "MPC_ACC_UP_MAX": 4.0,
+          "MPC_ACC_DOWN_MAX": 3.0,
+          "MPC_JERK_MAX": 8.0,
+          "MPC_TKO_SPEED": 1.5,
+          "MPC_LAND_SPEED": 0.699999988079071
+        },
+        "pid_parameters_sha256": "f65f56cca1d5e50b6e2b09b57d9e9286298ad78d23cac701f98b0cae6fbd0b02",
+        "exact_typed_restore_verified": true,
+        "synchronous_storage_save_verified": true,
+        "write_allowlist": {
+          "EKF2_EV_CTRL": 7,
+          "EKF2_EV_NOISE_MD": 1,
+          "EKF2_EVP_NOISE": 0.01,
+          "EKF2_EVV_NOISE": 0.01,
+          "EKF2_GPS_CTRL": 0,
+          "EKF2_BARO_CTRL": 0,
+          "EKF2_HGT_REF": 3,
+          "MPC_XY_P": 0.95,
+          "MPC_Z_P": 1.0,
+          "MPC_XY_VEL_P_ACC": 2.2,
+          "MPC_Z_VEL_P_ACC": 4.8
+        },
+        "write_attempt_count": 22,
+        "all_other_recorded_parameters_protected": true
+      }
+    },
+    "px4_pva_and_handoff": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "distinct_pva_value_proof": {
+          "actual_normal_send_count": 430,
+          "distinct_pva_value_row_count": 430,
+          "equivalent_repeated_publication_count": 0,
+          "equivalent_repeated_publications": [],
+          "original_send_records_preserved": true,
+          "original_derived_rows_preserved": true,
+          "timestamps_changed": false,
+          "scope": "Only the ULog value-matching view folds exact same-clock, same-candidate repeated payloads and feedback; this is not a per-publication PX4 acknowledgement"
+        },
+        "checked": {
+          "verified": true,
+          "control_interface": "raw_ev_world_pva_v2",
+          "measurement_sends": 430,
+          "received_rows": 430,
+          "source_snapshot_identity_max_abs_m_s": 5.551115123125783e-17,
+          "received_pva_matches_actual_sends": true,
+          "all_measurement_sends_observed": true,
+          "causal_delivery_allowance_s": 0.1,
+          "clock_boundary_allowance_s": 0.008,
+          "pva_float_tolerance": 2e-05,
+          "matched_delivery_range_s": [
+            -0.0040000000000048885,
+            0.01999999999999602
+          ],
+          "internal_minus_received_pva_reconstruction": {
+            "unit": "m/s",
+            "sample_count": 1076,
+            "duration_s": 8.600000000000001,
+            "rmse_3d": 0.00023786060789562143,
+            "rmse_xy": 0.00017853167952041097,
+            "rmse_z": 0.00015717540582449864,
+            "axis_rmse": [
+              0.0001760791621457652,
+              2.9490494238381274e-05,
+              0.00015717540582449858
+            ],
+            "peak_3d": 0.00645568002276422,
+            "peak_xy": 0.004963505945859078,
+            "peak_abs_z": 0.004127882421016693,
+            "mean_vector": [
+              7.6112455591679995e-06,
+              -8.051240459971982e-07,
+              -2.2316436340132866e-06
+            ],
+            "mean_vector_norm": 7.972422279372156e-06,
+            "centered_rms_3d": 0.00023772696370305568,
+            "sample_p95_3d": 9.128486953055188e-09,
+            "coordinate_system": "world ENU",
+            "no_offset_or_phase_fit": true
+          },
+          "internal_minus_original_time_logical_velocity": {
+            "unit": "m/s",
+            "sample_count": 1076,
+            "duration_s": 8.600000000000001,
+            "rmse_3d": 0.007258956761797136,
+            "rmse_xy": 0.006210216564702082,
+            "rmse_z": 0.0037584123628388935,
+            "axis_rmse": [
+              0.006206544390385299,
+              0.00021353339475803032,
+              0.003758412362838895
+            ],
+            "peak_3d": 0.021252109584716558,
+            "peak_xy": 0.0204534079924724,
+            "peak_abs_z": 0.0124383371671557,
+            "mean_vector": [
+              0.0021801603730398694,
+              1.5828526286280836e-05,
+              6.59894294437868e-05
+            ],
+            "mean_vector_norm": 0.0021812162660350886,
+            "centered_rms_3d": 0.006923492534149532,
+            "sample_p95_3d": 0.015153843777560443,
+            "coordinate_system": "world ENU",
+            "no_offset_or_phase_fit": true
+          },
+          "axis_rms_acceptance_limit_m_s": [
+            0.015,
+            0.015,
+            0.01
+          ],
+          "reconstructed_velocity_within_actual_px4_limits": true,
+          "saturation_scope": "Speed-bound check and internal/reconstructed residuals; no unsupported claim that every inner-loop actuator avoided saturation",
+          "zero_acceleration_feedforward": true,
+          "time_alignment": "Original send simulation timestamps and raw ULog HRT; no estimated time shift or delay compensation"
+        },
+        "scope": "Controlled prefix PVA values and stop handoff; not per repeated setpoint ACK"
+      }
+    },
+    "ground_transport": {
+      "checked": true,
+      "error": null,
+      "result": {
+        "verified": true,
+        "duration_ms": 265.885057,
+        "allocator_prepare_ms": 0.486659,
+        "transport_launch_ms": 6.737107,
+        "no_allocator_step_or_live_output_before_handoff": true
+      }
+    }
+  },
+  "original_disturbance_status": {
+    "state": "ABORTED",
+    "reason": "stop_path observed",
+    "ready": true,
+    "anchored": true,
+    "complete": true,
+    "success": false,
+    "t0_sim_s": 47.132,
+    "duration_s": 24,
+    "rows": 9141,
+    "task_rows": 2157,
+    "first_task_sim_s": 47.144,
+    "last_task_sim_s": 55.768,
+    "max_step_dt_s": 0.004,
+    "max_enqueue_component_error": 3.3306690738754696e-16,
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+    "link": "base_link",
+    "force_frame": "world ENU",
+    "free_couple_frame": "world ENU",
+    "application_point": "base_link own center of mass, not whole-system CoM",
+    "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+    "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+    "impulse_force_Ns_couple_Nms": [
+      0.9000000000000007,
+      0,
+      0,
+      0,
+      1.665334536937735e-17,
+      1.9081958235744874e-20
+    ],
+    "expected_impulse_force_Ns_couple_Nms": [
+      0,
+      0,
+      0,
+      0,
+      0.015999999999999945,
+      0
+    ]
+  },
+  "first_pulse_complete": true,
+  "later_pulses_not_reached": true,
+  "first_pulse_recovered_with_1s_hold_before_abort": false,
+  "whole_window_recovery_metrics_available": false,
+  "actual_recoveries": [
+    {
+      "sequence": 379,
+      "task_time_s": 7.588000000000001,
+      "centre_attempts": 1,
+      "trusted_centres": [
+        {
+          "kind": "slew_limited_brake",
+          "plan_violation": 1.3877787807814457e-17,
+          "envelope_violation": 0.0,
+          "nonlinear_stopping_violation": 0.0,
+          "elapsed_ms": 10.801102
+        }
+      ],
+      "projection_solves": 0,
+      "control_subproblems": 2,
+      "final_nonlinear_stopping_violation": 0.0,
+      "core_ms": 20.746151
+    },
+    {
+      "sequence": 383,
+      "task_time_s": 7.684000000000005,
+      "centre_attempts": 1,
+      "trusted_centres": [
+        {
+          "kind": "slew_limited_brake",
+          "plan_violation": 1.3877787807814457e-17,
+          "envelope_violation": 0.0,
+          "nonlinear_stopping_violation": 0.0,
+          "elapsed_ms": 7.824612
+        }
+      ],
+      "projection_solves": 0,
+      "control_subproblems": 2,
+      "final_nonlinear_stopping_violation": 0.0,
+      "core_ms": 16.586565
+    }
+  ],
+  "all_core_parameters_and_binaries_preserved": true,
+  "delay_injected": false,
+  "original_failure": {
+    "run": "x650_cpp_robust_wrench_v1_20261024_205309_55502",
+    "failed_task_s": 7.544,
+    "scope": "Different actual initial states; no paired numerical causal performance claim"
+  },
+  "first_attempt_invalid_disturbance": "physical_v1: start marker race, no applied pulse",
+  "tool_tests": "42 passed in 3.78s",
+  "runtime_closed": true,
+  "audit_error": "ValueError(\"Incomplete flight lifecycle: RuntimeError('C++ candidate gate rejected reason 11')\")"
+}
