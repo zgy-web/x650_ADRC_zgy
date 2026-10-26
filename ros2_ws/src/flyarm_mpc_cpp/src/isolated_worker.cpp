@@ -73,7 +73,7 @@ class Worker : public rclcpp::Node {
     session_=session;epoch_=epoch;
     out_=fm::fs::path(get_parameter("output_dir").as_string());if(!out_.is_absolute()||!fm::fs::is_directory(out_))throw std::invalid_argument("Existing absolute owned output directory required");
     startup_=fm::load_startup(get_parameter("startup_manifest").as_string(),get_parameter("startup_sha256").as_string());hash_=flyarm_runtime_wire::parse_hash(startup_.task_hash);
-    Dl_info library{};if(x650_mpc_core_abi_version()!=1||!dladdr(reinterpret_cast<void*>(&x650_mpc_core_abi_version),&library)
+    Dl_info library{};if(x650_mpc_core_abi_version()!=2||!dladdr(reinterpret_cast<void*>(&x650_mpc_core_abi_version),&library)
         ||fm::fs::canonical(library.dli_fname)!=startup_.core_library)throw std::runtime_error("Loaded complete C++ core differs from bound library");
     Dl_info optimization{};void* assemble=dlsym(RTLD_DEFAULT,"x650_assemble");
     if(!assemble||!dladdr(assemble,&optimization)||fm::fs::canonical(optimization.dli_fname)!=startup_.optimization_library)
@@ -89,7 +89,7 @@ class Worker : public rclcpp::Node {
     starts_=create_subscription<messages::LiveStart>("/flyarm/isolated/v1/live_start",1,[this](messages::LiveStart::ConstSharedPtr start){begin(*start);});
   }
   void ready(){placement_->bind();Json::Value value;value["kind"]="cpp_full_pipeline_worker_startup_v1";value["implementation"]="cpp_full_pipeline_v1";value["python_in_worker"]=false;value["hardware_qualified"]=false;value["startup_manifest"]=startup_.manifest;
-    value["configuration_sha256"]=startup_.task_hash;value["session_id"]=Json::UInt64(session_);value["epoch"]=Json::UInt64(epoch_);value["core_abi"]=1;value["startup_controller_steps"]=Json::UInt64(core_->memory().step_count);
+    value["configuration_sha256"]=startup_.task_hash;value["session_id"]=Json::UInt64(session_);value["epoch"]=Json::UInt64(epoch_);value["core_abi"]=2;value["startup_controller_steps"]=Json::UInt64(core_->memory().step_count);
     value["diagnostic_mode"]="compact";value["full_matrix_packet_capture"]=false;
     value["loaded_core_path"]=startup_.core_library.string();value["loaded_optimization_path"]=startup_.optimization_library.string();value["loaded_predictor_path"]=startup_.predictor_library.string();
     if(core_->memory().step_count!=0)throw std::runtime_error("A controller step ran before actual LiveStart");
@@ -117,7 +117,7 @@ class Worker : public rclcpp::Node {
       if(snapshot.issued_monotonic_ns>0&&snapshot.issued_monotonic_ns<=row[2]&&row[2]-snapshot.issued_monotonic_ns>50000000ULL)proposal.status=3;
       const auto input=contract_->decode(flyarm_runtime_wire::from_ros(snapshot),row[2],startup_.config.nodes,startup_.config.node_dt);proposal.control_time_s=snapshot.control_time_s;proposal.task_time_s=snapshot.task_time_s;proposal.status=2;
       row[3]=fm::monotonic_ns();record.result=core_->step(input);row[4]=fm::monotonic_ns();const auto& result=*record.result;const auto& d=result.diagnostics;
-      if(!d.accepted||!d.nonlinear_passed||!d.actual_bounds||d.previous_plan_fallback||d.attempts.empty()||d.attempts.size()>3||d.subproblems!=int(d.attempts.size()))throw std::runtime_error("Full native optimum/nonlinear/physical-bound evidence missing");
+      if(!d.accepted||!d.nonlinear_passed||!d.actual_bounds||d.previous_plan_fallback||d.attempts.empty()||d.attempts.size()>3||d.subproblems!=int(d.attempts.size())||!fm::recovery_evidence_valid(d,startup_.config))throw std::runtime_error("Full native optimum/nonlinear/physical-bound or recovery evidence missing");
       proposal.position_reference_enu=result.position_reference;proposal.velocity_feedforward_enu=result.velocity_feedforward;proposal.acceleration_feedforward_enu=result.acceleration_feedforward;
       std::copy_n(result.command.begin(),3,proposal.base_velocity_target.begin());proposal.joint_velocity=result.joint_velocity;
       proposal.accepted_optimum=true;proposal.nonlinear_check_passed=true;proposal.primal_violation=d.primal_violation;proposal.kkt_residual=d.kkt_stationarity;proposal.subproblems=d.attempts.size();proposal.status=0;

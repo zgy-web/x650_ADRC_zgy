@@ -66,6 +66,20 @@ struct Memory {
 struct Attempt {
   bool passed=false,actual_bounds=false; double q_error=0.,dq_error=0.,elapsed_ms=0.;
 };
+// ABI 2: a recovery centre is only a numerical seed. It is never published.
+// Original-row feasibility and native continuous-envelope validation must both
+// pass before it may replace an infeasible linearization centre.
+struct RecoveryAttempt {
+  std::string centre_kind,rejection;
+  bool nonlinear_passed=false,original_constraints_passed=false,trusted=false,projection_attempted=false,projection_solved=false;
+  double original_primal_violation=0.,stopping_violation=0.,elapsed_ms=0.;
+  std::vector<double> centre_plan;
+  // Exact native node states [q1,q2,dq1,dq2] and reference integration used by
+  // the checks, copied from propagation without a second diagnostic rollout.
+  std::vector<double> node_times,node_states,node_references;
+  std::array<double,8> envelope{};
+  int substeps=0;
+};
 struct Diagnostics {
   int subproblems=0,active_constraints=0,solver_mode=-1,qp_rows=0,qp_columns=0;
   double primal_violation=0.,kkt_stationarity=0.,kkt_complementarity=0.,objective=0.;
@@ -74,7 +88,13 @@ struct Diagnostics {
   std::array<double,8> candidate_envelope{};
   int candidate_substeps=0;
   std::vector<Attempt> attempts;
+  bool recovery_triggered=false;
+  std::string recovery_reason;
+  std::vector<RecoveryAttempt> recovery_attempts;
+  double recovery_trust_radius=0.,recovery_stopping_violation=0.;
   std::vector<double> horizon,plan,predicted_states,predicted_tip,predicted_rotations;
+  // Full diagnostics retain the surrogate before native q/dq replaces it.
+  std::vector<double> linearized_states;
   // Complete actual propagation boundary evidence, never recomputed for logging.
   std::vector<Packet> nominal_packets,candidate_packets;
   std::vector<double> query_times,nominal_states,candidate_states,candidate_extrema,candidate_boundary_times;

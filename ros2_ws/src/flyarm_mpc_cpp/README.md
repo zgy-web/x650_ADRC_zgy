@@ -55,6 +55,10 @@ target must match this law exactly; wrong phases are rejected. The separate
 `simulations/x650_cpp_normal_v1` entry binds the accepted hold and newly tested
 dynamic worker. Fast trajectories require a later explicit entry and validation.
 
+The worker now requires Core ABI **2**, including trusted-centre recovery diagnostics.
+Rebuild the worker against the matching header and shared library; the ROS wire schema is unchanged.
+See the [recovery method and software validation](../../../docs/X650_MPC_TRUSTED_CENTRE_RECOVERY.md).
+
 The actually loaded core ABI and optimization dependency are checked with `dladdr`
 (including the actual `x650_assemble` symbol); the predictor is loaded
 from its hash-checked absolute path. The manifest is prepared offline. The worker

@@ -52,9 +52,35 @@ int main(){fm::fs::path folder=fm::fs::temp_directory_path()/std::string("flyarm
    [](auto& j){j["predictor_library"]["symbol"]="replacement";},[](auto& j){j["source_artifacts"].append(j["source_artifacts"][0]);}}){
     auto j=startup;mutation(j);auto p=folder/("reject_"+std::to_string(++index)+".json");fm::write_json(p,j);rejects([&]{fm::load_startup(p,fm::sha256(p));});}
   x650::StepResult result;result.diagnostics.candidate_packets.push_back({});result.diagnostics.candidate_packets[0].q_ref={.123,-.234};
-  result.diagnostics.candidate_states={1,2,3};result.diagnostics.C={4,5};result.diagnostics.attempts.push_back({true,true,.01,.02,.3});
+  result.diagnostics.candidate_states={1,2,3};result.diagnostics.linearized_states={.1,.2,.3};result.diagnostics.C={4,5};result.diagnostics.attempts.push_back({true,true,.01,.02,.3});
+  result.diagnostics.recovery_triggered=true;result.diagnostics.recovery_reason="QP infeasible";
+  result.diagnostics.recovery_trust_radius=.02;result.diagnostics.recovery_stopping_violation=1e-9;
+  x650::RecoveryAttempt recovery;recovery.centre_kind="original_constraints_brake_projection";recovery.rejection="";
+  recovery.nonlinear_passed=recovery.original_constraints_passed=recovery.trusted=recovery.projection_attempted=recovery.projection_solved=true;
+  recovery.original_primal_violation=2e-9;recovery.stopping_violation=1e-9;recovery.elapsed_ms=12.;recovery.substeps=600;
+  recovery.centre_plan.assign(5*c.nodes,.01);recovery.node_times.assign(c.nodes,.02);recovery.node_states.assign(4*c.nodes,.03);recovery.node_references.assign(2*c.nodes,.04);recovery.envelope={-.1,-.2,.1,.2,-.1,-.1,.1,.1};
+  result.diagnostics.recovery_attempts.push_back(recovery);result.diagnostics.subproblems=2;
+  require(fm::recovery_evidence_valid(result.diagnostics,c),"Valid recovery evidence was rejected");
   const auto evidence=fm::result_json(result);result.diagnostics.candidate_packets[0].q_ref[0]=9.;
   require(evidence["diagnostics"]["candidate_packets"][0]["q_ref"][0].asDouble()==.123&&evidence["diagnostics"]["C"][1].asDouble()==5.,"Actual native evidence missing or aliased");
+  result.diagnostics.linearized_states[0]=99.;require(evidence["diagnostics"]["linearized_states"][0].asDouble()==.1,"Original pre-replacement linearized prediction missing or aliased");
+  result.diagnostics.recovery_attempts[0].centre_plan[0]=99.;
+  require(evidence["diagnostics"]["recovery_attempts"][0]["centre_plan"][0].asDouble()==.01
+      &&evidence["diagnostics"]["recovery_attempts"][0]["projection_solved"].asBool()
+      &&evidence["diagnostics"]["recovery_attempts"][0]["node_states"].size()==unsigned(4*c.nodes)
+      &&evidence["diagnostics"]["recovery_trust_radius"].asDouble()==.02,"Owning recovery diagnostic values missing or aliased");
+  for(const auto& mutation:std::vector<std::function<void(x650::Diagnostics&)>>{
+   [](auto& d){d.recovery_trust_radius=.03;},[](auto& d){d.recovery_triggered=false;},
+   [](auto& d){d.recovery_attempts[0].nonlinear_passed=false;},[](auto& d){d.recovery_attempts[0].original_constraints_passed=false;},
+   [](auto& d){d.recovery_attempts[0].node_states.clear();},[](auto& d){d.recovery_attempts[0].projection_attempted=false;},
+   [](auto& d){d.recovery_attempts[0].original_primal_violation=1e-6;},[](auto& d){d.recovery_stopping_violation=1e-6;},
+   [](auto& d){d.recovery_attempts.push_back(d.recovery_attempts.front());}}){auto altered=result.diagnostics;mutation(altered);require(!fm::recovery_evidence_valid(altered,c),"Invalid recovery evidence reached worker acceptance");}
+  for(const auto& mutation:std::vector<std::function<void(x650::Diagnostics&)>>{
+   [](auto& d){d.recovery_trust_radius=std::numeric_limits<double>::quiet_NaN();},
+   [](auto& d){d.recovery_attempts[0].elapsed_ms=std::numeric_limits<double>::infinity();},
+   [](auto& d){d.recovery_attempts[0].node_states[0]=std::numeric_limits<double>::quiet_NaN();},
+   [](auto& d){d.linearized_states[0]=std::numeric_limits<double>::quiet_NaN();},
+   [](auto& d){d.recovery_attempts[0].original_primal_violation=std::numeric_limits<double>::infinity();}}){auto altered=result.diagnostics;mutation(altered);rejects([&]{fm::diagnostics_json(altered);});}
   result.diagnostics.compute_ms=std::numeric_limits<double>::infinity();rejects([&]{fm::result_json(result);});
   fm::fs::remove_all(folder);std::cout<<"Strict startup/source binding and actual native diagnostics contracts passed\n";return 0;
  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';if(fm::fs::exists(folder))fm::fs::remove_all(folder);return 1;}}

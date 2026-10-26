@@ -11,7 +11,7 @@ int x650_assemble(int,const double*,int,double*,int,int*,char*,int);
 int x650_solve(int,int,const double*,const double*,const double*,const double*,const double*,int,double*,double*,int*,char*,int);
 int x650_endpoint(int,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
 int x650_candidate(int,int,const double*,const double*,const double*,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
-unsigned x650_mpc_core_abi_version(){return 1;}
+unsigned x650_mpc_core_abi_version(){return 2;}
 }
 namespace x650 {
 namespace {
@@ -33,6 +33,7 @@ std::vector<double> cumulative(const std::vector<double>& v){std::vector<double>
 void unique_sort(std::vector<double>& values){std::sort(values.begin(),values.end());values.erase(std::unique(values.begin(),values.end()),values.end());}
 E3 tip(const V2& q,const Config& c){const auto& g=c.geometry;double a=g[2]+q[0],b=g[3]+q[0]+q[1];
  return E3(g[4],g[5],g[6])+g[0]*E3(std::cos(a),0,-std::sin(a))+E3(g[7],g[8],g[9])+g[1]*E3(std::cos(b),0,-std::sin(b));}
+struct Assembly {int ar=0,cr=0;std::vector<double>offsets,jac,contexts;};
 struct Nominal {E3 p,v,a;E2 q,dq,ddq;};
 Nominal nominal(const Config& c,const Anchor& anchor,const Target& target){
  require(finite(target.position)&&finite(target.velocity)&&finite(target.acceleration),"target finite");
@@ -145,6 +146,26 @@ Prediction predict(const Config& c,Ts20BatchFn fn,const StepInput& in,const std:
  return p;
 }
 std::vector<double> matrix_data(const Matrix& x){return {x.data(),x.data()+x.size()};}
+Eigen::VectorXd normalized(const Matrix& plan,const Config& c){
+ Eigen::VectorXd z(plan.size());for(int i=0;i<plan.rows();++i)for(int j=0;j<5;++j)z[5*i+j]=plan(i,j)/c.velocity_limit[j];return z;
+}
+double original_violation(const Diagnostics& d,const Eigen::VectorXd& z){
+ const int rows=int(d.lower.size()),n=int(z.size());Eigen::VectorXd value=Eigen::Map<const Matrix>(d.C.data(),rows,n)*z;
+ return std::max({0.,(Eigen::Map<const Eigen::VectorXd>(d.lower.data(),rows)-value).maxCoeff(),
+   (value-Eigen::Map<const Eigen::VectorXd>(d.upper.data(),rows)).maxCoeff(),(z.cwiseAbs().array()-1.).maxCoeff()});
+}
+double stopping_violation(const Config& c,double age,const Matrix& q,const Matrix& dq){
+ E2 reserve=vec(c.velocity_limit).tail<2>().cwiseQuotient(2*vec(c.acceleration_limit).tail<2>())+E2::Constant(c.max_dt+.05+age);
+ double violation=0.;for(int i=0;i<q.rows();++i)for(int j=0;j<2;++j){double value=q(i,j)+reserve[j]*dq(i,j);violation=std::max({violation,c.q_lower[j]-value,value-c.q_upper[j]});}return violation;
+}
+Matrix braking_centre(const Config& c,const Memory& m,const Matrix& warm,const std::vector<double>& h){
+ Matrix result=warm;E5 previous=vec(m.previous_command);
+ for(int i=0;i<c.nodes;++i)for(int j=0;j<5;++j){double target=j<3?warm(i,j):0.;
+  result(i,j)=std::clamp(target,std::max(-c.velocity_limit[j],previous[j]-c.acceleration_limit[j]*h[i]),
+    std::min(c.velocity_limit[j],previous[j]+c.acceleration_limit[j]*h[i]));previous[j]=result(i,j);}
+ return result;
+}
+bool recoverable_infeasibility(const std::string& message){return message=="QP infeasible"||message=="constant QP infeasible";}
 }
 
 Core::Core(Config config,Ts20BatchFn predictor,DiagnosticMode diagnostics):config_(std::move(config)),predictor_(predictor),diagnostic_mode_(diagnostics){
@@ -183,21 +204,88 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
   require(in.preview.empty()||in.preview.size()==std::size_t(N),"preview node count");std::vector<Target> targets=in.preview;
   if(targets.empty())for(double offset:nodes){Target t=in.target;for(int j=0;j<3;++j){t.position[j]+=offset*in.target.velocity[j]+.5*offset*offset*in.target.acceleration[j];t.velocity[j]+=offset*in.target.acceleration[j];}targets.push_back(t);}
   for(const auto& t:targets)require(finite(t.position)&&finite(t.velocity)&&finite(t.acceleration),"preview finite");
-  for(int attempt=0;attempt<3;++attempt){dg.subproblems=attempt+1;Prediction pred=predict(c,predictor_,in,h,nodes,warm,attempt>0);
+  int nonlinear_retries=0,recovery_centres=0;
+  // At most the original three control QPs. Any internal projection solve is
+  // separately recorded, and also consumes the same total 50 ms deadline.
+  for(int attempt=0;attempt<3;++attempt){require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");++dg.subproblems;Prediction pred=predict(c,predictor_,in,h,nodes,warm,nonlinear_retries>0);
+   auto assemble=[&](const Prediction& pred,const Matrix& centre,Diagnostics& out){
    std::vector<double> data;data.reserve(100000);append(data,std::array<double,5>{in.dt,c.node_dt,c.max_dt,age,std::min(c.trust_radius,.02)});
    append(data,c.weights);append(data,c.velocity_limit);append(data,c.acceleration_limit);append(data,m.previous_command);append(data,c.q_lower);append(data,c.q_upper);
    append(data,s.position);append(data,s.velocity);append(data,arr<2>(pred.q));append(data,arr<2>(pred.dq));append(data,V2{s.acceleration[0],s.acceleration[1]});
    append(data,s.rotation);append(data,s.omega_body);append(data,s.acceleration);append(data,c.response);append(data,c.geometry);append(data,m.anchor.position);append(data,m.anchor.rotation);append(data,m.anchor.q);append(data,c.arm_share);
    append(data,c.physical_lower);append(data,c.physical_upper);append(data,s.dq);append(data,arr<2>(pred.q));append(data,arr<2>(pred.dq));
    std::vector<Command>recent;for(const auto& v:in.context.commands)if(v.time>=in.t-.05-age-c.max_dt)recent.push_back(v);append(data,double(recent.size()));for(const auto& v:recent)append(data,v.velocity);
-   append(data,matrix_data(warm));for(const auto& t:targets){append(data,t.position);append(data,t.velocity);}append(data,matrix_data(pred.joints));append(data,matrix_data(pred.references));
+   append(data,matrix_data(centre));for(const auto& t:targets){append(data,t.position);append(data,t.velocity);}append(data,matrix_data(pred.joints));append(data,matrix_data(pred.references));
    std::vector<double> output(21*N*(n+1)+n*n+n+(15*N+5)*(n+2)+N*(53+12*n)+17);int shape[3]{};char error[512]{};
    if(x650_assemble(N,data.data(),int(data.size()),output.data(),int(output.size()),shape,error,512))throw CoreError(error,dg);
    int offset=0;auto take=[&](int size){require(offset+size<=shape[2],"assembly output shape");std::vector<double>v(output.begin()+offset,output.begin()+offset+size);offset+=size;return v;};int ar=shape[0],cr=shape[1];
-   dg.A=take(ar*n);dg.b=take(ar);dg.H=take(n*n);dg.g=take(n);dg.C=take(cr*n);dg.lower=take(cr);dg.upper=take(cr);
-   auto offsets=take(N*12),jac=take(N*12*n);take(N*12);take(N*9);auto contexts=take(N*20);take(17);require(offset==shape[2],"assembly complete output");
-   dg.solution.resize(n);double quality[4]{};int mode=-1;
-   if(x650_solve(n,cr,dg.H.data(),dg.g.data(),dg.C.data(),dg.lower.data(),dg.upper.data(),c.max_iterations,dg.solution.data(),quality,&mode,error,512))throw CoreError(error,dg);
+   out.A=take(ar*n);out.b=take(ar);out.H=take(n*n);out.g=take(n);out.C=take(cr*n);out.lower=take(cr);out.upper=take(cr);
+   Assembly result;result.ar=ar;result.cr=cr;result.offsets=take(N*12);result.jac=take(N*12*n);take(N*12);take(N*9);result.contexts=take(N*20);take(17);require(offset==shape[2],"assembly complete output");return result;
+   };
+   auto assembled=assemble(pred,warm,dg);auto& offsets=assembled.offsets;auto& jac=assembled.jac;auto& contexts=assembled.contexts;int ar=assembled.ar,cr=assembled.cr;
+   require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");
+   dg.solution.resize(n);double quality[4]{};int mode=-1;char error[512]{};
+   if(x650_solve(n,cr,dg.H.data(),dg.g.data(),dg.C.data(),dg.lower.data(),dg.upper.data(),c.max_iterations,dg.solution.data(),quality,&mode,error,512)){
+    const std::string reason=error;
+    if(!recoverable_infeasibility(reason))throw CoreError(reason,dg);
+    dg.attempts.push_back({false,false,0.,0.,elapsed(begin)});
+    if(attempt>=2)throw CoreError("QP infeasible; control subproblem budget exhausted",dg);
+    if(!dg.recovery_triggered){dg.recovery_triggered=true;dg.recovery_reason=reason;dg.recovery_trust_radius=std::min(c.trust_radius,.02);}
+    bool recentered=false;
+    // The deterministic brake and constrained projection are internal seeds,
+    // not actuator commands. Neither may change the actual packet/reference
+    // history, the measured state, or the previously adopted command.
+    Matrix brake=braking_centre(c,m,warm,h);
+    while(recovery_centres<2&&!recentered){
+     RecoveryAttempt record;record.centre_kind=recovery_centres++==0?"slew_limited_brake":"original_constraints_brake_projection";
+     if(elapsed(begin)>=50.)throw CoreError("TS20 recovery prepublication computation deadline exceeded",dg);
+     Matrix centre=brake;
+     try {
+      if(record.centre_kind=="original_constraints_brake_projection"){
+       // Only the known trust rows are omitted for seed generation. Every
+       // original physical, slew, reference, stopping and pending-command row
+       // remains present. The full .02 trust is restored after re-centring.
+       const int first=cr-5-2*N;require(first>=0,"recovery trust row layout");
+       auto C=Eigen::Map<const Matrix>(dg.C.data(),cr,n);auto old=normalized(warm,c);
+       for(int i=0;i<N;++i)for(int j=0;j<2;++j){int row=first+2*i+j,column=5*i+3+j;
+        for(int k=0;k<n;++k)require(C(row,k)==(k==column?1.:0.),"recovery trust row identity");
+        require(std::abs(dg.lower[row]-old[column]+std::min(c.trust_radius,.02))<1e-10&&std::abs(dg.upper[row]-old[column]-std::min(c.trust_radius,.02))<1e-10,"recovery trust row bounds");}
+       Matrix projected_C(cr-2*N,n);projected_C.topRows(first)=C.topRows(first);projected_C.bottomRows(5)=C.bottomRows(5);
+       std::vector<double> lo(dg.lower.begin(),dg.lower.begin()+first),hi(dg.upper.begin(),dg.upper.begin()+first);
+       lo.insert(lo.end(),dg.lower.end()-5,dg.lower.end());hi.insert(hi.end(),dg.upper.end()-5,dg.upper.end());
+       Matrix H=2.*Matrix::Identity(n,n);Eigen::VectorXd g=-2.*normalized(brake,c);std::vector<double> z(n);double q[4]{};int projection_mode=-1;char projection_error[512]{};
+       record.projection_attempted=true;
+       int code=x650_solve(n,cr-2*N,H.data(),g.data(),projected_C.data(),lo.data(),hi.data(),c.max_iterations,z.data(),q,&projection_mode,projection_error,512);
+       require(!code,projection_error);require(finite(z)&&q[0]<=c.feasibility_tolerance&&q[1]<=c.kkt_tolerance,"recovery projection quality");
+       record.projection_solved=true;
+       for(int i=0;i<N;++i)for(int j=0;j<5;++j)centre(i,j)=z[5*i+j]*c.velocity_limit[j];
+      }
+      record.centre_plan=matrix_data(centre);
+      auto seed=predict(c,predictor_,in,h,nodes,centre,false);
+      require(elapsed(begin)<50.,"TS20 recovery prepublication computation deadline exceeded");
+      auto native=rollout(c,predictor_,in,seed.nominal.packets,seed.queries,true);
+      Matrix q(N,2),dq(N,2),refs(N,2),prediction=Matrix::Zero(N,12);E2 r=seed.r;
+      for(int i=0;i<N;++i){auto at=std::lower_bound(seed.queries.begin(),seed.queries.end(),in.t+nodes[i]);require(at!=seed.queries.end()&&std::abs(*at-in.t-nodes[i])<1e-9,"recovery query coverage");
+       int k=int(at-seed.queries.begin());q.row(i)=native.query_states.row(k).head(2);dq.row(i)=native.query_states.row(k).tail(2);r+=h[i]*centre.row(i).tail<2>().transpose();refs.row(i)=r.transpose();}
+      prediction.middleCols(6,2)=q;prediction.middleCols(8,2)=dq;
+      record.node_times=nodes;for(double& time:record.node_times)time+=in.t;
+      Matrix node_states(N,4);node_states.leftCols(2)=q;node_states.rightCols(2)=dq;
+      record.node_states=matrix_data(node_states);record.node_references=matrix_data(refs);
+      double check[4]{};char check_error[512]{};require(!x650_candidate(N,N,prediction.data(),q.data(),dq.data(),refs.data(),native.envelope.data(),c.q_lower.data(),c.q_upper.data(),c.velocity_limit.data()+3,check,check_error,512),check_error);
+      record.envelope=native.envelope;record.substeps=native.substeps;record.nonlinear_passed=check[3]!=0;
+      record.stopping_violation=stopping_violation(c,age,q,dq);
+      Diagnostics seed_diagnostics;assemble(seed,centre,seed_diagnostics);
+      record.original_primal_violation=original_violation(seed_diagnostics,normalized(centre,c));
+      record.original_constraints_passed=record.original_primal_violation<=c.feasibility_tolerance&&record.stopping_violation<=c.feasibility_tolerance;
+      record.trusted=record.nonlinear_passed&&record.original_constraints_passed;
+      if(record.trusted){warm=std::move(centre);recentered=true;}
+      else record.rejection=record.nonlinear_passed?"centre original-row or native stopping check failed":"centre native continuous-envelope check failed";
+     }catch(const CoreError& failure){record.trusted=false;record.rejection=failure.what();}
+     record.elapsed_ms=elapsed(begin);dg.recovery_attempts.push_back(std::move(record));
+    }
+    if(recentered){require(elapsed(begin)<50.,"TS20 recovery prepublication computation deadline exceeded");continue;}
+    throw CoreError("QP infeasible; no trusted recovery centre",dg);
+   }
    dg.primal_violation=quality[0];dg.kkt_stationarity=quality[1];dg.kkt_complementarity=quality[2];dg.active_constraints=int(quality[3]);dg.solver_mode=mode;dg.qp_rows=cr;dg.qp_columns=n;
    require(finite(dg.solution)&&quality[0]<=c.feasibility_tolerance&&quality[1]<=c.kkt_tolerance,"QP original-row/KKT rejection");
    Matrix plan(N,5),predicted(N,12);auto z=Eigen::Map<const Eigen::VectorXd>(dg.solution.data(),n);
@@ -209,8 +297,10 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
    dg.q_linearization_error=candidate[0];dg.dq_linearization_error=candidate[1];dg.actual_bounds=candidate[2]!=0;dg.nonlinear_passed=candidate[3]!=0;
    if(diagnostic_mode_==DiagnosticMode::Full){dg.nominal_packets=pred.nominal.packets;dg.candidate_packets=actual_packets.packets;dg.query_times=pred.queries;dg.nominal_states=matrix_data(pred.run.query_states);dg.candidate_states=matrix_data(actual.query_states);dg.candidate_extrema=matrix_data(actual.extrema);dg.candidate_boundary_times=actual.boundaries;dg.candidate_modes=actual.modes;dg.candidate_zero_events=actual.zeros;}
    dg.candidate_envelope=actual.envelope;dg.candidate_substeps=actual.substeps;dg.horizon=h;dg.plan=matrix_data(plan);
+   if(dg.recovery_triggered){dg.recovery_stopping_violation=stopping_violation(c,age,q,dq);if(dg.recovery_stopping_violation>c.feasibility_tolerance)dg.nonlinear_passed=false;}
    dg.attempts.push_back({dg.nonlinear_passed,dg.actual_bounds,candidate[0],candidate[1],elapsed(begin)});
-   if(!dg.nonlinear_passed){if(dg.actual_bounds&&attempt<2&&elapsed(begin)<50.){warm=plan;continue;}throw CoreError("TS20 nonlinear candidate rejected before command publication",dg);}
+   if(!dg.nonlinear_passed){if(dg.actual_bounds&&attempt<2&&elapsed(begin)<50.){++nonlinear_retries;warm=plan;continue;}throw CoreError("TS20 nonlinear candidate rejected before command publication",dg);}
+   if(diagnostic_mode_==DiagnosticMode::Full)dg.linearized_states=matrix_data(predicted);
    predicted.middleCols(6,2)=q;predicted.middleCols(8,2)=dq;dg.predicted_states=matrix_data(predicted);std::vector<double>endpoint(N*15);
    if(x650_endpoint(N,predicted.data(),plan.data(),contexts.data(),c.geometry.data(),c.response.data(),endpoint.data(),error,512))throw CoreError(error,dg);
    dg.predicted_tip.resize(N*3);dg.predicted_rotations.resize(N*9);for(int i=0;i<N;++i){std::copy_n(endpoint.data()+15*i,3,dg.predicted_tip.data()+3*i);std::copy_n(endpoint.data()+15*i+6,9,dg.predicted_rotations.data()+9*i);}

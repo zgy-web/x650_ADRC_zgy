@@ -39,8 +39,10 @@ int main(){try{
  const std::vector<x650::Command5> history{{0,{0,0,0,0,0}}};full.prime(history,0);compact.prime(history,0);rejects([&]{full.prime(history,0);});
  auto in=input();auto a=full.step(in),b=compact.step(in);
  check(a.diagnostics.accepted&&a.diagnostics.nonlinear_passed&&b.diagnostics.accepted,"full/compact accepted");
+ check(!a.diagnostics.recovery_triggered&&!b.diagnostics.recovery_triggered&&a.diagnostics.recovery_attempts.empty()&&b.diagnostics.recovery_attempts.empty(),"ordinary optimum must not invoke recovery");
  check(a.command==b.command&&a.position_reference==b.position_reference&&a.velocity_feedforward==b.velocity_feedforward,"compact command equality");
  check(!a.diagnostics.H.empty()&&b.diagnostics.H.empty()&&b.diagnostics.candidate_packets.empty(),"compact avoids log matrices/packets");
+ check(a.diagnostics.linearized_states.size()==std::size_t(c.nodes*12)&&b.diagnostics.linearized_states.empty(),"Full captures original linearized states without compact overhead");
  check(a.diagnostics.plan==b.diagnostics.plan&&a.diagnostics.predicted_states==b.diagnostics.predicted_states&&a.diagnostics.candidate_envelope==b.diagnostics.candidate_envelope,"compact keeps checks/endpoint data");
  check(a.diagnostics.candidate_boundary_times.size()==a.diagnostics.candidate_zero_events.size()&&a.diagnostics.candidate_modes.size()==2*a.diagnostics.candidate_boundary_times.size()&&!a.diagnostics.candidate_boundary_times.empty(),"actual propagation boundary evidence alignment");
  check(full.memory().step_count==1&&full.memory().last_t==.02,"successful commit");
@@ -61,6 +63,6 @@ int main(){try{
  auto invalid=c;invalid.feasibility_tolerance=1e-6;rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
  invalid=c;invalid.motion[0]=std::numeric_limits<double>::quiet_NaN();rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
  invalid=c;invalid.joint_position_gain=std::numeric_limits<double>::infinity();rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
- rejects([&]{x650::Core x(c,nullptr);});check(x650_mpc_core_abi_version()==1,"core ABI");
+ rejects([&]{x650::Core x(c,nullptr);});check(x650_mpc_core_abi_version()==2,"core ABI");
  std::cout<<"PASS: full raw-input core, compact equivalence, transactional rejection including real 50 ms deadline, warm restore and strict configuration\n";return 0;
  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

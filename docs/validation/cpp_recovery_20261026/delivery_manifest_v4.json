@@ -1,0 +1,35 @@
+{
+  "kind": "x650_recovery_split_delivery_v1",
+  "archive": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_20261026/recovery_evidence_v3.zip",
+    "bytes": 113641676,
+    "sha256": "b0ff810fe8f22207651a4baf9bb01c5c073100465c05b08533bdafec0fb4f272"
+  },
+  "entries": 7690,
+  "uncompressed_bytes": 431186330,
+  "software_acceptance": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_20261026/software_acceptance_v3.json",
+    "bytes": 8449,
+    "sha256": "8a7abf2eb6ce17736b2b1b4c1edc4b4697003ebf896295f64549ce67ae104de1"
+  },
+  "zip_crc_verified": true,
+  "parts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_20261026/recovery_evidence_v3.zip.part01",
+      "bytes": 41943040,
+      "sha256": "fdb5e57d6cff145bdc057867cbcd955b1409ac8e0092ca5db3a229d2a0308f21"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_20261026/recovery_evidence_v3.zip.part02",
+      "bytes": 41943040,
+      "sha256": "ef2f03ccad14d96d281b3d5a82305c3846e646ca8fa4a2946a15e2fc22e550b1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_recovery_20261026/recovery_evidence_v3.zip.part03",
+      "bytes": 29755596,
+      "sha256": "9fbf2899e968f62d764454c7fa833a06ed70d0215c5fa94ea79f84d3c2411595"
+    }
+  ],
+  "concatenate_in_manifest_order": true,
+  "original_manifest_sha256": "d730ff8badf030e2874428618416d7dee9572df4c898f076062c6a8ee17c7858"
+}

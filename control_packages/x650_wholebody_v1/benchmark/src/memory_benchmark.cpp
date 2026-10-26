@@ -42,6 +42,10 @@ struct Diagnostic {
   bool accepted=false,nonlinear_passed=false,actual_bounds=false,previous_plan_fallback=false;
   std::array<double,8> candidate_envelope{};
   std::array<x650::Attempt,3> attempts{};std::size_t attempt_count=0;
+  bool recovery_triggered=false;
+  std::string recovery_reason;
+  double recovery_trust_radius=0.,recovery_stopping_violation=0.;
+  std::array<x650::RecoveryAttempt,2> recovery_attempts{};std::size_t recovery_attempt_count=0;
 };
 Diagnostic diagnostic_of(const x650::Diagnostics& d) {
   Diagnostic o;
@@ -49,9 +53,14 @@ Diagnostic diagnostic_of(const x650::Diagnostics& d) {
   FIELD(subproblems);FIELD(active_constraints);FIELD(solver_mode);FIELD(qp_rows);FIELD(qp_columns);FIELD(candidate_substeps);
   FIELD(primal_violation);FIELD(kkt_stationarity);FIELD(kkt_complementarity);FIELD(objective);FIELD(compute_ms);
   FIELD(q_linearization_error);FIELD(dq_linearization_error);FIELD(accepted);FIELD(nonlinear_passed);FIELD(actual_bounds);FIELD(previous_plan_fallback);FIELD(candidate_envelope);
+  FIELD(recovery_triggered);FIELD(recovery_reason);FIELD(recovery_trust_radius);FIELD(recovery_stopping_violation);
 #undef FIELD
   o.attempt_count=std::min(d.attempts.size(),o.attempts.size());
-  std::copy_n(d.attempts.begin(),o.attempt_count,o.attempts.begin());return o;
+  std::copy_n(d.attempts.begin(),o.attempt_count,o.attempts.begin());
+  // Called only after both Core timers stop. Retain the bounded, actual native
+  // recovery evidence; never run a second predictor for benchmark diagnostics.
+  o.recovery_attempt_count=std::min(d.recovery_attempts.size(),o.recovery_attempts.size());
+  std::copy_n(d.recovery_attempts.begin(),o.recovery_attempt_count,o.recovery_attempts.begin());return o;
 }
 struct Sample {
   Times elapsed;Output output;Diagnostic diagnostic;
@@ -102,17 +111,33 @@ bool valid(const Sample& s) {
     s.elapsed.wall<=50000000&&s.diagnostic.compute_ms<=50.;
 }
 Json::Value json_number(double value) { return std::isfinite(value)?Json::Value(value):Json::Value(); }
+template<class T> Json::Value finite_array_json(const T& values) {
+  Json::Value out(Json::arrayValue);for(double value:values)out.append(json_number(value));return out;
+}
 Json::Value diagnostic_json(const Diagnostic& d) {
   Json::Value o;
 #define FIELD(name) o[#name]=d.name
   FIELD(subproblems);FIELD(active_constraints);FIELD(solver_mode);FIELD(qp_rows);FIELD(qp_columns);FIELD(candidate_substeps);
   FIELD(primal_violation);FIELD(kkt_stationarity);FIELD(kkt_complementarity);FIELD(objective);FIELD(compute_ms);
   FIELD(q_linearization_error);FIELD(dq_linearization_error);FIELD(accepted);FIELD(nonlinear_passed);FIELD(actual_bounds);FIELD(previous_plan_fallback);
+  FIELD(recovery_triggered);FIELD(recovery_reason);
 #undef FIELD
+  o["recovery_trust_radius"]=json_number(d.recovery_trust_radius);
+  o["recovery_stopping_violation"]=json_number(d.recovery_stopping_violation);
   o["candidate_envelope"]=b::array_json(d.candidate_envelope);o["attempts"]=Json::Value(Json::arrayValue);
   for(std::size_t i=0;i<d.attempt_count;++i){const auto& a=d.attempts[i];Json::Value v;
     v["passed"]=a.passed;v["actual_bounds"]=a.actual_bounds;v["q_error"]=json_number(a.q_error);
     v["dq_error"]=json_number(a.dq_error);v["elapsed_ms"]=json_number(a.elapsed_ms);o["attempts"].append(v);}
+  o["recovery_attempts"]=Json::Value(Json::arrayValue);
+  for(std::size_t i=0;i<d.recovery_attempt_count;++i){const auto& a=d.recovery_attempts[i];Json::Value v;
+    v["centre_kind"]=a.centre_kind;v["rejection"]=a.rejection;v["nonlinear_passed"]=a.nonlinear_passed;
+    v["original_constraints_passed"]=a.original_constraints_passed;v["trusted"]=a.trusted;
+    v["projection_attempted"]=a.projection_attempted;v["projection_solved"]=a.projection_solved;
+    v["original_primal_violation"]=json_number(a.original_primal_violation);
+    v["stopping_violation"]=json_number(a.stopping_violation);v["elapsed_ms"]=json_number(a.elapsed_ms);
+    v["centre_plan"]=finite_array_json(a.centre_plan);v["node_times"]=finite_array_json(a.node_times);
+    v["node_states"]=finite_array_json(a.node_states);v["node_references"]=finite_array_json(a.node_references);
+    v["envelope"]=finite_array_json(a.envelope);v["substeps"]=a.substeps;o["recovery_attempts"].append(v);}
   return o;
 }
 Json::Value sample_json(const Sample& s,std::size_t case_index,std::size_t round) {
@@ -192,8 +217,8 @@ Json::Value run(int argc,char** argv) {
   cpu_set_t affinity;CPU_ZERO(&affinity);if(sched_getaffinity(0,sizeof(affinity),&affinity))throw std::runtime_error("Cannot read CPU affinity");
   std::vector<int> allowed_cpus;for(int cpu=0;cpu<CPU_SETSIZE;++cpu)if(CPU_ISSET(cpu,&affinity))allowed_cpus.push_back(cpu);
   const auto count=data.cases.size();
-  // Only fixed-size summaries are retained; Core's large intermediate vectors
-  // are destroyed between calls, outside each Core timing bracket.
+  // Bounded summaries retain at most two actual recovery records; Core's large
+  // intermediate matrices are destroyed outside each Core timing bracket.
   std::vector<Sample> warmup(count*std::size_t(data.run.warmup_rounds));
   std::vector<Sample> samples(count*std::size_t(data.run.measured_rounds));
   std::vector<Ns> overhead_wall(1000),overhead_thread(1000);

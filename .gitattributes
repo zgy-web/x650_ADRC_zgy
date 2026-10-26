@@ -54,3 +54,10 @@ tests/unit/*x650*robustness*.py -text whitespace=cr-at-eol
 control_packages/x650_wholebody_v1/benchmark/** -text whitespace=cr-at-eol,-blank-at-eof
 scripts/*x650_orin*.py -text whitespace=cr-at-eol,-blank-at-eof
 tests/unit/*x650_orin*.py -text whitespace=cr-at-eol,-blank-at-eof
+# Recovery replay binds exact C++ sources and immutable software evidence.
+control_packages/x650_wholebody_v1/native/mpc_core.cpp -text whitespace=cr-at-eol
+control_packages/x650_wholebody_v1/native/mpc_core.hpp -text whitespace=cr-at-eol
+control_packages/x650_wholebody_v1/native/test_mpc_core.cpp -text whitespace=cr-at-eol
+scripts/*x650*recovery* -text whitespace=cr-at-eol
+tests/unit/*x650*recovery* -text whitespace=cr-at-eol
+docs/validation/cpp_recovery_20261026/** -text -whitespace

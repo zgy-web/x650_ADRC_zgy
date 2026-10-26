@@ -1,0 +1,10 @@
+{
+  "kind": "x650_recovery_local_archive_verification_v1",
+  "passed": true,
+  "part_sha256_verified": true,
+  "archive_sha256_verified": true,
+  "zip_crc_verified": true,
+  "all_7690_entry_size_sha256_verified": true,
+  "executed_source_files_match_current": 15,
+  "archive_sha256": "b0ff810fe8f22207651a4baf9bb01c5c073100465c05b08533bdafec0fb4f272"
+}
