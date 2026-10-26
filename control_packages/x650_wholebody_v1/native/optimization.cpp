@@ -3,6 +3,7 @@
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
 #include <unsupported/Eigen/MatrixFunctions>
+#include "joint_safety.hpp"
 #include "vendor/quadprogpp/QuadProg++.hh"
 // Array.hh defines an unscoped compatibility macro. Do not leak it to Eigen.
 #ifdef solve
@@ -179,7 +180,13 @@ extern "C" int x650_assemble(int N,const double* data,int length,double* output,
   Vec firstlo=bounds(dt,qgl,vl,al,previous,qlo,qhi,maxdt).first,firsthi=bounds(dt,qgh,vl,al,previous,qlo,qhi,maxdt).second;
   require((firstlo.array()<=firsthi.array()+1e-10).all(),"pending guard infeasible");V2 reserve=vl.tail(2).cwiseQuotient(2*al.tail(2))+V2::Constant(maxdt+.05+age);
   for(int i=0;i<N;i++){V2 q=joints.row(i).head(2).transpose(),dq=joints.row(i).segment(2,2).transpose();Mat Q=Eigen::Map<const Mat>(joints.row(i).data()+4,2,n),D=Eigen::Map<const Mat>(joints.row(i).data()+4+2*n,2,n);
-   constrain(Q,qlo-q,qhi-q);constrain(D,-vl.tail(2)-dq,vl.tail(2)-dq);constrain(Q+reserve.asDiagonal()*D,qlo-q-reserve.cwiseProduct(dq),qhi-q-reserve.cwiseProduct(dq));}
+   // Plan state nodes inside the same padded envelope required at publication.
+   // Command normalization, integrated references and stopping guards keep
+   // their original semantics. Node feasibility does not replace the complete
+   // nonlinear/inter-sample envelope check below.
+   constrain(Q,qlo+V2::Constant(x650::joint_safety::q_padding)-q,qhi-V2::Constant(x650::joint_safety::q_padding)-q);
+   constrain(D,-vl.tail(2)+V2::Constant(x650::joint_safety::dq_padding)-dq,vl.tail(2)-V2::Constant(x650::joint_safety::dq_padding)-dq);
+   constrain(Q+reserve.asDiagonal()*D,qlo-q-reserve.cwiseProduct(dq),qhi-q-reserve.cwiseProduct(dq));}
   for(int i=0;i<N;i++)constrain(Eigen::Map<const Mat>(references.row(i).data()+2,2,n),qlo-references.row(i).head(2).transpose(),qhi-references.row(i).head(2).transpose());
   for(int i=0;i<N;i++)for(int j=3;j<5;j++){Mat I=Mat::Zero(1,n);I(0,i*5+j)=1;constrain(I,Vec::Constant(1,zwarm[i*5+j]-trust),Vec::Constant(1,zwarm[i*5+j]+trust));}
   Mat first=Mat::Zero(5,n);first.leftCols(5)=vl.asDiagonal();constrain(first,firstlo,firsthi);
@@ -239,8 +246,9 @@ extern "C" int x650_candidate(int N,int nr,const double* predicted,const double*
  try {require(N>0&&N<=60&&nr==N,"candidate shape");Mat p=Eigen::Map<const Mat>(predicted,N,12),q=Eigen::Map<const Mat>(actual_q,N,2),dq=Eigen::Map<const Mat>(actual_dq,N,2),reference=Eigen::Map<const Mat>(refs,N,2);
   require(p.allFinite()&&q.allFinite()&&dq.allFinite()&&reference.allFinite(),"candidate finite values");bool bounds=true;for(int j=0;j<2;j++){
    require(std::isfinite(envelope[j])&&std::isfinite(envelope[j+2])&&std::isfinite(envelope[j+4])&&std::isfinite(envelope[j+6]),"candidate finite envelope");
-   bounds=bounds&&envelope[j]-.0003>=lower[j]-2e-7&&envelope[j+2]+.0003<=upper[j]+2e-7&&envelope[j+4]-.03>=-limits[j]-2e-7&&envelope[j+6]+.03<=limits[j]+2e-7;
-   bounds=bounds&&(reference.col(j).array()>=lower[j]-2e-7).all()&&(reference.col(j).array()<=upper[j]+2e-7).all();}
-  double qe=(q-p.middleCols(6,2)).cwiseAbs().maxCoeff(),ve=(dq-p.middleCols(8,2)).cwiseAbs().maxCoeff();result[0]=qe;result[1]=ve;result[2]=bounds?1:0;result[3]=bounds&&qe<=.006&&ve<=.10?1:0;return 0;
+   using namespace x650::joint_safety;
+   bounds=bounds&&envelope[j]-q_padding>=lower[j]-bound_tolerance&&envelope[j+2]+q_padding<=upper[j]+bound_tolerance&&envelope[j+4]-dq_padding>=-limits[j]-bound_tolerance&&envelope[j+6]+dq_padding<=limits[j]+bound_tolerance;
+   bounds=bounds&&(reference.col(j).array()>=lower[j]-bound_tolerance).all()&&(reference.col(j).array()<=upper[j]+bound_tolerance).all();}
+  double qe=(q-p.middleCols(6,2)).cwiseAbs().maxCoeff(),ve=(dq-p.middleCols(8,2)).cwiseAbs().maxCoeff();result[0]=qe;result[1]=ve;result[2]=bounds?1:0;result[3]=bounds&&qe<=x650::joint_safety::q_error_max&&ve<=x650::joint_safety::dq_error_max?1:0;return 0;
  }catch(const std::exception& e){std::snprintf(error,es,"%s",e.what());return 1;}
 }

@@ -1,0 +1,53 @@
+{
+  "exit": 1,
+  "returned": false,
+  "error": "TS20 nonlinear candidate rejected before command publication",
+  "loaded_code": {
+    "core": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/build_v1/libx650_mpc_core.so",
+      "sha256": "42cc8c0e672ce2572f87171218aea178bb8ee88ba1d7ca39eadf11c1333778cb"
+    },
+    "optimization": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/build_v1/libx650_optimization.so",
+      "sha256": "5188f6f6af9b5c07f9508d756dc20d09552f597bc2f0bd09ed9e341cf54c3ff6"
+    },
+    "predictor": {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+    }
+  },
+  "memory_unchanged": true,
+  "memory_commit_valid": false,
+  "diagnostics": {
+    "accepted": false,
+    "compute_ms": 13.027998,
+    "subproblems": 1,
+    "primal_violation": 7.348288644237755e-15,
+    "kkt_stationarity": 3.885780586188048e-16,
+    "q_linearization_error": 0.0002957957079438023,
+    "dq_linearization_error": 0.011499447170251142,
+    "actual_bounds": false,
+    "recovery_triggered": false,
+    "recovery_reason": "",
+    "recovery_attempts": [],
+    "candidate_envelope": [
+      0.14447432417777334,
+      -0.3276416846334596,
+      0.31862892408680277,
+      -0.21259987324872487,
+      -0.420047472384808,
+      0.07419432896483572,
+      -0.07504303673299609,
+      0.25798645978544377
+    ],
+    "attempts": [
+      {
+        "actual_bounds": false,
+        "dq_error": 0.011499447170251142,
+        "elapsed_ms": 12.89282,
+        "passed": false,
+        "q_error": 0.0002957957079438023
+      }
+    ]
+  }
+}

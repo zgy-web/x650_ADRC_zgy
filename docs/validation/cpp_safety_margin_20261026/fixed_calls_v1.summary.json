@@ -1,0 +1,201 @@
+{
+  "scope": "independent fixed original snapshots, not counterfactual closed loop",
+  "rows": [
+    {
+      "sequence": 1,
+      "input_sha256": "efc19217cf891039e370637383bc7c7911ef872a66c9bf7a7badb060451c8086",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 5.408388,
+      "subproblems": 1,
+      "recovery_triggered": false,
+      "envelope": [
+        -8.843187934082598e-09,
+        1.0760942006510991e-08,
+        -8.843187934082598e-09,
+        1.0760942006510991e-08,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000001.raw.json",
+        "sha256": "0d040654064e26aaa9f3c7a5e9197457b4d2178dd67c29d1631dc5d230eabdc1"
+      }
+    },
+    {
+      "sequence": 378,
+      "input_sha256": "b2f8d3927eb43e5d4f9adca0bbfbfbb566a6c65a389055eb7714279a2ba3a7fc",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 9.736855,
+      "subproblems": 1,
+      "recovery_triggered": false,
+      "envelope": [
+        0.2163332392451003,
+        -0.331735734505752,
+        0.3484791831644622,
+        -0.27964914791867806,
+        0.2067039456758959,
+        -0.16863429830003931,
+        0.25136305064511083,
+        -0.04102847334887727
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000378.raw.json",
+        "sha256": "a6763de86cc19e2044a47a515a3bd059e4f641daa55513aca62d0b7a10e51bfa"
+      }
+    },
+    {
+      "sequence": 379,
+      "input_sha256": "af0b12d79d8dc0e44bd75078f513395379cd5246e597d211d24dcbdade5577b8",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 20.284274,
+      "subproblems": 2,
+      "recovery_triggered": true,
+      "envelope": [
+        0.2227482037097453,
+        -0.30406178016736535,
+        0.26598411142708145,
+        -0.28412743704038207,
+        0.002733848191200705,
+        -0.1529165873670601,
+        0.23613543813477356,
+        0.0
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000379.raw.json",
+        "sha256": "6972ad718cad9fd70a924e85a41a61094543f381cf3437dac7406fe0c52aad69"
+      }
+    },
+    {
+      "sequence": 380,
+      "input_sha256": "22fc70a203d89c1486f654b27ec31dcd04f914a118c5b22798cb76225d9fd0be",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 8.604594,
+      "subproblems": 1,
+      "recovery_triggered": false,
+      "envelope": [
+        0.23130248441752493,
+        -0.307855522530894,
+        0.27275886955781664,
+        -0.2897731007438792,
+        0.00804333458051043,
+        -0.16394627962425146,
+        0.23866204938855912,
+        0.0
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000380.raw.json",
+        "sha256": "e58da7bf32ace1e08b2da93928a4b0dd2b999ed73fd93059a7ca73aa389106c4"
+      }
+    },
+    {
+      "sequence": 383,
+      "input_sha256": "d3292a8b49baf17ca1005ac24c837ca5ddcaf84f7c16d19706bcb765947273c0",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 17.51409,
+      "subproblems": 2,
+      "recovery_triggered": true,
+      "envelope": [
+        0.2441353520015629,
+        -0.3103186625090091,
+        0.2791480220659104,
+        -0.297877937724578,
+        0.0,
+        -0.11862994111594372,
+        0.21043118336507494,
+        0.0
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000383.raw.json",
+        "sha256": "96a144fc8e699b389fdcb35bf4039620fc673e0575df1a3689aeb14421dfb97b"
+      }
+    },
+    {
+      "sequence": 384,
+      "input_sha256": "1f23b2a6436f6b8e5e8bf4bde56942ccd937bb1a7e6d64efb7219ab56b78d1e2",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 10.512564,
+      "subproblems": 1,
+      "recovery_triggered": false,
+      "envelope": [
+        0.24824715735994937,
+        -0.3141323199756459,
+        0.2863102342598658,
+        -0.3003053577405075,
+        0.0,
+        -0.13128551608766614,
+        0.21744705094696748,
+        0.0
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000384.raw.json",
+        "sha256": "c0f46c3743d592b304a73483c5f0033512f75bd88e4e595005c3ebf67a3395fc"
+      }
+    },
+    {
+      "sequence": 428,
+      "input_sha256": "3f43e89e2d3c0d25b78a08da02c03bdd5551c7fa5eba073dd90d1d277b80a6a2",
+      "exit": 0,
+      "returned": true,
+      "error": null,
+      "memory_unchanged": false,
+      "commit_valid": true,
+      "compute_ms": 12.26446,
+      "subproblems": 1,
+      "recovery_triggered": false,
+      "envelope": [
+        0.15213974957943052,
+        -0.32878561736738143,
+        0.3193216048960719,
+        -0.21831678310622638,
+        -0.4178873632543141,
+        0.04185606306935946,
+        -0.005251655878001579,
+        0.25135675104755845
+      ],
+      "stdout": "",
+      "stderr": "",
+      "output": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/fixed_calls_v1/000428.raw.json",
+        "sha256": "49a64299bd87bd5eb3c2804af0dc619c54b7cc07f45368a08b854fda2e8d04e7"
+      }
+    }
+  ]
+}

@@ -117,9 +117,15 @@ class Ts20MpcController(MpcController):
             self._actuator_context["command_history"], t, guard_cfg)
         reserve = (self.velocity_limit[3:]/(2*self.acceleration_limit[3:])+self.max_dt
                    +guard_cfg["joint_delay_guard_s"]+prediction["measurement_age_s"])
+        # The state-node constraints use the same margins as _validate_candidate.
+        # Reference integration, command bounds and stopping reserves describe
+        # different quantities and retain their original limits.
+        q_padding = CANDIDATE_POLICY["numerical_q_envelope_padding_rad"]
+        dq_padding = CANDIDATE_POLICY["numerical_dq_envelope_padding_rad_s"]
         for _, q, dq, Q, D in prediction["nodes"]:
-            constrain(Q, self.q_lower-q, self.q_upper-q)
-            constrain(D, -self.velocity_limit[3:]-dq, self.velocity_limit[3:]-dq)
+            constrain(Q, self.q_lower+q_padding-q, self.q_upper-q_padding-q)
+            constrain(D, -self.velocity_limit[3:]+dq_padding-dq,
+                      self.velocity_limit[3:]-dq_padding-dq)
             constrain(Q+reserve[:, None]*D,
                       self.q_lower-q-reserve*dq, self.q_upper-q-reserve*dq)
         for _, r, R in prediction["reference_nodes"]:

@@ -1,0 +1,37 @@
+{
+  "archive_sha256": "0dc678d61d4e0f2db813a5c124bdae383a952da5bb1f7dfbcfd192fdfff33e54",
+  "archive_bytes": 4965926,
+  "member_count": 953,
+  "all_members_sha256_and_crc_verified": true,
+  "executed_sources_match_local": [
+    {
+      "path": "control_packages/x650_wholebody_v1/native/optimization.cpp",
+      "sha256": "86d732bb07ecd892cb8ba9b9e56a7adae5e7de4eefbdd40d52246743408277dc"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/joint_safety.hpp",
+      "sha256": "248f4bfd2d217858acf62ea0ddfac30ca187db40867c80f928acccf9192d6dde"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py",
+      "sha256": "8bd99ab85399f4c597fec621a27e77a4904a169bd43a7ab97fc4a25a68101177"
+    },
+    {
+      "path": "tests/unit/test_x650_joint_safety_margin.py",
+      "sha256": "9497df6c8cbec65f0fa916a5d1f2d8e8c7e208062ad6efb238364044cac299a4"
+    },
+    {
+      "path": "scripts/audit_x650_joint_safety_margin.py",
+      "sha256": "bf26d5900c070d69f7c166f21487ba4efce230897bdb51287cd87ab3307541b6"
+    },
+    {
+      "path": "scripts/export_x650_runtime_replay.py",
+      "sha256": "9adc8bf9c5e84150a95dbf765cbd3842f7f5a3caf3abf6eca8cf63a6df9ab658"
+    },
+    {
+      "path": "tests/unit/test_x650_joint_safety_margin_audit.py",
+      "sha256": "9147b0bdfd654c7710452bce70a8d9d9571fe8ec95ff10b3cad91fc380ecc1e6"
+    }
+  ],
+  "physical_validation": false
+}

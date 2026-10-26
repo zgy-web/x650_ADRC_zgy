@@ -1,0 +1,12 @@
+test_changed_input_predictor_or_memory_cannot_be_compared_as_same_case (test_x650_joint_safety_margin_audit.MetadataTests) ... ok
+test_physical_success_scope_or_relaxed_deadline_is_rejected (test_x650_joint_safety_margin_audit.MetadataTests) ... ok
+test_same_fixed_input_rejection_and_rollback_remain_explicit (test_x650_joint_safety_margin_audit.MetadataTests) ... ok
+test_hessian_objective_or_sensitivity_change_is_not_hidden (test_x650_joint_safety_margin_audit.ProblemChangeTests) ... ok
+test_only_declared_node_rows_tighten_in_both_directions (test_x650_joint_safety_margin_audit.ProblemChangeTests) ... ok
+test_reference_trust_slew_or_stopping_bound_change_rejects (test_x650_joint_safety_margin_audit.ProblemChangeTests) ... ok
+test_wrong_padding_sign_or_amount_is_rejected (test_x650_joint_safety_margin_audit.ProblemChangeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.015s
+
+OK

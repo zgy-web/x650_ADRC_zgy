@@ -64,3 +64,12 @@ docs/validation/cpp_recovery_20261026/** -text -whitespace
 # Preserve new admission bytes and the original physical-retry evidence.
 simulations/x650_cpp_recovery_v1/** -text whitespace=cr-at-eol
 docs/validation/cpp_recovery_flight_20261026/** -text -whitespace
+
+# Safety-margin consistency checks preserve executed source and evidence bytes.
+control_packages/x650_wholebody_v1/native/optimization.cpp -text whitespace=cr-at-eol
+control_packages/x650_wholebody_v1/native/joint_safety.hpp -text whitespace=cr-at-eol
+control_packages/x650_wholebody_v1/x650_wholebody/ts20_mpc.py -text whitespace=cr-at-eol
+scripts/*x650*joint_safety* -text whitespace=cr-at-eol
+scripts/export_x650_runtime_replay.py -text whitespace=cr-at-eol
+tests/unit/test_x650_joint_safety_margin*.py -text whitespace=cr-at-eol
+docs/validation/cpp_safety_margin_20261026/** -text -whitespace

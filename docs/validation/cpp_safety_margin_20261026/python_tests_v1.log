@@ -1,0 +1,57 @@
+test_candidate_tolerance_boundary_and_unpadded_reference_bounds (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_command_velocity_can_still_reach_original_unpadded_limit (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_full_interval_extrema_still_reject_even_with_safe_nodes (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_native_and_python_full_assembled_problem_match (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_native_final_gate_preserves_interval_padding_and_reference_tolerance (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_native_qp_moves_old_legal_optimum_inside_same_safety_margins (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_old_node_boundary_is_now_rejected_by_actual_qp_rows (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_only_node_q_and_dq_limits_are_tightened (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_policy_values_match_preexisting_candidate_check (test_x650_joint_safety_margin.JointSafetyMarginNative) ... ok
+test_candidate_tolerance_boundary_and_unpadded_reference_bounds (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+test_command_velocity_can_still_reach_original_unpadded_limit (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+test_full_interval_extrema_still_reject_even_with_safe_nodes (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+test_old_node_boundary_is_now_rejected_by_actual_qp_rows (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+test_only_node_q_and_dq_limits_are_tightened (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+test_policy_values_match_preexisting_candidate_check (test_x650_joint_safety_margin.JointSafetyMarginPython) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.086s
+
+OK
+test_batched_future_packets_preserve_bus_boundaries_and_sensitivities (test_native_optimization.NativeGates) ... ok
+test_batched_packets_keep_independent_mutable_fields (test_native_optimization.NativeGates) ... ok
+test_batched_prediction_and_changed_candidate_preserve_complete_results (test_native_optimization.NativeGates) ... ok
+test_batched_rollout_events_do_not_alias_public_arrays_or_inputs (test_native_optimization.NativeGates) ... ok
+test_bounded_active_set (test_native_optimization.NativeGates) ... ok
+test_candidate_error_thresholds (test_native_optimization.NativeGates) ... ok
+test_candidate_full_envelope_and_reference_limits (test_native_optimization.NativeGates) ... ok
+test_candidate_missing_or_nonfinite_envelope (test_native_optimization.NativeGates) ... ok
+test_ffi_pointers_have_no_owner_dictionary_cycle (test_native_optimization.NativeGates) ... ok
+test_independent_active_qp_and_duplicate_rows (test_native_optimization.NativeGates) ... ok
+test_interior_solution (test_native_optimization.NativeGates) ... ok
+test_joint_matrix_kernel_preserves_complete_problem (test_native_optimization.NativeGates) ... ok
+test_joint_recurrence_matches_reference_at_packet_boundaries (test_native_optimization.NativeGates) ... ok
+test_joint_recurrence_rejects_bad_times_and_shapes (test_native_optimization.NativeGates) ... ok
+test_nonuniform_horizon_and_half_lsb_packet_boundaries_are_exact (test_native_optimization.NativeGates) ... ok
+test_per_row_precision_survives_dimension_and_row_scaling (test_native_optimization.NativeGates) ... ok
+test_recorded_near_active_row_is_actually_converged (test_native_optimization.NativeGates) ... ok
+test_reject_bad_hessian (test_native_optimization.NativeGates) ... ok
+test_reject_bad_shapes_and_nonfinite (test_native_optimization.NativeGates) ... ok
+test_reject_infeasible (test_native_optimization.NativeGates) ... ok
+test_rejection_rolls_back_plan_and_command (test_native_optimization.NativeGates) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.989s
+
+OK
+test_constraint_view_is_explicit_ts20_opt_in_and_legacy_is_unchanged (test_ts20_mpc.Ts20MpcTests) ... ok
+test_hold_uses_new_chain_and_nonlinear_candidate (test_ts20_mpc.Ts20MpcTests) ... ok
+test_nonlinear_failure_does_not_advance_controller_or_send_plan (test_ts20_mpc.Ts20MpcTests) ... ok
+test_reference_bounds_and_joint_trust_region_enter_qp (test_ts20_mpc.Ts20MpcTests) ... ok
+test_relinearization_freezes_feedback_without_committing_rejected_plan (test_ts20_mpc.Ts20MpcTests) ... ok
+test_total_deadline_rolls_back_even_a_nonlinear_accepted_plan (test_ts20_mpc.Ts20MpcTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.098s
+
+OK

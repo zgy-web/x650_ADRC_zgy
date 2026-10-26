@@ -1,0 +1,55 @@
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/build_v1
+[  9%] Building CXX object CMakeFiles/test_quadprog_identity.dir/test_quadprog_identity.cpp.o
+[ 18%] Building CXX object CMakeFiles/x650_optimization.dir/vendor/quadprogpp/QuadProg++.cc.o
+[ 27%] Building CXX object CMakeFiles/test_quadprog_identity.dir/vendor/quadprogpp/QuadProg++.cc.o
+[ 36%] Building CXX object CMakeFiles/x650_optimization.dir/optimization.cpp.o
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc: In function ‘double quadprogpp::solve_quadprog_impl(quadprogpp::Matrix<double>&, quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, quadprogpp::Vector<double>&, unsigned int, const quadprogpp::Vector<double>*, bool)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:339:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  339 |   if (++inner_steps > max_iterations * (n + 1))
+      |   ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:342:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  342 |     compute_d(d, J, np);
+      |     ^~~~~~~~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc: In function ‘double quadprogpp::solve_quadprog_impl(quadprogpp::Matrix<double>&, quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, quadprogpp::Vector<double>&, unsigned int, const quadprogpp::Vector<double>*, bool)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:339:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  339 |   if (++inner_steps > max_iterations * (n + 1))
+      |   ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:342:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  342 |     compute_d(d, J, np);
+      |     ^~~~~~~~~
+[ 45%] Linking CXX executable test_quadprog_identity
+[ 45%] Built target test_quadprog_identity
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/optimization.cpp: In function ‘std::pair<Eigen::Matrix<double, -1, 1>, Eigen::Matrix<double, -1, 1> > bounds(double, const V2&, const Vec&, const Vec&, const Vec&, const V2&, const V2&, double)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/optimization.cpp:93:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   93 |  for(int j=0;j<5;j++)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);return {lo,hi};
+      |  ^~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/native/optimization.cpp:93:66: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   93 |  for(int j=0;j<5;j++)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);return {lo,hi};
+      |                                                                  ^~~~~~
+[ 54%] Linking CXX shared library libx650_optimization.so
+[ 54%] Built target x650_optimization
+[ 63%] Building CXX object CMakeFiles/x650_mpc_core.dir/mpc_core.cpp.o
+[ 72%] Linking CXX shared library libx650_mpc_core.so
+[ 72%] Built target x650_mpc_core
+[ 81%] Building CXX object CMakeFiles/test_mpc_core.dir/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/source_v1/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp.o
+[ 90%] Building CXX object CMakeFiles/test_mpc_core.dir/test_mpc_core.cpp.o
+[100%] Linking CXX executable test_mpc_core
+[100%] Built target test_mpc_core
+Internal ctest changing into directory: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/build_v1
+Test project /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/build_v1
+    Start 1: mpc_core_raw_input_transaction
+1/2 Test #1: mpc_core_raw_input_transaction .....   Passed    0.06 sec
+    Start 2: quadprog_identity_initialization
+2/2 Test #2: quadprog_identity_initialization ...   Passed    0.03 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.09 sec

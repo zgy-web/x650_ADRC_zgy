@@ -1,0 +1,10 @@
+{
+  "archive": "joint_margin_evidence_v1.zip",
+  "bytes": 4965926,
+  "sha256": "0dc678d61d4e0f2db813a5c124bdae383a952da5bb1f7dfbcfd192fdfff33e54",
+  "member_count": 953,
+  "all_source_and_zip_member_hashes_verified": true,
+  "crc_verified": true,
+  "physical_validation": false,
+  "margin_fix_solved_429": false
+}
