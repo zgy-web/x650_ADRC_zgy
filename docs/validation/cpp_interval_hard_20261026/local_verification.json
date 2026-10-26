@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "delivery_files": 11,
+  "zip_members": 3517,
+  "zip_sha256": "dc1fc495702c6d3d82b1a897a9678a140a2647ea39ff68b9b602a6e20fc50340",
+  "all_member_sizes_sha256_and_crc_valid": true,
+  "source_files_exactly_match_workspace": 43
+}

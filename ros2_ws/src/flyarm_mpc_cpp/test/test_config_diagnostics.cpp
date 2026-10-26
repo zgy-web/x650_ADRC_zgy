@@ -81,6 +81,68 @@ int main(){fm::fs::path folder=fm::fs::temp_directory_path()/std::string("flyarm
    [](auto& d){d.recovery_attempts[0].node_states[0]=std::numeric_limits<double>::quiet_NaN();},
    [](auto& d){d.linearized_states[0]=std::numeric_limits<double>::quiet_NaN();},
    [](auto& d){d.recovery_attempts[0].original_primal_violation=std::numeric_limits<double>::infinity();}}){auto altered=result.diagnostics;mutation(altered);rejects([&]{fm::diagnostics_json(altered);});}
+  {x650::Diagnostics d;require(fm::interval_evidence_valid(d,c),"Normal empty interval metadata was rejected");
+   d.subproblems=2;d.qp_columns=5*c.nodes;d.qp_rows=231;d.interval_rows=1;d.compute_ms=14.;d.interval_canonical_substeps=600;d.interval_canonical_envelope={0,0,0,0,0,0,.423,0};
+   x650::IntervalPoint p;p.time=.0525;p.joint=0;p.component=1;p.source_kind=3;p.value=.423;
+   p.lower=-c.velocity_limit[3]+x650::joint_safety::dq_padding;p.upper=c.velocity_limit[3]-x650::joint_safety::dq_padding;
+   x650::IntervalConstraint row;row.point=p;row.affine_offset=.423;row.qp_row=230;row.gradient.assign(5*c.nodes,0.);row.gradient[3]=1.;
+   row.encoding_kernel_l1=.5;row.encoding_effort_half_lsb=.5*(c.kp[0]*(2.*std::acos(-1.)/std::pow(2.,24))+c.kd[0]/512.);row.encoding_anchor_bias=.00001;
+   row.encoding_lower_remainder=-row.encoding_kernel_l1*row.encoding_effort_half_lsb-row.encoding_anchor_bias;row.encoding_upper_remainder=row.encoding_kernel_l1*row.encoding_effort_half_lsb-row.encoding_anchor_bias;d.interval_constraints.push_back(row);
+   x650::IntervalRepair repair;repair.control_subproblem=1;repair.added_points=repair.total_points=1;repair.canonical_substeps=600;repair.elapsed_ms=10.;repair.envelope=d.interval_canonical_envelope;repair.trigger_points={p};repair.points={p};
+   repair.centre_plan.assign(5*c.nodes,0.);repair.risk_radius=.02;repair.risk_margin={.02};repair.risk_encoding_lower={row.encoding_lower_remainder};repair.risk_encoding_upper={row.encoding_upper_remainder};d.interval_repairs.push_back(repair);
+   require(fm::interval_evidence_valid(d,c),"Valid compact interval metadata was rejected");
+   auto full=d;full.interval_centre_plan.assign(5*c.nodes,0.);full.interval_canonical_boundaries={.02,.04};full.interval_canonical_states.assign(8,0.);
+   require(fm::interval_evidence_valid(full,c),"Valid owning full interval metadata was rejected");
+   auto encoded=fm::diagnostics_json(full);full.interval_constraints[0].gradient[3]=99.;full.interval_repairs[0].points[0].value=99.;full.interval_canonical_states[0]=99.;
+   full.interval_repairs[0].trigger_points[0].value=99.;full.interval_repairs[0].centre_plan[0]=99.;full.interval_repairs[0].risk_margin[0]=99.;full.interval_repairs[0].risk_encoding_lower[0]=99.;
+   require(encoded["interval_constraints"][0]["gradient"][3].asDouble()==1.
+       &&encoded["interval_repairs"][0]["points"][0]["value"].asDouble()==.423
+       &&encoded["interval_canonical_states"][0].asDouble()==0.
+       &&encoded["interval_repairs"][0]["trigger_points"][0]["value"].asDouble()==.423
+       &&encoded["interval_repairs"][0]["centre_plan"][0].asDouble()==0.
+       &&encoded["interval_repairs"][0]["risk_margin"][0].asDouble()==.02
+       &&encoded["interval_repairs"][0]["risk_radius"].asDouble()==.02
+       &&encoded["interval_repairs"][0]["risk_encoding_lower"][0].asDouble()==row.encoding_lower_remainder
+       &&encoded["interval_constraints"][0]["encoding_kernel_l1"].asDouble()==.5
+       &&encoded["interval_constraints"][0]["encoding_anchor_bias"].asDouble()==.00001
+       &&encoded["interval_rows"].asInt()==1&&encoded["interval_constraints"][0]["qp_row"].asInt()==230,
+       "Copied actual interval diagnostic values were missing or aliased");
+   for(const auto& mutation:std::vector<std::function<void(x650::Diagnostics&)>>{
+    [](auto& v){v.interval_rows=0;},[](auto& v){v.interval_repairs.clear();},[](auto& v){v.subproblems=1;},
+    [](auto& v){v.interval_constraints[0].gradient.clear();},[](auto& v){v.interval_constraints[0].gradient.assign(v.qp_columns,0.);},
+    [](auto& v){v.interval_constraints[0].qp_row++;},[](auto& v){v.interval_constraints[0].point.upper=.43;},
+    [](auto& v){v.interval_constraints[0].point.joint=2;},[](auto& v){v.interval_constraints[0].point.component=2;},
+    [](auto& v){v.interval_constraints[0].point.source_kind=4;},[](auto& v){v.interval_constraints.push_back(v.interval_constraints[0]);v.interval_rows=2;v.interval_repairs[0].added_points=v.interval_repairs[0].total_points=2;},
+    [](auto& v){v.interval_repairs[0].rejection="canonical mismatch";},[](auto& v){v.interval_repairs[0].total_points=2;},
+    [](auto& v){v.interval_repairs[0].elapsed_ms=51.;},[](auto& v){v.interval_repairs[0].control_subproblem=2;},
+    [](auto& v){v.interval_repairs[0].risk_radius=.03;},[](auto& v){v.interval_repairs[0].risk_margin.clear();},
+    [](auto& v){v.interval_repairs[0].risk_margin[0]=-.1;},[](auto& v){v.interval_repairs[0].trigger_points.clear();},
+    [](auto& v){v.interval_repairs[0].risk_encoding_lower.clear();},[](auto& v){v.interval_repairs[0].risk_encoding_upper[0]=-1.;},
+    [](auto& v){v.interval_repairs[0].trigger_points[0].value=0.;},[](auto& v){v.interval_repairs[0].centre_plan.clear();},
+    [](auto& v){v.interval_repairs[0].centre_plan[3]=1.;},[](auto& v){v.interval_repairs[0].points[0].value=-.2;},
+    [](auto& v){v.interval_rows=513;},
+    [](auto& v){v.interval_constraints[0].encoding_kernel_l1=-1.;},[](auto& v){v.interval_constraints[0].encoding_effort_half_lsb=-1.;},
+    [](auto& v){v.interval_constraints[0].encoding_effort_half_lsb=.01;},
+    [](auto& v){v.interval_constraints[0].encoding_lower_remainder-=.0001;},[](auto& v){v.interval_constraints[0].encoding_upper_remainder+=.0001;},
+    [](auto& v){v.interval_constraints[0].encoding_anchor_bias+=.0001;},
+    [](auto& v){v.interval_canonical_substeps=0;},[](auto& v){v.interval_canonical_envelope[0]=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_centre_plan.assign(5,0.);}}){auto altered=d;mutation(altered);require(!fm::interval_evidence_valid(altered,c),"Malformed interval metadata reached worker acceptance");}
+   for(const auto& mutation:std::vector<std::function<void(x650::Diagnostics&)>>{
+    [](auto& v){v.interval_constraints[0].affine_offset=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_constraints[0].gradient[0]=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_constraints[0].point.time=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_repairs[0].elapsed_ms=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_repairs[0].points[0].value=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_repairs[0].trigger_points[0].value=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_repairs[0].risk_radius=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_repairs[0].risk_margin[0]=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_repairs[0].centre_plan[0]=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_repairs[0].risk_encoding_lower[0]=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_repairs[0].risk_encoding_upper[0]=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_constraints[0].encoding_kernel_l1=std::numeric_limits<double>::infinity();},
+    [](auto& v){v.interval_constraints[0].encoding_anchor_bias=std::numeric_limits<double>::quiet_NaN();},
+    [](auto& v){v.interval_canonical_envelope[0]=std::numeric_limits<double>::infinity();}}){auto altered=d;mutation(altered);rejects([&]{fm::diagnostics_json(altered);});}
+  }
   result.diagnostics.compute_ms=std::numeric_limits<double>::infinity();rejects([&]{fm::result_json(result);});
   fm::fs::remove_all(folder);std::cout<<"Strict startup/source binding and actual native diagnostics contracts passed\n";return 0;
  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';if(fm::fs::exists(folder))fm::fs::remove_all(folder);return 1;}}

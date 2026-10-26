@@ -1,0 +1,67 @@
+{
+  "kind": "x650_interval_hard_constraint_software_v1",
+  "passed": true,
+  "closed_loop": false,
+  "actuator_io": false,
+  "hardware_qualified": false,
+  "slack_variables": 0,
+  "inner_velocity_limits": [
+    0.42,
+    0.32
+  ],
+  "source_snapshot_sha256": "5b73d4f242576705b2d80695e2fb4711bc92fa944912d6022974e08a9fb3219d",
+  "expected_libraries": {
+    "core": "d38fd4e7956ec49b6e558fb74093bff82c1e97d460a7e35c0ce26a8277dbd173",
+    "optimization": "5188f6f6af9b5c07f9508d756dc20d09552f597bc2f0bd09ed9e341cf54c3ff6",
+    "predictor": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+  },
+  "calls": 429,
+  "passed_calls": 429,
+  "core_ms_min": 2.889296,
+  "core_ms_max": 26.210365,
+  "interval_calls": [
+    429
+  ],
+  "normal_exact_calls": [
+    1,
+    378,
+    379,
+    380,
+    383,
+    384,
+    428
+  ],
+  "recovered429": {
+    "sequence": 429,
+    "passed": true,
+    "error": null,
+    "returncode": 0,
+    "returned": true,
+    "core_error": null,
+    "core_ms": 26.210365,
+    "subproblems": 2,
+    "interval_rows": 39,
+    "raw": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/regression_v3/000429/raw.json",
+      "bytes": 611723,
+      "sha256": "035859589bb600ba276dd2353ef4984ffba7b1b3b766b5cd70191eda1043a65c"
+    },
+    "canonical_maximum_error": 0.0,
+    "candidate_envelope": [
+      0.14039142788955483,
+      -0.3276416846334596,
+      0.31862892408680277,
+      -0.20906936502359996,
+      -0.4187673019789759,
+      0.07419432896483572,
+      -0.07504303673299609,
+      0.2653413310024166
+    ]
+  },
+  "archive": {
+    "name": "interval_evidence_v3.zip",
+    "bytes": 67834622,
+    "sha256": "dc1fc495702c6d3d82b1a897a9678a140a2647ea39ff68b9b602a6e20fc50340",
+    "members": 3517
+  }
+}

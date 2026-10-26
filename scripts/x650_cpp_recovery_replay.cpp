@@ -20,6 +20,9 @@ template<class R>struct has_recovery_nodes<R,std::void_t<decltype(std::declval<R
     decltype(std::declval<R>().node_states),decltype(std::declval<R>().node_references)>>:std::true_type{};
 template<class D,class=void>struct has_linearized_states:std::false_type{};
 template<class D>struct has_linearized_states<D,std::void_t<decltype(std::declval<D>().linearized_states)>>:std::true_type{};
+template<class D,class=void>struct has_intervals:std::false_type{};
+template<class D>struct has_intervals<D,std::void_t<decltype(std::declval<D>().interval_repairs),
+    decltype(std::declval<D>().interval_constraints)>>:std::true_type{};
 Json::Value memory_json(const x650::Memory& m) {
   Json::Value out;
 #define F(name) out[#name]=m.name
@@ -63,6 +66,33 @@ template<class D>void recovery_json(Json::Value& out,const D& d) {
         row["node_times"]=b::array_json(a.node_times);row["node_states"]=b::array_json(a.node_states);row["node_references"]=b::array_json(a.node_references);}
       out["recovery_attempts"].append(row);}}
 }
+template<class P>Json::Value interval_point_json(const P& p){Json::Value out;
+ out["time"]=p.time;out["value"]=p.value;out["lower"]=p.lower;out["upper"]=p.upper;
+ out["joint"]=p.joint;out["component"]=p.component;out["source_kind"]=p.source_kind;return out;
+}
+template<class D>void intervals_json(Json::Value& out,const D& d){
+ if constexpr(has_intervals<D>::value){out["interval_rows"]=d.interval_rows;
+  out["interval_repairs"]=Json::Value(Json::arrayValue);out["interval_constraints"]=Json::Value(Json::arrayValue);
+  for(const auto& r:d.interval_repairs){Json::Value row;row["control_subproblem"]=r.control_subproblem;
+   row["added_points"]=r.added_points;row["total_points"]=r.total_points;row["canonical_substeps"]=r.canonical_substeps;
+   row["elapsed_ms"]=r.elapsed_ms;row["rejection"]=r.rejection;row["envelope"]=b::array_json(r.envelope);row["points"]=Json::Value(Json::arrayValue);
+   for(const auto& p:r.points)row["points"].append(interval_point_json(p));
+   row["trigger_points"]=Json::Value(Json::arrayValue);for(const auto& p:r.trigger_points)row["trigger_points"].append(interval_point_json(p));
+   row["centre_plan"]=b::array_json(r.centre_plan);row["risk_radius"]=r.risk_radius;row["risk_margin"]=b::array_json(r.risk_margin);
+   row["risk_encoding_lower"]=b::array_json(r.risk_encoding_lower);row["risk_encoding_upper"]=b::array_json(r.risk_encoding_upper);
+   out["interval_repairs"].append(row);}
+  for(const auto& c:d.interval_constraints){Json::Value row;row["point"]=interval_point_json(c.point);
+   row["affine_offset"]=c.affine_offset;row["gradient"]=b::array_json(c.gradient);row["qp_row"]=c.qp_row;
+   row["encoding_lower_remainder"]=c.encoding_lower_remainder;row["encoding_upper_remainder"]=c.encoding_upper_remainder;
+   row["encoding_kernel_l1"]=c.encoding_kernel_l1;row["encoding_anchor_bias"]=c.encoding_anchor_bias;row["encoding_effort_half_lsb"]=c.encoding_effort_half_lsb;
+   out["interval_constraints"].append(row);}
+  out["interval_centre_plan"]=b::array_json(d.interval_centre_plan);
+  out["interval_canonical_boundaries"]=b::array_json(d.interval_canonical_boundaries);
+  out["interval_canonical_states"]=b::array_json(d.interval_canonical_states);
+  out["interval_canonical_envelope"]=b::array_json(d.interval_canonical_envelope);
+  out["interval_canonical_substeps"]=d.interval_canonical_substeps;
+ }
+}
 Json::Value diagnostic_json(const x650::Diagnostics& d) {
   Json::Value out;
 #define F(name) out[#name]=d.name
@@ -79,7 +109,7 @@ Json::Value diagnostic_json(const x650::Diagnostics& d) {
   out["attempts"]=Json::Value(Json::arrayValue);for(const auto& a:d.attempts){Json::Value row;
     row["passed"]=a.passed;row["actual_bounds"]=a.actual_bounds;row["q_error"]=a.q_error;
     row["dq_error"]=a.dq_error;row["elapsed_ms"]=a.elapsed_ms;out["attempts"].append(row);}
-  recovery_json(out,d);return out;
+  recovery_json(out,d);intervals_json(out,d);return out;
 }
 Json::Value result_json(const x650::StepResult& r) {
   Json::Value out;

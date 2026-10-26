@@ -1,0 +1,90 @@
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/build_v3
+[  5%] Building CXX object CMakeFiles/x650_optimization.dir/vendor/quadprogpp/QuadProg++.cc.o
+[ 11%] Building CXX object CMakeFiles/x650_optimization.dir/optimization.cpp.o
+[ 17%] Building CXX object CMakeFiles/test_quadprog_identity.dir/test_quadprog_identity.cpp.o
+[ 23%] Building CXX object CMakeFiles/test_quadprog_identity.dir/vendor/quadprogpp/QuadProg++.cc.o
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc: In function ‘double quadprogpp::solve_quadprog_impl(quadprogpp::Matrix<double>&, quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, quadprogpp::Vector<double>&, unsigned int, const quadprogpp::Vector<double>*, bool)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:339:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  339 |   if (++inner_steps > max_iterations * (n + 1))
+      |   ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:342:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  342 |     compute_d(d, J, np);
+      |     ^~~~~~~~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc: In function ‘double quadprogpp::solve_quadprog_impl(quadprogpp::Matrix<double>&, quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, const quadprogpp::Matrix<double>&, const quadprogpp::Vector<double>&, quadprogpp::Vector<double>&, unsigned int, const quadprogpp::Vector<double>*, bool)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:339:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  339 |   if (++inner_steps > max_iterations * (n + 1))
+      |   ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc:342:5: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  342 |     compute_d(d, J, np);
+      |     ^~~~~~~~~
+[ 29%] Linking CXX executable test_quadprog_identity
+[ 29%] Built target test_quadprog_identity
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/optimization.cpp: In function ‘std::pair<Eigen::Matrix<double, -1, 1>, Eigen::Matrix<double, -1, 1> > bounds(double, const V2&, const Vec&, const Vec&, const Vec&, const V2&, const V2&, double)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/optimization.cpp:93:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   93 |  for(int j=0;j<5;j++)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);return {lo,hi};
+      |  ^~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/optimization.cpp:93:66: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   93 |  for(int j=0;j<5;j++)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);return {lo,hi};
+      |                                                                  ^~~~~~
+[ 35%] Linking CXX shared library libx650_optimization.so
+[ 35%] Built target x650_optimization
+[ 41%] Building CXX object CMakeFiles/x650_mpc_core.dir/mpc_core.cpp.o
+In file included from /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/mpc_core.cpp:2:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp: In function ‘int x650::interval::merge_points(std::vector<x650::IntervalPoint>&, const std::vector<x650::IntervalPoint>&)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp:19:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |    if(existing.size()>=512)throw CoreError("interval safety point budget exhausted");existing.push_back(point);}}
+      |    ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp:19:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |    if(existing.size()>=512)throw CoreError("interval safety point budget exhausted");existing.push_back(point);}}
+      |                                                                                      ^~~~~~~~
+[ 47%] Linking CXX shared library libx650_mpc_core.so
+[ 47%] Built target x650_mpc_core
+[ 52%] Building CXX object CMakeFiles/test_interval_observer.dir/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp.o
+[ 58%] Building CXX object CMakeFiles/test_mpc_core.dir/test_mpc_core.cpp.o
+[ 64%] Building CXX object CMakeFiles/test_interval_core.dir/test_interval_core.cpp.o
+[ 70%] Building CXX object CMakeFiles/test_interval_observer.dir/test_interval_observer.cpp.o
+In file included from /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/test_interval_observer.cpp:3:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp: In function ‘int x650::interval::merge_points(std::vector<x650::IntervalPoint>&, const std::vector<x650::IntervalPoint>&)’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp:19:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   19 |    if(existing.size()>=512)throw CoreError("interval safety point budget exhausted");existing.push_back(point);}}
+      |    ^~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/canonical_interval.hpp:19:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   19 |    if(existing.size()>=512)throw CoreError("interval safety point budget exhausted");existing.push_back(point);}}
+      |                                                                                      ^~~~~~~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/test_interval_observer.cpp: In function ‘void {anonymous}::encoding_remainder_boundaries()’:
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/test_interval_observer.cpp:125:2: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+  125 |  for(int i=0;i<3;++i)x650::interval::add_encoding(guard,kernel[i],anchor[i]);x650::interval::finish_encoding(guard);
+      |  ^~~
+/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/native/test_interval_observer.cpp:125:78: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+  125 |  for(int i=0;i<3;++i)x650::interval::add_encoding(guard,kernel[i],anchor[i]);x650::interval::finish_encoding(guard);
+      |                                                                              ^~~~
+[ 76%] Building CXX object CMakeFiles/test_interval_core.dir/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp.o
+[ 82%] Building CXX object CMakeFiles/test_mpc_core.dir/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/source_v3/control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp.o
+[ 88%] Linking CXX executable test_interval_core
+[ 88%] Built target test_interval_core
+[ 94%] Linking CXX executable test_mpc_core
+[ 94%] Built target test_mpc_core
+[100%] Linking CXX executable test_interval_observer
+[100%] Built target test_interval_observer
+Internal ctest changing into directory: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/build_v3
+Test project /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/build_v3
+    Start 1: mpc_core_raw_input_transaction
+1/4 Test #1: mpc_core_raw_input_transaction ..................   Passed    0.06 sec
+    Start 2: mpc_interval_native_transaction
+2/4 Test #2: mpc_interval_native_transaction .................   Passed    0.06 sec
+    Start 3: mpc_interval_canonical_observer_and_hard_rows
+3/4 Test #3: mpc_interval_canonical_observer_and_hard_rows ...   Passed    0.01 sec
+    Start 4: quadprog_identity_initialization
+4/4 Test #4: quadprog_identity_initialization ................   Passed    0.03 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.16 sec

@@ -1,0 +1,49 @@
+{
+  "kind": "x650_interval_constraint_independent_audit_v1",
+  "passed": true,
+  "complete": true,
+  "input_sha256": "0ed8f4a327fc0a00a4f314bc8dc32b2b53b2e0bfe6567074ea0e7d77fd8a0d00",
+  "controller_call_accepted": true,
+  "physical_validation": false,
+  "native_repropagation_independent": false,
+  "scope": "Read-only arithmetic and original evidence audit; parent driver separately requires canonical native repropagation",
+  "accepted_control_validated": true,
+  "memory_commit_verified": true,
+  "qp": {
+    "verified": true,
+    "columns": 75,
+    "rows": 269,
+    "no_slack_variables": true,
+    "primal_violation": 9.346690088563037e-15,
+    "kkt_stationarity_independent": 9.141992718397773e-16,
+    "original_trust_radius": 0.02
+  },
+  "interval": {
+    "verified": true,
+    "rows": 39,
+    "repairs": [
+      {
+        "control_subproblem": 1,
+        "added_points": 39,
+        "total_points": 39,
+        "actual_violation_triggers": 1,
+        "risk_radius": 0.02,
+        "elapsed_ms": 13.642785
+      }
+    ],
+    "canonical_grid_unchanged": true,
+    "encoding_scope": "Offset-corrected half-LSB bound for the sliding surrogate only; final native envelope still mandatory",
+    "dense_anchor_scope": "Copied canonical observer anchor with exact QP row identity; separate native repropagation remains required"
+  },
+  "canonical_grid_verified": true,
+  "nonlinear_envelope_violation": 0.0,
+  "q_error": 0.00022764707895722713,
+  "dq_error": 0.002907985058656512,
+  "hard_margin_preserved": {
+    "q_padding": 0.0003,
+    "dq_padding": 0.03,
+    "tolerance": 2e-07
+  },
+  "core_step_wall_ms": 26.230186,
+  "core_ms": 26.210365
+}

@@ -1,4 +1,5 @@
 #include "mpc_core.hpp"
+#include "canonical_interval.hpp"
 #include <Eigen/Dense>
 #include <algorithm>
 #include <chrono>
@@ -11,7 +12,7 @@ int x650_assemble(int,const double*,int,double*,int,int*,char*,int);
 int x650_solve(int,int,const double*,const double*,const double*,const double*,const double*,int,double*,double*,int*,char*,int);
 int x650_endpoint(int,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
 int x650_candidate(int,int,const double*,const double*,const double*,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
-unsigned x650_mpc_core_abi_version(){return 2;}
+unsigned x650_mpc_core_abi_version(){return 3;}
 }
 namespace x650 {
 namespace {
@@ -33,7 +34,7 @@ std::vector<double> cumulative(const std::vector<double>& v){std::vector<double>
 void unique_sort(std::vector<double>& values){std::sort(values.begin(),values.end());values.erase(std::unique(values.begin(),values.end()),values.end());}
 E3 tip(const V2& q,const Config& c){const auto& g=c.geometry;double a=g[2]+q[0],b=g[3]+q[0]+q[1];
  return E3(g[4],g[5],g[6])+g[0]*E3(std::cos(a),0,-std::sin(a))+E3(g[7],g[8],g[9])+g[1]*E3(std::cos(b),0,-std::sin(b));}
-struct Assembly {int ar=0,cr=0;std::vector<double>offsets,jac,contexts;};
+struct Assembly {int ar=0,cr=0,base_cr=0;std::vector<double>offsets,jac,contexts;};
 struct Nominal {E3 p,v,a;E2 q,dq,ddq;};
 Nominal nominal(const Config& c,const Anchor& anchor,const Target& target){
  require(finite(target.position)&&finite(target.velocity)&&finite(target.acceleration),"target finite");
@@ -149,6 +150,46 @@ std::vector<double> matrix_data(const Matrix& x){return {x.data(),x.data()+x.siz
 Eigen::VectorXd normalized(const Matrix& plan,const Config& c){
  Eigen::VectorXd z(plan.size());for(int i=0;i<plan.rows();++i)for(int j=0;j<5;++j)z[5*i+j]=plan(i,j)/c.velocity_limit[j];return z;
 }
+struct IntervalSensitivity {
+ using Encoding=interval::EncodingRemainder;
+ const Config& c;int n;double start;std::size_t first_future;std::vector<double>boundaries,knots;std::vector<Matrix>force,at;std::vector<E2>encoding_error;
+ IntervalSensitivity(const Config& config,const StepInput& in,const PacketPlan& pp,const Rollout& canonical,const Matrix& centre,E2 r):
+  c(config),n(5*c.nodes),start(in.t-(in.state.control_time-in.state.joint_stamp)),first_future(in.context.packets.size()),boundaries(canonical.boundaries){
+  const auto z=normalized(centre,c);
+  for(std::size_t i=0;i<pp.packets.size();++i){knots.push_back(pp.packets[i].send_time+c.motion[4]);Matrix f(2,n);
+   E2 e=E2::Zero();for(int j=0;j<2;++j){f.row(j)=c.kp[j]*pp.P[i].row(j)+c.kd[j]*pp.V[i].row(j);
+    if(i>=first_future)e[j]=c.kp[j]*(pp.packets[i].q_ref[j]-r[j]-(pp.P[i].row(j)*z)(0))+c.kd[j]*(pp.packets[i].dq_ref[j]-(pp.V[i].row(j)*z)(0));}
+   encoding_error.push_back(e);force.push_back(std::move(f));}
+  Matrix S=Matrix::Zero(4,n);double cursor=start;for(double end:boundaries){advance(S,cursor,end);at.push_back(S);cursor=end;}
+ }
+ void advance(Matrix& S,double cursor,double end)const{
+  const double duration=end-cursor;if(duration<=0)return;
+  const int packet=std::max(0,int(std::upper_bound(knots.begin(),knots.end(),cursor+1e-11)-knots.begin())-1);
+  for(int j=0;j<2;++j){auto ab=transition(c,j,duration);Matrix old(2,n);old.row(0)=S.row(j);old.row(1)=S.row(j+2);
+   Matrix next=ab.first*old+ab.second*force[packet].row(j);S.row(j)=next.row(0);S.row(j+2)=next.row(1);}
+ }
+ std::vector<double> gradient(const IntervalPoint& point)const{
+  require(point.time>=start-1e-12&&point.time<=boundaries.back()+1e-12,"interval safety sensitivity time outside canonical horizon");
+  auto found=std::lower_bound(boundaries.begin(),boundaries.end(),point.time);std::size_t i=std::min(std::size_t(found-boundaries.begin()),boundaries.size()-1);
+  Matrix S=Matrix::Zero(4,n);if(i)S=at[i-1];const double cursor=i?boundaries[i-1]:start;
+  advance(S,cursor,std::clamp(point.time,cursor,boundaries[i]));
+  std::vector<double> result(n);for(int k=0;k<n;++k)result[k]=S(point.joint+2*point.component,k);return result;
+ }
+ Encoding encoding(const IntervalPoint& point)const{
+  Encoding out;const int j=point.joint;
+  out.effort_half_lsb=.5*(c.kp[j]*(2*std::acos(-1.)/std::pow(2.,24))+c.kd[j]/512.);
+  // For each future packet: e(new)-e(centre) lies in [-eps-e0,+eps-e0].
+  // The scalar kernel is the integrated impulse response over its original
+  // bus interval, so historical/in-flight packets contribute exactly zero.
+  for(std::size_t i=first_future;i<knots.size()&&knots[i]<point.time;++i){
+   const double a=std::max(start,knots[i]),b=std::min(point.time,i+1<knots.size()?knots[i+1]:point.time);if(b<=a)continue;
+   const auto first=transition(c,j,point.time-a).second,last=transition(c,j,point.time-b).second;
+   const double kernel=first[point.component]-last[point.component];interval::add_encoding(out,kernel,encoding_error[i][j]);
+  }
+  interval::finish_encoding(out);
+  return out;
+ }
+};
 double original_violation(const Diagnostics& d,const Eigen::VectorXd& z){
  const int rows=int(d.lower.size()),n=int(z.size());Eigen::VectorXd value=Eigen::Map<const Matrix>(d.C.data(),rows,n)*z;
  return std::max({0.,(Eigen::Map<const Eigen::VectorXd>(d.lower.data(),rows)-value).maxCoeff(),
@@ -204,10 +245,11 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
   require(in.preview.empty()||in.preview.size()==std::size_t(N),"preview node count");std::vector<Target> targets=in.preview;
   if(targets.empty())for(double offset:nodes){Target t=in.target;for(int j=0;j<3;++j){t.position[j]+=offset*in.target.velocity[j]+.5*offset*offset*in.target.acceleration[j];t.velocity[j]+=offset*in.target.acceleration[j];}targets.push_back(t);}
   for(const auto& t:targets)require(finite(t.position)&&finite(t.velocity)&&finite(t.acceleration),"preview finite");
-  int nonlinear_retries=0,recovery_centres=0;
+  int nonlinear_retries=0,recovery_centres=0;bool interval_relinearization=false;
+  std::vector<IntervalPoint> interval_points;
   // At most the original three control QPs. Any internal projection solve is
   // separately recorded, and also consumes the same total 50 ms deadline.
-  for(int attempt=0;attempt<3;++attempt){require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");++dg.subproblems;Prediction pred=predict(c,predictor_,in,h,nodes,warm,nonlinear_retries>0);
+  for(int attempt=0;attempt<3;++attempt){require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");++dg.subproblems;Prediction pred=predict(c,predictor_,in,h,nodes,warm,nonlinear_retries>0&&!interval_relinearization);interval_relinearization=false;
    auto assemble=[&](const Prediction& pred,const Matrix& centre,Diagnostics& out){
    std::vector<double> data;data.reserve(100000);append(data,std::array<double,5>{in.dt,c.node_dt,c.max_dt,age,std::min(c.trust_radius,.02)});
    append(data,c.weights);append(data,c.velocity_limit);append(data,c.acceleration_limit);append(data,m.previous_command);append(data,c.q_lower);append(data,c.q_upper);
@@ -220,7 +262,31 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
    if(x650_assemble(N,data.data(),int(data.size()),output.data(),int(output.size()),shape,error,512))throw CoreError(error,dg);
    int offset=0;auto take=[&](int size){require(offset+size<=shape[2],"assembly output shape");std::vector<double>v(output.begin()+offset,output.begin()+offset+size);offset+=size;return v;};int ar=shape[0],cr=shape[1];
    out.A=take(ar*n);out.b=take(ar);out.H=take(n*n);out.g=take(n);out.C=take(cr*n);out.lower=take(cr);out.upper=take(cr);
-   Assembly result;result.ar=ar;result.cr=cr;result.offsets=take(N*12);result.jac=take(N*12*n);take(N*12);take(N*9);result.contexts=take(N*20);take(17);require(offset==shape[2],"assembly complete output");return result;
+   Assembly result;result.ar=ar;result.cr=result.base_cr=cr;result.offsets=take(N*12);result.jac=take(N*12*n);take(N*12);take(N*9);result.contexts=take(N*20);take(17);require(offset==shape[2],"assembly complete output");
+   out.interval_constraints.clear();out.interval_rows=0;
+   if(!interval_points.empty()){
+    // The native model receives only its unchanged canonical query grid.
+    // Dense observations are taken from the identical accepted native pieces;
+    // observation times never become additional integration boundaries.
+    auto canonical=rollout(c,predictor_,in,pred.nominal.packets,pred.queries,true);
+    const double start=in.t-(s.control_time-s.joint_stamp);
+    auto observed=interval::observe(c,s,start,pred.nominal.packets,canonical.boundaries);
+    interval::verify_canonical(observed,matrix_data(canonical.states),canonical.envelope,canonical.substeps);
+    const auto z=normalized(centre,c);std::vector<double> zv(z.data(),z.data()+z.size());
+    IntervalSensitivity sensitivity(c,in,pred.nominal,canonical,centre,pred.r);
+    for(const auto& original:interval_points){
+     const auto point=interval::evaluate(c,s,start,observed,original);
+     auto constraint=interval::hard_constraint(point,sensitivity.gradient(point),zv,result.cr,c.feasibility_tolerance);
+     const auto encoding=sensitivity.encoding(point);constraint.encoding_lower_remainder=encoding.lower;constraint.encoding_upper_remainder=encoding.upper;
+     constraint.encoding_kernel_l1=encoding.kernel_l1;constraint.encoding_anchor_bias=encoding.anchor_bias;constraint.encoding_effort_half_lsb=encoding.effort_half_lsb;
+     append(out.C,constraint.gradient);out.lower.push_back(point.lower-constraint.affine_offset-encoding.lower);out.upper.push_back(point.upper-constraint.affine_offset-encoding.upper);
+     out.interval_constraints.push_back(std::move(constraint));++result.cr;
+    }
+    out.interval_rows=int(out.interval_constraints.size());
+    if(diagnostic_mode_==DiagnosticMode::Full){out.interval_centre_plan=matrix_data(centre);out.interval_canonical_boundaries=canonical.boundaries;out.interval_canonical_states=matrix_data(canonical.states);}
+    out.interval_canonical_envelope=canonical.envelope;out.interval_canonical_substeps=canonical.substeps;
+   }
+   out.qp_rows=result.cr;out.qp_columns=n;return result;
    };
    auto assembled=assemble(pred,warm,dg);auto& offsets=assembled.offsets;auto& jac=assembled.jac;auto& contexts=assembled.contexts;int ar=assembled.ar,cr=assembled.cr;
    require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");
@@ -245,14 +311,15 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
        // Only the known trust rows are omitted for seed generation. Every
        // original physical, slew, reference, stopping and pending-command row
        // remains present. The full .02 trust is restored after re-centring.
-       const int first=cr-5-2*N;require(first>=0,"recovery trust row layout");
+       const int first=assembled.base_cr-5-2*N;require(first>=0,"recovery trust row layout");
        auto C=Eigen::Map<const Matrix>(dg.C.data(),cr,n);auto old=normalized(warm,c);
        for(int i=0;i<N;++i)for(int j=0;j<2;++j){int row=first+2*i+j,column=5*i+3+j;
         for(int k=0;k<n;++k)require(C(row,k)==(k==column?1.:0.),"recovery trust row identity");
         require(std::abs(dg.lower[row]-old[column]+std::min(c.trust_radius,.02))<1e-10&&std::abs(dg.upper[row]-old[column]-std::min(c.trust_radius,.02))<1e-10,"recovery trust row bounds");}
-       Matrix projected_C(cr-2*N,n);projected_C.topRows(first)=C.topRows(first);projected_C.bottomRows(5)=C.bottomRows(5);
+       const int remaining=cr-first-2*N;
+       Matrix projected_C(cr-2*N,n);projected_C.topRows(first)=C.topRows(first);projected_C.bottomRows(remaining)=C.bottomRows(remaining);
        std::vector<double> lo(dg.lower.begin(),dg.lower.begin()+first),hi(dg.upper.begin(),dg.upper.begin()+first);
-       lo.insert(lo.end(),dg.lower.end()-5,dg.lower.end());hi.insert(hi.end(),dg.upper.end()-5,dg.upper.end());
+       lo.insert(lo.end(),dg.lower.begin()+first+2*N,dg.lower.end());hi.insert(hi.end(),dg.upper.begin()+first+2*N,dg.upper.end());
        Matrix H=2.*Matrix::Identity(n,n);Eigen::VectorXd g=-2.*normalized(brake,c);std::vector<double> z(n);double q[4]{};int projection_mode=-1;char projection_error[512]{};
        record.projection_attempted=true;
        int code=x650_solve(n,cr-2*N,H.data(),g.data(),projected_C.data(),lo.data(),hi.data(),c.max_iterations,z.data(),q,&projection_mode,projection_error,512);
@@ -299,7 +366,46 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
    dg.candidate_envelope=actual.envelope;dg.candidate_substeps=actual.substeps;dg.horizon=h;dg.plan=matrix_data(plan);
    if(dg.recovery_triggered){dg.recovery_stopping_violation=stopping_violation(c,age,q,dq);if(dg.recovery_stopping_violation>c.feasibility_tolerance)dg.nonlinear_passed=false;}
    dg.attempts.push_back({dg.nonlinear_passed,dg.actual_bounds,candidate[0],candidate[1],elapsed(begin)});
-   if(!dg.nonlinear_passed){if(dg.actual_bounds&&attempt<2&&elapsed(begin)<50.){++nonlinear_retries;warm=plan;continue;}throw CoreError("TS20 nonlinear candidate rejected before command publication",dg);}
+   if(!dg.nonlinear_passed){
+    if(!dg.actual_bounds){
+     IntervalRepair repair;repair.control_subproblem=dg.subproblems;repair.envelope=actual.envelope;repair.canonical_substeps=actual.substeps;
+     bool retry=false;
+     try{
+      const double start=in.t-(s.control_time-s.joint_stamp);auto observed=interval::observe(c,s,start,actual_packets.packets,actual.boundaries);
+      interval::verify_canonical(observed,matrix_data(actual.states),actual.envelope,actual.substeps);
+      repair.trigger_points=interval::violations(observed,c.feasibility_tolerance);
+      require(!repair.trigger_points.empty(),"interval recovery cannot repair an integrated-reference violation");
+      require(attempt<2,"interval safety control subproblem budget exhausted");
+      require(elapsed(begin)<50.,"TS20 interval safety prepublication computation deadline exceeded");
+      // Check zero-control historical pieces now, rather than spending another
+      // QP on an immutable already-sent trajectory. No measured state is reset.
+      const auto sensitivity_packets=packets(c,in,h,nodes,plan,pred.r,true);const auto nz=normalized(plan,c);std::vector<double> zv(nz.data(),nz.data()+nz.size());
+      IntervalSensitivity sensitivity(c,in,sensitivity_packets,actual,plan,pred.r);
+      for(const auto& point:repair.trigger_points)interval::hard_constraint(point,sensitivity.gradient(point),zv,0,c.feasibility_tolerance);
+      repair.risk_radius=std::min(c.trust_radius,.02);repair.centre_plan=matrix_data(plan);
+      auto candidates=observed.risk_candidates;candidates.insert(candidates.end(),repair.trigger_points.begin(),repair.trigger_points.end());
+      for(const auto& point:candidates){
+       bool lower=false,upper=false;for(const auto& trigger:repair.trigger_points)if(trigger.joint==point.joint&&trigger.component==point.component){
+        lower=lower||trigger.value<trigger.lower-c.feasibility_tolerance;upper=upper||trigger.value>trigger.upper+c.feasibility_tolerance;}
+       if(!lower&&!upper)continue;
+       const auto gradient=sensitivity.gradient(point);double margin=0.;for(int k=0;k<n;++k)if(k%5>=3)margin+=std::abs(gradient[k]);margin*=repair.risk_radius;
+       const auto encoding=sensitivity.encoding(point);
+       if((lower&&point.value-margin+encoding.lower<=point.lower+c.feasibility_tolerance)||(upper&&point.value+margin+encoding.upper>=point.upper-c.feasibility_tolerance)){
+        if(std::none_of(repair.points.begin(),repair.points.end(),[&](const auto& old){return interval::same_point(old,point);})){
+         repair.points.push_back(point);repair.risk_margin.push_back(margin);repair.risk_encoding_lower.push_back(encoding.lower);repair.risk_encoding_upper.push_back(encoding.upper);}
+       }
+      }
+      require(!repair.points.empty(),"interval safety risk selection omitted actual violation");
+      repair.added_points=interval::merge_points(interval_points,repair.points);repair.total_points=int(interval_points.size());
+      warm=plan;interval_relinearization=true;retry=true;
+     }catch(const CoreError& failure){repair.rejection=failure.what();}
+     repair.elapsed_ms=elapsed(begin);dg.interval_repairs.push_back(std::move(repair));
+     if(retry)continue;
+     throw CoreError(dg.interval_repairs.back().rejection,dg);
+    }
+    if(attempt<2&&elapsed(begin)<50.){++nonlinear_retries;warm=plan;continue;}
+    throw CoreError("TS20 nonlinear candidate rejected before command publication",dg);
+   }
    if(diagnostic_mode_==DiagnosticMode::Full)dg.linearized_states=matrix_data(predicted);
    predicted.middleCols(6,2)=q;predicted.middleCols(8,2)=dq;dg.predicted_states=matrix_data(predicted);std::vector<double>endpoint(N*15);
    if(x650_endpoint(N,predicted.data(),plan.data(),contexts.data(),c.geometry.data(),c.response.data(),endpoint.data(),error,512))throw CoreError(error,dg);

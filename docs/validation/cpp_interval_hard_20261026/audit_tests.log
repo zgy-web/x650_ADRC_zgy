@@ -1,0 +1,19 @@
+test_added_query_or_rewritten_integration_grid_cannot_hide_peak (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_appended_hard_cut_has_same_canonical_anchor_and_original_trust_rows (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_changed_cut_row_or_missing_centre_evidence_is_rejected (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_complete_normal_arithmetic_graph_does_not_claim_native_repropagation (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_anchor_bias_uses_actual_rounding_not_zero_or_full_lsb (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_bound_and_matching_qp_rewrite_cannot_hide_tampering (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_encoding_risk_range_and_missing_guard_evidence_are_rejected (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_half_lsb_kernel_telescopes_and_actual_history_is_not_perturbed (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_original_full_row_quality_and_no_slack_dimension_are_required (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_original_trust_location_survives_new_matrix_tail (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_rejection_verifies_full_rollback_without_control_pass_claim (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_risk_batch_requires_real_trigger_and_unchanged_sliding_range (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_tampered_padding_or_final_envelope_is_rejected (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+test_wrong_hash_library_or_committed_memory_is_rejected (test_x650_interval_constraints_audit.IntervalAuditTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.315s
+
+OK

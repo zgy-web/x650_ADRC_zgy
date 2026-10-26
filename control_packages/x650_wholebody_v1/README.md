@@ -8,6 +8,8 @@ TS20 新工况由显式的 `Ts20MpcController`、`Ts20PredictionModel` 和 `Ts20
 
 完整 C++ 在线 Core 的 ABI 2 增加了 [可信中心重建与重新线性化恢复](../../docs/X650_MPC_TRUSTED_CENTRE_RECOVERY.md)。正式 QP 仍保留 0.02 半径及原约束，内部中心通过检查后才允许重新求解；原失败快照与实际 ROS 工作进程回放已通过。这个分支位于 `native/mpc_core.cpp`，没有同步修改历史 Python `Ts20MpcController`。新后端的受扰物理闭环需另行验收，不能把离线恢复称为完整飞行通过。
 
+当前源码进一步升级到 **Core ABI 3**，新增[节点间硬约束与指令编码余项恢复](../../docs/X650_MPC_INTERVAL_HARD_CONSTRAINTS.md)。不增加松弛变量，不放宽 ±0.42／±0.32 rad/s 内界；429 条固定原输入及匹配 ROS 接口测试通过。必须重新编译匹配 worker/header/core，并在新 startup 绑定 `canonical_interval.hpp`、`joint_safety.hpp` 等实际源码；旧 ABI 2 的飞行资格不适用于新库。该分支仍仅位于 C++，历史 Python 控制器没有这项区间恢复实现。软件结果见[本次验证记录](../../docs/validation/cpp_interval_hard_20261026/README.md)。
+
 旧 `control_packages/pid_ff_wholebody_v1` 的冻结参数包和历史实验保持独立。旧 x500 的 PID 选择结果不能作为新 X650 + 臂已经充分整定的依据；本包要求调用者传入当前实验实际读回的 PX4 增益。
 
 ## 模型与坐标

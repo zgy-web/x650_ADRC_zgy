@@ -80,6 +80,34 @@ struct RecoveryAttempt {
   std::array<double,8> envelope{};
   int substeps=0;
 };
+// ABI 3: finite hard constraints generated from the authoritative continuous
+// candidate envelope. component 0=q, 1=dq; joint is zero based. source_kind:
+// 0 initial/canonical boundary, 1 accepted substep end, 2 velocity-zero event,
+// 3 acceleration-zero (velocity extremum) event. No slack is introduced.
+struct IntervalPoint {
+  double time=0.,value=0.,lower=0.,upper=0.;
+  int joint=0,component=0,source_kind=0;
+};
+struct IntervalConstraint {
+  IntervalPoint point;
+  double affine_offset=0.;
+  std::vector<double> gradient;
+  int qp_row=0;
+  // Command-encoding remainder in the same sliding linear force response.
+  // The actual state bounds above are unchanged; these bounds account for
+  // a future quantizer cell differing from the centre's known encoding error.
+  double encoding_lower_remainder=0.,encoding_upper_remainder=0.;
+  double encoding_kernel_l1=0.,encoding_anchor_bias=0.,encoding_effort_half_lsb=0.;
+};
+struct IntervalRepair {
+  int control_subproblem=0,added_points=0,total_points=0,canonical_substeps=0;
+  double elapsed_ms=0.;
+  std::string rejection;
+  std::array<double,8> envelope{};
+  std::vector<IntervalPoint> trigger_points,points;
+  std::vector<double> centre_plan,risk_margin,risk_encoding_lower,risk_encoding_upper;
+  double risk_radius=0.;
+};
 struct Diagnostics {
   int subproblems=0,active_constraints=0,solver_mode=-1,qp_rows=0,qp_columns=0;
   double primal_violation=0.,kkt_stationarity=0.,kkt_complementarity=0.,objective=0.;
@@ -92,6 +120,14 @@ struct Diagnostics {
   std::string recovery_reason;
   std::vector<RecoveryAttempt> recovery_attempts;
   double recovery_trust_radius=0.,recovery_stopping_violation=0.;
+  int interval_rows=0;
+  std::vector<IntervalRepair> interval_repairs;
+  std::vector<IntervalConstraint> interval_constraints;
+  // Full captures of the exact canonical centre supporting the last hard rows.
+  // Extra observation times never enter native propagation boundaries.
+  std::vector<double> interval_centre_plan,interval_canonical_boundaries,interval_canonical_states;
+  std::array<double,8> interval_canonical_envelope{};
+  int interval_canonical_substeps=0;
   std::vector<double> horizon,plan,predicted_states,predicted_tip,predicted_rotations;
   // Full diagnostics retain the surrogate before native q/dq replaces it.
   std::vector<double> linearized_states;
