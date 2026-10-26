@@ -1,0 +1,89 @@
+{
+  "files": {
+    "delivery_manifest.json": {
+      "bytes": 3108,
+      "sha256": "26d8b897dcf4364ef7a394e43b4ae30890d5663860e48d2697d35bc6badcbef0"
+    },
+    "display_frame_clock.csv": {
+      "bytes": 19453,
+      "sha256": "87658f6761e042f18190d6bba205108e7d8c6d8835a6d639632bb40a5536a360"
+    },
+    "ffmpeg.log": {
+      "bytes": 51188,
+      "sha256": "9879c3f53d637e2869d8de0039bbe622ed20e39a13f93876ddd22ea2d7520dd9"
+    },
+    "final_state.png": {
+      "bytes": 190603,
+      "sha256": "9394b3c5fe4f3d1b3a318e8fa03eb584aefd6d2fd44b30395d37fc3ca288c376"
+    },
+    "frame_00000.png": {
+      "bytes": 170312,
+      "sha256": "7c5fe373c0ad2f1af826c31f52ddaa7e71db7c546179ae670025937890bac8ba"
+    },
+    "frame_00143.png": {
+      "bytes": 180236,
+      "sha256": "9b3f92bee8af17c28bf000a8a8d9039c21f1791dd93da8e733ae09dc25c2468c"
+    },
+    "frame_00287.png": {
+      "bytes": 187066,
+      "sha256": "346b9130ae8c9bb0a15d251c4ee547d8e52b6b886c31a2c9a53654fb7f8da4c4"
+    },
+    "frame_00431.png": {
+      "bytes": 197315,
+      "sha256": "c2803dcecff001d6efc22c897292e4559a60bf8d1c8c209c4d065cf976ddbfba"
+    },
+    "frame_00575.png": {
+      "bytes": 192012,
+      "sha256": "c6a7002dc4db1d54b62ce06153aff05b2dd64d808dba2dae74e8f8df336559ea"
+    },
+    "local_video_verification.json": {
+      "bytes": 1127,
+      "sha256": "d3084e5fdefb571924ca48c79e5a31a7c86156bfb540133aade52640fb586311"
+    },
+    "qa_frames/decoded_frame_00174.png": {
+      "bytes": 458092,
+      "sha256": "75002ac2c739c2dc791ecbc3a6823d1097851f82b996e1d7930fe57e06fad600"
+    },
+    "qa_frames/decoded_frame_00221.png": {
+      "bytes": 478885,
+      "sha256": "78d47cb9d1cb21c2df65a875bf8379267e883edf7be8ec1b2458829c996494ff"
+    },
+    "qa_frames/decoded_frame_00318.png": {
+      "bytes": 494619,
+      "sha256": "16baa82ef54c3a3caf93933e56b29687058cb07df8960fb96a1e3819b8613fc0"
+    },
+    "qa_frames/decoded_frame_00497.png": {
+      "bytes": 503711,
+      "sha256": "4d1bc7d06cf8bda2598cd68108dfdf3e76db1ffcbb2f33a8cce509a8d4244414"
+    },
+    "qa_frames/qa_manifest.json": {
+      "bytes": 1721,
+      "sha256": "bbc05e5dba69971a52619854740d28e438425b11aa4df7844c64c65c0bbf60dc"
+    },
+    "README.md": {
+      "bytes": 2768,
+      "sha256": "d484b04092f3ac6db229dc22e6ec27d04045102d7a581e3ffaf8f79e68e52b2f"
+    },
+    "render_status.json": {
+      "bytes": 628616,
+      "sha256": "51ed8f88080b7b8c4092736a4cd324eebe096f437089443259ead6157811ff6c"
+    },
+    "render_video_v1.sh": {
+      "bytes": 940,
+      "sha256": "58bbd793f68911a97bd26ffb721d885ca4ca281102d2dec0b3dbf1892752ef50"
+    },
+    "replay_manifest.json": {
+      "bytes": 628616,
+      "sha256": "51ed8f88080b7b8c4092736a4cd324eebe096f437089443259ead6157811ff6c"
+    },
+    "video_tests.log": {
+      "bytes": 1039,
+      "sha256": "8f9871ba3a0cc070349b37770acb3b3830e93d5dd7fb1dc9a6cbd5f6ec0feefb"
+    },
+    "X650_MPC25Hz_24s_disturbance.mp4": {
+      "bytes": 4988918,
+      "sha256": "aa135760cbc7783743c82a3ce1172da8810563859d8553b585e62f0e4a48af4d"
+    }
+  },
+  "verified": true
+}

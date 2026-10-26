@@ -316,7 +316,7 @@ def close_media(proc, log, renderer):
             renderer.close()
 
 
-def render_frames(bundle, output, frames, preview, ffmpeg):
+def render_frames(bundle, output, frames, preview, ffmpeg, *, overlay=draw_overlay):
     # Delay GPU/image imports until all source data and certificate checks pass.
     import mujoco
     from PIL import Image, ImageDraw
@@ -342,9 +342,12 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
             mujoco.mjv_defaultCamera(camera)
             camera.type = mujoco.mjtCamera.mjCAMERA_FREE
             camera.azimuth, camera.elevation = 110., -14.
-        cameras[0].distance = 2.05
+        world_distance, detail_distance = bundle.get('camera_distances', (2.05, .85))
+        require(all(math.isfinite(value) and value > 0 for value in (world_distance, detail_distance)),
+                'Invalid display camera distance')
+        cameras[0].distance = world_distance
         cameras[0].lookat[:] = bundle["data"]["p"][0] + [0, 0, -.22]
-        cameras[1].distance = .85
+        cameras[1].distance = detail_distance
         reference = bundle["verified"]["reference"]
         target_path = np.asarray([reference.sample(t)[0] for t in np.linspace(reference.start_s, reference.end_s, 400)])
         fonts = {size: replay.find_font(size) for size in (18, 20, 22, 30)}
@@ -369,7 +372,7 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
                 add_path(mujoco, renderer.scene, target_path, TARGET, .0017)
                 add_path(mujoco, renderer.scene, trail, ACTUAL, .0015)
                 canvas.paste(Image.fromarray(renderer.render().copy()), (index * PANEL_WIDTH, SCENE_Y))
-            draw_overlay(ImageDraw, canvas, bundle, now, quat, fonts)
+            overlay(ImageDraw, canvas, bundle, now, quat, fonts)
             return canvas
         video = output / bundle.get("video_filename", "X650_normal_isolated_CPP_MPC.mp4")
         if not preview:
@@ -399,9 +402,9 @@ def render_frames(bundle, output, frames, preview, ffmpeg):
         return {"geometry": scene_details, "video": None if preview else identity(video),
                 "effective_offscreen_samples": int(model.vis.quality.offsamples),
                 "decoded_video": video_contract, "frames": len(frames), "preview_time_s": float(frames[0]) if preview else None,
-                "cameras": {"world": {"distance": 2.05, "azimuth": 110., "elevation": -14.,
+                "cameras": {"world": {"distance": world_distance, "azimuth": 110., "elevation": -14.,
                                        "lookat": cameras[0].lookat.tolist()},
-                            "arm_detail": {"distance": .85, "azimuth": 110., "elevation": -14.,
+                            "arm_detail": {"distance": detail_distance, "azimuth": 110., "elevation": -14.,
                                            "lookat": "follows recorded arm geometry; no fitted transform"}}}
     finally:
         close_media(proc, log, renderer)

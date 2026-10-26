@@ -1,0 +1,13 @@
+test_acceptance_or_recovery_labels_cannot_be_reversed (test_x650_multirate_video.ReportBindingTests) ... ok
+test_complete_execution_keeps_failed_performance_and_original_values (test_x650_multirate_video.ReportBindingTests) ... ok
+test_matching_metrics_below_peak_limit_cannot_be_called_this_failure (test_x650_multirate_video.ReportBindingTests) ... ok
+test_nonfinite_metrics_are_rejected_even_when_report_has_same_nan (test_x650_multirate_video.ReportBindingTests) ... ok
+test_partial_or_wrong_audit_never_gets_complete_execution_label (test_x650_multirate_video.ReportBindingTests) ... ok
+test_recomputed_metrics_cannot_be_substituted (test_x650_multirate_video.ReportBindingTests) ... ok
+test_one_times_timeline_is_24_seconds_with_separate_end_state (test_x650_multirate_video.WrenchAndTimelineTests) ... ok
+test_wrench_display_uses_latest_logged_sample_not_linear_interpolation (test_x650_multirate_video.WrenchAndTimelineTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+OK
