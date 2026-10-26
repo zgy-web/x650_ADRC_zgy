@@ -1,0 +1,38 @@
+{"frame": 0, "total": 293, "task_s": 0.0, "phase": "REPLAY 1x"}
+{"frame": 48, "total": 293, "task_s": 2.0, "phase": "REPLAY 1x"}
+{"frame": 96, "total": 293, "task_s": 4.0, "phase": "REPLAY 1x"}
+{"frame": 144, "total": 293, "task_s": 6.0, "phase": "REPLAY 1x"}
+{"frame": 192, "total": 293, "task_s": 7.25, "phase": "SLOW MOTION 0.25x"}
+{"frame": 240, "total": 293, "task_s": 7.544000000000004, "phase": "FINAL STATE PAUSED"}
+{"frame": 288, "total": 293, "task_s": 7.544000000000004, "phase": "FINAL STATE PAUSED"}
+{"frame": 292, "total": 293, "task_s": 7.544000000000004, "phase": "FINAL STATE PAUSED"}
+{
+  "presentation_complete": true,
+  "video": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_wrench_video_20261026/video_v1/X650_wrench_failed_original.mp4",
+    "bytes": 2085952,
+    "sha256": "b3da624bf23ede7b21ba5c920461a68ce9d23ceb5208d523ee9d6f3875da3255"
+  },
+  "frames": 293,
+  "decoded_video": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 293,
+    "duration_s": 12.208333333333334,
+    "verification": "complete FFmpeg framemd5 decode"
+  },
+  "prefix_only_metrics": {
+    "scope": "Failed controlled prefix only; not complete 24 s or recovery qualification",
+    "interval_task_s": [
+      0.0,
+      7.544000000000004
+    ],
+    "sample_count": 1887,
+    "tip_3d_rmse_m": 0.009188457265991202,
+    "tip_3d_peak_m": 0.04977791320002805,
+    "tip_error_at_last_native_m": 0.04977791320002805,
+    "tilt_peak_deg": 3.025759126130363
+  }
+}

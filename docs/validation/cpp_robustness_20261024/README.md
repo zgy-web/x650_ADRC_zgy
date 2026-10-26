@@ -60,6 +60,8 @@
 
 [原始失败分析](wrench_fast/wrench_failure_analysis_v1/analysis.json)、[QP 可行性检查](wrench_fast/wrench_failure_analysis_v1/qp_feasibility_probe.json)、[约束分组隔离](wrench_fast/wrench_failure_analysis_v1/constraint_isolation.json)、[直接冲突行](wrench_fast/wrench_failure_analysis_v1/direct_trust_conflict.json)、[正式失败报告](wrench_fast/wrench_failure_analysis_v1/formal_failed_audit_v1/report.json)、[图表证据身份](wrench_fast/diagnostic_plot_v2/diagnostic_figure_manifest.json)。
 
+2026-10-26 补充了[失败实验视频](wrench_fast/video_20261026/README.md)：原始 0–7.544 s 记录、同一次实验的世界视图与机械臂近景，第 7 秒后 0.25 倍慢放，精确失败末态定格。视频逐帧时间表与原件身份单独保存，没有重跑物理或混入后续落地记录。
+
 下一步应先修复这类局部 QP 不可行时的可行性恢复机制：在保留真实关节位置、速度与制动安全要求的前提下，检查信赖域的自适应扩大、重建计划或分阶段恢复方案，再用同一原始失败输入回放和同一 1.5 N 完整工况复验。不能只删门控、减小扰动力或修改图表把失败算作通过。延时测试继续留在后面。
 
 ## 原件、审计修订与可复现性

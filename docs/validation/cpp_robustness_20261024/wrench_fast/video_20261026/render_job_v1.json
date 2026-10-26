@@ -1,0 +1,7 @@
+{
+  "pid": 1685,
+  "script": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_wrench_video_20261026/render_video_v1.sh",
+  "script_sha256": "9503eea96f8529b7d78fdb4c15b0091b8191740328fe47a9040f9c6388fb98b2",
+  "renderer_sha256": "221c96fdf3dcfa8cd9f4484997b564d0e075144cf47ace5cc9c49d9a76497fc7",
+  "new_physics_run": false
+}

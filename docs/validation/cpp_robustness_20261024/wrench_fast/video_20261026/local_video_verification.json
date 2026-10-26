@@ -1,0 +1,123 @@
+{
+  "kind": "x650_failed_video_local_verification_v1",
+  "passed": true,
+  "server_transfer_zip": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_wrench_video_20261026/presentation_delivery_v1.zip",
+    "bytes": 3568367,
+    "sha256": "64b48cbf7770bd690ad2548f2cc76065819136b1fda9543ed293c251c223757b"
+  },
+  "files_verified": [
+    {
+      "entry": "render_status.json",
+      "bytes": 287945,
+      "sha256": "85c3a1e0d87a8d39dc5cd15d97f54a3cca0c17d6b83d9d3b49a90d7242542d9f"
+    },
+    {
+      "entry": "display_frame_clock.csv",
+      "bytes": 13980,
+      "sha256": "b656e287277cfc7ab5122440e97275376fad4d5d9a8c9c5d34a5e90c30f9112f"
+    },
+    {
+      "entry": "ffmpeg.log",
+      "bytes": 21234,
+      "sha256": "8ed4dadc2b5d8bd221ff612700153766f25ac1cb66ffdb4672a4153a800e0108"
+    },
+    {
+      "entry": "frame_00000.png",
+      "bytes": 197526,
+      "sha256": "2d1ea8b06ac5175aa8bf87aaa0bcf550d03e4467f2ff3c9dbfda3be3ebd08021"
+    },
+    {
+      "entry": "X650_wrench_failed_original.mp4",
+      "bytes": 2085952,
+      "sha256": "b3da624bf23ede7b21ba5c920461a68ce9d23ceb5208d523ee9d6f3875da3255"
+    },
+    {
+      "entry": "frame_00167.png",
+      "bytes": 208128,
+      "sha256": "3de07edb8a931899707ece7285ec9f0b4e675ba06320e67db6a1673804bfa81e"
+    },
+    {
+      "entry": "frame_00168.png",
+      "bytes": 209547,
+      "sha256": "65c8473e3acaaee8c37081d8fe10dedb6ba1c645bf435828adf855a024f985db"
+    },
+    {
+      "entry": "frame_00220.png",
+      "bytes": 210501,
+      "sha256": "9bad36b9dc5500ce0cb55715e638ae446e22c24cefd7f9c27dee0510dac63df8"
+    },
+    {
+      "entry": "frame_00221.png",
+      "bytes": 209839,
+      "sha256": "c56c430c1be06364893ea0666feed1c2dffd18e6036e0fde86dcf259cc4483df"
+    },
+    {
+      "entry": "frame_00292.png",
+      "bytes": 209839,
+      "sha256": "c56c430c1be06364893ea0666feed1c2dffd18e6036e0fde86dcf259cc4483df"
+    },
+    {
+      "entry": "final_state.png",
+      "bytes": 209839,
+      "sha256": "c56c430c1be06364893ea0666feed1c2dffd18e6036e0fde86dcf259cc4483df"
+    },
+    {
+      "entry": "replay_manifest.json",
+      "bytes": 287945,
+      "sha256": "85c3a1e0d87a8d39dc5cd15d97f54a3cca0c17d6b83d9d3b49a90d7242542d9f"
+    },
+    {
+      "entry": "delivery_manifest.json",
+      "bytes": 3336,
+      "sha256": "3ad3f2d135db72bbbdaf508478a092dec6a02cf466145d286c8571d2e945a9e9"
+    },
+    {
+      "entry": "render_video_v1.sh",
+      "bytes": 996,
+      "sha256": "9503eea96f8529b7d78fdb4c15b0091b8191740328fe47a9040f9c6388fb98b2"
+    },
+    {
+      "entry": "render_job_v1.json",
+      "bytes": 340,
+      "sha256": "472670f6c13f36b9c78a1cd3a330e6fd2f532eeb014186831f9357cd2fd6b430"
+    },
+    {
+      "entry": "video_v1.log",
+      "bytes": 1535,
+      "sha256": "781a45e13b774607d348c30f8bd240bf98bd3f114782919fcbf5841598d54a6d"
+    },
+    {
+      "entry": "video_v1.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "renderer_matches_server_source": true,
+  "video_matches_fully_decoded_server_bytes": true,
+  "full_decode": {
+    "full_decode_passed": true,
+    "width": 1600,
+    "height": 1140,
+    "fps": 24,
+    "frames": 293,
+    "duration_s": 12.208333333333334,
+    "verification": "complete FFmpeg framemd5 decode"
+  },
+  "frame_clock_verified": true,
+  "display_phase_frame_counts": {
+    "REPLAY 1x": 168,
+    "FINAL STATE PAUSED": 72,
+    "SLOW MOTION 0.25x": 53
+  },
+  "no_source_time_after_rejected_snapshot": true,
+  "terminal_hold_source_clock_stopped": true,
+  "controlled_prefix_task_s": [
+    0.0,
+    7.544000000000004
+  ],
+  "original_native_samples": 1887,
+  "physical_acceptance": false,
+  "new_physics_run": false,
+  "verified_unix": 1792991718.230215
+}
