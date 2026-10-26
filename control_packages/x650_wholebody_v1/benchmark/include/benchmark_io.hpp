@@ -83,7 +83,8 @@ inline Json::Value parse_json(const std::string& bytes) {
   require(reader->parse(bytes.data(),bytes.data()+bytes.size(),&v,&errors),"Invalid benchmark JSON: "+errors);return v;
 }
 inline x650::Config config_of(const Json::Value& c) {
-  exact_keys(c,{"nodes","max_iterations","node_dt","max_dt","feasibility_tolerance","kkt_tolerance","arm_share","joint_position_gain","weights","velocity_limit","acceleration_limit","q_lower","q_upper","physical_lower","physical_upper","geometry","response","base_position_gain","motion","kp","kd","bus_period","integration_step","trust_radius"});
+  auto legacy=c;legacy.removeMember("command_hold_s");
+  exact_keys(legacy,{"nodes","max_iterations","node_dt","max_dt","feasibility_tolerance","kkt_tolerance","arm_share","joint_position_gain","weights","velocity_limit","acceleration_limit","q_lower","q_upper","physical_lower","physical_upper","geometry","response","base_position_gain","motion","kp","kd","bus_period","integration_step","trust_radius"});
   x650::Config v;v.nodes=integer(c["nodes"]);v.max_iterations=integer(c["max_iterations"]);
 #define SCALAR(name) v.name=number(c[#name])
   SCALAR(node_dt);SCALAR(max_dt);SCALAR(feasibility_tolerance);SCALAR(kkt_tolerance);SCALAR(arm_share);SCALAR(joint_position_gain);SCALAR(bus_period);SCALAR(integration_step);SCALAR(trust_radius);
@@ -91,7 +92,8 @@ inline x650::Config config_of(const Json::Value& c) {
 #define ARRAY(name,n) v.name=numbers<n>(c[#name])
   ARRAY(weights,6);ARRAY(velocity_limit,5);ARRAY(acceleration_limit,5);ARRAY(q_lower,2);ARRAY(q_upper,2);ARRAY(physical_lower,2);ARRAY(physical_upper,2);ARRAY(geometry,10);ARRAY(response,5);ARRAY(base_position_gain,3);ARRAY(motion,8);ARRAY(kp,2);ARRAY(kd,2);
 #undef ARRAY
-  require(v.max_dt==.05&&v.feasibility_tolerance==2e-7&&v.kkt_tolerance==.002,"Production quality/time gates may not change");return v;
+  if(c.isMember("command_hold_s"))v.command_hold_s=number(c["command_hold_s"]);
+  require(((v.max_dt==.05&&v.command_hold_s==.05)||(v.max_dt==.1&&v.command_hold_s==.16&&v.nodes==15&&v.node_dt==.04&&v.bus_period==.005))&&v.feasibility_tolerance==2e-7&&v.kkt_tolerance==.002,"Production quality or explicit timing profile differs");return v;
 }
 inline x650::Anchor anchor_of(const Json::Value& v) {
   exact_keys(v,{"position","rotation","q"});return {numbers<3>(v["position"]),numbers<9>(v["rotation"]),numbers<2>(v["q"])};

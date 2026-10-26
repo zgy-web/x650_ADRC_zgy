@@ -1,4 +1,5 @@
 #pragma once
+#include "timing_profile.hpp"
 
 #include <algorithm>
 #include <array>
@@ -60,6 +61,7 @@ struct Event {
 };
 
 struct Config {
+  TimingProfile timing_profile{};
   std::uint64_t session_id{}, epoch{};
   Hash configuration_sha256{};
   // Must be supplied from the frozen PID readback, not inferred from a request.
@@ -106,12 +108,12 @@ class ShadowGate {
     if (!finite_snapshot(snapshot)) return reject(Reason::INPUT);
     if (snapshot.issued_monotonic_ns == 0 || snapshot.issued_monotonic_ns > now)
       return reject(Reason::CLOCK_REGRESSION);
-    if (now-snapshot.issued_monotonic_ns > DEADLINE_NS) return reject(Reason::DEADLINE);
+    if (now-snapshot.issued_monotonic_ns > config_.timing_profile.solve_roundtrip_max_ns()) return reject(Reason::DEADLINE);
     if (last_control_time_ && snapshot.control_time_s <= *last_control_time_)
       return reject(Reason::CLOCK_REGRESSION);
-    if (snapshot.dt_s <= 0. || snapshot.dt_s > MAX_DT_S ||
+    if (snapshot.dt_s <= 0. || snapshot.dt_s > config_.timing_profile.control_dt_max_s()+config_.timing_profile.control_dt_roundoff_s() ||
         (last_control_time_ &&
-         (snapshot.control_time_s > *last_control_time_+MAX_DT_S ||
+         (snapshot.control_time_s > *last_control_time_+config_.timing_profile.control_dt_max_s()+config_.timing_profile.control_dt_roundoff_s() ||
           !near(snapshot.dt_s, snapshot.control_time_s-*last_control_time_))))
       return reject(Reason::DEADLINE);
     if (!source_time(snapshot.state_time_s, snapshot.control_time_s, BASE_SOURCE_AGE_S) ||
@@ -146,14 +148,14 @@ class ShadowGate {
     // Measured locally: a fabricated worker compute time cannot extend a round.
     if (now < receipt_ns_ || now < cached_.issued_monotonic_ns)
       return reject(Reason::CLOCK_REGRESSION);
-    if (now-cached_.issued_monotonic_ns > DEADLINE_NS || now-receipt_ns_ > DEADLINE_NS)
+    if (now-cached_.issued_monotonic_ns > config_.timing_profile.solve_roundtrip_max_ns() || now-receipt_ns_ > config_.timing_profile.solve_roundtrip_max_ns())
       return reject(Reason::DEADLINE);
     if (!finite_proposal(proposal) || !near(proposal.control_time_s, cached_.control_time_s) ||
         !near(proposal.task_time_s, cached_.task_time_s)) return reject(Reason::PROPOSAL);
     if (proposal.compute_start_monotonic_ns < receipt_ns_ ||
         proposal.compute_end_monotonic_ns < proposal.compute_start_monotonic_ns ||
         proposal.compute_end_monotonic_ns > now ||
-        proposal.compute_end_monotonic_ns-proposal.compute_start_monotonic_ns > DEADLINE_NS)
+        proposal.compute_end_monotonic_ns-proposal.compute_start_monotonic_ns > config_.timing_profile.solve_roundtrip_max_ns())
       return reject(Reason::DEADLINE);
     if (proposal.status != 0 || !proposal.accepted_optimum || !proposal.nonlinear_check_passed ||
         proposal.primal_violation < 0. || proposal.primal_violation > 2e-7 ||
@@ -179,7 +181,7 @@ class ShadowGate {
   std::optional<Event> poll(std::uint64_t now) {
     if (latched_) return std::nullopt;
     if (!observe_now(now)) return fail(Reason::CLOCK_REGRESSION, pending_ ? cached_.sequence : 0, 0, now);
-    if (pending_ && (now-cached_.issued_monotonic_ns > DEADLINE_NS || now-receipt_ns_ > DEADLINE_NS))
+    if (pending_ && (now-cached_.issued_monotonic_ns > config_.timing_profile.solve_roundtrip_max_ns() || now-receipt_ns_ > config_.timing_profile.solve_roundtrip_max_ns()))
       return fail(Reason::TIMEOUT, cached_.sequence, 0, now);
     return std::nullopt;
   }

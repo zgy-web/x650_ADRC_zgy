@@ -1,0 +1,167 @@
+{
+  "kind": "x650_cpp_multirate_software_acceptance_v1",
+  "core_abi": 4,
+  "complete": true,
+  "passed": true,
+  "physical_acceptance": false,
+  "timing_profile": "mpc25_dispatch50_v1",
+  "effective_profile": {
+    "name": "mpc25_dispatch50_v1",
+    "nominal_solve_period_ns": 40000000,
+    "output_period_ns": 20000000,
+    "command_lease_ns": 160000000,
+    "command_hold_s": 0.16,
+    "control_dt_max_s": 0.1,
+    "solve_roundtrip_max_ns": 50000000,
+    "source_wall_age_max_ns": 25000000,
+    "consumption_progress_max_ns": 40000000,
+    "hard_realtime_qualified": false
+  },
+  "code": {
+    "libraries": {
+      "core": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so",
+        "bytes": 246176,
+        "sha256": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19"
+      },
+      "optimization": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so",
+        "bytes": 331816,
+        "sha256": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa"
+      },
+      "predictor": {
+        "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+        "bytes": 25112,
+        "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+      }
+    },
+    "worker": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_mpc_cpp/lib/flyarm_mpc_cpp/isolated_worker",
+      "bytes": 1183264,
+      "sha256": "e20e013d77cfce8a388dd4e012fbdfa49ee8a29acd465f367dc6af42de813794"
+    },
+    "runtime_binaries": {
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress": "dd6bd5cc518c970200d1d02ac0297d6701bca98364d0e865f70cd457cc0fc1b0",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/live_dispatcher": "0b278e39b8583c6238b961530452407ff136a823ccc19c74e52c6878e831ff0f",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_mpc_cpp/lib/flyarm_mpc_cpp/isolated_worker": "e20e013d77cfce8a388dd4e012fbdfa49ee8a29acd465f367dc6af42de813794",
+      "/root/autodl-tmp/flyarm_state_cpp_release_20261024/install/flyarm_state_cpp/lib/flyarm_state_cpp/state_source": "881dd9fd855878767aa49a56fff58a7bcc726f67b8aae6f2329654bdaf79238e",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+      "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+      "/root/autodl-tmp/libts20_prediction_v3.so": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+    },
+    "sources": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/canonical_interval.hpp",
+        "bytes": 10310,
+        "sha256": "9585bd5b79aced521bd697dc6eea1b3efae4d1c0cdfc5f17df2d0909996de946",
+        "relative_path": "control_packages/x650_wholebody_v1/native/canonical_interval.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/joint_safety.hpp",
+        "bytes": 636,
+        "sha256": "248f4bfd2d217858acf62ea0ddfac30ca187db40867c80f928acccf9192d6dde",
+        "relative_path": "control_packages/x650_wholebody_v1/native/joint_safety.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+        "bytes": 48998,
+        "sha256": "7826911a28df82152f5a0b6dab078b2415747f45bdbfc23170edda6a0a7799d0",
+        "relative_path": "control_packages/x650_wholebody_v1/native/mpc_core.cpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+        "bytes": 8984,
+        "sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093",
+        "relative_path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_wholebody_v1/native/optimization.cpp",
+        "bytes": 22256,
+        "sha256": "b78bdb1612ebe211eb6a063aacf3db56cd4ca7a1b07115efc7f7f86575e41fc6",
+        "relative_path": "control_packages/x650_wholebody_v1/native/optimization.cpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp",
+        "bytes": 1714,
+        "sha256": "9044e3ce0c07b6c73324d13cca2d81fad400a6462c8b7a4e8d589bbeed06264c",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/admission_cadence.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp",
+        "bytes": 5638,
+        "sha256": "36ab2f4ed8378773844f348e41209d1aa89c46303df0c1a3844586fb79cb05c1",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/periodic_gate.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp",
+        "bytes": 15711,
+        "sha256": "693e597a5fa4db659e54be0b0971cf6a07305c1955a775d2cc21b6a1603d239c",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/shadow_gate.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/timing_profile.hpp",
+        "bytes": 2364,
+        "sha256": "42fd012947b0d4edeb788b1abed1b850478d12b590c040ce29d967b534995d60",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/timing_profile.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/src/periodic_dispatcher.cpp",
+        "bytes": 12572,
+        "sha256": "a88ee356a1cd41dfbe75cd680d75b7537e34525bb864806193a9a48b813f60b6",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/src/periodic_dispatcher.cpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp",
+        "bytes": 19182,
+        "sha256": "519bb4b834343daf2ea4cba8e031fb43685c532ca452ea9adb0c2ad04cf6c4f3",
+        "relative_path": "ros2_ws/src/flyarm_control_gateway/src/state_ingress.cpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/config_io.hpp",
+        "bytes": 8972,
+        "sha256": "748385bf8868c9c39fe9330212964b2eb84edb721c79fe1a0db47c6811e08b59",
+        "relative_path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/config_io.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/diagnostics_json.hpp",
+        "bytes": 17183,
+        "sha256": "d41da848cbff9c2f9d599a34baa40fc4fcd524bf11fe3466fa1c9b6f81708eba",
+        "relative_path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/diagnostics_json.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/trajectory_plan.hpp",
+        "bytes": 2122,
+        "sha256": "43682fe29570862dccd12a35c79476f5a6c1e0e38cfe99ac166a5b37db566008",
+        "relative_path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/trajectory_plan.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/worker_contract.hpp",
+        "bytes": 7131,
+        "sha256": "7298ff099e02ed70748161e5b392d5d8f08c331d56cef655cdb1f3e9947daf2e",
+        "relative_path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/worker_contract.hpp"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/ros2_ws/src/flyarm_mpc_cpp/src/isolated_worker.cpp",
+        "bytes": 18322,
+        "sha256": "14266b2a20949f50d4e836ab8e5a46d77a607e8f15a9a51dcec0bd753e8ba97a",
+        "relative_path": "ros2_ws/src/flyarm_mpc_cpp/src/isolated_worker.cpp"
+      }
+    ]
+  },
+  "native_tests": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_fast_inputs_v2/native_tests.json",
+    "bytes": 2699,
+    "sha256": "c32bbfbf96efab9308227c1906907e6c73631f87945779681f1532e7fd29f9dd"
+  },
+  "gateway_tests": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_fast_inputs_v2/gateway_tests.json",
+    "bytes": 4393,
+    "sha256": "7b08dd71ba0a81907c7fbb284c36d8a2043adea46c9f9e6d812bd8a4297e476a"
+  },
+  "ros_worker_probe": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_fast_inputs_v2/worker_probe/report.json",
+    "bytes": 76299,
+    "sha256": "8e3e85cd0f448fab052bd2e56e103549df7d4cfe7108332f6eae833e0fc8b122"
+  }
+}

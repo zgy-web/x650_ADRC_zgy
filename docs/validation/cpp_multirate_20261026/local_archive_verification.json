@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "verified_archive_members": 5427,
+  "archives": [
+    {
+      "name": "multirate_evidence_part01.zip",
+      "bytes": 45189319,
+      "sha256": "64ad5d51ac50279ebaa3a1d19b9eb6792a00148724882a979b5a4634003d38f5"
+    },
+    {
+      "name": "multirate_evidence_part02.zip",
+      "bytes": 45263049,
+      "sha256": "0d3dc6ceab8e5a416ec8789cb0cf7e29e512e929ed1303090ec3bbdfba21c06b"
+    }
+  ],
+  "embedded_manifest_bytes_match": true,
+  "local_audit_copies_match": true,
+  "plot_output_hashes_match": true,
+  "zip_stream_crc_and_sha256_verified": true,
+  "verified_unix": 1793024993.4653678
+}

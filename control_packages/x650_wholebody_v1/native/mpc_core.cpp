@@ -12,7 +12,8 @@ int x650_assemble(int,const double*,int,double*,int,int*,char*,int);
 int x650_solve(int,int,const double*,const double*,const double*,const double*,const double*,int,double*,double*,int*,char*,int);
 int x650_endpoint(int,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
 int x650_candidate(int,int,const double*,const double*,const double*,const double*,const double*,const double*,const double*,const double*,double*,char*,int);
-unsigned x650_mpc_core_abi_version(){return 3;}
+unsigned x650_optimization_abi_version();
+unsigned x650_mpc_core_abi_version(){return 4;}
 }
 namespace x650 {
 namespace {
@@ -147,6 +148,30 @@ Prediction predict(const Config& c,Ts20BatchFn fn,const StepInput& in,const std:
  return p;
 }
 std::vector<double> matrix_data(const Matrix& x){return {x.data(),x.data()+x.size()};}
+HoldGuard first_command_hold(const Config& c,Ts20BatchFn fn,const StepInput& in,
+ const std::vector<double>& h,const std::vector<double>& nodes,const Matrix& plan,E2 reference){
+ HoldGuard guard;if(c.command_hold_s==.05)return guard;
+ guard.required=true;guard.start_task_s=in.t;guard.end_task_s=in.t+c.command_hold_s;guard.duration_s=c.command_hold_s;
+ guard.source_control_time_s=in.state.control_time;guard.source_joint_time_s=in.state.joint_stamp;
+ guard.command=arr<2>(plan.row(0).tail<2>().transpose());guard.reference_initial=arr<2>(reference);
+ Matrix held=plan;for(int i=0;i<held.rows();++i)held.row(i)=plan.row(0);
+ require(nodes.back()+1e-12>=c.command_hold_s,"first-command hold exceeds modeled horizon");
+ auto pp=packets(c,in,h,nodes,held,reference,false);
+ std::vector<double> queries{in.t,guard.end_task_s};
+ for(double node:nodes)if(node<c.command_hold_s)queries.push_back(in.t+node);
+ for(const auto& p:pp.packets){const double applied=p.send_time+c.motion[4];if(applied>=in.t&&applied<=guard.end_task_s)queries.push_back(applied);}
+ unique_sort(queries);auto native=rollout(c,fn,in,pp.packets,queries,true);
+ Matrix final=Matrix::Zero(1,12),q=native.query_states.bottomRows(1).leftCols(2),dq=native.query_states.bottomRows(1).rightCols(2);
+ final.middleCols(6,2)=q;final.middleCols(8,2)=dq;
+ E2 last=reference+c.command_hold_s*plan.row(0).tail<2>().transpose();guard.reference_final=arr<2>(last);
+ double checks[4]{};char error[512]{};
+ require(!x650_candidate(1,1,final.data(),q.data(),dq.data(),last.data(),native.envelope.data(),c.q_lower.data(),c.q_upper.data(),c.velocity_limit.data()+3,checks,error,512),error);
+ guard.checked=true;guard.passed=checks[2]!=0;guard.envelope=native.envelope;guard.substeps=native.substeps;
+ guard.actual_history_packet_count=int(in.context.packets.size());
+ for(std::size_t i=0;i<pp.packets.size();++i)if(i<in.context.packets.size()||pp.packets[i].send_time+c.motion[4]<=guard.end_task_s)guard.packets.push_back(pp.packets[i]);
+ guard.query_times=std::move(queries);guard.boundary_times=std::move(native.boundaries);guard.boundary_states=matrix_data(native.states);
+ return guard;
+}
 Eigen::VectorXd normalized(const Matrix& plan,const Config& c){
  Eigen::VectorXd z(plan.size());for(int i=0;i<plan.rows();++i)for(int j=0;j<5;++j)z[5*i+j]=plan(i,j)/c.velocity_limit[j];return z;
 }
@@ -196,7 +221,7 @@ double original_violation(const Diagnostics& d,const Eigen::VectorXd& z){
    (value-Eigen::Map<const Eigen::VectorXd>(d.upper.data(),rows)).maxCoeff(),(z.cwiseAbs().array()-1.).maxCoeff()});
 }
 double stopping_violation(const Config& c,double age,const Matrix& q,const Matrix& dq){
- E2 reserve=vec(c.velocity_limit).tail<2>().cwiseQuotient(2*vec(c.acceleration_limit).tail<2>())+E2::Constant(c.max_dt+.05+age);
+ E2 reserve=vec(c.velocity_limit).tail<2>().cwiseQuotient(2*vec(c.acceleration_limit).tail<2>())+E2::Constant(c.max_dt+c.command_hold_s+age);
  double violation=0.;for(int i=0;i<q.rows();++i)for(int j=0;j<2;++j){double value=q(i,j)+reserve[j]*dq(i,j);violation=std::max({violation,c.q_lower[j]-value,value-c.q_upper[j]});}return violation;
 }
 Matrix braking_centre(const Config& c,const Memory& m,const Matrix& warm,const std::vector<double>& h){
@@ -208,11 +233,18 @@ Matrix braking_centre(const Config& c,const Memory& m,const Matrix& warm,const s
 }
 bool recoverable_infeasibility(const std::string& message){return message=="QP infeasible"||message=="constant QP infeasible";}
 }
+HoldGuard evaluate_first_command_hold(const Config& c,Ts20BatchFn fn,const StepInput& in,
+ const std::vector<double>& physical_plan,const V2& reference_at_task_time){
+ require(fn&&physical_plan.size()==std::size_t(5*c.nodes)&&finite(physical_plan),"read-only first-command hold input shape");
+ std::vector<double> h(c.nodes,c.node_dt);h[0]=in.dt;auto nodes=cumulative(h);
+ Matrix plan=Eigen::Map<const Matrix>(physical_plan.data(),c.nodes,5);
+ return first_command_hold(c,fn,in,h,nodes,plan,vec(reference_at_task_time));
+}
 
 Core::Core(Config config,Ts20BatchFn predictor,DiagnosticMode diagnostics):config_(std::move(config)),predictor_(predictor),diagnostic_mode_(diagnostics){
- const auto& c=config_;require(predictor_&&c.nodes>=2&&c.nodes<=60&&c.max_iterations>=1&&c.max_iterations<=10000,"core configuration dimensions");
+ const auto& c=config_;require(x650_optimization_abi_version()==2,"optimization ABI differs from Core assembly protocol");require(predictor_&&c.nodes>=2&&c.nodes<=60&&c.max_iterations>=1&&c.max_iterations<=10000,"core configuration dimensions");
  require(finite(c.geometry)&&finite(c.response)&&finite(c.motion)&&finite(c.weights)&&finite(c.velocity_limit)&&finite(c.acceleration_limit)&&finite(c.q_lower)&&finite(c.q_upper)&&finite(c.physical_lower)&&finite(c.physical_upper)&&finite(c.base_position_gain)&&finite(c.kp)&&finite(c.kd),"core configuration finite");
- require(c.geometry[0]>0&&c.geometry[1]>0&&c.node_dt>0&&c.max_dt>0&&c.node_dt*(c.nodes-1)+c.max_dt<=2&&std::isfinite(c.node_dt)&&std::isfinite(c.max_dt)&&c.arm_share>=0&&c.arm_share<=1&&std::isfinite(c.joint_position_gain)&&c.joint_position_gain>0,"core horizon/geometry/gains");
+ require(c.geometry[0]>0&&c.geometry[1]>0&&c.node_dt>0&&c.max_dt>0&&c.max_dt<=.1&&c.node_dt*(c.nodes-1)+c.max_dt<=2&&std::isfinite(c.node_dt)&&std::isfinite(c.max_dt)&&std::isfinite(c.command_hold_s)&&c.command_hold_s>=.05&&c.command_hold_s<=.2&&c.command_hold_s>=c.max_dt&&c.arm_share>=0&&c.arm_share<=1&&std::isfinite(c.joint_position_gain)&&c.joint_position_gain>0,"core horizon/geometry/gains/hold");
  require(c.feasibility_tolerance==2e-7&&c.kkt_tolerance==2e-3,"core frozen quality policy");
  for(int i=0;i<5;++i)require(c.velocity_limit[i]>0&&c.acceleration_limit[i]>0&&c.response[i]>0,"core positive dynamics/limits");
  for(int i=0;i<3;++i)require(c.base_position_gain[i]>0,"core PX4 gain");
@@ -251,12 +283,12 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
   // separately recorded, and also consumes the same total 50 ms deadline.
   for(int attempt=0;attempt<3;++attempt){require(elapsed(begin)<50.,"TS20 total prepublication computation deadline exceeded");++dg.subproblems;Prediction pred=predict(c,predictor_,in,h,nodes,warm,nonlinear_retries>0&&!interval_relinearization);interval_relinearization=false;
    auto assemble=[&](const Prediction& pred,const Matrix& centre,Diagnostics& out){
-   std::vector<double> data;data.reserve(100000);append(data,std::array<double,5>{in.dt,c.node_dt,c.max_dt,age,std::min(c.trust_radius,.02)});
+   std::vector<double> data;data.reserve(100000);append(data,std::array<double,7>{4.,in.dt,c.node_dt,c.max_dt,age,std::min(c.trust_radius,.02),c.command_hold_s});
    append(data,c.weights);append(data,c.velocity_limit);append(data,c.acceleration_limit);append(data,m.previous_command);append(data,c.q_lower);append(data,c.q_upper);
    append(data,s.position);append(data,s.velocity);append(data,arr<2>(pred.q));append(data,arr<2>(pred.dq));append(data,V2{s.acceleration[0],s.acceleration[1]});
    append(data,s.rotation);append(data,s.omega_body);append(data,s.acceleration);append(data,c.response);append(data,c.geometry);append(data,m.anchor.position);append(data,m.anchor.rotation);append(data,m.anchor.q);append(data,c.arm_share);
    append(data,c.physical_lower);append(data,c.physical_upper);append(data,s.dq);append(data,arr<2>(pred.q));append(data,arr<2>(pred.dq));
-   std::vector<Command>recent;for(const auto& v:in.context.commands)if(v.time>=in.t-.05-age-c.max_dt)recent.push_back(v);append(data,double(recent.size()));for(const auto& v:recent)append(data,v.velocity);
+   std::vector<Command>recent;for(const auto& v:in.context.commands)if(v.time>=in.t-c.command_hold_s-age-c.max_dt)recent.push_back(v);append(data,double(recent.size()));for(const auto& v:recent)append(data,v.velocity);
    append(data,matrix_data(centre));for(const auto& t:targets){append(data,t.position);append(data,t.velocity);}append(data,matrix_data(pred.joints));append(data,matrix_data(pred.references));
    std::vector<double> output(21*N*(n+1)+n*n+n+(15*N+5)*(n+2)+N*(53+12*n)+17);int shape[3]{};char error[512]{};
    if(x650_assemble(N,data.data(),int(data.size()),output.data(),int(output.size()),shape,error,512))throw CoreError(error,dg);
@@ -339,7 +371,8 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
       Matrix node_states(N,4);node_states.leftCols(2)=q;node_states.rightCols(2)=dq;
       record.node_states=matrix_data(node_states);record.node_references=matrix_data(refs);
       double check[4]{};char check_error[512]{};require(!x650_candidate(N,N,prediction.data(),q.data(),dq.data(),refs.data(),native.envelope.data(),c.q_lower.data(),c.q_upper.data(),c.velocity_limit.data()+3,check,check_error,512),check_error);
-      record.envelope=native.envelope;record.substeps=native.substeps;record.nonlinear_passed=check[3]!=0;
+      record.hold_guard=first_command_hold(c,predictor_,in,h,nodes,centre,seed.r);
+      record.envelope=native.envelope;record.substeps=native.substeps;record.nonlinear_passed=check[3]!=0&&(!record.hold_guard.required||record.hold_guard.passed);
       record.stopping_violation=stopping_violation(c,age,q,dq);
       Diagnostics seed_diagnostics;assemble(seed,centre,seed_diagnostics);
       record.original_primal_violation=original_violation(seed_diagnostics,normalized(centre,c));
@@ -364,6 +397,8 @@ StepResult Core::step(const StepInput& in){const auto begin=Clock::now();Diagnos
    dg.q_linearization_error=candidate[0];dg.dq_linearization_error=candidate[1];dg.actual_bounds=candidate[2]!=0;dg.nonlinear_passed=candidate[3]!=0;
    if(diagnostic_mode_==DiagnosticMode::Full){dg.nominal_packets=pred.nominal.packets;dg.candidate_packets=actual_packets.packets;dg.query_times=pred.queries;dg.nominal_states=matrix_data(pred.run.query_states);dg.candidate_states=matrix_data(actual.query_states);dg.candidate_extrema=matrix_data(actual.extrema);dg.candidate_boundary_times=actual.boundaries;dg.candidate_modes=actual.modes;dg.candidate_zero_events=actual.zeros;}
    dg.candidate_envelope=actual.envelope;dg.candidate_substeps=actual.substeps;dg.horizon=h;dg.plan=matrix_data(plan);
+   if(dg.nonlinear_passed){dg.hold_guard=first_command_hold(c,predictor_,in,h,nodes,plan,pred.r);
+    if(dg.hold_guard.required&&!dg.hold_guard.passed)throw CoreError("TS20 first-command held envelope rejected before publication",dg);}
    if(dg.recovery_triggered){dg.recovery_stopping_violation=stopping_violation(c,age,q,dq);if(dg.recovery_stopping_violation>c.feasibility_tolerance)dg.nonlinear_passed=false;}
    dg.attempts.push_back({dg.nonlinear_passed,dg.actual_bounds,candidate[0],candidate[1],elapsed(begin)});
    if(!dg.nonlinear_passed){

@@ -93,7 +93,7 @@ static std::pair<Vec,Vec> bounds(double dt,const V2& q,const Vec& vl,const Vec& 
  for(int j=0;j<5;j++)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);return {lo,hi};
 }
 
-extern "C" int x650_optimization_abi(){return 1;}
+extern "C" int x650_optimization_abi(){return 2;}
 // Frozen sliding-branch sensitivity recurrence. The reference predictor supplies
 // its exact cached A/B transitions and already validated packet sensitivities.
 // Layout: transition[boundary][joint][state][A0,A1,B], S[joint][state][column].
@@ -121,10 +121,12 @@ extern "C" int x650_joint_sensitivity(int n,int nb,int nq,const double* transiti
   require(query==nq,"joint query coverage/order");return 0;
  }catch(const std::exception& e){std::snprintf(error,es,"%s",e.what());return 1;}
 }
+extern "C" unsigned x650_optimization_abi_version(){return 2;}
 extern "C" int x650_assemble(int N,const double* data,int length,double* output,int capacity,int* shape,char* error,int es){
  try {require(N>=2&&N<=60&&data&&output&&shape,"assembly contract");int n=5*N;Reader r{data,length};
-  double dt=r.scalar(),node_dt=r.scalar(),maxdt=r.scalar(),age=r.scalar(),trust=r.scalar();
-  require(dt>0&&dt<=maxdt+1e-10&&node_dt>0&&age>=0&&age<=.25&&trust>0&&trust<=.02,"time/trust contract");
+  require(r.scalar()==4.,"assembly protocol version differs");
+  double dt=r.scalar(),node_dt=r.scalar(),maxdt=r.scalar(),age=r.scalar(),trust=r.scalar(),hold=r.scalar();
+  require(dt>0&&dt<=maxdt+1e-10&&node_dt>0&&age>=0&&age<=.25&&trust>0&&trust<=.02&&hold>=.05&&hold<=.2&&hold>=maxdt,"time/trust/hold contract");
   Vec w=r.vec(6),vl=r.vec(5),al=r.vec(5),previous=r.vec(5);V2 qlo=r.vec(2),qhi=r.vec(2);
   Vec x0=r.vec(12);M3 R0=r.matrix(3,3);V3 omega=r.vec(3),acceleration=r.vec(3);Vec response=r.vec(5),geo=r.vec(10);
   V3 p_anchor=r.vec(3);M3 R_anchor=r.matrix(3,3);V2 q_anchor=r.vec(2);double share=r.scalar();
@@ -176,9 +178,9 @@ extern "C" int x650_assemble(int N,const double* data,int length,double* output,
   }
   V2 slew=al.tail(2)*dt,vmin=measured_dq.cwiseMin(current_dq).cwiseMin(previous.tail(2)-slew),vmax=measured_dq.cwiseMax(current_dq).cwiseMax(previous.tail(2)+slew);
   for(int j=0;j<nh;j++){vmin=vmin.cwiseMin(recent.row(j).transpose());vmax=vmax.cwiseMax(recent.row(j).transpose());}
-  V2 qgl=current_q+(.05+age)*vmin.cwiseMin(V2::Zero()),qgh=current_q+(.05+age)*vmax.cwiseMax(V2::Zero());
+  V2 qgl=current_q+(hold+age)*vmin.cwiseMin(V2::Zero()),qgh=current_q+(hold+age)*vmax.cwiseMax(V2::Zero());
   Vec firstlo=bounds(dt,qgl,vl,al,previous,qlo,qhi,maxdt).first,firsthi=bounds(dt,qgh,vl,al,previous,qlo,qhi,maxdt).second;
-  require((firstlo.array()<=firsthi.array()+1e-10).all(),"pending guard infeasible");V2 reserve=vl.tail(2).cwiseQuotient(2*al.tail(2))+V2::Constant(maxdt+.05+age);
+  require((firstlo.array()<=firsthi.array()+1e-10).all(),"pending guard infeasible");V2 reserve=vl.tail(2).cwiseQuotient(2*al.tail(2))+V2::Constant(maxdt+hold+age);
   for(int i=0;i<N;i++){V2 q=joints.row(i).head(2).transpose(),dq=joints.row(i).segment(2,2).transpose();Mat Q=Eigen::Map<const Mat>(joints.row(i).data()+4,2,n),D=Eigen::Map<const Mat>(joints.row(i).data()+4+2*n,2,n);
    // Plan state nodes inside the same padded envelope required at publication.
    // Command normalization, integrated references and stopping guards keep

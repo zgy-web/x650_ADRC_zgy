@@ -50,7 +50,7 @@ class Contract {
     origin_=last_control_=start.origin;target_=start.target;started_=true;
     return history;
   }
-  x650::StepInput decode(const wire::Snapshot& s,std::uint64_t begin,int nodes,double node_dt) {
+  x650::StepInput decode(const wire::Snapshot& s,std::uint64_t begin,int nodes,double node_dt,double max_dt=.05) {
     ++requests_;
     if (!started_ || faulted_) fail("Live worker is unstarted or latched faulted");
     const auto admission=gate_.admit(s,begin);
@@ -64,7 +64,8 @@ class Contract {
         || !proper_rotation(s.rotation_row_major) || s.position_gains!=config_.position_gains
         || s.target_position_enu!=expected_target.position || s.target_velocity_enu!=expected_target.velocity
         || s.target_acceleration_enu!=expected_target.acceleration
-        || nodes<1 || nodes>60 || !std::isfinite(node_dt) || node_dt<=0.)
+        || nodes<1 || nodes>60 || !std::isfinite(node_dt) || node_dt<=0.
+        || max_dt!=config_.timing_profile.control_dt_max_s() || s.dt_s>max_dt+config_.timing_profile.control_dt_roundoff_s())
       fail("Frozen reference, actual dt or reference anchor differs");
     x650::StepInput value;value.t=s.task_time_s;value.dt=s.dt_s;
     value.state.position=s.position_enu;value.state.velocity=s.velocity_enu;
@@ -73,7 +74,7 @@ class Contract {
     value.state.stamp=s.state_time_s;value.state.control_time=s.control_time_s;value.state.joint_stamp=s.joint_time_s;
     value.target={s.target_position_enu,s.target_velocity_enu,s.target_acceleration_enu};
     // Explicit frozen reference at every actual horizon node; no fallback.
-    value.preview=trajectory_.preview(s.task_time_s,s.dt_s,nodes,node_dt,target_);
+    value.preview=trajectory_.preview(s.task_time_s,s.dt_s,nodes,node_dt,target_,max_dt);
     value.context.reference_time=s.reference_time_s;value.context.reference=s.reference_r;value.context.bus_origin=s.bus_origin_s;
     value.context.commands.reserve(s.command_count);value.context.packets.reserve(s.packet_count);
     for (std::size_t i=0;i<s.command_count;++i)

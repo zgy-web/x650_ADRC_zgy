@@ -23,6 +23,8 @@ template<class D>struct has_linearized_states<D,std::void_t<decltype(std::declva
 template<class D,class=void>struct has_intervals:std::false_type{};
 template<class D>struct has_intervals<D,std::void_t<decltype(std::declval<D>().interval_repairs),
     decltype(std::declval<D>().interval_constraints)>>:std::true_type{};
+template<class D,class=void>struct has_hold_guard:std::false_type{};
+template<class D>struct has_hold_guard<D,std::void_t<decltype(std::declval<D>().hold_guard)>>:std::true_type{};
 Json::Value memory_json(const x650::Memory& m) {
   Json::Value out;
 #define F(name) out[#name]=m.name
@@ -47,7 +49,16 @@ Json::Value packets_json(const std::vector<x650::Packet>& packets) {
 #undef F
     out.append(row);}return out;
 }
+template<class H>Json::Value hold_json(const H& h){Json::Value out;
+#define F(name) out[#name]=h.name
+ F(required);F(checked);F(passed);F(start_task_s);F(end_task_s);F(duration_s);F(source_control_time_s);F(source_joint_time_s);F(substeps);F(actual_history_packet_count);
+#undef F
+#define V(name) out[#name]=b::array_json(h.name)
+ V(command);V(reference_initial);V(reference_final);V(envelope);V(query_times);V(boundary_times);V(boundary_states);
+#undef V
+ out["packets"]=packets_json(h.packets);out["scope"]="Conditional immediate future first-command ZOH with original immutable history and source times; not a proof over unknown future first-send phases";return out;}
 template<class D>void recovery_json(Json::Value& out,const D& d) {
+  if constexpr(has_hold_guard<D>::value)out["hold_guard"]=hold_json(d.hold_guard);
   if constexpr(has_linearized_states<D>::value)out["linearized_states"]=b::array_json(d.linearized_states);
   out["recovery_diagnostics_available"]=has_recovery<D>::value;
   if constexpr(has_recovery<D>::value){out["recovery_triggered"]=d.recovery_triggered;
@@ -59,6 +70,7 @@ template<class D>void recovery_json(Json::Value& out,const D& d) {
       row["trusted"]=a.trusted;row["original_primal_violation"]=a.original_primal_violation;
       row["projection_attempted"]=a.projection_attempted;row["projection_solved"]=a.projection_solved;row["stopping_violation"]=a.stopping_violation;
       row["elapsed_ms"]=a.elapsed_ms;row["centre_plan"]=b::array_json(a.centre_plan);
+      if constexpr(has_hold_guard<std::decay_t<decltype(a)>>::value)row["hold_guard"]=hold_json(a.hold_guard);
       row["envelope"]=b::array_json(a.envelope);row["substeps"]=a.substeps;
       if constexpr(has_recovery_states<std::decay_t<decltype(a)>>::value){
         row["query_times"]=b::array_json(a.query_times);row["candidate_states"]=b::array_json(a.candidate_states);}

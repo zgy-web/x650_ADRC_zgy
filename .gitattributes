@@ -86,3 +86,16 @@ simulations/x650_cpp_interval_v1/** -text whitespace=cr-at-eol
 scripts/x650_cpp_interval_sequence.cpp -text whitespace=cr-at-eol
 tests/unit/test_x650_cpp_interval_qualification.py -text whitespace=cr-at-eol
 docs/validation/cpp_interval_flight_20261026/** -text -whitespace
+
+# Explicit multirate timing implementation and evidence retain exact source bytes.
+scripts/*x650*multirate* -text whitespace=cr-at-eol
+simulations/x650_cpp_multirate*/** -text whitespace=cr-at-eol
+scenarios/x650_cpp_multirate*.yaml -text whitespace=cr-at-eol
+tests/unit/test_x650*multirate* -text whitespace=cr-at-eol
+ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/timing_profile.hpp -text whitespace=cr-at-eol
+ros2_ws/src/flyarm_control_gateway/test/test_timing_profile.cpp -text whitespace=cr-at-eol
+control_packages/x650_wholebody_v1/native/test_multirate*.cpp -text whitespace=cr-at-eol
+docs/validation/cpp_multirate_20261026/** -text -whitespace
+control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py -text whitespace=cr-at-eol
+# Preserve the exact existing TS20 oracle source, including its terminal blank line.
+control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp -text -whitespace

@@ -20,7 +20,7 @@ using Ts20BatchFn = int(*)(const double*,const double*,double,double,
 
 struct Config {
   int nodes=15, max_iterations=100;
-  double node_dt=.04, max_dt=.05, feasibility_tolerance=2e-7, kkt_tolerance=2e-3;
+  double node_dt=.04, max_dt=.05, command_hold_s=.05, feasibility_tolerance=2e-7, kkt_tolerance=2e-3;
   double arm_share=.2, joint_position_gain=3.;
   std::array<double,6> weights{400.,4.,.25,.02,.01,.01};
   V5 velocity_limit{.55,.35,.45,.45,.35}, acceleration_limit{.45,.30,.45,.60,.60};
@@ -66,6 +66,18 @@ struct Memory {
 struct Attempt {
   bool passed=false,actual_bounds=false; double q_error=0.,dq_error=0.,elapsed_ms=0.;
 };
+// ABI 4: a supplementary first-command zero-order-hold prediction. It starts
+// from the original joint state/time and immutable actual packet history.
+// It is not a fabricated measurement or a proof for unknown future send phase.
+struct HoldGuard {
+  bool required=false,checked=false,passed=false;
+  double start_task_s=0.,end_task_s=0.,duration_s=0.,source_control_time_s=0.,source_joint_time_s=0.;
+  V2 command{},reference_initial{},reference_final{};
+  std::array<double,8> envelope{};
+  int substeps=0,actual_history_packet_count=0;
+  std::vector<Packet> packets;
+  std::vector<double> query_times,boundary_times,boundary_states;
+};
 // ABI 2: a recovery centre is only a numerical seed. It is never published.
 // Original-row feasibility and native continuous-envelope validation must both
 // pass before it may replace an infeasible linearization centre.
@@ -79,6 +91,7 @@ struct RecoveryAttempt {
   std::vector<double> node_times,node_states,node_references;
   std::array<double,8> envelope{};
   int substeps=0;
+  HoldGuard hold_guard;
 };
 // ABI 3: finite hard constraints generated from the authoritative continuous
 // candidate envelope. component 0=q, 1=dq; joint is zero based. source_kind:
@@ -115,6 +128,7 @@ struct Diagnostics {
   bool accepted=false,nonlinear_passed=false,actual_bounds=false,previous_plan_fallback=false;
   std::array<double,8> candidate_envelope{};
   int candidate_substeps=0;
+  HoldGuard hold_guard;
   std::vector<Attempt> attempts;
   bool recovery_triggered=false;
   std::string recovery_reason;
@@ -151,6 +165,10 @@ class CoreError : public std::runtime_error {
  public: Diagnostics diagnostics;
   CoreError(const std::string& what,Diagnostics value={}) :std::runtime_error(what),diagnostics(std::move(value)) {}
 };
+// Read-only numerical check for testing/replay of the explicit extended lease.
+// No controller Memory, observations, actual history or actuator is modified.
+HoldGuard evaluate_first_command_hold(const Config&,Ts20BatchFn,const StepInput&,
+    const std::vector<double>& physical_plan,const V2& reference_at_task_time);
 class Core {
  public:
   Core(Config config,Ts20BatchFn predictor,DiagnosticMode diagnostics=DiagnosticMode::Full);

@@ -19,6 +19,14 @@ wire::Proposal proposal(const wire::Snapshot& s){wire::Proposal p;p.session_id=s
   p.position_reference_enu=s.position_enu;p.base_velocity_target=p.velocity_feedforward_enu={.1,0,0};p.accepted_optimum=p.nonlinear_check_passed=true;p.primal_violation=1e-10;p.kkt_residual=1e-9;p.subproblems=1;return p;}
 template<class F>void rejects(F action){bool rejected=false;try{action();}catch(const std::exception&){rejected=true;}require(rejected,"Invalid input was accepted");}
 int main(){try{
+  {auto profile=config();profile.timing_profile=wire::TimingProfile::from_name("mpc25_dispatch50_v1");
+   fm::Contract c(profile);c.begin(start(),200);auto s=snapshot(.1,.1);auto value=c.decode(s,s.issued_monotonic_ns+1000000,15,.04,.1);
+   require(value.dt==.1&&value.preview.size()==15,"Profile actual dt/maxdt preview changed");
+   auto fast=fm::TrajectoryPlan::fast();const x650::V3 centre{0,0,2};auto preview=fast.preview(1.,.1,15,.04,centre,.1);
+   require(preview.front().position==fast.sample(1.1,centre).position,"Preview first node ignored actual dt");
+   auto rounded=fast.preview(1.,.1+5e-11,15,.04,centre,.1);require(rounded.front().position==fast.sample(1.1+5e-11,centre).position,"Reference dt was rounded or clamped");
+   rejects([&]{fast.preview(1.,.1+1e-9,15,.04,centre,.1);});
+   rejects([&]{fast.preview(1.,.100001,15,.04,centre,.1);});rejects([&]{fast.preview(1.,.1,15,.04,centre);});}
   {fm::Contract c(config());auto history=c.begin(start(),200);require(history.size()==2&&history[1].time==10.,"Actual five-axis prestream lost");
     double t=0.;std::uint64_t seq=0;for(double dt:{.02,.016,.020,.024}){t+=dt;auto s=snapshot(t,dt,++seq);auto input=c.decode(s,s.issued_monotonic_ns+1000000,15,.04);
       require(input.dt==dt&&input.state.position==s.position_enu&&input.context.reference==s.reference_r,"Actual source/dt changed");

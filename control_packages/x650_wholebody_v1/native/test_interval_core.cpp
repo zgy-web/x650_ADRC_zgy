@@ -80,6 +80,6 @@ int main(){try{
  auto deadline=rejects_unchanged(timed,[&]{timed.step(input(.04));},"deadline");
  check(!delay_envelope&&deadline.compute_ms>=50.,"original 50 ms gate did not reject the actually delayed native call");
  auto after_deadline=timed.step(input(.04));check(after_deadline.diagnostics.accepted&&timed.memory().step_count==2,"deadline rejection consumed the input clock");
- check(x650_mpc_core_abi_version()==3,"interval diagnostics need the explicit ABI 3 worker");
+ check(x650_mpc_core_abi_version()==4,"interval diagnostics need the explicit ABI 3 worker");
  std::cout<<"PASS: real TS20 normal path/full-compact equality, uncontrollable initial envelope rejection, canonical observer parity rejection, original 50 ms gate and complete transactional rollback\n";return 0;
  }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}}

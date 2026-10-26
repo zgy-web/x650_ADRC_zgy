@@ -20,12 +20,30 @@ sys.path.insert(0, str(ROOT))
 from simulations.x650_isolated_live_v1.run_case import LiveExtension, Ts20Extension, task, shared, sha, write
 
 
-def expected_core_config(cfg, model, pid, predictor, prior):
+def timing_profile_parameters(protocol):
+    """A named experiment budget; no automatic fallback or hardware claim."""
+    name = protocol.get('timing_profile', 'legacy_v1')
+    if name not in ('legacy_v1', 'mpc25_dispatch50_v1'):
+        raise ValueError('Unknown explicit control timing profile')
+    multirate = name == 'mpc25_dispatch50_v1'
+    return dict(name=name, nominal_solve_period_ns=40_000_000 if multirate else 20_000_000,
+        output_period_ns=20_000_000, command_lease_ns=160_000_000 if multirate else 50_000_000,
+        command_hold_s=.16 if multirate else .05,
+        control_dt_max_s=.1 if multirate else .05, solve_roundtrip_max_ns=50_000_000,
+        source_wall_age_max_ns=25_000_000, consumption_progress_max_ns=40_000_000,
+        hard_realtime_qualified=False)
+
+
+def expected_core_config(cfg, model, pid, predictor, prior, timing_profile=None):
     """Ground-only explicit export, without constructing or stepping a controller."""
     c = cfg['mpc_config']
     scalar = {name: c[name] for name in ('nodes', 'max_iterations', 'feasibility_tolerance',
               'kkt_tolerance', 'arm_share', 'joint_position_gain')}
     scalar.update(node_dt=c['node_dt_s'], max_dt=c['max_dt_s'])
+    profile = timing_profile_parameters({'timing_profile':
+        cfg.get('timing_profile', 'legacy_v1') if timing_profile is None else timing_profile})
+    if profile['name'] == 'mpc25_dispatch50_v1':
+        scalar.update(max_dt=profile['control_dt_max_s'], command_hold_s=profile['command_lease_ns']/1e9)
     scalar.update({name: list(c[name]) for name in ('velocity_limit', 'acceleration_limit', 'q_lower', 'q_upper')})
     parameters = prior['parameters']
     scalar.update(weights=[c[name+'_weight'] for name in ('tip_position', 'tip_velocity', 'base_position',
@@ -125,6 +143,14 @@ class CppLiveExtension(LiveExtension):
         return {'trajectory_kind': 'hold'}
 
     def _ros(self, package, executable, params):
+        selected = timing_profile_parameters(self.protocol)['name']
+        if ((package == 'flyarm_control_gateway'
+                and executable in ('state_ingress', 'periodic_dispatcher', 'live_dispatcher'))
+                or (package == 'flyarm_mpc_cpp' and executable == 'isolated_worker')):
+            if 'timing_profile' in params and params['timing_profile'] != selected:
+                raise ValueError('Conflicting explicit timing profile overrides')
+            if selected != 'legacy_v1' or 'timing_profile' in self.protocol:
+                params = dict(params, timing_profile=selected)
         if package == 'flyarm_control_gateway' and executable == 'live_dispatcher':
             additions = dispatcher_parameters(self.protocol)
             if any(key in params and params[key] != value for key, value in additions.items()):
@@ -135,6 +161,9 @@ class CppLiveExtension(LiveExtension):
     def prepare(self, out):
         self.protocol = task.read(Path(os.environ['FLYARM_CPP_PROTOCOL']))
         dispatcher_parameters(self.protocol)
+        self.timing_profile = timing_profile_parameters(self.protocol)
+        if self.cfg.get('timing_profile', 'legacy_v1') != self.timing_profile['name']:
+            raise ValueError('Task and execution timing profiles differ')
         self.resources = json.loads(os.environ['FLYARM_EXECUTION_RESOURCES'])
         if self.resources['roles'] != self.protocol['cpu_roles']:
             raise ValueError('C++ execution CPU plan differs from selected protocol')
@@ -158,6 +187,9 @@ class CppLiveExtension(LiveExtension):
         self.msg, self.serialize, self.prefix = msg, serialize_message, get_package_prefix
         self.active = self.stopping = self.started = self.cleaned = False
         self.out = Path(out)/'isolated_live'; self.out.mkdir()
+        write(self.out/'timing_profile.json', {'kind': 'cpp_live_timing_selection_v1',
+            'timing_profile': self.timing_profile['name'], 'effective_profile': self.timing_profile,
+            'physical_acceptance': False})
         self.session = int.from_bytes(os.urandom(4), 'little') & 0x7fffffff or 1
         self.epoch = 1
         self.task_path = Path(os.environ[task.CONFIG_ENV]); self.task_sha = sha(self.task_path)

@@ -88,7 +88,9 @@ struct Startup {
 };
 inline x650::Config config_from_json(const Json::Value& c) {
   x650::Config v;
-  exact_keys(c,{"nodes","max_iterations","node_dt","max_dt","feasibility_tolerance","kkt_tolerance","arm_share","joint_position_gain","weights","velocity_limit","acceleration_limit","q_lower","q_upper","physical_lower","physical_upper","geometry","response","base_position_gain","motion","kp","kd","bus_period","integration_step","trust_radius"});
+  auto legacy=c;legacy.removeMember("command_hold_s");
+  exact_keys(legacy,{"nodes","max_iterations","node_dt","max_dt","feasibility_tolerance","kkt_tolerance","arm_share","joint_position_gain","weights","velocity_limit","acceleration_limit","q_lower","q_upper","physical_lower","physical_upper","geometry","response","base_position_gain","motion","kp","kd","bus_period","integration_step","trust_radius"});
+  if(c.isMember("command_hold_s"))v.command_hold_s=number(c["command_hold_s"]);
   v.nodes=integer(c["nodes"]);v.max_iterations=integer(c["max_iterations"]);
 #define SCALAR(name) v.name=number(c[#name])
   SCALAR(node_dt);SCALAR(max_dt);SCALAR(feasibility_tolerance);SCALAR(kkt_tolerance);SCALAR(arm_share);SCALAR(joint_position_gain);SCALAR(bus_period);SCALAR(integration_step);SCALAR(trust_radius);
@@ -96,13 +98,16 @@ inline x650::Config config_from_json(const Json::Value& c) {
 #define ARRAY(name,n) v.name=numbers<n>(c[#name])
   ARRAY(weights,6);ARRAY(velocity_limit,5);ARRAY(acceleration_limit,5);ARRAY(q_lower,2);ARRAY(q_upper,2);ARRAY(physical_lower,2);ARRAY(physical_upper,2);ARRAY(geometry,10);ARRAY(response,5);ARRAY(base_position_gain,3);ARRAY(motion,8);ARRAY(kp,2);ARRAY(kd,2);
 #undef ARRAY
-  if(v.max_dt!=.05||v.feasibility_tolerance!=2e-7||v.kkt_tolerance!=.002)throw std::invalid_argument("Original outer/quality gates may not change");
+  const bool old=v.max_dt==.05&&v.command_hold_s==.05;
+  const bool multirate=v.max_dt==.1&&v.command_hold_s==.16&&v.nodes==15&&v.node_dt==.04&&v.bus_period==.005;
+  if((!old&&!multirate)||v.feasibility_tolerance!=2e-7||v.kkt_tolerance!=.002)throw std::invalid_argument("Explicit timing profile or original quality gates differ");
   return v;
 }
 inline Startup load_startup(const fs::path& path,const std::string& expected) {
   Json::Value identity;identity["path"]=path.string();identity["sha256"]=expected;bound_path(identity);
   Startup output;output.manifest=read_json(path);const auto& root=output.manifest;
-  exact_keys(root,{"schema_version","kind","simulation_only","task_config","core_library","optimization_library","predictor_library","source_artifacts","config","trajectory"});
+  auto original=root;original.removeMember("timing_profile");
+  exact_keys(original,{"schema_version","kind","simulation_only","task_config","core_library","optimization_library","predictor_library","source_artifacts","config","trajectory"});
   if(integer(root["schema_version"])!=1||root["kind"]!="cpp_full_pipeline_v1"||root["simulation_only"]!=true)
     throw std::invalid_argument("Explicit simulation-only full C++ startup required");
   exact_keys(root["task_config"],{"path","sha256"});bound_path(root["task_config"]);output.task_hash=string_field(root["task_config"],"sha256");
@@ -114,6 +119,8 @@ inline Startup load_startup(const fs::path& path,const std::string& expected) {
   std::set<std::string> sources;for(const auto& item:root["source_artifacts"]){exact_keys(item,{"path","sha256"});if(!sources.insert(bound_path(item).string()).second)throw std::invalid_argument("Duplicate source binding");}
   output.trajectory=trajectory_from_json(root["trajectory"]);
   output.config=config_from_json(root["config"]);
+  if(output.config.command_hold_s>.05){if(string_field(root,"timing_profile")!="mpc25_dispatch50_v1")throw std::invalid_argument("Bound multirate startup profile required");}
+  else if(root.isMember("timing_profile")&&string_field(root,"timing_profile")!="legacy_v1")throw std::invalid_argument("Legacy startup profile differs");
   return output;
 }
 }

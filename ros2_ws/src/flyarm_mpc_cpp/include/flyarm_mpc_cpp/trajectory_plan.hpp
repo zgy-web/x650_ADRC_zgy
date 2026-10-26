@@ -30,8 +30,8 @@ class TrajectoryPlan {
     return {value.p,value.v,value.a};
   }
   std::vector<x650::Target> preview(double time,double dt,int nodes,double node_dt,
-                                     const x650::V3& center) const {
-    if(!std::isfinite(time)||!std::isfinite(dt)||dt<=0.||dt>.05||
+                                     const x650::V3& center,double max_dt=.05) const {
+    if(!std::isfinite(time)||!std::isfinite(dt)||!std::isfinite(max_dt)||max_dt<=0.||max_dt>.1||dt<=0.||dt>max_dt+(max_dt==.1?1e-10:0.)||
        nodes<1||nodes>60||!std::isfinite(node_dt)||node_dt<=0.)
       throw std::invalid_argument("Invalid explicit reference horizon");
     std::vector<x650::Target> output;output.reserve(static_cast<std::size_t>(nodes));

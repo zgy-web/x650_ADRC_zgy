@@ -67,13 +67,17 @@ class Worker : public rclcpp::Node {
     declare_parameter("startup_manifest",std::string{});declare_parameter("startup_sha256",std::string{});declare_parameter("output_dir",std::string{});
     declare_parameter("expected_session_id",std::int64_t{});declare_parameter("expected_epoch",std::int64_t{});declare_parameter("simulation_live",false);
     declare_parameter("executor_cpu",std::int64_t{-1});declare_parameter("auxiliary_cpus",std::vector<std::int64_t>{});
+    declare_parameter("timing_profile",std::string("legacy_v1"));
     if(!get_parameter("simulation_live").as_bool())throw std::invalid_argument("Explicit simulation_live=true required; no hardware mode");
     const auto session=get_parameter("expected_session_id").as_int(),epoch=get_parameter("expected_epoch").as_int();
     if(session<=0||epoch<=0)throw std::invalid_argument("Positive session/epoch required");
     session_=session;epoch_=epoch;
     out_=fm::fs::path(get_parameter("output_dir").as_string());if(!out_.is_absolute()||!fm::fs::is_directory(out_))throw std::invalid_argument("Existing absolute owned output directory required");
     startup_=fm::load_startup(get_parameter("startup_manifest").as_string(),get_parameter("startup_sha256").as_string());hash_=flyarm_runtime_wire::parse_hash(startup_.task_hash);
-    Dl_info library{};if(x650_mpc_core_abi_version()!=3||!dladdr(reinterpret_cast<void*>(&x650_mpc_core_abi_version),&library)
+    timing_profile_=wire::TimingProfile::from_name(get_parameter("timing_profile").as_string());
+    if(timing_profile_.control_dt_max_s()!=startup_.config.max_dt||timing_profile_.command_hold_s()!=startup_.config.command_hold_s)
+      throw std::runtime_error("Worker timing profile differs from bound native max_dt/command hold");
+    Dl_info library{};if(x650_mpc_core_abi_version()!=4||!dladdr(reinterpret_cast<void*>(&x650_mpc_core_abi_version),&library)
         ||fm::fs::canonical(library.dli_fname)!=startup_.core_library)throw std::runtime_error("Loaded complete C++ core differs from bound library");
     Dl_info optimization{};void* assemble=dlsym(RTLD_DEFAULT,"x650_assemble");
     if(!assemble||!dladdr(assemble,&optimization)||fm::fs::canonical(optimization.dli_fname)!=startup_.optimization_library)
@@ -81,7 +85,7 @@ class Worker : public rclcpp::Node {
     void* raw=dlopen(startup_.predictor_library.c_str(),RTLD_NOW|RTLD_LOCAL);if(!raw)throw std::runtime_error(std::string("Frozen predictor load failed: ")+dlerror());
     predictor_=std::shared_ptr<void>(raw,[](void* handle){dlclose(handle);});auto batch=reinterpret_cast<x650::Ts20BatchFn>(dlsym(raw,"ts20_prediction_batch"));if(!batch)throw std::runtime_error("Frozen predictor batch ABI missing");
     core_=std::make_unique<x650::Core>(startup_.config,batch,x650::DiagnosticMode::Compact);
-    wire::Config config;config.session_id=session_;config.epoch=epoch_;config.configuration_sha256=hash_;config.position_gains=startup_.config.base_position_gain;config.replay_only=false;contract_=std::make_unique<fm::Contract>(config,startup_.trajectory);
+    wire::Config config;config.session_id=session_;config.epoch=epoch_;config.configuration_sha256=hash_;config.position_gains=startup_.config.base_position_gain;config.replay_only=false;config.timing_profile=timing_profile_;contract_=std::make_unique<fm::Contract>(config,startup_.trajectory);
     recorder_=std::make_unique<Recorder>(out_);timing_.resize(TIMING_CAPACITY);
     placement_=std::make_unique<fm::ThreadPlacement>(get_parameter("executor_cpu").as_int(),get_parameter("auxiliary_cpus").as_integer_array());
     const auto qos=rclcpp::QoS(rclcpp::KeepLast(1)).best_effort();publisher_=create_publisher<messages::ControlProposal>("/flyarm/isolated/v1/output/proposal",qos);
@@ -89,7 +93,10 @@ class Worker : public rclcpp::Node {
     starts_=create_subscription<messages::LiveStart>("/flyarm/isolated/v1/live_start",1,[this](messages::LiveStart::ConstSharedPtr start){begin(*start);});
   }
   void ready(){placement_->bind();Json::Value value;value["kind"]="cpp_full_pipeline_worker_startup_v1";value["implementation"]="cpp_full_pipeline_v1";value["python_in_worker"]=false;value["hardware_qualified"]=false;value["startup_manifest"]=startup_.manifest;
-    value["configuration_sha256"]=startup_.task_hash;value["session_id"]=Json::UInt64(session_);value["epoch"]=Json::UInt64(epoch_);value["core_abi"]=3;value["startup_controller_steps"]=Json::UInt64(core_->memory().step_count);
+    value["configuration_sha256"]=startup_.task_hash;value["session_id"]=Json::UInt64(session_);value["epoch"]=Json::UInt64(epoch_);value["core_abi"]=4;value["startup_controller_steps"]=Json::UInt64(core_->memory().step_count);
+    value["timing_profile"]=timing_profile_.name();std::ostringstream profile;wire::write_timing_profile(profile,timing_profile_);
+    std::istringstream profile_input(profile.str());Json::CharReaderBuilder reader;std::string profile_error;
+    if(!Json::parseFromStream(reader,profile_input,&value["effective_profile"],&profile_error))throw std::runtime_error("Cannot encode effective worker timing profile");
     value["diagnostic_mode"]="compact";value["full_matrix_packet_capture"]=false;
     value["loaded_core_path"]=startup_.core_library.string();value["loaded_optimization_path"]=startup_.optimization_library.string();value["loaded_predictor_path"]=startup_.predictor_library.string();
     if(core_->memory().step_count!=0)throw std::runtime_error("A controller step ran before actual LiveStart");
@@ -115,9 +122,9 @@ class Worker : public rclcpp::Node {
     messages::ControlProposal proposal;proposal.schema_version=1;proposal.session_id=session_;proposal.epoch=epoch_;proposal.sequence=proposal.snapshot_sequence=snapshot.sequence;proposal.configuration_sha256=hash_;proposal.replay_only=false;proposal.status=1;proposal.compute_start_monotonic_ns=row[2];
     try{const auto cpu=placement_->observe();row[11]=cpu[0];row[12]=cpu[1];if(!healthy())throw std::runtime_error("Worker/recorder has latched fault");
       if(snapshot.issued_monotonic_ns>0&&snapshot.issued_monotonic_ns<=row[2]&&row[2]-snapshot.issued_monotonic_ns>50000000ULL)proposal.status=3;
-      const auto input=contract_->decode(flyarm_runtime_wire::from_ros(snapshot),row[2],startup_.config.nodes,startup_.config.node_dt);proposal.control_time_s=snapshot.control_time_s;proposal.task_time_s=snapshot.task_time_s;proposal.status=2;
+      const auto input=contract_->decode(flyarm_runtime_wire::from_ros(snapshot),row[2],startup_.config.nodes,startup_.config.node_dt,startup_.config.max_dt);proposal.control_time_s=snapshot.control_time_s;proposal.task_time_s=snapshot.task_time_s;proposal.status=2;
       row[3]=fm::monotonic_ns();record.result=core_->step(input);row[4]=fm::monotonic_ns();const auto& result=*record.result;const auto& d=result.diagnostics;
-      if(!d.accepted||!d.nonlinear_passed||!d.actual_bounds||d.previous_plan_fallback||d.attempts.empty()||d.attempts.size()>3||d.subproblems!=int(d.attempts.size())||!fm::recovery_evidence_valid(d,startup_.config)||!fm::interval_evidence_valid(d,startup_.config))throw std::runtime_error("Full native optimum/nonlinear/physical-bound, recovery or interval evidence missing");
+      if(!d.accepted||!d.nonlinear_passed||!d.actual_bounds||d.previous_plan_fallback||d.attempts.empty()||d.attempts.size()>3||d.subproblems!=int(d.attempts.size())||!fm::recovery_evidence_valid(d,startup_.config)||!fm::interval_evidence_valid(d,startup_.config)||!fm::hold_guard_evidence_valid(d.hold_guard,startup_.config,input))throw std::runtime_error("Full native optimum/nonlinear/physical-bound, recovery, interval or first-command hold evidence missing");
       proposal.position_reference_enu=result.position_reference;proposal.velocity_feedforward_enu=result.velocity_feedforward;proposal.acceleration_feedforward_enu=result.acceleration_feedforward;
       std::copy_n(result.command.begin(),3,proposal.base_velocity_target.begin());proposal.joint_velocity=result.joint_velocity;
       proposal.accepted_optimum=true;proposal.nonlinear_check_passed=true;proposal.primal_violation=d.primal_violation;proposal.kkt_residual=d.kkt_stationarity;proposal.subproblems=d.attempts.size();proposal.status=0;
@@ -133,7 +140,7 @@ class Worker : public rclcpp::Node {
     }catch(const std::exception& error){fatal_=true;contract_->latch();last_error_=error.what();}
     row[10]=fm::thread_cpu_ns();row[8]=fm::monotonic_ns();if(timing_count_<timing_.size())timing_[timing_count_++]=row;else{++timing_dropped_;fatal_=true;contract_->latch();}
   }
-  fm::Startup startup_;fm::fs::path out_;std::uint64_t session_{},epoch_{};wire::Hash hash_{};
+  fm::Startup startup_;fm::fs::path out_;std::uint64_t session_{},epoch_{};wire::Hash hash_{};wire::TimingProfile timing_profile_;
   std::shared_ptr<void> predictor_;std::unique_ptr<x650::Core> core_;std::unique_ptr<fm::Contract> contract_;std::unique_ptr<Recorder> recorder_;std::unique_ptr<fm::ThreadPlacement> placement_;
   std::vector<TimingRow> timing_;std::size_t timing_count_{},timing_dropped_{};bool fatal_{};std::string last_error_;Bytes live_start_cdr_;
   rclcpp::Publisher<messages::ControlProposal>::SharedPtr publisher_;rclcpp::Subscription<messages::ControlSnapshot>::SharedPtr snapshots_;rclcpp::Subscription<messages::LiveStart>::SharedPtr starts_;

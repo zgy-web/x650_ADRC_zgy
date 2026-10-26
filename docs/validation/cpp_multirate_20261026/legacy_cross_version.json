@@ -1,0 +1,90 @@
+{
+  "kind": "x650_cpp_multirate_legacy_cross_version_v1",
+  "complete": true,
+  "passed": true,
+  "physical_acceptance": false,
+  "rows": [
+    {
+      "sequence": 1,
+      "passed": true,
+      "exact_numeric_equality": true,
+      "original": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/regression_v3/000001/raw.json",
+        "bytes": 496171,
+        "sha256": "e4ccaff81f6f29b75c265f185b5b925bb8351e7e103cb926c7e45ec2a759b1c2"
+      },
+      "fixture": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/reconstruction429_v1/000001.input.json",
+        "bytes": 10044,
+        "sha256": "efc19217cf891039e370637383bc7c7911ef872a66c9bf7a7badb060451c8086"
+      },
+      "actual": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/legacy_cross_version/000001.json",
+        "bytes": 496699,
+        "sha256": "3b84e98659d72ad13685282ab7bc4cbbc3938d7371d4d63787ecc47ba04e0b35"
+      }
+    },
+    {
+      "sequence": 300,
+      "passed": true,
+      "exact_numeric_equality": true,
+      "original": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/regression_v3/000300/raw.json",
+        "bytes": 522703,
+        "sha256": "15cdf1c613fa3b184ce32f970f1feee750fc9f523e93961a908a37d99f33253b"
+      },
+      "fixture": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/reconstruction429_v1/000300.input.json",
+        "bytes": 13528,
+        "sha256": "5279a9255a9693c5b22c2925125556b6f4c2709977f4be04cf54dc6e93d2d905"
+      },
+      "actual": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/legacy_cross_version/000300.json",
+        "bytes": 523241,
+        "sha256": "85c4e7e7d1f01a10b5e330b3cc55167093c863c364c73c9b0cc9bea484f0e5ce"
+      }
+    },
+    {
+      "sequence": 429,
+      "passed": true,
+      "exact_numeric_equality": true,
+      "original": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_interval_hard_20261026/regression_v3/000429/raw.json",
+        "bytes": 611723,
+        "sha256": "035859589bb600ba276dd2353ef4984ffba7b1b3b766b5cd70191eda1043a65c"
+      },
+      "fixture": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_safety_margin_20261026/reconstruction429_v1/000429.input.json",
+        "bytes": 12791,
+        "sha256": "0ed8f4a327fc0a00a4f314bc8dc32b2b53b2e0bfe6567074ea0e7d77fd8a0d00"
+      },
+      "actual": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/legacy_cross_version/000429.json",
+        "bytes": 612269,
+        "sha256": "118eb68f835cba014e2611ba76d3022410acba58f04aa20426729d4c6c73e37b"
+      }
+    }
+  ],
+  "fields": [
+    "A",
+    "b",
+    "H",
+    "g",
+    "C",
+    "lower",
+    "upper",
+    "solution",
+    "plan",
+    "predicted_states",
+    "predicted_tip",
+    "predicted_rotations",
+    "candidate_states",
+    "candidate_envelope",
+    "horizon",
+    "query_times",
+    "interval_canonical_states",
+    "interval_canonical_envelope",
+    "interval_constraints"
+  ],
+  "scope": "Three fixed original full-Memory calls including the interval-recovery rejection boundary; no new plant rollout"
+}

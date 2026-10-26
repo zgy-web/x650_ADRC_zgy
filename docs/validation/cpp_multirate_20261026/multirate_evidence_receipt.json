@@ -1,0 +1,41 @@
+{
+  "kind": "x650_robustness_raw_archive_receipt_v1",
+  "complete": true,
+  "all_original_sizes_and_sha256_verified": true,
+  "all_zip_members_read_back": true,
+  "embedded_manifests_byte_identical": true,
+  "verified_member_count": 5427,
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/delivery_v1/multirate_evidence_manifest.json",
+    "bytes": 2686559,
+    "sha256": "249a0e0969661f8dc9d91457446e74531bf93e0c598fc836c5b330e58ff09c62"
+  },
+  "archives": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/delivery_v1/multirate_evidence_part01.zip",
+      "bytes": 45189319,
+      "sha256": "64ad5d51ac50279ebaa3a1d19b9eb6792a00148724882a979b5a4634003d38f5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/delivery_v1/multirate_evidence_part02.zip",
+      "bytes": 45263049,
+      "sha256": "0d3dc6ceab8e5a416ec8789cb0cf7e29e512e929ed1303090ec3bbdfba21c06b"
+    }
+  ],
+  "context": {
+    "scope": "Exact closed multi-rate simulation and software evidence; failed preparations and audits retained; no hardware qualification",
+    "audits": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/hold_audit_v3/report.json",
+        "bytes": 3032181,
+        "sha256": "8e50b47cb90009b9d4cc8774e4911206a7c7892bcc98ea18ab42741a66783b1d"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_audit_followup_v4/report.json",
+        "bytes": 3813322,
+        "sha256": "4e64cd972546597d77c97fdd6ed601d7fbbbaebb60606e92599370cb824f25e7"
+      }
+    ]
+  },
+  "completed_unix": 1793024824.378484
+}

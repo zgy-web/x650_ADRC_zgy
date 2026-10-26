@@ -34,6 +34,10 @@ int main(){fm::fs::path folder=fm::fs::temp_directory_path()/std::string("flyarm
    for(unsigned i=0;i<10000;++i){auto record=std::make_unique<unsigned>(i);while(!queue.push(std::move(record)))std::this_thread::yield();}
    consumer.join();require(ordered,"Concurrent single-producer/consumer records changed");}
   const auto original=config_json();auto c=fm::config_from_json(original);require(c.node_dt==.04&&c.nodes==15&&c.velocity_limit[4]==.35,"Explicit config values changed");
+  require(c.command_hold_s==.05,"Legacy optional hold default changed");
+  {auto j=original;j["command_hold_s"]=.05;require(fm::config_from_json(j).command_hold_s==.05,"Explicit legacy hold changed");
+   j["command_hold_s"]=.16;j["max_dt"]=.1;auto multi=fm::config_from_json(j);require(multi.max_dt==.1&&multi.command_hold_s==.16,"Explicit multirate configuration failed");
+   j["command_hold_s"]=.05;rejects([&]{fm::config_from_json(j);});j["command_hold_s"]=.16;j["bus_period"]=.02;rejects([&]{fm::config_from_json(j);});}
   for(const auto& mutation:std::vector<std::function<void(Json::Value&)>>{
    [](auto& j){j.removeMember("motion");},[](auto& j){j["implicit_default"]=1;},[](auto& j){j["nodes"]=true;},
    [](auto& j){j["kp"].append(6.);},[](auto& j){j["max_dt"]=.051;},[](auto& j){j["feasibility_tolerance"]=2.1e-7;},

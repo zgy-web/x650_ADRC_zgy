@@ -1,0 +1,3693 @@
+{
+  "kind": "x650_cpp_multirate_independent_wrench_review_v1",
+  "created_unix": 1793023941.0489295,
+  "simulation_only": true,
+  "certificate": false,
+  "formal_stage_audit_claimed": false,
+  "original_evidence_unchanged": true,
+  "launch": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_launch_20261026_220335_24241",
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257",
+  "full_window_sim_s": [
+    48.136,
+    72.136
+  ],
+  "controller_window_complete": true,
+  "timing_profile": "mpc25_dispatch50_v1",
+  "effective_profile": {
+    "name": "mpc25_dispatch50_v1",
+    "nominal_solve_period_ns": 40000000,
+    "output_period_ns": 20000000,
+    "command_lease_ns": 160000000,
+    "command_hold_s": 0.16,
+    "control_dt_max_s": 0.1,
+    "solve_roundtrip_max_ns": 50000000,
+    "source_wall_age_max_ns": 25000000,
+    "consumption_progress_max_ns": 40000000,
+    "hard_realtime_qualified": false
+  },
+  "admission": {
+    "count": 570,
+    "wall_gap_ms": {
+      "count": 569,
+      "minimum": 40.000054,
+      "mean": 42.11360952724077,
+      "median": 42.076019,
+      "p95": 44.025,
+      "p99": 47.388633800000036,
+      "maximum": 55.914556
+    },
+    "measured_average_hz": 23.7452930590801,
+    "actual_model_dt_ms": {
+      "count": 570,
+      "minimum": 36.000000000001364,
+      "mean": 42.112280701754386,
+      "median": 43.99999999999693,
+      "p95": 44.000000000004036,
+      "p99": 47.999999999996916,
+      "maximum": 56.00000000000449
+    },
+    "all_wall_gaps_at_least_40ms": true,
+    "actual_dt_is_original_control_time_difference": true
+  },
+  "worker": {
+    "final": {
+      "accepted": 570,
+      "configuration_sha256": "3ba6b0ead65c8c480f7ca4711e03346c561637c9e521903c59a5c2dab2e20d31",
+      "faulted": false,
+      "implementation": "cpp_full_pipeline_v1",
+      "kind": "cpp_full_pipeline_worker_final_v1",
+      "last_error": "",
+      "live_started": true,
+      "no_python_gc_or_pickle": true,
+      "physical_acceptance": false,
+      "requests": 570
+    },
+    "core_wall_ms": {
+      "count": 570,
+      "minimum": 2.713699,
+      "mean": 10.35889440877193,
+      "median": 9.9110625,
+      "p95": 17.07636445,
+      "p99": 18.58059453999999,
+      "maximum": 24.702839
+    },
+    "callback_wall_ms": {
+      "count": 570,
+      "minimum": 2.831342,
+      "mean": 10.496544914035088,
+      "median": 10.053167,
+      "p95": 17.195623599999998,
+      "p99": 18.69090805999999,
+      "maximum": 24.812629
+    },
+    "issue_to_publish_ms": {
+      "count": 570,
+      "minimum": 3.096445,
+      "mean": 10.996389859649122,
+      "median": 10.6148975,
+      "p95": 17.5881827,
+      "p99": 20.73726637999994,
+      "maximum": 29.286887
+    },
+    "gate_roundtrip_ms": {
+      "count": 569,
+      "minimum": 3.157742,
+      "mean": 11.104936970123022,
+      "median": 10.73823,
+      "p95": 17.740396200000003,
+      "p99": 22.049648360000084,
+      "maximum": 29.339839
+    },
+    "hold_guard_calls_checked": 570,
+    "all_hold_guards_required_checked_passed": true,
+    "hold_duration_s": 0.16
+  },
+  "output": {
+    "normal_sends": 1198,
+    "unique_actually_sent_candidates": 569,
+    "repeated_ticks": 629,
+    "normal_tick_send_identity_matches": true,
+    "core_last_accepted_but_not_sent_sequence": 570,
+    "terminal_inflight_scope": {
+      "last_admitted_task_s": 24.003999999999998,
+      "worker_acceptance_is_not_execution": true
+    },
+    "absolute_slot_gap_ms": {
+      "count": 1197,
+      "minimum": 20.0,
+      "mean": 20.0,
+      "median": 20.0,
+      "p95": 20.0,
+      "p99": 20.0,
+      "maximum": 20.0
+    },
+    "actual_send_gap_ms": {
+      "count": 1197,
+      "minimum": 13.565153,
+      "mean": 20.000182643274854,
+      "median": 20.005271,
+      "p95": 20.1485358,
+      "p99": 20.892016479999995,
+      "maximum": 26.326315
+    },
+    "slot_lateness_ms": {
+      "count": 1198,
+      "minimum": 0.003282,
+      "mean": 0.13202313021702836,
+      "median": 0.087655,
+      "p95": 0.16911615,
+      "p99": 0.8947066399999954,
+      "maximum": 6.491319
+    },
+    "candidate_wall_age_ms": {
+      "count": 1198,
+      "minimum": 5.412297,
+      "mean": 32.012756323038396,
+      "median": 30.584373499999998,
+      "p95": 51.566514649999995,
+      "p99": 58.51950571,
+      "maximum": 66.583406
+    },
+    "source_issue_age_ms": {
+      "count": 1198,
+      "minimum": 0.197901,
+      "mean": 2.6472087495826377,
+      "median": 2.5171455,
+      "p95": 3.55102845,
+      "p99": 6.57834261,
+      "maximum": 23.552335
+    },
+    "current_source_physical_candidate_age_ms": {
+      "count": 1198,
+      "minimum": 3.9999999999906777,
+      "mean": 29.368948247078183,
+      "median": 28.000000000005798,
+      "p95": 48.00000000000182,
+      "p99": 55.999999999997385,
+      "maximum": 60.000000000002274
+    },
+    "fault_ticks": [],
+    "older_writer_observation_examples": [
+      {
+        "candidate": 107,
+        "dispatch": 3063,
+        "writer_last_observed_sim_s": 52.672,
+        "candidate_control_s": 52.676,
+        "current_source_control_s": 52.692
+      }
+    ],
+    "writer_time_semantics": "ActuatorSend.sim_s is last observed actuator-state time, not exact physical send time; original negative observations retained."
+  },
+  "initial_handoff": {
+    "last_actual_legacy_send_sim_s": 48.136,
+    "original_legacy_phase": "settle",
+    "first_actual_cpp_send_sim_s": 48.196,
+    "first_cpp_send_task_s": 0.05999999999999517,
+    "legacy_pva_received_sim_s": 48.14,
+    "first_cpp_pva_received_sim_s": 48.196,
+    "first_cpp_received_task_s": 0.05999999999999517,
+    "all_pre_cpp_received_pva_match_actual_legacy_payload": true,
+    "payload_tolerance": 2e-05,
+    "cpp_send_effective_span_s": 23.939999999999998,
+    "cpp_received_effective_span_s": 23.939999999999998,
+    "last_cpp_send_task_s": 23.987999999999992,
+    "cpp_measurement_max_sim_gap_s": 0.03200000000000358,
+    "ulog_pva_count": 1199,
+    "ulog_pva_max_gap_s": 0.055999999999997385,
+    "original_prestream_and_cpp_payloads_preserved": true,
+    "initial_handoff_separately_reported": true
+  },
+  "endpoint": {
+    "target_position_enu": [
+      -0.005682838609769527,
+      0.04082695372349339,
+      2.0397103466520226
+    ],
+    "definition": "Native tip minus the same-time frozen C2 fast-eight reference generated from original LiveStart center; no fitted translation, phase shift or bias subtraction.",
+    "integration": "sqrt(trapezoidal squared3Derror integral / actual covered duration)",
+    "whole": {
+      "actual_window_sim_s": [
+        48.136,
+        72.136
+      ],
+      "sample_count": 6001,
+      "position_rmse_m": 0.04235824924886268,
+      "position_peak_m": 0.1851721805797341
+    },
+    "first5": {
+      "actual_window_sim_s": [
+        48.136,
+        53.136
+      ],
+      "sample_count": 1251,
+      "position_rmse_m": 0.005916226546338123,
+      "position_peak_m": 0.01086421452460212
+    },
+    "last5": {
+      "actual_window_sim_s": [
+        67.136,
+        72.136
+      ],
+      "sample_count": 1251,
+      "position_rmse_m": 0.0034721719630770986,
+      "position_peak_m": 0.009951956655484128
+    },
+    "peak_task_s": 9.211999999999996,
+    "axis_rmse_m": [
+      0.042089038342305304,
+      0.002148369664531617,
+      0.004256599421281369
+    ],
+    "native_max_gap_s": 0.0040000000000048885,
+    "all_selected_native_rows_valid": true,
+    "reference_trajectory_parameters": {
+      "amplitude_x": 0.25,
+      "amplitude_z": 0.1,
+      "period_s": 8.0,
+      "cycles": 2,
+      "start_s": 2.0,
+      "ramp_s": 2.0
+    },
+    "tracking2to20": {
+      "actual_window_sim_s": [
+        50.136,
+        68.136
+      ],
+      "sample_count": 4501,
+      "position_rmse_m": 0.04888361183090246,
+      "position_peak_m": 0.1851721805797341
+    },
+    "tail20to24": {
+      "actual_window_sim_s": [
+        68.136,
+        72.136
+      ],
+      "sample_count": 1001,
+      "position_rmse_m": 0.0021066545310953425,
+      "position_peak_m": 0.0040238072743931435
+    }
+  },
+  "stability": {
+    "tilt_peak_deg": 4.273026869258305,
+    "base_speed_peak_m_s": 0.34759106263750283,
+    "joint_q_min_rad": [
+      -0.24201288457687636,
+      -0.3262402936078282
+    ],
+    "joint_q_max_rad": [
+      0.4334762728392472,
+      0.6655475163616866
+    ],
+    "joint_abs_dq_peak_rad_s": [
+      0.3135541661809689,
+      0.30661970474754596
+    ]
+  },
+  "consumption": {
+    "ledger_rows": 1199,
+    "ledger_complete": true,
+    "ledger_overflow": false,
+    "all_joint_statuses_consumed": false,
+    "receipt_count": 1198,
+    "failed_receipts": 0,
+    "receipt_roundtrip_ms": {
+      "count": 1198,
+      "minimum": 1.740887,
+      "mean": 3.2663486494156926,
+      "median": 2.316299,
+      "p95": 6.28879375,
+      "p99": 8.134372629999993,
+      "maximum": 15.204374
+    },
+    "receipt_matching": "Matched by exact dispatch_sequence and command_sequence; superseded sends do not fabricate paired receipts.",
+    "paired_receipts_pva_send_returned": 1197,
+    "all_paired_receipts_joint_consumed": true,
+    "joint_status_counts": {
+      "0": 0,
+      "1": 2396,
+      "2": 2,
+      "3": 0
+    },
+    "all_joint_states_resolved_as_consumed_or_superseded": true,
+    "superseded_rows": [
+      {
+        "command_sequence": 106,
+        "dispatch_sequence": 3062,
+        "sent_ns": 98417551703926799,
+        "sim_s": 52.672,
+        "stop_zero": false,
+        "paired": false,
+        "expected_counter": [
+          1424,
+          1424
+        ],
+        "velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ],
+        "joint_status": [
+          2,
+          2
+        ],
+        "consumed_sim_s": [
+          52.692,
+          52.692
+        ],
+        "observation_sim_s": [
+          52.696,
+          52.696
+        ],
+        "observed_ns": [
+          98417551728038500,
+          98417551728038500
+        ],
+        "received_ns": [
+          98417551728204148,
+          98417551728204148
+        ]
+      }
+    ],
+    "superseded_scope": "One actual dispatch3062 was superseded for both joints by a later physical consumed counter; original ledger retains status2 and no fake joint-consumption receipt is created.",
+    "per_joint_resolution_latency_ms": {
+      "count": 2398,
+      "minimum": 1.739657,
+      "mean": 3.277849544203503,
+      "median": 2.315504,
+      "p95": 6.287813,
+      "p99": 8.432763,
+      "maximum": 24.277349
+    },
+    "paired_receipt_dispatches_missing_from_sends": []
+  },
+  "recovery": {
+    "lifecycle": {
+      "started": true,
+      "release": {
+        "zero_consumed": true,
+        "writer_exited": true,
+        "wall_monotonic_ns": 98417571353325881
+      },
+      "error": null,
+      "processes": {
+        "source_recorder": {
+          "pid": 24985,
+          "returncode": 0
+        },
+        "worker": {
+          "pid": 24986,
+          "returncode": 0
+        },
+        "ingress": {
+          "pid": 25071,
+          "returncode": 0
+        },
+        "dispatcher": {
+          "pid": 25072,
+          "returncode": 0
+        },
+        "consumption": {
+          "pid": 25073,
+          "returncode": 0
+        },
+        "cpp_source": {
+          "pid": 25074,
+          "returncode": 0
+        }
+      },
+      "source_samples": 0,
+      "physical_acceptance_pending": true
+    },
+    "ulog_status_final_sim_s": 83.396,
+    "ulog_arming_state_final": 1,
+    "ulog_land_final_sim_s": 82.916,
+    "ulog_landed_final": true,
+    "post_window_failsafe_samples": 0,
+    "flight_final": {
+      "sim_time_s": "85.3",
+      "armed": "0",
+      "landed": "1",
+      "failsafe": "0"
+    },
+    "fault_supervision": {
+      "kind": "isolated_fault_supervision_v1",
+      "session_id": 7225412,
+      "epoch": 1,
+      "first_fault": null,
+      "counts": {
+        "dispatch": 1204,
+        "events": 569,
+        "ignored_identity": 0
+      },
+      "semantics": "independent executor, depth 1; first matching fault latched; observer only"
+    }
+  },
+  "declared_duration_s": 24.0,
+  "actual_metadata_task_end_sim_s": 72.14,
+  "metadata_end_minus_declared_end_s": 0.0040000000000048885,
+  "disturbance": {
+    "status": {
+      "state": "SUCCESS",
+      "reason": "Full waveform enqueued with checked physics-step force and free couple",
+      "ready": true,
+      "anchored": true,
+      "complete": true,
+      "success": true,
+      "t0_sim_s": 48.136,
+      "duration_s": 24,
+      "rows": 12953,
+      "task_rows": 5998,
+      "first_task_sim_s": 48.148,
+      "last_task_sim_s": 72.136,
+      "max_step_dt_s": 0.004,
+      "max_enqueue_component_error": 3.3306690738754696e-16,
+      "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight_0",
+      "link": "base_link",
+      "force_frame": "world ENU",
+      "free_couple_frame": "world ENU",
+      "application_point": "base_link own center of mass, not whole-system CoM",
+      "measurement_semantics": "same-PreUpdate ExternalWorldWrenchCmd increment; not sensor measurement or independent proof of physics consumption",
+      "time_semantics": "UpdateInfo.simTime and dt; rectangular event on [start_s,end_s); absolute immutable t0",
+      "impulse_force_Ns_couple_Nms": [
+        -3.9898639947466563e-17,
+        0,
+        0,
+        0,
+        0.015840000000000052,
+        1.5612511283791263e-20
+      ],
+      "expected_impulse_force_Ns_couple_Nms": [
+        0,
+        0,
+        0,
+        0,
+        0.015999999999999945,
+        0
+      ]
+    },
+    "ledger_rows": 12953,
+    "in_task_rows": 5998,
+    "waveform_max_enqueue_component_error": 3.3306690738754696e-16,
+    "all_valid_enqueued": true,
+    "native_step_max_s": 0.004,
+    "native_origin_matches_live_start": true,
+    "events": [
+      {
+        "schedule": {
+          "start_s": 7.0,
+          "end_s": 7.6,
+          "force_world_n": [
+            1.5,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "observed_steps": 151,
+        "sampled_duration_s": 0.6040000000000001,
+        "actual_enqueued_impulse": [
+          0.9060000000000007,
+          0.0,
+          0.0,
+          0.0,
+          1.4932499681208356e-17,
+          5.2041704279304214e-21
+        ],
+        "ideal_rectangular_impulse": [
+          0.8999999999999995,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "impulse_absolute_error": [
+          0.006000000000001227,
+          0.0,
+          0.0,
+          0.0,
+          1.4932499681208356e-17,
+          5.2041704279304214e-21
+        ],
+        "within_original_two_step_discretization_allowance": true
+      },
+      {
+        "schedule": {
+          "start_s": 13.0,
+          "end_s": 13.6,
+          "force_world_n": [
+            -1.5,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "observed_steps": 151,
+        "sampled_duration_s": 0.6040000000000001,
+        "actual_enqueued_impulse": [
+          -0.9060000000000007,
+          0.0,
+          0.0,
+          0.0,
+          6.161737786669615e-18,
+          1.0408340855860843e-20
+        ],
+        "ideal_rectangular_impulse": [
+          -0.8999999999999995,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "impulse_absolute_error": [
+          0.006000000000001227,
+          0.0,
+          0.0,
+          0.0,
+          6.161737786669615e-18,
+          1.0408340855860843e-20
+        ],
+        "within_original_two_step_discretization_allowance": true
+      },
+      {
+        "schedule": {
+          "start_s": 20.5,
+          "end_s": 20.9,
+          "force_world_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.04,
+            0.0
+          ]
+        },
+        "observed_steps": 99,
+        "sampled_duration_s": 0.39600000000000013,
+        "actual_enqueued_impulse": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.01584000000000003,
+          0.0
+        ],
+        "ideal_rectangular_impulse": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.015999999999999945,
+          0.0
+        ],
+        "impulse_absolute_error": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.00015999999999991368,
+          0.0
+        ],
+        "within_original_two_step_discretization_allowance": true
+      }
+    ],
+    "full_waveform_enqueued": true,
+    "semantics": "Actual same-PreUpdate ExternalWorldWrenchCmd increment at base_link own CoM in world ENU; not a force sensor or independent acknowledgement of solver consumption."
+  },
+  "pulse_recovery": {
+    "events": [
+      {
+        "schedule": {
+          "start_s": 7.0,
+          "end_s": 7.6,
+          "force_world_n": [
+            1.5,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "recovery_window_end_s": 13.0,
+        "threshold_m": 0.01,
+        "continuous_hold_required_s": 1.0,
+        "pre_pulse_1s_peak_m": 0.011003778354248124,
+        "pulse_peak_m": 0.05514438803998111,
+        "post_pulse_peak_m": 0.1851721805797341,
+        "post_pulse_iae_m_s": 0.32080278439890597,
+        "recovered": true,
+        "recovery_after_end_s": 4.203999999999995,
+        "confirmed_at_task_s": 12.803999999999995
+      },
+      {
+        "schedule": {
+          "start_s": 13.0,
+          "end_s": 13.6,
+          "force_world_n": [
+            -1.5,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "recovery_window_end_s": 20.5,
+        "threshold_m": 0.01,
+        "continuous_hold_required_s": 1.0,
+        "pre_pulse_1s_peak_m": 0.008101687743705807,
+        "pulse_peak_m": 0.07249525279950231,
+        "post_pulse_peak_m": 0.0794648150070561,
+        "post_pulse_iae_m_s": 0.08441854744271261,
+        "recovered": true,
+        "recovery_after_end_s": 2.040000000000001,
+        "confirmed_at_task_s": 16.639999999999993
+      },
+      {
+        "schedule": {
+          "start_s": 20.5,
+          "end_s": 20.9,
+          "force_world_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "torque_world_nm": [
+            0.0,
+            0.04,
+            0.0
+          ]
+        },
+        "recovery_window_end_s": 24.0,
+        "threshold_m": 0.01,
+        "continuous_hold_required_s": 1.0,
+        "pre_pulse_1s_peak_m": 0.00503213849071777,
+        "pulse_peak_m": 0.0026161300677861204,
+        "post_pulse_peak_m": 0.0028423575083621594,
+        "post_pulse_iae_m_s": 0.005308227666442325,
+        "recovered": true,
+        "recovery_after_end_s": 0.0,
+        "confirmed_at_task_s": 21.9
+      }
+    ],
+    "all_three_recovered": true,
+    "scope": "Absolute same-time3Dendpoint error, no bias subtraction/phase alignment; recovered means<=10mm continuously for1s before next pulse/task end."
+  },
+  "original_performance_limits": {
+    "rmse_max_m": 0.05,
+    "peak_max_m": 0.1,
+    "tilt_max_deg": 8.0,
+    "rmse_passed": true,
+    "peak_passed": false,
+    "tilt_passed": true
+  },
+  "execution_completed_without_controller_fault": true,
+  "performance_passed": false,
+  "conclusion": "Complete24s physical execution and all three pulse recoveries; original100mm peak tracking limit failed. This is a performance failure, not an optimizer, timing or command-consumption stop.",
+  "stop_reason": {
+    "dispatch_final_status": 4,
+    "dispatch_final_reason": 0,
+    "lifecycle_error": null,
+    "worker_last_error": "",
+    "normal_complete_task_stop": true
+  },
+  "limitations": [
+    "Independent diagnostic review; no stage certificate or change to original thresholds.",
+    "Complete execution is distinct from performance acceptance; the original100mm peak gate failed.",
+    "The nominal25Hz profile is a maximum admission frequency, not an exact fixed measured frequency.",
+    "Command waveform evidence proves checked native enqueue, not force sensing or independent physics-consumption acknowledgement.",
+    "Native fixed-command hold guard is not a global proof over unknown future adoption phases."
+  ],
+  "source_artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/controller_metadata.json",
+      "bytes": 195553,
+      "sha256": "f9c553b620bbaa3862bc421c9387ad880d5708c59e5bf5aeff2a446d53de2954"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/control_trace.csv",
+      "bytes": 1541582,
+      "sha256": "c56991f088af4219ef1403de589033878412509b4491f4e225e92b01f46b1ad1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/native_trace.csv",
+      "bytes": 12029075,
+      "sha256": "9678e91f26fbd3bae96926d2325ac51a24ce4517e45caef63d03e460cdf94bbf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/native_trace_manifest.json",
+      "bytes": 1085,
+      "sha256": "43085b6ff9095fae6eea359d0bf9e7340e6e14e64509e62b0e197b9df82ba352"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/flight_samples.csv",
+      "bytes": 574556,
+      "sha256": "b86578433c5b05a3a50f6dd4eb2b85332f6539bffdd3545c6104aa499400b957"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/px4.ulg",
+      "bytes": 23069822,
+      "sha256": "f5862e8cf23d9b43e5c9d10f350b6cb72ed0cbb0c6bb892cf8402dc88bac198f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/live_start.json",
+      "bytes": 7236,
+      "sha256": "0cda3bf509e5bba751a5136f7445abc4c7c76f410578a0e58d7a6a8e9aef1b4c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/worker_timing.json",
+      "bytes": 108466,
+      "sha256": "03af7d96b906c2a01f00365aee1fc0fb8766724cba63981d79bf0f2d119c2861"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/ingress_timing.json",
+      "bytes": 2219918,
+      "sha256": "7b3931a1cdf3bebd4893c4b2d789ea65d3e69eb1400f2d0122a5de29ee5fcf9d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/dispatch.json",
+      "bytes": 7135380,
+      "sha256": "2a2233d3ac2cca61d1da5bdfcb062b9882bc9f7d05c270e00af0a68383d0de98"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/sends.json",
+      "bytes": 884331,
+      "sha256": "416dc9ffab56ffb5cdd90238fd48195173205797db13c57cd8c705bbab78224d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/events.json",
+      "bytes": 170122,
+      "sha256": "7f3f4a320ac8840abad627e63cfa403fda28efbee767e03dc559d52f7ad0fa6d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/receipts.json",
+      "bytes": 470990,
+      "sha256": "dbca1b663a8b6705c5292a64ed926a7348777ad3ece6cb8e57198027670b3c97"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/actuator_ledger.json",
+      "bytes": 549268,
+      "sha256": "a4573c203a4367d2b334681da62ad9de85942d2c3bdaf91aa0235597f2a5cc0a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/lifecycle.json",
+      "bytes": 652,
+      "sha256": "03085ba0f0d5d12667b8325b3e7c63380aa478b57f3204d4c8425820573b370a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/fault_supervision.json",
+      "bytes": 287,
+      "sha256": "cdc6c5304602dcf5949a2527ef1fbef412199730cd871a07934a83c099451cf1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/worker_final.json",
+      "bytes": 315,
+      "sha256": "56d2def1af452f834032f16bf542e1c3ee6723f3fbeafed6155660a2193938ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/worker_startup.json",
+      "bytes": 6830,
+      "sha256": "5fdfff609def5dcc2638f531cc71871d33fb6af84b3cf1976d400a0187fe1403"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/ingress_startup.json",
+      "bytes": 405,
+      "sha256": "a2b4948f9ea4284fe05fc4c3d76dfb7bb7d0bfd5b0eba0550e25380f99a6cdc4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/dispatcher_startup.json",
+      "bytes": 408,
+      "sha256": "438b44b44fd76decec7a7868e1b30f5d8cc1cb5713b02a07c874b7ba248f4512"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/timing_profile.json",
+      "bytes": 514,
+      "sha256": "a9efac66e40d0559623e4b2cc9523759e088221e5a8c85da1a84c1f7bf5eb454"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_launch_20261026_220335_24241/launch.json",
+      "bytes": 44816,
+      "sha256": "a46e9b77fe9d3672839ee902eaa603e868461b6fb233dd2242c00f0d21b90b71"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/controller_task.json",
+      "bytes": 11533,
+      "sha256": "3ba6b0ead65c8c480f7ca4711e03346c561637c9e521903c59a5c2dab2e20d31"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/physical_disturbance/applied_wrench.csv",
+      "bytes": 1980942,
+      "sha256": "66c3d8864741a4625233cee71b42ce7cde710ca05dd30c155fac3a3c3fefe23a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/physical_disturbance/applied_wrench.csv.status.json",
+      "bytes": 1037,
+      "sha256": "e5b5eec16be217b88fdd762c72409c12b91887f67536f5727f8de8791c015540"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000001.json",
+      "bytes": 22754,
+      "sha256": "c22fd6184373d991a61c539d59ac9b3548682a6a556e6d8808a24f217e696c72"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000002.json",
+      "bytes": 23006,
+      "sha256": "02a82f244d0c420e363b61dba913648f9ddf3b625a0e4173677ab1456f276cf5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000003.json",
+      "bytes": 22945,
+      "sha256": "cd8d48babcf412bf53094a058d3a5d4eef86966f26a10b4328093e7541fff334"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000004.json",
+      "bytes": 22950,
+      "sha256": "606796945f0ee43bf1c8fa79350cd91e027ba82bbf3cde4c4a03515abcc29bd6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000005.json",
+      "bytes": 23152,
+      "sha256": "5673d569baac28f504d299e2b60b0200f080f668eae8705c2153410647933f48"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000006.json",
+      "bytes": 22761,
+      "sha256": "b3b02bb0d840077dca7973ac5d70d5e7a0bfee65419a1267273785b93ca72c67"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000007.json",
+      "bytes": 23012,
+      "sha256": "19464271b9c4c27e299745f6510b28b46c886576f65d6b3449d9c65f37d89d2c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000008.json",
+      "bytes": 23185,
+      "sha256": "118a61df5ce80bf5edb6874c3d3298c898b46159baa85c5ee3af3ba286f8b0d9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000009.json",
+      "bytes": 22764,
+      "sha256": "4c726e8d3da874cfd96a0d07ca6e9af0fdf58c9212678dec7c0d7bfc94568cf0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000010.json",
+      "bytes": 23121,
+      "sha256": "9891afef02f836b28f7c9c1d8e31066b165683f1966805353dc20e67076c0cc8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000011.json",
+      "bytes": 23151,
+      "sha256": "c9284b25b45b251c908f1696e2d3c6297f67d948c1ab4c418aaf021038a5c74c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000012.json",
+      "bytes": 23087,
+      "sha256": "01fd497f4c92a1bfb9aed042dae4d2bd572d5be7d3282ffa33eefe88c2f7bf73"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000013.json",
+      "bytes": 22968,
+      "sha256": "0a14e91e7b72049b3954778827816ce6586718e70413922548b5df0bb2a1b448"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000014.json",
+      "bytes": 23277,
+      "sha256": "995414c2d3899fc41ddcd710261febda718bcc52c6a5637ea4953b697a33efeb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000015.json",
+      "bytes": 23374,
+      "sha256": "ddec5b62419017e678ab8ca2e98e3750c68eb87957ce59448570572f1c9675f4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000016.json",
+      "bytes": 23734,
+      "sha256": "8d2ba40fc48801ce0b88ad938d0893388f982904b4de8f939ef36bc684da57fa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000017.json",
+      "bytes": 23398,
+      "sha256": "e8ddedcd66e557b39573fbea6fddf7ef609975a6dcbda51f25104279184760ea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000018.json",
+      "bytes": 23460,
+      "sha256": "7e2b529b88f731b009c0898cf71311b28e91e292a86c14ce104533dd6da11858"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000019.json",
+      "bytes": 23707,
+      "sha256": "603c715d696c3aa28876cf4f618df689aaa9213e43c5dc490e74fb95bf2768d9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000020.json",
+      "bytes": 23418,
+      "sha256": "afa1428781d2337903c44baf574365aa9362d24fb1bb67017c220cfd63406c7f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000021.json",
+      "bytes": 23664,
+      "sha256": "de76dab8e9f561492ac408cc85f2868259a40b238d281555c450066d90672fce"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000022.json",
+      "bytes": 23651,
+      "sha256": "aa705b096c9b070a98a2d0daef33951e3c930a97ca2cc0f7d567f927070aa0d9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000023.json",
+      "bytes": 23683,
+      "sha256": "9970a6fb8a08527faaa3775ae1142c96ad4867677a00a6a3088bc55d30995fd1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000024.json",
+      "bytes": 23748,
+      "sha256": "a9978516bfbe9a465df0022b28ce4531a14097acb724ab120d8506024dcd1852"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000025.json",
+      "bytes": 23568,
+      "sha256": "8491a231b4d53dc196cae2ed0930409115b6ddefa119c157853dac9e976bcf79"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000026.json",
+      "bytes": 23214,
+      "sha256": "5a5168c2b87aa2d259d7d70ba551a4280873bfdb2aff8b312438ce22fcaa0ecf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000027.json",
+      "bytes": 23617,
+      "sha256": "0b857a2a91e88c8780f6e001f098dba9f38b1132cd844330f5e9f268048a00b3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000028.json",
+      "bytes": 23629,
+      "sha256": "569b846e9506e21542bc0a7a0b295e414046dc39ca2025a2a994528d0fbbe61f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000029.json",
+      "bytes": 23608,
+      "sha256": "4f84d6e93053fa790e64c7b6d668b6e6163355c4b88658efe09125807834c6cd"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000030.json",
+      "bytes": 23591,
+      "sha256": "3e8ae66cae0c03c82415aa635265f04abb8041ec314357bed27cfdc00e8669d0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000031.json",
+      "bytes": 23194,
+      "sha256": "5e21d8a5bed9f8ccd7d63d63fac1579dd52ba7b05f498378e710b18c72951f20"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000032.json",
+      "bytes": 23509,
+      "sha256": "0659e908458ea8c23f1e749f40d3026a0f31a4ce316b3ea800b964cbddb71e81"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000033.json",
+      "bytes": 23590,
+      "sha256": "f451cdce6354af3fa0a1ae1fc85069a529c8b5875a959fbb93127f3a35f60a21"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000034.json",
+      "bytes": 23507,
+      "sha256": "e04accea31e2e2e2fdce94829f1859767f031e295952bc2cb2ff8bc777a87375"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000035.json",
+      "bytes": 23613,
+      "sha256": "f8d9e5317d4bf3d396464a0de1261bf4fbb489cd2a658b9895ca7218af28e3a2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000036.json",
+      "bytes": 23303,
+      "sha256": "6509e94d690f911c05b4af24f077c817559f0d4c259079b242d6f1bf4499fb0a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000037.json",
+      "bytes": 23430,
+      "sha256": "d671ce323e04e4e146ef1151b264277959bdee56a5fc74eaca83ab780fc0cb0e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000038.json",
+      "bytes": 23494,
+      "sha256": "c3edc98e970b67cb02334297427424f0e2c6a7009757db50734ad12221f4b325"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000039.json",
+      "bytes": 23729,
+      "sha256": "554f3f56bf2363e77ee14f621de2c64b7c3d7c6135e91206ac5b983aa8d15824"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000040.json",
+      "bytes": 23561,
+      "sha256": "53791b441b18807a5324686283d63106e5bd40b8164704c69dbe04a056beffbb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000041.json",
+      "bytes": 23230,
+      "sha256": "53275bc0697df804469f0533dc0b561bdbf6d630b2e4f8a987ab0b9d19707e44"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000042.json",
+      "bytes": 23349,
+      "sha256": "1d25700c45334a47a3881bb8fced728c6afb6530980f685f1a4896298f43cb90"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000043.json",
+      "bytes": 22989,
+      "sha256": "ac789d2b280558104809f1a370e42f2fd20ee84c8c1cbb110be849bf11fbb2d6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000044.json",
+      "bytes": 22108,
+      "sha256": "b2560c912c9f122162110b9cfafe57ab850e3cdd63694628e0317d15eba1e673"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000045.json",
+      "bytes": 22158,
+      "sha256": "f937aa80c16bfe02ad45f5a99f8d314e6d1a283e55cbc658f8647161039c81c6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000046.json",
+      "bytes": 22166,
+      "sha256": "707fae3173d98983f65d08840afac4a34684c598cb2902e048ce5254933b7e5c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000047.json",
+      "bytes": 22211,
+      "sha256": "c9867a80e63992ee246b731a5c925bd556c2ea907ffe272b8d5be5ee25dd80ae"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000048.json",
+      "bytes": 22249,
+      "sha256": "2a4816f491c16e10f2da9f8a0a27809b161f728568abacc25f54b2b1762143c0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000049.json",
+      "bytes": 22360,
+      "sha256": "2bfb441b143ab7ab7a40e6184dfeefaee82664f4e220162a995db01c0d71f615"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000050.json",
+      "bytes": 22684,
+      "sha256": "32f682bfbdb70f4f6a0ce7455ab5f8e741299fb7ca18c86109f763ffd323c2ac"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000051.json",
+      "bytes": 22435,
+      "sha256": "783167ebc1f029b0250d737058afb7c6baee7cd7b98472ebb54ee6f5f45c8631"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000052.json",
+      "bytes": 22743,
+      "sha256": "f11ea759be56badcd5731bc2094692936084a72c0ec5a765f9b06c79cb4e15fe"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000053.json",
+      "bytes": 22456,
+      "sha256": "1bbebe7b744ed5a03b43feac4f6d408cf57255767bc0603f8c80a4afa5c52df2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000054.json",
+      "bytes": 22847,
+      "sha256": "cf1e953f8f32eb010a844e0a06997b992605082fe992c511408134c45e78df21"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000055.json",
+      "bytes": 22875,
+      "sha256": "4101b1594453528f3739451ef145183f32b1cfd7b25826ee0b27b45cb92c97b4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000056.json",
+      "bytes": 23095,
+      "sha256": "46fa6ad693e069f6b8c625af3cb124ac7df937a36ee15ecb2d78d9525aabff3e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000057.json",
+      "bytes": 23126,
+      "sha256": "752193b67bae5550f6857dffb2739365ae0b608eaeb6461f5e108c3499993821"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000058.json",
+      "bytes": 23462,
+      "sha256": "713f79ca1dd941c2207e11bb0e20e7e84f4b7d98df81bd1d3713108a01d1a99a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000059.json",
+      "bytes": 23973,
+      "sha256": "94dc728e84da0d804bfc21ae2aed7c66a724242948502c61e7da00f7c5106c09"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000060.json",
+      "bytes": 23653,
+      "sha256": "823ac12b8b1304fd3beb749a48ad11210317a34820d268d9cf479fa62b1d0006"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000061.json",
+      "bytes": 24056,
+      "sha256": "ad2e96b27cdef04c3433b21fdf38cae40e002e87fc7957dd385b4715a7b3c683"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000062.json",
+      "bytes": 24364,
+      "sha256": "8c4aadd4eb3963bc3b5abf2382291f57594cc4777753e51e9f65e4f7110f7242"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000063.json",
+      "bytes": 24440,
+      "sha256": "78191a91842d6585fcf3e2d7ff9d10d418fec65bd87cbf7de8215f9453eec510"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000064.json",
+      "bytes": 24216,
+      "sha256": "e02df515fec0bdf5ea63384584f97ad04f7c79f01657ccb3b49e9cb42f477c08"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000065.json",
+      "bytes": 24076,
+      "sha256": "dd1fae74bf24003dc830c9c4b4caa7c69bb31a76f8dea447a9db43e1d0bdb7f1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000066.json",
+      "bytes": 24046,
+      "sha256": "6067c67e8c537111b3c3df9c4d12be4739f8d054051457f76069618948b2fc82"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000067.json",
+      "bytes": 24338,
+      "sha256": "62b6446e115c0a8f16a4ffa79fae5771f4f6dc0fd8f4d6c80767b6dbd8cb583c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000068.json",
+      "bytes": 24263,
+      "sha256": "ea492badaa76a49f94d9099e1fcb8b3bb1a226f5592e8139ad189cf68f477d9e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000069.json",
+      "bytes": 24288,
+      "sha256": "170d5512a64845bbd91539a215546cacc90cfa414386f9998b0a7821a98c22ec"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000070.json",
+      "bytes": 24407,
+      "sha256": "13972f2eab87ff9f928aeec949484cb6bae1aacd4c19fd527fc9bf42906cb44b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000071.json",
+      "bytes": 24419,
+      "sha256": "1bb53408b9f48b511e4ee88262dda1376c3f99e87005b61637c815647a56bdcc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000072.json",
+      "bytes": 24246,
+      "sha256": "8958908f101285c89b7a1a26fd006ccee6d32268c3abe581fd958749154ed216"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000073.json",
+      "bytes": 23979,
+      "sha256": "0aa783d086887e197446fc1762f3fa1b1da96a5f870e2b80335a090a92572265"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000074.json",
+      "bytes": 23879,
+      "sha256": "17a500ee75c4b5eef300e34a1058f07a23f225bb80562a30de7349031b498180"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000075.json",
+      "bytes": 23753,
+      "sha256": "e36e3d6571a0ea29b49321ba834a707547c3546bd61dea50f2d8ff036826803f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000076.json",
+      "bytes": 24253,
+      "sha256": "1aeb22628a0b3f2236a98ce505bf9581f9207803e1b0ec4096313665bc2bd355"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000077.json",
+      "bytes": 24200,
+      "sha256": "3f005126648a763d8a78f15736f4bf2cb8cf1d30915b161cbfb9eaa863d409ff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000078.json",
+      "bytes": 24308,
+      "sha256": "f7773a87b5381b1839428c6b27e8532f631bf7ccc49dfca57ca1117d3989bf4f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000079.json",
+      "bytes": 24370,
+      "sha256": "f745c388df8c037a84cbc1e2c391eb418b19d1e7e9bf6692c2a4fe6b36b1876c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000080.json",
+      "bytes": 24316,
+      "sha256": "be976bfbe57d00918cccec89ce402899d167d3423046ce20c647c3ae9ab2a20e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000081.json",
+      "bytes": 24383,
+      "sha256": "e6cfdd6831280d756fde74180ce124c92f0ede5aa6ab99141e92dfec970fc9b2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000082.json",
+      "bytes": 24385,
+      "sha256": "2edd0ae3d7cce21d6b2ca922e9b0f3f4b26697f0a5d39ca530ef59b7564c69a2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000083.json",
+      "bytes": 24193,
+      "sha256": "67f216d8c787a5020e5a7df28d43b2029be00b38155c2eb3091d3d8add3bd8ef"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000084.json",
+      "bytes": 24342,
+      "sha256": "eeb571776af66f1bc94143110dff3d2fbc9f04c680bc7d1d26df2698d65a117c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000085.json",
+      "bytes": 24386,
+      "sha256": "41b758a7c18a70a7f5a7e690cc5a1c0f88f72a81d18f526eae339bfee128e595"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000086.json",
+      "bytes": 23953,
+      "sha256": "b273dc6d9099d3039e7736bec170c2f27e77390f3801e0706900e48f68d4008a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000087.json",
+      "bytes": 24155,
+      "sha256": "9c1a40422886c0384352881560e5d43a572f4086cc55abbab95bef3926563a12"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000088.json",
+      "bytes": 24343,
+      "sha256": "d19f7d60a793a77b5cc1bdb22340cc49b6a6a8ccc68c5b77521fef38c09fe1b3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000089.json",
+      "bytes": 23880,
+      "sha256": "8d2c92a74fd7ea2341eb14aefa1eaf61151cd758cf70e6241a70c848fbf509b3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000090.json",
+      "bytes": 24076,
+      "sha256": "3f4f45b7806a36a039f78ec515718732ceeca16b7eb22ac88e760ffc42993fc9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000091.json",
+      "bytes": 24266,
+      "sha256": "7bf5123118149345d93d0218a032e064e66d5a609c8a2f50b58a3f9314c63a6b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000092.json",
+      "bytes": 24438,
+      "sha256": "4d59e2d06b1a2f2b3da96617e494d198f447344b4e909200fbc06197fd384b63"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000093.json",
+      "bytes": 24009,
+      "sha256": "76eff64aeb03d9823c5d633548a643c18531a43918e48ad442edf8863689a91b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000094.json",
+      "bytes": 24214,
+      "sha256": "e67629ca5f40d9eb9537cd4052e60c3b4a76c73ec3e8902103868f0e0bc3ce4f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000095.json",
+      "bytes": 24325,
+      "sha256": "02e4dba1efa3ec62cc0effd3f12479d564afef2117f1e2eea57649946eb85111"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000096.json",
+      "bytes": 24223,
+      "sha256": "0753f4caab8b5a223c9bfb0c718d01ab8cb3012d96051ee9c34352478f0eacc5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000097.json",
+      "bytes": 24346,
+      "sha256": "2ea2550dfbd94d56c8ab434dfb003c22e0a65e43a4b7388fbf86f20af0a41029"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000098.json",
+      "bytes": 24181,
+      "sha256": "b7b71bd9742b186a72e5382e5a23367cac518a21e5aaa60cef1c3f3d9ed1a3e1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000099.json",
+      "bytes": 24203,
+      "sha256": "c19b18f1dcb2cf626e77b1998e93fe090fe0234dcf9b3cfe94c6b5fc4dd183ca"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000100.json",
+      "bytes": 24209,
+      "sha256": "cab18e652a4f2e3840ecb0251e2f75b7e400c191687163564863db92d238edf6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000101.json",
+      "bytes": 23936,
+      "sha256": "9eb1f4352572b5bdb129a2728a1ff5736ed33c8cf7e4c550e2501d24aa9986dc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000102.json",
+      "bytes": 23160,
+      "sha256": "81a7b5ee0705d45fdc0ad8d590e6e7f8750790b9f7074e39518a9049ed0a0b1e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000103.json",
+      "bytes": 22997,
+      "sha256": "8de178ba92a628e03f9f9e1cb3983f4b04536f3b6c62b22a7cc4fd72250cb62a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000104.json",
+      "bytes": 23091,
+      "sha256": "b75dae6123ed29b54e5503e461849ed5049a06108edcd40e79e15f2ab982a9e5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000105.json",
+      "bytes": 23061,
+      "sha256": "6dc594405362a80f48c8fee69f774386bbb73875e4a9b61397fe9df8fd21f57c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000106.json",
+      "bytes": 23202,
+      "sha256": "76b097509fef767648447a961f9febb7516d9fb3c90dd585a462deae1bbb29c6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000107.json",
+      "bytes": 23210,
+      "sha256": "3ac3dffd3abc00120e8114313db7d753acb055884b164202b1e15d27bf945456"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000108.json",
+      "bytes": 23288,
+      "sha256": "79351d4246a3d25f37951be284626323e6f33981a6c7981937f106197a0e01a2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000109.json",
+      "bytes": 23050,
+      "sha256": "af93f3cc2a724d51ea0ef3318f4968989e4f3696a65cf9cbe3978ecc859d3db6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000110.json",
+      "bytes": 23110,
+      "sha256": "5da998fc4e3f871186ab8a094fd1866a9f8ff7abf8114ccdf215f593e630475e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000111.json",
+      "bytes": 23539,
+      "sha256": "2a125ab0dc590575ee992f149c0b47d636fd8a5b5e980401a38232c21399ef27"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000112.json",
+      "bytes": 23842,
+      "sha256": "ed98aeac577d42144fa52bac1c4cfb9224968358a24044dab6790223bcc075aa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000113.json",
+      "bytes": 23937,
+      "sha256": "0b5f1a310ed2760780787366d6a4b3eaa9872f25538eca3d67b949d32a65ad32"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000114.json",
+      "bytes": 23949,
+      "sha256": "c435abea67b689dfe49b089aaed674cc2092aac9dde20a700195a4e196f35a05"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000115.json",
+      "bytes": 24023,
+      "sha256": "db3652d2fcfb7b75a0da4a1ae9090476b823b2204f6d6e0190ef89a5dddc37bf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000116.json",
+      "bytes": 24004,
+      "sha256": "bccd0d5a7050f90ae0f63c66462d17e5430046b0237f206d90635914385a09c8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000117.json",
+      "bytes": 23502,
+      "sha256": "d09f83311037741812603806447d2d127040a563b4ae9f02b98236ae5863fcf7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000118.json",
+      "bytes": 23802,
+      "sha256": "2918479aaceaa30767d0e0d13aa21e19c36e888d7341b8946bcbe2c37f06bdc7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000119.json",
+      "bytes": 23986,
+      "sha256": "67183bf60deb36220b0ec5e20804a0bec06551d067af47ce4e629d578d273b6b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000120.json",
+      "bytes": 24161,
+      "sha256": "cbbcfa74e292eb1a830ea2730602794ae270c5fc22e786641bc9289d12f26789"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000121.json",
+      "bytes": 24048,
+      "sha256": "5d4567c6b0ecec42530d03f47b7e6fe31823057015bb0bc8d0e60af019ffce00"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000122.json",
+      "bytes": 23977,
+      "sha256": "4061e6c266f8bb6132c48ee15cc57aa1bd26d1818795778f9311260324c60488"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000123.json",
+      "bytes": 24002,
+      "sha256": "2b6a82ca9df7fd7f9248eb007d9b9476135450f0cfacdc066900ab6eeab0e09f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000124.json",
+      "bytes": 24059,
+      "sha256": "5570105855690677da5875e946b302510a4dc6059b2badf73c790a486938759f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000125.json",
+      "bytes": 24098,
+      "sha256": "050056a493b857349a5f032492e83f81a33a828f4e29788411d68cbb0842d789"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000126.json",
+      "bytes": 24206,
+      "sha256": "e743acaeee5fbcff0d2ca9fb281b9817ec02d450bfa4cbd1ca32a411edb73572"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000127.json",
+      "bytes": 23773,
+      "sha256": "6cdef92447f43b9a4515ff5126fe726e79244396617c11182fbe3a9d686cfd03"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000128.json",
+      "bytes": 23770,
+      "sha256": "11ea5f3761765eeb2a0b5a60131418d86ad1ac1053f8b688b72da9e25b7a18b1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000129.json",
+      "bytes": 24064,
+      "sha256": "47f9664bef840ee30fd74f105c85b998c3d66a60cb4f0649b9d92ac162b7553c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000130.json",
+      "bytes": 24237,
+      "sha256": "b0e402141df23fd020e38dc561c1bee4f8d6f728663895b6693b1360b689f280"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000131.json",
+      "bytes": 24225,
+      "sha256": "7b1df17a83c8d6fcd7121b1aa7b8a6f4ca8ddf30a0c708b23e51355070e14d4a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000132.json",
+      "bytes": 24225,
+      "sha256": "dfdccd3c72fa5727130a663ab99cc5bebb66358aa4dd1c99106786b9cdde5598"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000133.json",
+      "bytes": 24126,
+      "sha256": "db5ab4cf0eeecce0c973adf8a9b7f77f253657754f744fe2e1baf9dcaabf8c7e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000134.json",
+      "bytes": 24221,
+      "sha256": "77d97ea7c80fd1daf2ab01613a864ec363d9caa87708cd4484d74ab6f99dade5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000135.json",
+      "bytes": 24121,
+      "sha256": "59736bedfed58862135ea5f7dc65b0a8a862b8fea49ee867083cfba5922846e4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000136.json",
+      "bytes": 24136,
+      "sha256": "2677e5d4383cd433aa97c90f658ada58e53655961929ac9c6f43c2481c711020"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000137.json",
+      "bytes": 24131,
+      "sha256": "931db2873cdb9d48ca4d1776493b8988621f2985151e5f3b80c1e96d5ad9f62e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000138.json",
+      "bytes": 23905,
+      "sha256": "d74e2719479adedfacec396e4b26654f8b0b6fb948ffdfa2f8154cbc469a3ab2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000139.json",
+      "bytes": 23876,
+      "sha256": "013beecd3fcf139b12f4605effc032cb21a8eb34d44c27c367408cb0d5bfcff1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000140.json",
+      "bytes": 24204,
+      "sha256": "55ea9f28881d5a74c693c4df15f0f508d7a8c7857f546bc7305576d136a399b0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000141.json",
+      "bytes": 24274,
+      "sha256": "14a28c8d0e4faed54d41c645c0997b2093a3544aad1f0c7ea790bb5e3c574b70"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000142.json",
+      "bytes": 24188,
+      "sha256": "d7e68c9ee44d94386dbd522fc0541326d80d868da0f3d30f51b2ee21cd62e790"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000143.json",
+      "bytes": 24264,
+      "sha256": "9ef7b45ef3141e60f795863b44cf811e32a1aea606c7b21d009e94770d6e9dff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000144.json",
+      "bytes": 24285,
+      "sha256": "2ce7be60d52d4351fbe72ed1fc4678a750462b326e79e1f39ac650eaab93a1d4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000145.json",
+      "bytes": 24137,
+      "sha256": "624863ff4f09d426f79df7c0c4468bff0ebcf87f6490d87cb32d2b59f48b7c35"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000146.json",
+      "bytes": 24263,
+      "sha256": "fe687770db11998f622ae5c6494a0cbfb230401814cf2801ddf3d5ccd31c05aa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000147.json",
+      "bytes": 24241,
+      "sha256": "3469c00e57f794657bfe11f0028882018dd344435ae1cb6faa5c9e4b66df6728"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000148.json",
+      "bytes": 24002,
+      "sha256": "082c66edf07c74d12d5f0a4accc867b4d05c76e94059f0529d0ecdd2075c91d2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000149.json",
+      "bytes": 24236,
+      "sha256": "153093bb987641a8dd4490e7aa5ad6350b506c4484dfe069c49dcc7be9010577"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000150.json",
+      "bytes": 24427,
+      "sha256": "dd84269865475e3155ee49906ab3a14b0522b124eac10098f05a52b88873607a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000151.json",
+      "bytes": 24151,
+      "sha256": "65cd5db877f3ba5aa7068476303ccf3f9a85fed2de3eb1c34f64f7cf663f3d2a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000152.json",
+      "bytes": 24325,
+      "sha256": "502858f3a9d2f645862f1b8793b7064ef1e9c6ca65f70aef092444c9f8037e44"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000153.json",
+      "bytes": 24305,
+      "sha256": "4cc7b79e686148f5a1c22bf407d78c763581e3a23c03988d9f38f39fab3de990"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000154.json",
+      "bytes": 24345,
+      "sha256": "cbb270955f3d9a8c04fa27c53907cbdc38881ff18a0f110235d6b4e65e7ef618"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000155.json",
+      "bytes": 24361,
+      "sha256": "102f8f5a452921d97cca7678200bd48cd6618be1a08281267fc6552826604cc9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000156.json",
+      "bytes": 24063,
+      "sha256": "a83b50316fbf6197d88b21a4ba7e3f8603e69983b44aded257320fc40dbca015"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000157.json",
+      "bytes": 24182,
+      "sha256": "bdf22fd4caaddf34d066e4a42c75ddda89530ea2c9ed36db71d26c7151f2edf5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000158.json",
+      "bytes": 24281,
+      "sha256": "79ab8beef6ab342b3fed26be95cbbfa77860b09d5b5917659747e3b47c8d97cc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000159.json",
+      "bytes": 24322,
+      "sha256": "090bd01dc89a2c47846bc076dd537c15fb646e0bc7acd6f7b14137b89d3d48ba"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000160.json",
+      "bytes": 24277,
+      "sha256": "80cba13b1c3826c4d6dd4ea19158142bf3a118ec81cf2a5ef9fac55b3b2f7e21"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000161.json",
+      "bytes": 24369,
+      "sha256": "fbc2c91035fb86a4c90d4190d2839408aaa6e679b8ebe1bae4ef3d05b234abf3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000162.json",
+      "bytes": 24395,
+      "sha256": "39d129da8658d2fcf210458ef56b9e4cc7b3c9abc41c175435e147e95bcd1151"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000163.json",
+      "bytes": 24307,
+      "sha256": "b0c5587bd4b6ce0a913b5dd8732ae94d3484048a923f1fc814e24feb26f45c6a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000164.json",
+      "bytes": 24024,
+      "sha256": "e8e84e2fbea9deca36dc13d9ced87dc6b734bce44085a17c27da0f4a5dfb01ef"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000165.json",
+      "bytes": 24066,
+      "sha256": "c60e19f3ddd331aec0c93d2a115ef42209e5c9f59e74b7d39d5c6461f7eff96d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000166.json",
+      "bytes": 24308,
+      "sha256": "4266959389459f72e6509e6693e75c23f9ad058e88d2e829c3ad158bc85ada9c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000167.json",
+      "bytes": 24273,
+      "sha256": "8c2ac4582171795e38392e22a8e1bd9e9d2c0d12cb55f31c1eab0efdd6cc371f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000168.json",
+      "bytes": 24376,
+      "sha256": "4dd77e5e2216c30dddc70840ca1c79cd2a2d485edc26f0ccaa008816067db90c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000169.json",
+      "bytes": 24102,
+      "sha256": "fd023ebdb455b8b8c5c7dd70e9702b36e8e58967fdef0c92e5f1696543f6bf6d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000170.json",
+      "bytes": 23913,
+      "sha256": "d9800e2c8ccdbaa786d6b00c52ac846f026ff1cd2f8df078146abca8ff556fea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000171.json",
+      "bytes": 23926,
+      "sha256": "bef5b69c4be3563af0837a6262f1c2371f5f4ecc114c07dbdfd0177ed683e712"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000172.json",
+      "bytes": 24068,
+      "sha256": "f9ffa6abee19efb5476586d7d639790d2e5b98ff899b446cce7ce5ac65f94f12"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000173.json",
+      "bytes": 24250,
+      "sha256": "58a72909d91dd467aa87f881b2fb1839cc5e8f10fb757959f4332688c68fa6a2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000174.json",
+      "bytes": 24077,
+      "sha256": "66094a4f26334e8c55deaa2f3cd33f1cd395c054c8aad50587fd8ee3ad17d993"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000175.json",
+      "bytes": 24178,
+      "sha256": "e984cb8dac83d55c4ed906b5047b8da3bcac692be920e502f004593e13ac966f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000176.json",
+      "bytes": 24125,
+      "sha256": "0c2b891b6916cb8753cd459f08dd778db45f209920c7eb87fbedeaac8b6f0020"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000177.json",
+      "bytes": 24029,
+      "sha256": "bedc81e6a7d6fc2ba23d598d390f22b6564017e4622e18bde87ba22c03e953fa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000178.json",
+      "bytes": 24173,
+      "sha256": "40c204f4b6f023e3c7039f843a0d6ce36ea8a6334be1e48edb82903f70111474"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000179.json",
+      "bytes": 23865,
+      "sha256": "92a47f5cf13a64025f40e728fdb2810e620b9c2f6966bf65023ecc59cd4cac71"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000180.json",
+      "bytes": 23829,
+      "sha256": "b1e3bf9027db71392dabc7882802ef7726bdcab0c3be14ef9855d831e7e05725"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000181.json",
+      "bytes": 23969,
+      "sha256": "c6b767833501b14d029cee2d35307d941ec94b8c919083981bd92b3168021a5d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000182.json",
+      "bytes": 23954,
+      "sha256": "153be778de05eaa140cdb747c3be6943234173d2ea63b7435a4e5a7ef5221c49"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000183.json",
+      "bytes": 24034,
+      "sha256": "3ff03516887c1eda634fb9b29ada8ae7554d353cabb09666d39e3a27634a47a1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000184.json",
+      "bytes": 23758,
+      "sha256": "ccd4135eefaa126c3fc91c9fc0e2184877930a8cdd231fc9add62f2d6e4041bf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000185.json",
+      "bytes": 23999,
+      "sha256": "0b893cdff659a9a83e199a6ae41d62d683f6c97e43c8665e2e598c3167fce5cf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000186.json",
+      "bytes": 24035,
+      "sha256": "b1cebb1f35331412442f332335de8954912b0eeebf51d0038f39fb56ffa8997c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000187.json",
+      "bytes": 24003,
+      "sha256": "a431d61e04c66f7b73d818dc6ffe6470f495c97052650c838af3ef682a982863"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000188.json",
+      "bytes": 23539,
+      "sha256": "1722721dabc2d23f29fbcf20f813127926041613ec323e5d71876f9a7f6301ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000189.json",
+      "bytes": 23670,
+      "sha256": "1d7154844c25c58fa77db9d6fc13cdccdde66e6e932d34cc9915ee37e3483028"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000190.json",
+      "bytes": 23758,
+      "sha256": "f1c656d244ba4be6fa4fec24c6d40f3c81c6ebfa26572a571e4d590f50f2246c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000191.json",
+      "bytes": 23133,
+      "sha256": "d261e19d1d44421b8064d0ce775c4f4fc8f40660bdf664d3089425996fd16ac8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000192.json",
+      "bytes": 22943,
+      "sha256": "f4586f860860e4f60bb7b01caa76733a270a87893d4942ba3fba6518f5049023"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000193.json",
+      "bytes": 23047,
+      "sha256": "9a1d816e7fc3cd42b1c777957b8c1358f89b71390092e86b871ca11be12180a5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000194.json",
+      "bytes": 23207,
+      "sha256": "d5fd8dfbeba7a1049d57061bf3c772dd5d49f9855997f33245d4b284b6d37a61"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000195.json",
+      "bytes": 22770,
+      "sha256": "3f5cf8c6c0b13dec9937d623455e6dad39031201de31d454ad2a69ad3cc0ca4a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000196.json",
+      "bytes": 22958,
+      "sha256": "3962b68999777aa3a364812387526ccb1a99c876760eb2441763d33695984530"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000197.json",
+      "bytes": 22897,
+      "sha256": "10500dc9628bdb492359f65e4f658025116b22e2a3f78f6623b066a5bf7e3a4a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000198.json",
+      "bytes": 23000,
+      "sha256": "84a3cca5a71a8925204c9ff1060b68b6ed718760b9c5dd2be867add376614b3e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000199.json",
+      "bytes": 23553,
+      "sha256": "c576ad55d6437353bebba10f72513c2e16755ce7b12a93ec6e193d604970b103"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000200.json",
+      "bytes": 23734,
+      "sha256": "9330e255e1224104a9e556a52321760ef27bac88ebd32a2b79db7d114c1f4d17"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000201.json",
+      "bytes": 22556,
+      "sha256": "d3a8a4738df2266f8cc9070f37e61e63a3ced1e4b051f4831b01f271753dd5a2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000202.json",
+      "bytes": 22963,
+      "sha256": "f834b0ee38acd61c1ce76dc2a2075f83ceda2a23cc95e189db646ea07d7216fe"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000203.json",
+      "bytes": 22691,
+      "sha256": "0b9129379fb2214ef30d643ed8ed5690db11ed35895d9259a9d6ad5d92c05a43"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000204.json",
+      "bytes": 22763,
+      "sha256": "3203b3d017438348029fdceab90f4d380db0f49904906a598f0a2bfcc59b4052"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000205.json",
+      "bytes": 22975,
+      "sha256": "a37ac8c1f41776b5706957b707e4c96ad3d88ff164f10d0591fc06d4f72c036b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000206.json",
+      "bytes": 22995,
+      "sha256": "3beb3e63790cb1889e5d5b453103bf205532deb6757aee3c81ab1790b1f060cc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000207.json",
+      "bytes": 22998,
+      "sha256": "04bc8936c6d07f4be3bb596a7f5b32bc5a86a1011e15e2fee9517d26c2be3ebf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000208.json",
+      "bytes": 22983,
+      "sha256": "02fb495823468bd6cbec33bc8434d4f7c6ee54c6e82c681bd81c3d0dd20c38e8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000209.json",
+      "bytes": 23170,
+      "sha256": "736456d2fddb6cefad02d50f2936a93cf788c14c71abda450c83d04c4800622a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000210.json",
+      "bytes": 23011,
+      "sha256": "ec07161acc002c8e794552e085d722e28cb12b3911c9c36a0f0ccebad39a3f99"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000211.json",
+      "bytes": 23221,
+      "sha256": "7ee1fe2e6d1a2ebce4a91200b996c97cc4bc80cec46a56c647d0d9a145396b4f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000212.json",
+      "bytes": 23598,
+      "sha256": "5f5c3b4b62fcf81eb1654f4ff63845343f723e8abc587e86b3814a3442b15701"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000213.json",
+      "bytes": 23661,
+      "sha256": "4fe8e7450ebfc40e90a15fcbc0ca23230471c57ff605d7fcb56d9617c4c33b7d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000214.json",
+      "bytes": 23836,
+      "sha256": "71be5ae3a0033505bb59a286782f16464b9394cf03a7fb09cbde6dfffbeac3f7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000215.json",
+      "bytes": 23917,
+      "sha256": "49d64c16c37c5d52ed66ee86e877a90cdc5b416aa0c5407b9c001f30fbb006bc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000216.json",
+      "bytes": 23969,
+      "sha256": "3849d109cd3cc2f6fad80d7fffb2819535fb7e2828539e3f4a4a0666345f6845"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000217.json",
+      "bytes": 23821,
+      "sha256": "9b44c7cf8d1abc51352ca8e1743920f8baba56d141d00f95dd62806a7d0310a8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000218.json",
+      "bytes": 23846,
+      "sha256": "5d53f8172df2a4c1785bae4c3603f29940411309ab5758633d0c42d242b7d237"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000219.json",
+      "bytes": 23872,
+      "sha256": "f4e701555e5c5b9d5e5af84f3affcfb2ba9705f09163856887021105bc605319"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000220.json",
+      "bytes": 23869,
+      "sha256": "fa2b6122072eaeea52a0baed44cbe42027be5b58313ae7ec710d6ccd55a9a9b8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000221.json",
+      "bytes": 23973,
+      "sha256": "9ae97beb7b88f4a08535f1db6c87b0b9e3df4d932c8bbd5288f5d409b5490856"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000222.json",
+      "bytes": 24009,
+      "sha256": "5ceb6435947c99dba247bf04740a6c4d722959e8d13dc166522f50967a193ab1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000223.json",
+      "bytes": 23582,
+      "sha256": "2d03775530887531dfd12c2dbb96660e6b1872269137adfbc3c39bd7af5b711c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000224.json",
+      "bytes": 23705,
+      "sha256": "19cd0eefbb4947b8c8da273de3374788f8252c35b72e137042a8c5aab2c5de85"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000225.json",
+      "bytes": 23772,
+      "sha256": "63baca9603b4f06673bd31dacf0571c08ef9c1f64719c1ab1440ad6f48e5cf48"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000226.json",
+      "bytes": 23927,
+      "sha256": "d8bad0f36fbcefd90eb9d9b725ad1acec54390987971b756214458bfc319d1f4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000227.json",
+      "bytes": 23467,
+      "sha256": "37812635dea7b9926f9d5c03862044db9ccfbdb163b4bdc6b3a42065fb585558"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000228.json",
+      "bytes": 23910,
+      "sha256": "d0437671cbcf53a5787b5aa75dae88218d22c563a94c2c17bfdb84e969928128"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000229.json",
+      "bytes": 23995,
+      "sha256": "843d86a79708fccc21a1aad0adb07204700476c1d207286371bd479aed2371f9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000230.json",
+      "bytes": 24053,
+      "sha256": "f85efb7212e7a52efe365c1024c6c7aa8cdf0a3dda52dda53b83dede3619590e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000231.json",
+      "bytes": 23960,
+      "sha256": "c6f716a882755219e73be3dfdae208b4b3e0f56516a5be08e524ea3759584a20"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000232.json",
+      "bytes": 24039,
+      "sha256": "b25c0f745d9ea767ef7a31efceb0c5d741d5d3bf1ab01f3cf0164dff10c0f208"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000233.json",
+      "bytes": 24051,
+      "sha256": "704f9d16fdf50319da1415e18ca9907f1694fa17a0333ea44f9ea82d43be891b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000234.json",
+      "bytes": 23779,
+      "sha256": "afa737c6a9238e5428acfc16e9d4d48017fb41b1776ea867059e1e37d457e130"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000235.json",
+      "bytes": 23975,
+      "sha256": "b8d39a2b6e76ec47b68f3dc7ca3d4da548d4cba8a65b292b4432535402764022"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000236.json",
+      "bytes": 23942,
+      "sha256": "36f5cae319d34106d4dc17b555fd885177eb8ff50bd8582eec1af4df2721b024"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000237.json",
+      "bytes": 24080,
+      "sha256": "cc315a84a081c3444e751cae498e7fe65c0a2535aa0ae3b59810b525f4c9c27a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000238.json",
+      "bytes": 23992,
+      "sha256": "aa6dc5f5948f21fc757617a330a00976a4b06cbb19cdce022c928dbc95b7f87c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000239.json",
+      "bytes": 24073,
+      "sha256": "0f03328e1931d56e73621abd9183afeeb27f5c302958fc4d10e53b5145cb3bb7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000240.json",
+      "bytes": 23708,
+      "sha256": "3960db756806c782963701283ce2ed29877bb8c5f790e0cb5947a6dc6c09a63f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000241.json",
+      "bytes": 23949,
+      "sha256": "295f4f2266283eebbbca555ff24685d090e5cd58acc47e87e7853874a4ec9aef"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000242.json",
+      "bytes": 24097,
+      "sha256": "7b9b93439747f837b0e3a2c1efd50d2bebf0bfb28aa6ece14bd0f929c6970755"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000243.json",
+      "bytes": 24150,
+      "sha256": "27ac231b9863f97bcf6facbaa20a44ff64df8cb69fbe499df5097806275650b6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000244.json",
+      "bytes": 23974,
+      "sha256": "f5282ba703ad9c8f19eeb419b86263128410d809a85c67ef69192f8193fa09a9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000245.json",
+      "bytes": 23784,
+      "sha256": "847180ecc0f558e17c4cb6b4e1eafef3b01db871b1ffb33663295caf7c02b98e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000246.json",
+      "bytes": 23519,
+      "sha256": "a70659a7891d107b25339136fd8cd5a491d7f2751f9b84e54f2d6940594236e8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000247.json",
+      "bytes": 23884,
+      "sha256": "c24bc5e0d9db28580316679169b78a76e64e3a5f0c44e52a30e64f47ce03cbc7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000248.json",
+      "bytes": 23995,
+      "sha256": "4a27f910af6dec76544957b65aba4e6f1196b40a11f5992fcda0943d70f1a1a9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000249.json",
+      "bytes": 24073,
+      "sha256": "c47924a68bbe6b7d3bf06a35182c61c983f28d8b4cc74532d8885aa2c20e587e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000250.json",
+      "bytes": 23937,
+      "sha256": "3d1de2d1da14895650228151b2d03cc2c196b197b839370fdc5fc5688790ab29"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000251.json",
+      "bytes": 24050,
+      "sha256": "0a10e074de95ac388a62008e5686b3159bb1e20263dc379f6fbda86afd0b67d4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000252.json",
+      "bytes": 23942,
+      "sha256": "297ac7afe862daba659e4a15b5ad8a70d8a5b063b8551e090e4923a7916b0ff3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000253.json",
+      "bytes": 24012,
+      "sha256": "bf7d3c5a5e2674205ca7d542402b8bb32c534b6b463750ee2416327e61aaca44"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000254.json",
+      "bytes": 24150,
+      "sha256": "6578fef293b4d6a83555ccef74e594ea939a857057b534ef1249fa04155e7850"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000255.json",
+      "bytes": 23741,
+      "sha256": "bc42bf97dbc7dba3b41a1dbc4bf49507c7dfc514fe8283517a43e5f7162583ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000256.json",
+      "bytes": 23466,
+      "sha256": "df29e393dd5b0005b6781fda2f4e7947e91a0aa2fce901056431a26d6c684465"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000257.json",
+      "bytes": 22844,
+      "sha256": "0fa5fc3ab3dac808cbec5c1fba385774a4ea34bb9552c9f89ecbb4d588bd9dad"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000258.json",
+      "bytes": 22595,
+      "sha256": "2aa8b9043d7d7a4d51992445b126f8e3d730ef798d7133f13a945020a35aff04"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000259.json",
+      "bytes": 22471,
+      "sha256": "f19e8255cc7c9c20837b527225e5a8689ad9c6d392a1cf7d36edd84da82e4e7c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000260.json",
+      "bytes": 22879,
+      "sha256": "b46901de4fb0e09f899271e7552ac15ce80f7070f259d7bba092f94310e37187"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000261.json",
+      "bytes": 22982,
+      "sha256": "324099126145b1c8efd49130f29d217c84e8c6b40e5a0ad0e67d86c9504887a1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000262.json",
+      "bytes": 22937,
+      "sha256": "565d9ed995e926fc761b616ee093d73976b51d724e51172dafb4b297f26fc4e2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000263.json",
+      "bytes": 22730,
+      "sha256": "a75526a81751565b9d0df203489dbf2f1469192edb04040e23bc0ea1c091b1c2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000264.json",
+      "bytes": 23178,
+      "sha256": "161cd67b143712ab44b91af69d3da76bbec12c2da767ac454a22b1bc9c1e88e1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000265.json",
+      "bytes": 23088,
+      "sha256": "f52a367f11496e394121f0f8713426c4eaf5d7501cd8ccdf9c666d246fd1ac60"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000266.json",
+      "bytes": 23214,
+      "sha256": "c801caf250a0832b96b0c8d1f57ea78e0e652ff62f9fa0c5a6ccc4ee415f6e1e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000267.json",
+      "bytes": 23663,
+      "sha256": "3d2c090f3f097228286ac16429532633f26bff8ef8446fc4366755967a18db7d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000268.json",
+      "bytes": 23776,
+      "sha256": "f150d3046a98dc65b4d4e777a517fb7f64f979ace0b519d8e6d207a226fad38d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000269.json",
+      "bytes": 23744,
+      "sha256": "5c1958190e15138f17392687b15d5f27da7c1b3fd1a6bfd76a8bd2a71e14059c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000270.json",
+      "bytes": 23699,
+      "sha256": "3dc34b4f9cf6bea53731af476539e1ee4c223f60ce6f722f8961226ef89e4947"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000271.json",
+      "bytes": 23776,
+      "sha256": "f9393f9b426e7de0f6740bd04f4359ca448e152221323f8e88bc9e0ba59d0451"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000272.json",
+      "bytes": 23851,
+      "sha256": "10fc3db8c0ff68c816ca616dba5fcbe18d32a4d5022e4e7b08655b0d1e19b101"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000273.json",
+      "bytes": 23960,
+      "sha256": "9c2646d0d8d79e7ce745498bab476e0c6c566670ba6c5d8463207fd4feaae7ac"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000274.json",
+      "bytes": 23456,
+      "sha256": "7456269a46d182c391cd0ab1b7eaae2e0b62b13d48fd85e50dc82373537c77d4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000275.json",
+      "bytes": 23603,
+      "sha256": "592cb021ce34f2d22a1d4236e411a236c46888ec7ce683b26dae3fce363e90e1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000276.json",
+      "bytes": 23802,
+      "sha256": "cf20f20026998ae75b41aa9cbec1aff35102d8260abf204326cf1e0033eecd1f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000277.json",
+      "bytes": 23818,
+      "sha256": "a7e311c36b12d50374a6d22360a9a4122b10541ba916fae855a18e986ed72205"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000278.json",
+      "bytes": 23557,
+      "sha256": "050da8ef6e8a2073a8f90aba44f9b0d383ee618f6b66c966c5dcd10ce0a4a334"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000279.json",
+      "bytes": 23770,
+      "sha256": "9d2304842102936776039eb3d244cd4b649bb3dacf5fb74de8e08997cadb564b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000280.json",
+      "bytes": 23602,
+      "sha256": "010d3c7d2dd2aa356a5ac857f4efff1b98bdc02259989b17798bfd8b7d026fc7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000281.json",
+      "bytes": 23759,
+      "sha256": "fca1830554c88399f917fef0f4cc720ab46d4679297243bc15fb45d078e0643b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000282.json",
+      "bytes": 23966,
+      "sha256": "6cde9e72748158552a21b781d1495a388868bd47044055dcd1cd4edb0d692bff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000283.json",
+      "bytes": 23593,
+      "sha256": "dc53442d5b90025a38665773eec81cf99f0fdc928664ad3b7f904279eb233210"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000284.json",
+      "bytes": 23611,
+      "sha256": "a7a8c4f1f09aa47c435738b804c858dfc1de65e0cb29a23b87f5bca1f68a8c46"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000285.json",
+      "bytes": 23624,
+      "sha256": "f9338d2545ac902471cef5084746e663e077ff25b69d601f8aea62de56433f5e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000286.json",
+      "bytes": 23741,
+      "sha256": "647d4ecc0438b36b0133b7f2b4c65c7bae3ab60e7ef0a9e22b46acbaa78d9b97"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000287.json",
+      "bytes": 23721,
+      "sha256": "282910041a9752b8d33d0ca96554aa1a69b895a640fa18c7bdf178e62fba231b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000288.json",
+      "bytes": 23909,
+      "sha256": "c2cfc3ede3316b8cfea67a1dc605321d25607ecfdf4aa6f6a70ab1acf38a2140"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000289.json",
+      "bytes": 23919,
+      "sha256": "266d2f297c5668f9e69fc7880000077796fa08fe17467a50064e57a32b0e5a34"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000290.json",
+      "bytes": 23774,
+      "sha256": "8a42fefc18f9e83fe1c7e62cb7703750a18eef2b61cda6c2b93214372534bb68"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000291.json",
+      "bytes": 23776,
+      "sha256": "36d19996b81fbbaa64f4ad50086192b9a716df8ef48b65c4162580ab81ca7954"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000292.json",
+      "bytes": 23336,
+      "sha256": "fc8ca75c7048d2143ce879e8f69a9490a26f25ac547365eacf8b42f0701f8cf3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000293.json",
+      "bytes": 23642,
+      "sha256": "addb0bc4f56691992149c935e0ade2689f2b14170a675913bfda43c608a964fb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000294.json",
+      "bytes": 23784,
+      "sha256": "0ab1015416871e9091674ddbeccc07d1d2d6068043b5396cdfee0f2278e5c74d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000295.json",
+      "bytes": 23725,
+      "sha256": "0c3f2fa893d021b9818c9a7f9c9b573c076e0b32d8c72000d43e644f59cfb4c6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000296.json",
+      "bytes": 23421,
+      "sha256": "c2575212ad636b6a4d92640975d6394e5111ebc812a24e255873972433b99d00"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000297.json",
+      "bytes": 23548,
+      "sha256": "eb49a3c04eadaf21e577c2eabc15478d70f5520b048f2b27a2e3e5ce2b7a59ce"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000298.json",
+      "bytes": 23498,
+      "sha256": "14746d8cc9306a80df345767fdecaebb43def930ef772a36cde6091ce5ed7ae3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000299.json",
+      "bytes": 23613,
+      "sha256": "cba2b71acbb3210497a2636c11e587f8d7968e25ff561aebc45f6da8bf74b58f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000300.json",
+      "bytes": 23775,
+      "sha256": "3b0e61e6b581237beb936d0a010f66db73d6c60b7bfff3c5df78dd0fab319e41"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000301.json",
+      "bytes": 23584,
+      "sha256": "cd79eae33ac400e384112921abd914ddee5210437206bd8a0a5f63b7b230c703"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000302.json",
+      "bytes": 23451,
+      "sha256": "6114f1892223418f72d4f253f5c5c4c14cb49cc2df07202b70d3fe831fcb1cdd"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000303.json",
+      "bytes": 23602,
+      "sha256": "09b0d1ab9854bba337a136381c98e76c785749ff33580365614e91077498f15f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000304.json",
+      "bytes": 23740,
+      "sha256": "a6102c4cf523b4636409c2dc1be3e17d1a93da089842ee9625405c13ebc61b7f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000305.json",
+      "bytes": 23241,
+      "sha256": "6c3c32eb4fcb2d1b96027a800d8719ffbcff2e1d2b55b674ab4977083841fef4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000306.json",
+      "bytes": 23506,
+      "sha256": "c4c8d78fa1ae05b4dfd047057b49b8df3910fbfad0da89eaad7b716987ca50d1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000307.json",
+      "bytes": 23629,
+      "sha256": "640043a405736af6560bbd957578c9d75088b93e1425e10b24fed5609037c450"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000308.json",
+      "bytes": 23613,
+      "sha256": "a22c8f681135939d11861aabe4927ac2ad00c6d395bbfc099a9acfdb9ddfabb8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000309.json",
+      "bytes": 23753,
+      "sha256": "514fd2fb6c1c60ca2ff8fdce91587929d1deabe06281ad46d715857e94f5fe3b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000310.json",
+      "bytes": 23812,
+      "sha256": "32409d2bf1027014ed74050094d2dcff8a33a8e2a43678ec1f8bf0b8b63e8c25"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000311.json",
+      "bytes": 23761,
+      "sha256": "7dba80a7e182554220fd928296f5dc15b2b7bbc707e4b13a090eec34ca6266dc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000312.json",
+      "bytes": 23698,
+      "sha256": "72a46a394802babda86fa3cfc5de5605be0af94cf282ac964577d1bcd5f1d576"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000313.json",
+      "bytes": 23729,
+      "sha256": "5271fdfd229c29c4700e67bcdc9d13dc0695686e7ddc9c4f8577bb77919cbc05"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000314.json",
+      "bytes": 23883,
+      "sha256": "840d2948f227ffe176c42d4adef963228fc92a906e43de311ea70791740f423d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000315.json",
+      "bytes": 23560,
+      "sha256": "156a8d873b6ce638ef2da353e1c9ef73336da75883013f70ae1f710a9cda2941"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000316.json",
+      "bytes": 23651,
+      "sha256": "8303b2568d0389d6690fc5acd04366cd1432a05513c6fa84ddf46caf0efbb807"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000317.json",
+      "bytes": 23787,
+      "sha256": "19283870281e8ff37e17986e842c096c0220ccf86cff4142f6080a4dc8ddc9d7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000318.json",
+      "bytes": 23736,
+      "sha256": "5670119372ab6e3ae7ec9d46b1e8d5bb47ba063b376f2ab9cf43ebfea8ad1fcc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000319.json",
+      "bytes": 23831,
+      "sha256": "00f9378371c39a7f57a5e49efb8c9f4040329061b8d6a02ac8384b6604c8467a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000320.json",
+      "bytes": 23708,
+      "sha256": "ef30fa3c7f7b1f61b88ba0d24d1367ceb2fc81582989e982914ac6c6d3ac8a55"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000321.json",
+      "bytes": 23801,
+      "sha256": "b1aca1d3a2ab34eebdb7625cf6f94e0f6f771061b9a7344c7500ec2d25c7e2a3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000322.json",
+      "bytes": 23987,
+      "sha256": "500aab3d6d2efb1becfef7d3a5737e23322386f4acc2981dcc2df05525ed1472"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000323.json",
+      "bytes": 23895,
+      "sha256": "d0f9898dc6c3148687b9c20cf21a0bf7c1a730bc1e095ff790000a954cc6611d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000324.json",
+      "bytes": 23714,
+      "sha256": "fb23546d2ae84b7fa5ce1e8741583cea0e1b99dc188df8be6814aa4015b32cca"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000325.json",
+      "bytes": 23748,
+      "sha256": "d4b98668f6c202e6636869c687fe82dffb2eb83cc6ee940e7b38cc55feb45d81"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000326.json",
+      "bytes": 23285,
+      "sha256": "c814c6b248d43f06a09f6bbe2fb912ee8f989fcc4a069cf56c7001038d4074a6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000327.json",
+      "bytes": 22517,
+      "sha256": "1c50eb94027405f1bef0cd348b03269688eb035b9bba731f70474b350ac86484"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000328.json",
+      "bytes": 22470,
+      "sha256": "2d2b4fef6d2c9999fa7cef2e405f08ac00a2bd9c122cf240e44dda34817af138"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000329.json",
+      "bytes": 22242,
+      "sha256": "44db81b4ceae5c8576e5e49adb2832b449cdd1177b4d8e1be279d64ae5b9f910"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000330.json",
+      "bytes": 22940,
+      "sha256": "2336568e92f3c1424ca6ec2133cd6061f228c25d4586418fa2ae6d3e8c331a1f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000331.json",
+      "bytes": 23048,
+      "sha256": "5de78a4e8f3ea7c441ebd3c2cba4d4fe070107901d8fb09efc1a880736035239"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000332.json",
+      "bytes": 23503,
+      "sha256": "d3e0fad1be85348bffdf23b97a1cd546896742c4dd44ea9397c255fda955f14d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000333.json",
+      "bytes": 23567,
+      "sha256": "4403fd1afd879b3b292d2a7b0e2dca1630621d5293da48de994e8d19f63e938c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000334.json",
+      "bytes": 23900,
+      "sha256": "a3d249c70cdb463ed46b663eec9abe25bb48c446dbe5920a2ec0589034cfe884"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000335.json",
+      "bytes": 23384,
+      "sha256": "4f345423b8a9deb21ccf1d01641ab7cdbfcce594beb741aa5915310ef5dc3af0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000336.json",
+      "bytes": 23423,
+      "sha256": "57c1dc50a39cad92bb98f0bd4fc752595d8094e46ddbd4dd7b51a666ced3b04d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000337.json",
+      "bytes": 23695,
+      "sha256": "b28afc9fd22ee0c625eb4730715487456ac3ea631b3ba7b9f8881b182478270a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000338.json",
+      "bytes": 23670,
+      "sha256": "cabe5ac0ba4ecd5bf97f2a42e042ef2d3f700f03bb80e620fb4aa3c87d43fb70"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000339.json",
+      "bytes": 23536,
+      "sha256": "156ca311426a33c4f5bd3cade92f5a3667ac52e07ba2ae757e82f647cfec84f6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000340.json",
+      "bytes": 23754,
+      "sha256": "8b2d8ac8ca93e396def33198b7cdde1b39a718cc69b5bc60d41dca1ad0c5314f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000341.json",
+      "bytes": 23731,
+      "sha256": "8fef9ec34fdc8e3c17ae4b088970c6089e9b614b90ab3ef740cf3a13b2a541e1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000342.json",
+      "bytes": 23638,
+      "sha256": "5c007bcafc95d032477f21a3041ba34090f2e00c6ad056fbd7cddf6808866bc1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000343.json",
+      "bytes": 23584,
+      "sha256": "90d9eec291cf39f9725280b151ba9a206eb8395e31f6eccb48f54fe2e80f763b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000344.json",
+      "bytes": 23766,
+      "sha256": "1f3e47ae5ab62cd06165eabeb8aa5ee2e9c25921d9c433ca73f4efdaf715c6c3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000345.json",
+      "bytes": 23577,
+      "sha256": "fe5778a0a428c1178c37fb64177c46ca3be06557e527d02b687bbbb48eca2a93"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000346.json",
+      "bytes": 23413,
+      "sha256": "424e7822d5f77d78882ff67b234e0068cd2dc2cce28490f88626c0b03e644efa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000347.json",
+      "bytes": 23546,
+      "sha256": "43793a9089b47a5c2516365404d84c1c4af7be3b3350b8d917db670c1b64410f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000348.json",
+      "bytes": 23415,
+      "sha256": "24e5f5ac8fe7344404b60076b8fa7325fd29d16dc677f191d2ba4019e0723da4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000349.json",
+      "bytes": 23701,
+      "sha256": "159659f4ba8e66cfb08f3ea654d9fd5950950551710f0deca74655445c867078"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000350.json",
+      "bytes": 23651,
+      "sha256": "1b50408b97436da5868298f3a26c78025adcfd2244cc3aca65483296e297189d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000351.json",
+      "bytes": 38952,
+      "sha256": "555f7cbb5aa6c2175b562340e7425485938547fd90ec86efc3910c471e409113"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000352.json",
+      "bytes": 23831,
+      "sha256": "fea70b8cab54af11e9e3f6413ba85812508f8be0a4da407d0aab873941a42137"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000353.json",
+      "bytes": 23663,
+      "sha256": "e9792aa7082872b67abe2399dd2f3d058a3068c2e05a26986984706668b16f0c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000354.json",
+      "bytes": 38035,
+      "sha256": "b2c44b0b6cdd0cb33e28425fe7b7d8e8f44fdc59272d7641360a995598f3713b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000355.json",
+      "bytes": 23699,
+      "sha256": "f0e7e22157136ae5248f422e47cf45627f2ab558bfe1ffc3c82da07520a5d83b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000356.json",
+      "bytes": 23707,
+      "sha256": "ed2e8cad677a1fa91619a2979493b0b908c4cb00266335d693a1bf1846d4edc8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000357.json",
+      "bytes": 23637,
+      "sha256": "346379a6c234f1cef413042d1ada327ef191f72b60d3c3b89bc6cf3d9849d74f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000358.json",
+      "bytes": 38597,
+      "sha256": "fb39d082c126986ae757a550c8eeacfd9deba68a557e2486e480c881fafc0e92"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000359.json",
+      "bytes": 23689,
+      "sha256": "7ffe01df23ee615c82f8a4b4ed6dca9919ab503ffadefb9a562bed5490341548"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000360.json",
+      "bytes": 23768,
+      "sha256": "403287847292cfe2fd946fb92dfb67d01b562d8db58410f53c9bb1e04a8dbc4a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000361.json",
+      "bytes": 23754,
+      "sha256": "596ee18524bb9a6910ec992357796a375b791161def7bdd1c20828a5539227c8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000362.json",
+      "bytes": 23906,
+      "sha256": "dff260827db41ad7b14105e79025d00f967e2ec2f8d2b978c49b9938d194d724"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000363.json",
+      "bytes": 23642,
+      "sha256": "3a2e3ed904866cb705dff20051b07325e74f303c62ef63f12fd7df8ce254e37b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000364.json",
+      "bytes": 38805,
+      "sha256": "933593497a9eae4fa91ed49668c05e1e3ef2e4b27b75dd7a3c980e846fe341a5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000365.json",
+      "bytes": 23990,
+      "sha256": "0f18afa97567fff83b9d0a563798c3e5379bf7815f6ca2219134b1cda683ac83"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000366.json",
+      "bytes": 23401,
+      "sha256": "523f0ef6967f190dd45b9c2c062e780bf8b32683cd033b99f7a7a08edc2ab55c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000367.json",
+      "bytes": 23731,
+      "sha256": "67f622074f18cf29336274f3e41e6c61fc966bf5b6ea5201e5b070781998fab2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000368.json",
+      "bytes": 23805,
+      "sha256": "fcdb3dffc082a8f6ca2e847cfd55d1723a1979e4e51cf5f6cb08c57c7cf0fa53"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000369.json",
+      "bytes": 23818,
+      "sha256": "b075d52cc5a245dfc15a5ee1974f16e4d660aa6218461f0c426ed4affa365918"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000370.json",
+      "bytes": 23894,
+      "sha256": "7510dca2a69159d178d7993892da6ee5f330e43acb3f36542df310344ebe62a5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000371.json",
+      "bytes": 23819,
+      "sha256": "60ef674a24adb38cbe0bc2769e28cc362c548564de3a1a93faa4826f6dc0cc29"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000372.json",
+      "bytes": 23995,
+      "sha256": "64f5f9def9d8f0e5ea8f70715147f96f5c65d51f4d516b6181cd0bebe79d7100"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000373.json",
+      "bytes": 23670,
+      "sha256": "6b1bd3cb294537ddd97f2496052606582dab01dcf47bca4c428eef2a06ac569d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000374.json",
+      "bytes": 23252,
+      "sha256": "0e357a2f0c3740c91f3fa1072dbe803b4f596dbb57297981d7d36c2f9a8cf802"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000375.json",
+      "bytes": 23288,
+      "sha256": "6ebf56aceb641e822ab7ac88517256020f56f665aff400f481cceb4bca7de981"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000376.json",
+      "bytes": 22563,
+      "sha256": "9a42323ba5acd23fce5074d5a4d0ded7e419d8682a5f5bd793e2c6506a52a02a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000377.json",
+      "bytes": 22114,
+      "sha256": "ae88ef2eab2e497ce5fc5a24c159ef366d3b8c94675f00e1f930f810184f270e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000378.json",
+      "bytes": 21889,
+      "sha256": "f2bc3b91e0e4b09b3cd123fe5af596d20d93160d32e5ea995fae9aef54d34318"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000379.json",
+      "bytes": 21887,
+      "sha256": "bf7357ceba3f34ffc58f6e0694afc25c0966533ccd15ea3803f310d2cdc25198"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000380.json",
+      "bytes": 22026,
+      "sha256": "929097eb1e7bcbdebc411ea21641164a0c0b204e73cf8d3a5a197aa29e69d147"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000381.json",
+      "bytes": 22179,
+      "sha256": "86119810f47d6951fa82fdfa3f0f35c43575ef0c192af39fd263c191a7a08427"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000382.json",
+      "bytes": 22160,
+      "sha256": "fbec5d9ca85f70941dc9eaaac11f725583fbab5c1e7ab69ea0287047e7084ccf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000383.json",
+      "bytes": 22108,
+      "sha256": "110a74d7165e567d9de981a48ade904cdd2d9d6f7f419c034a8886fa784212ea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000384.json",
+      "bytes": 22170,
+      "sha256": "2dab1199b0a4357f1efce43a9d9427a34969d490999f36f5b533ccb6004d95af"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000385.json",
+      "bytes": 22190,
+      "sha256": "46142b70605047dd29fcfe6037dbdf5e33ff3a7e1caae51735a96bad8354ca24"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000386.json",
+      "bytes": 21986,
+      "sha256": "0f57d07c6698dfef92233f8c85b171d3dd0113684c438efdcebfd2a422deea55"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000387.json",
+      "bytes": 21688,
+      "sha256": "515831e33c75d9353c2f11e66ce142f1a0ffd810067a575c8ae780e5bffe0d12"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000388.json",
+      "bytes": 22227,
+      "sha256": "e13635f7423c695ecd5a8c8876237074b8f7b8fdff1b8602c0ce5d8698b63496"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000389.json",
+      "bytes": 22082,
+      "sha256": "99afd14eed27c7fdf74cf4c00835e5e1c0a58efe786a2fe101ac552cf646f6c9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000390.json",
+      "bytes": 22068,
+      "sha256": "7a5982350fa526b09238a2036ac87120eb3c457f42c18251b8c81220bdcef5dc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000391.json",
+      "bytes": 22565,
+      "sha256": "ac8b5e02c0f62b75629badaeaa433ab8449f86cc8da295fa6c04b8deea2a3968"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000392.json",
+      "bytes": 22703,
+      "sha256": "8e0eeaaaf06129f8d07e59feb5d5afdee5f86e95f54f2fe26d3418984301554e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000393.json",
+      "bytes": 22965,
+      "sha256": "ff004f892c60617d8b37df74f2bb7597b8d849fd2704b03767da0a559c153ac9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000394.json",
+      "bytes": 22944,
+      "sha256": "74a928d8f31c9a49edfef23c7a733fa8164d0eef3cbde63989900d9a64712073"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000395.json",
+      "bytes": 22666,
+      "sha256": "c6ae0a52f93183034bffdd0f60275419012f0df020d0f801d8b85982d617c676"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000396.json",
+      "bytes": 22915,
+      "sha256": "aec874b8c1410830eef4512459d2f35b33c11d8fa546ebbb1ca27422b13d9fc1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000397.json",
+      "bytes": 22919,
+      "sha256": "f4d3bf3d2bd9e03e2347c1d39d7123b8b6102274bfbfeaca264c3abd96cc9b2d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000398.json",
+      "bytes": 22843,
+      "sha256": "6bfbc34f5c9636a36921ea76e4470c2918b5f3aa7f95021fabfe50479fa02f5d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000399.json",
+      "bytes": 22938,
+      "sha256": "d0896b54be985b9d3ebd18bc01a3315d5c0b122d0f8fb4df528b4798d27622e2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000400.json",
+      "bytes": 23009,
+      "sha256": "7aaf5dfc8042ed674793a33da8af06c29bd2db6bf84bb9ca38d198e1b4a2e890"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000401.json",
+      "bytes": 23037,
+      "sha256": "51ee12e9b684412eac722144d69d2267c95bad678306566b9aa563136f3c782d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000402.json",
+      "bytes": 22987,
+      "sha256": "8af1723fe21f7d89c23b980bfc34d20eb7beb16f8744b3a324c1b975c235d3ca"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000403.json",
+      "bytes": 23084,
+      "sha256": "ff517179201cdc0b9c0cad3e8aa381c8ef5b3767c13f723810749b55bdf2645f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000404.json",
+      "bytes": 23095,
+      "sha256": "962ae83fd768638cc9218039cad646d3618d8b930270a810bb2a239b42ece899"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000405.json",
+      "bytes": 23254,
+      "sha256": "21ed002e2008ed2372a32105a479d493c805b52a931ac25288438a3816f2a04a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000406.json",
+      "bytes": 23177,
+      "sha256": "4fee29108e53c615237404c69492a7d26cb560fe6f5816809201dbb3bf2267ff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000407.json",
+      "bytes": 23430,
+      "sha256": "9435d4b061c18d5b8cd9b65ba3d33eeddf5a9701b5fac6b05fd63a3192353ecb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000408.json",
+      "bytes": 23322,
+      "sha256": "79a98d36838ee851790ad440a8a647058328c4edb6966a34b18ce2e0467ccca2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000409.json",
+      "bytes": 23636,
+      "sha256": "4f77ca87a1f3d8c771563f83a27a7ed24501878843421adc76ae0fd346e2a6e2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000410.json",
+      "bytes": 23648,
+      "sha256": "1f02792b3bd784df814e104a85602e1eb3c37158b91b2b99cdbbd001cb7a4d0f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000411.json",
+      "bytes": 23981,
+      "sha256": "bd569ccd7dade7c197b2b8cbe34b770897d4ae50ecc6f105b3e57636af84b23d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000412.json",
+      "bytes": 23977,
+      "sha256": "04efaeb47591450f8cced0c10f647f717c11cf648b36179b4dc2514905755e89"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000413.json",
+      "bytes": 23847,
+      "sha256": "d9b3ab870a7ab59f98a87c0d0f784c0685f4745d832ac980a7abba018eadc350"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000414.json",
+      "bytes": 23976,
+      "sha256": "55b924772a679810e4d7b4f71371597b544ce187e37303bdd941349ea707739d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000415.json",
+      "bytes": 23919,
+      "sha256": "ddccd0f7f92ac2d95bc50d28f0768b2884612a77533c18a8db70432643e69c42"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000416.json",
+      "bytes": 23925,
+      "sha256": "6456ecae487edf978871e514bba916d02b80e576a20cfe251ce51604f8a8bbe3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000417.json",
+      "bytes": 24039,
+      "sha256": "d3dcff707050010dfdf360106d62e0e86737625d024e1c612ee411ef1d9ce55b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000418.json",
+      "bytes": 23675,
+      "sha256": "681e912017a7e33a7abf844a6f819f942dfc9d28b9eed82bee10ebb735872d64"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000419.json",
+      "bytes": 23934,
+      "sha256": "52ec108b59d23bcde948e616017dd8ca70d136c109341433d4b65d60ca97a0fa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000420.json",
+      "bytes": 23959,
+      "sha256": "96a7f9bf255e488ca8ad83b708581bc8f4f9b17226594d0792c57cd0cf57b51a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000421.json",
+      "bytes": 23921,
+      "sha256": "6abc1cf73bcf688b316b3ee22a62b0be227924dfb5a5daf4086f8287640e4410"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000422.json",
+      "bytes": 23741,
+      "sha256": "21cc530b6d1a9c1d2841c1458dc7ed5afd8b6a7e7685b4ac6f9b6e0f6a6ebbd1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000423.json",
+      "bytes": 24009,
+      "sha256": "af036569b6bbeeadb8e0a0a3c94ac7b50b561e9f07424d8497592e15cc5ff32a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000424.json",
+      "bytes": 23933,
+      "sha256": "2d0529d40791e985ed8414d184dd920d0c9c85d11b0fee2dcfed52cbf77f6272"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000425.json",
+      "bytes": 23666,
+      "sha256": "359f408697fa2820797f94eab5b7eb7810ec695873ce9bf6a6425194de65d840"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000426.json",
+      "bytes": 23876,
+      "sha256": "1c2c25c53f61b562a0bbfb04ecc3e5d07f81cfe215f281753123c1bdb769d8ca"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000427.json",
+      "bytes": 24079,
+      "sha256": "5eb670fb9f466e17364c91618c194852d42b72e0339d2e71d65ed6f97d4bb402"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000428.json",
+      "bytes": 23932,
+      "sha256": "a3e1151c1a2cc3d17544f74302bc3a915c725633481ac32d420b1d499cf38f81"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000429.json",
+      "bytes": 23753,
+      "sha256": "f02cd5d3a58aa2bc7a6c7802168a235c0c5357f260ccbd97e650b09986d52b96"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000430.json",
+      "bytes": 23803,
+      "sha256": "5a49581cfc954a0aa25810b9a169ae1c3e6e344b304ecbbabf90edbd0784a816"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000431.json",
+      "bytes": 24054,
+      "sha256": "db71ed3a4b432c451041c50098535e7b5d401501f271f57aaa04c0de897dc897"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000432.json",
+      "bytes": 23938,
+      "sha256": "fed4873c685b7740d4e3e0030c11f25921eabda89fdd26b0a54021e4caa98a23"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000433.json",
+      "bytes": 23925,
+      "sha256": "951ccbafd9b47a9c11269ac9450e0f24c163ca1fbcb8b86f96a769f511cae215"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000434.json",
+      "bytes": 24163,
+      "sha256": "2fdb0550b4c30b9cfdea225ba5bf222998ac70d655287a4dd40c99169fe015ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000435.json",
+      "bytes": 23983,
+      "sha256": "5abc4e5f2f18df8dac0cc5926e2352b924df250e41b3144a07656df78e83e6d1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000436.json",
+      "bytes": 24066,
+      "sha256": "2f7b7c8af012f81c8c1813092aa65982992f1353b92a436ef7b26ba442c7c88b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000437.json",
+      "bytes": 23729,
+      "sha256": "ca8eab808c306f3b7c863f42c33625ad96d6675df345f10481b5c741e63b18fe"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000438.json",
+      "bytes": 23942,
+      "sha256": "28b52264ef51a22b579c233c0a763d34e12764e8576ef2d32073475cde02d34d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000439.json",
+      "bytes": 23680,
+      "sha256": "4e1658459d9293888150865065b7a582a1fff448ea0e93895e3aedbebfe1b70f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000440.json",
+      "bytes": 23627,
+      "sha256": "9e6e30dcc94b594069976c81af8c51623abe98d4792472a21a9f3c34d0568b39"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000441.json",
+      "bytes": 23778,
+      "sha256": "4191e349b2d12821b7267d79bca641b52d4eecd76819bafc0939270d0b47f494"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000442.json",
+      "bytes": 23135,
+      "sha256": "499b632e948013606ecba764c5d91dca6a314ee436c84106767a940b541954e1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000443.json",
+      "bytes": 22892,
+      "sha256": "12d84557167c5960ec4e711211a1c1dc4d215b8ed686a414d25019aff954395c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000444.json",
+      "bytes": 22972,
+      "sha256": "5ba201a7f7bafed8af6f45506b1c670356de19974de8a2955887c08bf0892342"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000445.json",
+      "bytes": 23106,
+      "sha256": "7bbb631802b50e0863dad6984bef7e15540f6ca28ad4e81f0f036e145ec1a0d5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000446.json",
+      "bytes": 22727,
+      "sha256": "0fa851f5f0134174c1c5a1ebdf666d7cda6907acb29cb4fe901e5fcb557cd764"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000447.json",
+      "bytes": 22683,
+      "sha256": "0d6799071d3e912034d6034cc155d43940ef6e5d5f226eabdbce73deaafee15b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000448.json",
+      "bytes": 22696,
+      "sha256": "0dfd6ac28f279887e96e3f54df0caa0381ce1769785ecf63c4f08ee6dd282dff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000449.json",
+      "bytes": 22392,
+      "sha256": "98b7b44b4cb1d0146b6d11c447bf0cf0d716c852a74cf5005397b60c13d4fe92"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000450.json",
+      "bytes": 22313,
+      "sha256": "0ad15083ddf12e65e84a5d640852e057e2c6b5c0e0864ba4e40ece7091fede54"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000451.json",
+      "bytes": 22553,
+      "sha256": "7e99780501182c65c486f979a37e685f78874df704d978330b5dc7f3f0e33e3a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000452.json",
+      "bytes": 22780,
+      "sha256": "1fc08b78fd422d26f6133b8bff7e6f2535bc7b97d83bb1b5795ec062615516e5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000453.json",
+      "bytes": 22912,
+      "sha256": "7d186514e469799c6594c235ae3a9e92f0ae45751b424846b34ba1cf1e25cb6e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000454.json",
+      "bytes": 22945,
+      "sha256": "aa40cce5919e1198b30c37c8605fb2e9d53a3f24ea190a7459c3b75f9060fee4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000455.json",
+      "bytes": 22903,
+      "sha256": "b3e7b8aedd606fcddc4813b40f3395b02ff4be0f8d6d64f8b59772d7be33aaa0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000456.json",
+      "bytes": 22882,
+      "sha256": "7a5944c4e25acd2d9af080471d02f67275690d4277b0d2e7bc3da64fdab82cf6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000457.json",
+      "bytes": 22927,
+      "sha256": "521dbc9ea787014c2b461cd25bdb1ecf11b5ae1e00cd595bb28f9f9f5a810d9a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000458.json",
+      "bytes": 23115,
+      "sha256": "e90fcf39f1c5318b36854a55a69981b8169d2c26fb62814ed0388b3cfe0fd40f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000459.json",
+      "bytes": 23448,
+      "sha256": "5329ebb9aa65b63b3572ef2d78f128c71287d26a8198f04ad9332b09ac4fa5c4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000460.json",
+      "bytes": 23434,
+      "sha256": "0e2dae220b607c0319cfd889a9202a132478e70d1b9364f3a7d3a66d06934a64"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000461.json",
+      "bytes": 23726,
+      "sha256": "77cb5b8df3789d145e4f65860b60c92d4ffe83f165e21f4a70017ec227ff6f97"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000462.json",
+      "bytes": 23531,
+      "sha256": "3fbd8bc2b1d86a280cd35d2460d6519c7b982ef01c941bb2a3d119fb8c89b8e3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000463.json",
+      "bytes": 23797,
+      "sha256": "96bb8b2205856e58061fab3952b67d386e42fac9a21a6b660910dc7dba6f10df"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000464.json",
+      "bytes": 23593,
+      "sha256": "64b94063ddb3472fecd2e172a5973419e5557987a7e6e339d4fb25804727839a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000465.json",
+      "bytes": 23894,
+      "sha256": "3e447ae00bf8d22086d7feac338967c17434d8cb4fd62288ffaf094770fb84c8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000466.json",
+      "bytes": 23729,
+      "sha256": "5b0551803d4c093f3e28757ed190a512d975bd3aaae93176d76578ed3b1e2c89"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000467.json",
+      "bytes": 23749,
+      "sha256": "d7166889824f5b62630f281ac014496b3385a11d7d638188ac2e4b2f6075a549"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000468.json",
+      "bytes": 23815,
+      "sha256": "d03b6aedd5cf1e1338a237259dd71521157987089ca3a077a70786d3e3372d61"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000469.json",
+      "bytes": 23803,
+      "sha256": "a467263341edc5242f166212f68fca43164dbca71700cf1b2990cb7a75293fdb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000470.json",
+      "bytes": 23524,
+      "sha256": "772fd5f195e3a6455e0980874e61ac2f6b8a51026573ed15081cf74038737465"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000471.json",
+      "bytes": 23489,
+      "sha256": "fa651de415a70473a33821d48dd6dede38d3565a84429aab58503c8ede100ea5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000472.json",
+      "bytes": 23555,
+      "sha256": "91171f79778f1a2e77a337b575f9c27bd1d523de225d429e9ae0634581932dc9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000473.json",
+      "bytes": 23402,
+      "sha256": "e7f41eb4dee6db93ff6a87598c25bf4c77e2ecaa7bbe82a1886a399c995d36f3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000474.json",
+      "bytes": 23766,
+      "sha256": "f44c59840e295dac3da657c08653b0db23f2a818ef7dc3ba3e57d29d26cb7e73"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000475.json",
+      "bytes": 23775,
+      "sha256": "404dc1c5a0de3dc81397a774b0e15b14a6c111356fd320344d6f7838c321bb38"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000476.json",
+      "bytes": 23760,
+      "sha256": "b6dbaf04a86f799fa1b672c6d209e7af0956a6946d0fb334bc5742d3dd2dca3d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000477.json",
+      "bytes": 23765,
+      "sha256": "3cb024d06c5df737052e1a9c72ff59d7751bcc15be75838959fbfe42624b0951"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000478.json",
+      "bytes": 23896,
+      "sha256": "1b2229376e6886ed86c97bdc40393ead5fb300d94d73fcc6a00291b09f95e6a8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000479.json",
+      "bytes": 23779,
+      "sha256": "9021ffe5ce0e97365062a6900cf426f2d4e6be514db256573bb672866f845d5e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000480.json",
+      "bytes": 23758,
+      "sha256": "2f9188a2bdd2ae1169724edb1c4f8198869c1d2dd816c9c503448d1e9c9363bc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000481.json",
+      "bytes": 23785,
+      "sha256": "0bc80b62fe52930c487b835ba2c585d85a2d8dad57012b54cfa7c4743d362e7f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000482.json",
+      "bytes": 23674,
+      "sha256": "1c84210a258c822032287f15f392be1c5ff53524fc5976c3fbd26a7a1fd910e3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000483.json",
+      "bytes": 23758,
+      "sha256": "6c79cdd94ffb46b921a8e109fe22b0cbfe6814eb84ba4f19d7884f1a3e13b2ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000484.json",
+      "bytes": 23819,
+      "sha256": "32eef39d277670aa92f1f76ca38a8dd9f9ddd2a426220d17ef143811a8a9ff95"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000485.json",
+      "bytes": 23359,
+      "sha256": "4722a08c22fbbb2f8a9d7b532a3962532910e6d8e472312959dadb0b3350f4d0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000486.json",
+      "bytes": 23675,
+      "sha256": "3e274ae660f9b16222b90b1c09fdd97dea17ebc0bce3ca989b16029417654e20"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000487.json",
+      "bytes": 23889,
+      "sha256": "63ae351e2696b1894de51bdc4a434699a95f731abd81fcd327a29deeabb0d3e7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000488.json",
+      "bytes": 23899,
+      "sha256": "2f53b79dd34b4335d6a665603504dc4e59d1bbd0d6030e15b4ccdcbb748c8c6b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000489.json",
+      "bytes": 23776,
+      "sha256": "d3d8e422b053e1c57794fecbdd38ebe40af4a13d13e915197d85f0226255f875"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000490.json",
+      "bytes": 23866,
+      "sha256": "9f7560d96d018142ddcfe6fb2a99485b139e341044d5a9c7539a95cc6e55cf72"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000491.json",
+      "bytes": 23893,
+      "sha256": "6af98d4da1ffcbbe4e36a14cf861871f75953632a84dab9a1b2192d320c813d3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000492.json",
+      "bytes": 23791,
+      "sha256": "9f4b7591ed56bf714b93fe2a7f15ba6caa005e6e282bab39f7a315ecc52109ce"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000493.json",
+      "bytes": 23834,
+      "sha256": "c5ee74c2cf784717dc5b427defecf6db1b297e18d52bebb24a5ae5ba1e88dfbc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000494.json",
+      "bytes": 23878,
+      "sha256": "58d2a8f327b36b944515cdbf77613487af83e4898f23e22c3f4957148beed0a8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000495.json",
+      "bytes": 23877,
+      "sha256": "fbe3bbf23317f942e0047990b683b5b2801a0ea8dedfec55ad16c630a63657c7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000496.json",
+      "bytes": 23589,
+      "sha256": "9bf17f21eb6952a6eaa55a782671acc8a04826f179df9940370c0ece6fc1f5ea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000497.json",
+      "bytes": 23920,
+      "sha256": "95629e69cca86ad31c943e91c23c761cf3275d91ccebf3385e7551ac2d38e6d1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000498.json",
+      "bytes": 23959,
+      "sha256": "83bb7f93b8c164425bbb7177d8e933dff0ed6757952905892b20997b3e3cc818"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000499.json",
+      "bytes": 23912,
+      "sha256": "b108ab9a1215229e503b8f8a139a97ebb85f709dc20101f4c948d473f5ac0308"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000500.json",
+      "bytes": 23746,
+      "sha256": "9af352d45499c21f3fccb3b4f0c95d129d056f4763ea6e8555eb5d7c6f09a380"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000501.json",
+      "bytes": 24031,
+      "sha256": "6548f26e4c0bcc7864769bc81d7fa6c49f01dcfc33cdf4764f4a42d5cef5ca69"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000502.json",
+      "bytes": 23938,
+      "sha256": "3e364168fcfc229e11d20889c96382c8c83d24929aa9f5caf5ebe44a2e04d7ab"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000503.json",
+      "bytes": 24018,
+      "sha256": "694f212e8d07a64d03d85f8b36c2a829b55b8d5ed1763eb13621a7f32873d18f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000504.json",
+      "bytes": 23736,
+      "sha256": "2b683c002017351bab7ee3f31121523382afb3e5bcc96c7c30bfddfc47065ca7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000505.json",
+      "bytes": 23491,
+      "sha256": "decc3593654ab45721a8e34503b8765403185bb7aad64eb0956864b48755e28e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000506.json",
+      "bytes": 23578,
+      "sha256": "342d54ab442046d53e49ebb03a58fcbab9b901762c0461431ab7bcec602a032a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000507.json",
+      "bytes": 22847,
+      "sha256": "b2bd84eeb2da495e4d13ddffe10eed2c3a3325d7ccf75125020eaacba02b4f30"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000508.json",
+      "bytes": 22927,
+      "sha256": "3fd6803fb2b59bb5e9f0cf5cdb4c4fa74630241a8a318fd518cd79ac04d6d6eb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000509.json",
+      "bytes": 22732,
+      "sha256": "c5606744f1192040cfffd4fbf128517e3615be1a5da34ccd353579e747e94eb9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000510.json",
+      "bytes": 22920,
+      "sha256": "258ccecfef63fb351d596b402282e85e0ca808e074fb7f9ece6825bdaac1a74e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000511.json",
+      "bytes": 22802,
+      "sha256": "5b26068ec459db84eb46f94ccea83a950e9e686c8b1bad92705e0ea1da2490f0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000512.json",
+      "bytes": 21726,
+      "sha256": "f7afc2f4686ba025a6d61eb5745b6e1a57b4301818c2abbd612b732ac94b2439"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000513.json",
+      "bytes": 21923,
+      "sha256": "2a89a35461b3023e7a72ebcf74bfc9021a624906a3272cc5248e5071b7ed9fdc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000514.json",
+      "bytes": 21983,
+      "sha256": "0893d5399ec99bf379c70bbe31c74ca24fa4120b4e2a07e177eb3966bfbc9e5f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000515.json",
+      "bytes": 22160,
+      "sha256": "88acccdd57f2ed5af4c7137220d9266433690b36cef042e1afd29e2ce954562a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000516.json",
+      "bytes": 22096,
+      "sha256": "c336bb261fecafd3d1b2ee589dd0fa7f3c55036a0db07800058bc0ecf3520544"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000517.json",
+      "bytes": 22387,
+      "sha256": "66acc209c1f02a5fc7abb9e14b97722777592c28004611a7f9deae94e2686c0f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000518.json",
+      "bytes": 22643,
+      "sha256": "03f595dbc4062b6ebb20ba94b953f3653d672aae33be8a714f3df070c9fee3bf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000519.json",
+      "bytes": 22793,
+      "sha256": "1521696d143af03f12e2227e614f7838085a09af029010ada306364a8e268fb0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000520.json",
+      "bytes": 23069,
+      "sha256": "333cdbc611cd123fe5f995942a8aee54d0aa9a9970e38a29977fd393b2b2053e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000521.json",
+      "bytes": 22863,
+      "sha256": "704778971bb1aa209404ee416abad3efeb2b94c15cd01a58678a4203a4578485"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000522.json",
+      "bytes": 23168,
+      "sha256": "ddf20197995a899d3f97f2e5d7bdd2f89cf1d4df2ee146088b0ddca70b4c5969"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000523.json",
+      "bytes": 23000,
+      "sha256": "ba0b6637ab69445b8dd0802fe5e95a07f9af0d4bed0049c9e1631dbc43f9b875"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000524.json",
+      "bytes": 23147,
+      "sha256": "165945cc8be5b763bffb43d88f6624e1527d02179293d1c0bba8c1520b43a5e2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000525.json",
+      "bytes": 23152,
+      "sha256": "dfff2961fe3ecd3f158f90d2de77659a61e60747ec1d3e1d5b19c2978bdee070"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000526.json",
+      "bytes": 22859,
+      "sha256": "e4e0efcc34171c3c0904a1e2d7df14eccee9ad6f46e721e2b40f2d368459244e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000527.json",
+      "bytes": 23140,
+      "sha256": "973fcb8decb35229cad790c3504771c729e2ea4d34f877f28b07d3260250b812"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000528.json",
+      "bytes": 23353,
+      "sha256": "9d56eb6db7eec8d72fbb0e9d1cada4389d1fa2256310417d9071a58c4d9c671b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000529.json",
+      "bytes": 22942,
+      "sha256": "e074a76d8c5f5346aabbda4c280831f8ee2de9e4901b5d3a231daf1a42c3a138"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000530.json",
+      "bytes": 23167,
+      "sha256": "1a9e1eaba4b7a6fa1be6c3449e6f1876164088b51011c66106f228df2d9a4fbe"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000531.json",
+      "bytes": 23308,
+      "sha256": "41bfecc83fb21d557033f02a4ad04f877a416f50084a04da4433ba6b144bde69"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000532.json",
+      "bytes": 23284,
+      "sha256": "ad4707c9ceca8991902a70747397c05a6d5f8f756b09b7f7e4bbe55fadd7cf14"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000533.json",
+      "bytes": 23420,
+      "sha256": "fc57e57fafae40ae3e94c78b7f690c6a51ac477b4582c7b570acc156284e7885"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000534.json",
+      "bytes": 23353,
+      "sha256": "cba4c4b845f0847740773babd54676d7df76b22c8d18c36de378a51d02022cb0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000535.json",
+      "bytes": 22980,
+      "sha256": "18cc98abf0a1e302efe8b53e6d354727be03c12edc75586abc531139f8c2aa68"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000536.json",
+      "bytes": 23562,
+      "sha256": "b4af1227acc482ca15316c71f5b7db11b611f51a79f6d9a2b73b7b49960b8ed6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000537.json",
+      "bytes": 23381,
+      "sha256": "1f088d3725cec036471c6a233fe4b7e3e7c1e8212d13a0e4f7509b4d92f25a13"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000538.json",
+      "bytes": 24072,
+      "sha256": "500f55722b8bc0de73ca047eb4cd756bfbde0e80eebe513fe26ef422067ce4fc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000539.json",
+      "bytes": 24095,
+      "sha256": "ac2da8887a886cfa97da07ad6e0bed42b749f151861f7a41d212f3c1dcef1cac"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000540.json",
+      "bytes": 23921,
+      "sha256": "15d4ba292ac073bd6859827e9d2e56dfbad3412bd696256d45c2bd9f77d025a6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000541.json",
+      "bytes": 23733,
+      "sha256": "3b91a862a599a32911507cc0eb9a8358641cf8cb4c28434954a25e0f1e884e51"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000542.json",
+      "bytes": 23991,
+      "sha256": "9b4c7496a960544d365bde52998d81194707ba39d1581d1e1ad81699bae0f0d7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000543.json",
+      "bytes": 24198,
+      "sha256": "78704ba6b0719bb66e1d258eb89d5d1ffb0806d57b8fc502b250627830460941"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000544.json",
+      "bytes": 23893,
+      "sha256": "a35014011ad2ede35ae1546fcde1bac5e06b3c90329ecb1a7bde376d0fa037a0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000545.json",
+      "bytes": 24161,
+      "sha256": "137b4e2f69cb427c58f3edda54ccfb51c9a4b78acc0bab151f52825e2a42a080"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000546.json",
+      "bytes": 23998,
+      "sha256": "392d2167be255d5eb3d82c69e64d2d57fb6106029c5aabaf104dcba74afe7300"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000547.json",
+      "bytes": 24239,
+      "sha256": "1bbd3988172cc272dde4d7582103812ce75d020d32a79474d6dc96ac78301cf2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000548.json",
+      "bytes": 24158,
+      "sha256": "c182c152030143a1a31e6185c11a95cd25c913f75b472e97e5391074120aa7ef"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000549.json",
+      "bytes": 24196,
+      "sha256": "b674ddeee9f079aef074f6751becc2f94b1bec6ff25bd51ec67f4c5bc66b2bd2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000550.json",
+      "bytes": 24411,
+      "sha256": "519544c460611d41aa251b9231dd710f11c83db1b90123de6d44b790aba17c83"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000551.json",
+      "bytes": 23836,
+      "sha256": "6095d2843fe2bd9ebbd2db8f83e7c9c4d040aac8dbe25691069b7d6ea9f17813"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000552.json",
+      "bytes": 24279,
+      "sha256": "afae3a86d5787a5024b4380f43bbac150dc69094cb3a56cf7f370989c286b36a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000553.json",
+      "bytes": 23991,
+      "sha256": "ac0758fb235a6302d146322a4c722aabdf063248341409b4d130603f6bef9d3d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000554.json",
+      "bytes": 23838,
+      "sha256": "424a896bb383db196f8792e3fe22cb2af9c9bb6f79141da5fdd31dae4ae46cbc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000555.json",
+      "bytes": 23850,
+      "sha256": "fd5120555a4933e8a33af32071294770ec9b8d42e22066ef1a05bec7e8ab5914"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000556.json",
+      "bytes": 23036,
+      "sha256": "e9ce76961c6ff38d587a91fa867df01b66b97094afe766f861114bd88b2ad4f1"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000557.json",
+      "bytes": 22856,
+      "sha256": "06b51fe0c9fcdf7469aedd829bb83efcb7769dbe6132172bd9cf96dce6d0afb4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000558.json",
+      "bytes": 23065,
+      "sha256": "4afaf01395ccf30714e3e2bef67aa02a1eeee21a58034297a076f4099ef77389"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000559.json",
+      "bytes": 22829,
+      "sha256": "ab3eec0844e2bc4b863ca67362ee18c131c082c49e47fcc1c0c6948b6ea714e2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000560.json",
+      "bytes": 23043,
+      "sha256": "e6c6915726786fd5c5461fab38b8596d2994cc8994da8321f3c810cc8cea7e23"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000561.json",
+      "bytes": 22769,
+      "sha256": "93bce337c88978160855599eae263b884d60a9a59906aac5657968b923e166a4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000562.json",
+      "bytes": 23148,
+      "sha256": "6a51eff7d9b259a02fed3316f01172ad95906c9cbacdda8b718a34408f615bb2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000563.json",
+      "bytes": 22841,
+      "sha256": "4ec3e42fb19d4e458f9784f020901045bc6c49973a8ed6375fa9254b0d3799c4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000564.json",
+      "bytes": 23012,
+      "sha256": "a82d2b05f0cec3084b7496a2acce385afbf02b49c68a2e2a1b354e87314d7453"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000565.json",
+      "bytes": 23141,
+      "sha256": "2849fd81003dc5608dcb972b50456acb0d03e939c3e6201248367e464f39446f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000566.json",
+      "bytes": 23191,
+      "sha256": "3eaaadcc177034cee851f6eae34160978757a47fff723f75620d2d485815b3a8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000567.json",
+      "bytes": 22810,
+      "sha256": "1e588117988d1e33a4cbd8d8133a89f3d15f2f6a0a8089e2fead898f88d8ccb3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000568.json",
+      "bytes": 23078,
+      "sha256": "2fbcfca9b9fd252af2228d14f033a02d1bd032d2af6c58fbba2403cccd5ad57e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000569.json",
+      "bytes": 23163,
+      "sha256": "a91d9bad158056339e1fe8932e18635f1fa417b16d9102aa032a8bd2e6a3dc51"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/native_records/000570.json",
+      "bytes": 22801,
+      "sha256": "441ce329a15f446d8d1c4995f0343e226e96e68973f5ac216d2ba26cfb64952c"
+    }
+  ]
+}

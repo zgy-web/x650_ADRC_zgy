@@ -22,6 +22,8 @@ class PeriodicDispatcher final: public rclcpp::Node {
     hash_=wire::parse_hash(declare_parameter<std::string>("configuration_sha256",""));
     live_=declare_parameter<bool>("simulation_live",false);
     ready_file_=declare_parameter<std::string>("ready_file","");
+    timing_profile_=fcg::TimingProfile::from_name(declare_parameter<std::string>("timing_profile","legacy_v1"));
+    gate_=fcg::PeriodicGate(timing_profile_);
     waits_.reserve(10000); // fixed bounded evidence storage, never write in ACTIVE
 #ifdef FLYARM_LIVE_SIM
     if(live_) {
@@ -41,7 +43,7 @@ class PeriodicDispatcher final: public rclcpp::Node {
     accepted_=create_subscription<msg::AcceptedCommand>(p+"/accepted",qos,[](msg::AcceptedCommand::SharedPtr){});
     events_=create_subscription<msg::GateEvent>(p+"/event",rclcpp::QoS(256).best_effort(),[](msg::GateEvent::SharedPtr){});
     stop_=create_subscription<msg::RuntimeStop>(p+"/stop",rclcpp::QoS(1).reliable(),[](msg::RuntimeStop::SharedPtr){});
-    RCLCPP_INFO(get_logger(),"READY independent absolute 20 ms wait-set publisher; simulation_live=%s", live_ ? "true" : "false");
+    RCLCPP_INFO(get_logger(),"READY independent absolute 20 ms wait-set publisher; simulation_live=%s timing_profile=%s", live_ ? "true" : "false",timing_profile_.name());
   }
   ~PeriodicDispatcher() override {
     if(ready_file_.empty()) return;
@@ -63,6 +65,14 @@ class PeriodicDispatcher final: public rclcpp::Node {
     } catch(const std::exception &e) {std::cerr<<"Consumption wait evidence: "<<e.what()<<'\n';}
   }
   void run() {
+    if(!ready_file_.empty()) {
+      const auto report=std::filesystem::path(ready_file_).parent_path()/"dispatcher_startup.json";
+      if(std::filesystem::exists(report)) throw std::runtime_error("Dispatcher startup report already exists");
+      std::ofstream evidence(report);evidence<<"{\"kind\":\"isolated_dispatcher_startup_v1\",\"timing_profile\":\""
+        <<timing_profile_.name()<<"\",\"effective_profile\":";
+      fcg::write_timing_profile(evidence,timing_profile_);evidence<<"}\n";evidence.close();
+      if(!evidence) throw std::runtime_error("Cannot persist dispatcher timing profile");
+    }
 #ifdef FLYARM_LIVE_SIM
     if(live_) {
       // DDS graph discovery and readiness file I/O are startup operations,
@@ -88,7 +98,7 @@ class PeriodicDispatcher final: public rclcpp::Node {
 #ifdef FLYARM_LIVE_SIM
     if(live_) {wait.add_subscription(start_);wait.add_subscription(actual_);}
 #endif
-    due_=wire::monotonic_ns()+fcg::PeriodicGate::PERIOD_NS;
+    due_=wire::monotonic_ns()+timing_profile_.output_period_ns();
     while(rclcpp::ok()) {
       drain();
       auto now=wire::monotonic_ns();
@@ -101,8 +111,8 @@ class PeriodicDispatcher final: public rclcpp::Node {
 #endif
         if(!rclcpp::ok()) break; // shutdown during ACK wait cannot send a new normal command
         now=wire::monotonic_ns(); publish_tick(now);
-        due_+=fcg::PeriodicGate::PERIOD_NS;
-        while(due_<=now) due_+=fcg::PeriodicGate::PERIOD_NS;
+        due_+=timing_profile_.output_period_ns();
+        while(due_<=now) due_+=timing_profile_.output_period_ns();
       }
       now=wire::monotonic_ns();
       const auto remaining=now<due_ ? due_-now : 0;
@@ -164,14 +174,14 @@ class PeriodicDispatcher final: public rclcpp::Node {
     msg::IngressStatus s;
     if(source_->take(s,info)) {
       if(s.session_id!=session_ || s.epoch!=epoch_ || s.faulted) gate_.reject();
-      else gate_.source(s.source_sequence,s.received_monotonic_ns,s.source_issued_monotonic_ns,wire::monotonic_ns());
+      else gate_.source(s.source_sequence,s.received_monotonic_ns,s.source_issued_monotonic_ns,wire::monotonic_ns(),s.control_time_s);
     }
     msg::AcceptedCommand a;
     if(accepted_->take(a,info)) {
       auto &c=a.proposal;
       if(c.session_id!=session_ || c.epoch!=epoch_ || c.configuration_sha256!=hash_ ||
          c.replay_only==live_ || c.status!=0 || !c.accepted_optimum || !c.nonlinear_check_passed) gate_.reject();
-      else if(gate_.accept(c.sequence,a.issued_monotonic_ns,wire::monotonic_ns())) {
+      else if(gate_.accept(c.sequence,a.issued_monotonic_ns,wire::monotonic_ns(),c.control_time_s)) {
         command_=c;
         // Idle READY ticks have no actuator owner or control phase. Anchor
         // the active absolute schedule once, at the first accepted command,
@@ -200,7 +210,7 @@ class PeriodicDispatcher final: public rclcpp::Node {
 #endif
     ticks_->publish(out);
   }
-  std::uint64_t session_{},epoch_{},due_{};fcg::Hash hash_{};fcg::PeriodicGate gate_;
+  std::uint64_t session_{},epoch_{},due_{};fcg::Hash hash_{};fcg::TimingProfile timing_profile_;fcg::PeriodicGate gate_;
   msg::ControlProposal command_;
   bool live_{},active_phase_{};
   struct WaitEvidence {

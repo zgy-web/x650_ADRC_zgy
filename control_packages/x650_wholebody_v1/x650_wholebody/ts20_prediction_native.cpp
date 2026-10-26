@@ -109,3 +109,4 @@ extern "C" int ts20_prediction_batch(const double *p,const double *g,double maxs
     return 0;
   } catch(const std::exception &e){std::snprintf(error,error_size,"%s",e.what());return 1;}
 }
+

@@ -26,7 +26,7 @@ class NativeOptimization:
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
         if not isinstance(expected_sha256, str) or digest != expected_sha256:
             raise ValueError("Native optimization library hash differs")
-        self.receipt = {"path": str(path), "sha256": digest, "abi": 1}
+        self.receipt = {"path": str(path), "sha256": digest, "abi": 2}
         self.lib = ct.CDLL(str(path))
         p = ct.POINTER(ct.c_double)
         i = ct.c_int
@@ -40,7 +40,7 @@ class NativeOptimization:
             "x650_candidate": [i,i,p,p,p,p,p,p,p,p,p,text,i],
         }
         self.lib.x650_optimization_abi.restype = i
-        if self.lib.x650_optimization_abi() != 1:
+        if self.lib.x650_optimization_abi() != 2:
             raise ValueError("Native optimization ABI mismatch")
         for name, args in signatures.items():
             function = getattr(self.lib, name)
@@ -115,8 +115,9 @@ class NativeOptimization:
         targets = [c._target(t+x, target, x) for x in times]
         age = prediction["measurement_age_s"]
         radius = min(c.actuator_predictor.trust_radius_normalized, .02)
+        hold=float(getattr(c,"command_hold_s",.05))
         recent = [u for when, u in c._actuator_context["command_history"]
-                  if when >= t-.05-age-c.max_dt]
+                  if when >= t-hold-age-c.max_dt]
         # The packed ABI shape is fixed. Direct slices avoid per-node np.r_
         # dtype inference and temporary concatenations, retaining exact order.
         if prediction.get("_native_packed"):
@@ -133,7 +134,7 @@ class NativeOptimization:
                 row[:2],row[2:] = r,R.ravel()
         x0 = np.concatenate((state.position,state.velocity,prediction["q_current"],
                    prediction["dq_current"],vector(state.acceleration_enu,3,"acceleration")[:2]))
-        pieces = [[dt,c.node_dt,c.max_dt,age,radius],
+        pieces = [[4.,dt,c.node_dt,c.max_dt,age,radius,hold],
                   [c.weights[k] for k in ("tip_position","tip_velocity","base_position",
                                          "joint_posture","input_nominal","input_delta")],
                   c.velocity_limit,c.acceleration_limit,c.previous_command,c.q_lower,c.q_upper,
@@ -170,7 +171,7 @@ class NativeOptimization:
                        "residual_Rdot":context[:,11:20].reshape(N,3,3),
                        "initial_residual_rotvec":residual,"gravity":9.8},
                    joint_guard={"q_guard_lower":guard_lo,"q_guard_upper":guard_hi,
-                       "guard_interval_s":.05+age,"trust_radius_normalized":radius,
+                       "guard_interval_s":hold+age,"trust_radius_normalized":radius,
                        "pending_guard_is_robust_proof":False,
                        "actual_continuous_bounds_checked_before_publish":True})
         return out

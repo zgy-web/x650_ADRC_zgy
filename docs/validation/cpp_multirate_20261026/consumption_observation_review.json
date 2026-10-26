@@ -1,0 +1,623 @@
+{
+  "kind": "x650_cpp_multirate_consumption_observation_review_v1",
+  "created_unix": 1793024320.7303905,
+  "simulation_only": true,
+  "certificate": false,
+  "original_evidence_unchanged": true,
+  "run": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257",
+  "conclusion": "All1199 actual sends have the expected per-joint counter and velocity in the original high-rate native physics CSV. Online status2 for dispatch3062 is an observation-resolution label, not proof of physical non-adoption.",
+  "clarification_to_previous_review": {
+    "previous_review": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/independent_wrench_review.json",
+    "previous_file_unchanged": true,
+    "field": "consumption.superseded_scope",
+    "clarification": "The earlier short label superseded must be read as the original code status SUPERSEDED_OR_UNOBSERVED. In this actual case1424 was physically adopted; the online ledger resolved it using the subsequently observed1425. This supplement supplies the previously unexamined high-rate adoption evidence."
+  },
+  "global_independent_physical_check": {
+    "physics_rows": 20475,
+    "send_count": 1199,
+    "joint_counts": [
+      {
+        "joint": 1,
+        "send_count": 1199,
+        "native_counter_and_value_adopted_count": 1199
+      },
+      {
+        "joint": 2,
+        "send_count": 1199,
+        "native_counter_and_value_adopted_count": 1199
+      }
+    ],
+    "all_sends_physically_adopted_under_counter_mapping": true,
+    "failures": [],
+    "value_tolerance": 1e-12,
+    "matching": "Exact original expected_counter for each joint plus matching original commanded velocity; repeated equal values do not replace counter identity."
+  },
+  "target_dispatch": {
+    "original_send": {
+      "session_id": 7225412,
+      "epoch": 1,
+      "command_sequence": 106,
+      "dispatch_sequence": 3062,
+      "sent_monotonic_ns": 98417551703926799,
+      "sim_s": 52.672,
+      "repeated": true,
+      "stop_zero": false,
+      "expected_counter": [
+        1424,
+        1424
+      ],
+      "joint_velocity": [
+        0.03782669562289472,
+        -0.0924910845533244
+      ],
+      "coordinate_frame": 1,
+      "type_mask": 2048,
+      "position_ned": [
+        0.0047281753554811665,
+        0.18526629528508956,
+        -1.9846000615823325
+      ],
+      "velocity_ned": [
+        0.002102241817428274,
+        0.0026430271609919134,
+        0.18523717440757836
+      ],
+      "acceleration_ned": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yaw_ned": 1.6738570928573608
+    },
+    "online_ledger_original_row": {
+      "command_sequence": 106,
+      "dispatch_sequence": 3062,
+      "sent_ns": 98417551703926799,
+      "sim_s": 52.672,
+      "stop_zero": false,
+      "paired": false,
+      "expected_counter": [
+        1424,
+        1424
+      ],
+      "velocity": [
+        0.03782669562289472,
+        -0.0924910845533244
+      ],
+      "joint_status": [
+        2,
+        2
+      ],
+      "consumed_sim_s": [
+        52.692,
+        52.692
+      ],
+      "observation_sim_s": [
+        52.696,
+        52.696
+      ],
+      "observed_ns": [
+        98417551728038500,
+        98417551728038500
+      ],
+      "received_ns": [
+        98417551728204148,
+        98417551728204148
+      ]
+    },
+    "physical_original_rows": [
+      {
+        "csv_data_row_index_zero_based": 12320,
+        "csv_line_number": 12322,
+        "values": {
+          "sim_s": "52.676000000000002",
+          "step_dt_s": "0.0040000000000000001",
+          "interval_begin_s": "52.672000000000004",
+          "q1_internal": "-0.24201287460349977",
+          "dq1_internal": "0",
+          "q1_physical": "-0.24201288453036482",
+          "dq1_physical": "-1.6846971040429537e-10",
+          "r1": "-0.25105484150066809",
+          "u1": "0.037826695622894722",
+          "receipt1_s": "52.672000000000004",
+          "upper_sequence1": "1424",
+          "zero_events1": "3",
+          "release_events1": "2",
+          "q2_internal": "-0.11855436620789257",
+          "dq2_internal": "-0.097030924886037193",
+          "q2_physical": "-0.1185543540641559",
+          "dq2_physical": "-0.097651513168637738",
+          "r2": "-0.13034381635398981",
+          "u2": "-0.092491084553324401",
+          "receipt2_s": "52.672000000000004",
+          "upper_sequence2": "1424",
+          "zero_events2": "1",
+          "release_events2": "1",
+          "last_send_s": "52.672000000000004",
+          "last_send_apply_s": "52.675346379092581",
+          "last_send_sequence": "9857",
+          "last_qref1": "-0.25120620683254691",
+          "last_dqref1": "0.037109375",
+          "last_qref2": "-0.12997378768995982",
+          "last_dqref2": "-0.091796875",
+          "active_send_s": "52.672000000000004",
+          "active_apply_s": "52.675346379092581",
+          "active_sequence": "9857",
+          "active_qref1": "-0.25120620683254691",
+          "active_dqref1": "0.037109375",
+          "active_qref2": "-0.12997378768995982",
+          "active_dqref2": "-0.091796875"
+        }
+      },
+      {
+        "csv_data_row_index_zero_based": 12321,
+        "csv_line_number": 12323,
+        "values": {
+          "sim_s": "52.68",
+          "step_dt_s": "0.0040000000000000001",
+          "interval_begin_s": "52.676000000000002",
+          "q1_internal": "-0.24201287460349977",
+          "dq1_internal": "0",
+          "q1_physical": "-0.24201288453103809",
+          "dq1_physical": "-1.6832010785172713e-10",
+          "r1": "-0.25090353471817661",
+          "u1": "0.037826695622894722",
+          "receipt1_s": "52.672000000000004",
+          "upper_sequence1": "1424",
+          "zero_events1": "3",
+          "release_events1": "2",
+          "q2_internal": "-0.1189437176995793",
+          "dq2_internal": "-0.095681243744444797",
+          "q2_physical": "-0.11894370555482792",
+          "dq2_physical": "-0.097337872668004394",
+          "r2": "-0.13071378069220288",
+          "u2": "-0.092491084553324401",
+          "receipt2_s": "52.672000000000004",
+          "upper_sequence2": "1424",
+          "zero_events2": "1",
+          "release_events2": "1",
+          "last_send_s": "52.677000000000007",
+          "last_send_apply_s": "52.680346379092583",
+          "last_send_sequence": "9858",
+          "last_qref1": "-0.25101708078325924",
+          "last_dqref1": "0.037109375",
+          "last_qref2": "-0.13043630386990093",
+          "last_dqref2": "-0.091796875",
+          "active_send_s": "52.672000000000004",
+          "active_apply_s": "52.675346379092581",
+          "active_sequence": "9857",
+          "active_qref1": "-0.25120620683254691",
+          "active_dqref1": "0.037109375",
+          "active_qref2": "-0.12997378768995982",
+          "active_dqref2": "-0.091796875"
+        }
+      },
+      {
+        "csv_data_row_index_zero_based": 12322,
+        "csv_line_number": 12324,
+        "values": {
+          "sim_s": "52.683999999999997",
+          "step_dt_s": "0.0040000000000000001",
+          "interval_begin_s": "52.68",
+          "q1_internal": "-0.24201287460349977",
+          "dq1_internal": "0",
+          "q1_physical": "-0.24201288453171174",
+          "dq1_physical": "-1.684166694992939e-10",
+          "r1": "-0.25075222793568513",
+          "u1": "0.037826695622894722",
+          "receipt1_s": "52.672000000000004",
+          "upper_sequence1": "1424",
+          "zero_events1": "3",
+          "release_events1": "2",
+          "q2_internal": "-0.119329139833818",
+          "dq2_internal": "-0.096023444116578469",
+          "q2_physical": "-0.11932912768805444",
+          "dq2_physical": "-0.096355533306631186",
+          "r2": "-0.13108374503041598",
+          "u2": "-0.092491084553324401",
+          "receipt2_s": "52.672000000000004",
+          "upper_sequence2": "1424",
+          "zero_events2": "1",
+          "release_events2": "1",
+          "last_send_s": "52.682000000000002",
+          "last_send_apply_s": "52.685346379092579",
+          "last_send_sequence": "9859",
+          "last_qref1": "-0.25082795473397157",
+          "last_dqref1": "0.037109375",
+          "last_qref2": "-0.13089882004984202",
+          "last_dqref2": "-0.091796875",
+          "active_send_s": "52.677000000000007",
+          "active_apply_s": "52.680346379092583",
+          "active_sequence": "9858",
+          "active_qref1": "-0.25101708078325924",
+          "active_dqref1": "0.037109375",
+          "active_qref2": "-0.13043630386990093",
+          "active_dqref2": "-0.091796875"
+        }
+      },
+      {
+        "csv_data_row_index_zero_based": 12323,
+        "csv_line_number": 12325,
+        "values": {
+          "sim_s": "52.688000000000002",
+          "step_dt_s": "0.0040000000000000001",
+          "interval_begin_s": "52.684000000000005",
+          "q1_internal": "-0.24201287460349977",
+          "dq1_internal": "0",
+          "q1_physical": "-0.24201288453238598",
+          "dq1_physical": "-1.6856230300454911e-10",
+          "r1": "-0.25060092115319338",
+          "u1": "0.037826695622894722",
+          "receipt1_s": "52.672000000000004",
+          "upper_sequence1": "1424",
+          "zero_events1": "3",
+          "release_events1": "2",
+          "q2_internal": "-0.11971032408947678",
+          "dq2_internal": "-0.095768533380601512",
+          "q2_physical": "-0.11971031194270132",
+          "dq2_physical": "-0.095296063661720082",
+          "r2": "-0.13145370936862974",
+          "u2": "-0.092491084553324401",
+          "receipt2_s": "52.672000000000004",
+          "upper_sequence2": "1424",
+          "zero_events2": "1",
+          "release_events2": "1",
+          "last_send_s": "52.687000000000005",
+          "last_send_apply_s": "52.690346379092581",
+          "last_send_sequence": "9860",
+          "last_qref1": "-0.2506388286846839",
+          "last_dqref1": "0.037109375",
+          "last_qref2": "-0.13136133622978313",
+          "last_dqref2": "-0.091796875",
+          "active_send_s": "52.682000000000002",
+          "active_apply_s": "52.685346379092579",
+          "active_sequence": "9859",
+          "active_qref1": "-0.25082795473397157",
+          "active_dqref1": "0.037109375",
+          "active_qref2": "-0.13089882004984202",
+          "active_dqref2": "-0.091796875"
+        }
+      },
+      {
+        "csv_data_row_index_zero_based": 12324,
+        "csv_line_number": 12326,
+        "values": {
+          "sim_s": "52.692",
+          "step_dt_s": "0.0040000000000000001",
+          "interval_begin_s": "52.688000000000002",
+          "q1_internal": "-0.24201287460349977",
+          "dq1_internal": "0",
+          "q1_physical": "-0.24201288453306058",
+          "dq1_physical": "-1.6864645790981569e-10",
+          "r1": "-0.2504496143707019",
+          "u1": "0.037826695622894722",
+          "receipt1_s": "52.672000000000004",
+          "upper_sequence1": "1424",
+          "zero_events1": "3",
+          "release_events1": "2",
+          "q2_internal": "-0.12008821287388798",
+          "dq2_internal": "-0.094891807708463435",
+          "q2_physical": "-0.12008820072609966",
+          "dq2_physical": "-0.094472195849584217",
+          "r2": "-0.13182367370684284",
+          "u2": "-0.092491084553324401",
+          "receipt2_s": "52.672000000000004",
+          "upper_sequence2": "1424",
+          "zero_events2": "1",
+          "release_events2": "1",
+          "last_send_s": "52.687000000000005",
+          "last_send_apply_s": "52.690346379092581",
+          "last_send_sequence": "9860",
+          "last_qref1": "-0.2506388286846839",
+          "last_dqref1": "0.037109375",
+          "last_qref2": "-0.13136133622978313",
+          "last_dqref2": "-0.091796875",
+          "active_send_s": "52.687000000000005",
+          "active_apply_s": "52.690346379092581",
+          "active_sequence": "9860",
+          "active_qref1": "-0.2506388286846839",
+          "active_dqref1": "0.037109375",
+          "active_qref2": "-0.13136133622978313",
+          "active_dqref2": "-0.091796875"
+        }
+      }
+    ],
+    "nearby_physics_sequence": [
+      {
+        "csv_data_row_index_zero_based": 12318,
+        "csv_line_number": 12320,
+        "sim_s": 52.668,
+        "interval_begin_s": 52.664,
+        "upper_sequence": [
+          1423,
+          1423
+        ],
+        "receipt_sim_s": [
+          52.652,
+          52.652
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12319,
+        "csv_line_number": 12321,
+        "sim_s": 52.672,
+        "interval_begin_s": 52.668,
+        "upper_sequence": [
+          1423,
+          1423
+        ],
+        "receipt_sim_s": [
+          52.652,
+          52.652
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12320,
+        "csv_line_number": 12322,
+        "sim_s": 52.676,
+        "interval_begin_s": 52.672000000000004,
+        "upper_sequence": [
+          1424,
+          1424
+        ],
+        "receipt_sim_s": [
+          52.672000000000004,
+          52.672000000000004
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12321,
+        "csv_line_number": 12323,
+        "sim_s": 52.68,
+        "interval_begin_s": 52.676,
+        "upper_sequence": [
+          1424,
+          1424
+        ],
+        "receipt_sim_s": [
+          52.672000000000004,
+          52.672000000000004
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12322,
+        "csv_line_number": 12324,
+        "sim_s": 52.684,
+        "interval_begin_s": 52.68,
+        "upper_sequence": [
+          1424,
+          1424
+        ],
+        "receipt_sim_s": [
+          52.672000000000004,
+          52.672000000000004
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12323,
+        "csv_line_number": 12325,
+        "sim_s": 52.688,
+        "interval_begin_s": 52.684000000000005,
+        "upper_sequence": [
+          1424,
+          1424
+        ],
+        "receipt_sim_s": [
+          52.672000000000004,
+          52.672000000000004
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12324,
+        "csv_line_number": 12326,
+        "sim_s": 52.692,
+        "interval_begin_s": 52.688,
+        "upper_sequence": [
+          1424,
+          1424
+        ],
+        "receipt_sim_s": [
+          52.672000000000004,
+          52.672000000000004
+        ],
+        "adopted_velocity": [
+          0.03782669562289472,
+          -0.0924910845533244
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12325,
+        "csv_line_number": 12327,
+        "sim_s": 52.696,
+        "interval_begin_s": 52.692,
+        "upper_sequence": [
+          1425,
+          1425
+        ],
+        "receipt_sim_s": [
+          52.692,
+          52.692
+        ],
+        "adopted_velocity": [
+          0.04663470041300799,
+          -0.09846331095005337
+        ]
+      },
+      {
+        "csv_data_row_index_zero_based": 12326,
+        "csv_line_number": 12328,
+        "sim_s": 52.7,
+        "interval_begin_s": 52.696000000000005,
+        "upper_sequence": [
+          1425,
+          1425
+        ],
+        "receipt_sim_s": [
+          52.692,
+          52.692
+        ],
+        "adopted_velocity": [
+          0.04663470041300799,
+          -0.09846331095005337
+        ]
+      }
+    ],
+    "first_record_sim_s": 52.676,
+    "last_record_sim_s": 52.692,
+    "plugin_receipt_sim_s": [
+      52.672000000000004,
+      52.672000000000004
+    ],
+    "expected_velocity": [
+      0.03782669562289472,
+      -0.0924910845533244
+    ],
+    "physical_expected_counter_observed_for_both_joints": true,
+    "paired_online_receipt_exists": false
+  },
+  "online_observation": {
+    "status_code": 2,
+    "exact_enum_name": "SUPERSEDED_OR_UNOBSERVED",
+    "code_archive_entry": "ros2_ws/src/flyarm_control_gateway/include/flyarm_control_gateway/consumption_ledger.hpp",
+    "code_sha256": "a4afec496986a88fcc1dde6c8dc6e98807653e1b85f5dd1cd653779bb3d46e12",
+    "previous_paired_observation": [
+      {
+        "session_id": 7225412,
+        "epoch": 1,
+        "command_sequence": 106,
+        "dispatch_sequence": 3061,
+        "observed_monotonic_ns": 98417551685866276,
+        "observation_sim_s": 52.656,
+        "joint_consumed": true,
+        "pva_send_returned": true,
+        "failed": false,
+        "consumed_counter": [
+          1423,
+          1423
+        ],
+        "consumed_sim_s": [
+          52.652,
+          52.652
+        ]
+      }
+    ],
+    "next_paired_observation": [
+      {
+        "session_id": 7225412,
+        "epoch": 1,
+        "command_sequence": 107,
+        "dispatch_sequence": 3063,
+        "observed_monotonic_ns": 98417551728206213,
+        "observation_sim_s": 52.696,
+        "joint_consumed": true,
+        "pva_send_returned": true,
+        "failed": false,
+        "consumed_counter": [
+          1425,
+          1425
+        ],
+        "consumed_sim_s": [
+          52.692,
+          52.692
+        ]
+      }
+    ],
+    "interpretation": "Online ledger did not separately confirm expected counter1424 before observing1425 atsim52.696; it retained the unresolved-by-exact-observation distinction and created no fake1424 receipt.",
+    "where_observation_was_skipped": "Not determined from these records; no claim that the transport dropped the command or that a particular ROS component lost a message."
+  },
+  "formal_audit_crosscheck": {
+    "report": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_audit_v1/report.json",
+    "all_sends_applied": true,
+    "joint_counts": [
+      {
+        "adopted": 1199
+      },
+      {
+        "adopted": 1199
+      }
+    ],
+    "consumption_passed": true,
+    "mapping_assumptions": [
+      "exclusive writer during epoch",
+      "ordered exactly-once per-joint bridge delivery",
+      "initial legacy publications drained before the frozen send baseline"
+    ],
+    "mapping_limit": "Float64 has no wire identity; assumptions are not proven by counters alone."
+  },
+  "scope_limits": [
+    "The physics callback counter and adopted velocity establish simulated upper-command adoption under the declared exclusive ordered-writer mapping, not a hardware acknowledgement.",
+    "Command adoption is distinct from reaching the requested mechanical velocity; joint1 is nearly stationary during this interval despite its accepted nonzero setpoint.",
+    "This supplement does not change the185.172mm peak-error performance failure or issue a stage certificate."
+  ],
+  "source_artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/ts20_state.csv",
+      "bytes": 10309794,
+      "sha256": "fb39015ba8ae161ad9616c544be51fc9fe8246b4c5b93ead3a95f1c87fdd2e12"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/sends.json",
+      "bytes": 884331,
+      "sha256": "416dc9ffab56ffb5cdd90238fd48195173205797db13c57cd8c705bbab78224d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/receipts.json",
+      "bytes": 470990,
+      "sha256": "dbca1b663a8b6705c5292a64ed926a7348777ad3ece6cb8e57198027670b3c97"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/actuator_ledger.json",
+      "bytes": 549268,
+      "sha256": "a4573c203a4367d2b334681da62ad9de85942d2c3bdaf91aa0235597f2a5cc0a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/lifecycle.json",
+      "bytes": 652,
+      "sha256": "03085ba0f0d5d12667b8325b3e7c63380aa478b57f3204d4c8425820573b370a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/independent_wrench_review.json",
+      "bytes": 187315,
+      "sha256": "e02d5779aa845341d17f76796c47bc62f5a9ae44fd18cb9b45a1b2de1800d707"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_audit_v1/report.json",
+      "bytes": 3162117,
+      "sha256": "8d7f771bfbf75ee703238d6dc7a3664c69ea30bf6fb3a5c3fa377271c1fe9676"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_launch_20261026_220335_24241/source_manifest.json",
+      "bytes": 35584,
+      "sha256": "995f9e28514430fa91caf721e44a58941a5a92837d751147cccb4238e8987bf5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_launch_20261026_220335_24241/sources.zip",
+      "bytes": 883565,
+      "sha256": "d562a6744245d66995213554df8a55450eb1d99082ce2b3093069b0c58e3f0da"
+    }
+  ]
+}

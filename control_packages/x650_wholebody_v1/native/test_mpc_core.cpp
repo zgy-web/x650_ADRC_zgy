@@ -63,6 +63,6 @@ int main(){try{
  auto invalid=c;invalid.feasibility_tolerance=1e-6;rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
  invalid=c;invalid.motion[0]=std::numeric_limits<double>::quiet_NaN();rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
  invalid=c;invalid.joint_position_gain=std::numeric_limits<double>::infinity();rejects([&]{x650::Core x(invalid,ts20_prediction_batch);});
- rejects([&]{x650::Core x(c,nullptr);});check(x650_mpc_core_abi_version()==3,"core ABI");
+ rejects([&]{x650::Core x(c,nullptr);});check(x650_mpc_core_abi_version()==4,"core ABI");
  std::cout<<"PASS: full raw-input core, compact equivalence, transactional rejection including real 50 ms deadline, warm restore and strict configuration\n";return 0;
  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

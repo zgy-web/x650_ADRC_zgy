@@ -26,8 +26,24 @@ inline Json::Value interval_point_json(const x650::IntervalPoint& p) {
   out["lower"]=scalar_json(p.lower);out["upper"]=scalar_json(p.upper);
   out["joint"]=p.joint;out["component"]=p.component;out["source_kind"]=p.source_kind;return out;
 }
+inline Json::Value hold_guard_json(const x650::HoldGuard& h) {
+  Json::Value out;
+#define FIELD(name) out[#name]=h.name
+  FIELD(required);FIELD(checked);FIELD(passed);FIELD(substeps);FIELD(actual_history_packet_count);
+#undef FIELD
+#define FIELD(name) out[#name]=scalar_json(h.name)
+  FIELD(start_task_s);FIELD(end_task_s);FIELD(duration_s);FIELD(source_control_time_s);FIELD(source_joint_time_s);
+#undef FIELD
+#define FIELD(name) out[#name]=numeric_json(h.name)
+  FIELD(command);FIELD(reference_initial);FIELD(reference_final);FIELD(envelope);FIELD(query_times);FIELD(boundary_times);FIELD(boundary_states);
+#undef FIELD
+  out["packets"]=packets_json(h.packets);
+  out["scope"]="Conditional immediate future first-command ZOH with original immutable history and source times; not a proof over unknown future first-send phases";
+  return out;
+}
 inline Json::Value diagnostics_json(const x650::Diagnostics& d) {
   Json::Value out;
+  out["hold_guard"]=hold_guard_json(d.hold_guard);
 #define SCALAR(name) out[#name]=d.name
   SCALAR(subproblems);SCALAR(active_constraints);SCALAR(solver_mode);SCALAR(qp_rows);SCALAR(qp_columns);SCALAR(interval_rows);SCALAR(interval_canonical_substeps);
   SCALAR(accepted);SCALAR(nonlinear_passed);SCALAR(actual_bounds);SCALAR(previous_plan_fallback);SCALAR(candidate_substeps);
@@ -55,7 +71,7 @@ inline Json::Value diagnostics_json(const x650::Diagnostics& d) {
     v["projection_attempted"]=a.projection_attempted;v["projection_solved"]=a.projection_solved;
     v["original_primal_violation"]=scalar_json(a.original_primal_violation);v["stopping_violation"]=scalar_json(a.stopping_violation);v["elapsed_ms"]=scalar_json(a.elapsed_ms);
     v["centre_plan"]=numeric_json(a.centre_plan);v["node_times"]=numeric_json(a.node_times);v["node_states"]=numeric_json(a.node_states);v["node_references"]=numeric_json(a.node_references);
-    v["envelope"]=numeric_json(a.envelope);v["substeps"]=a.substeps;out["recovery_attempts"].append(std::move(v));}
+    v["envelope"]=numeric_json(a.envelope);v["substeps"]=a.substeps;v["hold_guard"]=hold_guard_json(a.hold_guard);out["recovery_attempts"].append(std::move(v));}
   out["interval_repairs"]=Json::Value(Json::arrayValue);
   for(const auto& repair:d.interval_repairs){Json::Value v;v["control_subproblem"]=repair.control_subproblem;
     v["added_points"]=repair.added_points;v["total_points"]=repair.total_points;v["canonical_substeps"]=repair.canonical_substeps;
@@ -100,6 +116,25 @@ inline bool recovery_evidence_valid(const x650::Diagnostics& d,const x650::Confi
         ||a.node_states.size()!=std::size_t(4*c.nodes)||a.node_references.size()!=std::size_t(2*c.nodes))return false;
       trusted=true;}}
   return trusted&&projections<=1&&d.subproblems+projections<=4;
+}
+inline bool hold_guard_evidence_valid(const x650::HoldGuard& h,const x650::Config& c,const x650::StepInput& input) {
+  if(c.command_hold_s==.05)return !h.required&&!h.checked&&!h.passed&&h.substeps==0&&h.packets.empty()
+      &&h.query_times.empty()&&h.boundary_times.empty()&&h.boundary_states.empty();
+  auto finite=[](const auto& a){return std::all_of(a.begin(),a.end(),[](double x){return std::isfinite(x);});};
+  if(!h.required||!h.checked||!h.passed||h.duration_s!=c.command_hold_s||h.start_task_s!=input.t
+      ||h.end_task_s!=input.t+c.command_hold_s||h.source_control_time_s!=input.state.control_time
+      ||h.source_joint_time_s!=input.state.joint_stamp||h.actual_history_packet_count!=int(input.context.packets.size())
+      ||h.substeps<=0||h.query_times.empty()||h.boundary_times.empty()||h.boundary_states.size()!=4*h.boundary_times.size()
+      ||!finite(h.command)||!finite(h.reference_initial)||!finite(h.reference_final)||!finite(h.envelope)
+      ||!finite(h.query_times)||!finite(h.boundary_times)||!finite(h.boundary_states)
+      ||h.packets.size()<input.context.packets.size())return false;
+  for(int j=0;j<2;++j){using namespace x650::joint_safety;
+    if(std::abs(h.command[j])>c.velocity_limit[3+j]+bound_tolerance
+        ||std::abs(h.reference_final[j]-h.reference_initial[j]-h.duration_s*h.command[j])>1e-12
+        ||h.reference_final[j]<c.q_lower[j]-bound_tolerance||h.reference_final[j]>c.q_upper[j]+bound_tolerance
+        ||h.envelope[j]-q_padding<c.q_lower[j]-bound_tolerance||h.envelope[j+2]+q_padding>c.q_upper[j]+bound_tolerance
+        ||h.envelope[j+4]-dq_padding< -c.velocity_limit[3+j]-bound_tolerance||h.envelope[j+6]+dq_padding>c.velocity_limit[3+j]+bound_tolerance)return false;}
+  return true;
 }
 // Shape/identity/finite metadata guard only. The owning Core's canonical native
 // parity, hard QP rows and final full-interval candidate gate are authoritative.

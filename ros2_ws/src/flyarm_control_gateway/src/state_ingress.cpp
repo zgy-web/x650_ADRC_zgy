@@ -21,6 +21,8 @@ class StateIngress final : public rclcpp::Node {
     fcg::Config config;
     live_=declare_parameter<bool>("simulation_live",false);
     ready_file_=declare_parameter<std::string>("ready_file","");
+    config.timing_profile=fcg::TimingProfile::from_name(declare_parameter<std::string>("timing_profile","legacy_v1"));
+    cadence_=fcg::AdmissionCadence(config.timing_profile);
     if(live_ && !ready_file_.empty()) timing_.reserve(TIMING_CAPACITY);
     config.replay_only=!live_;
     config.session_id=declare_parameter<std::int64_t>("expected_session_id",0);
@@ -54,7 +56,7 @@ class StateIngress final : public rclcpp::Node {
       source_sequence_=s->sequence; source_time_=s->control_time_s;
       latest_=*s; have_latest_=true; latest_received_=now;
       store_timing(timing(1,s->sequence,now)); publish_source(now);
-      if(!next_admission_) next_admission_=now+20'000'000;
+      if(!next_admission_) next_admission_=now+config_.timing_profile.nominal_solve_period_ns();
       admit_latest(now);
     });
     proposals_=create_subscription<msg::ControlProposal>(p+"/output/proposal",latest,[this](msg::ControlProposal::SharedPtr p) {
@@ -119,11 +121,17 @@ class StateIngress final : public rclcpp::Node {
       if(!ready_written_ && !ready_file_.empty() && admitted_->get_subscription_count()>=1 &&
          accepted_->get_subscription_count()>=1 && status_->get_subscription_count()>=1 &&
          events_->get_subscription_count()>=2 && consumed_->get_publisher_count()>=1 && sent_->get_publisher_count()>=1) {
+        const auto report=std::filesystem::path(ready_file_).parent_path()/"ingress_startup.json";
+        if(std::filesystem::exists(report)) throw std::runtime_error("Ingress startup report already exists");
+        std::ofstream evidence(report);evidence<<"{\"kind\":\"isolated_ingress_startup_v1\",\"timing_profile\":\""
+          <<config_.timing_profile.name()<<"\",\"effective_profile\":";
+        fcg::write_timing_profile(evidence,config_.timing_profile);evidence<<"}\n";evidence.close();
+        if(!evidence) throw std::runtime_error("Cannot persist ingress timing profile");
         std::ofstream f(ready_file_);f<<"actual DDS endpoints matched\n";f.close();ready_written_=true;
       }
       if(stopped_ || output_fault_) return;
       auto now=wire::monotonic_ns();
-      if(awaiting_output_sequence_ && now-pending_issued_>50'000'000) {
+      if(awaiting_output_sequence_ && now-pending_issued_>config_.timing_profile.command_lease_ns()) {
         output_fault_=true;publish_source(now);return;
       }
       if (invalid_source_) { publish_source(now); return; }
@@ -133,7 +141,7 @@ class StateIngress final : public rclcpp::Node {
       // source timestamp and admit at new-state/consumption boundaries.
       if(!live_) admit_latest(now);
     });
-    RCLCPP_INFO(get_logger(),"READY isolated C++ state receiver; simulation_live=%d",live_);
+    RCLCPP_INFO(get_logger(),"READY isolated C++ state receiver; simulation_live=%d timing_profile=%s",live_,config_.timing_profile.name());
   }
   ~StateIngress() override {
     if(!live_ || ready_file_.empty()) return;
@@ -239,10 +247,12 @@ class StateIngress final : public rclcpp::Node {
     // Use the latest already received causal observation, including one
     // sampled before the send notification. Requiring another sensor frame
     // serializes reception behind actuation. Original issue/source stamps,
-    // chronology, joint age and the 50 ms complete lease remain unchanged.
+    // chronology, joint age and the 50 ms solve roundtrip remain unchanged.
+    // The separately named execution hold budget is not a new source stamp.
     auto s=latest_;
-    // First live solve waits for 20 ms physical time. Later solves follow a
-    // one-use actual-output acknowledgement, never an unsent candidate.
+    // Legacy admission retains its original one-use actual-output release.
+    // The explicit multirate profile also requires its next wall deadline.
+    // A late solve reanchors below; there is no catch-up burst or fabricated dt.
     // State time, actual dt and all independent age checks stay unchanged.
     s.sequence=gate_->next_sequence(); s.dt_s=s.control_time_s-last_control_;
     auto a=gate_->admit(wire::from_ros(s),now);
@@ -252,7 +262,7 @@ class StateIngress final : public rclcpp::Node {
     if(a.forward) {
       cadence_.admitted(s.sequence);
       last_control_=s.control_time_s; pending_issued_=s.issued_monotonic_ns;
-      next_admission_=now+20'000'000; admitted_->publish(s);
+      next_admission_=now+config_.timing_profile.nominal_solve_period_ns(); admitted_->publish(s);
       trace.publish_end_ns=wire::monotonic_ns();trace.forward=true;
     }
     store_timing(trace);

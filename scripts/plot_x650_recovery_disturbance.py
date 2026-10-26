@@ -99,6 +99,47 @@ def _locate_run(launch, record):
     return candidate.resolve(), True
 
 
+
+def check_audit_binding(report, run, inputs, metrics, full, *, relocated, original_run):
+    """Link a supported certificate to this exact original chart evidence.
+
+    A relocated archive may change local filesystem paths, never the recorded
+    launch/run relationship or the unique artifact hashes. Rendering does not
+    grant a certificate, and execution acceptance is distinct from recovery.
+    """
+    fields = {
+        'x650_cpp_recovery_robustness_stage_certificate_v1': 'source_run_directory',
+        'x650_cpp_interval_robustness_stage_certificate_v1': 'source_run_directory',
+        'x650_cpp_multirate_wrench_certificate_v1': 'run_directory',
+        'x650_cpp_multirate_wrench_followup_report_v1': 'run_directory',
+    }
+    kind = report.get('kind')
+    require(kind in fields, 'Wrong audit kind')
+    recorded = report.get(fields[kind])
+    normalize = lambda value: str(PurePosixPath(str(value).replace('\\','/')))
+    require(isinstance(recorded, str) and normalize(recorded) == normalize(original_run)
+            and PurePosixPath(normalize(recorded)).name == run.name,
+            'Audit belongs to a different recorded run')
+    for name in ('native_trace', 'actual_task', 'live_start'):
+        original_path = str(inputs[name]['path'])
+        expected = report.get('artifacts', {}).get(original_path)
+        if relocated:
+            suffix = '/' + run.name + '/' + str(Path(original_path).relative_to(run)).replace('\\','/')
+            matches = [v for path,v in report.get('artifacts',{}).items()
+                       if normalize(path).endswith(suffix)]
+            require(len(matches) == 1, 'Relocated audit artifact identity is ambiguous')
+            expected = matches[0]
+        require(expected == inputs[name]['sha256'], 'Audit does not bind chart input: '+name)
+    if report.get('passed') is True:
+        require(full and report.get('physical_acceptance') is True,
+                'Passed audit lacks complete physical window')
+        certified = report['endpoint']
+        require(certified['sample_count'] == metrics['sample_count'] and all(
+            np.allclose(metrics[key], certified[key], rtol=1e-10, atol=1e-12)
+            for key in ('position_rmse_m','position_max_m','axis_rmse_m','duration_s')),
+            'Recomputed chart metrics differ from independent audit')
+    return report
+
 def load(launch, audit=None):
     launch = Path(launch)
     require(launch.is_absolute(), '--launch must be an absolute directory')
@@ -174,30 +215,12 @@ def load(launch, audit=None):
         call['core_wall_ms'] = (end-begin)/1e6 if end >= begin > 0 else None
         call['callback_ms'] = (row['callback_exit_ns']-row['callback_entry_ns'])/1e6
         require(np.isfinite(call['callback_ms']) and call['callback_ms'] >= 0, 'Invalid callback duration')
-    full = cutoff == duration and t[-1] >= duration-.008-1e-9
+    full = bool(cutoff == duration and t[-1] >= duration-.008-1e-9)
     report = None
     if audit is not None:
         report = read(bind('audit', audit))
-        require(report.get('kind') in ('x650_cpp_recovery_robustness_stage_certificate_v1',
-            'x650_cpp_interval_robustness_stage_certificate_v1'), 'Wrong audit kind')
-        require(PurePosixPath(str(report['source_run_directory']).replace('\\','/')).name == run.name,
-                'Audit belongs to a different recorded run')
-        for name in ('native_trace', 'actual_task', 'live_start'):
-            original_path = str(inputs[name]['path'])
-            expected = report.get('artifacts', {}).get(original_path)
-            if relocated:
-                matches = [v for p,v in report.get('artifacts',{}).items()
-                           if p.endswith('/'+run.name+'/'+str(Path(original_path).relative_to(run)).replace('\\','/'))]
-                require(len(matches) == 1, 'Relocated audit artifact identity is ambiguous')
-                expected = matches[0]
-            require(expected == inputs[name]['sha256'], 'Audit does not bind chart input: '+name)
-        if report.get('passed') is True:
-            require(full and report.get('physical_acceptance') is True, 'Passed audit lacks complete physical window')
-            certified = report['endpoint']
-            require(certified['sample_count'] == metrics['sample_count'] and all(
-                np.allclose(metrics[k], certified[k], rtol=1e-10, atol=1e-12)
-                for k in ('position_rmse_m','position_max_m','axis_rmse_m','duration_s')),
-                'Recomputed chart metrics differ from independent audit')
+        check_audit_binding(report, run, inputs, metrics, full, relocated=relocated,
+                            original_run=launch_record['run_directories'][0])
     unchanged(inputs)
     return dict(launch=launch, run=run, relocated=relocated, original_run=launch_record['run_directories'][0],
         task=task, inputs=inputs, t=t, native=values, desired=desired, error=error, norm=norm, metrics=metrics,
@@ -214,7 +237,10 @@ def render(data, output):
     task = data['task']; schedule = task['robustness']['schedule']; duration = task['duration_s']
     accepted = bool(data['audit'] and data['audit'].get('passed') is True)
     status = ('COMPLETE RECORDED WINDOW' if data['full'] else 'INCOMPLETE CONTROLLED PREFIX')
-    status += ' | ' + ('independent audit PASSED' if accepted else 'no physical acceptance granted by this plot')
+    status += ' | ' + ('independent execution audit PASSED' if accepted else 'no physical acceptance granted by this plot')
+    recovery = (data['audit'] or {}).get('recovery_performance_passed')
+    if recovery is not None:
+        status += ' | 10 mm recovery criterion: ' + ('PASSED' if recovery is True else 'NOT PASSED')
     subtitle = ('Observed %.3f-%.3f s | %d native samples | %s RMS %.3f mm | peak %.3f mm' %
         (t[0], t[-1], len(t), '24 s' if data['full'] else 'PREFIX',
          data['metrics']['position_rmse_m']*1000, data['metrics']['position_max_m']*1000))
@@ -318,6 +344,7 @@ def render(data, output):
     with (out/'worker_chart_data.json').open('x',encoding='utf-8') as stream:json.dump(data['calls'],stream,indent=2,allow_nan=False)
     manifest=dict(kind='x650_recovery_disturbance_plots_v1',presentation_complete=True,
         full_recorded_window=data['full'],physical_acceptance=accepted,certificate_granted_by_renderer=False,
+        recovery_performance_passed=recovery,
         original_launch=str(data['launch']),original_run=data['original_run'],local_run=str(data['run']),
         archive_relocated=data['relocated'],controlled_cutoff_task_s=data['cutoff'],cutoff_source=data['cutoff_source'],
         metric_scope='Complete recorded 24 s window' if data['full'] else 'Controlled prefix only; no full-experiment RMS or recovery qualification',
