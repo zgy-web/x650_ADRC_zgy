@@ -1,0 +1,41 @@
+{
+  "inputs": [
+    {
+      "name": "hold_000",
+      "source": "artifacts\\orin_abi4_20261027\\preparation_v2\\hold_000.json",
+      "sha256": "da6be40faf6a88418dd77e79cf9804823236137fd09639b7bffdc2f758f987b8",
+      "bytes": 3763507,
+      "count": 400,
+      "start_s": 0.0519999999999996,
+      "end_s": 16.896
+    },
+    {
+      "name": "hold_001",
+      "source": "artifacts\\orin_abi4_20261027\\preparation_v2\\hold_001.json",
+      "sha256": "3251c02cbf76b674cb769c217cffb79baf51e4a68584ee74980bbc07911b0dea",
+      "bytes": 2899756,
+      "count": 311,
+      "start_s": 16.940000000000005,
+      "end_s": 29.996000000000002
+    },
+    {
+      "name": "wrench_000",
+      "source": "artifacts\\orin_abi4_20261027\\preparation_v2\\wrench_000.json",
+      "sha256": "fb07ab9914c0a2b4bb2166c816d27a8cfe5818a6e537bdfc21b2f345f7871d55",
+      "bytes": 4083720,
+      "count": 400,
+      "start_s": 0.0519999999999996,
+      "end_s": 16.875999999999998
+    },
+    {
+      "name": "wrench_001",
+      "source": "artifacts\\orin_abi4_20261027\\preparation_v2\\wrench_001.json",
+      "sha256": "7f236c9d4e1274ce04e3ab3c33c2e910df4df2db3be7099507cfb44a062c517c",
+      "bytes": 1649917,
+      "count": 170,
+      "start_s": 16.916000000000004,
+      "end_s": 24.003999999999998
+    }
+  ],
+  "scope": "Existing complete input snapshots; not NMPC-generated feedback"
+}

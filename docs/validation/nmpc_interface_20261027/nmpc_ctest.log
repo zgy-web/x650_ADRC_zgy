@@ -1,0 +1,10 @@
+Internal ctest changing into directory: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/nmpc_build
+Test project /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/nmpc_build
+    Start 1: nmpc_offline_transaction
+1/2 Test #1: nmpc_offline_transaction .........   Passed    0.04 sec
+    Start 2: nmpc_nonlinear_objective
+2/2 Test #2: nmpc_nonlinear_objective .........   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.04 sec

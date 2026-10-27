@@ -1,0 +1,23 @@
+[
+  {
+    "role": "core_library",
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so",
+    "expected": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+    "actual": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+    "matched": true
+  },
+  {
+    "role": "optimization_library",
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so",
+    "expected": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+    "actual": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+    "matched": true
+  },
+  {
+    "role": "predictor_library",
+    "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+    "expected": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "actual": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "matched": true
+  }
+]

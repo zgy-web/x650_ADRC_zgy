@@ -1,0 +1,270 @@
+{
+  "kind": "x650_mpc_api_and_upper_nmpc_offline_validation_v1",
+  "date": "2026-10-27",
+  "new_physical_experiment": false,
+  "nmpc_online_approved": false,
+  "groups": {
+    "hold": {
+      "snapshots": 711,
+      "task_time_min_s": 0.0519999999999996,
+      "task_time_max_s": 29.996000000000002,
+      "mpc_facade_passed": 711,
+      "mpc_historical_max_error": 0.0,
+      "nmpc_feasible": 711,
+      "nmpc_rejected": 0,
+      "nmpc_improved": 428,
+      "total_ms_min": 2.057715,
+      "total_ms_median": 5.662248,
+      "total_ms_max": 14.095317,
+      "above_40ms": 0,
+      "above_50ms": 0,
+      "timing_unknown": 0,
+      "stop_reasons": {
+        "no_strict_nonlinear_decrease": 587,
+        "bounded_proposal_limit": 124
+      },
+      "failures": []
+    },
+    "wrench": {
+      "snapshots": 570,
+      "task_time_min_s": 0.0519999999999996,
+      "task_time_max_s": 24.003999999999998,
+      "mpc_facade_passed": 570,
+      "mpc_historical_max_error": 1.942890293094024e-16,
+      "nmpc_feasible": 539,
+      "nmpc_rejected": 31,
+      "nmpc_improved": 405,
+      "total_ms_min": 2.097966,
+      "total_ms_median": 11.1730245,
+      "total_ms_max": 42.826426,
+      "above_40ms": 1,
+      "above_50ms": 0,
+      "timing_unknown": 0,
+      "stop_reasons": {
+        "no_strict_nonlinear_decrease": 264,
+        "bounded_proposal_limit": 233,
+        "native_or_actual_stopping_check_failed": 73
+      },
+      "failures": [
+        {
+          "id": "wrench_000176",
+          "time_s": 7.455999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0004791074318731825,
+          "total_ms": 6.023721
+        },
+        {
+          "id": "wrench_000177",
+          "time_s": 7.5,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00019072068079117876,
+          "total_ms": 5.673169
+        },
+        {
+          "id": "wrench_000178",
+          "time_s": 7.539999999999999,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0014217738093628696,
+          "total_ms": 5.364091
+        },
+        {
+          "id": "wrench_000179",
+          "time_s": 7.583999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00048297613926440164,
+          "total_ms": 5.24611
+        },
+        {
+          "id": "wrench_000180",
+          "time_s": 7.623999999999995,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0003902296772507752,
+          "total_ms": 4.926159
+        },
+        {
+          "id": "wrench_000181",
+          "time_s": 7.667999999999999,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00063864092321686,
+          "total_ms": 4.5645
+        },
+        {
+          "id": "wrench_000182",
+          "time_s": 7.711999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0004463177623399983,
+          "total_ms": 4.457176
+        },
+        {
+          "id": "wrench_000183",
+          "time_s": 7.756,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0008695580524096802,
+          "total_ms": 4.717876
+        },
+        {
+          "id": "wrench_000184",
+          "time_s": 7.799999999999997,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0008420073647174564,
+          "total_ms": 5.251602
+        },
+        {
+          "id": "wrench_000341",
+          "time_s": 14.391999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00021887249910929052,
+          "total_ms": 6.129486
+        },
+        {
+          "id": "wrench_000350",
+          "time_s": 14.775999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00029792479034412844,
+          "total_ms": 4.617804
+        },
+        {
+          "id": "wrench_000353",
+          "time_s": 14.899999999999999,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0006618221777941469,
+          "total_ms": 5.852219
+        },
+        {
+          "id": "wrench_000357",
+          "time_s": 15.071999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0005058623496055348,
+          "total_ms": 6.357523
+        },
+        {
+          "id": "wrench_000360",
+          "time_s": 15.195999999999998,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0020927561237588654,
+          "total_ms": 5.743529
+        },
+        {
+          "id": "wrench_000363",
+          "time_s": 15.32,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0021725639023837395,
+          "total_ms": 5.525943
+        },
+        {
+          "id": "wrench_000366",
+          "time_s": 15.443999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0014983895394170554,
+          "total_ms": 4.892934
+        },
+        {
+          "id": "wrench_000468",
+          "time_s": 19.71999999999999,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 4.6789185353279805e-05,
+          "total_ms": 4.222636
+        },
+        {
+          "id": "wrench_000475",
+          "time_s": 20.008000000000003,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00065823667540027,
+          "total_ms": 4.236963
+        },
+        {
+          "id": "wrench_000488",
+          "time_s": 20.547999999999995,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00022492450867350744,
+          "total_ms": 5.951375
+        },
+        {
+          "id": "wrench_000490",
+          "time_s": 20.627999999999993,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00027258065935859,
+          "total_ms": 4.447298
+        },
+        {
+          "id": "wrench_000491",
+          "time_s": 20.668,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 4.184111369515131e-05,
+          "total_ms": 4.414518
+        },
+        {
+          "id": "wrench_000492",
+          "time_s": 20.711999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 9.811021803329822e-05,
+          "total_ms": 4.662235
+        },
+        {
+          "id": "wrench_000493",
+          "time_s": 20.755999999999993,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00017911528940295351,
+          "total_ms": 4.618315
+        },
+        {
+          "id": "wrench_000494",
+          "time_s": 20.796,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.000512009597326335,
+          "total_ms": 5.797554
+        },
+        {
+          "id": "wrench_000495",
+          "time_s": 20.839999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0004451116718311998,
+          "total_ms": 5.01147
+        },
+        {
+          "id": "wrench_000496",
+          "time_s": 20.883999999999993,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.000614158021807143,
+          "total_ms": 5.438775
+        },
+        {
+          "id": "wrench_000498",
+          "time_s": 20.967999999999996,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.0004926483966276041,
+          "total_ms": 5.441227
+        },
+        {
+          "id": "wrench_000499",
+          "time_s": 21.008000000000003,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 0.00014507520717671474,
+          "total_ms": 4.981362
+        },
+        {
+          "id": "wrench_000500",
+          "time_s": 21.052,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 8.893905437462601e-05,
+          "total_ms": 5.413136
+        },
+        {
+          "id": "wrench_000501",
+          "time_s": 21.09199999999999,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 5.264834134022234e-05,
+          "total_ms": 4.456267
+        },
+        {
+          "id": "wrench_000502",
+          "time_s": 21.136000000000003,
+          "reason": "native_or_actual_stopping_check_failed",
+          "stopping_violation_rad": 3.773296630305012e-05,
+          "total_ms": 4.301996
+        }
+      ]
+    }
+  },
+  "interpretation": "Fixed independent original-worker input snapshots, not a continuous NMPC closed loop. Cost decrease is conditional predicted-objective improvement, not measured tracking error reduction. Original MPC/wrench physical conclusions preserved. All timing includes rejected solves where available."
+}

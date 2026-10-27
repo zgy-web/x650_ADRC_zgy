@@ -1,0 +1,156 @@
+{
+  "kind": "tested_sources_and_binaries_v1",
+  "sources": [
+    {
+      "path": "control_packages/x650_mpc_controller_v1/CMakeLists.txt",
+      "bytes": 2950,
+      "sha256": "841da581eb6161d3e9d5ed05cf6aaa29b389f54138e27d3e051a2fc6c864bc12"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/examples/one_step.cpp",
+      "bytes": 846,
+      "sha256": "bc0e18e5b94a0ef0fd70866dd6549438ee804128c862ab90a98be4250ecb5245"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/examples/prepare_recording_replay.py",
+      "bytes": 7568,
+      "sha256": "287afbcc7118b551df5eb53b6d1ec6e13260d38384768fca28637a3b4b2fbc78"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/examples/replay.cpp",
+      "bytes": 5337,
+      "sha256": "a2495c790be9096efa0e5c711cf277919085e368042dcc8f829e9b3a18f812ec"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/examples/synthetic_fixture.hpp",
+      "bytes": 1993,
+      "sha256": "579f6bd1e721d569eeb5777766417fe194f0d17ef31589b38733a30920f0e45e"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/include/x650_mpc/controller.hpp",
+      "bytes": 2273,
+      "sha256": "80f7a3c2c5bbefe3be9b76d7639ec0963c7d8743bc793b9db8c5c64ba227f9df"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/include/x650_mpc/selected_profile.hpp",
+      "bytes": 1303,
+      "sha256": "e5f13843861576bddda14afa807182b4e43b28db95e06a791b14b66b84580547"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/src/controller.cpp",
+      "bytes": 2869,
+      "sha256": "5c5564e3c1f97c2623071df9d99cdde57373b676fed8e0b446ff0a03098debaa"
+    },
+    {
+      "path": "control_packages/x650_mpc_controller_v1/tests/test_controller.cpp",
+      "bytes": 4647,
+      "sha256": "8b9c8b8f50c74a07e4d69eb101d9affbe52de924d21b3084de20d9cb7dfc086e"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/CMakeLists.txt",
+      "bytes": 2506,
+      "sha256": "d31bfb317dac0cf4396c003f6917b01ec756723b2c008338029da76b7f086361"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/examples/offline_replay.cpp",
+      "bytes": 6826,
+      "sha256": "352d99f68960eb92b91056cd7f0be5b22d62a1a7bb9ea55881e7c3a7647f8690"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/include/x650_nmpc/objective.hpp",
+      "bytes": 1336,
+      "sha256": "2d4c86085a212279d23b1d03ba995682819e6d918817c54e4256a952524a1a85"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/include/x650_nmpc/offline_solver.hpp",
+      "bytes": 2031,
+      "sha256": "5ca29ff64db8e7081499d626b814fe1d7f412cfaf1daffb5f6b627d22a6e0710"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/src/objective.cpp",
+      "bytes": 10914,
+      "sha256": "500eaf2de0ef54b7d9dd530cb50398d09a4ce665b46f9d8d7b51ac3b5787de10"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/src/offline_solver.cpp",
+      "bytes": 5989,
+      "sha256": "b02972890ef35380d74dec49874181474014d07eaa9e5dec010ad7889b31e773"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/tests/test_objective.cpp",
+      "bytes": 13384,
+      "sha256": "08513959278baf59b92bfcdf741d4b7ea02da387f751f2ed7767aeba900bd58b"
+    },
+    {
+      "path": "control_packages/x650_nmpc_controller_v1/tests/test_solver.cpp",
+      "bytes": 3099,
+      "sha256": "7d6a3519efc8bd16bddaca06605411bfa7b37c8fc1d7b3a06ef2fbe14ba3345f"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+      "bytes": 8984,
+      "sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/benchmark/include/benchmark_io.hpp",
+      "bytes": 12690,
+      "sha256": "62ad4e35a8de5f655581e44a19de99df54bc908068a994021a87dc815779e4d2"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "artifacts/nmpc_interface_20261027/mpc_api_build/x650_mpc_replay",
+      "bytes": 380088,
+      "sha256": "9864bcf726ae04d2bf0129c635ea4e5c4f7cff7da905e5109e408e316815205c"
+    },
+    {
+      "path": "artifacts/nmpc_interface_20261027/mpc_api_build/libx650_mpc_controller.a",
+      "bytes": 272630,
+      "sha256": "3efd92569d821df2b9e7e5da5e0ff43459a23f06dbd6dbb59c95f8705e3ebb99"
+    },
+    {
+      "path": "artifacts/nmpc_interface_20261027/nmpc_build/x650_nmpc_offline_replay",
+      "bytes": 182400,
+      "sha256": "33901bbee9f4007bbefb6e1043a7f62bf81633234d2849b7a764afcbaa884a5b"
+    },
+    {
+      "path": "artifacts/nmpc_interface_20261027/nmpc_build/libx650_nmpc_offline.a",
+      "bytes": 104192,
+      "sha256": "bcce89eb74ef31bd9b97ebff084b7545a61339dc597d2460dcf42edeb19f3bd2"
+    },
+    {
+      "path": "artifacts/nmpc_interface_20261027/nmpc_build/test_x650_nmpc_objective",
+      "bytes": 115344,
+      "sha256": "1f11457f1a27fba96cabfb5eb2a55e310c74a5d03ee270fcfab8ea64b08ecb32"
+    },
+    {
+      "path": "artifacts/nmpc_interface_20261027/nmpc_build/test_x650_nmpc_offline",
+      "bytes": 111872,
+      "sha256": "478fb4f9f38923735f8167ddbd1d7bf41cf1abc39ab3d87a9a332a7a268daae7"
+    }
+  ],
+  "hostname": "autodl-container-75dd488416-64c15ffa",
+  "production_libraries": [
+    {
+      "role": "core_library",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so",
+      "expected": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+      "actual": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+      "matched": true
+    },
+    {
+      "role": "optimization_library",
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so",
+      "expected": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+      "actual": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+      "matched": true
+    },
+    {
+      "role": "predictor_library",
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "expected": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "actual": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "matched": true
+    }
+  ]
+}
