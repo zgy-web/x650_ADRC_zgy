@@ -135,6 +135,12 @@ def dispatcher_parameters(protocol):
 
 
 class CppLiveExtension(LiveExtension):
+    def worker_command(self, params):
+        return self._ros('flyarm_mpc_cpp', 'isolated_worker', params)
+
+    def expected_worker_implementation(self):
+        return 'cpp_full_pipeline_v1'
+
     def validate_trajectory_manifest(self):
         if self.cpp_manifest['trajectory'] != {'kind': 'hold'}:
             raise ValueError('Explicit complete-hold reference required')
@@ -228,7 +234,7 @@ class CppLiveExtension(LiveExtension):
             time.sleep(.01)
         from flyarm_mpc_reference.diagnostic_channel import DiagnosticSender
         self.source_sender = DiagnosticSender(source_sock)
-        self._launch('worker', self._ros('flyarm_mpc_cpp', 'isolated_worker', {
+        self._launch('worker', self.worker_command({
             'startup_manifest': manifest_path, 'startup_sha256': expected,
             'expected_session_id': self.session, 'expected_epoch': self.epoch, 'simulation_live': True,
             'output_dir': self.out, 'executor_cpu': executor, 'auxiliary_cpus': auxiliary}))
@@ -238,7 +244,7 @@ class CppLiveExtension(LiveExtension):
             if time.monotonic() > deadline: raise TimeoutError('C++ worker not ready before flight')
             time.sleep(.01)
         startup = task.read(self.out/'worker_startup.json')
-        if (startup['implementation'] != 'cpp_full_pipeline_v1' or startup['python_in_worker']
+        if (startup['implementation'] != self.expected_worker_implementation() or startup['python_in_worker']
                 or startup['startup_controller_steps'] != 0 or startup['session_id'] != self.session
                 or startup['epoch'] != self.epoch or startup['configuration_sha256'] != self.task_sha
                 or startup['startup_manifest'] != self.cpp_manifest):

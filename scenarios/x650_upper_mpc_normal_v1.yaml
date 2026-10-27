@@ -1,0 +1,13 @@
+schema_version: 1
+name: x650_upper_mpc_normal_v1
+module: simulations/x650_upper_mpc_normal_v1/run_case.py
+backend: px4_sitl
+model: amsim_urdf_x650_2link_ts20_damped_v1_flight
+vehicle:
+  takeoff_height_m: 2.0
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true
+visualization:
+  default: headless

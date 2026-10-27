@@ -1,0 +1,7 @@
+{
+  "kind": "nmpc_worker_original_contract_copy_v1",
+  "source_commit": "798dc7dcd3b1942c0cc990399eca43a6df20d9de",
+  "source_path": "ros2_ws/src/flyarm_mpc_cpp/include/flyarm_mpc_cpp/worker_contract.hpp",
+  "sha256": "7298ff099e02ed70748161e5b392d5d8f08c331d56cef655cdb1f3e9947daf2e",
+  "scope": "Exact committed original contract; excludes unrelated uncommitted PIL modifications."
+}

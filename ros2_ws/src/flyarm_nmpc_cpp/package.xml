@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>flyarm_nmpc_cpp</name><version>0.1.0</version>
+  <description>Separate simulation-only C++ upper nonlinear MPC worker with original execution wire contract.</description>
+  <maintainer email="maintainer@example.invalid">Flyarm maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend><depend>flyarm_control_interfaces</depend>
+  <depend>flyarm_control_gateway</depend><depend>flyarm_state_cpp</depend>
+  <depend>flyarm_mpc_cpp</depend><depend>jsoncpp</depend><depend>openssl</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

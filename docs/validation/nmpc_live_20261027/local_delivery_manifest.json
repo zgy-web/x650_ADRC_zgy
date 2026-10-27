@@ -1,0 +1,159 @@
+{
+  "kind": "x650_upper_local_delivery_v1",
+  "all_copied_bytes_verified": true,
+  "complete_raw_archive_included": false,
+  "full_raw_records_location": "original server launch/run paths in six audit reports",
+  "copies": [
+    {
+      "local_relative": "nmpc_hold/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/nmpc_hold_audit_v1/report.json",
+      "bytes": 3083368,
+      "sha256": "07dd96101f8367c8ee4959b4c01405125127d306d534bc96261dd5ef1a9fa71a",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\nmpc_hold\\report.json"
+    },
+    {
+      "local_relative": "mpc_hold/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/mpc_hold_audit_v1/report.json",
+      "bytes": 3117589,
+      "sha256": "d206ad12dacb18525314c65295d3d0e1a757359a27b2dfc7b2e824dce0906e26",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\mpc_hold\\report.json"
+    },
+    {
+      "local_relative": "nmpc_normal/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/nmpc_normal_audit_v1/report.json",
+      "bytes": 3287535,
+      "sha256": "09b1d0ee6cc8ce6e94692ed4395a08221bdaee720e0bd84e3baa8f83d57e3897",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\nmpc_normal\\report.json"
+    },
+    {
+      "local_relative": "mpc_normal/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/mpc_normal_audit_v1/report.json",
+      "bytes": 3332021,
+      "sha256": "f00929e4ac2dbc0b352f2d9a63ab7a74ca1a460d7cec9bbf0a9be250d504bef3",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\mpc_normal\\report.json"
+    },
+    {
+      "local_relative": "nmpc_fast/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/nmpc_fast_audit_v1/report.json",
+      "bytes": 2483184,
+      "sha256": "a4c806e3d9460253ccb6a7106430f91b63443a2136f974999c4462a5d885d5ba",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\nmpc_fast\\report.json"
+    },
+    {
+      "local_relative": "mpc_fast/report.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/mpc_fast_audit_v1/report.json",
+      "bytes": 2510590,
+      "sha256": "265dbb247e3c8b65890b1516fdda5c5f228c5b92d8d874e6ee1c30e0bde3f353",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\mpc_fast\\report.json"
+    },
+    {
+      "local_relative": "software/nmpc_probe.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/nmpc_hold_inputs_v2/worker_probe/report.json",
+      "bytes": 266777,
+      "sha256": "efcd4a3a821be9a8c7145f09b0a1d504399fb6c29f3403d45c31a79358b5c59b",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\software\\nmpc_probe.json"
+    },
+    {
+      "local_relative": "software/mpc_probe.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/mpc_callable_hold_inputs_v1/worker_probe/report.json",
+      "bytes": 270717,
+      "sha256": "5b30cac4e8965e1dd47ab301e361f140c9a550ff8020896f77b0d524dd033168",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\software\\mpc_probe.json"
+    },
+    {
+      "local_relative": "software/native_build.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/native_build_report_v1.json",
+      "bytes": 1404,
+      "sha256": "d8724d2d2d76f80e4a11f0d3d3c30e5da40da270853a587ac91f45f2cfac6ae6",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\software\\native_build.json"
+    },
+    {
+      "local_relative": "software/worker_build.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/ros/build_report_fast_json.json",
+      "bytes": 12586,
+      "sha256": "db4b50506c6ee0f2a8ec48ef9bd0f9c735b1c716904a29b862fa7edf945f1fd6",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\software\\worker_build.json"
+    },
+    {
+      "local_relative": "comparison/hold_mpc_callable_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/hold_mpc_callable_endpoint.csv",
+      "bytes": 1227526,
+      "sha256": "6d2202d8bccc2136a0236230d35d8bb71ad3376d06c19e8bed248ef162c902b6",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\hold_mpc_callable_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/hold_nmpc_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/hold_nmpc_endpoint.csv",
+      "bytes": 1227540,
+      "sha256": "3d649077f74a1448b5ea022316ce17f1ff97da7aeedb90d1f8346833293f2108",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\hold_nmpc_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/normal_mpc_callable_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/normal_mpc_callable_endpoint.csv",
+      "bytes": 1281636,
+      "sha256": "949c875e122ac227df8efa613664d0e3d2f26aae4bc284abeb0605a874dc1015",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\normal_mpc_callable_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/normal_nmpc_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/normal_nmpc_endpoint.csv",
+      "bytes": 1281358,
+      "sha256": "72bb0bc0daa365909ee72b74cc5d85f56b76a04b3988c2aaccb929760b8ebe5f",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\normal_nmpc_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/fast_mpc_callable_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/fast_mpc_callable_endpoint.csv",
+      "bytes": 963361,
+      "sha256": "9e51c24efcf698ddf4007e625603051eaaf75e63c2df57b3e386c9640ca78d0f",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\fast_mpc_callable_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/fast_nmpc_endpoint.csv",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/fast_nmpc_endpoint.csv",
+      "bytes": 963034,
+      "sha256": "e1f9ffcae1363e523c09663e0f02f747d2a2bfc96bbb072f9dfce19f942629ca",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\fast_nmpc_endpoint.csv"
+    },
+    {
+      "local_relative": "comparison/comparison.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/comparison.json",
+      "bytes": 81776,
+      "sha256": "eea40b939e757513cb7495080c280b120ac675a54ba322fba4492064d0faf86c",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\comparison.json"
+    },
+    {
+      "local_relative": "comparison/comparison.md",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/comparison.md",
+      "bytes": 1877,
+      "sha256": "d5568b5f68cbd84ef477ba152962711f9a2145a224d5b6bece46e69211e23e78",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\comparison.md"
+    },
+    {
+      "local_relative": "comparison/endpoint_error.png",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/endpoint_error.png",
+      "bytes": 378198,
+      "sha256": "7df3560c9194cd3092d481b343888e1c8bdd1a4f2f0c13acaf75650ba3eff166",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\endpoint_error.png"
+    },
+    {
+      "local_relative": "comparison/endpoint_error.pdf",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/endpoint_error.pdf",
+      "bytes": 56535,
+      "sha256": "a00820f27eec69ec3530acfcff686c52360c6a3a33fe6881a5cc1e9fb114e556",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\endpoint_error.pdf"
+    },
+    {
+      "local_relative": "comparison/delivery_manifest.json",
+      "source_path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/paired_summary_v2/delivery_manifest.json",
+      "bytes": 2896,
+      "sha256": "b168bacd4642890bffdf984a626bf180107b2d37b4c16b094dbbcc6812755ea5",
+      "local_path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\comparison\\delivery_manifest.json"
+    }
+  ],
+  "local_readme": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\nmpc_live_20261027\\README.md",
+    "sha256": "f2934559d9c0a31f072d2b237fdf535957060b37eaec1ff062e23cd17463f72e"
+  }
+}

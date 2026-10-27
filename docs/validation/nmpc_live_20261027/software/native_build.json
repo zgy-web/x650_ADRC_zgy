@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "phase": "configure",
+      "code": 0,
+      "wall_s": 0.7577304840087891,
+      "log": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/native_configure_v1.log"
+    },
+    {
+      "phase": "build",
+      "code": 0,
+      "wall_s": 12.68009614944458,
+      "log": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/native_build_v1.log"
+    },
+    {
+      "phase": "test",
+      "code": 0,
+      "wall_s": 0.15772438049316406,
+      "log": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/native_test_v1.log"
+    }
+  ],
+  "reused_libraries": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+    "/root/autodl-tmp/libts20_prediction_v3.so": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+  },
+  "new_library": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_live_20261027/native_build/libx650_nmpc_offline.a",
+    "sha256": "83f7bb9c93d8862fa72f540bd624da731b15830aa72d3afbf3fbca0a8391e889"
+  }
+}

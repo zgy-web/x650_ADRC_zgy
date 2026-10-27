@@ -445,6 +445,7 @@ virtualgl_ready: true
 - [PID + 前馈控制包与调用接口](control_packages/pid_ff_wholebody_v1/README.md)
 - [当前 ABI 4 MPC 的可调用 C++ 接口](control_packages/x650_mpc_controller_v1/README.md)：原后端与参数保持不变，prepare／发布后提交／丢弃分离；1,281 个完整任务输入快照的封装数值一致性通过。
 - [同速度执行接口的上层 NMPC 离线原型](control_packages/x650_nmpc_controller_v1/README.md)：以完整非线性目标决定重线性化候选是否接受；[本轮验证](docs/validation/nmpc_interface_20261027/README.md)保留受扰段 31 个候选拒绝，不宣称新 NMPC 飞行或真机准入通过。
+- [上层 MPC／NMPC 同条件仿真入口](docs/UPPER_CONTROLLER_SIMULATION.md)：共用实际反馈、25 Hz 求解准入与 50 Hz 下发；[六组新的完整验收与比较](docs/validation/nmpc_live_20261027/README.md)均通过，保留原始误差、时效、实际消费及退出证据；当前 NMPC 未显示一致的精度优势。
 - [末端协同闭环接入与验证](docs/PID_FF_WHOLEBODY_V1.md)
 - [X650 PID/前馈与上层 MPC 控制包](control_packages/x650_wholebody_v1/README.md)
 - [X650 精密定位与分阶段实验协议](simulations/x650_wholebody_mpc_v1/README.md)

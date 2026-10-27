@@ -131,3 +131,9 @@ simulations/x650_wholebody_mpc_v1/run_case.py -text whitespace=cr-at-eol
 simulations/x650_wholebody_mpc_v1/tests/test_lifecycle.py -text whitespace=cr-at-eol
 src/amsim/runtime/process.py -text whitespace=cr-at-eol
 tests/unit/test_runtime_zombie_status.py -text whitespace=cr-at-eol
+# Same-interface upper-controller experiments bind exact cross-host source bytes.
+simulations/x650_upper*/** -text whitespace=cr-at-eol
+scenarios/x650_upper*.yaml -text whitespace=cr-at-eol
+scripts/*x650_upper*.py -text whitespace=cr-at-eol
+tests/unit/test_x650_upper_controller_audit.py -text whitespace=cr-at-eol
+docs/validation/nmpc_live_20261027/** -text -whitespace

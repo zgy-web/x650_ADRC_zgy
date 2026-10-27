@@ -121,7 +121,26 @@ try {
 
 `Options` 的默认整体预算为 **50 ms**；离线回放示例显式使用 **200 ms**，同时报告超过 50 ms 的样本。预算在尝试前后检查，不能抢占正在执行的 Core；因此并不是硬实时截止机制。可能已有最佳候选后才发现总预算耗尽，此时研究结果仍可返回，但 `within_evaluation_budget=false`。报告的 `passed` 汇总软件一致性、硬检查和事务规则，不能替代单独查看预算字段。
 
-本包必须与既有头文件、共享库版本及编译环境配套。ABI 编号不能代替内容哈希；回放工具记录实际加载的三个库的路径和 SHA-256。C++ 静态目标名为 `x650_nmpc_offline`，可通过 CMake `add_subdirectory()` 后链接。当前没有独立安装规则，没有 ROS 在线 worker 绑定，也没有自动提交接口。
+本包必须与既有头文件、共享库版本及编译环境配套。ABI 编号不能代替内容哈希；回放工具记录实际加载的三个库的路径和 SHA-256。C++ 静态目标名保留为 `x650_nmpc_offline`，可通过 CMake `add_subdirectory()` 后链接；其中现在也包含以下独立在线准入入口。库本身不自动提交，也不拥有执行器。
+
+### 在线数值准入与仿真 worker
+
+[`online_solver.hpp`](include/x650_nmpc/online_solver.hpp) 在不改变离线接口语义的情况下增加原请求期限检查：
+
+```cpp
+const auto decision = x650_nmpc::solve_online(
+    config, predictor, committed_memory, input,
+    original_request_issue_monotonic_ns, x650_nmpc::OnlineOptions{});
+if (decision.accepted) {
+    // decision.solve.output 与 proposed_memory 是同一个选中候选。
+    // 发布前仍需检查原请求期限、执行契约和当前会话。
+    // 实际下发确认之前不能把 proposed_memory 作为已执行状态。
+}
+```
+
+默认最多四个提案，提案软预算 40 ms，原 issue 到最终准入的硬期限 50 ms。不可抢占的计算若晚到，只保留拒绝诊断。在线入口重验非线性成本、实际停止余量、区间及首令保持约束、原真实包历史与单步 Memory 配对；它保持输入和原提交状态只读。`decision.accepted` 与离线结果恒为 false 的 `approved_for_online_publication` 是两个不同字段。
+
+新 [`flyarm_nmpc_cpp`](../../ros2_ws/src/flyarm_nmpc_cpp/README.md) worker 使用该入口，且可选择保留的 callable MPC 进行同条件比较。Memory 只在匹配的实际 `ActuatorSend` 后提交；关节消费仍由独立异步账本监督。详细运行与分阶段验收见[同条件仿真入口](../../docs/UPPER_CONTROLLER_SIMULATION.md)。这些 API 和软件测试不代替新的物理实验结果。
 
 ## 构建与固定记录回放
 
@@ -139,7 +158,7 @@ cmake --build "$B" -j2
 ctest --test-dir "$B" --output-on-failure
 ```
 
-`nmpc_offline_transaction` 检查单次候选与 Core 一致、历史不可变、只形成一个拟提交步、选中结果/Memory 匹配、停止检查、无效输入和预算拒绝。`nmpc_nonlinear_objective` 独立复算六项代价和包含旋转贡献的末端速度，避免只用同一实现对自身求值。
+`nmpc_offline_transaction` 检查单次候选与 Core 一致、历史不可变、只形成一个拟提交步、选中结果/Memory 匹配、停止检查、无效输入和预算拒绝。`nmpc_nonlinear_objective` 独立复算六项代价和包含旋转贡献的末端速度。`nmpc_online_admission` 检查原 issue、未初始化历史、不安全首态、后续提案失败保留以及人为迟到后的拒绝和状态不提交。
 
 回放输入必须是与原状态、包历史及原已提交 Memory 绑定的 JSON 数据集，不接受仅凭轨迹 CSV 猜测的执行历史。先按独立验证报告选定 `FIXTURE` 文件并核对归档中的期望 SHA，再执行：
 
