@@ -1,0 +1,89 @@
+{
+  "kind": "x650_orin_code_only_source_package_v1",
+  "archive": {
+    "path": "docs/validation/orin_paired_20261027/code_only_sources.tar.gz",
+    "bytes": 51640,
+    "sha256": "863598291ac36cba09bd0d9e929600d69dc7d9d6bab37b060b80abf411f65c40"
+  },
+  "sources": [
+    {
+      "path": "control_packages/x650_wholebody_v1/native/CMakeLists.txt",
+      "bytes": 1373,
+      "sha256": "53451bf0466364dd5db5157bea15b9fc6bed7d9c0d5d253521cc2e06b36a673c"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+      "bytes": 28904,
+      "sha256": "4f2994398b88515454b77c2c2d7ed0d8346498655cac3c25b876075f9c792162"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+      "bytes": 5103,
+      "sha256": "13a64d3bd93ffed33a8c3fc7ea33041ec8364cc12d23e3dac6e7bca69e080373"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/optimization.cpp",
+      "bytes": 21389,
+      "sha256": "6cdab0071506895d2e9ed95c3d0defd3f6292b1ac5175f7ada7a9045aa16cd54"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_mpc_core.cpp",
+      "bytes": 6741,
+      "sha256": "7e5da42e16d5be7854b12f02614cf429eef9e7c805db84c8eedc8217d20891ee"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_quadprog_identity.cpp",
+      "bytes": 5590,
+      "sha256": "1cfb6f67951706bcaff6726d46c30a367cd0b175cdeb590a87f491ff4882a2e9"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/Array.hh",
+      "bytes": 60765,
+      "sha256": "df5821f916b6dba3e6ace9478edb3933eea5af869f9753448e45427ea22db4c9"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc",
+      "bytes": 23682,
+      "sha256": "aafb5dfb449c659012d61cce649fddfa8225aa6f7a5a5df0195781af87d7fc29"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.hh",
+      "bytes": 3197,
+      "sha256": "526ae146e9e121223157f858710e5684021024f57bc0392da3243fbae060aab2"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/LICENSE",
+      "bytes": 1077,
+      "sha256": "6b3d5d656e94973e5120a0863e383ede61e2a0d3132267fd7ead0f5d87c9fb84"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/UPSTREAM.json",
+      "bytes": 1502,
+      "sha256": "d9aa5a56e9b8bd0db8fdac751d79e1b0c05708d8c00ff78479edc4e6d67e5976"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "bytes": 5931,
+      "sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/benchmark/CMakeLists.txt",
+      "bytes": 2050,
+      "sha256": "1c47b3683f27d47b9daa414b2c2b3519fcf102a6d8cfafe7b33dece23bc35231"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/benchmark/src/memory_benchmark.cpp",
+      "bytes": 18676,
+      "sha256": "650e719aa3fb04e33216b589bba742e8fe607c14fc0e07e357e8250053b54b3f"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/benchmark/include/benchmark_io.hpp",
+      "bytes": 12426,
+      "sha256": "ac7a150c3390efbeab3547cbf4a08441cb770f80f95e646160f57900ef4d32ab"
+    }
+  ],
+  "original_preparation_sha256": "ddba740da9a69648b9ee3111238ea6d55f6c0efe739fb088eb7ae5a0e9895a97",
+  "scope": "Exact source package used in 2026-10-25 and 2026-10-27 Core ABI 1 benchmarks; not current production source",
+  "includes_input_corpus": false,
+  "includes_results_logs_meshes": false
+}

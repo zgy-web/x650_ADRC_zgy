@@ -89,6 +89,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 真机前开发路线已整理为 [执行器、动捕、Orin 与 NMPC 验证框架](docs/X650_REAL_FLIGHT_READINESS_AND_NMPC.md)。用户确认采用 TS20-50／24 V；新增 [TS20 条件模型及 MIT 接入](docs/X650_TS20_INTEGRATION.md)、纯离线调用模块与旧 MPC 命令敏感性重放。该模型来自约 20 V 台架，未标定的力矩尺度不写入 URDF；24 V 带载整机闭环仍需新证据。历史八字继续按原协议解释。
 
+2026-10-27 完成[服务器／实体 Orin NX 同输入配对基准](docs/validation/orin_paired_20261027/README.md)：重建全部 1,598 条普通及 1,198 条快速八字历史输入，每端 27,960 次正式调用。NX 中位数为 2.148／2.184 ms，P99 为 4.154／4.971 ms，两端均无超过 20 ms 的正式调用。仅测原 **Core ABI 1** 本体，不代表当前 ABI 4 或整条控制链验收。原指令容差通过；额外统一加速度容差的 136 条失败与按差分公式传播误差的显式检查均保留。输入、结果只留工作站，NX 保留运行代码；复现入口见 [NX 基准方法](docs/ORIN_NX_MPC_BENCHMARK.md)。
+
 新的 [TS20 Gazebo 条件执行器准备与接口验证](docs/X650_TS20_PLANT_README.md)支持完整 URDF flight 模型派生、独立 airframe 4997、固定 5 ms MIT 总线和实际关节状态记录。两关节低幅正反向原生物理位移检查已通过；新工况的悬停、摆臂与完整末端保持仍须分别验收，快速八字尚未开放。该插件保留原刚体惯性，通过条件自由运动响应施加速度约束，不是已标定的轴端力矩模型。
 
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。

@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "chunk": "normal_chunk_000.json",
+      "sha256": "c78b0175c088bac99326a4c6c436ca0e2244a31093f19424737d26c6be0b3b85",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "normal_chunk_001.json",
+      "sha256": "6d8455f23a0d6091a374f682a212e8e2b1f877b444d60509a1002f4425505ed6",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "normal_chunk_002.json",
+      "sha256": "f85699ac2ac261364d1bd1eb993d596b360302547bbdd77a2a31e16fcdfb02c6",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "normal_chunk_003.json",
+      "sha256": "6fd0b2694af8ef25f14354bc4929843cd367bca7f461513d7f134183ed02ae1a",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "fast_chunk_000.json",
+      "sha256": "4c6570c3f53d44bccfc1661a2a490ee64d9de20e96ad47a8722470156c11b7a4",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "fast_chunk_001.json",
+      "sha256": "46e274f5a57bede58173c79d09c936616647738cf4ff4242e8dee5947315fc93",
+      "reproduced_exact_bytes": true
+    },
+    {
+      "chunk": "fast_chunk_002.json",
+      "sha256": "2f071e67c8d201864d9afcdadc78a837fe4fc58ebb7a315ea94163f0e060c576",
+      "reproduced_exact_bytes": true
+    }
+  ]
+}

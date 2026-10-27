@@ -1,0 +1,11 @@
+{
+  "kind": "x650_paired_cpu_raw_evidence_receipt_v1",
+  "filename": "orin_server_paired_cpu_raw_v1.zip",
+  "bytes": 53387182,
+  "sha256": "d541294171983a99fd3f38119c62f2952a407f0ea82560a669fc55b9ef09161e",
+  "data_files": 222,
+  "zip_crc_and_all_member_sha256_verified": true,
+  "manifest_sha256": "c5dfffbeda5b6c0d2c2abf180e874d109a2b723503203aef6f5720343e096bc5",
+  "storage": "workstation artifacts/paired_core_20261027; no input or result data stored on NX",
+  "raw_archive_published_to_git": false
+}

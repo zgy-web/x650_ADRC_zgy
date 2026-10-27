@@ -1,0 +1,97 @@
+{
+  "kind": "x650_recorded_cdr_independent_ros_check_v1",
+  "complete": true,
+  "passed": true,
+  "records": 14,
+  "stages": [
+    "normal",
+    "fast"
+  ],
+  "scope": "Both LiveStart and first/middle/last snapshots and published proposals; all fields exactly equal",
+  "checked_records": [
+    {
+      "stage": "normal",
+      "kind": "LiveStart",
+      "entry": "accepted/run/isolated_live/worker_live_start.cdr",
+      "sha256": "79040f76f9ec0248c96d6972566846952390392985e99a35fc11a4439be36f9a"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/000001.snapshot.cdr",
+      "sha256": "7da09d3a0698a5b73524a24dc95c3d79cda9401bc8033f7df4d5df9a066f677e"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/000001.proposal.cdr",
+      "sha256": "00cad583c4632074d881e80f51a4c2c51b40a535bec7ec6be330a59353afa127"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/000799.snapshot.cdr",
+      "sha256": "26b7e8e52afe896eb537bf452c3bc6248c71c71bdcfbb6a1b749e46df90ac212"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/000799.proposal.cdr",
+      "sha256": "5e0ed73b2538327b73bf2f3466577ee4a2b260d40e3d923be009eb7300015dc8"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/001598.snapshot.cdr",
+      "sha256": "1ad81079f6296222aa0042977acd6e205e17f2fd5c88c6ed88d973b91120fd66"
+    },
+    {
+      "stage": "normal",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/001598.proposal.cdr",
+      "sha256": "6762c9f843b339db1302e7cf94309f299a706efcdf0da4d73e590cc581c7fa74"
+    },
+    {
+      "stage": "fast",
+      "kind": "LiveStart",
+      "entry": "accepted/run/isolated_live/worker_live_start.cdr",
+      "sha256": "6688e36d35538b493214c027d969913f729b6dd7735d001b4645764e314f2edc"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/000001.snapshot.cdr",
+      "sha256": "cef9f60606aa8734711d27b846248332bf0243b3f8ecd1af6fad633a650a36d9"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/000001.proposal.cdr",
+      "sha256": "2e4ac9ffb7191ff34b19c003e286c5f54d91f05195511ad6b30d314cb09cb9d9"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/000599.snapshot.cdr",
+      "sha256": "1c62c920e083f34cbc5fbe89c00003d2343c8f0cc2d8f3e5be20b2da4c9168af"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/000599.proposal.cdr",
+      "sha256": "06609570ae73f0dded0533fd67788e4a8bcb554c5d3912ae81b07c1ef2d5f05e"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlSnapshot",
+      "entry": "accepted/run/isolated_live/native_records/001198.snapshot.cdr",
+      "sha256": "297704e275fc37b9fef3ee3b3948ac02f478c556320a4196687839d00c92d584"
+    },
+    {
+      "stage": "fast",
+      "kind": "ControlProposal",
+      "entry": "accepted/run/isolated_live/native_records/001198.proposal.cdr",
+      "sha256": "3a9acbe189499705cda3c55e7781ccc461f007e8ede893ffd5286e5169a9519c"
+    }
+  ]
+}

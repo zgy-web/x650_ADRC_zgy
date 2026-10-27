@@ -100,3 +100,9 @@ docs/validation/cpp_multirate_robustness_20261027/** -text -whitespace
 control_packages/x650_wholebody_v1/x650_wholebody/native_optimization.py -text whitespace=cr-at-eol
 # Preserve the exact existing TS20 oracle source, including its terminal blank line.
 control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp -text -whitespace
+# Recorded cross-host benchmark inputs, protocol and evidence retain byte identity.
+scripts/*x650*paired_core_benchmark.py -text whitespace=cr-at-eol
+scripts/prepare_x650_recorded_core_benchmark.py -text whitespace=cr-at-eol
+tests/unit/test_x650_paired_core_benchmark.py -text whitespace=cr-at-eol
+tests/unit/test_x650_recorded_core_benchmark.py -text whitespace=cr-at-eol
+docs/validation/orin_paired_20261027/** -text -whitespace
