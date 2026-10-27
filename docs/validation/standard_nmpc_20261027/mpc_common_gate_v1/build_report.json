@@ -1,0 +1,196 @@
+{
+  "kind": "legacy_mpc_common_gate_build_validation_v1",
+  "complete": true,
+  "passed": true,
+  "physical_experiment": false,
+  "common_gate_ctests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "old_library_compatibility_ctests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "source_artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/CMakeLists.txt",
+      "bytes": 5653,
+      "sha256": "f5302933331d4a5099cec370048e1ddd330245eb8999887bb6628c33b4e5a0ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/include/x650_mpc/common_gate.hpp",
+      "bytes": 2787,
+      "sha256": "21583521cdf329c3ea6ce445a91858c2038bb8565c6c40675039a3c11cd53c5a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/src/common_gate.cpp",
+      "bytes": 5006,
+      "sha256": "8c8a424245d6ab8270f373e8b348529f75a6f9d413ce0a723eb0167592811d75"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/tests/test_common_gate.cpp",
+      "bytes": 7033,
+      "sha256": "265674fbc0019d6e930ec100e302f91871a1d55fb5cac2594d7aa13ece03834f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/tests/test_common_gate_recorded.cpp",
+      "bytes": 4258,
+      "sha256": "e44f077ea896e302993be4a0cd0f021d5de7f0af0aac4982af6c18bc1686de55"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/tests/fixtures/common_gate_recorded_v1.json",
+      "bytes": 40448,
+      "sha256": "566404fbf4f974d85a9b947a4df7ba655d9c63c1930a498d665484c38edf70fc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/examples/common_gate_one_step.cpp",
+      "bytes": 874,
+      "sha256": "5e6a30c2ee321dc35de5a73002bc2a37da33364eef459cee29375bc57bae3485"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/README.md",
+      "bytes": 16848,
+      "sha256": "110c235769c1aabc13c9a9f83b366b9be12478c3345e7aed4712149cd0e313d9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/src/controller.cpp",
+      "bytes": 2869,
+      "sha256": "5c5564e3c1f97c2623071df9d99cdde57373b676fed8e0b446ff0a03098debaa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/include/x650_mpc/controller.hpp",
+      "bytes": 2273,
+      "sha256": "80f7a3c2c5bbefe3be9b76d7639ec0963c7d8743bc793b9db8c5c64ba227f9df"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/control_packages/x650_mpc_controller_v1/include/x650_mpc/selected_profile.hpp",
+      "bytes": 1303,
+      "sha256": "e5f13843861576bddda14afa807182b4e43b28db95e06a791b14b66b84580547"
+    }
+  ],
+  "build_artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build/libx650_mpc_common_gate.a",
+      "bytes": 82758,
+      "sha256": "64448b62939efa24ce085b99258f2ff354a1871a3eb5947bb621376e93cba59a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build/libx650_mpc_controller.a",
+      "bytes": 37452,
+      "sha256": "915884b6546c2f13eb076bb64794483ac9ec5399351d1f006718a7f9fa99677a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build/test_x650_mpc_common_gate",
+      "bytes": 121112,
+      "sha256": "9f7f05b50d27446c75408c582f5900c6ed664ccca1a2112f6a5e891f85f94766"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build/test_x650_mpc_common_gate_recorded",
+      "bytes": 172960,
+      "sha256": "d12ca623960d1f30593d55ccb62d0c63b08d1c87e960327f207b34b861621e94"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build/x650_mpc_common_gate_one_step",
+      "bytes": 102976,
+      "sha256": "3c2a59acde70db233b3124e6be14a35544a030e9ada7d84837872a1c47bcc2bf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/configure_final.log",
+      "bytes": 183,
+      "sha256": "76fa462b8681e4da3d1ddafd8afa1b19b9505538a4d2d1059920a68759d4064c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build_final.log",
+      "bytes": 1536,
+      "sha256": "3bf8fe8f914875f53485ff1ab41980a05066841879683bd1221ee631a900d62e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/ctest_final.log",
+      "bytes": 2299,
+      "sha256": "8f4cc53e97a9b0773a151e23497a481f30304f19b353978e37e148abe09d1c00"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/example_final.log",
+      "bytes": 138,
+      "sha256": "c6c4ea9705f358c7dcb3d84255f417c6a7110c7fa4ef226fc7ddbb13ab4b6463"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/historical_test_final.json",
+      "bytes": 901,
+      "sha256": "8e7b8c9428cb29a60f8ed21b68fdeeb25ebe7ebfca1862b43f9a70d40a8ae0ff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/legacy_configure.log",
+      "bytes": 463,
+      "sha256": "449d2c966e975e7fe7b4c3175a1a82c8c0c6ce9c476b6e7fc6ab4ba0a6c96dea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/legacy_build.log",
+      "bytes": 547,
+      "sha256": "a692b333a829d5b5f2d52dc3c22e691d35aa0db2a2795574365a95f96518b441"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/legacy_ctest.log",
+      "bytes": 1159,
+      "sha256": "ca61e290ce6b63a403836e00ca7c8393a5fcc3e6d82fcb9aea801dad65061981"
+    }
+  ],
+  "library_and_header_inputs": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_mpc_core.so",
+      "bytes": 259360,
+      "sha256": "6576b5822f2f224e26da458c73409e3a7bb0199e12ce135f2a6388c7606ca898"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_optimization.so",
+      "bytes": 331816,
+      "sha256": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa"
+    },
+    {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "bytes": 25112,
+      "sha256": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_v1/control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+      "bytes": 11060,
+      "sha256": "ec95851288ef35d8272a88e3c7a61f998e6910450d4814dd10146c492d30b610"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so",
+      "bytes": 246176,
+      "sha256": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19"
+    }
+  ],
+  "historical_result": {
+    "fixture_sha256": "566404fbf4f974d85a9b947a4df7ba655d9c63c1930a498d665484c38edf70fc",
+    "kind": "legacy_mpc_common_gate_recorded_test_v1",
+    "passed": true,
+    "physical_experiment": false,
+    "rows": [
+      {
+        "common_accepted": true,
+        "core_ms": 5.004007,
+        "id": "hold_000303",
+        "original_core_accepted": true,
+        "passed": true,
+        "status": "ready_common_checked_candidate",
+        "stopping_violation_rad": 0.0,
+        "total_issue_ms": 6.680343,
+        "validation_ms": 1.566258
+      },
+      {
+        "common_accepted": false,
+        "core_ms": 10.108641,
+        "id": "wrench_000363",
+        "original_core_accepted": true,
+        "passed": true,
+        "status": "common_plan_rejected",
+        "stopping_violation_rad": 0.0021725639023837395,
+        "total_issue_ms": 11.529131,
+        "validation_ms": 1.341029
+      }
+    ]
+  },
+  "scope": "New optional admission adapter only; old Controller and Core step unchanged; no ROS I/O and no new physical experiment."
+}

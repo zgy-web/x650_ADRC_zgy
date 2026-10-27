@@ -137,3 +137,11 @@ scenarios/x650_upper*.yaml -text whitespace=cr-at-eol
 scripts/*x650_upper*.py -text whitespace=cr-at-eol
 tests/unit/test_x650_upper_controller_audit.py -text whitespace=cr-at-eol
 docs/validation/nmpc_live_20261027/** -text -whitespace
+# Standard OCP and common-gate qualifications bind exact cross-host bytes.
+control_packages/x650_nmpc_standard_v1/** -text whitespace=cr-at-eol
+scripts/audit_x650_legacy_common_gate.py -text whitespace=cr-at-eol
+scripts/audit_x650_recorded_stopping.py -text whitespace=cr-at-eol
+scripts/bootstrap_x650_standard_nmpc.sh -text whitespace=cr-at-eol
+scripts/qualify_x650_standard_nmpc.py -text whitespace=cr-at-eol
+tests/unit/test_x650_standard_solver.py -text whitespace=cr-at-eol
+docs/validation/standard_nmpc_20261027/** -text -whitespace

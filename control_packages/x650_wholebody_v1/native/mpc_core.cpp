@@ -1,10 +1,12 @@
 #include "mpc_core.hpp"
 #include "canonical_interval.hpp"
+#include "joint_safety.hpp"
 #include <Eigen/Dense>
 #include <algorithm>
 #include <chrono>
 #include <cmath>
 #include <limits>
+#include <new>
 #include <numeric>
 
 extern "C" {
@@ -149,8 +151,8 @@ Prediction predict(const Config& c,Ts20BatchFn fn,const StepInput& in,const std:
 }
 std::vector<double> matrix_data(const Matrix& x){return {x.data(),x.data()+x.size()};}
 HoldGuard first_command_hold(const Config& c,Ts20BatchFn fn,const StepInput& in,
- const std::vector<double>& h,const std::vector<double>& nodes,const Matrix& plan,E2 reference){
- HoldGuard guard;if(c.command_hold_s==.05)return guard;
+ const std::vector<double>& h,const std::vector<double>& nodes,const Matrix& plan,E2 reference,bool force_check=false){
+ HoldGuard guard;if(c.command_hold_s==.05&&!force_check)return guard;
  guard.required=true;guard.start_task_s=in.t;guard.end_task_s=in.t+c.command_hold_s;guard.duration_s=c.command_hold_s;
  guard.source_control_time_s=in.state.control_time;guard.source_joint_time_s=in.state.joint_stamp;
  guard.command=arr<2>(plan.row(0).tail<2>().transpose());guard.reference_initial=arr<2>(reference);
@@ -239,6 +241,131 @@ HoldGuard evaluate_first_command_hold(const Config& c,Ts20BatchFn fn,const StepI
  std::vector<double> h(c.nodes,c.node_dt);h[0]=in.dt;auto nodes=cumulative(h);
  Matrix plan=Eigen::Map<const Matrix>(physical_plan.data(),c.nodes,5);
  return first_command_hold(c,fn,in,h,nodes,plan,vec(reference_at_task_time));
+}
+
+PlanValidation evaluate_physical_plan(const Config& c,Ts20BatchFn fn,const Memory& memory,
+ const StepInput& in,const std::vector<double>& physical_plan){
+ PlanValidation out;
+ try {
+  // Construction/restore validate the unchanged ABI-4 configuration and
+  // committed lifecycle; neither operation predicts or calls a QP solver.
+  Core checked(c,fn,DiagnosticMode::Compact);checked.restore(memory);
+  require(memory.history_primed&&memory.has_origin&&memory.has_last_t,"plan validator requires primed committed history");
+  require(std::isfinite(in.t)&&in.t>=0&&std::isfinite(in.dt)&&in.dt>0&&in.dt<=c.max_dt+1e-10&&in.t>memory.last_t,
+          "plan validator increasing control time/dt");
+  const auto& s=in.state;
+  require(finite(s.position)&&finite(s.velocity)&&finite(s.omega_body)&&finite(s.acceleration)&&finite(s.q)&&finite(s.dq),
+          "plan validator state finite");rotation(s.rotation);
+  require(std::isfinite(s.stamp)&&s.stamp>=0&&(!memory.has_stamp||s.stamp>=memory.previous_stamp-1e-9)&&
+          std::isfinite(s.control_time)&&std::isfinite(s.joint_stamp),"plan validator state timestamps");
+  const double age=s.control_time-s.joint_stamp;
+  require(age>=0&&age<=.25+1e-10&&std::abs(s.control_time-in.t-memory.origin)<=1e-8,"plan validator source age/origin");
+  require(physical_plan.size()==std::size_t(5*c.nodes)&&finite(physical_plan),"plan validator finite plan shape");
+  double previous_history_time=-std::numeric_limits<double>::infinity();
+  for(const auto& item:memory.joint_history){
+   require(std::isfinite(item.time)&&item.time>previous_history_time&&item.time<=memory.last_t+1e-10&&finite(item.velocity),
+           "plan validator committed joint history");previous_history_time=item.time;
+  }
+  for(int j=0;j<5;++j)require(std::abs(memory.previous_command[j])<=c.velocity_limit[j]+1e-9,"plan validator previous command bounds");
+  out.task_time_s=in.t;out.dt_s=in.dt;out.source_stamp_s=s.stamp;
+  out.source_control_time_s=s.control_time;out.source_joint_time_s=s.joint_stamp;out.source_age_s=age;
+  out.committed_origin_s=memory.origin;out.committed_step_count=memory.step_count;out.previous_command=memory.previous_command;
+  out.actual_command_count=int(in.context.commands.size());out.actual_packet_count=int(in.context.packets.size());
+  const E2 r=reference(in,c);out.reference_at_task_time=arr<2>(r);
+  out.plan=physical_plan;out.horizon.assign(c.nodes,c.node_dt);out.horizon[0]=in.dt;
+  const auto nodes=cumulative(out.horizon);
+  require(nodes.back()+1e-12>=c.command_hold_s,"plan validator first-command hold exceeds horizon");
+  const Matrix plan=Eigen::Map<const Matrix>(physical_plan.data(),c.nodes,5);
+  E5 previous=vec(memory.previous_command);E2 integrated=r;
+  for(int j=0;j<2;++j)out.reference_violation=std::max({out.reference_violation,c.q_lower[j]-r[j],r[j]-c.q_upper[j]});
+  for(int i=0;i<c.nodes;++i){
+   out.node_times.push_back(in.t+nodes[i]);
+   for(int j=0;j<5;++j){
+    out.input_violation=std::max(out.input_violation,std::abs(plan(i,j))/c.velocity_limit[j]-1.);
+    out.slew_violation=std::max(out.slew_violation,std::abs(plan(i,j)-previous[j])-c.acceleration_limit[j]*out.horizon[i]);
+   }
+   previous=plan.row(i).transpose();integrated+=out.horizon[i]*plan.row(i).tail<2>().transpose();
+   append(out.node_references,arr<2>(integrated));
+   for(int j=0;j<2;++j)out.reference_violation=std::max({out.reference_violation,c.q_lower[j]-integrated[j],integrated[j]-c.q_upper[j]});
+  }
+  out.command_bounds_passed=out.input_violation<=c.feasibility_tolerance&&out.slew_violation<=c.feasibility_tolerance;
+  out.reference_bounds_passed=out.reference_violation<=c.feasibility_tolerance;
+  require(out.command_bounds_passed,"plan validator command speed/slew violated");
+  require(out.reference_bounds_passed,"plan validator integrated reference violated");
+  // Exactly the original fixed bus grid, original quantization and original
+  // measured packet prefix. Additional diagnostic times never split the native
+  // event integrator's canonical intervals.
+  auto pp=packets(c,in,out.horizon,nodes,plan,r,false);
+  out.input_valid=true;
+  out.packets=pp.packets;out.query_times={in.t};append(out.query_times,out.node_times);
+  for(const auto& packet:pp.packets){double applied=packet.send_time+c.motion[4];
+   if(applied>=in.t&&applied<=in.t+nodes.back())out.query_times.push_back(applied);}
+  unique_sort(out.query_times);
+  const auto native=rollout(c,fn,in,pp.packets,out.query_times,true);
+  out.native_checked=true;out.envelope=native.envelope;out.substeps=native.substeps;
+  out.query_states=matrix_data(native.query_states);out.boundary_times=native.boundaries;out.boundary_states=matrix_data(native.states);
+  out.extrema=matrix_data(native.extrema);out.modes=native.modes;out.zero_events=native.zeros;
+  auto query_index=[&](double t){auto at=std::lower_bound(out.query_times.begin(),out.query_times.end(),t);
+   require(at!=out.query_times.end()&&std::abs(*at-t)<=1e-9,"plan validator node query missing");return int(at-out.query_times.begin());};
+  const int current=query_index(in.t);
+  out.current_q=arr<2>(native.query_states.row(current).head<2>().transpose());
+  out.current_dq=arr<2>(native.query_states.row(current).tail<2>().transpose());
+  Matrix q(c.nodes,2),dq(c.nodes,2);
+  for(int i=0;i<c.nodes;++i){const int at=query_index(out.node_times[i]);
+   q.row(i)=native.query_states.row(at).head(2);dq.row(i)=native.query_states.row(at).tail(2);
+   for(int j=0;j<4;++j)out.node_states.push_back(native.query_states(at,j));}
+  using namespace joint_safety;
+  for(int j=0;j<2;++j){
+   require(out.envelope[j]<=out.envelope[j+2]&&out.envelope[j+4]<=out.envelope[j+6],"plan validator envelope order");
+   out.q_envelope_violation=std::max({out.q_envelope_violation,c.q_lower[j]+q_padding-out.envelope[j],out.envelope[j+2]+q_padding-c.q_upper[j]});
+   out.dq_envelope_violation=std::max({out.dq_envelope_violation,-c.velocity_limit[j+3]+dq_padding-out.envelope[j+4],out.envelope[j+6]+dq_padding-c.velocity_limit[j+3]});
+  }
+  out.native_bounds_passed=out.q_envelope_violation<=bound_tolerance&&out.dq_envelope_violation<=bound_tolerance;
+  out.stopping_violation=stopping_violation(c,age,q,dq);
+  out.stopping_passed=out.stopping_violation<=c.feasibility_tolerance;
+  // Same first-command pending guard as optimization.cpp:181-183. These are
+  // direct physical inequalities; no trust-region or QP row is synthesized.
+  const E2 slew=vec(c.acceleration_limit).tail<2>()*in.dt;
+  E2 vmin=vec(s.dq).cwiseMin(vec(out.current_dq)).cwiseMin(vec(memory.previous_command).tail<2>()-slew);
+  E2 vmax=vec(s.dq).cwiseMax(vec(out.current_dq)).cwiseMax(vec(memory.previous_command).tail<2>()+slew);
+  for(const auto& item:in.context.commands)if(item.time>=in.t-c.command_hold_s-age-c.max_dt){
+   vmin=vmin.cwiseMin(vec(item.velocity));vmax=vmax.cwiseMax(vec(item.velocity));}
+  const E2 qgl=vec(out.current_q)+(c.command_hold_s+age)*vmin.cwiseMin(E2::Zero());
+  const E2 qgh=vec(out.current_q)+(c.command_hold_s+age)*vmax.cwiseMax(E2::Zero());
+  out.pending_position_lower=arr<2>(qgl);out.pending_position_upper=arr<2>(qgh);
+  auto first_bounds=[&](const E2& position){
+   require((position.array()>=vec(c.q_lower).array()-1e-8).all()&&
+           (position.array()<=vec(c.q_upper).array()+1e-8).all(),"plan validator pending position outside soft envelope");
+   E5 lo=(-vec(c.velocity_limit)).cwiseMax(vec(memory.previous_command)-vec(c.acceleration_limit)*in.dt);
+   E5 hi=vec(c.velocity_limit).cwiseMin(vec(memory.previous_command)+vec(c.acceleration_limit)*in.dt);
+   for(int j=0;j<2;++j){double a=c.acceleration_limit[3+j],reserve=a*c.max_dt;
+    lo[3+j]=std::max(lo[3+j],-(std::sqrt(reserve*reserve+2*a*std::max(position[j]-c.q_lower[j],0.))-reserve));
+    hi[3+j]=std::min(hi[3+j],std::sqrt(reserve*reserve+2*a*std::max(c.q_upper[j]-position[j],0.))-reserve);}
+   require((lo.array()<=hi.array()+1e-10).all(),"plan validator inconsistent stopping bounds");
+   for(int j=0;j<5;++j)if(lo[j]>hi[j])lo[j]=hi[j]=.5*(lo[j]+hi[j]);
+   return std::make_pair(lo,hi);
+  };
+  std::string pending_rejection;
+  try {
+   const E5 lo=first_bounds(qgl).first,hi=first_bounds(qgh).second;
+   out.first_lower=arr<5>(lo);out.first_upper=arr<5>(hi);
+   require((lo.array()<=hi.array()+1e-10).all(),"plan validator pending guard infeasible");
+   out.pending_violation=std::max({0.,(lo-plan.row(0).transpose()).maxCoeff(),(plan.row(0).transpose()-hi).maxCoeff()});
+   out.pending_guard_passed=out.pending_violation<=c.feasibility_tolerance;
+   if(!out.pending_guard_passed)pending_rejection="plan validator first command pending guard violated";
+  }catch(const CoreError& error){pending_rejection=error.what();}
+  // The additive API always checks the declared hold, including a 50 ms
+  // configuration; original Core callers keep their previous skip semantics.
+  out.hold_guard=first_command_hold(c,fn,in,out.horizon,nodes,plan,r,true);
+  out.hold_passed=out.hold_guard.required&&out.hold_guard.checked&&out.hold_guard.passed;
+  require(out.native_bounds_passed,"plan validator native continuous joint envelope violated");
+  require(out.stopping_passed,"plan validator actual node stopping reserve violated");
+  if(!out.pending_guard_passed)throw CoreError(pending_rejection);
+  require(out.hold_passed,"plan validator first-command hold envelope violated");
+  out.passed=true;out.reason="conditional_event_plan_accepted";
+ }catch(const std::bad_alloc&){throw;}
+ catch(const std::exception& error){out.passed=false;out.reason=error.what();}
+ return out;
 }
 
 Core::Core(Config config,Ts20BatchFn predictor,DiagnosticMode diagnostics):config_(std::move(config)),predictor_(predictor),diagnostic_mode_(diagnostics){

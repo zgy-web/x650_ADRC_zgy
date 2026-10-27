@@ -1,0 +1,576 @@
+{
+  "kind": "x650_legacy_common_gate_supplement_v1",
+  "complete": true,
+  "created_unix": 1793089622.0982783,
+  "source_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/full_input_manifest.json",
+    "bytes": 1405,
+    "sha256": "028dc7cc49492f8c630394a65213c85ca6402ef886754cc9e15ee857db5325e3"
+  },
+  "source_files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/full_inputs/hold_000.json",
+      "bytes": 3763507,
+      "sha256": "da6be40faf6a88418dd77e79cf9804823236137fd09639b7bffdc2f758f987b8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/full_inputs/hold_001.json",
+      "bytes": 2899756,
+      "sha256": "3251c02cbf76b674cb769c217cffb79baf51e4a68584ee74980bbc07911b0dea"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/full_inputs/wrench_000.json",
+      "bytes": 4083720,
+      "sha256": "fb07ab9914c0a2b4bb2166c816d27a8cfe5818a6e537bdfc21b2f345f7871d55"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/nmpc_interface_20261027/full_inputs/wrench_001.json",
+      "bytes": 1649917,
+      "sha256": "7f236c9d4e1274ce04e3ab3c33c2e910df4df2db3be7099507cfb44a062c517c"
+    }
+  ],
+  "script": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/audit_x650_legacy_common_gate.py",
+    "bytes": 14906,
+    "sha256": "b72667c1aba62ce896dcc3b92796d0a0091ad007db4dac59298a936301d33038"
+  },
+  "runtime": {
+    "executable": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/x650_standard_event_replay",
+      "bytes": 92824,
+      "sha256": "cdc6808f3f1bfe56116d2d98068c017edba56ead18a755d8990899edd5c1463b"
+    },
+    "libraries": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_mpc_core.so",
+        "bytes": 259360,
+        "sha256": "6576b5822f2f224e26da458c73409e3a7bb0199e12ce135f2a6388c7606ca898"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_optimization.so",
+        "bytes": 331816,
+        "sha256": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/libx650_standard_event_predictor.so",
+        "bytes": 25112,
+        "sha256": "531fae18378214aacfaf7e4699416b510f09c876024bdb04deedbe4d9dbd8acd"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "bytes": 2216304,
+        "sha256": "2e15e345ccba1e1e8bf3bc58938d13eb7ccc17044942f0376cd5bc771f429b79"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libcrypto.so.3",
+        "bytes": 4451632,
+        "sha256": "9208a0be61cf02e1fc1001b5064a330268c462ed1aeda2a3a7023ac617bdd836"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "bytes": 125488,
+        "sha256": "39c9bb846d8491ec41e89b7d34b824e7b6e7ff37d7b9de549305a15c2f7a6cf7"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.9.5",
+        "bytes": 211696,
+        "sha256": "d0269f242598b6fbb2da5e2a891dd055de15558822d7c8d83dd9b12efd2b2457"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "bytes": 940560,
+        "sha256": "ec93672ba45de8a12ff774c9bcd993fa5c00155f0a64dfe1c4e984282eaf236e"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+        "bytes": 2260296,
+        "sha256": "41c4cd10be11160dec736958a59eb0553357ad77008e9ba56250d4fd8698b8ec"
+      }
+    ],
+    "ldd_stdout": "\tlinux-vdso.so.1 (0x00007ffe545c0000)\n\tlibx650_mpc_core.so => /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_mpc_core.so (0x00007fb2ad38e000)\n\tlibx650_standard_event_predictor.so => /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/libx650_standard_event_predictor.so (0x00007fb2ad387000)\n\tlibcrypto.so.3 => /usr/lib/x86_64-linux-gnu/libcrypto.so.3 (0x00007fb2acf27000)\n\tlibjsoncpp.so.25 => /usr/lib/x86_64-linux-gnu/libjsoncpp.so.25 (0x00007fb2acef2000)\n\tlibstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fb2accc4000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fb2acca4000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007fb2aca7c000)\n\tlibx650_optimization.so => /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_build_v1/legacy_native/libx650_optimization.so (0x00007fb2aca33000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007fb2ac94c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fb2ad3e0000)\n"
+  },
+  "config_sha256": "bb746edabbe15b3371f462ebbd3f68a191e762cb406b8c65199200be631edb23",
+  "config": {
+    "acceleration_limit": [
+      0.45,
+      0.3,
+      0.45,
+      0.6,
+      0.6
+    ],
+    "arm_share": 0.2,
+    "base_position_gain": [
+      0.949999988079071,
+      0.949999988079071,
+      1.0
+    ],
+    "bus_period": 0.005,
+    "feasibility_tolerance": 2e-07,
+    "geometry": [
+      0.3,
+      0.25,
+      2.6179938779914944,
+      0.0,
+      0.0,
+      0.0,
+      -0.18,
+      0.0,
+      0.04,
+      0.0
+    ],
+    "integration_step": 0.001,
+    "joint_position_gain": 3.0,
+    "kd": [
+      0.25,
+      0.25
+    ],
+    "kkt_tolerance": 0.002,
+    "kp": [
+      6.0,
+      6.0
+    ],
+    "max_dt": 0.1,
+    "max_iterations": 100,
+    "motion": [
+      0.0007447642530597398,
+      0.004194907941904997,
+      0.03470285366117535,
+      0.0004632811241788992,
+      0.003346379092576424,
+      0.075,
+      0.04,
+      0.2
+    ],
+    "node_dt": 0.04,
+    "nodes": 15,
+    "physical_lower": [
+      -1.0471975511965976,
+      -0.4363323129985824
+    ],
+    "physical_upper": [
+      0.5235987755982988,
+      1.0471975511965976
+    ],
+    "q_lower": [
+      -0.75,
+      -0.35
+    ],
+    "q_upper": [
+      0.45,
+      0.85
+    ],
+    "response": [
+      2.8471958701784543,
+      0.695123475648465,
+      2.7956770526957433,
+      0.69189021293641,
+      0.19588596825267549
+    ],
+    "trust_radius": 0.15,
+    "velocity_limit": [
+      0.55,
+      0.35,
+      0.45,
+      0.45,
+      0.35
+    ],
+    "weights": [
+      400.0,
+      4.0,
+      0.25,
+      0.02,
+      0.01,
+      0.01
+    ],
+    "command_hold_s": 0.16
+  },
+  "groups": [
+    {
+      "stage": "hold",
+      "source_group": {
+        "stage": "hold",
+        "physical_audit_sha256": "8e50b47cb90009b9d4cc8774e4911206a7c7892bcc98ea18ab42741a66783b1d",
+        "startup_sha256": "602aba42bcacb90ec4e7a24e375f063e52f59a838ee3fc173f77764cf71cc4cd",
+        "live_start_sha256": "be1e238b89fe777286c9f049298f8f58eb795f55f24914484d556c5d71959710"
+      },
+      "historical_physical_audit": {
+        "passed": true,
+        "complete": true,
+        "certificate": true,
+        "physical_acceptance": true
+      },
+      "original_calls": 711,
+      "excluded": [
+        {
+          "id": "hold_000711",
+          "sequence": 711,
+          "task_time_s": 29.996000000000002,
+          "reason": "No subsequent snapshot retains this final candidate plan"
+        }
+      ],
+      "checked": 710,
+      "accepted": 710,
+      "all_common_checks_passed": true,
+      "failure_counts": {
+        "input_valid_failed": 0,
+        "command_bounds_passed_failed": 0,
+        "reference_bounds_passed_failed": 0,
+        "native_checked_failed": 0,
+        "native_bounds_passed_failed": 0,
+        "stopping_passed_failed": 0,
+        "pending_guard_passed_failed": 0,
+        "hold_passed_failed": 0
+      },
+      "maximum_violations": {
+        "input_violation": 0.0,
+        "slew_violation": 0.0,
+        "reference_violation": 0.0,
+        "q_envelope_violation": 0.0,
+        "dq_envelope_violation": 0.0,
+        "stopping_violation": 0.0,
+        "pending_violation": 0.0
+      },
+      "minimum_actual_stopping_margin": {
+        "margin_rad": 0.33970439892388105,
+        "id": "hold_000303",
+        "task_time_s": 12.788000000000004,
+        "node": 14,
+        "joint": 2,
+        "q_rad": -0.009542693033484295,
+        "dq_rad_s": -0.0013549634840454919,
+        "reserve_s": 0.5556666666666716,
+        "protected_position_rad": -0.010295601076118913
+      },
+      "maximum_native_abs_joint_speed_rad_s": [
+        0.062155181362008594,
+        0.0063513828964732845
+      ],
+      "time_range_s": [
+        0.0519999999999996,
+        29.952000000000005
+      ],
+      "failures": []
+    },
+    {
+      "stage": "wrench",
+      "source_group": {
+        "stage": "wrench",
+        "physical_audit_sha256": "4e64cd972546597d77c97fdd6ed601d7fbbbaebb60606e92599370cb824f25e7",
+        "startup_sha256": "ee6d3c300717b13b21b6a7a0eecf257e628664ff822f8683baf11b731fa4009b",
+        "live_start_sha256": "3507643ef48945a12d0f4c970bff1068fd963b8c2fb13a1f5ae8078ab933a06d"
+      },
+      "historical_physical_audit": {
+        "passed": false,
+        "complete": true,
+        "certificate": false,
+        "physical_acceptance": false
+      },
+      "original_calls": 570,
+      "excluded": [
+        {
+          "id": "wrench_000570",
+          "sequence": 570,
+          "task_time_s": 24.003999999999998,
+          "reason": "No subsequent snapshot retains this final candidate plan"
+        }
+      ],
+      "checked": 569,
+      "accepted": 538,
+      "all_common_checks_passed": false,
+      "failure_counts": {
+        "input_valid_failed": 0,
+        "command_bounds_passed_failed": 0,
+        "reference_bounds_passed_failed": 0,
+        "native_checked_failed": 0,
+        "native_bounds_passed_failed": 0,
+        "stopping_passed_failed": 31,
+        "pending_guard_passed_failed": 0,
+        "hold_passed_failed": 0
+      },
+      "maximum_violations": {
+        "input_violation": 0.0,
+        "slew_violation": 5.689893001203927e-16,
+        "reference_violation": 1.1102230246251565e-16,
+        "q_envelope_violation": 0.0,
+        "dq_envelope_violation": 0.0,
+        "stopping_violation": 0.0021725639023837395,
+        "pending_violation": 3.2959746043559335e-16
+      },
+      "minimum_actual_stopping_margin": {
+        "margin_rad": -0.0021725639023837395,
+        "id": "wrench_000363",
+        "task_time_s": 15.32,
+        "node": 0,
+        "joint": 1,
+        "q_rad": 0.385465259471391,
+        "dq_rad_s": 0.10439327766978446,
+        "reserve_s": 0.6390000000000049,
+        "protected_position_rad": 0.45217256390238375
+      },
+      "maximum_native_abs_joint_speed_rad_s": [
+        0.3171044242710271,
+        0.313572728345794
+      ],
+      "time_range_s": [
+        0.0519999999999996,
+        23.955999999999996
+      ],
+      "failures": [
+        {
+          "id": "wrench_000176",
+          "t": 7.455999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0004791074318731825
+        },
+        {
+          "id": "wrench_000177",
+          "t": 7.5,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00019072068079117876
+        },
+        {
+          "id": "wrench_000178",
+          "t": 7.539999999999999,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0014217738093628696
+        },
+        {
+          "id": "wrench_000179",
+          "t": 7.583999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00048297613926440164
+        },
+        {
+          "id": "wrench_000180",
+          "t": 7.623999999999995,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0003902296772507752
+        },
+        {
+          "id": "wrench_000181",
+          "t": 7.667999999999999,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00063864092321686
+        },
+        {
+          "id": "wrench_000182",
+          "t": 7.711999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0004463177623399983
+        },
+        {
+          "id": "wrench_000183",
+          "t": 7.756,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0008695580524096802
+        },
+        {
+          "id": "wrench_000184",
+          "t": 7.799999999999997,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0008420073647174564
+        },
+        {
+          "id": "wrench_000341",
+          "t": 14.391999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00021887249910929052
+        },
+        {
+          "id": "wrench_000350",
+          "t": 14.775999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00029792479034412844
+        },
+        {
+          "id": "wrench_000353",
+          "t": 14.899999999999999,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0006618221777941469
+        },
+        {
+          "id": "wrench_000357",
+          "t": 15.071999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0005058623496055348
+        },
+        {
+          "id": "wrench_000360",
+          "t": 15.195999999999998,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0020927561237588654
+        },
+        {
+          "id": "wrench_000363",
+          "t": 15.32,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0021725639023837395
+        },
+        {
+          "id": "wrench_000366",
+          "t": 15.443999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0014983895394170554
+        },
+        {
+          "id": "wrench_000468",
+          "t": 19.71999999999999,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 4.6789185353279805e-05
+        },
+        {
+          "id": "wrench_000475",
+          "t": 20.008000000000003,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00065823667540027
+        },
+        {
+          "id": "wrench_000488",
+          "t": 20.547999999999995,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00022492450867350744
+        },
+        {
+          "id": "wrench_000490",
+          "t": 20.627999999999993,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00027258065935859
+        },
+        {
+          "id": "wrench_000491",
+          "t": 20.668,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 4.184111369515131e-05
+        },
+        {
+          "id": "wrench_000492",
+          "t": 20.711999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 9.811021803329822e-05
+        },
+        {
+          "id": "wrench_000493",
+          "t": 20.755999999999993,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00017911528940295351
+        },
+        {
+          "id": "wrench_000494",
+          "t": 20.796,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.000512009597326335
+        },
+        {
+          "id": "wrench_000495",
+          "t": 20.839999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0004451116718311998
+        },
+        {
+          "id": "wrench_000496",
+          "t": 20.883999999999993,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.000614158021807143
+        },
+        {
+          "id": "wrench_000498",
+          "t": 20.967999999999996,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.0004926483966276041
+        },
+        {
+          "id": "wrench_000499",
+          "t": 21.008000000000003,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 0.00014507520717671474
+        },
+        {
+          "id": "wrench_000500",
+          "t": 21.052,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 8.893905437462601e-05
+        },
+        {
+          "id": "wrench_000501",
+          "t": 21.09199999999999,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 5.264834134022234e-05
+        },
+        {
+          "id": "wrench_000502",
+          "t": 21.136000000000003,
+          "reason": "plan validator actual node stopping reserve violated",
+          "stopping_violation": 3.773296630305012e-05
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "hold_000711",
+      "sequence": 711,
+      "task_time_s": 29.996000000000002,
+      "reason": "No subsequent snapshot retains this final candidate plan"
+    },
+    {
+      "id": "wrench_000570",
+      "sequence": 570,
+      "task_time_s": 24.003999999999998,
+      "reason": "No subsequent snapshot retains this final candidate plan"
+    }
+  ],
+  "total_original_calls": 1281,
+  "total_checked": 1279,
+  "total_excluded": 2,
+  "all_checked_common_checks_passed": false,
+  "actual_stopping_failure_count": 31,
+  "artifacts": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/hold_6ef21205_000_input.json",
+      "bytes": 7373466,
+      "sha256": "6bc8c61779a45538fa3c0c7c3b0cbdc57dce6b4840c1a9144b935362022ce734"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/hold_6ef21205_000_event.json",
+      "bytes": 23895010,
+      "sha256": "6b30ccb17a0891014f12fecf8964e1b15d747a9da639b88cce46b6565543346f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/hold_6ef21205_001_input.json",
+      "bytes": 5682574,
+      "sha256": "8109a88e50dbf6c9aab2c716b9a6cd247204bb712ad2574280b6f76275dbf376"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/hold_6ef21205_001_event.json",
+      "bytes": 15865625,
+      "sha256": "08f0d6ff49c0d1d02b0bbfcf3aa7757805167ba0839fd087bea43087af1537d4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/wrench_c3ff8e5c_000_input.json",
+      "bytes": 7649072,
+      "sha256": "0c4f07721786afd6b17bf32ec392c89e63705861c538bb3ede83298060dd2387"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/wrench_c3ff8e5c_000_event.json",
+      "bytes": 27824747,
+      "sha256": "42f6df2ffe99a1ccd2e2c1b960f4f5189e847d7c03c304f507a0952a2fc21c40"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/wrench_c3ff8e5c_001_input.json",
+      "bytes": 3153181,
+      "sha256": "3bc81c9b98dd2b0399aa21225ecb60b7f0513f0215b2d183210e045ed873d0f3"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/legacy_candidate_audit_v1/wrench_c3ff8e5c_001_event.json",
+      "bytes": 11573363,
+      "sha256": "44141b99eb759be02954dfce6005491fb4d1972deec467c1dc8c173dd4513220"
+    }
+  ],
+  "physical_acceptance": false,
+  "new_closed_loop_experiment": false,
+  "hardware_qualified": false,
+  "executed_optimizer": false,
+  "original_reports_modified": false,
+  "plan_source": "Exact successor Memory plan, reconstructed from archived original commits; first command and complete successor commit checked without tolerance",
+  "scope": "Existing historical hold/wrench corpus only; not the six fresh 20261027 paired flights or a new flight acceptance. Final candidates without successor are excluded."
+}

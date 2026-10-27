@@ -1,0 +1,36 @@
+Internal ctest changing into directory: /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build
+Test project /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/mpc_common_gate_v1/build
+      Start  1: mpc_interface_prepare_discard
+ 1/15 Test  #1: mpc_interface_prepare_discard ...............   Passed    0.01 sec
+      Start  2: mpc_interface_equivalence
+ 2/15 Test  #2: mpc_interface_equivalence ...................   Passed    0.03 sec
+      Start  3: mpc_interface_stale_tokens
+ 3/15 Test  #3: mpc_interface_stale_tokens ..................   Passed    0.02 sec
+      Start  4: mpc_interface_bad_history
+ 4/15 Test  #4: mpc_interface_bad_history ...................   Passed    0.01 sec
+      Start  5: mpc_interface_native_error
+ 5/15 Test  #5: mpc_interface_native_error ..................   Passed    0.01 sec
+      Start  6: mpc_interface_wrong_publication
+ 6/15 Test  #6: mpc_interface_wrong_publication .............   Passed    0.01 sec
+      Start  7: mpc_interface_reset
+ 7/15 Test  #7: mpc_interface_reset .........................   Passed    0.02 sec
+      Start  8: mpc_common_gate_deadline_precheck
+ 8/15 Test  #8: mpc_common_gate_deadline_precheck ...........   Passed    0.00 sec
+      Start  9: mpc_common_gate_safe_transaction
+ 9/15 Test  #9: mpc_common_gate_safe_transaction ............   Passed    0.01 sec
+      Start 10: mpc_common_gate_wrong_publication
+10/15 Test #10: mpc_common_gate_wrong_publication ...........   Passed    0.02 sec
+      Start 11: mpc_common_gate_native_rejection
+11/15 Test #11: mpc_common_gate_native_rejection ............   Passed    0.01 sec
+      Start 12: mpc_common_gate_pending_reset
+12/15 Test #12: mpc_common_gate_pending_reset ...............   Passed    0.02 sec
+      Start 13: mpc_common_gate_deadline_after_validation
+13/15 Test #13: mpc_common_gate_deadline_after_validation ...   Passed    0.08 sec
+      Start 14: mpc_common_gate_allocation_cleanup
+14/15 Test #14: mpc_common_gate_allocation_cleanup ..........   Passed    0.02 sec
+      Start 15: mpc_common_gate_historical_stopping
+15/15 Test #15: mpc_common_gate_historical_stopping .........   Passed    0.05 sec
+
+100% tests passed, 0 tests failed out of 15
+
+Total Test time (real) =   0.34 sec

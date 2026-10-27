@@ -169,6 +169,38 @@ class CoreError : public std::runtime_error {
 // No controller Memory, observations, actual history or actuator is modified.
 HoldGuard evaluate_first_command_hold(const Config&,Ts20BatchFn,const StepInput&,
     const std::vector<double>& physical_plan,const V2& reference_at_task_time);
+// Additive, solver-independent validation API. The original ABI-4 Config,
+// Memory, Diagnostics, StepResult and Core layouts/step behavior are unchanged.
+// This report concerns the supplied conditional event model, not a hardware
+// guarantee, an NLP/KKT certificate or permission to publish a stale command.
+struct PlanValidation {
+  bool passed=false,input_valid=false,command_bounds_passed=false;
+  bool reference_bounds_passed=false,native_checked=false,native_bounds_passed=false;
+  bool stopping_passed=false,pending_guard_passed=false,hold_passed=false;
+  std::string reason;
+  double task_time_s=0.,dt_s=0.,source_stamp_s=0.,source_control_time_s=0.,source_joint_time_s=0.,source_age_s=0.;
+  double committed_origin_s=0.;std::uint64_t committed_step_count=0;
+  int actual_command_count=0,actual_packet_count=0,substeps=0;
+  // Input violation is normalized; slew/reference/native/stopping violations
+  // retain their original physical row units. No solver tolerance is widened.
+  double input_violation=0.,slew_violation=0.,reference_violation=0.;
+  double q_envelope_violation=0.,dq_envelope_violation=0.,stopping_violation=0.,pending_violation=0.;
+  V2 reference_at_task_time{},current_q{},current_dq{};
+  V5 previous_command{},first_lower{},first_upper{};
+  V2 pending_position_lower{},pending_position_upper{};
+  std::vector<double> plan,horizon,node_times,node_states,node_references;
+  std::vector<double> query_times,query_states,boundary_times,boundary_states,extrema;
+  std::vector<int> modes,zero_events;
+  std::vector<Packet> packets;
+  std::array<double,8> envelope{};
+  HoldGuard hold_guard;
+};
+// Does not call Core::step, construct/solve a QP, alter supplied Memory/history,
+// or write to an actuator. Ordinary contract/numeric rejection is returned in
+// reason; allocation failures may still throw. The caller separately checks
+// the ORIGINAL issue deadline and commits only after actual transmission.
+PlanValidation evaluate_physical_plan(const Config&,Ts20BatchFn,const Memory&,
+    const StepInput&,const std::vector<double>& physical_plan);
 class Core {
  public:
   Core(Config config,Ts20BatchFn predictor,DiagnosticMode diagnostics=DiagnosticMode::Full);

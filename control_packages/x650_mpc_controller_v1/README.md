@@ -98,7 +98,57 @@ if (publish_both(candidate.output)) {
 
 ABI 检查只识别接口版本，不能代替以上内容哈希校验。离线回放报告会记录实际加载的三个库路径和哈希。公开接口是 C++ ABI，需要与后端匹配的编译器/标准库；它不是跨编译器稳定的 C ABI，不能把 `.so` 文件直接复制到 Orin ARM64 上运行。
 
-## 验证方法
+## 可选公共候选保护入口：legacy_mpc_common_gate_v1
+
+新增 [common_gate.hpp](include/x650_mpc/common_gate.hpp) 提供 `x650_mpc::CommonGateController`，不修改上面的旧 `Controller`、选定参数或旧 `Core::step`。它补上独立事件模型候选保护，尤其是旧普通接受分支未无条件复核的实际节点 `q+r·dq` 制动量。算法仍是原局部 QP MPC；新增的是候选发布准入政策，不能把新运行叫作与历史验收完全相同的版本。
+
+调用顺序为：原 issue 时刻检查 → 旧 `Controller.prepare` → 原 issue 截止复查 → 公共 `evaluate_physical_plan` → 再次核验总截止 → 返回待发布候选。验证使用原始 committed Memory、测量、实际已发送历史和原优化器物理计划，覆盖所有五通道命令界/变化率、参考积分界、原TS20报文与事件传播、连续 q/dq 包络、实际节点制动量、首指令 pending guard 和160 ms保持；不是重新求解QP，不放宽速度内界。
+
+```cpp
+#include "x650_mpc/common_gate.hpp"
+
+x650_mpc::CommonGateController controller(actual_config, predictor_function);
+controller.reset(actual_anchor, actual_pre_task_publications, task_origin_s);
+
+// original_issue_ns 来自状态请求生成时；不得在这里重新打点刷新预算。
+auto candidate = controller.prepare(input, original_issue_ns); // 默认上限50 ms
+if (candidate.accepted) {
+    // 发布方紧接其真实I/O前，仍需检查原 deadline_monotonic_ns。
+    // 把 candidate.token 和 candidate.output 交给现有下发器。
+    // 匹配的飞机和关节指令实际发布完成后，writer通知回调才调用：
+    // controller.commit_published(candidate.token, exact_published_command);
+    // 确认未发送而取消时：controller.discard(candidate.token);
+}
+```
+
+`prepare(input, issue_monotonic_ns, budget_ns)` 返回 owning `CommonGateResult`：`accepted/status/detail/token`、可选原控制输出、完整 `PlanValidation` 及每阶段单调时钟/耗时。预算必须在 `(0, 50 ms]` 内，零预算、未来/零时间戳、已经过期的请求直接拒绝。预算包括旧Core、公共验证和结果复制；最终接受后，应用排队时间仍需在实际发布前再次检查。Linux上时间戳使用同一主机 `CLOCK_MONOTONIC`，可调用 `CommonGateController::monotonic_ns()`；不要混用ROS仿真时间、UTC或其它设备时钟。
+
+普通错误返回 `accepted=false`；该次新proposal自动discard、token归零、committed Memory不变。拒绝结果可能保留原候选输出用于审计，**不能因为存在output就发布**。`bad_alloc`等异常在清理新proposal后重新抛出。已有未解决的accepted候选会使下一次prepare返回 `unresolved_pending_candidate`，原候选保留，避免隐式取消一个可能已发送的计划。
+
+`commit_published`仍验证token和精确的五维实际发布命令；旧token、拒绝token、错误命令和重复提交均拒绝。它记录的是已经发生的真实发布，因此不因writer通知本身晚到就擦除实际历史；原issue截止限制的是发布准入，不是消费ACK返回时刻。应用负责可信发送通知、发送时刻/编码检查、部分发布的故障处理及发布前最后一次截止检查。本适配器无ROS I/O，也不证明所有未来预测节点真的执行了。
+
+构建时必须使用含新增 `evaluate_physical_plan` 符号的**隔离新库及匹配头文件**；旧归档库不含该符号。默认 `X650_MPC_BUILD_COMMON_GATE=OFF`，原入口仍可用旧三库构建。新target为 `x650_mpc::common_gate`：
+
+```bash
+S="$R/artifacts/standard_nmpc_20261027"
+B="$S/mpc_common_gate_v1/build"
+cmake -S "$R/control_packages/x650_mpc_controller_v1" -B "$B" \
+  -DCMAKE_BUILD_TYPE=Release -DX650_MPC_BUILD_COMMON_GATE=ON \
+  -DX650_BACKEND_LIBRARY_DIR="$S/native_build_v1/legacy_native" \
+  -DX650_NATIVE_INCLUDE_DIR="$S/source_v1/control_packages/x650_wholebody_v1/native" \
+  -DX650_TS20_LIBRARY=/root/autodl-tmp/libts20_prediction_v3.so
+cmake --build "$B" -j2
+ctest --test-dir "$B" --output-on-failure
+"$B/x650_mpc_common_gate_one_step"
+```
+
+`common_gate_one_step`是使用合成几何的可执行调用示例；没有实际发送，因此主动discard。公共保护仍是条件事件模型检查和工程制动余量，不能宣称真机保证制动力或连续时间制动不变量已经获证明。
+
+2026-10-27，该新入口在隔离服务器构建中 **15/15项CTest通过**：原接口7项不变，加上预算前检查、安全事务、错误/过期token、原生拒绝、pending/reset、验证后超时与异常清理7项，以及一项包含两条真实历史输入的回归。验证阶段注入55 ms停顿后，50 ms总截止正确拒绝且不提交；注入分配异常同样不残留pending。真实历史 `hold_000303`通过并提交与直接Core完全相同的Memory；`wrench_000363`由旧Core接受原计划，但新入口以 **0.002172563902 rad** 实际节点制动缺口拒绝，其余保护通过，committed Memory不变。测试核对重新求得的计划与后继Memory中绑定的历史计划，未编造执行历史。
+
+固定输入存于 [common_gate_recorded_v1.json](tests/fixtures/common_gate_recorded_v1.json)，SHA256 `566404fbf4f974d85a9b947a4df7ba655d9c63c1930a498d665484c38edf70fc`。其中保留完整原Memory/input及来源审计/批文件哈希；测试不依赖再次读取服务器绝对来源路径。以上均是可调用接口与固定记录验证，没有运行新的物理飞行。
+
+## 旧可调用入口验证方法
 
 2026-10-27，在新服务器容器上复用上述三个已验证共享库完成验证：**7/7 项 CTest 通过，24/24 条固定真实记录回放通过**。这 24 条输入只覆盖原任务 **0.048–0.992 秒的初始化/保持段**，尚未到八字开始时刻；不能视为完整八字或外扰回放。包装器与直接调用 Core 的控制输出、矩阵、计划、包络及提交后 Memory 相等；选定配置全部字段匹配原记录，历史输出最大绝对差为 **0**，实际加载的三个库 SHA 与原版本一致。回放报告为 `artifacts/nmpc_interface_20261027/mpc_api_replay_report.json`。这些结果是接口和固定输入数值验证，没有启动新的飞行或物理闭环实验。
 
