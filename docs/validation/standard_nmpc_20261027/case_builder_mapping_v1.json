@@ -1,0 +1,263 @@
+{
+  "kind": "x650_standard_cpp_mapping_qualification_v1",
+  "passed": true,
+  "count": 16,
+  "tolerance_absolute": 1e-10,
+  "maximum_absolute_errors": {
+    "x0": 2.7755575615628914e-17,
+    "parameters": 4.440892098500626e-16,
+    "initial_plan": 0.0,
+    "horizon": 0.0
+  },
+  "records": [
+    {
+      "id": "hold_000001",
+      "source": "hold_000_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 9.620600214914343e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000101",
+      "source": "hold_000_selected.json",
+      "errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 6.651029756782854e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000201",
+      "source": "hold_000_selected.json",
+      "errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 2.6691278717403885e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000400",
+      "source": "hold_000_selected.json",
+      "errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 4.5635699978338346e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000401",
+      "source": "hold_001_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 2.594620736117532e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000478",
+      "source": "hold_001_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 2.6056427523436787e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000556",
+      "source": "hold_001_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 3.1054768945184413e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "hold_000711",
+      "source": "hold_001_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 1.1910977304289971e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000001",
+      "source": "wrench_000_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 1.5712461171567271e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000101",
+      "source": "wrench_000_selected.json",
+      "errors": {
+        "x0": 1.3877787807814457e-17,
+        "parameters": 1.3877787807814457e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000201",
+      "source": "wrench_000_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 4.440892098500626e-16,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000400",
+      "source": "wrench_000_selected.json",
+      "errors": {
+        "x0": 2.7755575615628914e-17,
+        "parameters": 4.440892098500626e-16,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000401",
+      "source": "wrench_001_selected.json",
+      "errors": {
+        "x0": 8.673617379884035e-19,
+        "parameters": 2.7755575615628914e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000443",
+      "source": "wrench_001_selected.json",
+      "errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 1.8580514730970332e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000486",
+      "source": "wrench_001_selected.json",
+      "errors": {
+        "x0": 1.3877787807814457e-17,
+        "parameters": 5.141489989833603e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    },
+    {
+      "id": "wrench_000570",
+      "source": "wrench_001_selected.json",
+      "errors": {
+        "x0": 0.0,
+        "parameters": 2.8281159559400207e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "id": "unprimed_history",
+      "python_reason": "Primed original committed memory required",
+      "cpp_reason": "standard primed original committed memory required"
+    },
+    {
+      "id": "empty_packets",
+      "python_reason": "Actual packet history required",
+      "cpp_reason": "standard actual packet history required"
+    },
+    {
+      "id": "reverse_actual_packet_order",
+      "python_reason": "Actual packet identity/order/gains",
+      "cpp_reason": "standard actual packet order/gains/finite"
+    },
+    {
+      "id": "different_actual_gains",
+      "python_reason": "Actual packet identity/order/gains",
+      "cpp_reason": "standard actual packet order/gains/finite"
+    },
+    {
+      "id": "dt_outside_contract",
+      "python_reason": "Original control time/dt/epoch inconsistent",
+      "cpp_reason": "standard original control time/dt/epoch inconsistent"
+    },
+    {
+      "id": "stale_joint_state",
+      "python_reason": "Original joint source age",
+      "cpp_reason": "standard original joint state/age"
+    },
+    {
+      "id": "future_joint_state",
+      "python_reason": "Original joint source age",
+      "cpp_reason": "standard original joint state/age"
+    },
+    {
+      "id": "inconsistent_epoch",
+      "python_reason": "Original control time/dt/epoch inconsistent",
+      "cpp_reason": "standard original control time/dt/epoch inconsistent"
+    },
+    {
+      "id": "future_actual_packet",
+      "python_reason": "Actual packet identity/order/gains",
+      "cpp_reason": "standard actual packet order/gains/finite"
+    },
+    {
+      "id": "invalid_rotation",
+      "python_reason": "Invalid FLU to ENU rotation",
+      "cpp_reason": "standard FLU to ENU rotation"
+    },
+    {
+      "id": "missing_command_history",
+      "python_reason": "Actual command reference coverage",
+      "cpp_reason": "standard actual reference history coverage"
+    },
+    {
+      "id": "missing_history_coverage",
+      "python_reason": "Actual delayed packet history does not cover joint measurement",
+      "cpp_reason": "standard actual delayed packet does not cover joint measurement"
+    }
+  ],
+  "input_sources": [
+    {
+      "path": "hold_000_selected.json",
+      "sha256": "bd277bd59381dea808aa35dcb361bdee04ac2ef258a9f4d5c6b8d4446dd64fa2"
+    },
+    {
+      "path": "hold_001_selected.json",
+      "sha256": "f87c0610f675ab395c05009c7eda4954f4c3ff9776aa855add6598405010babd"
+    },
+    {
+      "path": "wrench_000_selected.json",
+      "sha256": "e92e7d94169e7a2b4501cee4be091c174c5b38bcfcfd407244d0f1b5725a7551"
+    },
+    {
+      "path": "wrench_001_selected.json",
+      "sha256": "ee979b0a389af0c673ceaf437d34ae0937733a4028ab4a801620c858e6b0fc2c"
+    }
+  ],
+  "cpp_builder_sha256": "0c987a7609fe19312dc820894e301d2df43ddf6d5c1b3734058d646949e1213e",
+  "sources": {
+    "native/case_builder.hpp": "65a53fc4423f62eb20f9e69879544d36ffa6619d129063e8636b2ad3dc835315",
+    "native/case_builder.cpp": "e188965bdff9d08140bcc346ebcb2c34395918ffd6fc34cc1723a89b1e7e008f",
+    "native/case_builder_replay.cpp": "742e28701d4ca82b11ccfdce933af07c212134630cffb28289d2df47531561ac",
+    "python/x650_nmpc_standard/model.py": "ef82964be55f0bfb14caaf8acdb21231d9cf076e0f78be54032d8ad4f129db7b",
+    "python/x650_nmpc_standard/config.py": "9295bc40c1a9b4648170096aa9c3cb82f9e36051e36a9ac61128697884fe80c6"
+  },
+  "scope": "Numerical mapping only; no solve, memory commit, command publication or physics"
+}

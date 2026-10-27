@@ -1,0 +1,1955 @@
+{
+  "kind": "x650_standard_cpp_solver_reproduction_v1",
+  "mode": "sqp",
+  "count": 16,
+  "repetitions": 3,
+  "passed": true,
+  "mapping_absolute_tolerance": 1e-10,
+  "solution_absolute_tolerance": 1e-06,
+  "model_graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+  "physical_config_sha256": "bb746edabbe15b3371f462ebbd3f68a191e762cb406b8c65199200be631edb23",
+  "binaries": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+      "sha256": "ff25d99fa8a2a04ada84563e31ff2c4510dbbc4838c03523f899be98d9d027fc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_solver_replay",
+      "sha256": "20e10da9508726a80ab426925fa0128a876b8bf825000a2d680d13d9c62f3fb5"
+    }
+  ],
+  "binaries_unchanged": true,
+  "generation_binding": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/generation_binding.json",
+    "sha256": "f7c0d12898ff2d2ab3b305971466a5e9eac81fdcbf94a3c209532dd5fba5e62b"
+  },
+  "generation_manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/generated_solver_manifest.json",
+    "sha256": "b655032fc4beb7b87547f0acf07ae6e853941610b9c495e35065bd9610a79fad"
+  },
+  "python_report": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/report.json",
+    "sha256": "62dbfc910c61b8d8da390bcac2aae91a84ceb244b2f5d3ec089cf951ad13e6c8"
+  },
+  "records": [
+    {
+      "index": 0,
+      "case_id": "hold_000001",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 9.620600214914343e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/numeric_case.json",
+        "sha256": "0a75dfdd957d5b0a4eceb2f77a6df121a6fd2ce1d8e641bbb65bac3763da8e56"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/acados_sqp.json",
+        "sha256": "ed9d6f3ff2eefcc395ad33cd56f9b362900999f4a4af71c0bc105f6ecf9251f8"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.0408340855860843e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.8163916471489756e-17,
+            "raw_vs_full_shooting_states": 3.122502256758253e-17,
+            "raw_vs_full_plan": 1.0408340855860843e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.0408340855860843e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.8163916471489756e-17,
+            "raw_vs_full_shooting_states": 3.122502256758253e-17,
+            "raw_vs_full_plan": 1.0408340855860843e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.0408340855860843e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.8163916471489756e-17,
+            "raw_vs_full_shooting_states": 3.122502256758253e-17,
+            "raw_vs_full_plan": 1.0408340855860843e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 1,
+      "case_id": "hold_000101",
+      "mapping_absolute_errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 6.651029756782854e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/numeric_case.json",
+        "sha256": "88d66ee70941c6fddafeb0b73a4918220d66a9b1831f93631e2f49bebf8f732a"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/acados_sqp.json",
+        "sha256": "11716887099b7fc89ff4faed7d4fef8f38773fb50ace6af36b47fda39297f0a6"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.673617379884035e-18,
+            "raw_vs_full_shooting_states": 1.5612511283791264e-17,
+            "raw_vs_full_plan": 3.469446951953614e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.673617379884035e-18,
+            "raw_vs_full_shooting_states": 1.5612511283791264e-17,
+            "raw_vs_full_plan": 3.469446951953614e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.673617379884035e-18,
+            "raw_vs_full_shooting_states": 1.5612511283791264e-17,
+            "raw_vs_full_plan": 3.469446951953614e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 2,
+      "case_id": "hold_000201",
+      "mapping_absolute_errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 2.6691278717403885e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/numeric_case.json",
+        "sha256": "1db102db866a4e15a3db0c49fdde60dd549d676d888233489c0dde48bf34f73b"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/acados_sqp.json",
+        "sha256": "0aa65b168bc9bc0d159ae2b36dd6dc4a0391cf13d9adb73df13bb64117842e52"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.204170427930421e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 5.551115123125783e-17,
+            "raw_vs_full_shooting_states": 2.7755575615628914e-17,
+            "raw_vs_full_plan": 5.204170427930421e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.204170427930421e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 5.551115123125783e-17,
+            "raw_vs_full_shooting_states": 2.7755575615628914e-17,
+            "raw_vs_full_plan": 5.204170427930421e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.204170427930421e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 5.551115123125783e-17,
+            "raw_vs_full_shooting_states": 2.7755575615628914e-17,
+            "raw_vs_full_plan": 5.204170427930421e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 3,
+      "case_id": "hold_000400",
+      "mapping_absolute_errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 4.5635699978338346e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/numeric_case.json",
+        "sha256": "c476b616fc695e97c08da4b5c8cd5bd8ca49198de15f6515e027113467d254ee"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/acados_sqp.json",
+        "sha256": "8e417036ce7a75f4a07e19629e630c067080a2577ac7791e21e0ab5b2d1a541e"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.3877787807814457e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 4.163336342344337e-17,
+            "raw_vs_full_shooting_states": 3.469446951953614e-17,
+            "raw_vs_full_plan": 1.3877787807814457e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.3877787807814457e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 4.163336342344337e-17,
+            "raw_vs_full_shooting_states": 3.469446951953614e-17,
+            "raw_vs_full_plan": 1.3877787807814457e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.3877787807814457e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 4.163336342344337e-17,
+            "raw_vs_full_shooting_states": 3.469446951953614e-17,
+            "raw_vs_full_plan": 1.3877787807814457e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 4,
+      "case_id": "hold_000401",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 2.594620736117532e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/numeric_case.json",
+        "sha256": "1e5f21e4c9a2cb5943bb3a4b56fd1b7696dcac2e04193647179f8c6779319830"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/acados_sqp.json",
+        "sha256": "6819f78026e62b72b6bb5b53ec095ddadba0c09b87ade07f963a1be6d701ae79"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.938893903907228e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.3877787807814457e-17,
+            "raw_vs_full_shooting_states": 1.3877787807814457e-17,
+            "raw_vs_full_plan": 6.938893903907228e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.938893903907228e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.3877787807814457e-17,
+            "raw_vs_full_shooting_states": 1.3877787807814457e-17,
+            "raw_vs_full_plan": 6.938893903907228e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.938893903907228e-18,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.3877787807814457e-17,
+            "raw_vs_full_shooting_states": 1.3877787807814457e-17,
+            "raw_vs_full_plan": 6.938893903907228e-18
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 5,
+      "case_id": "hold_000478",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 2.6056427523436787e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/numeric_case.json",
+        "sha256": "02a7f40e57b4e0ca9940c47f1ada4ff9130bfc4cce850705aaa31118da462c61"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/acados_sqp.json",
+        "sha256": "73b4b7b10855c836117405c20b70191b8f9f270d08f23fb738651718cdef685d"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.551115123125783e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.6653345369377348e-16,
+            "raw_vs_full_shooting_states": 2.220446049250313e-16,
+            "raw_vs_full_plan": 5.551115123125783e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.551115123125783e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.6653345369377348e-16,
+            "raw_vs_full_shooting_states": 2.220446049250313e-16,
+            "raw_vs_full_plan": 5.551115123125783e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 5.551115123125783e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.6653345369377348e-16,
+            "raw_vs_full_shooting_states": 2.220446049250313e-16,
+            "raw_vs_full_plan": 5.551115123125783e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 6,
+      "case_id": "hold_000556",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 3.1054768945184413e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/numeric_case.json",
+        "sha256": "7bc8ffb5f41b4b15917464265b5c23021e9e4b6d5d1bbb966fa61164e2a9343c"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/acados_sqp.json",
+        "sha256": "4923e661442c4355a84061189ea3fdf6e788cd1f0773cf53ec786caf839c24bd"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-16,
+            "raw_vs_full_shooting_states": 1.1102230246251565e-16,
+            "raw_vs_full_plan": 3.469446951953614e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-16,
+            "raw_vs_full_shooting_states": 1.1102230246251565e-16,
+            "raw_vs_full_plan": 3.469446951953614e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.469446951953614e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-16,
+            "raw_vs_full_shooting_states": 1.1102230246251565e-16,
+            "raw_vs_full_plan": 3.469446951953614e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 7,
+      "case_id": "hold_000711",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 1.1910977304289971e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/numeric_case.json",
+        "sha256": "77a7a5e4ef9ab21b95985845a7b4d61c003ee76e9ee26a73d90b3e934b6665ce"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/acados_sqp.json",
+        "sha256": "0af1f9c459d34b838e14f1d4e3c34660527f2dc3b17bb3ebd0eaa1616520ac22"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.8163916471489756e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5265566588595902e-16,
+            "raw_vs_full_shooting_states": 9.71445146547012e-17,
+            "raw_vs_full_plan": 3.8163916471489756e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.8163916471489756e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5265566588595902e-16,
+            "raw_vs_full_shooting_states": 9.71445146547012e-17,
+            "raw_vs_full_plan": 3.8163916471489756e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 3.8163916471489756e-17,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5265566588595902e-16,
+            "raw_vs_full_shooting_states": 9.71445146547012e-17,
+            "raw_vs_full_plan": 3.8163916471489756e-17
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 8,
+      "case_id": "wrench_000001",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 1.5712461171567271e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/numeric_case.json",
+        "sha256": "7076632291bb2a999efde7b1f99ea6ef7a3725998e7711e9f555ef97fd9563f0"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/acados_sqp.json",
+        "sha256": "2126d9c2da86bcfbca23ee2dd66dac3eb932afd324c0933299ed5d306e69176c"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.612006948902849e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 6.612006948902849e-16,
+            "raw_vs_full_shooting_states": 6.612006948902849e-16,
+            "raw_vs_full_plan": 6.612006948902849e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.612006948902849e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 6.612006948902849e-16,
+            "raw_vs_full_shooting_states": 6.612006948902849e-16,
+            "raw_vs_full_plan": 6.612006948902849e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 6.612006948902849e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 6.612006948902849e-16,
+            "raw_vs_full_shooting_states": 6.612006948902849e-16,
+            "raw_vs_full_plan": 6.612006948902849e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 9,
+      "case_id": "wrench_000101",
+      "mapping_absolute_errors": {
+        "x0": 1.3877787807814457e-17,
+        "parameters": 1.3877787807814457e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/numeric_case.json",
+        "sha256": "9ccc0c74f148eb5d53575d8005a16ff66f16c0ec208dbb4d80752c07aec1a17c"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/acados_sqp.json",
+        "sha256": "746635adbb87a99e42c9fba4b20f19b119c674bb012340544f30e8bd3d982598"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 9.71445146547012e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 2.220446049250313e-15,
+            "raw_vs_full_plan": 9.71445146547012e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 9.71445146547012e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 2.220446049250313e-15,
+            "raw_vs_full_plan": 9.71445146547012e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 9.71445146547012e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 2.220446049250313e-15,
+            "raw_vs_full_plan": 9.71445146547012e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 10,
+      "case_id": "wrench_000201",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 4.440892098500626e-16,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/numeric_case.json",
+        "sha256": "b3b8a1ff1e948f359231586d0bc7132ae9fe8c9b5ab51f5758124db6de3aac27"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/acados_sqp.json",
+        "sha256": "ecb7c17fdba1434b54f576b171cede0c86c57cb1a2f32c15115d843c6ed09ac6"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 2.220446049250313e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5543122344752192e-15,
+            "raw_vs_full_shooting_states": 1.7208456881689926e-15,
+            "raw_vs_full_plan": 2.220446049250313e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 2.220446049250313e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5543122344752192e-15,
+            "raw_vs_full_shooting_states": 1.7208456881689926e-15,
+            "raw_vs_full_plan": 2.220446049250313e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 2.220446049250313e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.5543122344752192e-15,
+            "raw_vs_full_shooting_states": 1.7208456881689926e-15,
+            "raw_vs_full_plan": 2.220446049250313e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 11,
+      "case_id": "wrench_000400",
+      "mapping_absolute_errors": {
+        "x0": 2.7755575615628914e-17,
+        "parameters": 4.440892098500626e-16,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/numeric_case.json",
+        "sha256": "942ebd9fc3db88e1a6353d5f9088a8b234c081cbafbb1922a07ec7d67f740fc7"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/acados_sqp.json",
+        "sha256": "f1eefd87ab38e6a4387b976b4d6c52f01b9b13644a9834aca1d61f922fa55af8"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.817990202823694e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.913536161803677e-15,
+            "raw_vs_full_shooting_states": 2.0816681711721685e-15,
+            "raw_vs_full_plan": 1.817990202823694e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.817990202823694e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.913536161803677e-15,
+            "raw_vs_full_shooting_states": 2.0816681711721685e-15,
+            "raw_vs_full_plan": 1.817990202823694e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.817990202823694e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 3.913536161803677e-15,
+            "raw_vs_full_shooting_states": 2.0816681711721685e-15,
+            "raw_vs_full_plan": 1.817990202823694e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 12,
+      "case_id": "wrench_000401",
+      "mapping_absolute_errors": {
+        "x0": 8.673617379884035e-19,
+        "parameters": 2.7755575615628914e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/numeric_case.json",
+        "sha256": "52c707ec9fae45c97a4a703322f6551778110b3a481a34469d31e24374f6860e"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/acados_sqp.json",
+        "sha256": "3dbef161a70cd59ff805fd59b9d915d7c4e7e523398c2620eb4ae98b315bc686"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 4.718447854656915e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 7.271960811294775e-15,
+            "raw_vs_full_shooting_states": 4.524158825347513e-15,
+            "raw_vs_full_plan": 4.718447854656915e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 4.718447854656915e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 7.271960811294775e-15,
+            "raw_vs_full_shooting_states": 4.524158825347513e-15,
+            "raw_vs_full_plan": 4.718447854656915e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 4.718447854656915e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 7.271960811294775e-15,
+            "raw_vs_full_shooting_states": 4.524158825347513e-15,
+            "raw_vs_full_plan": 4.718447854656915e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 13,
+      "case_id": "wrench_000443",
+      "mapping_absolute_errors": {
+        "x0": 6.938893903907228e-18,
+        "parameters": 1.8580514730970332e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/numeric_case.json",
+        "sha256": "60cb4207f0ff8c19ccc839671869c2fd1e30a359c91c7279c7fdf6705aecae4d"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/acados_sqp.json",
+        "sha256": "2b1dc523fedb126693914d0d08893bf9684f427e1bcd368eed96f84ecd6f25f7"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.457167719820518e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.457167719820518e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.457167719820518e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.457167719820518e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.457167719820518e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.457167719820518e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.457167719820518e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 1.457167719820518e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.457167719820518e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 14,
+      "case_id": "wrench_000486",
+      "mapping_absolute_errors": {
+        "x0": 1.3877787807814457e-17,
+        "parameters": 5.141489989833603e-18,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/numeric_case.json",
+        "sha256": "38cc21f42f497f892ef938d28c6cf781f8bc240c09d358a0ee024bf2acf08c5d"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/acados_sqp.json",
+        "sha256": "8dea21e7619eb450f977fa27cb63f44f1565c3b9cdf31e228383c5be42b46caf"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.2125717097077882e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.2125717097077882e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.2125717097077882e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.2125717097077882e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.2125717097077882e-15,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 2.220446049250313e-15,
+            "raw_vs_full_shooting_states": 1.7763568394002505e-15,
+            "raw_vs_full_plan": 1.2125717097077882e-15
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "index": 15,
+      "case_id": "wrench_000570",
+      "mapping_absolute_errors": {
+        "x0": 0.0,
+        "parameters": 2.8281159559400207e-17,
+        "initial_plan": 0.0,
+        "horizon": 0.0
+      },
+      "mapping_passed": true,
+      "numeric_case": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/numeric_case.json",
+        "sha256": "889b5cd239dae02b7225f15e358d55a3bf127d9f8436d1124938befe310e4a50"
+      },
+      "python_result": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/acados_sqp.json",
+        "sha256": "9a4b21a04cda2d969f19b835a53d8b2eba60145586eac7b34bfe07437e940d75"
+      },
+      "python_solver_flags": {
+        "raw_status": 0,
+        "solver_success": true,
+        "numerically_feasible": true,
+        "first_order_kkt_passed": true,
+        "accepted_for_publication": false
+      },
+      "comparisons": [
+        {
+          "repetition": 0,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.7751100069018921e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.881784197001252e-16,
+            "raw_vs_full_shooting_states": 4.440892098500626e-16,
+            "raw_vs_full_plan": 1.7751100069018921e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 1,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.7751100069018921e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.881784197001252e-16,
+            "raw_vs_full_shooting_states": 4.440892098500626e-16,
+            "raw_vs_full_plan": 1.7751100069018921e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        },
+        {
+          "repetition": 2,
+          "absolute_errors": {
+            "raw_plan_vs_python": 0.0,
+            "full_plan_vs_python": 1.7751100069018921e-16,
+            "raw_rollout_vs_python": 0.0,
+            "full_generated_rollout_vs_python": 8.881784197001252e-16,
+            "raw_vs_full_shooting_states": 4.440892098500626e-16,
+            "raw_vs_full_plan": 1.7751100069018921e-16
+          },
+          "flags": {
+            "raw_status_matches": true,
+            "full_status_matches": true,
+            "raw_success_matches": true,
+            "full_success_matches": true,
+            "raw_no_publication": true,
+            "full_no_publication": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "rejections": [
+    {
+      "name": "raw_wrong_hash",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_hash_input.json",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_hash_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.012240766547620296,
+      "stdout": "",
+      "stderr": "Input SHA256 differs\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "full_wrong_hash",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_solver_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/full_wrong_hash_input.json",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/full_wrong_hash_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.00976540520787239,
+      "stdout": "",
+      "stderr": "Original fixture SHA differs\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "raw_wrong_graph_sha256",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_graph_sha256_input.json",
+        "52fe5c44e8da652f70e245b65117f98d23e4937254eae477475d50ff439009ef",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_graph_sha256_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.02473236247897148,
+      "stdout": "",
+      "stderr": "Numeric case does not match the compiled nonlinear model identity\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "raw_wrong_config_sha256",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_config_sha256_input.json",
+        "05a595145f934ff0b2ba220717003bedf54cc4056d7bad82e633bc18e6f1274a",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_wrong_config_sha256_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.023582597263157368,
+      "stdout": "",
+      "stderr": "Numeric case does not match the compiled nonlinear model identity\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "full_same_dimension_wrong_config",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_solver_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/full_same_dimension_wrong_config_input.json",
+        "13d89d39c61304b6956306d59f186897bc2bc016d71635461c0d07a2e4387955",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/full_same_dimension_wrong_config_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.012643986381590366,
+      "stdout": "",
+      "stderr": "Config differs from compiled nonlinear model: response\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "raw_short_x0",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_short_x0_input.json",
+        "976f0694a0f90b36fbbc440b0d3a9c4631230103fc2addd53a5d95d224e09d5c",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_short_x0_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.028600011952221394,
+      "stdout": "",
+      "stderr": "Initial state width differs\n",
+      "output_exists": false,
+      "passed": true
+    },
+    {
+      "name": "raw_short_stage_parameters",
+      "command": [
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_sqp_v1/x650_standard_native_replay",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_short_stage_parameters_input.json",
+        "26b104b35223e242184f69dbf19e3fda466560fe29598c4598a4a417c08314e4",
+        "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/rejections/raw_short_stage_parameters_forbidden_output.json",
+        "3"
+      ],
+      "returncode": 2,
+      "wall_s": 0.029355253092944622,
+      "stdout": "",
+      "stderr": "Matrix width mismatch\n",
+      "output_exists": false,
+      "passed": true
+    }
+  ],
+  "observed_timing_ms": {
+    "raw_setup_ms": {
+      "count": 48,
+      "min": 0.670134,
+      "median": 0.7153455,
+      "p95": 0.99542395,
+      "max": 1.418827
+    },
+    "raw_solve_ms": {
+      "count": 48,
+      "min": 87.037796,
+      "median": 186.4020415,
+      "p95": 552.0994709499998,
+      "max": 610.383929
+    },
+    "raw_residual_evaluation_ms": {
+      "count": 48,
+      "min": 18.11369,
+      "median": 19.380119,
+      "p95": 20.898383499999998,
+      "max": 22.299569
+    },
+    "full_builder_ms": {
+      "count": 16,
+      "min": 0.029894,
+      "median": 0.037736,
+      "p95": 0.08044975,
+      "max": 0.106072
+    },
+    "full_setup_ms": {
+      "count": 48,
+      "min": 1.294914,
+      "median": 1.6835275,
+      "p95": 2.8086747,
+      "max": 2.923145
+    },
+    "full_solve_ms": {
+      "count": 48,
+      "min": 87.392019,
+      "median": 165.696804,
+      "p95": 322.7322551999999,
+      "max": 353.127826
+    },
+    "full_postprocess_ms": {
+      "count": 48,
+      "min": 13.398827,
+      "median": 15.317936,
+      "p95": 24.60056685,
+      "max": 24.866688
+    }
+  },
+  "timing_samples_ms": {
+    "raw_setup_ms": [
+      0.784773,
+      0.670134,
+      0.677738,
+      0.998848,
+      0.718393,
+      0.711103,
+      0.918389,
+      0.6976,
+      0.780563,
+      0.919792,
+      0.685032,
+      0.697636,
+      0.882376,
+      0.736858,
+      0.728783,
+      1.127441,
+      0.715435,
+      0.71505,
+      0.80782,
+      0.711974,
+      0.691862,
+      1.418827,
+      0.702728,
+      0.699357,
+      0.91924,
+      0.754504,
+      0.715256,
+      0.890944,
+      0.69515,
+      0.69568,
+      0.830078,
+      0.704648,
+      0.713961,
+      0.989065,
+      0.692672,
+      0.709714,
+      0.771583,
+      0.715126,
+      0.715044,
+      0.833309,
+      0.733986,
+      0.771055,
+      0.833946,
+      0.692979,
+      0.702774,
+      0.977191,
+      0.682177,
+      0.690003
+    ],
+    "raw_solve_ms": [
+      92.483061,
+      87.605831,
+      87.037796,
+      174.428715,
+      169.322991,
+      170.361829,
+      218.927245,
+      214.438443,
+      214.953745,
+      169.037505,
+      165.570935,
+      165.121695,
+      168.382021,
+      168.602487,
+      167.079421,
+      168.5962,
+      164.754366,
+      170.505588,
+      178.635935,
+      169.028571,
+      168.462103,
+      255.083609,
+      250.442504,
+      251.404891,
+      165.152168,
+      159.101366,
+      159.461149,
+      476.371089,
+      470.835589,
+      471.033684,
+      601.334005,
+      610.383929,
+      592.876292,
+      339.008847,
+      337.272223,
+      335.214509,
+      388.938029,
+      376.940299,
+      382.246026,
+      396.250898,
+      401.201805,
+      400.404654,
+      192.911756,
+      188.176482,
+      187.794512,
+      185.009571,
+      181.710715,
+      181.324868
+    ],
+    "raw_residual_evaluation_ms": [
+      18.134964,
+      18.1311,
+      18.11369,
+      18.987707,
+      19.031911,
+      19.004079,
+      19.651091,
+      19.640041,
+      19.569791,
+      18.75983,
+      18.862411,
+      18.879633,
+      18.834876,
+      19.218856,
+      18.846267,
+      18.749812,
+      18.78682,
+      21.462246,
+      19.269397,
+      19.130609,
+      19.100141,
+      19.368746,
+      19.391492,
+      19.459488,
+      18.958117,
+      18.476708,
+      18.472707,
+      20.202697,
+      20.208123,
+      22.299569,
+      20.448819,
+      20.467633,
+      20.385804,
+      19.730813,
+      19.727012,
+      19.772241,
+      19.97855,
+      20.025941,
+      20.547252,
+      20.735773,
+      20.301417,
+      20.176134,
+      20.211263,
+      20.985943,
+      20.123056,
+      19.253933,
+      19.322029,
+      19.328737
+    ],
+    "full_builder_ms": [
+      0.106072,
+      0.071909,
+      0.048114,
+      0.058033,
+      0.059174,
+      0.055949,
+      0.038826,
+      0.03493,
+      0.033004,
+      0.031444,
+      0.031385,
+      0.037419,
+      0.036773,
+      0.038053,
+      0.029939,
+      0.029894
+    ],
+    "full_setup_ms": [
+      2.770846,
+      2.24781,
+      2.241582,
+      2.713884,
+      2.649214,
+      2.653816,
+      2.923145,
+      2.829044,
+      2.839378,
+      2.581225,
+      2.620367,
+      2.519641,
+      2.572325,
+      2.452964,
+      2.428057,
+      2.409329,
+      2.412478,
+      1.394834,
+      1.566043,
+      1.537167,
+      1.529123,
+      1.532318,
+      1.558786,
+      1.551505,
+      1.323072,
+      1.315217,
+      1.294914,
+      1.721827,
+      1.703787,
+      1.70562,
+      1.681334,
+      1.685721,
+      1.668901,
+      1.669539,
+      1.635648,
+      1.658482,
+      1.675172,
+      1.676468,
+      1.677038,
+      1.657903,
+      1.645921,
+      1.661876,
+      1.77036,
+      1.729396,
+      1.726083,
+      1.56123,
+      1.542752,
+      1.531827
+    ],
+    "full_solve_ms": [
+      91.591257,
+      87.392019,
+      88.622018,
+      168.321461,
+      169.228507,
+      168.540362,
+      218.007487,
+      216.669646,
+      216.329369,
+      165.604808,
+      165.570558,
+      166.188244,
+      165.7888,
+      164.129509,
+      164.346828,
+      168.699436,
+      116.848167,
+      97.387215,
+      99.114233,
+      101.413758,
+      98.615102,
+      152.208788,
+      153.339177,
+      159.95075,
+      94.082531,
+      92.716961,
+      93.102362,
+      275.628948,
+      277.226402,
+      278.372805,
+      353.127826,
+      350.487699,
+      346.618113,
+      196.993932,
+      196.245235,
+      197.647015,
+      223.740829,
+      220.056372,
+      235.455324,
+      228.072745,
+      230.661776,
+      232.527471,
+      118.644505,
+      116.972324,
+      113.544923,
+      106.280336,
+      105.781371,
+      107.156744
+    ],
+    "full_postprocess_ms": [
+      22.398741,
+      22.502922,
+      22.460558,
+      23.797857,
+      23.79764,
+      23.841602,
+      24.821055,
+      24.866688,
+      24.779091,
+      23.480406,
+      23.531071,
+      23.612266,
+      23.94459,
+      23.205389,
+      23.219612,
+      24.269022,
+      13.677401,
+      13.815203,
+      14.100367,
+      14.057583,
+      14.05863,
+      15.387489,
+      14.501509,
+      15.349996,
+      13.641584,
+      13.398827,
+      13.629581,
+      15.182582,
+      15.449616,
+      15.200916,
+      15.828602,
+      15.285876,
+      15.249139,
+      14.641041,
+      14.744777,
+      14.640776,
+      15.098231,
+      14.69681,
+      14.906475,
+      15.094554,
+      15.146228,
+      15.851736,
+      16.199721,
+      15.890823,
+      16.058276,
+      14.203099,
+      14.243289,
+      14.186683
+    ]
+  },
+  "physical_acceptance": false,
+  "hard_realtime_proven": false,
+  "accepted_for_publication": false,
+  "limitations": [
+    "Python results retain exact rollout states, not raw returned shooting states.",
+    "Raw and full C++ shooting states are compared to each other; exact rollouts are compared to Python.",
+    "Only flags shared by both APIs are compared; Python KKT/feasibility flags are not invented for C++.",
+    "Observed setup/solve/postprocess samples do not prove original issue deadline or real-time scheduling.",
+    "Model/candidate numerical agreement does not replace original event validation or new physical feedback experiments."
+  ]
+}

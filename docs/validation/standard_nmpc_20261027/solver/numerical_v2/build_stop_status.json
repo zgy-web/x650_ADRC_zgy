@@ -1,0 +1,10 @@
+{
+  "kind": "standard_nmpc_build_stop_v1",
+  "complete": false,
+  "solve_started": false,
+  "solve_failed": false,
+  "reason": "Pinned template compiles unused residual Hessians with O2; new v3 keeps hot path O2, builds only two GN-unused residual Hessian objects O0, and fixes OCP capsule name",
+  "verified_owned_process_group": 29821,
+  "unix_time": 1793091467.1918182,
+  "all_generated_sources_preserved": true
+}

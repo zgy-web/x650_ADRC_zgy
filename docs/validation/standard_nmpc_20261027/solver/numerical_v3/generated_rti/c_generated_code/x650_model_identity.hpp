@@ -1,0 +1,8 @@
+#pragma once
+namespace x650_standard_generated {
+inline constexpr char graph_sha256[]="570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150";
+inline constexpr char physical_config_sha256[]="bb746edabbe15b3371f462ebbd3f68a191e762cb406b8c65199200be631edb23";
+inline constexpr char solver_mode[]="SQP_RTI";
+inline constexpr char physical_config_json[]=R"X650JSON({"acceleration_limit":[0.45,0.3,0.45,0.6,0.6],"arm_share":0.2,"base_position_gain":[0.949999988079071,0.949999988079071,1.0],"bus_period":0.005,"command_hold_s":0.16,"feasibility_tolerance":2e-07,"geometry":[0.3,0.25,2.6179938779914944,0.0,0.0,0.0,-0.18,0.0,0.04,0.0],"integration_step":0.001,"joint_position_gain":3.0,"kd":[0.25,0.25],"kkt_tolerance":0.002,"kp":[6.0,6.0],"max_dt":0.1,"max_iterations":100,"motion":[0.0007447642530597398,0.004194907941904997,0.03470285366117535,0.0004632811241788992,0.003346379092576424,0.075,0.04,0.2],"node_dt":0.04,"nodes":15,"physical_lower":[-1.0471975511965976,-0.4363323129985824],"physical_upper":[0.5235987755982988,1.0471975511965976],"q_lower":[-0.75,-0.35],"q_upper":[0.45,0.85],"response":[2.8471958701784543,0.695123475648465,2.7956770526957433,0.69189021293641,0.19588596825267549],"trust_radius":0.15,"velocity_limit":[0.55,0.35,0.45,0.45,0.35],"weights":[400.0,4.0,0.25,0.02,0.01,0.01]})X650JSON";
+inline constexpr char surrogate_json[]=R"X650JSON({"attitude_decay_s":0.15,"dq_padding_rad_s":0.03,"event_slots":22,"gravity_m_s2":9.8,"history_rk4_substeps_per_bus":20,"q_padding_rad":0.0003,"rk4_substeps_per_bus":10,"rotation_norm_regularizer":1e-12,"velocity_smoothing_rad_s":0.05})X650JSON";
+}

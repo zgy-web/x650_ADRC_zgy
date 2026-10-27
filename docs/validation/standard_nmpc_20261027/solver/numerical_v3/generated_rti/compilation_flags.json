@@ -1,0 +1,21 @@
+{
+  "kind": "standard_acados_object_compilation_v1",
+  "command": [
+    "make",
+    "-f",
+    "Makefile",
+    "-f",
+    "cold_hessian_flags.mk",
+    "-j2",
+    "ocp_shared_lib"
+  ],
+  "default_flags": "-fPIC -std=c99 -O2",
+  "overrides": {
+    "x650_standard_cost/x650_standard_cost_y_0_hess.o": "-fPIC -std=c99 -O2 -O0",
+    "x650_standard_cost/x650_standard_cost_y_hess.o": "-fPIC -std=c99 -O2 -O0"
+  },
+  "rationale": "acados v0.6.0 NLS GN branch uses J^T W J; exact residual Hessian expressions retained but unused",
+  "hessian_approximation": "GAUSS_NEWTON",
+  "exact_hess_cost": 0,
+  "mathematical_expressions_unchanged": true
+}

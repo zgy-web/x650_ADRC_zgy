@@ -1,0 +1,557 @@
+{
+  "kind": "x650_standard_nmpc_reference_audit_supplement_v1",
+  "complete": true,
+  "passed": true,
+  "physical_acceptance": false,
+  "online_acceptance": false,
+  "accepted_for_publication": false,
+  "original_report": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/report.json",
+    "bytes": 231210,
+    "sha256": "62dbfc910c61b8d8da390bcac2aae91a84ceb244b2f5d3ec089cf951ad13e6c8"
+  },
+  "full_dual_report": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/report.json",
+    "bytes": 1013604,
+    "sha256": "46a09f00ab8c610417aadd25bee94d6dac4667616125fdc1b6a7578e9bfe54cc"
+  },
+  "loader_audit": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3_loader_audit.json",
+    "bytes": 5174,
+    "sha256": "6f3512693f6ad296de901ad5bede2a2665c9a9bb891beb9fcc0682c97d67f4f5"
+  },
+  "auditor_source": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/audit_x650_standard_reference.py",
+    "bytes": 6478,
+    "sha256": "aca8db02fba0a42b314cf3c938e2488feb4fb64db3f578951bf369bfc338cc1c"
+  },
+  "common_binding": {
+    "configuration_sha256": "bb746edabbe15b3371f462ebbd3f68a191e762cb406b8c65199200be631edb23",
+    "options": {
+      "max_iterations": 100,
+      "primal_tolerance": 2e-07,
+      "stationarity_tolerance": 0.002,
+      "complementarity_tolerance": 2e-05,
+      "active_tolerance": 2e-06,
+      "original_issue_budget_ms": 50.0,
+      "reference_tolerance": 1e-08
+    },
+    "versions": {
+      "casadi": "3.7.2",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "acados": "v0.6.0",
+      "acados_commit": "503364817c872d474ab5bed219c26760ac267769"
+    },
+    "selections": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/hold_000_selected.json",
+        "bytes": 73207,
+        "sha256": "bd277bd59381dea808aa35dcb361bdee04ac2ef258a9f4d5c6b8d4446dd64fa2"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/hold_001_selected.json",
+        "bytes": 72820,
+        "sha256": "f87c0610f675ab395c05009c7eda4954f4c3ff9776aa855add6598405010babd"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/wrench_000_selected.json",
+        "bytes": 74979,
+        "sha256": "e92e7d94169e7a2b4501cee4be091c174c5b38bcfcfd407244d0f1b5725a7551"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/wrench_001_selected.json",
+        "bytes": 75336,
+        "sha256": "ee979b0a389af0c673ceaf437d34ae0937733a4028ab4a801620c858e6b0fc2c"
+      }
+    ],
+    "selected_count": 16
+  },
+  "cases": [
+    {
+      "index": 0,
+      "case_id": "hold_000001",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "516a4e321f9052f44dcfddbeaeb7d55b161032145e6b7041883a3718d73274fb",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/ipopt.json",
+        "bytes": 17468,
+        "sha256": "937a18c48dfb4255e0d1bac1d021118daa3bcdbe786e775031d2bc9a697b4f98"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_000/ipopt.json",
+        "bytes": 60968,
+        "sha256": "170f8a35f1ffb19d868ebfdb54924b383d94c168bad2c1fd03223acf575650c4"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 3.3986607953991294e-13,
+      "reference_complementarity_inf": 2.506129873088599e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 1,
+      "case_id": "hold_000101",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "daba1c73d8d767fe823b31f2f97cc8cdbbe1510e8b2b621e93f0445a887a6588",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/ipopt.json",
+        "bytes": 16601,
+        "sha256": "58b53408601ea041e94b10284af1873bea8f5eada324e12e036fe51096908c6e"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_001/ipopt.json",
+        "bytes": 59939,
+        "sha256": "91608ad8ce28c2c438ede5b830565641791c2e6a3f5b0fe3357320bbe50d1bc0"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 1.4325884234090374e-11,
+      "reference_complementarity_inf": 2.50652761729549e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 2,
+      "case_id": "hold_000201",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "a4778f865bae92a6e8778e639a49168c092077871d5c463f10e4df4de20dfdb8",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/ipopt.json",
+        "bytes": 17133,
+        "sha256": "130ec47d585756fd9e514ae7d674eadb5be87beb515dcb3acaf163cf4ed40904"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_002/ipopt.json",
+        "bytes": 60568,
+        "sha256": "b9e5474b3386f701f3e82528f5cccaf76a1b450baff952cfb334ff044d15d2a3"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 1.1905032745358894e-11,
+      "reference_complementarity_inf": 2.5064758513359357e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 3,
+      "case_id": "hold_000400",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "20c5d87f0d84fb13b7376f7ce6277410335072307a11d04e863c270585004868",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/ipopt.json",
+        "bytes": 16646,
+        "sha256": "8702f3dcf3588f8f3f61667ed9df4bbaf37acce10800bcc95cbf93a035f83d51"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_003/ipopt.json",
+        "bytes": 59897,
+        "sha256": "4e111bd4013b85edd6a0b8c0905f3ebf1359ff98e1857e3815448c34ed2c7752"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 9.09808548707822e-13,
+      "reference_complementarity_inf": 2.5061493475881654e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 4,
+      "case_id": "hold_000401",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "d0fca6f495e4da162808eccc71213241f3b25f262ca352d692dc7ec8b54cc5a2",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/ipopt.json",
+        "bytes": 17164,
+        "sha256": "12c2c190632e2170f1ac28bba8db45ad2a2e2239138eb793f03778c23bd02837"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_004/ipopt.json",
+        "bytes": 60433,
+        "sha256": "9316221d0a79157efb733f614eae89492b537ffba14e674d3f7558ee11339a77"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 9.741461733031788e-13,
+      "reference_complementarity_inf": 2.5061409000312745e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 5,
+      "case_id": "hold_000478",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "55163ff8f7d8edd5bf47464662f8d120a9969c32270c1c4ae27b7c9783e83121",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/ipopt.json",
+        "bytes": 17011,
+        "sha256": "58bafa329c688e5caafbd9a1aca0709d220529b12f796f091fda8e933e035633"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_005/ipopt.json",
+        "bytes": 60046,
+        "sha256": "f6c65e9d8aeb0ce0bb43035d3bfb605aa4bc0c8e32b17c73eed293387fff3e50"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 3.1519293860020804e-13,
+      "reference_complementarity_inf": 2.5061668465280385e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 6,
+      "case_id": "hold_000556",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "56239b64bebacc6b401862ec29a3e8c074c31434f8c903d86c9d300f86d36a45",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/ipopt.json",
+        "bytes": 17075,
+        "sha256": "7024e757260267387ed3628579a9664abbe68b2a7c242a2473169b731949fefa"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_006/ipopt.json",
+        "bytes": 60256,
+        "sha256": "55fae15c537a72717a77cbad8933877af3971439e25b9b52d1a71fc0db4e230b"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 8.695468526713227e-13,
+      "reference_complementarity_inf": 2.5061430256359215e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 7,
+      "case_id": "hold_000711",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "0e51827a961f27d85a8ba466de7a29461fc14a8a6b1012cac356d4a5d1c3e33c",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/ipopt.json",
+        "bytes": 16577,
+        "sha256": "a66319b70eaa6075b7ad12f646b04c62bab40b5e04c7c376f04544fc21bcfdff"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_007/ipopt.json",
+        "bytes": 59814,
+        "sha256": "2a614bed06d2082f94c03045792d92ad01a2521de1e96af44126c0ff2f73769d"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 1.5763527533554378e-12,
+      "reference_complementarity_inf": 2.5061310295683082e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 8,
+      "case_id": "wrench_000001",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "ad2c93fadee0cf8ea6e773ce490715fda7f261663fa5923753bbdb2e70c2e784",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/ipopt.json",
+        "bytes": 17217,
+        "sha256": "8983469fd2d4ea7d370becfe3e59f8094f9ba7010f837115a88605741022fdf4"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_008/ipopt.json",
+        "bytes": 60497,
+        "sha256": "d0c7bf0f099680f324b8663189a634492aec9de0019e18ed94ed2079ef27c6fa"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 1.0011016977781113e-12,
+      "reference_complementarity_inf": 2.5061240528894346e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 9,
+      "case_id": "wrench_000101",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "fed4ec31c9185299a1a942e6a46d03e02eb2abe7e484b695a5764546dbcab33b",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/ipopt.json",
+        "bytes": 16455,
+        "sha256": "6b8259ba73dfe13a04383d658d768e5b850923bfa3c947861e2a4dfb9c786448"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_009/ipopt.json",
+        "bytes": 59707,
+        "sha256": "a231a3dec5d9f9c125758d6805bf5f3bcab334e5da3a6d4c90d95c2d37a3b0da"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 4.070647956217619e-09,
+      "reference_complementarity_inf": 2.5241222929161965e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 10,
+      "case_id": "wrench_000201",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "56590f391ff5e8c37f2303189fb6e221ff2e1c9f8c4f97c567334febea1785d7",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/ipopt.json",
+        "bytes": 18020,
+        "sha256": "21da94020bf9fda07f04c84d087e536d577cb4009e90a7a1a19cdf94987ef58b"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_010/ipopt.json",
+        "bytes": 60995,
+        "sha256": "6ac67c1b1d831f9394fef96d9c6eb56c42b0b9fad4c335aaca6526bfd62f0125"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": false,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 3.411782713806213e-11,
+      "reference_complementarity_inf": 2.7098024811179468e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 11,
+      "case_id": "wrench_000400",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "bbca8d8940e4449e14b3ee885f7ed2327e7fef9054d83b9de0916b9f7a673f97",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/ipopt.json",
+        "bytes": 15897,
+        "sha256": "2687d96236b3458771c1fc058d2d31aa1f5d0bcfb67a335db6a07b1699b4093a"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_011/ipopt.json",
+        "bytes": 58902,
+        "sha256": "facb83f8bf00e72fd826a7273ee3a6f45c0b8be32fd62f441030f92a46d7a6b0"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 6.895875601951466e-11,
+      "reference_complementarity_inf": 2.508938170449056e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 12,
+      "case_id": "wrench_000401",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "25a0219d6214c8404ac9abf70c9372aecc4c24ddd657dff366398cc88e5f4ecd",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/ipopt.json",
+        "bytes": 15906,
+        "sha256": "6f6f8316a726a6a294f67db00f2932b0fc44d7062b86938c0704bf2b6690f563"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_012/ipopt.json",
+        "bytes": 58907,
+        "sha256": "f52ea4f572238ea7482e9b715c81863ce3dac064a7d425d3b6ec70a1796ff5dd"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 8.332628415693489e-11,
+      "reference_complementarity_inf": 2.5091449434292004e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 13,
+      "case_id": "wrench_000443",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "a2ee0131b913e38b8cb1bdfad530d010661940ee63940d007b9e7184ab4ae4b4",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/ipopt.json",
+        "bytes": 16254,
+        "sha256": "d3c392fc05ef9b97095322dc1948bd2185212e4fa3f931703bfc3eba1c6e31cb"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_013/ipopt.json",
+        "bytes": 59106,
+        "sha256": "685458af2c74a657b11c69d7ab146129d77865032088a9c9199896e9ab2ff2f7"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 1.7307106697367134e-10,
+      "reference_complementarity_inf": 2.652077264019098e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 14,
+      "case_id": "wrench_000486",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "cfad99c6562f6773faf954004134c50fa96eaf8dd8a949a5b3104c45f2f30038",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/ipopt.json",
+        "bytes": 16348,
+        "sha256": "0807a5d897a9e24c1e3ae73b6d39eca9de46f97c21cdf93cd14a153c21ba13ff"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_014/ipopt.json",
+        "bytes": 59031,
+        "sha256": "823ba2aaf6dd3a47a01557795b141a7342f7fd24574a76094a471f6f68cddc23"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 2.0078640540745604e-10,
+      "reference_complementarity_inf": 2.5297977783690886e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    },
+    {
+      "index": 15,
+      "case_id": "wrench_000570",
+      "graph_sha256": "570791124c3b94cd7adb8e1e23ad97ba72459380d12c8a1e23a9df54739f0150",
+      "binding_sha256": "55200a3d1443f36276981fe9bb4f5359265216d03641defdae2eb22066cbd3cb",
+      "original_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/ipopt.json",
+        "bytes": 16585,
+        "sha256": "dc575b82748aa23b2624572ffe545f0a937808fa704def1e010aeab385e6a70d"
+      },
+      "repeated_reference": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v4_ipopt_audit/case_015/ipopt.json",
+        "bytes": 59649,
+        "sha256": "3335650b4070570197bebe0b3720871d92e04fdb62398f4bfeca38539fe86f0c"
+      },
+      "plan_max_abs_difference": 0.0,
+      "state_max_abs_difference": 0.0,
+      "objective_abs_difference": 0.0,
+      "exact_solution_preserved": true,
+      "prior_reference_passed": true,
+      "independently_checked_full_duals_present": true,
+      "reference_primal_violation": 0.0,
+      "reference_stationarity_inf": 2.102569298559004e-12,
+      "reference_complementarity_inf": 2.5059035673238682e-09,
+      "reference_dual_violation": 0.0,
+      "reference_full_dual_kkt_passed": true,
+      "original_sqp_qualified": true,
+      "original_rti_single_step_qualified": false,
+      "passed": true
+    }
+  ],
+  "original_reports_modified": false,
+  "original_full_audit_passed_count": 15,
+  "supplement_passed_count": 16,
+  "rti_single_step_qualified_count": 0,
+  "explanation": "Original active-set audit is preserved. A separate identical IPOPT solve stores full multipliers and independently evaluates every primal, stationarity, complementarity and dual-sign condition. The supplement requires exactly identical plans/states/costs; it does not relax numerical limits, qualify RTI, or authorize actuator publication."
+}

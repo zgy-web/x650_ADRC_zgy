@@ -1,0 +1,62 @@
+{
+  "kind": "x650_standard_solver_load_isolation_v1",
+  "passed": true,
+  "default_mode": 0,
+  "rtld_local": 0,
+  "libraries": [
+    {
+      "artifact": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+        "bytes": 69426176,
+        "sha256": "6c250903555b981c79318e86418ddae1b1138014230e8d1698aace55e3c76706"
+      },
+      "actual_cdll_name": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+      "handle": 94112743823616,
+      "solver_mode": "SQP",
+      "generated_json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/acados_ocp.json",
+        "bytes": 12770888,
+        "sha256": "b33a3e4d49eeaebf041c4ca7694b33b049bcabb9e73d05171b14e1abe58360dd"
+      },
+      "plan_source_lines": [
+        "nlp_solver_plan->nlp_solver = SQP;"
+      ],
+      "create_symbol_address": 140017391672176,
+      "dynamics_symbol_address": 140017391686432
+    },
+    {
+      "artifact": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+        "bytes": 69426176,
+        "sha256": "c973af2ad9d6952238a7fa63d98940a9b8259474df9809bf4f6961fea8700a32"
+      },
+      "actual_cdll_name": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+      "handle": 94112756587328,
+      "solver_mode": "SQP_RTI",
+      "generated_json": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/acados_ocp.json",
+        "bytes": 12770884,
+        "sha256": "10541c840182ecd490380fdeddebd375a35c3ff399512ee2e1ba023fac671ad0"
+      },
+      "plan_source_lines": [
+        "nlp_solver_plan->nlp_solver = SQP_RTI;"
+      ],
+      "create_symbol_address": 140017316755360,
+      "dynamics_symbol_address": 140017316769472
+    }
+  ],
+  "process_memory_maps": [
+    "7f584e7d2000-7f584e7da000 r--p 00000000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f584e7da000-7f58529f8000 r-xp 00008000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f58529f8000-7f58529ff000 r--p 04226000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f58529ff000-7f5852a00000 ---p 0422d000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5852a00000-7f5852a01000 r--p 0422d000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5852a01000-7f5852a02000 rw-p 0422e000 09:00 25247176806                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5852f44000-7f5852f4c000 r--p 00000000 09:00 22560133359                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5852f4c000-7f585716a000 r-xp 00008000 09:00 22560133359                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f585716a000-7f5857172000 r--p 04226000 09:00 22560133359                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5857172000-7f5857173000 r--p 0422d000 09:00 22560133359                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so",
+    "7f5857173000-7f5857174000 rw-p 0422e000 09:00 22560133359                /root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/libacados_ocp_solver_x650_standard.so"
+  ],
+  "scope": "Separate simultaneous absolute-path CDLL handles with default RTLD_LOCAL; generated JSON/source mode binding, distinct entry and dynamics symbols."
+}

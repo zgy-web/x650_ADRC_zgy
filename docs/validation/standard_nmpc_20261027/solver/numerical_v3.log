@@ -1,0 +1,49 @@
+{"phase": "build_stage_model_begin", "elapsed_wall_s": 1.432374119758606e-06}
+{"phase": "build_stage_model_complete", "elapsed_wall_s": 0.5620327051728964}
+{"phase": "build_condensed_graph_begin", "elapsed_wall_s": 0.5743863601237535}
+{"phase": "build_condensed_graph_complete", "elapsed_wall_s": 18.00576238706708, "nx": 23, "nu": 5, "np": 161, "nh": 113}
+{"phase": "create_ipopt_begin", "elapsed_wall_s": 18.005801807157695}
+{"phase": "create_ipopt_complete", "elapsed_wall_s": 18.103226817213}
+{"phase": "generate_build_acados_sqp_begin", "elapsed_wall_s": 18.10328816436231}
+External functions generated in 24565.270 ms.
+Templated solver code generated in 1848.406 ms.
+OCP formulation matches previous via hash, code reuse possible.
+{"phase": "generate_build_acados_sqp_complete", "elapsed_wall_s": 342.5785685237497}
+{"phase": "generate_build_acados_rti_begin", "elapsed_wall_s": 342.5786106707528}
+External functions generated in 26519.990 ms.
+Templated solver code generated in 1814.524 ms.
+OCP formulation matches previous via hash, code reuse possible.
+{"phase": "generate_build_acados_rti_complete", "elapsed_wall_s": 667.952484014444}
+{"phase": "case_begin", "elapsed_wall_s": 667.9526543263346, "index": 0, "case_id": "hold_000001"}
+{"index": 0, "case_id": "hold_000001", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 679.3855069093406, "index": 1, "case_id": "hold_000101"}
+{"index": 1, "case_id": "hold_000101", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 689.6025129994377, "index": 2, "case_id": "hold_000201"}
+{"index": 2, "case_id": "hold_000201", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 699.8951380513608, "index": 3, "case_id": "hold_000400"}
+{"index": 3, "case_id": "hold_000400", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 710.1299659525976, "index": 4, "case_id": "hold_000401"}
+{"index": 4, "case_id": "hold_000401", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 720.388109584339, "index": 5, "case_id": "hold_000478"}
+{"index": 5, "case_id": "hold_000478", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 730.5947050601244, "index": 6, "case_id": "hold_000556"}
+{"index": 6, "case_id": "hold_000556", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 740.8915507737547, "index": 7, "case_id": "hold_000711"}
+{"index": 7, "case_id": "hold_000711", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 751.251560587436, "index": 8, "case_id": "wrench_000001"}
+{"index": 8, "case_id": "wrench_000001", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 761.4391417037696, "index": 9, "case_id": "wrench_000101"}
+{"index": 9, "case_id": "wrench_000101", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 773.3444382222369, "index": 10, "case_id": "wrench_000201"}
+{"index": 10, "case_id": "wrench_000201", "passed": false, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 789.4190509878099, "index": 11, "case_id": "wrench_000400"}
+{"index": 11, "case_id": "wrench_000400", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 800.7675712062046, "index": 12, "case_id": "wrench_000401"}
+{"index": 12, "case_id": "wrench_000401", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 812.2369118668139, "index": 13, "case_id": "wrench_000443"}
+{"index": 13, "case_id": "wrench_000443", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 824.5878040250391, "index": 14, "case_id": "wrench_000486"}
+{"index": 14, "case_id": "wrench_000486", "passed": true, "error": null}
+{"phase": "case_begin", "elapsed_wall_s": 837.8200334394351, "index": 15, "case_id": "wrench_000570"}
+{"index": 15, "case_id": "wrench_000570", "passed": true, "error": null}
+{"complete": true, "passed": false, "passed_count": 15, "selected_count": 16}

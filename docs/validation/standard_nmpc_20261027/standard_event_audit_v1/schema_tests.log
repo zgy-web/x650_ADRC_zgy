@@ -1,0 +1,10 @@
+test_case_hash_mismatch_rejected_even_with_new_report_binding (__main__.StandardCandidateAuditTests) ... ok
+test_changed_selection_rejected (__main__.StandardCandidateAuditTests) ... ok
+test_failed_solver_still_audited_and_all_missing_explicit (__main__.StandardCandidateAuditTests) ... ok
+test_in_progress_qualification_not_used (__main__.StandardCandidateAuditTests) ... ok
+test_plan_requires_complete_finite_consistent_pair (__main__.StandardCandidateAuditTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.017s
+
+OK

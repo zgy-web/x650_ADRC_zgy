@@ -1,0 +1,8 @@
+{
+  "archive_sha256": "f123420daf2e100ebb835e00417f036d0bce388b6ad1d1679caca3428d17790a",
+  "archive_bytes": 2293857,
+  "verified_files": 139,
+  "local_root": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\docs\\validation\\standard_nmpc_20261027\\solver",
+  "server_paths_unchanged": true,
+  "relative_mapping": "server stage root -> this local directory; all original identities preserved"
+}

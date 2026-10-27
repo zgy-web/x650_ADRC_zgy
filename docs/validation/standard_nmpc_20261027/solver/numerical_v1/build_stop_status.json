@@ -1,0 +1,10 @@
+{
+  "kind": "standard_nmpc_build_stop_v1",
+  "complete": false,
+  "solve_started": false,
+  "solve_failed": false,
+  "reason": "Exact Hessian generated C compile cost; switching acados SQP Hessian approximation to standard Gauss Newton while keeping the same nonlinear OCP, exact IPOPT and AD audits",
+  "verified_owned_process_group": 28389,
+  "unix_time": 1793090694.167369,
+  "source_and_generated_files_preserved": true
+}

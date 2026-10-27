@@ -1,0 +1,78 @@
+{
+  "kind": "x650_standard_native_packaging_contract_v2",
+  "passed": true,
+  "same_build_directory": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_contract_v2/same_build_directory",
+  "order": [
+    "SQP",
+    "SQP_RTI"
+  ],
+  "records": [
+    {
+      "mode": "sqp",
+      "passed": true,
+      "cache_bound": true,
+      "loader_bound": true,
+      "binary_sha256": "aeada1dbb213f4a164199e2161274033a4d181c869ebb7b6e3e1bf78d0c7b624",
+      "generated_library_sha256": "6c250903555b981c79318e86418ddae1b1138014230e8d1698aace55e3c76706",
+      "good_flags": true,
+      "mixed_failure_flags": true,
+      "status_matches": true,
+      "absolute_errors": {
+        "plan": 1.0408340855860843e-17,
+        "rollout": 3.8163916471489756e-17
+      },
+      "good_input_sha256": "3276257e00229ac32360b5b791f63ab21e2669d8b561272bbfa13ea1dfb5218b",
+      "mixed_input_sha256": "cd3bc409feddbd555d9c0aaa1ba03cf0a226dc46f3faf8efc63a309a76c651f0"
+    },
+    {
+      "mode": "rti",
+      "passed": true,
+      "cache_bound": true,
+      "loader_bound": true,
+      "binary_sha256": "f7e9074bb43bc21c39c27eafa32f8ba91bbac7f15f7175590818ee7df30154d6",
+      "generated_library_sha256": "c973af2ad9d6952238a7fa63d98940a9b8259474df9809bf4f6961fea8700a32",
+      "good_flags": true,
+      "mixed_failure_flags": true,
+      "status_matches": true,
+      "absolute_errors": {
+        "plan": 4.683753385137379e-17,
+        "rollout": 1.1796119636642288e-16
+      },
+      "good_input_sha256": "3276257e00229ac32360b5b791f63ab21e2669d8b561272bbfa13ea1dfb5218b",
+      "mixed_input_sha256": "cd3bc409feddbd555d9c0aaa1ba03cf0a226dc46f3faf8efc63a309a76c651f0"
+    }
+  ],
+  "original_fixture": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/native_reproduction_sqp_v1/inputs/original_000.json",
+    "sha256": "3276257e00229ac32360b5b791f63ab21e2669d8b561272bbfa13ea1dfb5218b"
+  },
+  "source_identities": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_native_contract_v2/control_packages/x650_nmpc_standard_v1/CMakeLists.txt",
+      "sha256": "99a5e196be0b6f8db92ecd53eef40f39f21a637c81e2cf151050e91eec1d0557"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_native_contract_v2/control_packages/x650_nmpc_standard_v1/native/solver_replay.cpp",
+      "sha256": "49875a248d081d628c68f714ad8ce68c506ab9acf7e3f4896363f18b0a2f6f53"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_native_contract_v2/control_packages/x650_nmpc_standard_v1/native/acados_backend.cpp",
+      "sha256": "c2b934d258bd435ef42cd74a1b886950435ff8c962fef9d8bd8df7b527d81c16"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_native_contract_v2/control_packages/x650_nmpc_standard_v1/native/case_builder.cpp",
+      "sha256": "e188965bdff9d08140bcc346ebcb2c34395918ffd6fc34cc1723a89b1e7e008f"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/source_native_contract_v2/control_packages/x650_nmpc_standard_v1/tests/test_native_contract.py",
+      "sha256": "13dede0ced717f4a40d7594faf39e9e2d92c528e1c4850031b3cb93cd3d674df"
+    }
+  ],
+  "source_unchanged": true,
+  "accepted_for_publication": false,
+  "limitations": [
+    "One fixed case checks wrapper and build-mode selection, not full qualification.",
+    "Earlier full 16-case reproduction is preserved under its original binary identities.",
+    "This regression does not modify the graph or declare physical/real-time acceptance."
+  ]
+}

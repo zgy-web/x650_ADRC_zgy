@@ -1,0 +1,17 @@
+test_original_issue_never_refreshed (test_x650_standard_solver.ClockAndOptionsTests) ... ok
+test_thresholds_explicit (test_x650_standard_solver.ClockAndOptionsTests) ... ok
+test_active_constraint_sign_and_multiplier (test_x650_standard_solver.ResidualTests) ... ok
+test_analytic_derivatives (test_x650_standard_solver.ResidualTests) ... ok
+test_feasibility_and_stationarity_not_confused (test_x650_standard_solver.ResidualTests) ... ok
+test_full_dual_check_keeps_near_active_interior_point_constraint (test_x650_standard_solver.ResidualTests) ... ok
+test_incorrect_derivative_is_detected (test_x650_standard_solver.ResidualTests) ... ok
+test_multiplier_on_absent_bound_is_rejected (test_x650_standard_solver.ResidualTests) ... ok
+test_supplied_stationarity_cannot_hide_noncomplementarity (test_x650_standard_solver.ResidualTests) ... ok
+test_exact_stage_objective_no_double_h_or_half (test_x650_standard_solver.SymbolicGraphTests) ... ok
+test_numeric_case_export_roundtrip (test_x650_standard_solver.SymbolicGraphTests) ... ok
+test_rebinding_preserves_source_and_graph (test_x650_standard_solver.SymbolicGraphTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.344s
+
+OK

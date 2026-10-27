@@ -1,0 +1,370 @@
+{
+  "kind": "x650_standard_nmpc_offline_manifest_v1",
+  "files": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/acados_rti.json",
+      "bytes": 18135,
+      "sha256": "6e768932c7376f9c9e106476fb32c4caa9b52de787fcb6175be3bf3d4b1f7ef9"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/acados_sqp.json",
+      "bytes": 18066,
+      "sha256": "ed9d6f3ff2eefcc395ad33cd56f9b362900999f4a4af71c0bc105f6ecf9251f8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/ipopt.json",
+      "bytes": 17468,
+      "sha256": "937a18c48dfb4255e0d1bac1d021118daa3bcdbe786e775031d2bc9a697b4f98"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_000/numeric_case.json",
+      "bytes": 103986,
+      "sha256": "0a75dfdd957d5b0a4eceb2f77a6df121a6fd2ce1d8e641bbb65bac3763da8e56"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/acados_rti.json",
+      "bytes": 17255,
+      "sha256": "f3d3fba1f76432f06d7502eeba2a90282f22561cc66c426392ee47b25d12ef42"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/acados_sqp.json",
+      "bytes": 17177,
+      "sha256": "11716887099b7fc89ff4faed7d4fef8f38773fb50ace6af36b47fda39297f0a6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/ipopt.json",
+      "bytes": 16601,
+      "sha256": "58b53408601ea041e94b10284af1873bea8f5eada324e12e036fe51096908c6e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_001/numeric_case.json",
+      "bytes": 103063,
+      "sha256": "88d66ee70941c6fddafeb0b73a4918220d66a9b1831f93631e2f49bebf8f732a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/acados_rti.json",
+      "bytes": 17804,
+      "sha256": "ac94caeb321ad8e6e105a6cfc43a5ee0987ce985d31a5db2c0907860521fb58b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/acados_sqp.json",
+      "bytes": 17710,
+      "sha256": "0aa65b168bc9bc0d159ae2b36dd6dc4a0391cf13d9adb73df13bb64117842e52"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/ipopt.json",
+      "bytes": 17133,
+      "sha256": "130ec47d585756fd9e514ae7d674eadb5be87beb515dcb3acaf163cf4ed40904"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_002/numeric_case.json",
+      "bytes": 103525,
+      "sha256": "1db102db866a4e15a3db0c49fdde60dd549d676d888233489c0dde48bf34f73b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/acados_rti.json",
+      "bytes": 17333,
+      "sha256": "0a80e5199528a6210ef38f99a3d5a86e73473485211ba7a2412257634acf2f25"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/acados_sqp.json",
+      "bytes": 17219,
+      "sha256": "8e417036ce7a75f4a07e19629e630c067080a2577ac7791e21e0ab5b2d1a541e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/ipopt.json",
+      "bytes": 16646,
+      "sha256": "8702f3dcf3588f8f3f61667ed9df4bbaf37acce10800bcc95cbf93a035f83d51"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_003/numeric_case.json",
+      "bytes": 102724,
+      "sha256": "c476b616fc695e97c08da4b5c8cd5bd8ca49198de15f6515e027113467d254ee"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/acados_rti.json",
+      "bytes": 17845,
+      "sha256": "2d4e72a19a412f9b7454bc61c5a09446f83fe9ba6289b74463fb3d0c5eb620c5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/acados_sqp.json",
+      "bytes": 17745,
+      "sha256": "6819f78026e62b72b6bb5b53ec095ddadba0c09b87ade07f963a1be6d701ae79"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/ipopt.json",
+      "bytes": 17164,
+      "sha256": "12c2c190632e2170f1ac28bba8db45ad2a2e2239138eb793f03778c23bd02837"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_004/numeric_case.json",
+      "bytes": 103525,
+      "sha256": "1e5f21e4c9a2cb5943bb3a4b56fd1b7696dcac2e04193647179f8c6779319830"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/acados_rti.json",
+      "bytes": 17635,
+      "sha256": "e85f98e88ff8054b66b95489e050d1ce52cf5a27554577452e4cfb03ff19a08d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/acados_sqp.json",
+      "bytes": 17568,
+      "sha256": "73b4b7b10855c836117405c20b70191b8f9f270d08f23fb738651718cdef685d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/ipopt.json",
+      "bytes": 17011,
+      "sha256": "58bafa329c688e5caafbd9a1aca0709d220529b12f796f091fda8e933e035633"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_005/numeric_case.json",
+      "bytes": 103469,
+      "sha256": "02a7f40e57b4e0ca9940c47f1ada4ff9130bfc4cce850705aaa31118da462c61"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/acados_rti.json",
+      "bytes": 17763,
+      "sha256": "ccd9643efbab8d7e4f19070583ba2a739a45a88b833ce87097cd2d07f75e67d4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/acados_sqp.json",
+      "bytes": 17599,
+      "sha256": "4923e661442c4355a84061189ea3fdf6e788cd1f0773cf53ec786caf839c24bd"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/ipopt.json",
+      "bytes": 17075,
+      "sha256": "7024e757260267387ed3628579a9664abbe68b2a7c242a2473169b731949fefa"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_006/numeric_case.json",
+      "bytes": 103459,
+      "sha256": "7bc8ffb5f41b4b15917464265b5c23021e9e4b6d5d1bbb966fa61164e2a9343c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/acados_rti.json",
+      "bytes": 17208,
+      "sha256": "9b9b448137a6de11fc1e0929d191f96d1a32edec968497cf6e86b3eac89bba37"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/acados_sqp.json",
+      "bytes": 17122,
+      "sha256": "0af1f9c459d34b838e14f1d4e3c34660527f2dc3b17bb3ebd0eaa1616520ac22"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/ipopt.json",
+      "bytes": 16577,
+      "sha256": "a66319b70eaa6075b7ad12f646b04c62bab40b5e04c7c376f04544fc21bcfdff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_007/numeric_case.json",
+      "bytes": 102833,
+      "sha256": "77a7a5e4ef9ab21b95985845a7b4d61c003ee76e9ee26a73d90b3e934b6665ce"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/acados_rti.json",
+      "bytes": 17862,
+      "sha256": "59e67b280b3d903365ff478b0154ac07d0a90714c578205a145a649b9dca0b08"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/acados_sqp.json",
+      "bytes": 17762,
+      "sha256": "2126d9c2da86bcfbca23ee2dd66dac3eb932afd324c0933299ed5d306e69176c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/ipopt.json",
+      "bytes": 17217,
+      "sha256": "8983469fd2d4ea7d370becfe3e59f8094f9ba7010f837115a88605741022fdf4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_008/numeric_case.json",
+      "bytes": 103973,
+      "sha256": "7076632291bb2a999efde7b1f99ea6ef7a3725998e7711e9f555ef97fd9563f0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/acados_rti.json",
+      "bytes": 17099,
+      "sha256": "013dd44912e8fba19cdece4e344e0e4a6df90a25b9aea434fd49faacfc843be4"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/acados_sqp.json",
+      "bytes": 17011,
+      "sha256": "746635adbb87a99e42c9fba4b20f19b119c674bb012340544f30e8bd3d982598"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/ipopt.json",
+      "bytes": 16455,
+      "sha256": "6b8259ba73dfe13a04383d658d768e5b850923bfa3c947861e2a4dfb9c786448"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_009/numeric_case.json",
+      "bytes": 104701,
+      "sha256": "9ccc0c74f148eb5d53575d8005a16ff66f16c0ec208dbb4d80752c07aec1a17c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/acados_rti.json",
+      "bytes": 19397,
+      "sha256": "c1477c0598881e891a90e4d03141d09348cf896af7f0b567b3b5bf3d793fe231"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/acados_sqp.json",
+      "bytes": 19308,
+      "sha256": "ecb7c17fdba1434b54f576b171cede0c86c57cb1a2f32c15115d843c6ed09ac6"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/ipopt.json",
+      "bytes": 18020,
+      "sha256": "21da94020bf9fda07f04c84d087e536d577cb4009e90a7a1a19cdf94987ef58b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_010/numeric_case.json",
+      "bytes": 103794,
+      "sha256": "b3b8a1ff1e948f359231586d0bc7132ae9fe8c9b5ab51f5758124db6de3aac27"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/acados_rti.json",
+      "bytes": 16550,
+      "sha256": "2efa4a99a26b1b8f58c9681da1eb7b90072f0fbfcb25eb7f7682f4b4f06a4f23"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/acados_sqp.json",
+      "bytes": 16458,
+      "sha256": "f1eefd87ab38e6a4387b976b4d6c52f01b9b13644a9834aca1d61f922fa55af8"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/ipopt.json",
+      "bytes": 15897,
+      "sha256": "2687d96236b3458771c1fc058d2d31aa1f5d0bcfb67a335db6a07b1699b4093a"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_011/numeric_case.json",
+      "bytes": 103805,
+      "sha256": "942ebd9fc3db88e1a6353d5f9088a8b234c081cbafbb1922a07ec7d67f740fc7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/acados_rti.json",
+      "bytes": 16542,
+      "sha256": "b5cbc86dcc16084ab7f894dd9e8600377efce73fea1ff7a66b68132fb0f5e7f2"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/acados_sqp.json",
+      "bytes": 16429,
+      "sha256": "3dbef161a70cd59ff805fd59b9d915d7c4e7e523398c2620eb4ae98b315bc686"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/ipopt.json",
+      "bytes": 15906,
+      "sha256": "6f6f8316a726a6a294f67db00f2932b0fc44d7062b86938c0704bf2b6690f563"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_012/numeric_case.json",
+      "bytes": 103705,
+      "sha256": "52c707ec9fae45c97a4a703322f6551778110b3a481a34469d31e24374f6860e"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/acados_rti.json",
+      "bytes": 16906,
+      "sha256": "d9c62f3be82b1dacb6773af34deea54eb3a271a08eb539f8173e461cf5d9fd77"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/acados_sqp.json",
+      "bytes": 16864,
+      "sha256": "2b1dc523fedb126693914d0d08893bf9684f427e1bcd368eed96f84ecd6f25f7"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/ipopt.json",
+      "bytes": 16254,
+      "sha256": "d3c392fc05ef9b97095322dc1948bd2185212e4fa3f931703bfc3eba1c6e31cb"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_013/numeric_case.json",
+      "bytes": 104528,
+      "sha256": "60cb4207f0ff8c19ccc839671869c2fd1e30a359c91c7279c7fdf6705aecae4d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/acados_rti.json",
+      "bytes": 17061,
+      "sha256": "bb8b54ea522acc87d9fbd427e68a9432f40bfd193214569442a171e846055fa5"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/acados_sqp.json",
+      "bytes": 17001,
+      "sha256": "8dea21e7619eb450f977fa27cb63f44f1565c3b9cdf31e228383c5be42b46caf"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/ipopt.json",
+      "bytes": 16348,
+      "sha256": "0807a5d897a9e24c1e3ae73b6d39eca9de46f97c21cdf93cd14a153c21ba13ff"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_014/numeric_case.json",
+      "bytes": 102783,
+      "sha256": "38cc21f42f497f892ef938d28c6cf781f8bc240c09d358a0ee024bf2acf08c5d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/acados_rti.json",
+      "bytes": 17372,
+      "sha256": "828af42953ccc347663cdb7995bae5b4cd4faea2ec9425bab5c7f383fb2375ac"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/acados_sqp.json",
+      "bytes": 17248,
+      "sha256": "9a4b21a04cda2d969f19b835a53d8b2eba60145586eac7b34bfe07437e940d75"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/ipopt.json",
+      "bytes": 16585,
+      "sha256": "dc575b82748aa23b2624572ffe545f0a937808fa704def1e010aeab385e6a70d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/case_015/numeric_case.json",
+      "bytes": 103093,
+      "sha256": "889b5cd239dae02b7225f15e358d55a3bf127d9f8436d1124938befe310e4a50"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/c_generated_code/acados_ocp.json",
+      "bytes": 12770884,
+      "sha256": "10541c840182ecd490380fdeddebd375a35c3ff399512ee2e1ba023fac671ad0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/compilation_flags.json",
+      "bytes": 635,
+      "sha256": "829068cb9efb39717fac83e4417801ccb1b7762abd52e7404584b2fecd59a7dc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/generated_solver_manifest.json",
+      "bytes": 9248,
+      "sha256": "c20e2bad68d44ed2b51592451da71f14b82b2a9428e57c90ad8b9d13a501248c"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_rti/generation_binding.json",
+      "bytes": 902,
+      "sha256": "b0b190e83b595d7e2da92474116a52e722640e312c915157599704c5eb4492f0"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/c_generated_code/acados_ocp.json",
+      "bytes": 12770888,
+      "sha256": "b33a3e4d49eeaebf041c4ca7694b33b049bcabb9e73d05171b14e1abe58360dd"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/compilation_flags.json",
+      "bytes": 635,
+      "sha256": "829068cb9efb39717fac83e4417801ccb1b7762abd52e7404584b2fecd59a7dc"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/generated_solver_manifest.json",
+      "bytes": 9244,
+      "sha256": "b655032fc4beb7b87547f0acf07ae6e853941610b9c495e35065bd9610a79fad"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/generated_sqp/generation_binding.json",
+      "bytes": 898,
+      "sha256": "f7c0d12898ff2d2ab3b305971466a5e9eac81fdcbf94a3c209532dd5fba5e62b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/standard_nmpc_20261027/numerical_v3/report.json",
+      "bytes": 231210,
+      "sha256": "62dbfc910c61b8d8da390bcac2aae91a84ceb244b2f5d3ec089cf951ad13e6c8"
+    }
+  ]
+}
