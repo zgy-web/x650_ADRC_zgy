@@ -1,0 +1,186 @@
+{
+  "kind": "x650_multirate_robustness_batch_v1",
+  "complete": true,
+  "all_conditions_executed": true,
+  "all_conditions_passed": false,
+  "algorithm_changed": false,
+  "parameters_changed": false,
+  "runtime_recompiled": false,
+  "timing_profile": "mpc25_dispatch50_v1",
+  "delay_tests_enabled": false,
+  "hardware_qualified": false,
+  "scope": "Two fresh 24 s mass/inertia mismatch trials; retains the prior completed same-backend external-wrench trial without rerun or relabeling",
+  "cases": [
+    {
+      "case_id": "wrench_fast",
+      "fresh_run_in_this_batch": false,
+      "audit": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_audit_followup_v4/report.json",
+        "bytes": 3813322,
+        "sha256": "4e64cd972546597d77c97fdd6ed601d7fbbbaebb60606e92599370cb824f25e7"
+      },
+      "integrity_and_execution_passed": true,
+      "physical_acceptance": false,
+      "endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "sample_count": 6001,
+        "duration_s": 23.999999999999993,
+        "position_rmse_m": 0.04235824924886268,
+        "position_max_m": 0.1851721805797341,
+        "axis_rmse_m": [
+          0.042089038342305304,
+          0.002148369664531617,
+          0.004256599421281369
+        ]
+      },
+      "tail_endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          20.0,
+          24.0
+        ],
+        "sample_count": 1001,
+        "duration_s": 4.0,
+        "position_rmse_m": 0.0021066545310953425,
+        "position_max_m": 0.0040238072743931435,
+        "axis_rmse_m": [
+          0.0010241427090790917,
+          0.0014137453771763506,
+          0.0011791730294308709
+        ]
+      },
+      "tilt_peak_deg": 4.273026869258305,
+      "recovery_performance_passed": true,
+      "core_calls": 570,
+      "core_max_ms": 24.702839,
+      "send_gap_max_ms": 26.326315,
+      "normal_sends": 1198,
+      "per_joint_adopted": [
+        1199,
+        1199
+      ]
+    },
+    {
+      "case_id": "mass085_fast",
+      "fresh_run_in_this_batch": true,
+      "audit": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass085_audit_v1/report.json",
+        "bytes": 3827167,
+        "sha256": "56f7bb14819ee093bc178b4bd2c104e3269e03178439b466dfa2fc1093ac1aab"
+      },
+      "integrity_and_execution_passed": true,
+      "physical_acceptance": true,
+      "endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "sample_count": 6001,
+        "duration_s": 24.000000000000007,
+        "position_rmse_m": 0.006830780255074063,
+        "position_max_m": 0.012086008502723783,
+        "axis_rmse_m": [
+          0.005281054965925526,
+          0.0018213401570688738,
+          0.0039309969946861294
+        ]
+      },
+      "tail_endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          20.0,
+          24.0
+        ],
+        "sample_count": 1001,
+        "duration_s": 4.0,
+        "position_rmse_m": 0.0018520241847244327,
+        "position_max_m": 0.00397276100085053,
+        "axis_rmse_m": [
+          0.0016888586707556157,
+          0.00048141708734110564,
+          0.0005882070715604993
+        ]
+      },
+      "tilt_peak_deg": 1.0051134940400992,
+      "recovery_performance_passed": null,
+      "core_calls": 569,
+      "core_max_ms": 18.957004,
+      "send_gap_max_ms": 22.454379,
+      "normal_sends": 1198,
+      "per_joint_adopted": [
+        1199,
+        1199
+      ]
+    },
+    {
+      "case_id": "mass115_fast",
+      "fresh_run_in_this_batch": true,
+      "audit": {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass115_audit_v1/report.json",
+        "bytes": 3828534,
+        "sha256": "595a16c97c578be9476effb3d8bd699d363839958c9ad9173b73fcf9f2d14569"
+      },
+      "integrity_and_execution_passed": true,
+      "physical_acceptance": true,
+      "endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "sample_count": 6001,
+        "duration_s": 24.0,
+        "position_rmse_m": 0.0069642084000224634,
+        "position_max_m": 0.012885434624754718,
+        "axis_rmse_m": [
+          0.005408097564247062,
+          0.0018210666758765824,
+          0.003992041524901805
+        ]
+      },
+      "tail_endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          20.0,
+          24.0
+        ],
+        "sample_count": 1001,
+        "duration_s": 4.0,
+        "position_rmse_m": 0.0021351216730978438,
+        "position_max_m": 0.0048420162192307934,
+        "axis_rmse_m": [
+          0.001971509268050774,
+          0.0006245676052413625,
+          0.0005308588055265716
+        ]
+      },
+      "tilt_peak_deg": 1.0300478689654906,
+      "recovery_performance_passed": null,
+      "core_calls": 570,
+      "core_max_ms": 20.238962,
+      "send_gap_max_ms": 30.25014,
+      "normal_sends": 1198,
+      "per_joint_adopted": [
+        1199,
+        1199
+      ]
+    }
+  ]
+}

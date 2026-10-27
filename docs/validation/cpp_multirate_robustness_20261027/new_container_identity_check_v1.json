@@ -1,0 +1,56 @@
+{
+  "hostname": "autodl-container-bcde4980ca-ca82a46f",
+  "hold_artifacts_checked": 2279,
+  "changed_artifacts": [],
+  "runtime_binaries": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/state_ingress",
+      "expected": "dd6bd5cc518c970200d1d02ac0297d6701bca98364d0e865f70cd457cc0fc1b0",
+      "actual": "dd6bd5cc518c970200d1d02ac0297d6701bca98364d0e865f70cd457cc0fc1b0",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/live_dispatcher",
+      "expected": "0b278e39b8583c6238b961530452407ff136a823ccc19c74e52c6878e831ff0f",
+      "actual": "0b278e39b8583c6238b961530452407ff136a823ccc19c74e52c6878e831ff0f",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_control_gateway/lib/flyarm_control_gateway/consumption_source",
+      "expected": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434",
+      "actual": "af8873cf960dd888fb2952468c8bbba6e76284e18c200a60826eb10f35e5c434",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/ros/install/flyarm_mpc_cpp/lib/flyarm_mpc_cpp/isolated_worker",
+      "expected": "e20e013d77cfce8a388dd4e012fbdfa49ee8a29acd465f367dc6af42de813794",
+      "actual": "e20e013d77cfce8a388dd4e012fbdfa49ee8a29acd465f367dc6af42de813794",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/flyarm_state_cpp_release_20261024/install/flyarm_state_cpp/lib/flyarm_state_cpp/state_source",
+      "expected": "881dd9fd855878767aa49a56fff58a7bcc726f67b8aae6f2329654bdaf79238e",
+      "actual": "881dd9fd855878767aa49a56fff58a7bcc726f67b8aae6f2329654bdaf79238e",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so",
+      "expected": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+      "actual": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so",
+      "expected": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+      "actual": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+      "matches": true
+    },
+    {
+      "path": "/root/autodl-tmp/libts20_prediction_v3.so",
+      "expected": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "actual": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+      "matches": true
+    }
+  ],
+  "all_match": true
+}

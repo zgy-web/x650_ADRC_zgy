@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "verified_original_member_count": 4246,
+  "archives": [
+    {
+      "name": "multirate_robustness_evidence_part01.zip",
+      "bytes": 47327384,
+      "sha256": "ac2b1e350a66017b915e99f6d29bb27030af0b354ed954a0ab102c7bc5b9ff8b",
+      "members": 2415
+    },
+    {
+      "name": "multirate_robustness_evidence_part02.zip",
+      "bytes": 36991977,
+      "sha256": "c0d9c7cc874a1d230963c90b8f31f7afdf4b9b78c0a187e10e4489d81f452214",
+      "members": 1831
+    }
+  ],
+  "all_archive_sha256_and_crc_and_member_sha256_passed": true,
+  "plot_output_sha256_passed": true,
+  "plot_layout_revision_preserves_metrics_and_csv_bytes": true,
+  "local_renderer_matches_final_plot_manifest": true,
+  "verified_unix": 1793068771.5474107
+}

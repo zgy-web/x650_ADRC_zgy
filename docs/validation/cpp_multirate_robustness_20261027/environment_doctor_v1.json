@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "project_root",
+      "ok": true,
+      "detail": "/root/autodl-tmp/safe-aerial-manipulator-testbed"
+    },
+    {
+      "name": "command:python3",
+      "ok": true,
+      "detail": "/usr/bin/python3"
+    },
+    {
+      "name": "command:ros2",
+      "ok": true,
+      "detail": "/opt/ros/humble/bin/ros2"
+    },
+    {
+      "name": "command:gz",
+      "ok": true,
+      "detail": "/usr/bin/gz"
+    },
+    {
+      "name": "command:MicroXRCEAgent",
+      "ok": true,
+      "detail": "/usr/local/bin/MicroXRCEAgent"
+    },
+    {
+      "name": "px4_dir",
+      "ok": true,
+      "detail": "/root/autodl-tmp/PX4-Autopilot"
+    },
+    {
+      "name": "px4_binary",
+      "ok": true,
+      "detail": "/root/autodl-tmp/PX4-Autopilot/build/px4_sitl_default/bin/px4"
+    },
+    {
+      "name": "px4_commit",
+      "ok": true,
+      "detail": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4 expected=d6f12ad1c4f70ad3230afd7d86e971421e02fef4"
+    },
+    {
+      "name": "reviewed_model",
+      "ok": true,
+      "detail": "8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8 expected=8c86eb60a3e8ed494ec54d08d2ad6a04eb44a5f5e3f8e4ec5bc2dcc5ccc226c8"
+    },
+    {
+      "name": "ros_workspace",
+      "ok": true,
+      "detail": "/root/autodl-tmp/ros2_px4_ws/install/setup.bash"
+    },
+    {
+      "name": "results_writable",
+      "ok": true,
+      "detail": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs"
+    },
+    {
+      "name": "gpu",
+      "ok": true,
+      "detail": "NVIDIA GeForce RTX 4080 SUPER, 595.71.05"
+    }
+  ]
+}

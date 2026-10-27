@@ -1,0 +1,19 @@
+test_both_physical_scales_keep_original_thresholds_and_no_extra_disturbance (test_x650_cpp_multirate_robustness_audit.CaseTests) ... ok
+test_relabelled_plant_force_delay_window_and_relaxed_limits_are_rejected (test_x650_cpp_multirate_robustness_audit.CaseTests) ... ok
+test_partial_run_keeps_original_evidence_and_never_inherits_hold_acceptance (test_x650_cpp_multirate_robustness_audit.IncompleteRunTests) ... ok
+test_incomplete_record_cannot_be_classified_as_ordinary_performance_failure (test_x650_cpp_multirate_robustness_audit.PerformanceTests) ... ok
+test_original_boundary_values_pass_and_nonfinite_observation_rejects (test_x650_cpp_multirate_robustness_audit.PerformanceTests) ... ok
+test_peak_fail_retains_all_original_windows_and_is_not_execution_exception (test_x650_cpp_multirate_robustness_audit.PerformanceTests) ... ok
+test_tilt_failure_is_recorded_without_losing_endpoint_results (test_x650_cpp_multirate_robustness_audit.PerformanceTests) ... ok
+test_changed_controller_library_runtime_or_missing_artifact_rejects (test_x650_cpp_multirate_robustness_qualification.HoldBindingTests) ... ok
+test_complete_same_nominal_hold_is_not_changed_plant_acceptance (test_x650_cpp_multirate_robustness_qualification.HoldBindingTests) ... ok
+test_incomplete_or_wrong_stage_certificate_rejects (test_x650_cpp_multirate_robustness_qualification.HoldBindingTests) ... ok
+test_derivation_only_adds_matching_timing_and_keeps_plants_reference_limits (test_x650_cpp_multirate_robustness_qualification.TaskTests) ... ok
+test_no_retune_relaxed_limit_waveform_or_case_substitution (test_x650_cpp_multirate_robustness_qualification.TaskTests) ... ok
+test_protocol_only_allows_resource_reassignment (test_x650_cpp_multirate_robustness_qualification.TaskTests) ... ok
+test_two_original_plants_only_and_no_wrench_or_delay (test_x650_cpp_multirate_robustness_qualification.TaskTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.083s
+
+OK

@@ -1,0 +1,223 @@
+{
+  "kind": "x650_multirate_robustness_plots_v1",
+  "presentation_complete": true,
+  "new_physics_run": false,
+  "physical_acceptance_granted_by_plot": false,
+  "cases": [
+    {
+      "case_id": "mass085_fast",
+      "physical_acceptance": true,
+      "integrity_and_execution_passed": true,
+      "metrics": {
+        "position_rmse_m": 0.006830780255074063,
+        "position_max_m": 0.012086008502723783,
+        "axis_rmse_m": [
+          0.005281054965925526,
+          0.0018213401570688738,
+          0.0039309969946861294
+        ],
+        "sample_count": 6001,
+        "interval_task_s": [
+          0.0,
+          24.000000000000007
+        ],
+        "duration_s": 24.000000000000007,
+        "same_time": true,
+        "no_phase_alignment": true
+      },
+      "inputs": {
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass085_audit_v1/report.json",
+          "sha256": "56f7bb14819ee093bc178b4bd2c104e3269e03178439b466dfa2fc1093ac1aab",
+          "bytes": 3827167
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/controller_task.json",
+          "sha256": "e97f7e1bec24082750909a5c38fe18461cec9d04673c4d09e2aae069757eb949"
+        },
+        "start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/live_start.json",
+          "sha256": "d24a31edde3d8495a0179faa7df1cf4e65b4aa73d04a3b31c0cc5bb34f80ac2a"
+        },
+        "native": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/native_trace.csv",
+          "sha256": "4b0ec467d01b8132a1c00c7ad43e94dcb759a94a445d0e653e31b901663dfbe6"
+        },
+        "renderer": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_multirate_robustness.py",
+          "sha256": "425b381d5cb56a7ecfff8dd21851c559142929306fbf829ecaea732aa19e7950",
+          "bytes": 7052
+        },
+        "native_helper": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_recovery_disturbance.py",
+          "sha256": "b01bdbaac8c51e5be9293eb8d1da5dd38c1ad166090fa4a536e16792f487a6e2",
+          "bytes": 23819
+        },
+        "reference_implementation": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+          "sha256": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+          "bytes": 87999
+        }
+      }
+    },
+    {
+      "case_id": "mass115_fast",
+      "physical_acceptance": true,
+      "integrity_and_execution_passed": true,
+      "metrics": {
+        "position_rmse_m": 0.0069642084000224634,
+        "position_max_m": 0.012885434624754718,
+        "axis_rmse_m": [
+          0.005408097564247062,
+          0.0018210666758765824,
+          0.003992041524901805
+        ],
+        "sample_count": 6001,
+        "interval_task_s": [
+          0.0,
+          24.0
+        ],
+        "duration_s": 24.0,
+        "same_time": true,
+        "no_phase_alignment": true
+      },
+      "inputs": {
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass115_audit_v1/report.json",
+          "sha256": "595a16c97c578be9476effb3d8bd699d363839958c9ad9173b73fcf9f2d14569",
+          "bytes": 3828534
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass115_v1_20261027_103022_4600/controller_task.json",
+          "sha256": "d49fe02aac25c6d988960124e00caf5bffdb6e42de603e8b5865c2a2d41b6fb0"
+        },
+        "start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass115_v1_20261027_103022_4600/isolated_live/live_start.json",
+          "sha256": "0813aa578e22b32c22c69950e194cbffc4f0ca0b704805c51ff27eda24163236"
+        },
+        "native": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass115_v1_20261027_103022_4600/native_trace.csv",
+          "sha256": "6b55ec9638c3b909d080b42dd36098883d92f9c132cb1b3f6331e5473548a28f"
+        },
+        "renderer": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_multirate_robustness.py",
+          "sha256": "425b381d5cb56a7ecfff8dd21851c559142929306fbf829ecaea732aa19e7950",
+          "bytes": 7052
+        },
+        "native_helper": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_recovery_disturbance.py",
+          "sha256": "b01bdbaac8c51e5be9293eb8d1da5dd38c1ad166090fa4a536e16792f487a6e2",
+          "bytes": 23819
+        },
+        "reference_implementation": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+          "sha256": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+          "bytes": 87999
+        }
+      }
+    },
+    {
+      "case_id": "wrench_fast",
+      "physical_acceptance": false,
+      "integrity_and_execution_passed": true,
+      "metrics": {
+        "position_rmse_m": 0.04235824924886268,
+        "position_max_m": 0.1851721805797341,
+        "axis_rmse_m": [
+          0.042089038342305304,
+          0.002148369664531617,
+          0.004256599421281369
+        ],
+        "sample_count": 6001,
+        "interval_task_s": [
+          0.0,
+          23.999999999999993
+        ],
+        "duration_s": 23.999999999999993,
+        "same_time": true,
+        "no_phase_alignment": true
+      },
+      "inputs": {
+        "report": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_audit_followup_v4/report.json",
+          "sha256": "4e64cd972546597d77c97fdd6ed601d7fbbbaebb60606e92599370cb824f25e7",
+          "bytes": 3813322
+        },
+        "task": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/controller_task.json",
+          "sha256": "3ba6b0ead65c8c480f7ca4711e03346c561637c9e521903c59a5c2dab2e20d31"
+        },
+        "start": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/isolated_live/live_start.json",
+          "sha256": "0cda3bf509e5bba751a5136f7445abc4c7c76f410578a0e58d7a6a8e9aef1b4c"
+        },
+        "native": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_wrench_v1_20261026_220417_24257/native_trace.csv",
+          "sha256": "9678e91f26fbd3bae96926d2325ac51a24ce4517e45caef63d03e460cdf94bbf"
+        },
+        "renderer": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_multirate_robustness.py",
+          "sha256": "425b381d5cb56a7ecfff8dd21851c559142929306fbf829ecaea732aa19e7950",
+          "bytes": 7052
+        },
+        "native_helper": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/scripts/plot_x650_recovery_disturbance.py",
+          "sha256": "b01bdbaac8c51e5be9293eb8d1da5dd38c1ad166090fa4a536e16792f487a6e2",
+          "bytes": 23819
+        },
+        "reference_implementation": {
+          "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/simulations/x650_wholebody_mpc_v1/run_case.py",
+          "sha256": "eb4be61e3c57017a991e7df7a52b427ac0d4b2d62994891fb5b7035b70979d08",
+          "bytes": 87999
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "mass085_fast.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass085_fast.png",
+      "sha256": "122f22809141cde674c2083d452fff5d532378b501218f38fd932780302c63fb",
+      "bytes": 324122
+    },
+    "mass085_fast.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass085_fast.pdf",
+      "sha256": "e3882814acfe21a70d0035fc752cf4b126413e87138514a14527a52b8add78b8",
+      "bytes": 364705
+    },
+    "mass085_fast_data.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass085_fast_data.csv",
+      "sha256": "f23719a4a731a888278d9f09cafc7fb6f68abb55bbb0450478482a0bc7bb4bbd",
+      "bytes": 1889418
+    },
+    "mass115_fast.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass115_fast.png",
+      "sha256": "e199d22384c0670cfddfb51f31245f028dc93d3a92dec478f006be47035b164f",
+      "bytes": 335890
+    },
+    "mass115_fast.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass115_fast.pdf",
+      "sha256": "96594e689dddb44a212330bad0a1c9f61c1dfe43b0a367dadfbaa6244a53a18d",
+      "bytes": 364896
+    },
+    "mass115_fast_data.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/mass115_fast_data.csv",
+      "sha256": "dda2d6639e678ee3af377a8a9cb921c0fe7035e76dbccd43c189a3b0460f1f5d",
+      "bytes": 1898167
+    },
+    "wrench_fast.png": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/wrench_fast.png",
+      "sha256": "d03cb007282a6d29401834b88172b4a3d91c75e143af116a75735c254e3c57c4",
+      "bytes": 305186
+    },
+    "wrench_fast.pdf": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/wrench_fast.pdf",
+      "sha256": "db1aad0276b79325423adef4873bd30f21b7ab759b6551dd39020f3f8cd56dd9",
+      "bytes": 359289
+    },
+    "wrench_fast_data.csv": {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/plots_v1/wrench_fast_data.csv",
+      "sha256": "3a92953fd9f205b5ad2ba2a0530ad9118700d544dae831c0f6cbb7695ec5be11",
+      "bytes": 1875354
+    }
+  }
+}

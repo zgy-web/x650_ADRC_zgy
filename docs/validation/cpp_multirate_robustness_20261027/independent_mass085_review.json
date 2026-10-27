@@ -1,0 +1,202 @@
+{
+  "kind": "independent_multirate_mass_review_v1",
+  "case_id": "mass085_fast",
+  "passed": true,
+  "execution_review_passed": true,
+  "performance_passed": true,
+  "independent_recomputation": true,
+  "no_controller_or_physics_execution": true,
+  "nominal_mass_kg": 3.495,
+  "actual_mass_kg": 2.9707500000000002,
+  "physical_model_sha256": "bdcfd2e5a524cdcfd122a7d5355a67625aee288b1bf6311acaac8147324a9f6d",
+  "controller_parameters_and_reference_equal": true,
+  "libraries_rehashed": {
+    "core_library": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+    "optimization_library": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+    "predictor_library": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8"
+  },
+  "window_sim_s": [
+    46.76,
+    70.75999999999999
+  ],
+  "endpoint": {
+    "full": {
+      "window_relative_s": [
+        0,
+        24
+      ],
+      "inclusive_endpoints": true,
+      "samples": 6001,
+      "peak_m": 0.012086008502723783,
+      "peak_at_s": 7.264000000000003,
+      "axis_peak_abs_m": [
+        0.009629608001805401,
+        0.009523771173185286,
+        0.008695206001629208
+      ],
+      "sample_mean_rms_m": 0.006830282541242194,
+      "axis_sample_mean_rms_m": [
+        0.005280681344546378,
+        0.0018212162855680235,
+        0.003930691462292568
+      ],
+      "time_weighted_rms_m": 0.006830780255074065,
+      "axis_time_weighted_rms_m": [
+        0.005281054965925526,
+        0.0018213401570688738,
+        0.0039309969946861294
+      ],
+      "time_weighted_definition": "sqrt(trapezoidal integral of squared error / elapsed time)",
+      "actual_elapsed_s": 24.000000000000007
+    },
+    "tracking": {
+      "window_relative_s": [
+        2,
+        20
+      ],
+      "inclusive_endpoints": true,
+      "samples": 4501,
+      "peak_m": 0.012086008502723783,
+      "peak_at_s": 7.264000000000003,
+      "axis_peak_abs_m": [
+        0.009629608001805401,
+        0.009523771173185286,
+        0.008695206001629208
+      ],
+      "sample_mean_rms_m": 0.00774350257893483,
+      "axis_sample_mean_rms_m": [
+        0.0059332789531608724,
+        0.002084682324968623,
+        0.004517978824420493
+      ],
+      "time_weighted_rms_m": 0.007744202568513557,
+      "axis_time_weighted_rms_m": [
+        0.005933783391736894,
+        0.0020848735134965384,
+        0.00451842788089397
+      ],
+      "time_weighted_definition": "sqrt(trapezoidal integral of squared error / elapsed time)",
+      "actual_elapsed_s": 18.000000000000007
+    },
+    "tail": {
+      "window_relative_s": [
+        20,
+        24
+      ],
+      "inclusive_endpoints": true,
+      "samples": 1001,
+      "peak_m": 0.00397276100085053,
+      "peak_at_s": 21.228,
+      "axis_peak_abs_m": [
+        0.003943675079487877,
+        0.0010998436867107539,
+        0.0019157621368539601
+      ],
+      "sample_mean_rms_m": 0.00185188312613073,
+      "axis_sample_mean_rms_m": [
+        0.001688022119294253,
+        0.00048223618979312445,
+        0.0005894918955124613
+      ],
+      "time_weighted_rms_m": 0.001852024184724432,
+      "axis_time_weighted_rms_m": [
+        0.0016888586707556157,
+        0.00048141708734110564,
+        0.0005882070715604993
+      ],
+      "time_weighted_definition": "sqrt(trapezoidal integral of squared error / elapsed time)",
+      "actual_elapsed_s": 4.0
+    }
+  },
+  "tilt_peak_deg": 1.0051134940400992,
+  "q_range_rad": {
+    "q1": [
+      -0.5006292819060532,
+      0.012914267537070364
+    ],
+    "q2": [
+      -0.27243198844100847,
+      0.17659208930267142
+    ]
+  },
+  "qd_abs_peak_rad_s": [
+    0.22824322500713076,
+    0.2073314491959857
+  ],
+  "execution": {
+    "worker_requests": 569,
+    "worker_accepted": 569,
+    "normal_sends": 1198,
+    "new_candidates": 569,
+    "repeated_sends": 629,
+    "stop_zero_sends": 1,
+    "receipt_count": 1199,
+    "physical_adoption": [
+      {
+        "joint": 1,
+        "send_count": 1199,
+        "physical_adopted": 1199,
+        "missing_counters": [],
+        "command_value_mismatches": []
+      },
+      {
+        "joint": 2,
+        "send_count": 1199,
+        "physical_adopted": 1199,
+        "missing_counters": [],
+        "command_value_mismatches": []
+      }
+    ],
+    "raw_cdr_rows": 6621,
+    "send_gap_ms": {
+      "median": 19.999452,
+      "max": 22.454379
+    },
+    "core_wall_ms": {
+      "median": 11.24752,
+      "max": 18.957004
+    }
+  },
+  "exit": {
+    "zero_consumed": true,
+    "writer_exited": true,
+    "all_native_processes_exit_zero": true,
+    "landed_disarmed_metadata": true,
+    "ulog_final_arming_state": 1,
+    "ulog_final_landed": 1,
+    "diagnostic_parameters_raw_bytes_restored": true
+  },
+  "method": "Standalone phase-law transcription + raw native tip Euclidean errors; CDR decoded directly and compared to retained JSON; every mapped send counter/value searched in physical TS20 CSV. No production auditor metrics imported. Both arithmetic sample-mean RMS and time-weighted trapezoidal RMS are explicit. Formal audit uses time-weighted RMS.",
+  "scope": "Independent selected metrics and identity/lifecycle review; formal production audit additionally covers source causality, interval constraints, PVA encoding and qualification chain. Uniform seven-link mass/inertia mismatch only; no load-dependent TS20 identification.",
+  "artifacts": {
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/controller_metadata.json": "d1c90e2478536ac327fd96d53f5a12a2b4009fa7b7117bf8b0fb4d72661e7e61",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_robustness_launch_20261027_102520_3264/launch.json": "bd1fb63ea934b6470d2e932fbf9bcc3d97664314b6b5a033ca009f94051dff03",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass085_job_status_v1.json": "e281548d4696c891bbae08e9dc9dcab306ad2952d8e685f64e93bf07df5cec85",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/result.json": "de1a4e0f4bdcac15f7ab0e3e355cad0f0872a7bd74bf7edf765ecdb0b6668d77",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_robustness_launch_20261027_102520_3264/task.json": "e97f7e1bec24082750909a5c38fe18461cec9d04673c4d09e2aae069757eb949",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_robustness_launch_20261027_102520_3264/startup_manifest.json": "6b5ac18a2723fba13f9ada2d584d486107a70427a308dd36cc1b4e855f1cb692",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/live_start.json": "d24a31edde3d8495a0179faa7df1cf4e65b4aa73d04a3b31c0cc5bb34f80ac2a",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/lifecycle.json": "85bc9c28382e977d951db8f1c934a7fcad793ad87a7bd5ca1dd23255dab1bfc5",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/worker_final.json": "a452d5eead3d5634034b38be5cfc6f4c6fe1d2119b889d70f8d17842fb3e7173",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/wrench_fast_inputs_v2/startup_manifest.json": "ee6d3c300717b13b21b6a7a0eecf257e628664ff822f8683baf11b731fa4009b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/x650_2link_ts20_damped_v1_20261022/preparation_report.json": "0b6c7e79def5ad7b8cb12c799e9a4e47d4caf95a092cef80810def564d8a16e0",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass085_v1_flight/plant_manifest.json": "7779232419acf1d2f5f8c4e3b12274f0eb040e828fcab26b26a0383e4ef57faa",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/generated/imported_models/amsim_urdf_x650_robust_mass085_v1_flight/model.sdf": "bdcfd2e5a524cdcfd122a7d5355a67625aee288b1bf6311acaac8147324a9f6d",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/worker_startup.json": "919423e02082f35a539d3b4738d139b1fe2c98c3d5d6a53c3e3e43ddaef39fd6",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_mpc_core.so": "8c3a874ac57e7f442d28fb4f4e7ae11633addef0c36edb2d88e6937a7db38a19",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_20261026/build/libx650_optimization.so": "e31a8060e131309306419d7bf4e26490d7045b2c7e49aa872e4f39cdd75ac7aa",
+    "/root/autodl-tmp/libts20_prediction_v3.so": "9ff66d6db9afb3eb4c24ca6c0c3fcfc9453c6ab4384af134ec22b6f5c38701d8",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/native_trace.csv": "4b0ec467d01b8132a1c00c7ad43e94dcb759a94a445d0e653e31b901663dfbe6",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/source_recording/diagnostics.jsonl": "62117593db9cc1d364a81eb52583011ba021e06ccacf817c511603fc82b1dfaa",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/source_recording/manifest.json": "8d566c1e83081661535e65b33df5e9ffe3729be8ea08d1021f763ffaa413b0ef",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/dispatch.json": "0755e9848f560c767c942ba2f4c40cf62d9bebfb2bb7cf376b5cfd87267ada26",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/sends.json": "39703d69fc2f4fcf0ce6822d922c5a533a04ba1bf85154da11e141780b6a2bc8",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/receipts.json": "f780cc875877a17b8aaecfa7fb2d389d09d8f9dca9f22945d75b2364980a4a18",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/events.json": "4b5718a8b476d145456a94db2f1a976ae8e3e32c893b85b47a0b6b110ad65c58",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/ts20_state.csv": "6dc3cfb2486c91be6603577af1e8f35ee9c1245bba5c597b942b62d61a42868b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/isolated_live/worker_timing.json": "d0ca824cf448e6bcc6845f689c60c0d16538de67c0f0f92e43091a824090780b",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/diagnostic_parameters_before.json": "82fe1fd4d1204f26b6996527eb5e9872a95402da9c1ff505c442c9b2d9119ae8",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/diagnostic_parameters_restored.json": "18da5000be4893da4e1d25ba4c5e7c7565b57c380342cf446d84a110eeca670e",
+    "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/x650_cpp_multirate_mass085_v1_20261027_102559_3271/px4.ulg": "be2189d327657d426af21e148a645de013532d5819fb9e92083030d766311d98"
+  }
+}

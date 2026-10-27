@@ -1,0 +1,43 @@
+{
+  "kind": "x650_robustness_raw_archive_receipt_v1",
+  "complete": true,
+  "all_original_sizes_and_sha256_verified": true,
+  "all_zip_members_read_back": true,
+  "embedded_manifests_byte_identical": true,
+  "verified_member_count": 4246,
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/delivery_v1/multirate_robustness_evidence_manifest.json",
+    "bytes": 2176166,
+    "sha256": "35c26cd1b78dd707ae7ec9d541b4fd79e7ae9948acf7464a86daa324ce8aa08a"
+  },
+  "archives": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/delivery_v1/multirate_robustness_evidence_part01.zip",
+      "bytes": 47327384,
+      "sha256": "ac2b1e350a66017b915e99f6d29bb27030af0b354ed954a0ab102c7bc5b9ff8b"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/delivery_v1/multirate_robustness_evidence_part02.zip",
+      "bytes": 36991977,
+      "sha256": "c0d9c7cc874a1d230963c90b8f31f7afdf4b9b78c0a187e10e4489d81f452214"
+    }
+  ],
+  "context": {
+    "scope": "Fresh 24 s rigid mass/inertia mismatch runs with unchanged accepted 25/50 Hz backend; failed outcomes retained",
+    "hardware_qualified": false,
+    "delay_tests_enabled": false,
+    "audits": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass085_audit_v1/report.json",
+        "bytes": 3827167,
+        "sha256": "56f7bb14819ee093bc178b4bd2c104e3269e03178439b466dfa2fc1093ac1aab"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/cpp_multirate_robustness_20261027/mass115_audit_v1/report.json",
+        "bytes": 3828534,
+        "sha256": "595a16c97c578be9476effb3d8bd699d363839958c9ad9173b73fcf9f2d14569"
+      }
+    ]
+  },
+  "completed_unix": 1793068540.1834686
+}

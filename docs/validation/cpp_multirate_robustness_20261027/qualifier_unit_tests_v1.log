@@ -1,0 +1,8 @@
+test_nonaccepted_profile_or_non_simulation_startup_rejects (test_x650_multirate_robustness_qualifier.StartupBindingTests) ... ok
+test_task_and_sources_change_but_all_numeric_and_binary_fields_are_preserved (test_x650_multirate_robustness_qualifier.StartupBindingTests) ... ok
+test_task_binding_excludes_byte_count_without_losing_real_hash (test_x650_multirate_robustness_qualifier.StartupBindingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
