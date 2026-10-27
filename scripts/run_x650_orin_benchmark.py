@@ -56,6 +56,10 @@ def make_command(args, input_sha: str) -> list[str]:
                "-o", "StrictHostKeyChecking=yes", "-o", "IdentitiesOnly=yes",
                "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=4",
                "-p", str(args.port)]
+    # The input is fully loaded before timers start and stdout is emitted only
+    # after all calls finish. Compression reduces transport time, not Core time.
+    if not getattr(args, "no_ssh_compression", False):
+        command.insert(2, "-C")
     if args.identity_file is not None:
         command.extend(["-i", str(args.identity_file.resolve())])
     if getattr(args, "known_hosts_file", None) is not None:
@@ -242,6 +246,8 @@ def main(argv=None):
     parser.add_argument("--user", default="jetson")
     parser.add_argument("--port", type=int, default=22, help="SSH port, not NoMachine NX port 4000")
     parser.add_argument("--ssh", default="ssh")
+    parser.add_argument("--no-ssh-compression", action="store_true",
+                        help="Disable transport compression; this never changes Core timer boundaries")
     parser.add_argument("--identity-file", type=Path)
     parser.add_argument("--known-hosts-file", type=Path,
                         help="Workstation-side host key file, StrictHostKeyChecking stays enabled")

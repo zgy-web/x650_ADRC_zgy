@@ -1,0 +1,12 @@
+{
+  "kind": "x650_abi4_paired_raw_evidence_receipt_v1",
+  "filename": "orin_abi4_cpu_raw_v1.zip",
+  "bytes": 36202613,
+  "sha256": "344557d68c8d3f9c85a29825542560ec0fea9093a274499c77cf9eda06dc9bb0",
+  "data_files": 170,
+  "manifest_sha256": "a7f542a7819ab6f9aff13b9baa42d434b55472922d033e4b453a009893929bd0",
+  "zip_crc_and_all_member_sha256_verified": true,
+  "raw_archive_published_to_git": false,
+  "storage": "workstation artifacts/orin_abi4_20261027/delivery",
+  "nx_input_or_result_files_created": false
+}

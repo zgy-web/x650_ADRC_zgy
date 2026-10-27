@@ -46,6 +46,10 @@ struct Diagnostic {
   std::string recovery_reason;
   double recovery_trust_radius=0.,recovery_stopping_violation=0.;
   std::array<x650::RecoveryAttempt,2> recovery_attempts{};std::size_t recovery_attempt_count=0;
+  int interval_rows=0,interval_repair_count=0,interval_added_points=0;
+  bool hold_required=false,hold_checked=false,hold_passed=false;
+  double hold_duration_s=0.;int hold_substeps=0,hold_actual_history_packet_count=0;
+  std::array<double,8> hold_envelope{};
 };
 Diagnostic diagnostic_of(const x650::Diagnostics& d) {
   Diagnostic o;
@@ -60,7 +64,13 @@ Diagnostic diagnostic_of(const x650::Diagnostics& d) {
   // Called only after both Core timers stop. Retain the bounded, actual native
   // recovery evidence; never run a second predictor for benchmark diagnostics.
   o.recovery_attempt_count=std::min(d.recovery_attempts.size(),o.recovery_attempts.size());
-  std::copy_n(d.recovery_attempts.begin(),o.recovery_attempt_count,o.recovery_attempts.begin());return o;
+  std::copy_n(d.recovery_attempts.begin(),o.recovery_attempt_count,o.recovery_attempts.begin());
+  o.interval_rows=d.interval_rows;o.interval_repair_count=int(d.interval_repairs.size());
+  for(const auto& repair:d.interval_repairs)o.interval_added_points+=repair.added_points;
+  const auto& guard=d.hold_guard;o.hold_required=guard.required;o.hold_checked=guard.checked;o.hold_passed=guard.passed;
+  o.hold_duration_s=guard.duration_s;o.hold_substeps=guard.substeps;
+  o.hold_actual_history_packet_count=guard.actual_history_packet_count;o.hold_envelope=guard.envelope;
+  return o;
 }
 struct Sample {
   Times elapsed;Output output;Diagnostic diagnostic;
@@ -121,7 +131,11 @@ Json::Value diagnostic_json(const Diagnostic& d) {
   FIELD(primal_violation);FIELD(kkt_stationarity);FIELD(kkt_complementarity);FIELD(objective);FIELD(compute_ms);
   FIELD(q_linearization_error);FIELD(dq_linearization_error);FIELD(accepted);FIELD(nonlinear_passed);FIELD(actual_bounds);FIELD(previous_plan_fallback);
   FIELD(recovery_triggered);FIELD(recovery_reason);
+  FIELD(interval_rows);FIELD(interval_repair_count);FIELD(interval_added_points);
+  FIELD(hold_required);FIELD(hold_checked);FIELD(hold_passed);FIELD(hold_duration_s);
+  FIELD(hold_substeps);FIELD(hold_actual_history_packet_count);
 #undef FIELD
+  o["hold_envelope"]=finite_array_json(d.hold_envelope);
   o["recovery_trust_radius"]=json_number(d.recovery_trust_radius);
   o["recovery_stopping_violation"]=json_number(d.recovery_stopping_violation);
   o["candidate_envelope"]=b::array_json(d.candidate_envelope);o["attempts"]=Json::Value(Json::arrayValue);
@@ -209,6 +223,13 @@ Json::Value run(int argc,char** argv) {
   identities["core"]=loaded_identity(reinterpret_cast<void*>(&x650_mpc_core_abi_version));
   identities["optimization"]=loaded_identity(dlsym(RTLD_DEFAULT,"x650_assemble"));identities["predictor"]=loaded_identity(reinterpret_cast<void*>(fn));
   b::require(identities["predictor"]["sha256"].asString()==predictor_hash,"Loaded predictor differs");
+  const auto core_abi=x650_mpc_core_abi_version();
+  auto optimization_abi_fn=reinterpret_cast<unsigned(*)()>(dlsym(RTLD_DEFAULT,"x650_optimization_abi_version"));
+  b::require(optimization_abi_fn,"Missing optimization ABI symbol");const auto optimization_abi=optimization_abi_fn();
+  if(data.provenance.isMember("expected_core_abi"))
+    b::require(data.provenance["expected_core_abi"].isUInt()&&data.provenance["expected_core_abi"].asUInt()==core_abi,"Expected Core ABI differs");
+  if(data.provenance.isMember("expected_optimization_abi"))
+    b::require(data.provenance["expected_optimization_abi"].isUInt()&&data.provenance["expected_optimization_abi"].asUInt()==optimization_abi,"Expected optimization ABI differs");
   x650::Core core(data.config,fn,x650::DiagnosticMode::Compact);
   // Fail invalid restore contracts before the first timed invocation.
   for(const auto& c:data.cases)core.restore(c.memory);
@@ -235,13 +256,19 @@ Json::Value run(int argc,char** argv) {
   // From here on, measurement is finished. One stdout JSON is assembled/written.
   Json::Value out;out["schema_version"]=1;out["kind"]="x650_mpc_memory_benchmark_result_v1";out["complete"]=true;
   out["backend"]="cpu";out["mode"]="fixed_snapshot_paired";out["input_sha256"]=input_hash;out["provenance"]=data.provenance;
+  out["core_abi"]=core_abi;out["optimization_abi"]=optimization_abi;
   out["case_count"]=Json::UInt64(count);out["run"]=document["run"];out["loaded_code"]=identities;out["allowed_cpus"]=b::array_json(allowed_cpus);
   out["scope"]["timed_function"]="x650::Core::step(StepInput), Compact production diagnostics";
   out["scope"]["timed_wall_clock"]="CLOCK_MONOTONIC_RAW";out["scope"]["timed_thread_clock"]="CLOCK_THREAD_CPUTIME_ID";
   out["scope"]["clock_order"]="thread begin, wall begin, Core::step, wall end, thread end";
   out["scope"]["memory_restore_inside_core_timer"]=false;out["scope"]["input_parse_hash_load_inside_core_timer"]=false;
   out["scope"]["oracle_validation_inside_core_timer"]=false;out["scope"]["production_deadline_ms"]=50;
-  out["scope"]["control_update_target_ms"]=20;out["scope"]["runtime_python_calls"]=0;out["scope"]["runtime_ros_calls"]=0;
+  out["scope"]["control_update_target_ms"]=data.config.command_hold_s==.16?40:20;
+  out["scope"]["continuous_dispatch_period_ms"]=20;
+  out["scope"]["configured_max_model_dt_s"]=data.config.max_dt;
+  out["scope"]["configured_command_hold_s"]=data.config.command_hold_s;
+  out["scope"]["twenty_ms_sample_flag_is_dispatch_reference_only"]=data.config.command_hold_s==.16;
+  out["scope"]["runtime_python_calls"]=0;out["scope"]["runtime_ros_calls"]=0;
   out["scope"]["application_file_writes"]=0;out["scope"]["measurement_loop_output_bytes"]=0;out["scope"]["network_calls_in_measurement"]=0;
   out["scope"]["cuda_implemented"]=false;out["scope"]["hardware_closed_loop_claimed"]=false;
   out["scope"]["local_control_stack_latency_measured"]=false;

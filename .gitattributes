@@ -106,3 +106,9 @@ scripts/prepare_x650_recorded_core_benchmark.py -text whitespace=cr-at-eol
 tests/unit/test_x650_paired_core_benchmark.py -text whitespace=cr-at-eol
 tests/unit/test_x650_recorded_core_benchmark.py -text whitespace=cr-at-eol
 docs/validation/orin_paired_20261027/** -text -whitespace
+# Current ABI 4 paired sources and protocol keep their measured byte identities.
+scripts/prepare_x650_abi4_benchmark.py -text whitespace=cr-at-eol
+scripts/report_x650_abi4_benchmark.py -text whitespace=cr-at-eol
+scripts/build_x650_benchmark_in_ram.py -text whitespace=cr-at-eol
+tests/unit/test_x650_abi4_benchmark.py -text whitespace=cr-at-eol
+docs/validation/orin_abi4_20261027/** -text -whitespace

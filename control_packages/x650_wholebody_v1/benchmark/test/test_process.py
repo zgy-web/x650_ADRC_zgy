@@ -88,6 +88,21 @@ def main():
         assert run(value,sha='0'*64)[0]==2
         assert run(value,raw=b'{"x":1,"x":2}')[0]==2
         assert run(value,extra=('--output','unwanted.json'))[0]==2
+        assert good['core_abi']==4 and good['optimization_abi']==2
+        bad=copy.deepcopy(value);bad['provenance']['expected_core_abi']=3
+        assert run(bad)[0]==2, 'Wrong Core ABI was accepted'
+        bad=copy.deepcopy(value);bad['provenance']['expected_optimization_abi']=1
+        assert run(bad)[0]==2, 'Wrong optimizer ABI was accepted'
+        extended=copy.deepcopy(value);extended['config'].update(nodes=15,max_dt=.1,command_hold_s=.16)
+        extended['provenance'].update(expected_core_abi=4,expected_optimization_abi=2)
+        code,result=run(extended)
+        assert code==0 and result['all_calls_valid'],result
+        assert result['scope']['control_update_target_ms']==40
+        assert result['scope']['continuous_dispatch_period_ms']==20
+        assert result['scope']['configured_command_hold_s']==.16
+        assert all(s['diagnostics']['hold_required'] and s['diagnostics']['hold_checked']
+            and s['diagnostics']['hold_passed'] and s['diagnostics']['hold_substeps']>0
+            for s in result['samples'])
         bad=copy.deepcopy(value);bad['cases'][0]['oracle']['position_reference']=[2e-9,0.,0.]
         code,result=run(bad)
         assert code==0 and result['complete']

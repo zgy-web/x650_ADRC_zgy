@@ -92,6 +92,9 @@ def decode_cdr(data: bytes, layout) -> dict:
 
 def frozen_target(t: float, center: list, stage: str) -> dict:
     """Literal arithmetic port of archived source_core.hpp Trajectory::sample."""
+    require(stage in ("normal", "fast", "hold"), "Unknown trajectory")
+    if stage == "hold":
+        return {"position": list(center), "velocity": [0.]*3, "acceleration": [0.]*3}
     period = 8. if stage == "fast" else 12.
     ax, az, start, ramp, cycles = .25, .10, 2., 2., 2
     w, total, duration = 2 * math.pi / period, 2 * math.pi * cycles, cycles * period + ramp

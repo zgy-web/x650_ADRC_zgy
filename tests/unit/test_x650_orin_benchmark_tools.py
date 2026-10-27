@@ -132,6 +132,11 @@ class OrinToolsTests(unittest.TestCase):
         self.assertNotIn(" > ", remote)
         self.assertNotIn("tee", remote)
         self.assertIn("jetson@192.168.30.145", command)
+        self.assertIn("-C", command)
+        options.no_ssh_compression = True
+        plain = run.make_command(options, "b" * 64)
+        self.assertNotIn("-C", plain)
+        self.assertEqual(plain[-1], remote, 'Transport option changed the native invocation')
         options.host = "-oProxyCommand=bad"
         with self.assertRaises(ValueError):
             run.make_command(options, "b" * 64)

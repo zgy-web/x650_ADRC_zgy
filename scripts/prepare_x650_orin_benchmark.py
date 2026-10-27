@@ -196,15 +196,25 @@ def frozen_source_bytes(root: Path, frozen_archive: Path) -> tuple[dict[str, byt
     return values, records
 
 
-def package_sources(root: Path, output: Path, frozen_archive: Path | None = None) -> dict:
+def package_sources(root: Path, output: Path, frozen_archive: Path | None = None,
+                    source_paths: tuple[str, ...] = SOURCE_PATHS) -> dict:
     """Explicit allowlist excludes input files, logs, meshes and result archives."""
+    if len(source_paths) != len(set(source_paths)):
+        raise ValueError("Duplicate source member")
+    if frozen_archive is not None and source_paths != SOURCE_PATHS:
+        raise ValueError("Custom members need their own frozen-source binding")
     frozen_bytes, frozen = (frozen_source_bytes(root, frozen_archive)
                             if frozen_archive is not None else ({}, None))
     records = []
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode="w:gz", format=tarfile.PAX_FORMAT) as tar:
-        for relative in SOURCE_PATHS:
+        for relative in source_paths:
+            parts = PurePosixPath(relative)
+            if parts.is_absolute() or ".." in parts.parts or "\\" in relative or ":" in relative:
+                raise ValueError("Unsafe source member: " + relative)
             path = root / relative
+            if not path.resolve().is_relative_to(root.resolve()):
+                raise ValueError("Source member escapes package root: " + relative)
             if path.is_symlink() or not path.is_file():
                 raise ValueError("Required ordinary source file missing: " + relative)
             # Production code is taken byte-for-byte from the accepted archive.

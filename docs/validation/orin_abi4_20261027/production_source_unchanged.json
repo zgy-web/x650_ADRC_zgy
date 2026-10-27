@@ -1,0 +1,35 @@
+{
+  "production_math_changed": false,
+  "files": [
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+      "sha256": "7826911a28df82152f5a0b6dab078b2415747f45bdbfc23170edda6a0a7799d0",
+      "matches_benchmarked_source": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+      "sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093",
+      "matches_benchmarked_source": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/optimization.cpp",
+      "sha256": "b78bdb1612ebe211eb6a063aacf3db56cd4ca7a1b07115efc7f7f86575e41fc6",
+      "matches_benchmarked_source": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/canonical_interval.hpp",
+      "sha256": "9585bd5b79aced521bd697dc6eea1b3efae4d1c0cdfc5f17df2d0909996de946",
+      "matches_benchmarked_source": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/joint_safety.hpp",
+      "sha256": "248f4bfd2d217858acf62ea0ddfac30ca187db40867c80f928acccf9192d6dde",
+      "matches_benchmarked_source": true
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0",
+      "matches_benchmarked_source": true
+    }
+  ]
+}

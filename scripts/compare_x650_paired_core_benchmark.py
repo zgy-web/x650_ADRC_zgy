@@ -28,6 +28,7 @@ OUTPUT_DIMENSIONS = {"command": 5, "position_reference": 3,
 BUILD_KEYS = {"executable": "executable", "core": "core_library",
               "optimization": "optimization_library", "predictor": "predictor"}
 FIELD_POLICIES = ("strict-v1", "recorded-derived-v2")
+TIMING_PROFILES = ("legacy20", "abi4_mpc25_dispatch50")
 PRIMARY_ORACLE_FIELDS = {"command", "position_reference", "velocity_feedforward"}
 EXPECTED_SCOPE = {
     "timed_function": "x650::Core::step(StepInput), Compact production diagnostics",
@@ -162,7 +163,7 @@ def verify_extra_sample(sample, case):
 
 
 def verify_side(folder: Path, bundle: dict, input_identity: dict,
-                expected: dict, cpu: int):
+                expected: dict, cpu: int, timing_profile: str = "legacy20"):
     transport_path = folder / "transport_report.json"
     transport = load_json(transport_path)
     require(transport.get("complete") is True and transport.get("exit_code") == 0
@@ -186,7 +187,13 @@ def verify_side(folder: Path, bundle: dict, input_identity: dict,
             "Runner pass classification differs")
     require(result.get("allowed_cpus") == [cpu], "Native process was not pinned to input CPU")
     scope = result.get("scope", {})
-    for key, value in EXPECTED_SCOPE.items():
+    expected_scope = dict(EXPECTED_SCOPE)
+    if timing_profile == "abi4_mpc25_dispatch50":
+        require(result.get("core_abi") == 4 and result.get("optimization_abi") == 2, "Wrong loaded ABI")
+        expected_scope.update(control_update_target_ms=40, continuous_dispatch_period_ms=20,
+            configured_max_model_dt_s=.1, configured_command_hold_s=.16,
+            twenty_ms_sample_flag_is_dispatch_reference_only=True)
+    for key, value in expected_scope.items():
         require(type(scope.get(key)) is type(value) and scope[key] == value,
                 "Timing boundary differs: " + key)
     expected_tolerances = {key: 1e-9 if key == "position_reference" else 1e-7
@@ -199,6 +206,16 @@ def verify_side(folder: Path, bundle: dict, input_identity: dict,
         rows = [result[phase]] if phase == "cold_first_call" else result[phase]
         for row in rows:
             verify_extra_sample(row, bundle["cases"][row["case_index"]])
+            if timing_profile == "abi4_mpc25_dispatch50":
+                d = row["diagnostics"]
+                for field in ("hold_required", "hold_checked", "hold_passed"):
+                    require(type(d.get(field)) is bool, "Missing ABI 4 hold guard: "+field)
+                for field in ("interval_rows", "interval_repair_count", "interval_added_points", "hold_substeps"):
+                    integer(d.get(field), field)
+                if row["returned"]:
+                    require(d["hold_required"] and d["hold_checked"] and d["hold_passed"]
+                        and d["hold_duration_s"] == .16 and d["hold_substeps"] > 0,
+                        "Returned ABI 4 call lacks a successful 160 ms hold guard")
     return result, {"transport": identity(transport_path), "stdout": identity(stdout_path),
                     "validation": checked, "loaded_code_sha256": expected}
 
@@ -229,6 +246,7 @@ def comparison(rows):
             "nx_minus_server": stats([(b[field]-a[field])/1e6 for a, b in rows]),
             "server_over_nx_ratio": stats([a[field]/b[field] for a, b in rows])}
     value["deadlines"] = {side: {"over_20ms": sum(x["exceeded_20ms_target"] for x in data),
+                                  "over_40ms": sum(x["core_step_wall_ns"] > 40000000 for x in data),
                                   "over_50ms": sum(x["exceeded_50ms_wall"] for x in data)}
                           for side, data in (("server", server), ("nx", nx))}
     return value
@@ -311,7 +329,8 @@ def derived_acceleration_check(output, case):
 
 def compare(input_path: Path, server_folder: Path, nx_folder: Path,
             source_manifest: Path, server_build_path: Path, nx_build_path: Path,
-            source_package: Path | None = None, field_policy: str = "strict-v1"):
+            source_package: Path | None = None, field_policy: str = "strict-v1",
+            timing_profile: str = "legacy20"):
     bundle = load_json(input_path)
     input_identity = identity(input_path)
     require(bundle.get("kind") == "x650_mpc_memory_benchmark_input_v1"
@@ -321,14 +340,28 @@ def compare(input_path: Path, server_folder: Path, nx_folder: Path,
     require(run.get("oracle_absolute_tolerance") == 1e-7, "Original tolerance changed")
     integer(run.get("warmup_rounds"), "warmup rounds")
     integer(run.get("measured_rounds"), "measured rounds", 1)
-    require(bundle["config"].get("max_dt") == .05, "Original production dt gate changed")
+    require(timing_profile in TIMING_PROFILES, "Unknown timing profile")
+    if timing_profile == "legacy20":
+        require(bundle["config"].get("max_dt") == .05, "Original production dt gate changed")
+    else:
+        require(all(bundle["config"].get(k) == v for k, v in
+            {"max_dt": .1, "command_hold_s": .16, "nodes": 15, "node_dt": .04, "bus_period": .005}.items()),
+            "ABI 4 production timing profile changed")
+        require(bundle["provenance"].get("expected_core_abi") == 4
+            and bundle["provenance"].get("expected_optimization_abi") == 2, "Missing expected ABI binding")
     historical = historical_oracles(bundle, field_policy)
     source, members = verify_sources(source_manifest, source_package)
+    if timing_profile == "abi4_mpc25_dispatch50":
+        bound = bundle["provenance"].get("bound_production_and_wire_sources", {})
+        packaged = {row["path"]: row["sha256"] for row in members}
+        for path, digest in bound.items():
+            if path.startswith("control_packages/"):
+                require(packaged.get(path) == digest, "Packaged production source differs from actual corpus: "+path)
     server_code, server_settings = verify_build(load_json(server_build_path), source["sha256"], "x86_64")
     nx_code, nx_settings = verify_build(load_json(nx_build_path), source["sha256"], "aarch64")
     require(server_settings == nx_settings, "CMake configure settings differ between targets")
-    server, server_evidence = verify_side(server_folder, bundle, input_identity, server_code, cpu)
-    nx, nx_evidence = verify_side(nx_folder, bundle, input_identity, nx_code, cpu)
+    server, server_evidence = verify_side(server_folder, bundle, input_identity, server_code, cpu, timing_profile)
+    nx, nx_evidence = verify_side(nx_folder, bundle, input_identity, nx_code, cpu, timing_profile)
     require(server["scope"] == nx["scope"], "Full timing scopes differ between targets")
     for result in (server, nx):
         for case, actual in zip(bundle["cases"], result["cases"]):
@@ -401,7 +434,7 @@ def compare(input_path: Path, server_folder: Path, nx_folder: Path,
     return {"schema_version": 1, "kind": "x650_same_input_paired_cpu_comparison_v1",
         "complete": True, "pass": bool(both_valid and not failures and not historical_failures
                                          and not relation_failures),
-        "field_policy": field_policy,
+        "field_policy": field_policy, "timing_profile": timing_profile,
         "strict_full_field_passed": not strict_failures,
         "strict_failure_count": len(strict_keys),
         "strict_failure_count_unit": "unique logical phase/case/round pairs failing any strict historical or cross-target field check",
@@ -447,9 +480,10 @@ def main(argv=None):
                         help="Optional relocated source tar; its original bytes/SHA must match manifest")
     parser.add_argument("--field-policy", choices=FIELD_POLICIES, default="strict-v1",
                         help="Explicit acceptance policy; strict-v1 remains the default")
+    parser.add_argument("--timing-profile", choices=TIMING_PROFILES, default="legacy20")
     args = parser.parse_args(argv)
     report = compare(args.input, args.server_result, args.nx_result, args.source_manifest,
-                     args.server_build, args.nx_build, args.source_package, args.field_policy)
+                     args.server_build, args.nx_build, args.source_package, args.field_policy, args.timing_profile)
     atomic_write(args.output, json_bytes(report))
     print(json.dumps({key: report[key] for key in ("complete", "pass", "independent_output_pairs_checked")}))
     return 0 if report["pass"] else 1
