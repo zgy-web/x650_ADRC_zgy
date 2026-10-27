@@ -86,7 +86,7 @@ class ActualArchiveTests(unittest.TestCase):
             raise unittest.SkipTest('Actual ABI 4 evidence not available')
         evidence = preparation.Evidence(receipt)
         try:
-            cls.cfg, cls.cases, cls.provenance = preparation.recover(evidence, 'wrench')
+            cls.cfg, cls.cases, cls.provenance = preparation.recover(evidence, 'wrench', allow_reference_contract_change=True)
         finally:
             evidence.close()
 
@@ -97,6 +97,18 @@ class ActualArchiveTests(unittest.TestCase):
         self.assertEqual([r['original_sequence'] for r in self.provenance['cases']
             if r['historical_subproblems'] > 1], [351, 354, 358, 364])
         self.assertEqual([c['memory']['step_count'] for c in self.cases], list(range(570)))
+
+    def test_changed_reference_contract_does_not_inherit_historical_qualification(self):
+        change = self.provenance['reference_contract_change']
+        self.assertNotEqual(change['recorded_sha256'], change['current_sha256'])
+        self.assertFalse(change['historical_interface_qualification_transferred'])
+        self.assertTrue(change['independent_new_stream_acceptance_required'])
+        evidence = preparation.Evidence(ROOT/'docs/validation/cpp_multirate_20261026/multirate_evidence_receipt.json')
+        try:
+            with self.assertRaisesRegex(ValueError, 'Current/archived source differs'):
+                preparation.recover(evidence, 'wrench')
+        finally:
+            evidence.close()
 
     def test_recovered_context_and_acceleration_oracle_are_consecutive(self):
         for previous, case in zip(self.cases, self.cases[1:]):

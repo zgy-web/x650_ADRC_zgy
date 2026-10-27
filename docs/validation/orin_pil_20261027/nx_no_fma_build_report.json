@@ -1,0 +1,60 @@
+{
+  "kind": "x650_orin_code_build_v1",
+  "complete": true,
+  "architecture": "aarch64",
+  "package_sha256": "4ed0bd1b22d1d0d25550d050ff042d251c43680c2da9f5e4d83e322a47c578b9",
+  "runtime": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off",
+  "files": {
+    "executable": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/x650_mpc_memory_benchmark",
+      "bytes": 143808,
+      "sha256": "894b14c828e51fcafb230995641fd919c2d2b6bc3e17e5d1e79ec92192d1912b"
+    },
+    "core_library": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so",
+      "bytes": 196264,
+      "sha256": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347"
+    },
+    "optimization_library": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so",
+      "bytes": 265912,
+      "sha256": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f"
+    },
+    "predictor": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_benchmark_predictor.so",
+      "bytes": 17856,
+      "sha256": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+    }
+  },
+  "commands": [
+    [
+      "cmake",
+      "-S",
+      "/dev/shm/x650_abi4_build_5oum48c1/source/control_packages/x650_wholebody_v1/benchmark",
+      "-B",
+      "/dev/shm/x650_abi4_build_5oum48c1/build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_TESTING=ON",
+      "-DCMAKE_CXX_FLAGS=-ffp-contract=off"
+    ],
+    [
+      "cmake",
+      "--build",
+      "/dev/shm/x650_abi4_build_5oum48c1/build",
+      "-j2"
+    ],
+    [
+      "ctest",
+      "--test-dir",
+      "/dev/shm/x650_abi4_build_5oum48c1/build",
+      "--output-on-failure"
+    ]
+  ],
+  "ldd": "\tlinux-vdso.so.1 (0x0000ffffba308000)\n\tlibx650_mpc_core.so => /home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so (0x0000ffffba260000)\n\tlibcrypto.so.3 => /lib/aarch64-linux-gnu/libcrypto.so.3 (0x0000ffffb9e40000)\n\tlibjsoncpp.so.25 => /lib/aarch64-linux-gnu/libjsoncpp.so.25 (0x0000ffffb9e00000)\n\tlibstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000ffffb9bd0000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffffb9ba0000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffffb99f0000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffffba2cf000)\n\tlibx650_optimization.so => /home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so (0x0000ffffb99a0000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffffb9900000)\n",
+  "build_in_tmpfs": true,
+  "tests_passed": true,
+  "application_input_or_output_files_created": false,
+  "only_four_elf_files_persist": true,
+  "fp_contract_policy": "off_diagnostic",
+  "ram_build_removed": true
+}

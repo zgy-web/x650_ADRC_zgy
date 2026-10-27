@@ -7,11 +7,22 @@
 #include <array>
 #include <cmath>
 #include <cstdint>
+#include <limits>
 #include <stdexcept>
 #include <vector>
 
 namespace flyarm_mpc_cpp {
 namespace wire = flyarm_control_gateway;
+// A frozen analytical trajectory is evaluated on both x86 and aarch64. libm
+// and permitted FP contraction can differ by roundoff. Keep configuration and
+// identity exact; compare only recomputed reference values at machine precision.
+template<std::size_t N> bool same_reference(const std::array<double,N>& a,const std::array<double,N>& b) {
+  for(std::size_t i=0;i<N;++i) {
+    if(!std::isfinite(a[i])||!std::isfinite(b[i])||
+       std::abs(a[i]-b[i])>64*std::numeric_limits<double>::epsilon()*std::max({1.,std::abs(a[i]),std::abs(b[i])}))return false;
+  }
+  return true;
+}
 struct Handoff {
   std::uint64_t session{}, epoch{}, issued_ns{};
   wire::Hash hash{};
@@ -62,8 +73,8 @@ class Contract {
         || std::abs(s.control_time_s-last_control_-s.dt_s)>1e-9
         || std::abs(s.reference_time_s-(s.task_time_s-(s.control_time_s-s.joint_time_s)))>1e-9
         || !proper_rotation(s.rotation_row_major) || s.position_gains!=config_.position_gains
-        || s.target_position_enu!=expected_target.position || s.target_velocity_enu!=expected_target.velocity
-        || s.target_acceleration_enu!=expected_target.acceleration
+        || !same_reference(s.target_position_enu,expected_target.position) || !same_reference(s.target_velocity_enu,expected_target.velocity)
+        || !same_reference(s.target_acceleration_enu,expected_target.acceleration)
         || nodes<1 || nodes>60 || !std::isfinite(node_dt) || node_dt<=0.
         || max_dt!=config_.timing_profile.control_dt_max_s() || s.dt_s>max_dt+config_.timing_profile.control_dt_roundoff_s())
       fail("Frozen reference, actual dt or reference anchor differs");

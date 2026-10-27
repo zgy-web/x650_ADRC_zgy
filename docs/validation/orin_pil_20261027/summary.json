@@ -1,0 +1,772 @@
+{
+  "kind": "orin_pil_debug_summary_v1",
+  "recorded_stream_physical_closed_loop": false,
+  "hardware_flight_qualified": false,
+  "continuous_memory": true,
+  "input_and_native_source_binding": {
+    "kind": "x650_pil_input_and_source_binding_v1",
+    "input_numeric_payloads_unchanged": true,
+    "streams": [
+      {
+        "name": "hold",
+        "count": 711,
+        "start_and_steps_equal": true
+      },
+      {
+        "name": "wrench",
+        "count": 570,
+        "start_and_steps_equal": true
+      },
+      {
+        "name": "mass085",
+        "count": 569,
+        "start_and_steps_equal": true
+      },
+      {
+        "name": "mass115",
+        "count": 570,
+        "start_and_steps_equal": true
+      }
+    ],
+    "native_source_changes": [],
+    "contract_change": "64 * double epsilon * max(1,abs(a),abs(b)) reference comparison only",
+    "native_source_checks": [
+      {
+        "path": "control_packages/x650_wholebody_v1/native/CMakeLists.txt",
+        "unchanged": true,
+        "sha256": "9d08b1d56154581044247321ce8160041415891ccfde875e7215bc938d43f657"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+        "unchanged": true,
+        "sha256": "7826911a28df82152f5a0b6dab078b2415747f45bdbfc23170edda6a0a7799d0"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+        "unchanged": true,
+        "sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/optimization.cpp",
+        "unchanged": true,
+        "sha256": "b78bdb1612ebe211eb6a063aacf3db56cd4ca7a1b07115efc7f7f86575e41fc6"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/test_mpc_core.cpp",
+        "unchanged": true,
+        "sha256": "c7f03690d89dad1c4e0d80bb07a381253fb132f1ce54a53d269f2d7e049b8eba"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/test_quadprog_identity.cpp",
+        "unchanged": true,
+        "sha256": "1cfb6f67951706bcaff6726d46c30a367cd0b175cdeb590a87f491ff4882a2e9"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/Array.hh",
+        "unchanged": true,
+        "sha256": "df5821f916b6dba3e6ace9478edb3933eea5af869f9753448e45427ea22db4c9"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc",
+        "unchanged": true,
+        "sha256": "aafb5dfb449c659012d61cce649fddfa8225aa6f7a5a5df0195781af87d7fc29"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.hh",
+        "unchanged": true,
+        "sha256": "526ae146e9e121223157f858710e5684021024f57bc0392da3243fbae060aab2"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/LICENSE",
+        "unchanged": true,
+        "sha256": "6b3d5d656e94973e5120a0863e383ede61e2a0d3132267fd7ead0f5d87c9fb84"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/UPSTREAM.json",
+        "unchanged": true,
+        "sha256": "d9aa5a56e9b8bd0db8fdac751d79e1b0c05708d8c00ff78479edc4e6d67e5976"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+        "unchanged": true,
+        "sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/canonical_interval.hpp",
+        "unchanged": true,
+        "sha256": "9585bd5b79aced521bd697dc6eea1b3efae4d1c0cdfc5f17df2d0909996de946"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/joint_safety.hpp",
+        "unchanged": true,
+        "sha256": "248f4bfd2d217858acf62ea0ddfac30ca187db40867c80f928acccf9192d6dde"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/test_multirate_core.cpp",
+        "unchanged": true,
+        "sha256": "d7461ce5a1d099670888f3b95d6c4c86f7a50185f02292f06f5ee198bc1f87d1"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/test_interval_core.cpp",
+        "unchanged": true,
+        "sha256": "b51766ca6271fcc94d394b5f1bf71a307b5b42e1a7e439b27be8ee106bb59158"
+      },
+      {
+        "path": "control_packages/x650_wholebody_v1/native/test_interval_observer.cpp",
+        "unchanged": true,
+        "sha256": "569d001ff4d6d92e3c0ce6f2c13902f4fa24c6b99597c010f06d6a0860cf2df7"
+      }
+    ],
+    "supersedes": "input_binding.json used an incorrect list label without hash comparison; source checks corrected here, both records retained"
+  },
+  "cases": [
+    {
+      "case": "hold",
+      "steps": 711,
+      "numerical_pass": true,
+      "integrity_pass": true,
+      "max_command_error": 4.3141792221979003e-13,
+      "all_output_errors": {
+        "command": 4.3141792221979003e-13,
+        "position_reference": 0,
+        "velocity_feedforward": 1.4915282550709286e-13,
+        "acceleration_feedforward": 0,
+        "joint_velocity": 4.3141792221979003e-13,
+        "joint_reference": 0,
+        "joint_velocity_reference": 4.3141792221979003e-13,
+        "joint_acceleration_reference": 1.909887178963565e-12,
+        "nominal_acceleration": 0,
+        "tip_actual": 0
+      },
+      "timing_ms": {
+        "core_ms": {
+          "count": 711,
+          "min": 2.073211,
+          "p50": 2.802063,
+          "p95": 7.429778,
+          "p99": 10.590373,
+          "max": 12.72548
+        },
+        "core_thread_ms": {
+          "count": 711,
+          "min": 2.077696,
+          "p50": 2.805472,
+          "p95": 7.391536,
+          "p99": 10.538806399999997,
+          "max": 12.66368
+        },
+        "nx_service_ms": {
+          "count": 711,
+          "min": 3.120761,
+          "p50": 3.953552,
+          "p95": 9.674018,
+          "p99": 12.8191685,
+          "max": 14.6273
+        },
+        "host_roundtrip_ms": {
+          "count": 711,
+          "min": 6.8073,
+          "p50": 8.9653,
+          "p95": 16.114150000000002,
+          "p99": 19.822569999999978,
+          "max": 30.1701
+        },
+        "outside_service_ms": {
+          "count": 711,
+          "min": 3.307401,
+          "p50": 4.790444,
+          "p95": 6.498444,
+          "p99": 8.549321799999982,
+          "max": 21.644032
+        }
+      },
+      "late_roundtrip_sequences": [],
+      "report_sha256": "e6f044a06ada35d9cf84c035c83cf51b054a63a0e706693e1c92d67af0dbf7e0"
+    },
+    {
+      "case": "wrench",
+      "steps": 570,
+      "numerical_pass": true,
+      "integrity_pass": true,
+      "max_command_error": 1.2307516117360251e-11,
+      "all_output_errors": {
+        "command": 1.2307516117360251e-11,
+        "position_reference": 4.85722573273506e-17,
+        "velocity_feedforward": 7.621570041749237e-12,
+        "acceleration_feedforward": 0,
+        "joint_velocity": 1.2307516117360251e-11,
+        "joint_reference": 4.440892098500626e-16,
+        "joint_velocity_reference": 1.2307488361784635e-11,
+        "joint_acceleration_reference": 9.739746509307423e-11,
+        "nominal_acceleration": 1.3877787807814457e-17,
+        "tip_actual": 0
+      },
+      "timing_ms": {
+        "core_ms": {
+          "count": 570,
+          "min": 2.34272,
+          "p50": 10.739755,
+          "p95": 22.91855634999999,
+          "p99": 25.497071619999996,
+          "max": 36.469528
+        },
+        "core_thread_ms": {
+          "count": 570,
+          "min": 2.340032,
+          "p50": 10.659984000000001,
+          "p95": 22.81192319999999,
+          "p99": 25.328677759999998,
+          "max": 36.23968
+        },
+        "nx_service_ms": {
+          "count": 570,
+          "min": 3.403166,
+          "p50": 12.082654999999999,
+          "p95": 24.575019149999996,
+          "p99": 27.513475509999974,
+          "max": 37.687418
+        },
+        "host_roundtrip_ms": {
+          "count": 570,
+          "min": 7.7236,
+          "p50": 17.222,
+          "p95": 30.013414999999995,
+          "p99": 36.167274,
+          "max": 56.151
+        },
+        "outside_service_ms": {
+          "count": 570,
+          "min": 3.480093,
+          "p50": 4.9564265,
+          "p95": 7.308168349999999,
+          "p99": 10.410412019999969,
+          "max": 38.976444
+        }
+      },
+      "late_roundtrip_sequences": [
+        243
+      ],
+      "report_sha256": "220f4968c904a65ec54162d4b564a0d4beb3aeb0b5d54f06f3c8d218948ada0b"
+    },
+    {
+      "case": "mass085",
+      "steps": 569,
+      "numerical_pass": true,
+      "integrity_pass": true,
+      "max_command_error": 1.7598700274845669e-12,
+      "all_output_errors": {
+        "command": 1.7598700274845669e-12,
+        "position_reference": 0,
+        "velocity_feedforward": 1.1806944311132384e-12,
+        "acceleration_feedforward": 0,
+        "joint_velocity": 1.7598700274845669e-12,
+        "joint_reference": 0,
+        "joint_velocity_reference": 1.7598700274845669e-12,
+        "joint_acceleration_reference": 1.1067223526506353e-11,
+        "nominal_acceleration": 1.3877787807814457e-17,
+        "tip_actual": 0
+      },
+      "timing_ms": {
+        "core_ms": {
+          "count": 569,
+          "min": 2.416966,
+          "p50": 9.482326,
+          "p95": 16.175028800000003,
+          "p99": 17.15058212,
+          "max": 18.050092
+        },
+        "core_thread_ms": {
+          "count": 569,
+          "min": 2.415296,
+          "p50": 9.436064,
+          "p95": 16.115328,
+          "p99": 17.06042624,
+          "max": 17.968832
+        },
+        "nx_service_ms": {
+          "count": 569,
+          "min": 3.479236,
+          "p50": 10.894525,
+          "p95": 17.659835,
+          "p99": 19.469888000000005,
+          "max": 20.556537
+        },
+        "host_roundtrip_ms": {
+          "count": 569,
+          "min": 8.2905,
+          "p50": 15.8998,
+          "p95": 23.33576,
+          "p99": 26.09590400000001,
+          "max": 28.343
+        },
+        "outside_service_ms": {
+          "count": 569,
+          "min": 3.621066,
+          "p50": 4.965476,
+          "p95": 6.9724278,
+          "p99": 9.824888680000019,
+          "max": 12.590395
+        }
+      },
+      "late_roundtrip_sequences": [],
+      "report_sha256": "143c3adf55f166f37977d240f1216f6e50877c3b1806ea532789a829e70db632"
+    },
+    {
+      "case": "mass115",
+      "steps": 570,
+      "numerical_pass": true,
+      "integrity_pass": true,
+      "max_command_error": 2.0911050668814823e-12,
+      "all_output_errors": {
+        "command": 2.0911050668814823e-12,
+        "position_reference": 0,
+        "velocity_feedforward": 1.1165790514411356e-12,
+        "acceleration_feedforward": 0,
+        "joint_velocity": 2.0911050668814823e-12,
+        "joint_reference": 0,
+        "joint_velocity_reference": 2.0911050668814823e-12,
+        "joint_acceleration_reference": 1.0639530922951224e-11,
+        "nominal_acceleration": 1.3877787807814457e-17,
+        "tip_actual": 0
+      },
+      "timing_ms": {
+        "core_ms": {
+          "count": 570,
+          "min": 2.378375,
+          "p50": 8.41057,
+          "p95": 15.649460399999999,
+          "p99": 17.116797969999993,
+          "max": 17.964565
+        },
+        "core_thread_ms": {
+          "count": 570,
+          "min": 2.375328,
+          "p50": 8.371663999999999,
+          "p95": 15.584331200000001,
+          "p99": 17.02778015999999,
+          "max": 17.898688
+        },
+        "nx_service_ms": {
+          "count": 570,
+          "min": 3.43751,
+          "p50": 10.233441,
+          "p95": 17.0516627,
+          "p99": 18.938972339999996,
+          "max": 20.767366
+        },
+        "host_roundtrip_ms": {
+          "count": 570,
+          "min": 7.8624,
+          "p50": 15.2536,
+          "p95": 22.57843,
+          "p99": 24.731299999999997,
+          "max": 68.7418
+        },
+        "outside_service_ms": {
+          "count": 570,
+          "min": 3.546128,
+          "p50": 4.8662345,
+          "p95": 6.650473449999999,
+          "p99": 8.680487499999963,
+          "max": 49.567595
+        }
+      },
+      "late_roundtrip_sequences": [
+        143,
+        144,
+        472
+      ],
+      "report_sha256": "8c6975109ffad1c8939e10a7ffb64e280c16a8dc9ed31d0e34c83eccf69d29f5"
+    }
+  ],
+  "total_steps": 2420,
+  "faults": {
+    "cases": [
+      {
+        "case": "duplicate",
+        "passed": true
+      },
+      {
+        "case": "out_of_order",
+        "passed": true
+      },
+      {
+        "case": "old_epoch",
+        "passed": true
+      },
+      {
+        "case": "wrong_session",
+        "passed": true
+      },
+      {
+        "case": "changed_hash",
+        "passed": true
+      },
+      {
+        "case": "stale_joint",
+        "passed": true
+      },
+      {
+        "case": "wrong_dt",
+        "passed": true
+      },
+      {
+        "case": "invalid_rotation",
+        "passed": true
+      },
+      {
+        "case": "joint_limit",
+        "passed": true
+      },
+      {
+        "case": "wrong_frame_schema",
+        "passed": true
+      },
+      {
+        "case": "oversize_history_count",
+        "passed": true
+      },
+      {
+        "case": "changed_reference",
+        "passed": true
+      },
+      {
+        "case": "nonfinite_state",
+        "passed": true
+      },
+      {
+        "case": "clean_restart",
+        "passed": true
+      },
+      {
+        "case": "repeat_start",
+        "passed": true
+      },
+      {
+        "case": "eof",
+        "passed": true
+      },
+      {
+        "case": "truncated_frame",
+        "passed": true
+      },
+      {
+        "case": "oversize_frame",
+        "passed": true
+      },
+      {
+        "case": "idle_timeout",
+        "passed": true
+      },
+      {
+        "case": "server_deadline",
+        "passed": true
+      },
+      {
+        "case": "server_wrong_digest",
+        "passed": true
+      },
+      {
+        "case": "server_refreshed_issue",
+        "passed": true
+      },
+      {
+        "case": "server_bad_pva",
+        "passed": true
+      },
+      {
+        "case": "server_nan_command",
+        "passed": true
+      },
+      {
+        "case": "server_wrong_memory",
+        "passed": true
+      }
+    ],
+    "all_passed": true
+  },
+  "server_paths": [
+    {
+      "kind": "x650_pil_actual_path_probe_v1",
+      "physical_closed_loop": false,
+      "actuator_publishers": 0,
+      "complete": true,
+      "server_exit_code": 0,
+      "relay": {
+        "nx_exit_code": 0
+      },
+      "steps": 100,
+      "server_roundtrip_ms": {
+        "count": 100,
+        "min": 30.938776,
+        "p50": 34.870187,
+        "p95": 111.56230375,
+        "p99": 289.1006263500015,
+        "max": 583.640115
+      },
+      "nx_core_ms": {
+        "count": 100,
+        "min": 2.153662,
+        "p50": 3.8181760000000002,
+        "p95": 9.163391999999998,
+        "p99": 11.230754400000002,
+        "max": 11.384442
+      },
+      "late_sequences": [
+        91,
+        92,
+        93,
+        97,
+        98,
+        99,
+        100
+      ],
+      "path": "server -> authenticated loopback SSH forwarding -> workstation byte relay -> authenticated NX SSH worker",
+      "deadline_ms": 50,
+      "live_transport_admission": false
+    },
+    {
+      "kind": "x650_pil_actual_path_probe_v1",
+      "physical_closed_loop": false,
+      "actuator_publishers": 0,
+      "complete": true,
+      "server_exit_code": 0,
+      "relay": {
+        "nx_exit_code": 0
+      },
+      "steps": 100,
+      "server_roundtrip_ms": {
+        "count": 100,
+        "min": 31.193971,
+        "p50": 35.7435605,
+        "p95": 41.12059765,
+        "p99": 42.81572668000002,
+        "max": 45.670954
+      },
+      "nx_core_ms": {
+        "count": 100,
+        "min": 2.208296,
+        "p50": 5.17244,
+        "p95": 9.166263500000001,
+        "p99": 9.695253970000007,
+        "max": 11.082439
+      },
+      "late_sequences": [],
+      "path": "server -> authenticated loopback SSH forwarding -> workstation byte relay -> authenticated NX SSH worker",
+      "deadline_ms": 50,
+      "live_transport_admission": true
+    }
+  ],
+  "contract_tests": {
+    "passed": true,
+    "tests": [
+      {
+        "name": "test_worker_contract",
+        "build_code": 0,
+        "build_stderr": "",
+        "exit_code": 0,
+        "stdout": "C++ worker raw state/history/clock/PVA contracts passed; no controller solve or actuation\n",
+        "stderr": ""
+      },
+      {
+        "name": "test_normal_contract",
+        "build_code": 0,
+        "build_stderr": "",
+        "exit_code": 0,
+        "stdout": "C++ worker raw state/history/clock/PVA contracts passed; no controller solve or actuation\nPASS dynamic contract; 53370 explicit horizon nodes; original hold regressions included\n",
+        "stderr": ""
+      },
+      {
+        "name": "test_fast_contract",
+        "build_code": 0,
+        "build_stderr": "",
+        "exit_code": 0,
+        "stdout": "C++ worker raw state/history/clock/PVA contracts passed; no controller solve or actuation\nPASS fast dynamic contract; 40020 explicit horizon nodes; original hold regressions included\n",
+        "stderr": ""
+      }
+    ],
+    "temporary_build_removed": true
+  },
+  "build": {
+    "kind": "x650_pil_code_build_v1",
+    "complete": true,
+    "source_sha256": "f04beaa7c25a0fa23111a0fec094d61e9b8d615b957db8469cfca3fa5c49b4e1",
+    "executable": {
+      "path": "/home/jetson/flyarm_mpc_runtime/fpcontract_off_pil/pil_f04beaa7c25a0fa2/x650_mpc_pil_worker",
+      "sha256": "e7be5e4ce8f943625663e7ca3611b3fec369832b977255273cb4f82413fc6f10",
+      "bytes": 147016
+    },
+    "libraries": {
+      "core": {
+        "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so",
+        "sha256": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347"
+      },
+      "optimization": {
+        "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so",
+        "sha256": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f"
+      },
+      "predictor": {
+        "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_benchmark_predictor.so",
+        "sha256": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+      }
+    },
+    "existing_math_binaries_unchanged": true,
+    "only_one_elf_persisted": true,
+    "ram_build_removed": true,
+    "build_root_tmpfs": true
+  },
+  "synchronous_physical_loop": {
+    "hold": {
+      "case": "tip_hold",
+      "passed": true,
+      "physical_closed_loop": true,
+      "wall_clock_qualified": false,
+      "hardware_flight_qualified": false,
+      "complete": true,
+      "endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          30.0
+        ],
+        "sample_count": 7501,
+        "duration_s": 30.0,
+        "position_rmse_m": 0.002691220057896129,
+        "position_max_m": 0.004313703592510637,
+        "axis_rmse_m": [
+          0.0025291524287771663,
+          0.0007554482059999927,
+          0.0005247393639554826
+        ]
+      },
+      "tracking": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          30.0
+        ],
+        "sample_count": 7501,
+        "duration_s": 30.0,
+        "position_rmse_m": 0.002691220057896129,
+        "position_max_m": 0.004313703592510637,
+        "axis_rmse_m": [
+          0.0025291524287771663,
+          0.0007554482059999927,
+          0.0005247393639554826
+        ]
+      },
+      "tilt_peak_deg": 0.08824765569190464,
+      "nx_core_ms": {
+        "count": 749,
+        "min": 1.594464,
+        "p50": 3.105675,
+        "p95": 6.743093000000001,
+        "p99": 9.132370359999996,
+        "max": 10.880073
+      },
+      "server_roundtrip_ms": {
+        "count": 749,
+        "min": 31.990187,
+        "p50": 82.044418,
+        "p95": 176.8797154,
+        "p99": 180.69028372,
+        "max": 710.94938
+      },
+      "nx_steps": 749,
+      "normal_dispatches": 1498,
+      "zero_consumed": true,
+      "fixed_physics_segments": 1501,
+      "frozen_checks": 750,
+      "window_sim_s": [
+        38.184,
+        68.184
+      ],
+      "feedback_scope": "Original validated PX4 estimated-state adapter; same-time physical q/dq independently matched; raw per-callback receipt replay not certified",
+      "raw_px4_receipt_replay_qualified": false,
+      "sources_bound_before_and_after": false,
+      "px4_commands_verified": true,
+      "new_joint_prediction_verified": true
+    },
+    "normal": {
+      "case": "normal",
+      "passed": true,
+      "physical_closed_loop": true,
+      "wall_clock_qualified": false,
+      "hardware_flight_qualified": false,
+      "complete": true,
+      "endpoint": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          0.0,
+          32.0
+        ],
+        "sample_count": 8001,
+        "duration_s": 31.999999999999993,
+        "position_rmse_m": 0.0035171895197032674,
+        "position_max_m": 0.007229071151287071,
+        "axis_rmse_m": [
+          0.002485168023086385,
+          0.0012845214492606478,
+          0.002131798926007964
+        ]
+      },
+      "tracking": {
+        "source": "native_trace.csv independent physical tip",
+        "same_time": true,
+        "no_phase_alignment": true,
+        "interval_task_s": [
+          2.0,
+          28.0
+        ],
+        "sample_count": 6501,
+        "duration_s": 25.999999999999993,
+        "position_rmse_m": 0.0037197697602993473,
+        "position_max_m": 0.007229071151287071,
+        "axis_rmse_m": [
+          0.0025274619626640044,
+          0.0014067660770547212,
+          0.002338724503093966
+        ]
+      },
+      "tilt_peak_deg": 0.590718290808563,
+      "nx_core_ms": {
+        "count": 799,
+        "min": 2.327437,
+        "p50": 5.332308,
+        "p95": 10.266851099999993,
+        "p99": 12.093829099999999,
+        "max": 13.757702
+      },
+      "server_roundtrip_ms": {
+        "count": 799,
+        "min": 32.017463,
+        "p50": 113.711116,
+        "p95": 179.68423249999998,
+        "p99": 189.03031741999985,
+        "max": 690.205569
+      },
+      "nx_steps": 799,
+      "normal_dispatches": 1598,
+      "zero_consumed": true,
+      "fixed_physics_segments": 1602,
+      "frozen_checks": 800,
+      "window_sim_s": [
+        41.6,
+        73.6
+      ],
+      "feedback_scope": "Original validated PX4 estimated-state adapter; same-time physical q/dq independently matched; raw per-callback receipt replay not certified",
+      "raw_px4_receipt_replay_qualified": false,
+      "sources_bound_before_and_after": true,
+      "px4_commands_verified": true,
+      "new_joint_prediction_verified": true
+    }
+  },
+  "unit_tests_passed": 47,
+  "post_run_close_checks_passed": true
+}

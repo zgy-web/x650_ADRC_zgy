@@ -1,0 +1,51 @@
+{
+  "kind": "x650_robustness_raw_archive_receipt_v1",
+  "complete": true,
+  "all_original_sizes_and_sha256_verified": true,
+  "all_zip_members_read_back": true,
+  "embedded_manifests_byte_identical": true,
+  "verified_member_count": 288,
+  "manifest": {
+    "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/delivery_v1/nx_sync_pil_evidence_manifest.json",
+    "bytes": 128533,
+    "sha256": "37335d15cef7e915e6be8d82e49169cf193e91549337a4fa8cc5a9bd080a4113"
+  },
+  "archives": [
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/delivery_v1/nx_sync_pil_evidence_part01.zip",
+      "bytes": 44353603,
+      "sha256": "de044838a06502ffd72458fd5d8aa47bfac20993e0cda9d1fd443f345f15532d"
+    },
+    {
+      "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/delivery_v1/nx_sync_pil_evidence_part02.zip",
+      "bytes": 25345152,
+      "sha256": "3c82fa5bf93a140bb3feb6957f9e6f0e6c2d9e1d57c604120021052be4d522a6"
+    }
+  ],
+  "context": {
+    "scope": "Synchronous physical simulation with actual NX; failures retained; no wall-clock or hardware-flight qualification",
+    "launches": [
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/hold_v1/launch.json",
+        "bytes": 20378,
+        "sha256": "ca8044136ac753d86fdc5aa231a294cee32982064ad3f15e7c141cbdd64d8adc"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/hold_v3/launch.json",
+        "bytes": 20379,
+        "sha256": "d82fd5de12744b3a8b05dfdba007e947fa0a55a9305a91614d5a61b98039195c"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/hold_v4/launch.json",
+        "bytes": 20280,
+        "sha256": "e0112ef0656d988d1b041dd90ea4ac1428d055533fa6f1d164426ddc26481163"
+      },
+      {
+        "path": "/root/autodl-tmp/safe-aerial-manipulator-testbed/artifacts/orin_sync_pil_20261027/normal_v1/launch.json",
+        "bytes": 21719,
+        "sha256": "efa19b8c72319db6c581f76864bef8abb1a978b4111a82d9cc4efda8cfc4bba7"
+      }
+    ]
+  },
+  "completed_unix": 1793082000.5397387
+}

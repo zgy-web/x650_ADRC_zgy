@@ -439,6 +439,20 @@ class LifecycleTests(unittest.TestCase):
             self.assertTrue(meta["diagnostic_parameters_restored"])
             self.assertFalse((folder/"runtime/restore_pending.json").exists())
 
+    def test_ground_control_initialization_failure_restores_via_original_transport(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            with patch.object(runner.ControlLoop, "pump", side_effect=RuntimeError("unit state provider not installed")):
+                world, error = self.run_mock(folder, diagnostic_profile=True)
+            self.assertIsInstance(error, RuntimeError)
+            self.assertIn("state provider not installed", str(error))
+            self.assertEqual(world.events, [])
+            meta = json.loads((folder/"controller_metadata.json").read_text())
+            self.assertFalse(meta["complete"])
+            self.assertTrue(meta["diagnostic_parameters_restored"])
+            self.assertFalse(meta["diagnostic_restore_pending"])
+            self.assertFalse((folder/"runtime/restore_pending.json").exists())
+
     def test_pid_only_fixed_reference_uses_native_position_loop_and_restores_gains(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)

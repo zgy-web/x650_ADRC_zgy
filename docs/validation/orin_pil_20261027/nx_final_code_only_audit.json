@@ -1,0 +1,37 @@
+{
+  "runtime_files": [
+    {
+      "path": "/home/jetson/flyarm_mpc_runtime/fpcontract_off_pil/pil_f04beaa7c25a0fa2/x650_mpc_pil_worker",
+      "bytes": 147016,
+      "elf": true,
+      "sha256": "e7be5e4ce8f943625663e7ca3611b3fec369832b977255273cb4f82413fc6f10"
+    },
+    {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/x650_mpc_memory_benchmark",
+      "bytes": 143808,
+      "elf": true,
+      "sha256": "894b14c828e51fcafb230995641fd919c2d2b6bc3e17e5d1e79ec92192d1912b"
+    },
+    {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so",
+      "bytes": 196264,
+      "elf": true,
+      "sha256": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347"
+    },
+    {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_benchmark_predictor.so",
+      "bytes": 17856,
+      "elf": true,
+      "sha256": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+    },
+    {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so",
+      "bytes": 265912,
+      "elf": true,
+      "sha256": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f"
+    }
+  ],
+  "only_elf_persisted": true,
+  "active_pil_workers": [],
+  "temporary_builds": []
+}

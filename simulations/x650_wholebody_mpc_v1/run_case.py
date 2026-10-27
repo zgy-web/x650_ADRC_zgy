@@ -1301,6 +1301,12 @@ def execute(cfg, model_spec, provenance, out, *, extension=None):
                 try:
                     if attempted_takeoff and not meta["landed_and_disarmed"]:
                         raise RuntimeError("Diagnostic restoration blocked: landing/disarm has not been confirmed; pending journal retained")
+                    if not attempted_takeoff and loop is not None:
+                        # A scenario extension can fail during ground setup,
+                        # before installing its state provider. Restoration
+                        # must still receive fresh grounded PX4 reports through
+                        # the original transport, not re-enter the broken loop.
+                        ctx.vehicle._pump = loop.original_pump
                     diagnostic.restore()
                     meta["diagnostic_parameters_restored"] = diagnostic.document["restored_verified"]
                 except BaseException as exc:

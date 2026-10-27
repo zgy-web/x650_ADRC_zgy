@@ -23,6 +23,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--sha256', required=True)
     parser.add_argument('--runtime-root', type=Path, required=True)
+    parser.add_argument('--fp-contract-off', action='store_true',
+        help='Explicit diagnostic variant: disable fused FP contraction; preserve the default runtime')
     parser.add_argument('--build-root', type=Path, default=Path('/dev/shm'),
         help='Server-only override if container /dev/shm is noexec; keep /dev/shm on NX')
     args = parser.parse_args()
@@ -32,7 +34,7 @@ def main():
     data = sys.stdin.buffer.read(8*1024*1024+1)
     if len(data) > 8*1024*1024 or hashlib.sha256(data).hexdigest() != args.sha256:
         raise ValueError('Source package SHA/size mismatch')
-    runtime = args.runtime_root.resolve()/('abi4_cpu_'+args.sha256[:16])
+    runtime = args.runtime_root.resolve()/('abi4_cpu_'+args.sha256[:16]+('_fpcontract_off' if args.fp_contract_off else ''))
     if runtime.exists():
         raise FileExistsError(runtime)
     build_root = args.build_root.resolve()
@@ -61,7 +63,8 @@ def main():
             OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
         commands = [
             ['cmake', '-S', str(source/'control_packages/x650_wholebody_v1/benchmark'),
-                '-B', str(build), '-DCMAKE_BUILD_TYPE=Release', '-DBUILD_TESTING=ON'],
+                '-B', str(build), '-DCMAKE_BUILD_TYPE=Release', '-DBUILD_TESTING=ON']+
+                (['-DCMAKE_CXX_FLAGS=-ffp-contract=off'] if args.fp_contract_off else []),
             ['cmake', '--build', str(build), '-j2'],
             ['ctest', '--test-dir', str(build), '--output-on-failure']]
         for command in commands:
@@ -88,6 +91,7 @@ def main():
             package_sha256=args.sha256, runtime=str(runtime), files=checks, commands=commands,
             ldd=result.stdout, build_in_tmpfs=build_root == Path('/dev/shm').resolve(), tests_passed=True,
             application_input_or_output_files_created=False, only_four_elf_files_persist=True)
+        report['fp_contract_policy']='off_diagnostic' if args.fp_contract_off else 'compiler_default'
     finally:
         if job.resolve().parent != build_root or not job.name.startswith('x650_abi4_build_'):
             raise RuntimeError('Refusing unsafe RAM cleanup')

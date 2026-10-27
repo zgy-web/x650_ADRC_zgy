@@ -1,0 +1,21 @@
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded C:\Users\Liym0817\AppData\Local\Temp\tmpm2bge4p7
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded C:\Users\Liym0817\AppData\Local\Temp\tmphv97wgat
+X650_STAGE_START joint_probe pid_ff
+X650_STAGE_COMPLETE joint_probe C:\Users\Liym0817\AppData\Local\Temp\tmp7ii6kidj
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded C:\Users\Liym0817\AppData\Local\Temp\tmp3dd2gvdi
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded C:\Users\Liym0817\AppData\Local\Temp\tmpttz4haw8
+X650_STAGE_START hover_folded pid_ff
+X650_STAGE_COMPLETE hover_folded C:\Users\Liym0817\AppData\Local\Temp\tmpryengyru
+X650_STAGE_START response_probe pid_ff
+X650_STAGE_COMPLETE response_probe C:\Users\Liym0817\AppData\Local\Temp\tmpcs0nj740
+..............
+----------------------------------------------------------------------
+Ran 14 tests in 48.556s
+
+OK

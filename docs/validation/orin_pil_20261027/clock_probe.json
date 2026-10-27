@@ -1,0 +1,255 @@
+{
+  "kind": "unarmed_synchronous_clock_probe_v1",
+  "armed_commands_sent": 0,
+  "passed": true,
+  "events": [
+    {
+      "clock_callbacks": 61,
+      "iterations": 1034,
+      "ok": true,
+      "op": "pause",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4136000000,
+      "wall_ns": 283560459
+    },
+    {
+      "clock_callbacks": 790,
+      "iterations": 1034,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4136000000,
+      "wall_ns": 35052
+    },
+    {
+      "before_sim_ns": 4136000000,
+      "clock_callbacks": 840,
+      "iterations": 1042,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4176000000,
+      "wall_ns": 193858030
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4176000 (0.000000 seconds ago)\n    gyro_rad: [0.00014, -0.00099, 0.00000]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [0.00046, 0.00464, -9.79871]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 930,
+      "iterations": 1044,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4176000000,
+      "wall_ns": 28813
+    },
+    {
+      "before_sim_ns": 4176000000,
+      "clock_callbacks": 941,
+      "iterations": 1052,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4216000000,
+      "wall_ns": 193252819
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4216000 (0.000000 seconds ago)\n    gyro_rad: [-0.00102, -0.00002, 0.00007]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [0.00585, 0.00012, -9.79452]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 1035,
+      "iterations": 1054,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4216000000,
+      "wall_ns": 24278
+    },
+    {
+      "before_sim_ns": 4216000000,
+      "clock_callbacks": 1046,
+      "iterations": 1062,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4256000000,
+      "wall_ns": 192669235
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4256000 (0.000000 seconds ago)\n    gyro_rad: [0.00092, 0.00031, -0.00006]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [0.00070, -0.00364, -9.80261]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 1139,
+      "iterations": 1064,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4256000000,
+      "wall_ns": 28078
+    },
+    {
+      "before_sim_ns": 4256000000,
+      "clock_callbacks": 1150,
+      "iterations": 1072,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4296000000,
+      "wall_ns": 189738565
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4296000 (0.000000 seconds ago)\n    gyro_rad: [0.00036, -0.00035, -0.00000]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [0.00572, 0.00140, -9.79717]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 1243,
+      "iterations": 1074,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4296000000,
+      "wall_ns": 26110
+    },
+    {
+      "before_sim_ns": 4296000000,
+      "clock_callbacks": 1254,
+      "iterations": 1082,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4336000000,
+      "wall_ns": 192734936
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4336000 (0.000000 seconds ago)\n    gyro_rad: [-0.00049, 0.00020, -0.00120]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [-0.00269, -0.00635, -9.80597]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 1346,
+      "iterations": 1084,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4336000000,
+      "wall_ns": 26155
+    },
+    {
+      "before_sim_ns": 4336000000,
+      "clock_callbacks": 1357,
+      "iterations": 1092,
+      "ok": true,
+      "op": "step",
+      "owns_pause": true,
+      "reported_paused": false,
+      "requested_ticks": 10,
+      "sim_ns": 4376000000,
+      "wall_ns": 194130688
+    },
+    {
+      "px4_sensor_after_step": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4376000 (0.000000 seconds ago)\n    gyro_rad: [0.00109, -0.00024, 0.00057]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [-0.00576, 0.00185, -9.78559]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+      "px4_clock_matches": true
+    },
+    {
+      "clock_callbacks": 1449,
+      "iterations": 1094,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4376000000,
+      "wall_ns": 22693
+    },
+    {
+      "clock_callbacks": 1469,
+      "iterations": 1094,
+      "ok": true,
+      "op": "resume",
+      "owns_pause": false,
+      "reported_paused": true,
+      "sim_ns": 4376000000,
+      "wall_ns": 393787
+    },
+    {
+      "clock_callbacks": 1477,
+      "iterations": 1099,
+      "ok": true,
+      "op": "status",
+      "owns_pause": false,
+      "reported_paused": false,
+      "sim_ns": 4404000000,
+      "wall_ns": 20819
+    },
+    {
+      "clock_callbacks": 1477,
+      "iterations": 1099,
+      "ok": true,
+      "op": "stop",
+      "owns_pause": false,
+      "reported_paused": false,
+      "sim_ns": 4404000000,
+      "stopped": true,
+      "wall_ns": 9573
+    }
+  ],
+  "runtime": {
+    "pid": 5243,
+    "started_at": 1793079959.3258047,
+    "launch_log": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/_control/start_20261027_134559.log",
+    "model": "amsim_urdf_x650_2link_ts20_damped_v1_flight",
+    "runtime_meta": "/root/autodl-tmp/safe-aerial-manipulator-testbed/runs/runtime_20261027_134559/runtime.json",
+    "ready": true
+  },
+  "paused_observation": {
+    "first": {
+      "clock_callbacks": 61,
+      "iterations": 1034,
+      "ok": true,
+      "op": "pause",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4136000000,
+      "wall_ns": 283560459
+    },
+    "after_1_wall_second": {
+      "clock_callbacks": 790,
+      "iterations": 1034,
+      "ok": true,
+      "op": "status",
+      "owns_pause": true,
+      "reported_paused": true,
+      "sim_ns": 4136000000,
+      "wall_ns": 35052
+    },
+    "px4_first": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4136000 (0.000000 seconds ago)\n    gyro_rad: [-0.00045, -0.00020, 0.00039]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [-0.00359, -0.00370, -9.79993]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+    "px4_second": "\nTOPIC: sensor_combined\n sensor_combined\n    timestamp: 4136000 (0.000000 seconds ago)\n    gyro_rad: [-0.00045, -0.00020, 0.00039]\n    gyro_integral_dt: 4000\n    accelerometer_timestamp_relative: 0\n    accelerometer_m_s2: [-0.00359, -0.00370, -9.79993]\n    accelerometer_integral_dt: 4000\n    accelerometer_clipping: 0\n    gyro_clipping: 0\n    accel_calibration_count: 0\n    gyro_calibration_count: 1\n",
+    "status_first": "\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 3756000 (0.380000 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 3684000\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 4\n    nav_state: 4\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: False\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\n",
+    "status_second": "\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 3756000 (0.380000 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 3684000\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 4\n    nav_state: 4\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: False\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\n"
+  },
+  "px4_clock_frozen_verified": true,
+  "paused_final_status": "\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 4260000 (0.116000 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 3684000\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 4\n    nav_state: 4\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: False\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\n",
+  "cleanup": {
+    "stopped": false,
+    "pid": 5243,
+    "signal": "SIGTERM"
+  }
+}

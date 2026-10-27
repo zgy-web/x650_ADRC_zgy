@@ -1,0 +1,24 @@
+{
+  "kind": "x650_robustness_raw_archive_receipt_v1",
+  "complete": true,
+  "all_original_sizes_and_sha256_verified": true,
+  "all_zip_members_read_back": true,
+  "embedded_manifests_byte_identical": true,
+  "verified_member_count": 206,
+  "manifest": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\recorded_delivery\\nx_pil_workstation_evidence_manifest.json",
+    "bytes": 91208,
+    "sha256": "09cae9ffe242ceca0d5eba73fe210e11afaef4ee612aa21eff0a3e372ad15007"
+  },
+  "archives": [
+    {
+      "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\recorded_delivery\\nx_pil_workstation_evidence.zip",
+      "bytes": 7602572,
+      "sha256": "c7adcb1ffc54c2f737d40e9193a4f05fe06d68305f501ea64d06a6c5188fae2e"
+    }
+  ],
+  "context": {
+    "scope": "Persistent actual NX recorded streams, failed attempts, numerical fix, transport, builds and post-run diagnostics; separate receipt covers full physical logs"
+  },
+  "completed_unix": 1793082401.914801
+}

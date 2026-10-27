@@ -1,0 +1,75 @@
+{
+  "case": "tip_hold",
+  "passed": true,
+  "physical_closed_loop": true,
+  "wall_clock_qualified": false,
+  "hardware_flight_qualified": false,
+  "complete": true,
+  "endpoint": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.0,
+      30.0
+    ],
+    "sample_count": 7501,
+    "duration_s": 30.0,
+    "position_rmse_m": 0.002691220057896129,
+    "position_max_m": 0.004313703592510637,
+    "axis_rmse_m": [
+      0.0025291524287771663,
+      0.0007554482059999927,
+      0.0005247393639554826
+    ]
+  },
+  "tracking": {
+    "source": "native_trace.csv independent physical tip",
+    "same_time": true,
+    "no_phase_alignment": true,
+    "interval_task_s": [
+      0.0,
+      30.0
+    ],
+    "sample_count": 7501,
+    "duration_s": 30.0,
+    "position_rmse_m": 0.002691220057896129,
+    "position_max_m": 0.004313703592510637,
+    "axis_rmse_m": [
+      0.0025291524287771663,
+      0.0007554482059999927,
+      0.0005247393639554826
+    ]
+  },
+  "tilt_peak_deg": 0.08824765569190464,
+  "nx_core_ms": {
+    "count": 749,
+    "min": 1.594464,
+    "p50": 3.105675,
+    "p95": 6.743093000000001,
+    "p99": 9.132370359999996,
+    "max": 10.880073
+  },
+  "server_roundtrip_ms": {
+    "count": 749,
+    "min": 31.990187,
+    "p50": 82.044418,
+    "p95": 176.8797154,
+    "p99": 180.69028372,
+    "max": 710.94938
+  },
+  "nx_steps": 749,
+  "normal_dispatches": 1498,
+  "zero_consumed": true,
+  "fixed_physics_segments": 1501,
+  "frozen_checks": 750,
+  "window_sim_s": [
+    38.184,
+    68.184
+  ],
+  "feedback_scope": "Original validated PX4 estimated-state adapter; same-time physical q/dq independently matched; raw per-callback receipt replay not certified",
+  "raw_px4_receipt_replay_qualified": false,
+  "sources_bound_before_and_after": false,
+  "px4_commands_verified": true,
+  "new_joint_prediction_verified": true
+}

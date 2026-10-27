@@ -1,0 +1,28 @@
+{
+  "kind": "x650_pil_code_build_v1",
+  "complete": true,
+  "source_sha256": "f04beaa7c25a0fa23111a0fec094d61e9b8d615b957db8469cfca3fa5c49b4e1",
+  "executable": {
+    "path": "/home/jetson/flyarm_mpc_runtime/fpcontract_off_pil/pil_f04beaa7c25a0fa2/x650_mpc_pil_worker",
+    "sha256": "e7be5e4ce8f943625663e7ca3611b3fec369832b977255273cb4f82413fc6f10",
+    "bytes": 147016
+  },
+  "libraries": {
+    "core": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so",
+      "sha256": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347"
+    },
+    "optimization": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so",
+      "sha256": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f"
+    },
+    "predictor": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_benchmark_predictor.so",
+      "sha256": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+    }
+  },
+  "existing_math_binaries_unchanged": true,
+  "only_one_elf_persisted": true,
+  "ram_build_removed": true,
+  "build_root_tmpfs": true
+}

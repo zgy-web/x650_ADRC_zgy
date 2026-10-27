@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scope": "New explicit clean-stop/transport criteria applied to unchanged original records; no physics rerun",
+  "cases": {
+    "hold": {
+      "transport": {
+        "mode": "synchronous_simulation",
+        "wall_clock_qualified": false,
+        "nx_exit": 0,
+        "server_exit": 0
+      },
+      "final_transport_check": true,
+      "clean_stop_checked": true,
+      "metadata_entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/controller_metadata.json"
+    },
+    "normal": {
+      "transport": {
+        "mode": "synchronous_simulation",
+        "wall_clock_qualified": false,
+        "nx_exit": 0,
+        "server_exit": 0
+      },
+      "final_transport_check": true,
+      "clean_stop_checked": true,
+      "metadata_entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/controller_metadata.json"
+    }
+  }
+}

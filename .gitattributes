@@ -116,3 +116,18 @@ docs/validation/orin_abi4_20261027/** -text -whitespace
 control_packages/x650_mpc_controller_v1/** -text whitespace=cr-at-eol
 control_packages/x650_nmpc_controller_v1/** -text whitespace=cr-at-eol
 docs/validation/nmpc_interface_20261027/** -text -whitespace
+
+# Processor-in-loop adapters, synchronous scenarios and measured evidence.
+control_packages/x650_wholebody_v1/pil/** -text whitespace=cr-at-eol
+scripts/*x650*pil*.py -text whitespace=cr-at-eol
+scripts/probe_x650_sync_clock.py -text whitespace=cr-at-eol
+scripts/restore_x650_parameter_journal.py -text whitespace=cr-at-eol
+simulations/x650_nx_sync_pil_v1/** -text whitespace=cr-at-eol
+scenarios/x650_nx_sync_pil_v1.yaml -text whitespace=cr-at-eol
+tests/unit/test_x650*pil*.py -text whitespace=cr-at-eol
+docs/validation/orin_pil_20261027/** -text -whitespace
+# Preserve the reviewed recovery fixes across Windows/server checkouts.
+simulations/x650_wholebody_mpc_v1/run_case.py -text whitespace=cr-at-eol
+simulations/x650_wholebody_mpc_v1/tests/test_lifecycle.py -text whitespace=cr-at-eol
+src/amsim/runtime/process.py -text whitespace=cr-at-eol
+tests/unit/test_runtime_zombie_status.py -text whitespace=cr-at-eol

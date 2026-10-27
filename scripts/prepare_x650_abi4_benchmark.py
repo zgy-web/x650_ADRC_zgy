@@ -87,16 +87,23 @@ class Evidence:
             z.close()
 
 
-def recover(evidence: Evidence, stage: str):
+def recover(evidence: Evidence, stage: str, *, allow_reference_contract_change=False):
     _, run, launch, count, audit_name = GROUPS[stage]
     prefix, launch_prefix = "runs/"+run+"/isolated_live/", "runs/"+launch+"/"
     source_raw = evidence.read(launch_prefix+"sources.zip")
     with zipfile.ZipFile(io.BytesIO(source_raw)) as source:
         require(len(source.namelist()) == len(set(source.namelist())), "Duplicate source entry")
         bindings = {}
+        contract_change = None
         for name in PRODUCTION + WIRE_SOURCES:
             original = source.read(name)
-            require(original == (ROOT/name).read_bytes(), "Current/archived source differs: "+name)
+            current = (ROOT/name).read_bytes()
+            if original != current and allow_reference_contract_change and name == ROS+'flyarm_mpc_cpp/include/flyarm_mpc_cpp/worker_contract.hpp':
+                contract_change = dict(path=name, recorded_sha256=sha256(original), current_sha256=sha256(current),
+                    historical_interface_qualification_transferred=False,
+                    independent_new_stream_acceptance_required=True)
+            else:
+                require(original == current, "Current/archived source differs: "+name)
             bindings[name] = sha256(original)
         layouts = {k: message_layout(source.read(ROS+f"flyarm_control_interfaces/msg/{k}.msg"))
                    for k in ("LiveStart", "ControlSnapshot", "ControlProposal")}
@@ -177,6 +184,8 @@ def recover(evidence: Evidence, stage: str):
         "source_zip_sha256": sha256(source_raw), "startup_sha256": sha256(startup_raw),
         "live_start_sha256": sha256(live_raw), "bound_production_and_wire_sources": bindings,
         "cases": records}
+    if contract_change is not None:
+        provenance['reference_contract_change'] = contract_change
     return cfg, cases, provenance
 
 

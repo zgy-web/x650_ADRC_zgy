@@ -1,0 +1,1785 @@
+{
+  "kind": "x650_robustness_local_raw_verification_v1",
+  "passed": true,
+  "independent_streaming_zip_member_verification": true,
+  "originals_extracted": false,
+  "all_embedded_manifests_match_external_bytes": true,
+  "total_archive_count": 2,
+  "total_original_file_count": 288,
+  "total_original_bytes": 289726606,
+  "verifier": {
+    "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\scripts\\verify_x650_robustness_delivery.py",
+    "bytes": 4932,
+    "sha256": "fc8b670b8ebee267fafb773ee3c622aaf2e6caf7c4f5fdb66fc2322454459189"
+  },
+  "archives": [
+    {
+      "passed": true,
+      "receipt": {
+        "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\sync_delivery\\nx_sync_pil_evidence_receipt.json",
+        "bytes": 2257,
+        "sha256": "4ee29fbf8100457b9a00746d4c5c08ea31b6cb155e82af745d318280d39044c4"
+      },
+      "external_manifest": {
+        "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\sync_delivery\\nx_sync_pil_evidence_manifest.json",
+        "bytes": 128533,
+        "sha256": "37335d15cef7e915e6be8d82e49169cf193e91549337a4fa8cc5a9bd080a4113"
+      },
+      "original_file_count": 288,
+      "original_bytes": 289726606,
+      "archives": [
+        {
+          "archive": {
+            "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\sync_delivery\\nx_sync_pil_evidence_part01.zip",
+            "bytes": 44353603,
+            "sha256": "de044838a06502ffd72458fd5d8aa47bfac20993e0cda9d1fd443f345f15532d"
+          },
+          "embedded_manifest_matches": true,
+          "member_count": 214,
+          "members": [
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v1/actuator/ts20_packets.csv",
+              "bytes": 14098,
+              "sha256": "deb9d606d5f54e5838f951fa1cc231b95a74a4140b6e0877e045d06849223906",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v1/actuator/ts20_state.csv",
+              "bytes": 98730,
+              "sha256": "4fc38cc921cba1b555dd16a5875a4f7e7735482c5ca9e5bd7958b4043590b633",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v1/report.json",
+              "bytes": 12564,
+              "sha256": "7b2ef4caf86627fb5a7feebb10b55aaee81254d03ff6f5803334c69925d0645d",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v2/actuator/ts20_packets.csv",
+              "bytes": 12409,
+              "sha256": "d22b27684268717933ae28732e7e999b6e02cfd74fb1dd8d07f16912825167f6",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v2/actuator/ts20_state.csv",
+              "bytes": 86803,
+              "sha256": "01d565c478fbd9c103213d78ffa9927cfcc805b4e7ba5370c98a57d70834b79e",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/clock_probe_v2/report.json",
+              "bytes": 12793,
+              "sha256": "dd2c9b5e7fc9abf494cc5435d73fb35e71871d40f11beb3caa9777cc87175c33",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/dry_run_v1.json",
+              "bytes": 25418,
+              "sha256": "4109e44d1739e8da42a9ce28db0df9c033aa1f67683d8b04494dcf6dadc622ee",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v1/derived_pva_view.json",
+              "bytes": 1414453,
+              "sha256": "981a4de709c09ffe55d8d60a668adfb2e8c06523a1b4833673e255618bd192a2",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v1/report.json",
+              "bytes": 24915,
+              "sha256": "97363f1ff3296afd772033d0820bef9f7cb21c8096444cee2f1c1a4a82898bcf",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v2/derived_pva_view.json",
+              "bytes": 1414453,
+              "sha256": "981a4de709c09ffe55d8d60a668adfb2e8c06523a1b4833673e255618bd192a2",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v2/endpoint_series.csv",
+              "bytes": 1199390,
+              "sha256": "1961065119ab9962b232c70add81b053b957f37d4173dc9ad6c04705798c5583",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v2/report.json",
+              "bytes": 25421,
+              "sha256": "80a690c25a41594c9e7ce56cb57686284f99fbf3619345ddfb2500989b8743e4",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_audit_v2/timing_series.csv",
+              "bytes": 26618,
+              "sha256": "e956f52897314bfdd911dad63486a14eb0e10f3ba780c3a716ba61f1ca6061dc",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_plan_v1.json",
+              "bytes": 1033,
+              "sha256": "5bf6e10288111011c7e64bb897151c50f886e70d7155f68f8033e3e7805061f9",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v1/actuator/ts20_packets.csv",
+              "bytes": 137806,
+              "sha256": "6b90230af93229c7a4a3cf4451596442298b06ca832178081d578347db7b2a6e",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v1/actuator/ts20_state.csv",
+              "bytes": 962030,
+              "sha256": "24cbccb853e650e5c30b9e248d16a1c1b8fdf6e3c22f88a0474cf99f3cabfabf",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v1/flight.log",
+              "bytes": 2117,
+              "sha256": "7b820a3d011644a96b94543f060bae7ae28fc9d0c6c4f96202d8cddf7a21664c",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v1/launch.json",
+              "bytes": 20378,
+              "sha256": "ca8044136ac753d86fdc5aa231a294cee32982064ad3f15e7c141cbdd64d8adc",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v3/actuator/ts20_packets.csv",
+              "bytes": 819800,
+              "sha256": "65dba4a3704c0d585f127af3f125b5fd6a0da90cfafa021fa25f31374b4f78fd",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v3/actuator/ts20_state.csv",
+              "bytes": 5454928,
+              "sha256": "c0f804b78dd07d0ca574e4c70864551c1cfbef5c732e3cf74b0d13e47f3a192d",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v3/flight.log",
+              "bytes": 2072,
+              "sha256": "cb44a43170fe0f60384a4e99d6355da8b1849e392271cb6bc64bd76c2d008c57",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v3/launch.json",
+              "bytes": 20379,
+              "sha256": "d82fd5de12744b3a8b05dfdba007e947fa0a55a9305a91614d5a61b98039195c",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/actuator/ts20_packets.csv",
+              "bytes": 1578339,
+              "sha256": "e6d436f69bda9b10a3bb2f266c6732414fd9e37ddf8b373b242a421441b2eb51",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/actuator/ts20_state.csv",
+              "bytes": 9900289,
+              "sha256": "a0c08ae832f01f37b94b04d5a9e503e7ea368d78f873d616b8e36c72d747a4c4",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/flight.log",
+              "bytes": 911,
+              "sha256": "80f9973f7a2d8874d28e111ac2b766a010368922d67a23bd72f2c6dcb1ffadb1",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/launch.json",
+              "bytes": 20280,
+              "sha256": "e0112ef0656d988d1b041dd90ea4ac1428d055533fa6f1d164426ddc26481163",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/sources_captured_after_run.json",
+              "bytes": 8515,
+              "sha256": "d544705302b46d2b35a6ba7e978fbf8ea36113f1eda081de38cf2b845a98781c",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/hold_v4/sources_captured_after_run.zip",
+              "bytes": 267926,
+              "sha256": "1c029c5aa46e3bd08b26495b3187a3ca7ed34bcee8e2f4cf1d450b1ada504161",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_audit_v1/derived_pva_view.json",
+              "bytes": 1493010,
+              "sha256": "a2021963bb188b573575765e80ce26541d2adcc8bca4c780b5978a25d06450cc",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_audit_v1/endpoint_series.csv",
+              "bytes": 1255852,
+              "sha256": "6d59f44b0a3e36a15e6551c3aaea0c06e4f30d500a01f2166b265e95cc84979a",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_audit_v1/report.json",
+              "bytes": 27378,
+              "sha256": "255186f3530eba450552d24af1192cc9b722b317190c5974b42e87e5feea9108",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_audit_v1/timing_series.csv",
+              "bytes": 28522,
+              "sha256": "b85eecc0ebca49ead937b3d31d0a245565f425ac186888c2a26b01922c2ee010",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_plan_v1.json",
+              "bytes": 1514,
+              "sha256": "4cb5cd2621fca3e4dcaface7a5ff5ec65050102e7605963a2792547764d28863",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/actuator/ts20_packets.csv",
+              "bytes": 1653396,
+              "sha256": "890ac442dc127d26d6bb3a4ae35eb06b61e6585499ad713a9eaf984bc7ef72ff",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/actuator/ts20_state.csv",
+              "bytes": 10339296,
+              "sha256": "954834d1caca20d152a42dfea411b8f05a69f40105b081ff37590931b0a30c35",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/flight.log",
+              "bytes": 911,
+              "sha256": "d567c853e12dcbb781b72d2ddd50a43ad08dd925dbec3dc18ea4ffe50b7292a7",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/launch.json",
+              "bytes": 21719,
+              "sha256": "efa19b8c72319db6c581f76864bef8abb1a978b4111a82d9cc4efda8cfc4bba7",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/source_manifest.json",
+              "bytes": 8339,
+              "sha256": "54f6c10522f3d888b8b2aa155a3953697604daa3dfd62ec296e7aa3320f4d37a",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/source_manifest_after.json",
+              "bytes": 8339,
+              "sha256": "54f6c10522f3d888b8b2aa155a3953697604daa3dfd62ec296e7aa3320f4d37a",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/normal_v1/sources.zip",
+              "bytes": 269385,
+              "sha256": "da25f38c0efb7b8b0de91d501b53a2a9d18b68b5932fe4dee254210134f58fb0",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/actuator/ts20_packets.csv",
+              "bytes": 101180,
+              "sha256": "ce66d163e0f0f46c7b915d75fba3b2cc85ddc65d69ebf07e12092aad12387fb5",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/actuator/ts20_state.csv",
+              "bytes": 700970,
+              "sha256": "6c5d55c69a62dc223d785b8e7bd5213fc06981f8fdbd3b6b551062415319a22c",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/parameter_restore/diagnostic_parameter_session.json",
+              "bytes": 54129,
+              "sha256": "82cd583a28faf99e789661b5eafd20e536365a8e557b97cba78a4d4b5dde0f6d",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/parameter_restore/diagnostic_parameter_storage_save.log",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/parameter_restore/diagnostic_parameters_restored.json",
+              "bytes": 12639,
+              "sha256": "378fec68a42977011801b32a0e88596e5458eeb42b00297d29a7732ba9b6a568",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/parameter_restore/diagnostic_restore_journal_completed.json",
+              "bytes": 30561,
+              "sha256": "61a6123aae15f6ceff7086fcbd4549f0e1a28b839bb355bfb72c7b5c39ca29a8",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/recover_ground_v1/parameter_restore/pending_original.json",
+              "bytes": 16222,
+              "sha256": "5cdb8de609ea60c2d80b1ecc9bcd9583bd6e57882d56305e57b0729e4ed120a3",
+              "passed": true
+            },
+            {
+              "entry": "artifacts/orin_sync_pil_20261027/shared_lifecycle_ground_restore_fix.py",
+              "bytes": 88442,
+              "sha256": "6ec148285120c2c0226b8e8244c6be297d234433539b37f12d880da12d3a3c34",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/bag/bag_0.db3",
+              "bytes": 385024,
+              "sha256": "43cade587954501124c4cedd2757424c6ebd9634fda4ab3f6218942dfb89cabe",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/bag/metadata.yaml",
+              "bytes": 5918,
+              "sha256": "938df34bbdc6dbb79271adad44d9b4dc8f4c49d134200233715d2eb6eff15dea",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/control_execution_trace.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/control_execution_trace_manifest.json",
+              "bytes": 755,
+              "sha256": "aac8b9a610a7d77588629b83dfe87517cbf5eb562808aec42d85490a3aa24bb3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/control_trace.csv",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/controller_diagnostics.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/controller_metadata.json",
+              "bytes": 85110,
+              "sha256": "b372c281aa94a18b2bc85819893daac02966b7300b69d13e5c13236e586c77b1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/controller_task.json",
+              "bytes": 6638,
+              "sha256": "9429138173a0e5627c16c0c54d55184a8dde8edba76e860136d48669e2a44a5b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry.json",
+              "bytes": 7376,
+              "sha256": "b2428484570594ad18af224b1a1fb6ccf56fc1cb72fe396d2904bc53293e74ec",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_001.log",
+              "bytes": 184642,
+              "sha256": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_002.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_003.log",
+              "bytes": 3000,
+              "sha256": "b744991797ef8f42ec29a467f1a30e733f3d58b791ae4e77d187a6f486678431",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_004.log",
+              "bytes": 625,
+              "sha256": "1cc9f68a70aabadf45c8ec4711a109e4becbab1976b657baf85fbd0e1e595b1c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_005.log",
+              "bytes": 625,
+              "sha256": "691e8131fec08cb122b7ba1fc986f16a0fccf661d48509229dbf21b0bebf8339",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_006.log",
+              "bytes": 625,
+              "sha256": "64eafa12e21cfff8441b93540ef41590bf84d88b502455581e52118453222b2c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_odometry_plugin.xml",
+              "bytes": 478,
+              "sha256": "d30f97130c190d446c9a0de345c149bb13f0d4ba70b7d2ad46027befad30a9f2",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_parameter_session.json",
+              "bytes": 38150,
+              "sha256": "407361909d3d865c5d2e1f253678385c43ef81acecce9e9d01cdcb2214fde145",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_parameters_applied.json",
+              "bytes": 12652,
+              "sha256": "27dd8b961fcb4c469400c73f2a7fb34c08e24dd78960ba38cfc3a610ff5f5073",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/diagnostic_parameters_before.json",
+              "bytes": 12634,
+              "sha256": "ab8b58c36142433791219e275fff7651a1d5b600af22efad96add4eb213b49e9",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/experiment.py",
+              "bytes": 15888,
+              "sha256": "c478f56e511167170d9b7902af56e18b8d95ad5cbee36a2f17735ed084f17f0a",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/feedback_trace.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/flight_profile.yaml",
+              "bytes": 2661,
+              "sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/flight_samples.csv",
+              "bytes": 747,
+              "sha256": "ad02c430a30d158be7055356d560e1fc3a4b05ff3ad7d88ca21bbdb80efb8b2f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/flight_samples_manifest.json",
+              "bytes": 847,
+              "sha256": "eee97e9e50f9ab54aba212ecd51b5b4676bb7fe221f24372118872a384055019",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/model_manifest.json",
+              "bytes": 186209,
+              "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/model_snapshot.sdf",
+              "bytes": 255436,
+              "sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/nx_exchange.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/parameter_evidence.py",
+              "bytes": 13175,
+              "sha256": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/px4.ulg",
+              "bytes": 3030163,
+              "sha256": "b8ba7a3664cda9b20227789d21a1a9f4bd9804fbaf39e6832438deab93c26009",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/px4_airframe.sh",
+              "bytes": 3197,
+              "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/px4_parameters_before.json",
+              "bytes": 31448,
+              "sha256": "60674508d8e809fb80e06f266046c45ffb99ef28c91ed8f3b74e846f59d25b14",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/recorder.log",
+              "bytes": 1993,
+              "sha256": "588f9afb69a636889d159d17b1507c21edca216a7f0098689a344217d4fec4d3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/result.json",
+              "bytes": 438,
+              "sha256": "f44d79b07baaa3262fe7d68eced7cfd095c2ae0570f0f5711d679c99a3c6327e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/run_manifest.json",
+              "bytes": 1515,
+              "sha256": "c4aa606964163f90f5d7a867d6ea5f59991b5fbb107f25c2295cc8e993eccee4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/scenario.yaml",
+              "bytes": 294,
+              "sha256": "fd31900917b0d505258693bd8f21ed10e849bc7615d9acc78aef1411ca437b35",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/source_import_manifest.json",
+              "bytes": 450616,
+              "sha256": "9d82b606534f321323dabcc9c8cf24d8dc4c0ceb3134475afe4b56169495178c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/stage_result.json",
+              "bytes": 6875,
+              "sha256": "8460b67684f661d36dc563cac84a25d9217209514d5a2ecb6232eb7c9734393f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/sync_clock.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/sync_dispatch.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_134805_6045/tip_hold.json",
+              "bytes": 6875,
+              "sha256": "8460b67684f661d36dc563cac84a25d9217209514d5a2ecb6232eb7c9734393f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/bag/bag_0.db3",
+              "bytes": 4550656,
+              "sha256": "400c310400398d235577c1ccc2e88c812f7b11b75180dea027b0ec497a807fe3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/bag/metadata.yaml",
+              "bytes": 5938,
+              "sha256": "e8b0e967006bdc0009668073a7d0eaebe1ad7984b34e9e43f2de3463a8e51f5c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/control_execution_trace.jsonl",
+              "bytes": 6864174,
+              "sha256": "b6bae5d5dde89a9bd5c858c788d293d11c1507d76a107a6a89e5b150b481bfd2",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/control_execution_trace_manifest.json",
+              "bytes": 8328,
+              "sha256": "5c4baef1ff4db66e201d95a966398ecc4200e96c4e4cb6d03f60ef9c11ee5dc3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/control_failure_snapshot.json",
+              "bytes": 617417,
+              "sha256": "1c78f5b463f22147decc7f4b831fdf08e74701071f4bbee1683c6a4d5907e02e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/control_trace.csv",
+              "bytes": 1523692,
+              "sha256": "4f370380b4ec0c78fd8b3335c69090628e1afd879e672ab726df2e46c566ec00",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/controller_diagnostics.jsonl",
+              "bytes": 26250,
+              "sha256": "b00315b07988496be4446f25777346ae737212b083f640c71fddf717e6665d31",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/controller_metadata.json",
+              "bytes": 1108919,
+              "sha256": "c87d7b3db0e6ce3669a5c20a38022b8d5708c0afb2174c4e61f7cba409342370",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/controller_task.json",
+              "bytes": 6638,
+              "sha256": "9429138173a0e5627c16c0c54d55184a8dde8edba76e860136d48669e2a44a5b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry.json",
+              "bytes": 10668,
+              "sha256": "c551550a661c1ecf345e59dd7332ad857def66565ad068196ecb60406aa95247",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_001.log",
+              "bytes": 184642,
+              "sha256": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_002.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_003.log",
+              "bytes": 3193,
+              "sha256": "8c188c9591d61d4449cad151b9c8553cedaac96986bb13fcb9e1c7bca6327f72",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_004.log",
+              "bytes": 626,
+              "sha256": "8207aed6ab927ad1e047c0376abfa1ed455e9aba8bec3e4149fbd202784e8d50",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_005.log",
+              "bytes": 625,
+              "sha256": "84cf09647c531bb5e351a7547da06a577684987a950ca99f2a2c86123fb8edee",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_006.log",
+              "bytes": 2031,
+              "sha256": "b99f52a5720ac94939272fa4f8cc8d261ebcbe37106caeee891640e0fde10f67",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_007.log",
+              "bytes": 625,
+              "sha256": "ba6efd8de69be7e7669522eef7d315689dd02e699b9fafd4fad8f3015f6ccd9e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_008.log",
+              "bytes": 625,
+              "sha256": "a3effef48aa24a73dafd8a2ad21edb5dd3a576f668d90571f750ccaa19f3cee4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_009.log",
+              "bytes": 625,
+              "sha256": "9a9e7abd25b00d4ea326ac8b6b42eb2b1a1233dd5a4a8e07c94c489739580c9b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_010.log",
+              "bytes": 625,
+              "sha256": "ea0e2f78abee6a2f281c64c72f2f149eb2ba652b4fdbd7e217560717be1993c5",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_011.log",
+              "bytes": 625,
+              "sha256": "9f97af1c23a0d346b8393a6d1df2f5b895c2576e321f7d063ba4af173d584bf3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_odometry_plugin.xml",
+              "bytes": 478,
+              "sha256": "744f30f3fd9a44400292bd9b113ab337cb1acec72340b200e6c7838df998aedb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_parameter_session.json",
+              "bytes": 73555,
+              "sha256": "60fa77fb0eb9b2acc036b9d5e7196fc49853bc0ef38fdc7539ad9cea97e1de51",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_parameter_storage_save.log",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_parameters_applied.json",
+              "bytes": 12660,
+              "sha256": "2abc4ec1ed1dff172f663d25ae69d8213422a551c3c9711824c3d55722e5499a",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_parameters_before.json",
+              "bytes": 12640,
+              "sha256": "8ee6ddd266691139da2b84ed68b3a36804a13e0f37f80b96da77060cd99e50c4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_parameters_restored.json",
+              "bytes": 12635,
+              "sha256": "597eceda71e8f709365206654d13c940541dd3f9759842084e12834fd8d433ee",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/diagnostic_restore_journal_completed.json",
+              "bytes": 30539,
+              "sha256": "0fa36b3c3a610f4bf828588c8520f3825d1af9bc78f188c8e8f9cf67dd6e6e4d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/estimated_feedback.json",
+              "bytes": 4362,
+              "sha256": "6fd6a8e09c5bbcff97f2bf8b85e5891a944d7f3bcc167556320f97d924dc2440",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/experiment.py",
+              "bytes": 16853,
+              "sha256": "2c44744690491721fd0c0a8306f0576e0205ec6fc619d27c3487690e96e12683",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/feedback_trace.jsonl",
+              "bytes": 1024210,
+              "sha256": "60ba56726cdcd41bb96387c50e4bafabcadae2f8fe41afd74341cf67027e8779",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/flight_profile.yaml",
+              "bytes": 2661,
+              "sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/flight_samples.csv",
+              "bytes": 312360,
+              "sha256": "954fb8876ae4ec5496de167eab8337cdac11e6c9be09f452a945a5030a6b733b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/flight_samples_manifest.json",
+              "bytes": 982,
+              "sha256": "377e8ec7db788155952bbe8b942008067a75a94c3d03d47ceea8e6df42bbb4b0",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/hover_reference.json",
+              "bytes": 2637,
+              "sha256": "6739da0d8fe7d5d607b88208b76e9c62658698770ee5dc4d150bf95cf26e1ade",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/loop_timing_evidence.json",
+              "bytes": 497918,
+              "sha256": "8abcc8338cb7063a77f512e4126766bffb8c64aa70ad12eca2732ea32508d861",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/model_manifest.json",
+              "bytes": 186209,
+              "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/model_snapshot.sdf",
+              "bytes": 255436,
+              "sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_ground.csv",
+              "bytes": 889549,
+              "sha256": "5327881ea3047d36d79a6078178a373a03306443796860d6d973a7c5f6b75c8e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_ground.json",
+              "bytes": 3376,
+              "sha256": "f22984830c5db499c49f98eddcae69d585b79bef9f81660207d2013009fb76f1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_ground_manifest.json",
+              "bytes": 1080,
+              "sha256": "13c5efef7d826e539fedad2dbe82d7a85218ba6ec5304a70f79dc14dc5ebabe1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_recorder_config.txt",
+              "bytes": 185,
+              "sha256": "ef96f547391e84e312d3c59e0748ce0df89e08fbcfc88d4fcfd59bef473d005d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_recorder_load.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_stream.csv",
+              "bytes": 6883569,
+              "sha256": "53e14c4a9840205273f4cdef3b61f24b4bcf238786ee457320584b6c71a2230c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_trace.csv",
+              "bytes": 6849001,
+              "sha256": "fed24077b72802ec21a20f1f1b8c9edb20ecb1b237713abfcfda4a4afffaf0e2",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/native_trace_manifest.json",
+              "bytes": 1061,
+              "sha256": "349d4167c36e3946feca16fbaefea2efe362146cdbb3d52d6b14026fef6b21ba",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/nx_exchange.jsonl",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/parameter_evidence.py",
+              "bytes": 13175,
+              "sha256": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/px4.ulg",
+              "bytes": 13102225,
+              "sha256": "19078d6a28b0f83fa400739c230e6a020bbe7159d9499182b0b5fa4ea137adae",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/px4_airframe.sh",
+              "bytes": 3197,
+              "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/px4_parameters_after.json",
+              "bytes": 31510,
+              "sha256": "0a3f8734f74578728366abaee7ea02522ea547382e64d4a41f2545f724e79b47",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/px4_parameters_before.json",
+              "bytes": 31443,
+              "sha256": "acabe2db8d7e14e469907ca5488018484db7476451f83b1c0b90c6bdad52e101",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/recorder.log",
+              "bytes": 1993,
+              "sha256": "389fca47a17febd35c994ba561224f8fcde057afa6ae5f98cfefbac99a90248a",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/result.json",
+              "bytes": 439,
+              "sha256": "62af5ddc268017b759839b92ced730a037cb03444bdcc380c4e50eaa9c60a43e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/run_manifest.json",
+              "bytes": 1514,
+              "sha256": "0ad4f8c676391c1b1e5fc3fa75a3ff51c89179d072d698f42ff8c4f7d7343608",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/scenario.yaml",
+              "bytes": 294,
+              "sha256": "fd31900917b0d505258693bd8f21ed10e849bc7615d9acc78aef1411ca437b35",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/source_import_manifest.json",
+              "bytes": 450616,
+              "sha256": "9d82b606534f321323dabcc9c8cf24d8dc4c0ceb3134475afe4b56169495178c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/stage_result.json",
+              "bytes": 8710,
+              "sha256": "268925b9174614ea7aed45f92824a409076802ade2953e14ee3927545334efd7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/sync_clock.jsonl",
+              "bytes": 713,
+              "sha256": "e3584ac781dae5ee9ab73f30f397c9f5c1fdbc1fd5089c86b5958edd517e8172",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/sync_dispatch.jsonl",
+              "bytes": 282,
+              "sha256": "e4abd820498db72c9a2c3a5eeb03e0c696446744f9d842a0b250652b84ac8b63",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/tip_hold.json",
+              "bytes": 8710,
+              "sha256": "268925b9174614ea7aed45f92824a409076802ade2953e14ee3927545334efd7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/ts20_packets.csv",
+              "bytes": 815875,
+              "sha256": "b180cac0f214a79dd930a07b8540244e3dfa26dee3feae1a2593bb8ae98e265f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/ts20_recording_manifest.json",
+              "bytes": 748,
+              "sha256": "ddbf893782e0d9508f0452e2ee7593b86af30fa97e630cd5be917e419f5e990f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135444_7920/ts20_state.csv",
+              "bytes": 5431599,
+              "sha256": "26bc06004d87f4be8acf15a930d895542f9ad61f4a36aa938d46106a09ff0ff0",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/bag/bag_0.db3",
+              "bytes": 13393920,
+              "sha256": "8e21f7813068ff910a4a7f039d734a70db1c3ba3ad9f2d51884c2d349ed98738",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/bag/metadata.yaml",
+              "bytes": 5945,
+              "sha256": "560ca049a25adce5a02c89b3f06fd09ccbccab1f0a4a4b8b8d8ae4de8afdfc82",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/control_execution_trace.jsonl",
+              "bytes": 6766778,
+              "sha256": "8060af69e64c5bced485103b04476e9ccf22eafa687c8eae2f89da9af031242d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/control_execution_trace_manifest.json",
+              "bytes": 8011,
+              "sha256": "e4d3d8ba74a8fc7a3a50607b118db9f4d462ebf93b8a35693781c78d49c7ba83",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/control_trace.csv",
+              "bytes": 1584127,
+              "sha256": "0ccecdaf7c7e68d5c738a5879112d02c6328cb93142d419ea9d751ed2a7ea3ad",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/controller_diagnostics.jsonl",
+              "bytes": 34560,
+              "sha256": "180350ede25c4a0593eaa34b7b2c7559b9bdc91cbd2ee8d7b1f4f16a903e3105",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/controller_metadata.json",
+              "bytes": 166057,
+              "sha256": "2826580100d6f3ac727ba9aea9fba897cf229d6d22d2ac4b3d4c2e746d0b8b6d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/controller_task.json",
+              "bytes": 6638,
+              "sha256": "9429138173a0e5627c16c0c54d55184a8dde8edba76e860136d48669e2a44a5b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry.json",
+              "bytes": 10197,
+              "sha256": "9be2c8df1d9f795ffa77f319e3cce3218c9fd211772753f5e5e00bb747302b4b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_001.log",
+              "bytes": 184642,
+              "sha256": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_002.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_003.log",
+              "bytes": 2998,
+              "sha256": "a5bcd16503d42930c18b28dc7d6cc409adea341e9d5ceb4ad6d3c29aa68459f8",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_004.log",
+              "bytes": 623,
+              "sha256": "049db15dba6c2092e07514a70f4596fb94e11153916b2230b92b544d63939e25",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_005.log",
+              "bytes": 623,
+              "sha256": "ae1a2d8c24d0aa1f5a4b44992c6a812ed0c6a4720bdc166121db515060a267b7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_006.log",
+              "bytes": 623,
+              "sha256": "ecb235bc80b9490ea35a3ca147df0629823c9ed5b76409a6ee6da2e53da9d645",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_007.log",
+              "bytes": 2031,
+              "sha256": "aa69241776cfa71295a2e7d08a82a3d46f6f7267d9497706fc118ee032a99cbc",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_008.log",
+              "bytes": 625,
+              "sha256": "676653bebe013e01b8939aba2176ff7e58874d6cb0cc1468964af38b10b551b4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_009.log",
+              "bytes": 625,
+              "sha256": "8f7650ffacec768f062117a633d845df73388f39bc23e537802b86adb3dd1d08",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_010.log",
+              "bytes": 623,
+              "sha256": "3f6c0f2b8006c2c74704ab7138bfa597518b906bdaba5a64af1cd67568fafd85",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_odometry_plugin.xml",
+              "bytes": 478,
+              "sha256": "bc34f9996039cbd0e830373a29f8765707e600112a78f7ae236e9cf71116ea65",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_parameter_session.json",
+              "bytes": 73535,
+              "sha256": "516d1d864cdc280368297a8f0f65f1270b49c3469acb98b4f10d9f5759a084c4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_parameter_storage_save.log",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_parameters_applied.json",
+              "bytes": 12648,
+              "sha256": "d17d9f6f9b288d0a761b793d3717377c6261f2862eac1cc2d62ecb7c52735871",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_parameters_before.json",
+              "bytes": 12633,
+              "sha256": "62411fe7a27d9f74c1dd4adca7b229dbe6b87d6082b6063d6e19bc6dc917a0b9",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_parameters_restored.json",
+              "bytes": 12631,
+              "sha256": "a5fb62219261b243a0d15ef1eac9d1d951808e31a51b09198b27cef18237a694",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/diagnostic_restore_journal_completed.json",
+              "bytes": 30528,
+              "sha256": "bf9d26468fe69270c66f5523f8e47ab882bd48243247311708016d2b23baed22",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/estimated_feedback.json",
+              "bytes": 4365,
+              "sha256": "f2df54833b747a18328ba6e0b12fa1606cc232acd40ad95c21ab8847324be881",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/experiment.py",
+              "bytes": 17473,
+              "sha256": "60560087a826e87fa142ad2dc5191fa38d4e4bee61a6e26c4ba07ef0790cb40f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/feedback_trace.jsonl",
+              "bytes": 1056308,
+              "sha256": "2d1db9cd6fd49e3b16ef90a0749614c0ab08b78cd049c6ffb6a8409fcc1ad76b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/flight_profile.yaml",
+              "bytes": 2661,
+              "sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/flight_samples.csv",
+              "bytes": 597936,
+              "sha256": "a3f5a2436e1837853a5b5b1fb5336fdc8a555674bb41361ee480ac7a14a00230",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/flight_samples_manifest.json",
+              "bytes": 1004,
+              "sha256": "96027c4e618777391d10d74e8fb9f554a4c2a2dfd1681e1b79187d7f4ca5c3d9",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/hover_reference.json",
+              "bytes": 2640,
+              "sha256": "cd75132d99ceac94158101681941d5d8bb0af5131593024b332ed9e5289b2ec8",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/loop_timing_evidence.json",
+              "bytes": 223054,
+              "sha256": "ae6005dbe11c2495b48c17484478efc98fcdde0fc98ac7564796d8883c5cb652",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/model_manifest.json",
+              "bytes": 186209,
+              "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/model_snapshot.sdf",
+              "bytes": 255436,
+              "sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_ground.csv",
+              "bytes": 914356,
+              "sha256": "056fb23f84743c60b7de7c7330e2229178e56ef6b3beeaec35c6bb017c7618ff",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_ground.json",
+              "bytes": 3417,
+              "sha256": "d19081460f31f29deb6db797c7470aeb3d4be5f7e71862807c9a602f3c8ee443",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_ground_manifest.json",
+              "bytes": 1107,
+              "sha256": "f530747f64fc10b0fff9285823786f40c16c9f53caac649e4347c6a686495f81",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_recorder_config.txt",
+              "bytes": 185,
+              "sha256": "ffb624aa6efe36d044719651633fadf36fc554951424ce7eb1234392f1bf6161",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_recorder_load.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_stream.csv",
+              "bytes": 12685953,
+              "sha256": "2a3f2001f83f94398f7f5cfffa87a58937f9014363c57b998ba2476c2a199c7a",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_trace.csv",
+              "bytes": 12620063,
+              "sha256": "a30df39b093a00ce0fe483efc5fc44174f348d4b9e9b98245003bef29ff8cd16",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/native_trace_manifest.json",
+              "bytes": 1085,
+              "sha256": "d14953e5e2d3299c0d578439df98ea20a4bacb7586ca751bd9d43c9f0c81fb93",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/nx_exchange.jsonl",
+              "bytes": 6795771,
+              "sha256": "55c14cd9ea4c0b6d60571a26446145f3b6021fe78293fcfab3ee5bdf783536f5",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/parameter_evidence.py",
+              "bytes": 13175,
+              "sha256": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/px4.ulg",
+              "bytes": 22387925,
+              "sha256": "d022a9b57c860a2ef69db36cee8ba277b7cb6464ebc8a42d089731dac9753c53",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/px4_airframe.sh",
+              "bytes": 3197,
+              "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/px4_parameters_after.json",
+              "bytes": 31507,
+              "sha256": "e4548047d0ca8697433eae9dc17ee0150e8da2870522797622a47530627f55fe",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/px4_parameters_before.json",
+              "bytes": 31443,
+              "sha256": "1da6ecde7ace430b6567857efe9d45598f7162a8fb058c3d6aabae6abbb327b3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/recorder.log",
+              "bytes": 1993,
+              "sha256": "12278d3564e2397413843e1ea5b9c93ba7cf28aa2c3a8eca923037d19a16566c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/result.json",
+              "bytes": 437,
+              "sha256": "853a77ded296db7f48a0a8d605a33be89137e1a09edf3d0ae75d639ce41c9983",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/run_manifest.json",
+              "bytes": 1514,
+              "sha256": "afad8fdb99bc32b29f0952fef98d580433f21d9f0b24e0d31c4541897c5a0ba1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/scenario.yaml",
+              "bytes": 294,
+              "sha256": "fd31900917b0d505258693bd8f21ed10e849bc7615d9acc78aef1411ca437b35",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/source_import_manifest.json",
+              "bytes": 450616,
+              "sha256": "9d82b606534f321323dabcc9c8cf24d8dc4c0ceb3134475afe4b56169495178c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/stage_result.json",
+              "bytes": 8499,
+              "sha256": "19f647740a3c0e9c0148e4352ef83b1e126f32071a080030174c5c47fa39a694",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/sync_clock.jsonl",
+              "bytes": 445518,
+              "sha256": "fe663dd459d1a9955d05fd4683496efd6d97981d2eb578f84a66539e46d0f97a",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/sync_dispatch.jsonl",
+              "bytes": 678328,
+              "sha256": "0be280c6193676017e37529d6d62f87b4383c7ed5a6d9b2f96fd4b8e2acc2438",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/tip_hold.json",
+              "bytes": 8499,
+              "sha256": "19f647740a3c0e9c0148e4352ef83b1e126f32071a080030174c5c47fa39a694",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/ts20_packets.csv",
+              "bytes": 1570916,
+              "sha256": "c36f21f5c0ffe7891c9c5203e8a7cf99ce0fe20983ebf529b9390dd1f6c5f48d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/ts20_recording_manifest.json",
+              "bytes": 759,
+              "sha256": "89d318431805dbe30504419ccdcf09612f26b3e58295a76760a4246eb47f6b87",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_135751_8928/ts20_state.csv",
+              "bytes": 9856952,
+              "sha256": "a1b811f9399417e855edb0c689cee1b68f4798a03b0034e946e669dcd0d99c8c",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "archive": {
+            "path": "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\artifacts\\orin_pil_20261027\\sync_delivery\\nx_sync_pil_evidence_part02.zip",
+            "bytes": 25345152,
+            "sha256": "3c82fa5bf93a140bb3feb6957f9e6f0e6c2d9e1d57c604120021052be4d522a6"
+          },
+          "embedded_manifest_matches": true,
+          "member_count": 74,
+          "members": [
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/bag/bag_0.db3",
+              "bytes": 14155776,
+              "sha256": "8740eeed8ef62874e104f6586bbf15cd42fd0eb88ab97a2600a3d07d02817f82",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/bag/metadata.yaml",
+              "bytes": 5945,
+              "sha256": "7127169f8b1f797ea41eafde971e0909925361b763dd72a3edf535c6897487b1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/control_execution_trace.jsonl",
+              "bytes": 6873197,
+              "sha256": "84a4240065f437d20f59acdf36ff8a8a3615922ca0b9d2b38a7bc5414150befd",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/control_execution_trace_manifest.json",
+              "bytes": 8007,
+              "sha256": "1a9b93ce84e436f7553107624ecee7f19b76285569fb2d7c6772f7950b9ea197",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/control_trace.csv",
+              "bytes": 1608141,
+              "sha256": "b232399895a34ea4d962e6d0dae7342d603a036b69a3dc48a4538c663eb1d796",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/controller_diagnostics.jsonl",
+              "bytes": 35997,
+              "sha256": "6277182159c89b28a836aa5cd5dae8006886886781a9126639d8a63da6544a8f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/controller_metadata.json",
+              "bytes": 168277,
+              "sha256": "0f5234bcd43712f28bd60426016369e73b50c43c389a2ed99c32647eded47103",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/controller_task.json",
+              "bytes": 6764,
+              "sha256": "09da72c18b097e1530cc7e3b8fe809448c21a93c1056b9365cb5e3ca87fe049c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry.json",
+              "bytes": 10364,
+              "sha256": "216a2afd9b4b0896841bb02e59ad73cc379442d202505960efa55f2097f572ec",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_001.log",
+              "bytes": 184642,
+              "sha256": "5fe5ee64014aac5ea21c8639be2aced3d1d1f4cfc7f49c446504c237bfd0405c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_002.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_003.log",
+              "bytes": 4694,
+              "sha256": "e32728045732a19fb4f77a025203286e628ccb9a6f1d2929b0196828da081bb7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_004.log",
+              "bytes": 625,
+              "sha256": "7813ed17af4d057c8893bfa164d20487cd61a83f01ed78274f50ec0d096ded43",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_005.log",
+              "bytes": 625,
+              "sha256": "d6e14a2d317c7ea8aef3c659f643cdba75ee0745f5091e1d15715f59e044700c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_006.log",
+              "bytes": 625,
+              "sha256": "11cdf2d949a75c64a9d769ab9475a37eef3596c5924e0f8572ace87d4979448e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_007.log",
+              "bytes": 2031,
+              "sha256": "586569a66d00b3be1720a4ae544c162056a639c7d600bd3a0cd9e5c4e339ce7d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_008.log",
+              "bytes": 625,
+              "sha256": "acac00f7610461889e5277e3a42ceb00deab22495f164788033a3271136f666e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_009.log",
+              "bytes": 625,
+              "sha256": "2cd48936676a5ca8b113e658f9f63ceef23b69176d7c7355b6d63a27146f78f1",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_010.log",
+              "bytes": 625,
+              "sha256": "bfd6273c5339f1028025a3c18b3ce25af456d9d9bd941a52e0ce2054c1d60927",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_odometry_plugin.xml",
+              "bytes": 478,
+              "sha256": "0b62e4897b20a885f46916e105f27e6b2597a0187958724f4bd059012b86ff86",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_parameter_session.json",
+              "bytes": 73548,
+              "sha256": "44634db7fd1f15bde19d82b4226099c5cd6dde4f8eeeb0c8e6ea49c861946acb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_parameter_storage_save.log",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_parameters_applied.json",
+              "bytes": 12653,
+              "sha256": "5f6069a4fbf192a327b0ad7996942f495279b7f90622ab86c485b95ce37c1218",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_parameters_before.json",
+              "bytes": 12637,
+              "sha256": "79ded53d1084ccff37a0acecd770617fbcdc24545e8d2186e92febf0aff7a14f",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_parameters_restored.json",
+              "bytes": 12641,
+              "sha256": "368ea9de48a2589b561bd095bc34af6c5d1f276207e34d54452e16d5266567a7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/diagnostic_restore_journal_completed.json",
+              "bytes": 30542,
+              "sha256": "5debe0207ecc6131eb53d476eb7645fe5578fa7dff461d5c651daf9260701512",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/estimated_feedback.json",
+              "bytes": 4359,
+              "sha256": "625e275671c16b6b7dc15c9f9292c9f13d3541b7359fe35222a29d14e3b9c0e0",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/experiment.py",
+              "bytes": 17663,
+              "sha256": "8032afee263715b05d61719fa5e7d3d6f4b6e354ce15121712e973ef64bb14d7",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/feedback_trace.jsonl",
+              "bytes": 1081632,
+              "sha256": "a40660cc0444a98c4bd83070e2838a50cc4095d66cdd6c6600bebe948c923d9d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/flight_profile.yaml",
+              "bytes": 2661,
+              "sha256": "a08c44bd64344f1085a6bf0d15b82737369cf9c011218c7cf1f9a50e56066713",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/flight_samples.csv",
+              "bytes": 614163,
+              "sha256": "780e3d4055243c043dc538441ec2bf7f1457cd8c2776d5c5e17ff1c5f0151ade",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/flight_samples_manifest.json",
+              "bytes": 1005,
+              "sha256": "9457f950d395788d29a25bfcad922c8966ead90b99b0e78d3f575a72f459478b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/hover_reference.json",
+              "bytes": 2634,
+              "sha256": "6005d5243bfda846e3e292aca4ebb17faabb21a03fc0af63d9bcae8725f57550",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/loop_timing_evidence.json",
+              "bytes": 219102,
+              "sha256": "466d3c3896d13cc0e2a670594836b14cb404ad97a5562bf9374b56b27b5ffea0",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/model_manifest.json",
+              "bytes": 186209,
+              "sha256": "2a6aa6453d362226d0d90d3538b00c29664cc1178afb102634548cab760f1f68",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/model_snapshot.sdf",
+              "bytes": 255436,
+              "sha256": "5a2dd9c7adaf929ad8a60abe2046eeaff9fe56b3a01fa13fa20129bdf32d53eb",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_ground.csv",
+              "bytes": 927949,
+              "sha256": "a46f75bc846af09f46eb558d0311cd4186c44cde85f58e48e025a80089ee9512",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_ground.json",
+              "bytes": 3380,
+              "sha256": "bb6683d8718f273c3997d9038323497dd074aed3d86ddeda91b8383a99e55e59",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_ground_manifest.json",
+              "bytes": 1084,
+              "sha256": "77cae7978382b6ac2962e9e9bf3b95390b936f630f977dc25aaae5abb6e051c0",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_recorder_config.txt",
+              "bytes": 186,
+              "sha256": "c8357b4c0cfe2916c164dd0829b313b501893e2db1b2bbe694017041572f9c9d",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_recorder_load.log",
+              "bytes": 12,
+              "sha256": "46eeeedc969f106320d874ff0cb0c5c1ea169952665865f64b8f5318d626c8a3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_stream.csv",
+              "bytes": 13081722,
+              "sha256": "ffca3619e13c1264a53365eb74b1e23d36a439b8041382b9138b048503a03614",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_trace.csv",
+              "bytes": 12931569,
+              "sha256": "950f495c166083e280771e304771b6fb9e89b841f3b3b96e10665a154617d2a4",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/native_trace_manifest.json",
+              "bytes": 1083,
+              "sha256": "e13673f79b2c47304cf4e80489ff44f82857eba320e5744a09038e01853a728e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/normal.json",
+              "bytes": 8498,
+              "sha256": "a77222baff7662f4f0359ad6bafb6603880be6da44a05d9c30d036a4675afb4e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/nx_exchange.jsonl",
+              "bytes": 11056963,
+              "sha256": "68334bc5f283c93f747bdf2d512e4f9353ba15e42b1c401fcbc5e0fe05f7557c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/parameter_evidence.py",
+              "bytes": 13175,
+              "sha256": "dbbadbc48c425f5d57245650519b5c03f1092b94966bb91cac8eac9ed7a426c3",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/px4.ulg",
+              "bytes": 22960912,
+              "sha256": "1ef73e8fec855dbacb5fa80d3db02598beff6f5c5bd58726b314067d4a8a2b74",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/px4_airframe.sh",
+              "bytes": 3197,
+              "sha256": "a14c6d8ce056e7ab03ed62b9755d3ce5c9579d1f303e8e7a327c1e70acce0db6",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/px4_parameters_after.json",
+              "bytes": 31495,
+              "sha256": "ea358607ea0725e7ccf3198aeb870f4a77b3506a74d31382fe597b36b5848c31",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/px4_parameters_before.json",
+              "bytes": 31443,
+              "sha256": "c9380b29ee01d566b5fea320c1bbeae1a17946b0dbd929b9521ed1da76ddde2e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/recorder.log",
+              "bytes": 1994,
+              "sha256": "40f31b1bd36ad7ec80a5242ef14378b5868c66b50800278795aadd4d73ebafdc",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/result.json",
+              "bytes": 438,
+              "sha256": "91dc99dca5e1eb791dd4db86f1923313d626d8ddda85a943431be2a019dbe13e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/run_manifest.json",
+              "bytes": 1515,
+              "sha256": "359085310e2d436df5def6a56d73f8a77bf05f7e428931660a64e8cf72b3389e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/scenario.yaml",
+              "bytes": 294,
+              "sha256": "fd31900917b0d505258693bd8f21ed10e849bc7615d9acc78aef1411ca437b35",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/source_import_manifest.json",
+              "bytes": 450616,
+              "sha256": "9d82b606534f321323dabcc9c8cf24d8dc4c0ceb3134475afe4b56169495178c",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/stage_result.json",
+              "bytes": 8498,
+              "sha256": "a77222baff7662f4f0359ad6bafb6603880be6da44a05d9c30d036a4675afb4e",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/sync_clock.jsonl",
+              "bytes": 475761,
+              "sha256": "8d994fc97b118b8d0d696c4b9d9a655f9761b686862ab15fe70b3b1b1dab92fe",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/sync_dispatch.jsonl",
+              "bytes": 709652,
+              "sha256": "3ea977a023dd5a5d09f55bfdd83453d425be9bc429b1cb3812fff591c1f230ae",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/ts20_packets.csv",
+              "bytes": 1636356,
+              "sha256": "b5eb86179b27342a2768d233d54c80fbb679413be85edc4276ca1e5cb11ede6b",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/ts20_recording_manifest.json",
+              "bytes": 748,
+              "sha256": "c8259b3bc994c2f7681b0a373e1b04a214e46a83aceb00da878209b6419da2f2",
+              "passed": true
+            },
+            {
+              "entry": "runs/x650_nx_sync_pil_v1_20261027_141122_10432/ts20_state.csv",
+              "bytes": 10236211,
+              "sha256": "d42e07aab92926b8af659fb4c1cd2dfcfb74cb27731d418497e213c55f9e5ffe",
+              "passed": true
+            },
+            {
+              "entry": "scenarios/x650_nx_sync_pil_v1.yaml",
+              "bytes": 294,
+              "sha256": "fd31900917b0d505258693bd8f21ed10e849bc7615d9acc78aef1411ca437b35",
+              "passed": true
+            },
+            {
+              "entry": "scripts/archive_x650_sync_pil.py",
+              "bytes": 2168,
+              "sha256": "0ecf10378df0ef273e932788ff9633c1cc103dc12652a4e8a5dc29accb688ea0",
+              "passed": true
+            },
+            {
+              "entry": "scripts/audit_x650_sync_pil.py",
+              "bytes": 13069,
+              "sha256": "e59bf8a5370c1b7a7148543397024006c530786dbc827566668383307e465045",
+              "passed": true
+            },
+            {
+              "entry": "scripts/probe_x650_sync_clock.py",
+              "bytes": 3848,
+              "sha256": "f50b79c545d1fa95f0aee2e96867ff53df9f4ac47a2a20b5f1829662a36ca5d1",
+              "passed": true
+            },
+            {
+              "entry": "scripts/restore_x650_parameter_journal.py",
+              "bytes": 2682,
+              "sha256": "46a951383fa43d5feb33f7e865d1ba1a1f2ec78597627694b781b06d39f115dc",
+              "passed": true
+            },
+            {
+              "entry": "scripts/run_x650_pil_stream.py",
+              "bytes": 6204,
+              "sha256": "018037c0d879097c5572ce37b503c3998794be595a504a69b64ed5ccf96aed7f",
+              "passed": true
+            },
+            {
+              "entry": "scripts/x650_pil_transport.py",
+              "bytes": 6501,
+              "sha256": "298e3b737a3ad98d413b2135219f6b82df4c4f2c2e86883424a73bd1a2962233",
+              "passed": true
+            },
+            {
+              "entry": "simulations/x650_nx_sync_pil_v1/__init__.py",
+              "bytes": 79,
+              "sha256": "260817981d7b9787a4fc1775a5af6c0df293685a6eb7bb54020e2a53551c9da9",
+              "passed": true
+            },
+            {
+              "entry": "simulations/x650_nx_sync_pil_v1/cases.py",
+              "bytes": 2229,
+              "sha256": "6d93af94cf1482ee9edc4a29be41aca514b12183a9b8d9f88b914ad7065c5559",
+              "passed": true
+            },
+            {
+              "entry": "simulations/x650_nx_sync_pil_v1/launch.py",
+              "bytes": 4024,
+              "sha256": "056c91d1a3c649c01270ffbd37858d72ffe51c1c928d07e01317463617d5fb1a",
+              "passed": true
+            },
+            {
+              "entry": "simulations/x650_nx_sync_pil_v1/protocol.py",
+              "bytes": 2158,
+              "sha256": "867ba180b63060bd7ba4e7b7d52a8083082496c1c87d06d3f844ae35abe125fa",
+              "passed": true
+            },
+            {
+              "entry": "simulations/x650_nx_sync_pil_v1/run_case.py",
+              "bytes": 17663,
+              "sha256": "8032afee263715b05d61719fa5e7d3d6f4b6e354ce15121712e973ef64bb14d7",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "completed_unix": 1793082260.4634142
+}

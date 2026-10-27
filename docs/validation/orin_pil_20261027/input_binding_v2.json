@@ -1,0 +1,116 @@
+{
+  "kind": "x650_pil_input_and_source_binding_v1",
+  "input_numeric_payloads_unchanged": true,
+  "streams": [
+    {
+      "name": "hold",
+      "count": 711,
+      "start_and_steps_equal": true
+    },
+    {
+      "name": "wrench",
+      "count": 570,
+      "start_and_steps_equal": true
+    },
+    {
+      "name": "mass085",
+      "count": 569,
+      "start_and_steps_equal": true
+    },
+    {
+      "name": "mass115",
+      "count": 570,
+      "start_and_steps_equal": true
+    }
+  ],
+  "native_source_changes": [],
+  "contract_change": "64 * double epsilon * max(1,abs(a),abs(b)) reference comparison only",
+  "native_source_checks": [
+    {
+      "path": "control_packages/x650_wholebody_v1/native/CMakeLists.txt",
+      "unchanged": true,
+      "sha256": "9d08b1d56154581044247321ce8160041415891ccfde875e7215bc938d43f657"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.cpp",
+      "unchanged": true,
+      "sha256": "7826911a28df82152f5a0b6dab078b2415747f45bdbfc23170edda6a0a7799d0"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/mpc_core.hpp",
+      "unchanged": true,
+      "sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/optimization.cpp",
+      "unchanged": true,
+      "sha256": "b78bdb1612ebe211eb6a063aacf3db56cd4ca7a1b07115efc7f7f86575e41fc6"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_mpc_core.cpp",
+      "unchanged": true,
+      "sha256": "c7f03690d89dad1c4e0d80bb07a381253fb132f1ce54a53d269f2d7e049b8eba"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_quadprog_identity.cpp",
+      "unchanged": true,
+      "sha256": "1cfb6f67951706bcaff6726d46c30a367cd0b175cdeb590a87f491ff4882a2e9"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/Array.hh",
+      "unchanged": true,
+      "sha256": "df5821f916b6dba3e6ace9478edb3933eea5af869f9753448e45427ea22db4c9"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.cc",
+      "unchanged": true,
+      "sha256": "aafb5dfb449c659012d61cce649fddfa8225aa6f7a5a5df0195781af87d7fc29"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/QuadProg++.hh",
+      "unchanged": true,
+      "sha256": "526ae146e9e121223157f858710e5684021024f57bc0392da3243fbae060aab2"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/LICENSE",
+      "unchanged": true,
+      "sha256": "6b3d5d656e94973e5120a0863e383ede61e2a0d3132267fd7ead0f5d87c9fb84"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/vendor/quadprogpp/UPSTREAM.json",
+      "unchanged": true,
+      "sha256": "d9aa5a56e9b8bd0db8fdac751d79e1b0c05708d8c00ff78479edc4e6d67e5976"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/x650_wholebody/ts20_prediction_native.cpp",
+      "unchanged": true,
+      "sha256": "070f0855f9b657ec2504ff113c69df6f78199c40030dc4c3908d7c8dab48dda0"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/canonical_interval.hpp",
+      "unchanged": true,
+      "sha256": "9585bd5b79aced521bd697dc6eea1b3efae4d1c0cdfc5f17df2d0909996de946"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/joint_safety.hpp",
+      "unchanged": true,
+      "sha256": "248f4bfd2d217858acf62ea0ddfac30ca187db40867c80f928acccf9192d6dde"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_multirate_core.cpp",
+      "unchanged": true,
+      "sha256": "d7461ce5a1d099670888f3b95d6c4c86f7a50185f02292f06f5ee198bc1f87d1"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_interval_core.cpp",
+      "unchanged": true,
+      "sha256": "b51766ca6271fcc94d394b5f1bf71a307b5b42e1a7e439b27be8ee106bb59158"
+    },
+    {
+      "path": "control_packages/x650_wholebody_v1/native/test_interval_observer.cpp",
+      "unchanged": true,
+      "sha256": "569d001ff4d6d92e3c0ce6f2c13902f4fa24c6b99597c010f06d6a0860cf2df7"
+    }
+  ],
+  "supersedes": "input_binding.json used an incorrect list label without hash comparison; source checks corrected here, both records retained"
+}

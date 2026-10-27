@@ -22,6 +22,17 @@ def _load_state() -> dict | None:
 def _alive(pid: int) -> bool:
     try:
         os.kill(pid, 0)
+        # A stopped supervisor can remain a zombie until its launching Python
+        # process reaps it. kill(pid, 0) succeeds for zombies too, which used to
+        # turn a successful shutdown into a false timeout/SIGTERM report.
+        try:
+            stat = Path(f"/proc/{pid}/stat").read_text()
+            state = stat[stat.rfind(")") + 2:].split()[0]
+            if state == "Z":
+                return False
+        except (OSError, IndexError):
+            # Non-Linux hosts and restricted /proc retain the original probe.
+            pass
         return True
     except OSError:
         return False
