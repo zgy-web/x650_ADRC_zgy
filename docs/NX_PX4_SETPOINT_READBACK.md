@@ -1,6 +1,6 @@
 # Pixhawk 内部设定值回读：独立 Debug 串口方案
 
-适用设备：Orin NX（达妙载板）＋ Pixhawk 6X Pro，已核验 PX4 1.17 固件提交 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`。2026-10-28 本文只完成接法与验收准备，**没有向真实飞控发送轨迹设定值，没有进行接管或解锁**。用户已确认具备 3.3 V TTL USB 转串口和 FMU Debug 10 针连接器材；尚未确认实际接线。
+适用设备：Orin NX（达妙载板）＋ Pixhawk 6X Pro，已核验 PX4 1.17 固件提交 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`。2026-10-28 已完成接线和真实 Debug 控制台只读检查：电脑 `COM13`、CH340、57600 8N1 能直接读取固件、状态及内部 `trajectory_setpoint`。**没有向真实飞控发送轨迹设定值，没有进行接管或解锁**；NX 发出设定值与飞控内部字段的对应验收仍未执行。见[接入记录](validation/nx_px4_debug_20261028/README.md)。
 
 ## 为什么要第二条通道
 
@@ -47,6 +47,8 @@ listener trajectory_setpoint -n 1
 这些是独立串口上的 NSH 命令，不是 ROS 命令。若轨迹主题从未发布，输出 `never published` 是合理的初始结果。[当前固件 listener 实现](https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/systemcmds/topic_listener/listener_main.cpp) 可打印一次最近值，或用 `-n` 监听新值。
 
 飞控若已重启，USB 可能已经恢复 MAVLink；开始 DDS 发送之前必须确认或重新获准执行临时 USB 协议切换。同一根 USB 不同时运行 MAVLink Shell 与 XRCE Agent。Debug 控制台不受这项 USB 占用限制。
+
+本次实际读到 `uxrce_dds_client: not running`，NX 进程检查也没有 Agent，飞控 USB 在 NX 上仍识别为 `/dev/ttyACM0`。`vehicle_status` 显示未解锁、非 Offboard、非 HIL；内部 `trajectory_setpoint` 已存在且时间戳新鲜。这是实际读取到的既有内部值，不能因为话题存在就宣称 NX 的消息已经送达。后续测试须以独特的 A/B/C 字段模式和对应的新时间戳匹配，不能只检查话题存在或数据更新。
 
 ## 后续实机发送的明确范围（本次未执行）
 

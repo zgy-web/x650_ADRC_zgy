@@ -1,0 +1,64 @@
+{
+  "schema": "flyarm.debug_console_readback.v1",
+  "date": "2026-10-28",
+  "port": "COM13",
+  "adapter": "CH340",
+  "baud": 57600,
+  "serial_format": "8N1",
+  "flow_control": false,
+  "console_readonly_check_passed": true,
+  "px4_version": "1.17.0",
+  "hardware_arch": "PX4_FMU_V6X",
+  "dds_client_running": false,
+  "arming_state": 1,
+  "nav_state": 4,
+  "hil_state": 0,
+  "failsafe": false,
+  "read_commands": [
+    "ver all",
+    "uxrce_dds_client status",
+    "listener vehicle_status -n 1",
+    "listener trajectory_setpoint -n 1"
+  ],
+  "internal_trajectory_topic_read": true,
+  "internal_topic_timestamp_us": 47547379,
+  "internal_topic_reported_age_ms": 7.952,
+  "nx_to_px4_setpoint_transfer_tested": false,
+  "trajectory_commands_sent": 0,
+  "configuration_modified": false,
+  "port_closed": true,
+  "user_confirmed_initial_miswire_corrected": true,
+  "evidence": [
+    {
+      "file": "artifacts/nx_px4_debug_20261028/connection_summary_v1.json",
+      "bytes": 767,
+      "sha256": "ecd857a03600d865bd36036572c945569634a037190c5c011f7b6817c935aeb1"
+    },
+    {
+      "file": "artifacts/nx_px4_debug_20261028/passive_protocol_v1.json",
+      "bytes": 35397,
+      "sha256": "f9a222e46312fd8193415ce36c3283504baa906ab8e2caea46e9f0e2167ff278"
+    },
+    {
+      "file": "artifacts/nx_px4_debug_20261028/passive_protocol_v2.json",
+      "bytes": 84,
+      "sha256": "683ff24dc37a64f439bc29ebd02faf2fad924f130ceeff5455672137bdd7de86"
+    },
+    {
+      "file": "artifacts/nx_px4_debug_20261028/readonly_v1.json",
+      "bytes": 11285,
+      "sha256": "bb0bf562c38c8ade5f4a0843a6398d3ee92d6ab27ccdffea436bdfa5e30cd2f1"
+    },
+    {
+      "file": "artifacts/nx_px4_debug_20261028/readonly_v2.json",
+      "bytes": 6183,
+      "sha256": "3e1ce7b88f2697aca40306aa32a25e67c0d60d6f4d5adcea5e2d55b5d463aba4"
+    }
+  ],
+  "limits": [
+    "Existing internal trajectory values are not evidence of NX transmission.",
+    "Internal topic age is not a link latency measurement.",
+    "No DDS recovery, setpoint publishing, arming, Offboard, actuator access or NX deployment was performed."
+  ],
+  "firmware_git_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4"
+}
