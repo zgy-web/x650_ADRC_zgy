@@ -2,7 +2,7 @@
 <package format="3">
   <name>flyarm_hardware_state</name>
   <version>0.1.0</version>
-  <description>Observation-only PX4 hardware ROS 2 state qualification.</description>
+  <description>PX4 ROS 2 state observation and explicitly selected diagnostic command qualification.</description>
   <maintainer email="maintainer@example.invalid">Flyarm project</maintainer>
   <license>BSD-3-Clause</license>
   <buildtool_depend>ament_cmake</buildtool_depend>

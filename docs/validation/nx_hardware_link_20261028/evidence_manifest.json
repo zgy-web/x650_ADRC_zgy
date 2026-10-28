@@ -1,0 +1,72 @@
+{
+  "schema": "flyarm.hardware_link_evidence.v1",
+  "actual_hardware_session": true,
+  "cpp_unit_tests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "ros_mock_cases": [
+    "shadow",
+    "ack",
+    "timeout"
+  ],
+  "python_regression_tests": {
+    "passed": 27,
+    "failed": 0
+  },
+  "build": {
+    "schema": "flyarm.hardware_link_build.v1",
+    "action": "install",
+    "source_sha256": "a2efe78a7bb11070a09f72eda8db50b46fbc08c1690f701607eb7b2bbd70455f",
+    "files": {
+      "flyarm_hardware_state/CMakeLists.txt": "794b9cbf744e28f10406d4a51cbb86430549478de7618d95b0619ef050778074",
+      "flyarm_hardware_state/include/flyarm_hardware_state/link_contract.hpp": "ce83c2627ed4fa1ca9dc058c58a1624332fef0a1375c2fd44f061f009c5dbcd6",
+      "flyarm_hardware_state/include/flyarm_hardware_state/state_math.hpp": "e97bc22e46631f023e2fb91ec51e41e1f67c6dc3df313420fc0c763d045e921d",
+      "flyarm_hardware_state/package.xml": "570cd004bb96ea787533908a692e01ff5ea87b9389c99fa104a61bf93a2ed854",
+      "flyarm_hardware_state/src/px4_link_probe.cpp": "ffccd235d1223e3189cdf585b5549e38e56b7b4b4db6d07f7b73c9fdbcf7dbd6",
+      "flyarm_hardware_state/src/px4_state_probe.cpp": "9ce1f6ed5fed2077d37ac232e106a13079efdd111617b8e4e4927e5c67a8ab3d",
+      "flyarm_hardware_state/test/link_contract_test.cpp": "6e3ffa90b05e1c4488dd7d139edde614a887801eaed8349a3e6d179e0d5540e2",
+      "flyarm_hardware_state/test/probe_link_ros.py": "76acd87f53db2c6b5710aaa705f55849d02f1ab9ca0f528e32c780af6d9cd2f1",
+      "flyarm_hardware_state/test/state_math_test.cpp": "aa4f03e3fa9b2dfdfdeebb54c3fba2c63e73f7b54252e000d9783f007d757dcd"
+    },
+    "unit_tests_pass": true,
+    "mock_ros_tests_pass": true,
+    "hardware_accessed": false,
+    "permanent_configuration_changes": false,
+    "install_path": "/home/jetson/flyarm/ros2_hw_runtime/v1/link_check/a2efe78a7bb1"
+  },
+  "final_nx_audit": {
+    "active_diagnostic_processes": [],
+    "remaining_ram_work": [],
+    "persistent_result_files": [],
+    "installed_version": "a2efe78a7bb1",
+    "manifest_present": true
+  },
+  "files": [
+    {
+      "name": "build_check_01.log",
+      "bytes": 4800,
+      "sha256": "f9fb470ad6cd17a904aa069880d941050caf960e0f49e67c9e45216334d4f94a"
+    },
+    {
+      "name": "build_install_01.log",
+      "bytes": 4882,
+      "sha256": "e3864dcdcdddc83a5b886cbea96f70c7d010fc95b7da882008a542243bc6c84a"
+    },
+    {
+      "name": "physical_session_01.jsonl",
+      "bytes": 128078,
+      "sha256": "066fa49447ac6f7293a69557fc3de68d129769e3df701d23f34d97c2c149e127"
+    },
+    {
+      "name": "physical_summary_01.json",
+      "bytes": 2480,
+      "sha256": "8edc71c3c6663fd233c2fef0f802291f43c42b5839e62f1a337b710990c7b821"
+    },
+    {
+      "name": "final_nx_audit.json",
+      "bytes": 173,
+      "sha256": "aa427eaab60d27b4644df263c08852aa718c3bf355af0d6356e26734844ebd38"
+    }
+  ]
+}

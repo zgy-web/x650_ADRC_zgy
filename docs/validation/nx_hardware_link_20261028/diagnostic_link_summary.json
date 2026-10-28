@@ -1,0 +1,82 @@
+{
+  "schema": "flyarm.hardware_link_summary.v1",
+  "source_sha256": "066fa49447ac6f7293a69557fc3de68d129769e3df701d23f34d97c2c149e127",
+  "program_source_sha256": "a2efe78a7bb11070a09f72eda8db50b46fbc08c1690f701607eb7b2bbd70455f",
+  "checks": {
+    "hardware_provenance": true,
+    "completed": true,
+    "full_window": true,
+    "real_state_received": true,
+    "uninterrupted": true,
+    "disarmed_no_takeover": true,
+    "only_one_diagnostic": true,
+    "accepted_response": true,
+    "no_flight_output": true,
+    "no_overclaim": true,
+    "agent_alive": true,
+    "stopped": true
+  },
+  "diagnostic_link_pass": true,
+  "trajectory_payload_received_by_px4": "NOT_TESTED",
+  "offboard_takeover": "NOT_TESTED",
+  "full_mpc_with_real_state": "BLOCKED_PENDING_VALID_LOCALIZATION_AND_JOINT_FEEDBACK",
+  "final": {
+    "schema": "flyarm.hardware_link.v1",
+    "mode": "diagnostic_ack",
+    "final": true,
+    "complete": true,
+    "elapsed_s": 75.003329046,
+    "observed_state": true,
+    "bench_checks_pass": true,
+    "body_reason": "position_unusable",
+    "body_ready": false,
+    "position_enu_m": [
+      -1.15400242805,
+      -2.11476826668,
+      9.89763736725
+    ],
+    "velocity_enu_m_s": [
+      -0.00026387849357,
+      -0.000597570848186,
+      0.00459479121491
+    ],
+    "q_enu_flu_wxyz": [
+      0.01045785481,
+      -0.018525280936,
+      0.016820123258,
+      -0.999632197707
+    ],
+    "omega_flu_rad_s": [
+      -0.000380440003937,
+      -0.000289890216663,
+      9.93424691842e-05
+    ],
+    "ticks": 3001,
+    "shadow_hold_candidates": 0,
+    "flight_setpoints_sent": 0,
+    "offboard_requests_sent": 0,
+    "arm_requests_sent": 0,
+    "mpc_executed": false,
+    "joint_feedback_present": false,
+    "flight_ready": false,
+    "diagnostic_commands_sent": 1,
+    "ack_received": true,
+    "ack_accepted": true,
+    "ack_result": 0,
+    "ack_rtt_ms": 10.8767259953,
+    "ignored_acks": 0,
+    "armed_seen": false,
+    "offboard_seen": false,
+    "hil_seen": false,
+    "state_reset_seen": false,
+    "transport_fault": false,
+    "reasons": {
+      "position_unusable": 3001
+    }
+  },
+  "limits": [
+    "401 ACCEPTED means the diagnostic request was handled; it does not mean arming checks passed.",
+    "ACK elapsed time is measured on NX, excludes SSH and is not one-way latency.",
+    "A command ACK cannot certify a TrajectorySetpoint payload or actuator consumption."
+  ]
+}
