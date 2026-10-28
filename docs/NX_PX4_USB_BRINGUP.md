@@ -1,5 +1,7 @@
 # Orin NX 与 Pixhawk USB 通信检查
 
+后续：2026-10-28 已完成用户目录依赖部署及真实 ROS 2 状态接收检查，见 [NX/PX4 ROS 2 状态通道](NX_PX4_ROS2_STATE.md)。下文保留第一阶段 MAVLink 检查的原始结论。
+
 本指南对应真实 Orin NX＋Pixhawk 6X Pro 的第一阶段通信检查。它验证 USB、MAVLink 遥测、版本查询和参数读取，不启动 MPC、不接管飞控，不是实机飞行或实时性验收。
 
 ## 连接与权限

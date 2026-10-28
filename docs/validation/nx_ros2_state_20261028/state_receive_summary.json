@@ -1,0 +1,133 @@
+{
+  "schema": "flyarm.ros2.hardware_state_summary.v1",
+  "source_file": "dds_session_04_reconnect.jsonl",
+  "source_sha256": "df6debca12c65f7b4ce3ae2106534dc7fc0ea2683989d196668cc041277c65e8",
+  "non_json_lines": 0,
+  "checks": {
+    "probe_completed": true,
+    "seven_topics_received": true,
+    "source_stamps_monotone_nonzero": true,
+    "no_armed_state_observed": true,
+    "core_fresh_at_each_settled_report": true,
+    "one_hz_report_window_complete": true,
+    "at_least_60s_window": true,
+    "core_receipts_cover_window": true
+  },
+  "state_receive_checks_pass": true,
+  "window_s": 60.003275012,
+  "topics": {
+    "/fmu/out/estimator_status_flags": {
+      "count": 59,
+      "hz": 0.994193631435,
+      "max_receipt_gap_ms": 1014.28321499,
+      "last_receipt_age_ms": 932.802331001,
+      "source_timestamp_us": 1793154676206399,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 58.33873620401683
+    },
+    "/fmu/out/sensor_combined": {
+      "count": 6000,
+      "hz": 99.9947712169,
+      "max_receipt_gap_ms": 13.7986280024,
+      "last_receipt_age_ms": 6.60875799804,
+      "source_timestamp_us": 1793154677130870,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.99313691100396
+    },
+    "/fmu/out/timesync_status": {
+      "count": 60,
+      "hz": 0.990707203757,
+      "max_receipt_gap_ms": 1012.452853,
+      "last_receipt_age_ms": 105.692692996,
+      "source_timestamp_us": 1793154677033254,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.553417776975685
+    },
+    "/fmu/out/vehicle_attitude": {
+      "count": 6000,
+      "hz": 99.9947449203,
+      "max_receipt_gap_ms": 13.7411539981,
+      "last_receipt_age_ms": 6.62021400058,
+      "source_timestamp_us": 1793154677131158,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.9931526879883
+    },
+    "/fmu/out/vehicle_local_position_v1": {
+      "count": 3000,
+      "hz": 49.9978509885,
+      "max_receipt_gap_ms": 23.8203299959,
+      "last_receipt_age_ms": 6.40737299545,
+      "source_timestamp_us": 1793154677131536,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.98257806500123
+    },
+    "/fmu/out/vehicle_odometry": {
+      "count": 6000,
+      "hz": 99.9944371556,
+      "max_receipt_gap_ms": 12.5443700017,
+      "last_receipt_age_ms": 6.33392999589,
+      "source_timestamp_us": 1793154677131544,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.99333733600637
+    },
+    "/fmu/out/vehicle_status_v1": {
+      "count": 118,
+      "hz": 1.96699583046,
+      "max_receipt_gap_ms": 513.385145001,
+      "last_receipt_age_ms": 445.979459997,
+      "source_timestamp_us": 1793154676692782,
+      "source_regressions": 0,
+      "repeated_source_timestamps": 0,
+      "zero_source_timestamps": 0,
+      "first_to_last_receipt_span_s": 59.48156990888917
+    }
+  },
+  "timesync_rtt_1hz_snapshots_us": {
+    "count": 61,
+    "min": 368,
+    "median": 616,
+    "max": 1041
+  },
+  "final_body_flags": {
+    "attitude_usable": true,
+    "angular_velocity_usable": true,
+    "position_velocity_usable": false,
+    "xy_valid": false,
+    "z_valid": true,
+    "v_xy_valid": false,
+    "v_z_valid": true,
+    "heading_good_for_control": false
+  },
+  "final_estimator": {
+    "fresh": true,
+    "tilt_aligned": true,
+    "yaw_aligned": false,
+    "ev_pos_fusion": false,
+    "ev_vel_fusion": false
+  },
+  "final_status": {
+    "fresh": true,
+    "arming_state": 1,
+    "nav_state": 4,
+    "failsafe": false,
+    "hil_state": 0
+  },
+  "limits": [
+    "Receipt gaps use the NX steady clock; SSH transport is excluded.",
+    "Receipt gaps and sampled Timesync RTT are not one-way USB latency or MPC compute latency.",
+    "Status/estimator topics can be event-driven. Reported maxima are observations, not real-time bounds.",
+    "This is an observation-only communication check, not position-control or flight approval."
+  ]
+}

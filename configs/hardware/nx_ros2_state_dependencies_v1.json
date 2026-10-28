@@ -1,0 +1,14 @@
+{
+  "px4_msgs": {
+    "repository": "PX4/px4_msgs",
+    "ref": "release/1.17",
+    "commit": "86d8239e962f6939e05c3737784f60c02fa884db",
+    "sha256": "35a8fbfe057043fdaa6b8dfa52cb07c12190d9782fb5f4aa983f5f4852cc0e13"
+  },
+  "agent": {
+    "repository": "eProsima/Micro-XRCE-DDS-Agent",
+    "ref": "v2.4.2",
+    "commit": "57d086216d01ec43121845d385894a25987f8a2c",
+    "sha256": "9a56a2ed00ec5af6fcb39c4dec74fd67bc806059b580181a366409d7f07fad31"
+  }
+}

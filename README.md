@@ -95,6 +95,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 新增[实体 NX 同步仿真在环](docs/validation/orin_pil_20261027/README.md)：通过 2,420 次连续记录输入、25 项故障检查后，让 NX 实际驱动服务器 PX4/Gazebo，完成新的 30 秒末端保持和普通八字。末端 RMSE 分别为 2.69 mm、3.72 mm（八字运动段），NX Core 最大耗时 10.88／13.76 ms；关节消费、PX4 指令与降落恢复均核验。修复跨架构参考重算比较，显式 `-ffp-contract=off` 构建使连续流满足原数值容差，历史失败仍保留。公网等待时仿真暂停，因此**不等价于墙钟实时或真机飞行验收**。NX 仅留代码；接口、时钟和后续迁移流程见[处理器在环方法](docs/ORIN_NX_PROCESSOR_IN_LOOP.md)。
 
+2026-10-28 完成[真实 NX / Pixhawk ROS 2 只读状态通道](docs/NX_PX4_ROS2_STATE.md)：新增依赖统一位于 NX 的 `~/flyarm/ros2_hw_runtime/v1/`，构建临时文件在内存，实验日志仅保留电脑。飞控重启后 DDS 建立成功，随后 Agent 重连的完整 60 秒窗口收到姿态、里程计各 6,000 条和位置 3,000 条，无源时间戳倒退。首次同步初始化失败仍保留；水平位置与航向未就绪，未执行 Offboard 或解锁，详情见[状态接收记录](docs/validation/nx_ros2_state_20261028/README.md)。
+
 新的 [TS20 Gazebo 条件执行器准备与接口验证](docs/X650_TS20_PLANT_README.md)支持完整 URDF flight 模型派生、独立 airframe 4997、固定 5 ms MIT 总线和实际关节状态记录。两关节低幅正反向原生物理位移检查已通过；新工况的悬停、摆臂与完整末端保持仍须分别验收，快速八字尚未开放。该插件保留原刚体惯性，通过条件自由运动响应施加速度约束，不是已标定的轴端力矩模型。
 
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。

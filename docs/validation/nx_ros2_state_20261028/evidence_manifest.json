@@ -1,0 +1,91 @@
+{
+  "firmware_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "dependencies": {
+    "px4_msgs": {
+      "repository": "PX4/px4_msgs",
+      "ref": "release/1.17",
+      "commit": "86d8239e962f6939e05c3737784f60c02fa884db",
+      "sha256": "35a8fbfe057043fdaa6b8dfa52cb07c12190d9782fb5f4aa983f5f4852cc0e13"
+    },
+    "agent": {
+      "repository": "eProsima/Micro-XRCE-DDS-Agent",
+      "ref": "v2.4.2",
+      "commit": "57d086216d01ec43121845d385894a25987f8a2c",
+      "sha256": "9a56a2ed00ec5af6fcb39c4dec74fd67bc806059b580181a366409d7f07fad31"
+    }
+  },
+  "probe_build": {
+    "source_sha256": "152ec8f6d8598fd7df8d82f2a1a5e7d22f5ce2e0a47bbc3ad03468eb290c3ad9",
+    "files": {
+      "flyarm_hardware_state/CMakeLists.txt": "4820484acb32b36b10f508f2af8a3c0b8182bc3d84c5f92fec5d015e5353a260",
+      "flyarm_hardware_state/include/flyarm_hardware_state/state_math.hpp": "e97bc22e46631f023e2fb91ec51e41e1f67c6dc3df313420fc0c763d045e921d",
+      "flyarm_hardware_state/package.xml": "4b645a1706ab24e92600e04402243dd51e913a3804fb5445a9ac4b8a655b951c",
+      "flyarm_hardware_state/src/px4_state_probe.cpp": "9ce1f6ed5fed2077d37ac232e106a13079efdd111617b8e4e4927e5c67a8ab3d",
+      "flyarm_hardware_state/test/state_math_test.cpp": "aa4f03e3fa9b2dfdfdeebb54c3fba2c63e73f7b54252e000d9783f007d757dcd"
+    },
+    "build_complete": true
+  },
+  "pc_artifacts": {
+    "dependency_build_01.log": {
+      "bytes": 21358,
+      "sha256": "ccae6e3a656f163d7d17a8970b4537ba6f3339413ad6c33ba1a8b3e7ad78ab8d"
+    },
+    "probe_build_01.log": {
+      "bytes": 1227,
+      "sha256": "5d8cc2b890dbc39cc43fad60440935aad73c2ce344685ec664e56dc0da5dbac1"
+    },
+    "dds_session_01.jsonl": {
+      "bytes": 228196,
+      "sha256": "a5934e72071431f4edcf9095c992031bf7ca290af38c56a1624807c79fb4b064"
+    },
+    "dds_debug_02.log": {
+      "bytes": 824006,
+      "sha256": "ce7234f1ab45fda347ae4f56b31605a0b22bef4d079856f28477518569f96f2d"
+    },
+    "agent_pty_test.log": {
+      "bytes": 4756,
+      "sha256": "71a0e47acc57082ae09e0686b55b1ccbfd07c29dbe2cda7e7de7206f48586155"
+    },
+    "dds_session_03_freshboot.jsonl": {
+      "bytes": 334247,
+      "sha256": "2987c1133ad5a30e0e55bf5d560b848b389c3cd72c794cdeb1662576bdd4c32f"
+    },
+    "dds_session_04_reconnect.jsonl": {
+      "bytes": 398633,
+      "sha256": "df6debca12c65f7b4ce3ae2106534dc7fc0ea2683989d196668cc041277c65e8"
+    },
+    "message_compatibility.json": {
+      "bytes": 2449,
+      "sha256": "c0b8f7552bcc4c586245e9d1c846f90d348198842ee43f716a300ba0cf2692de"
+    },
+    "final_nx_audit.json": {
+      "bytes": 1334,
+      "sha256": "dba3684238cd701426f50fc20963ae5c2da6295ca483b41073df35247f9e9434"
+    }
+  },
+  "remote_runtime": "~/flyarm/ros2_hw_runtime/v1",
+  "raw_records_on_nx": false,
+  "initial_failed_attempt_preserved": true,
+  "first_sync_stall_root_cause_confirmed": false,
+  "ctest": {
+    "passed": 1,
+    "failed": 0
+  },
+  "final_runtime_audit": {
+    "persistent_experiment_logs": [],
+    "agent_processes": [],
+    "probe_processes": [],
+    "old_ros2_runtime_exists": false,
+    "agent_binary_sha256": "211cfd34780e3f30715432edd865926e23d3d117cd4835dc285fdb7d9efabd7a",
+    "probe_binary_sha256": "a55d1e9e9966139a484b835418504c017fa45ccc1d4253eaeb1c29b75165dc69",
+    "ram_build_dirs_remaining": []
+  },
+  "pc_unit_tests": {
+    "passed": 14,
+    "failed": 0,
+    "tests": [
+      "tests/unit/test_nx_ros2_state_summary.py",
+      "tests/unit/test_px4_usb_readonly_protocol.py"
+    ]
+  }
+}
