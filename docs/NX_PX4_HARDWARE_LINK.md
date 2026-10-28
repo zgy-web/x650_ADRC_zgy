@@ -31,6 +31,7 @@ PX4 对 401 的 `ACCEPTED` 表示执行了检查请求，**不表示飞行前检
 | 文件 | 职责 |
 |---|---|
 | [link_contract.hpp](../ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/link_contract.hpp) | 真实状态质量检查、坐标转换、PVA 编码、一次性诊断请求与 ACK 匹配 |
+| [px4_message_adapter.hpp](../ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/px4_message_adapter.hpp) | 诊断程序与完整接口回放共用的 typed PX4 消息接收逻辑 |
 | [px4_link_probe.cpp](../ros2_ws/src/flyarm_hardware_state/src/px4_link_probe.cpp) | ROS 2 订阅、50 Hz C++ 处理、默认旁路、显式诊断模式、每秒报告 |
 | [link_contract_test.cpp](../ros2_ws/src/flyarm_hardware_state/test/link_contract_test.cpp) | 坐标、无效状态、时间戳停滞/倒退、重置、消息错配及超时 |
 | [probe_link_ros.py](../ros2_ws/src/flyarm_hardware_state/test/probe_link_ros.py) | 独立 ROS 域中的模拟飞控，检验不发送、单次发送和丢失回复三个场景 |
@@ -82,4 +83,4 @@ python scripts/summarize_nx_hardware_link.py --input artifacts/link_session.json
 | 轨迹消息在 PX4 内部的字段 | `NOT_TESTED`，不能用诊断 ACK 替代 |
 | 真实全身 MPC 与位置闭环 | 待有效定位、真实关节反馈及后续执行接口验收 |
 
-Agent 和节点退出后，飞控仍可能保持临时 DDS。重启未解锁飞控恢复原 USB MAVLink。下一步在定位可用后，准备未解锁的轨迹字段回读验证，再安排接管退出；需要飞控内部证据，NX 自己订阅发送话题不能作为飞控已消费的证据。
+Agent 和节点退出后，飞控仍可能保持临时 DDS。重启未解锁飞控恢复原 USB MAVLink。[完整 C++ 接口离线回放](NX_CPP_INTERFACE_REPLAY.md)已补齐状态适配、原 MPC 和输出编码检查；[独立 Debug 串口回读方案](NX_PX4_SETPOINT_READBACK.md)已列出接线与飞控内部读取命令。未解锁时验证轨迹字段是否进入 uORB 不需要先恢复动捕，但真实位置控制和接管退出需要有效定位及后续专项验收。NX 自己订阅发送话题不能作为飞控已收到的证据。

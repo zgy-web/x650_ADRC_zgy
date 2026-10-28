@@ -4,7 +4,9 @@
 
 控制器输出 **3 个飞机速度控制量＋2 个关节速度控制量**，同时给出飞机位置、速度、加速度参考。底层姿态/速度环由 PX4 执行，关节由现有 TS20 接口执行。它是上层全身协同 MPC；不是直接输出四旋翼推力和两关节力矩的全动力学 NMPC。
 
-公共头文件为 [`include/x650_mpc/controller.hpp`](include/x650_mpc/controller.hpp)，当前仿真配置工厂为 [`include/x650_mpc/selected_profile.hpp`](include/x650_mpc/selected_profile.hpp)。本包不依赖 ROS 或 Python 执行控制计算。Python 示例只把既有记录转换成离线回放输入。
+公共头文件为 [`include/x650_mpc/controller.hpp`](include/x650_mpc/controller.hpp)，当前仿真配置工厂为 [`include/x650_mpc/selected_profile.hpp`](include/x650_mpc/selected_profile.hpp)。控制计算不依赖 ROS 或 Python。可选的硬件消息回放 target 使用 ROS 消息类型和内存 CDR；Python 只准备输入、启动离线任务及回收证据。
+
+2026-10-28 新增[完整 C++ 硬件接口回放](../../docs/NX_CPP_INTERFACE_REPLAY.md)，在实体 NX 上通过 1,281 个历史快照。`X650_MPC_BUILD_HARDWARE_REPLAY=ON` 时须将 `X650_NATIVE_INCLUDE_DIR` 指向 `compat/abi4_20261027` 并使用匹配的历史三库；不能仅凭 ABI 4 数字混用当前开发头文件与旧库。回放没有 ROS 发布器，不打开 USB，尚不证明飞控收到设定值。
 
 ## 构建与运行
 

@@ -1,0 +1,153 @@
+{
+  "kind": "x650_full_interface_replay_summary_v1",
+  "passed": true,
+  "row_count": 1281,
+  "groups": [
+    {
+      "name": "hold_000",
+      "rows": 400,
+      "passed": true,
+      "adapter_state_max_error": 7.105427357601002e-15,
+      "historical_baseline_max_error": 3.07182664721628e-14,
+      "quantized_input_command_difference_max": 4.316095030818586e-07,
+      "quantized_input_position_reference_difference_max": 0.0,
+      "quantized_command_absolute_difference_max_by_axis": [
+        9.101564773118104e-09,
+        8.250606251588438e-09,
+        2.675679216211646e-07,
+        1.7520843213769677e-08,
+        4.316095030818586e-07
+      ],
+      "quantized_command_axis_units": [
+        "m/s",
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "quantized_command_difference_above_1e_minus_7_count": 400
+    },
+    {
+      "name": "hold_001",
+      "rows": 311,
+      "passed": true,
+      "adapter_state_max_error": 1.4210854715202004e-14,
+      "historical_baseline_max_error": 3.270582589476323e-14,
+      "quantized_input_command_difference_max": 4.3279413823940627e-07,
+      "quantized_input_position_reference_difference_max": 0.0,
+      "quantized_command_absolute_difference_max_by_axis": [
+        8.913088629138033e-09,
+        8.170606280097359e-09,
+        2.6870214838835976e-07,
+        2.481106687072729e-08,
+        4.3279413823940627e-07
+      ],
+      "quantized_command_axis_units": [
+        "m/s",
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "quantized_command_difference_above_1e_minus_7_count": 311
+    },
+    {
+      "name": "wrench_000",
+      "rows": 400,
+      "passed": true,
+      "adapter_state_max_error": 1.4210854715202004e-14,
+      "historical_baseline_max_error": 3.5499936323901693e-12,
+      "quantized_input_command_difference_max": 1.421706845305959e-08,
+      "quantized_input_position_reference_difference_max": 0.0,
+      "quantized_command_absolute_difference_max_by_axis": [
+        7.5057925985611e-09,
+        6.117301493482885e-09,
+        4.659645162774506e-09,
+        1.421706845305959e-08,
+        8.51865261664031e-09
+      ],
+      "quantized_command_axis_units": [
+        "m/s",
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "quantized_command_difference_above_1e_minus_7_count": 0
+    },
+    {
+      "name": "wrench_001",
+      "rows": 170,
+      "passed": true,
+      "adapter_state_max_error": 1.4210854715202004e-14,
+      "historical_baseline_max_error": 1.3935380627216887e-13,
+      "quantized_input_command_difference_max": 1.0881892331671139e-08,
+      "quantized_input_position_reference_difference_max": 0.0,
+      "quantized_command_absolute_difference_max_by_axis": [
+        5.036018810300469e-09,
+        5.683837334385239e-09,
+        2.4195404013660493e-09,
+        9.211429563560358e-09,
+        1.0881892331671139e-08
+      ],
+      "quantized_command_axis_units": [
+        "m/s",
+        "m/s",
+        "m/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "quantized_command_difference_above_1e_minus_7_count": 0
+    }
+  ],
+  "build": {
+    "event": "build_identity",
+    "executable_sha256": "3cabf818df301d55fdfb1bad627ef8e3d8d3325c8a89922050f3b3de0be35a49",
+    "source_archive_sha256": "69ce59eb24edebf21c121c95a212c3f573390fa79afd1b132937c235ffc8f8f4",
+    "bound_header_sha256": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093",
+    "math_libraries": {
+      "core": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347",
+      "optimization": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f",
+      "predictor": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+    },
+    "ram_only": true
+  },
+  "cleanup": {
+    "event": "cleanup",
+    "ram_removed": true,
+    "persistent_files_created": [],
+    "libraries_unchanged": true
+  },
+  "evidence": [
+    {
+      "file": "hold_000.log",
+      "sha256": "ae656d4fbca5e0d8df61e34e6db0379ae3a09dbf3f81a67a007eac263b6267c3",
+      "bytes": 369908
+    },
+    {
+      "file": "hold_001.log",
+      "sha256": "6f0872eeef3d68299e2f9965ac41d9f70eb97ae133dce7c613c14af6b1f046c6",
+      "bytes": 287552
+    },
+    {
+      "file": "wrench_000.log",
+      "sha256": "792e35b88a00d754c56a1a9e27166e3e716ab95c508481aa07f92890cbd026ab",
+      "bytes": 366176
+    },
+    {
+      "file": "wrench_001.log",
+      "sha256": "57f63995c6cd4cd0cbb7a5f6dfbf3ad7bfe821b06b81cba899f2919400cfacd2",
+      "bytes": 157030
+    }
+  ],
+  "physical_validation": false,
+  "raw_cdr_recording": false,
+  "publishers_created": 0,
+  "controller_parameters_changed": false,
+  "limits": [
+    "Reconstructed messages from saved simulation states; not captured raw PX4 CDR.",
+    "Float32 input quantization changes the input: differences against unquantized historical outputs are reported separately.",
+    "Fixed snapshots restore authentic Memory; this does not certify a continuous live controller session.",
+    "No USB/DDS network delivery, PX4 internal receipt, real joint bus, live clock alignment, takeover or real-time qualification."
+  ]
+}

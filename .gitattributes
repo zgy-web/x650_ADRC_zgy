@@ -148,3 +148,11 @@ scripts/audit_x650_standard_reference.py -text whitespace=cr-at-eol
 tests/unit/test_x650_standard_solver.py -text whitespace=cr-at-eol
 tests/unit/test_x650_standard_candidates.py -text whitespace=cr-at-eol
 docs/validation/standard_nmpc_20261027/** -text -whitespace
+
+# Offline hardware interface replay binds source, transport and evidence bytes.
+scripts/prepare_x650_hardware_replay.py -text whitespace=cr-at-eol
+scripts/run_nx_full_interface_replay.py -text whitespace=cr-at-eol
+scripts/nx_full_interface_replay_remote.py -text whitespace=cr-at-eol
+scripts/summarize_nx_full_interface_replay.py -text whitespace=cr-at-eol
+tests/unit/test_x650_hardware_replay.py -text whitespace=cr-at-eol
+docs/validation/nx_full_interface_20261028/** -text -whitespace

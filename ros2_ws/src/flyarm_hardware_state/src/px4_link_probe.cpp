@@ -1,6 +1,6 @@
 // Bench-only state adapter and one diagnostic command. No flight setpoint,
 // Offboard, arming, actuator publisher, file output, or automatic retries.
-#include "flyarm_hardware_state/link_contract.hpp"
+#include "flyarm_hardware_state/px4_message_adapter.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include <px4_msgs/msg/vehicle_attitude.hpp>
 #include <px4_msgs/msg/vehicle_local_position.hpp>
@@ -17,9 +17,6 @@
 namespace pm=px4_msgs::msg;
 using namespace flyarm_hw;
 double steady_now(){return std::chrono::duration<double>(std::chrono::steady_clock::now().time_since_epoch()).count();}
-template<std::size_t N>std::array<double,N> doubles(const std::array<float,N>&x){
-  std::array<double,N> y{};std::copy(x.begin(),x.end(),y.begin());return y;
-}
 void num(double x){if(std::isfinite(x))std::cout<<x;else std::cout<<"null";}
 template<std::size_t N>void arr(const std::array<double,N>&x){std::cout<<'[';for(std::size_t i=0;i<N;++i){if(i)std::cout<<',';num(x[i]);}std::cout<<']';}
 
@@ -40,30 +37,19 @@ class LinkProbe:public rclcpp::Node {
     const auto qos=rclcpp::QoS(rclcpp::KeepLast(1)).best_effort().durability_volatile();
     att_=create_subscription<pm::VehicleAttitude>(topic("vehicle_attitude",pm::VehicleAttitude::MESSAGE_VERSION),qos,
       [this](pm::VehicleAttitude::ConstSharedPtr m){
-        reset("attitude",{m->quat_reset_counter});
-        body_.attitude.update(m->timestamp,m->timestamp_sample,steady_now());body_.q_ned_frd=doubles(m->q);
+        receiver_.receive(*m,steady_now());
       });
     pos_=create_subscription<pm::VehicleLocalPosition>(topic("vehicle_local_position",pm::VehicleLocalPosition::MESSAGE_VERSION),qos,
       [this](pm::VehicleLocalPosition::ConstSharedPtr m){
-        reset("position",{m->xy_reset_counter,m->z_reset_counter,m->vxy_reset_counter,m->vz_reset_counter,m->heading_reset_counter});
-        body_.position.update(m->timestamp,m->timestamp_sample,steady_now());
-        body_.p_ned={m->x,m->y,m->z};body_.v_ned={m->vx,m->vy,m->vz};
-        body_.xy_valid=m->xy_valid;body_.z_valid=m->z_valid;body_.vxy_valid=m->v_xy_valid;
-        body_.vz_valid=m->v_z_valid;body_.heading_valid=m->heading_good_for_control;
+        receiver_.receive(*m,steady_now());
       });
     odom_=create_subscription<pm::VehicleOdometry>(topic("vehicle_odometry",pm::VehicleOdometry::MESSAGE_VERSION),qos,
       [this](pm::VehicleOdometry::ConstSharedPtr m){
-        reset("odometry",{m->reset_counter});
-        body_.odometry.update(m->timestamp,m->timestamp_sample,steady_now());body_.omega_frd=doubles(m->angular_velocity);
+        receiver_.receive(*m,steady_now());
       });
     status_=create_subscription<pm::VehicleStatus>(topic("vehicle_status",pm::VehicleStatus::MESSAGE_VERSION),qos,
       [this](pm::VehicleStatus::ConstSharedPtr m){
-        body_.status.update(m->timestamp,m->timestamp,steady_now());
-        body_.arming_state=m->arming_state;body_.nav_state=m->nav_state;body_.hil_state=m->hil_state;
-        body_.armed_seen|=m->arming_state==pm::VehicleStatus::ARMING_STATE_ARMED;
-        body_.offboard_seen|=m->nav_state==pm::VehicleStatus::NAVIGATION_STATE_OFFBOARD;
-        body_.hil_seen|=m->hil_state!=pm::VehicleStatus::HIL_STATE_OFF;
-        body_.failsafe=m->failsafe;body_.system=m->system_id;body_.component=m->component_id;
+        receiver_.receive(*m,steady_now());
       });
     if(mode_=="diagnostic_ack"){
       // RELIABLE is compatible with the PX4 reliable reader. The response is best effort.
@@ -84,11 +70,6 @@ class LinkProbe:public rclcpp::Node {
   bool passed()const{return complete_&&observed_state_&&!unsafe_&&!transport_fault_&&ticks_>0&&
     (mode_=="shadow"||transaction_.accepted());}
  private:
-  void reset(const std::string &key,std::vector<unsigned> values){
-    const auto found=resets_.find(key);
-    if(found!=resets_.end()&&found->second!=values)body_.reset_seen=true;
-    resets_[key]=std::move(values);
-  }
   void tick(){
     const double now=steady_now(),elapsed=now-start_;
     const auto b=adapt_body(body_,now);
@@ -140,8 +121,9 @@ class LinkProbe:public rclcpp::Node {
     bool first=true;for(const auto &kv:reasons_){if(!first)std::cout<<',';first=false;std::cout<<'"'<<kv.first<<"\":"<<kv.second;}
     std::cout<<"}}\n"<<std::flush;
   }
-  BodyInput body_;PvaCommand candidate_;AckTransaction transaction_;
-  std::map<std::string,std::vector<unsigned>> resets_;
+  Px4BodyReceiver receiver_;
+  BodyInput& body_=receiver_.body;
+  PvaCommand candidate_;AckTransaction transaction_;
   std::map<std::string,std::uint64_t> reasons_;
   std::string mode_;double duration_{},settle_{},start_{},last_report_{};int source_component_{};
   bool complete_{},observed_state_{},unsafe_{},transport_fault_{};

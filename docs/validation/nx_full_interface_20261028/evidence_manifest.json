@@ -1,0 +1,116 @@
+{
+  "kind": "x650_full_interface_evidence_manifest_v1",
+  "date": "2026-10-28",
+  "files": [
+    {
+      "path": "artifacts/nx_full_interface_20261028/inputs_v1/manifest.json",
+      "bytes": 1732,
+      "sha256": "2d244d0c72006247c417acdc972b8c1915587f2fddd26131d5280f2a342b99d7"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/request_manifest.json",
+      "bytes": 5896,
+      "sha256": "22a7e9222368379da17346b9ecb79ad2c938b43057ac7c0a03310cdcf6894c3b"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/transport.jsonl",
+      "bytes": 1581896,
+      "sha256": "74b2e87fbfca7d5061935c6408da1039ac758165a90d1878340eb4d5b93a0bbf"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/summary_v5.json",
+      "bytes": 5273,
+      "sha256": "6f69d23c8d413271d4521d82c00c103c7ffd260ddd7f905fdb8682cfd8d19d26"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/probe_regression.log",
+      "bytes": 4948,
+      "sha256": "63166b0d68e8f2b6fdce7c4bdb645b9c1063ed8c7e1c7d0f420f06c63fc177c0"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/build.log",
+      "bytes": 920,
+      "sha256": "9523629d28e49cbc60c05416bc249173246c3f9432bcea6026098e77ba6a7c6c"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/configure.log",
+      "bytes": 1938,
+      "sha256": "80dbe67c532e25f30b0c97150332b37b4419509d55ea0f3735f86d67f407c4c0"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/ctest.log",
+      "bytes": 1097,
+      "sha256": "6997c8e93fa999661b7ee302bf2d7ea00f689ac67707b1c1d54f0b7ec86401b1"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/hold_000.log",
+      "bytes": 369908,
+      "sha256": "ae656d4fbca5e0d8df61e34e6db0379ae3a09dbf3f81a67a007eac263b6267c3"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/hold_001.log",
+      "bytes": 287552,
+      "sha256": "6f0872eeef3d68299e2f9965ac41d9f70eb97ae133dce7c613c14af6b1f046c6"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/wrench_000.log",
+      "bytes": 366176,
+      "sha256": "792e35b88a00d754c56a1a9e27166e3e716ab95c508481aa07f92890cbd026ab"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/wrench_001.log",
+      "bytes": 157030,
+      "sha256": "57f63995c6cd4cd0cbb7a5f6dfbf3ad7bfe821b06b81cba899f2919400cfacd2"
+    },
+    {
+      "path": "artifacts/nx_full_interface_20261028/run_v5/ssh_stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scripts/prepare_x650_hardware_replay.py",
+      "bytes": 5216,
+      "sha256": "a5208262e03510277b74cec138632efb054571bc7a0b61c600b2d5458e13d312"
+    },
+    {
+      "path": "scripts/run_nx_full_interface_replay.py",
+      "bytes": 4692,
+      "sha256": "9c71ca4fd39de952a8e5dd66a980f845ad427bbdcabd791158905cce42638819"
+    },
+    {
+      "path": "scripts/nx_full_interface_replay_remote.py",
+      "bytes": 4532,
+      "sha256": "7f5636e95a64bf91852f8f5550fc41ab14d427a06e61c8c31fff2336a6c1fcb5"
+    },
+    {
+      "path": "scripts/summarize_nx_full_interface_replay.py",
+      "bytes": 8538,
+      "sha256": "210488ab6e55c73906f74097e7deece0be33287c5ea7bdc85431a853375180dd"
+    },
+    {
+      "path": "tests/unit/test_x650_hardware_replay.py",
+      "bytes": 6804,
+      "sha256": "f745f41a76547b1171a47af9c2dd993bcd358e66bf7e027f9d2a002e74f1a580"
+    },
+    {
+      "path": "docs/validation/nmpc_interface_20261027/full_input_manifest.json",
+      "bytes": 1405,
+      "sha256": "028dc7cc49492f8c630394a65213c85ca6402ef886754cc9e15ee857db5325e3"
+    }
+  ],
+  "tests": {
+    "replay_rows_passed": 1281,
+    "nx_interface_ctest_passed": 8,
+    "nx_probe_ctest_passed": 2,
+    "nx_probe_ros_mock_passed": 3,
+    "pc_pytest_passed": 34
+  },
+  "final_read_only_remote_check": {
+    "no_matching_ram_replay_directories": true,
+    "no_replay_or_probe_processes": true
+  },
+  "physical_hardware_accessed": false,
+  "persistent_deployment": false,
+  "library_bytes_unchanged": true,
+  "source_files_still_match_executed_archive": true
+}

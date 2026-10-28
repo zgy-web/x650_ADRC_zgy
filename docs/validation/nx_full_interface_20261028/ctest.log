@@ -1,0 +1,22 @@
+Internal ctest changing into directory: /dev/shm/flyarm_full_replay_qqsrvoph/build
+Test project /dev/shm/flyarm_full_replay_qqsrvoph/build
+    Start 1: mpc_interface_prepare_discard
+1/8 Test #1: mpc_interface_prepare_discard .....   Passed    0.01 sec
+    Start 2: mpc_interface_equivalence
+2/8 Test #2: mpc_interface_equivalence .........   Passed    0.03 sec
+    Start 3: mpc_interface_stale_tokens
+3/8 Test #3: mpc_interface_stale_tokens ........   Passed    0.01 sec
+    Start 4: mpc_interface_bad_history
+4/8 Test #4: mpc_interface_bad_history .........   Passed    0.01 sec
+    Start 5: mpc_interface_native_error
+5/8 Test #5: mpc_interface_native_error ........   Passed    0.01 sec
+    Start 6: mpc_interface_wrong_publication
+6/8 Test #6: mpc_interface_wrong_publication ...   Passed    0.01 sec
+    Start 7: mpc_interface_reset
+7/8 Test #7: mpc_interface_reset ...............   Passed    0.01 sec
+    Start 8: mpc_px4_adapter_contract
+8/8 Test #8: mpc_px4_adapter_contract ..........   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =   0.12 sec

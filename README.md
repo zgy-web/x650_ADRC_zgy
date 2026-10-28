@@ -97,7 +97,9 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 2026-10-28 完成[真实 NX / Pixhawk ROS 2 只读状态通道](docs/NX_PX4_ROS2_STATE.md)：新增依赖统一位于 NX 的 `~/flyarm/ros2_hw_runtime/v1/`，构建临时文件在内存，实验日志仅保留电脑。飞控重启后 DDS 建立成功，随后 Agent 重连的完整 60 秒窗口收到姿态、里程计各 6,000 条和位置 3,000 条，无源时间戳倒退。首次同步初始化失败仍保留；水平位置与航向未就绪，未执行 Offboard 或解锁，详情见[状态接收记录](docs/validation/nx_ros2_state_20261028/README.md)。
 
-2026-10-28 随后完成[真实 NX C++ 状态处理与 PX4 诊断请求闭环](docs/validation/nx_hardware_link_20261028/README.md)：一次预飞检查请求得到飞控 ACCEPTED 确认，NX 本机测得往返 10.88 ms；完整观察窗口 3,001 次处理均阻止使用无效位置，未发布轨迹、Offboard 或解锁请求。轨迹字段接收和真实全身 MPC 仍待有效定位、关节反馈及后续执行链验收。代码对应与复现见[台架指令链指南](docs/NX_PX4_HARDWARE_LINK.md)。
+2026-10-28 随后完成[真实 NX C++ 状态处理与 PX4 诊断请求闭环](docs/validation/nx_hardware_link_20261028/README.md)：一次预飞检查请求得到飞控 ACCEPTED 确认，NX 本机测得往返 10.88 ms；完整观察窗口 3,001 次处理均阻止使用无效位置，未发布轨迹、Offboard 或解锁请求。轨迹字段接收仍待内部回读；真实位置闭环另需有效定位、关节反馈及后续执行链验收。代码对应与复现见[台架指令链指南](docs/NX_PX4_HARDWARE_LINK.md)。
+
+同日补齐[完整 C++ 接口离线回放](docs/NX_CPP_INTERFACE_REPLAY.md)：实体 NX 上 1,281 个历史快照经重建 PX4/JointState 消息、内存 CDR、共用状态适配、原 ABI 4 MPC、PVA 编码和模拟提交全部通过。修复新适配器的浮点同刻误报未来，并绑定实际库对应的历史 C++ 头文件；原求解参数未改，float32 量化差异单独报告。结果见[验证记录](docs/validation/nx_full_interface_20261028/README.md)。另已准备 [Pixhawk FMU Debug 独立回读接法](docs/NX_PX4_SETPOINT_READBACK.md)，本轮未发送实机轨迹设定值。
 
 新的 [TS20 Gazebo 条件执行器准备与接口验证](docs/X650_TS20_PLANT_README.md)支持完整 URDF flight 模型派生、独立 airframe 4997、固定 5 ms MIT 总线和实际关节状态记录。两关节低幅正反向原生物理位移检查已通过；新工况的悬停、摆臂与完整末端保持仍须分别验收，快速八字尚未开放。该插件保留原刚体惯性，通过条件自由运动响应施加速度约束，不是已标定的轴端力矩模型。
 

@@ -1,0 +1,87 @@
+{
+  "archive_sha256": "69ce59eb24edebf21c121c95a212c3f573390fa79afd1b132937c235ffc8f8f4",
+  "files": {
+    "bound_native/mpc_core.hpp": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093",
+    "control_packages/x650_mpc_controller_v1/CMakeLists.txt": "d260270a003dc46da1a68152a19eef2f5c705c2bbdd6a592a7994c5fb9f83462",
+    "control_packages/x650_mpc_controller_v1/compat/abi4_20261027/mpc_core.hpp": "3ce12c395eb047167b5eda8fefb502fe56622e610cdfd3e82a4302f4a53c0093",
+    "control_packages/x650_mpc_controller_v1/examples/common_gate_one_step.cpp": "5e6a30c2ee321dc35de5a73002bc2a37da33364eef459cee29375bc57bae3485",
+    "control_packages/x650_mpc_controller_v1/examples/hardware_replay.cpp": "08283b47356b16cab479d3203f47c76c49cfe3843d8ac5aad2da753c79c6ef96",
+    "control_packages/x650_mpc_controller_v1/examples/one_step.cpp": "bc0e18e5b94a0ef0fd70866dd6549438ee804128c862ab90a98be4250ecb5245",
+    "control_packages/x650_mpc_controller_v1/examples/replay.cpp": "a2495c790be9096efa0e5c711cf277919085e368042dcc8f829e9b3a18f812ec",
+    "control_packages/x650_mpc_controller_v1/examples/synthetic_fixture.hpp": "579f6bd1e721d569eeb5777766417fe194f0d17ef31589b38733a30920f0e45e",
+    "control_packages/x650_mpc_controller_v1/include/x650_mpc/common_gate.hpp": "21583521cdf329c3ea6ce445a91858c2038bb8565c6c40675039a3c11cd53c5a",
+    "control_packages/x650_mpc_controller_v1/include/x650_mpc/controller.hpp": "80f7a3c2c5bbefe3be9b76d7639ec0963c7d8743bc793b9db8c5c64ba227f9df",
+    "control_packages/x650_mpc_controller_v1/include/x650_mpc/px4_replay_adapter.hpp": "5e920aee95de11deb92e24d3df83904885a4e55d3feae45d8051786ed5e78796",
+    "control_packages/x650_mpc_controller_v1/include/x650_mpc/selected_profile.hpp": "e5f13843861576bddda14afa807182b4e43b28db95e06a791b14b66b84580547",
+    "control_packages/x650_mpc_controller_v1/src/common_gate.cpp": "8c8a424245d6ab8270f373e8b348529f75a6f9d413ce0a723eb0167592811d75",
+    "control_packages/x650_mpc_controller_v1/src/controller.cpp": "5c5564e3c1f97c2623071df9d99cdde57373b676fed8e0b446ff0a03098debaa",
+    "control_packages/x650_mpc_controller_v1/tests/test_common_gate.cpp": "265674fbc0019d6e930ec100e302f91871a1d55fb5cac2594d7aa13ece03834f",
+    "control_packages/x650_mpc_controller_v1/tests/test_common_gate_recorded.cpp": "e44f077ea896e302993be4a0cd0f021d5de7f0af0aac4982af6c18bc1686de55",
+    "control_packages/x650_mpc_controller_v1/tests/test_controller.cpp": "8b9c8b8f50c74a07e4d69eb101d9affbe52de924d21b3084de20d9cb7dfc086e",
+    "control_packages/x650_mpc_controller_v1/tests/test_px4_adapter.cpp": "c246cac7d2a3656dd72f1ee2ceabb444ca6a40803c3a8f25f40fcf05715d3234",
+    "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/link_contract.hpp": "ce83c2627ed4fa1ca9dc058c58a1624332fef0a1375c2fd44f061f009c5dbcd6",
+    "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/px4_message_adapter.hpp": "ce5ae0447a8a1e1aa7372bd46d06f05782f9f724762bda0ece27a877e25f2c63",
+    "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/state_math.hpp": "e97bc22e46631f023e2fb91ec51e41e1f67c6dc3df313420fc0c763d045e921d",
+    "control_packages/x650_wholebody_v1/benchmark/include/benchmark_io.hpp": "62ad4e35a8de5f655581e44a19de99df54bc908068a994021a87dc815779e4d2",
+    "inputs/hold_000.json": "85650337c64f7d9cb01a315d1d67b4586a72bdd3a16901bf9313aff98f83e4d3",
+    "inputs/hold_001.json": "6276e4abbe0645e1fda3272dca5abe0b00fb1d8514d15a240cf542ada05404ec",
+    "inputs/wrench_000.json": "1b31652ee19ed6dda24e67124852e68ff3e43eaa9451079f084f60fa8ddf91c2",
+    "inputs/wrench_001.json": "a1249c3b1dd5cc5eea2823054a6d4e5fbe13b2d724f1de885d1f601e392c83a1"
+  },
+  "inputs": [
+    {
+      "name": "hold_000",
+      "file": "hold_000.json",
+      "sha256": "85650337c64f7d9cb01a315d1d67b4586a72bdd3a16901bf9313aff98f83e4d3",
+      "bytes": 4296421,
+      "count": 400,
+      "source_sha256": "da6be40faf6a88418dd77e79cf9804823236137fd09639b7bffdc2f758f987b8",
+      "start_s": 0.0519999999999996,
+      "end_s": 16.896
+    },
+    {
+      "name": "hold_001",
+      "file": "hold_001.json",
+      "sha256": "6276e4abbe0645e1fda3272dca5abe0b00fb1d8514d15a240cf542ada05404ec",
+      "bytes": 3307640,
+      "count": 311,
+      "source_sha256": "3251c02cbf76b674cb769c217cffb79baf51e4a68584ee74980bbc07911b0dea",
+      "start_s": 16.940000000000005,
+      "end_s": 29.996000000000002
+    },
+    {
+      "name": "wrench_000",
+      "file": "wrench_000.json",
+      "sha256": "1b31652ee19ed6dda24e67124852e68ff3e43eaa9451079f084f60fa8ddf91c2",
+      "bytes": 4610370,
+      "count": 400,
+      "source_sha256": "fb07ab9914c0a2b4bb2166c816d27a8cfe5818a6e537bdfc21b2f345f7871d55",
+      "start_s": 0.0519999999999996,
+      "end_s": 16.875999999999998
+    },
+    {
+      "name": "wrench_001",
+      "file": "wrench_001.json",
+      "sha256": "a1249c3b1dd5cc5eea2823054a6d4e5fbe13b2d724f1de885d1f601e392c83a1",
+      "bytes": 1873637,
+      "count": 170,
+      "source_sha256": "7f236c9d4e1274ce04e3ab3c33c2e910df4df2db3be7099507cfb44a062c517c",
+      "start_s": 16.916000000000004,
+      "end_s": 24.003999999999998
+    }
+  ],
+  "libraries": {
+    "core": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_mpc_core.so",
+      "sha256": "64bbbce85777a9eed5ff77b7963d31c8ab46c089b623ea20d3d5627cb8cd8347"
+    },
+    "optimization": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_optimization.so",
+      "sha256": "451bef2c1d7d832f5fe74054af7bcc6ca3ab8a28ffbaeaac38bceb660492087f"
+    },
+    "predictor": {
+      "path": "/home/jetson/flyarm_mpc_runtime/abi4_cpu_4ed0bd1b22d1d0d2_fpcontract_off/lib/libx650_benchmark_predictor.so",
+      "sha256": "5837e54df53f84de29d11af11655dee26b2c227ead50e77edaeb4d74aee0eeed"
+    }
+  }
+}

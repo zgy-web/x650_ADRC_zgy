@@ -1,0 +1,49 @@
+{
+  "kind": "x650_hardware_replay_preparation_v1",
+  "inputs": [
+    {
+      "name": "hold_000",
+      "file": "hold_000.json",
+      "sha256": "85650337c64f7d9cb01a315d1d67b4586a72bdd3a16901bf9313aff98f83e4d3",
+      "bytes": 4296421,
+      "count": 400,
+      "source_sha256": "da6be40faf6a88418dd77e79cf9804823236137fd09639b7bffdc2f758f987b8",
+      "start_s": 0.0519999999999996,
+      "end_s": 16.896
+    },
+    {
+      "name": "hold_001",
+      "file": "hold_001.json",
+      "sha256": "6276e4abbe0645e1fda3272dca5abe0b00fb1d8514d15a240cf542ada05404ec",
+      "bytes": 3307640,
+      "count": 311,
+      "source_sha256": "3251c02cbf76b674cb769c217cffb79baf51e4a68584ee74980bbc07911b0dea",
+      "start_s": 16.940000000000005,
+      "end_s": 29.996000000000002
+    },
+    {
+      "name": "wrench_000",
+      "file": "wrench_000.json",
+      "sha256": "1b31652ee19ed6dda24e67124852e68ff3e43eaa9451079f084f60fa8ddf91c2",
+      "bytes": 4610370,
+      "count": 400,
+      "source_sha256": "fb07ab9914c0a2b4bb2166c816d27a8cfe5818a6e537bdfc21b2f345f7871d55",
+      "start_s": 0.0519999999999996,
+      "end_s": 16.875999999999998
+    },
+    {
+      "name": "wrench_001",
+      "file": "wrench_001.json",
+      "sha256": "a1249c3b1dd5cc5eea2823054a6d4e5fbe13b2d724f1de885d1f601e392c83a1",
+      "bytes": 1873637,
+      "count": 170,
+      "source_sha256": "7f236c9d4e1274ce04e3ab3c33c2e910df4df2db3be7099507cfb44a062c517c",
+      "start_s": 16.916000000000004,
+      "end_s": 24.003999999999998
+    }
+  ],
+  "row_count": 1281,
+  "source_manifest_sha256": "028dc7cc49492f8c630394a65213c85ca6402ef886754cc9e15ee857db5325e3",
+  "raw_cdr_recording": false,
+  "physical_validation": false
+}
