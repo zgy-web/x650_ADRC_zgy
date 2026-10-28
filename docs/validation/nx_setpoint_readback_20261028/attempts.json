@@ -1,0 +1,94 @@
+[
+  {
+    "attempt": "live_v1",
+    "complete": false,
+    "error": "RuntimeError('Unexpected DDS domain')",
+    "setpoints_sent": 0,
+    "evidence": [
+      {
+        "file": "build_identity.json",
+        "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+      },
+      {
+        "file": "console.json",
+        "sha256": "5bf57c5d675fc8e0ee1de3c79ff683c8e06a710998b6c6a3d461c92971922113"
+      },
+      {
+        "file": "session_status.json",
+        "sha256": "28421937b5568172f5028da5451c564f01969a40c0c806b77d491b4586901ca5"
+      }
+    ]
+  },
+  {
+    "attempt": "live_v2",
+    "complete": false,
+    "error": "RuntimeError('Temporary serial DDS did not start')",
+    "setpoints_sent": 0,
+    "evidence": [
+      {
+        "file": "build_identity.json",
+        "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+      },
+      {
+        "file": "console.json",
+        "sha256": "53790e3e5b99ee1ce4ad89326234b3a24bb90073632d75daee0343382f7e769f"
+      },
+      {
+        "file": "session_status.json",
+        "sha256": "747edb525fae7433ac30ea32b8d81bf2e419c0c17df73b7cd745f1baf42ec6be"
+      }
+    ]
+  },
+  {
+    "attempt": "live_v3",
+    "complete": false,
+    "error": "RuntimeError('PX4 DDS startup error')",
+    "setpoints_sent": 0,
+    "evidence": [
+      {
+        "file": "build_identity.json",
+        "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+      },
+      {
+        "file": "console.json",
+        "sha256": "6137b2bd3bde0fad0035fdb8ec6a1ada06195ee952f32ee82cf404c5559f0319"
+      },
+      {
+        "file": "remote.jsonl",
+        "sha256": "061f7962a965285619e9b3e1cdc5617942dfccc78ca1f165b1c8961a8be59351"
+      },
+      {
+        "file": "session_status.json",
+        "sha256": "a2d6bdda2e7567ed486141b9ac8dc1d18dbb4e0839508ddadbec25f826b72b5d"
+      }
+    ]
+  },
+  {
+    "attempt": "live_v4",
+    "complete": true,
+    "error": null,
+    "setpoints_sent": 184,
+    "evidence": [
+      {
+        "file": "build_identity.json",
+        "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+      },
+      {
+        "file": "console.json",
+        "sha256": "60d2ae5fc2a48032342b84a63b237723a430ecaa26ae379a5c65e98d0583c4b5"
+      },
+      {
+        "file": "remote.jsonl",
+        "sha256": "23945ccd955ed1767a33dd81e76b73ea14874101fef87f7cf354aa6ddef59e02"
+      },
+      {
+        "file": "session_status.json",
+        "sha256": "48e18347b210fbef1ff525be97b0965f8dd6a0af077053e3cb2c04cddbb48285"
+      },
+      {
+        "file": "summary.json",
+        "sha256": "21602f12abebd1b4db0b44811256274f70a2e258e5ef53df0ac587646afb89e2"
+      }
+    ]
+  }
+]

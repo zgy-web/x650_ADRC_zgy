@@ -156,3 +156,12 @@ scripts/nx_full_interface_replay_remote.py -text whitespace=cr-at-eol
 scripts/summarize_nx_full_interface_replay.py -text whitespace=cr-at-eol
 tests/unit/test_x650_hardware_replay.py -text whitespace=cr-at-eol
 docs/validation/nx_full_interface_20261028/** -text -whitespace
+# Bounded physical DDS probe: bind executed host tools and reviewed evidence.
+scripts/build_nx_setpoint_check.py -text whitespace=cr-at-eol
+scripts/nx_hardware_link_build_remote.py -text whitespace=cr-at-eol
+scripts/nx_setpoint_check_session_remote.py -text whitespace=cr-at-eol
+scripts/px4_debug_console.py -text whitespace=cr-at-eol
+scripts/run_nx_setpoint_readback.py -text whitespace=cr-at-eol
+scripts/summarize_nx_setpoint_readback.py -text whitespace=cr-at-eol
+tests/unit/test_nx_setpoint_readback.py -text whitespace=cr-at-eol
+docs/validation/nx_setpoint_readback_20261028/** -text -whitespace

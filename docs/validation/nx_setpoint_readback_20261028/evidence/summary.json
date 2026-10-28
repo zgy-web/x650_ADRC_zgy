@@ -1,0 +1,189 @@
+{
+  "matched_counts": [
+    7,
+    10,
+    18
+  ],
+  "matched": [
+    {
+      "timestamp": 25070650,
+      "pattern": 0
+    },
+    {
+      "timestamp": 25370534,
+      "pattern": 0
+    },
+    {
+      "timestamp": 25980558,
+      "pattern": 0
+    },
+    {
+      "timestamp": 26670601,
+      "pattern": 0
+    },
+    {
+      "timestamp": 26780603,
+      "pattern": 0
+    },
+    {
+      "timestamp": 27370633,
+      "pattern": 0
+    },
+    {
+      "timestamp": 27470638,
+      "pattern": 0
+    },
+    {
+      "timestamp": 28070667,
+      "pattern": 1
+    },
+    {
+      "timestamp": 28170676,
+      "pattern": 1
+    },
+    {
+      "timestamp": 28670708,
+      "pattern": 1
+    },
+    {
+      "timestamp": 29170761,
+      "pattern": 1
+    },
+    {
+      "timestamp": 29270766,
+      "pattern": 1
+    },
+    {
+      "timestamp": 29370766,
+      "pattern": 1
+    },
+    {
+      "timestamp": 30070803,
+      "pattern": 1
+    },
+    {
+      "timestamp": 30180821,
+      "pattern": 1
+    },
+    {
+      "timestamp": 30580826,
+      "pattern": 1
+    },
+    {
+      "timestamp": 30970840,
+      "pattern": 1
+    },
+    {
+      "timestamp": 31080818,
+      "pattern": 2
+    },
+    {
+      "timestamp": 31180827,
+      "pattern": 2
+    },
+    {
+      "timestamp": 31770860,
+      "pattern": 2
+    },
+    {
+      "timestamp": 31880859,
+      "pattern": 2
+    },
+    {
+      "timestamp": 32170874,
+      "pattern": 2
+    },
+    {
+      "timestamp": 32280916,
+      "pattern": 2
+    },
+    {
+      "timestamp": 32770930,
+      "pattern": 2
+    },
+    {
+      "timestamp": 32880934,
+      "pattern": 2
+    },
+    {
+      "timestamp": 32980950,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33470938,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33570943,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33670948,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33770958,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33880959,
+      "pattern": 2
+    },
+    {
+      "timestamp": 33980968,
+      "pattern": 2
+    },
+    {
+      "timestamp": 34470994,
+      "pattern": 2
+    },
+    {
+      "timestamp": 34580996,
+      "pattern": 2
+    },
+    {
+      "timestamp": 34971020,
+      "pattern": 2
+    }
+  ],
+  "unmatched_internal_frames": 115,
+  "baseline_matched_internal_frames": 115,
+  "unexpected_internal_frames": 0,
+  "unique_internal_frames": 150,
+  "printed_field_tolerance": 5.1e-06,
+  "passed": true,
+  "kind": "flyarm.px4_setpoint_readback.v1",
+  "sent_count": 184,
+  "sent_pattern_counts": [
+    55,
+    55,
+    74
+  ],
+  "binary_sha256": "539079861c31eb208201b9820b7a4f3ef68a55d519d9b826d436d1141e1133ad",
+  "source_sha256": "5e75ebfd8358b277b71243cf0d2b8ea6d1b4885b0b5571cbb60a9651b7ee0f98",
+  "firmware_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "transport_fields_verified": true,
+  "control_execution_verified": false,
+  "mpc_live_validation": false,
+  "offboard_takeover_tested": false,
+  "actuators_tested": false,
+  "latency_measured": false,
+  "evidence": [
+    {
+      "file": "build_identity.json",
+      "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+    },
+    {
+      "file": "console.json",
+      "sha256": "c8eed8446f1e563b8bc90072fcc873cc1eac488e638e2c7e5b9bf3a462dd090e"
+    },
+    {
+      "file": "remote.jsonl",
+      "sha256": "d524c461773cf23a25d1241d21a456f0eff44151bd8785b6b78a3745e2c88516"
+    },
+    {
+      "file": "session_status.json",
+      "sha256": "48e18347b210fbef1ff525be97b0965f8dd6a0af077053e3cb2c04cddbb48285"
+    }
+  ]
+}

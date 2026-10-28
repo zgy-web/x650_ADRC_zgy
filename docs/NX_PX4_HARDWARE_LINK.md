@@ -83,4 +83,4 @@ python scripts/summarize_nx_hardware_link.py --input artifacts/link_session.json
 | 轨迹消息在 PX4 内部的字段 | `NOT_TESTED`，不能用诊断 ACK 替代 |
 | 真实全身 MPC 与位置闭环 | 待有效定位、真实关节反馈及后续执行接口验收 |
 
-Agent 和节点退出后，飞控仍可能保持临时 DDS。重启未解锁飞控恢复原 USB MAVLink。[完整 C++ 接口离线回放](NX_CPP_INTERFACE_REPLAY.md)已补齐状态适配、原 MPC 和输出编码检查；[独立 Debug 串口回读方案](NX_PX4_SETPOINT_READBACK.md)已列出接线与飞控内部读取命令。未解锁时验证轨迹字段是否进入 uORB 不需要先恢复动捕，但真实位置控制和接管退出需要有效定位及后续专项验收。NX 自己订阅发送话题不能作为飞控已收到的证据。
+Agent 和节点退出后，飞控仍可能保持临时 DDS。重启未解锁飞控恢复原 USB MAVLink。[完整 C++ 接口离线回放](NX_CPP_INTERFACE_REPLAY.md)已补齐状态适配、原 MPC 和输出编码检查；后续的[独立 Debug 串口回读](NX_PX4_SETPOINT_READBACK.md)已实际完成 10 秒 A/B/C 发送，确认字段进入飞控 uORB，见[验收结果](validation/nx_setpoint_readback_20261028/README.md)。本页记录的 401 请求与后续轨迹字段检查是两次独立实验。未解锁时验证字段不需要先恢复动捕，真实位置控制和接管退出仍需有效定位及专项验收。

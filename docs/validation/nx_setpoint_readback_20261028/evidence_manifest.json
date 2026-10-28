@@ -1,0 +1,49 @@
+{
+  "original_run": "artifacts/nx_setpoint_readback_20261028/live_v4",
+  "original_evidence": [
+    {
+      "file": "build_identity.json",
+      "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+    },
+    {
+      "file": "console.json",
+      "sha256": "60d2ae5fc2a48032342b84a63b237723a430ecaa26ae379a5c65e98d0583c4b5"
+    },
+    {
+      "file": "remote.jsonl",
+      "sha256": "23945ccd955ed1767a33dd81e76b73ea14874101fef87f7cf354aa6ddef59e02"
+    },
+    {
+      "file": "session_status.json",
+      "sha256": "48e18347b210fbef1ff525be97b0965f8dd6a0af077053e3cb2c04cddbb48285"
+    }
+  ],
+  "redactions": [
+    "Only the hardware PX4GUID line and its raw base64 removed from portable ver-all output",
+    "Agent console diagnostics omitted from portable remote stream; all publisher, lifecycle and cleanup events preserved"
+  ],
+  "portable_files": [
+    {
+      "file": "evidence\\build_identity.json",
+      "sha256": "f24e12bd747a09b62b60ef11585f4f993eaa921267f95338eda0f5633d1fa2c5"
+    },
+    {
+      "file": "evidence\\console.json",
+      "sha256": "c8eed8446f1e563b8bc90072fcc873cc1eac488e638e2c7e5b9bf3a462dd090e"
+    },
+    {
+      "file": "evidence\\remote.jsonl",
+      "sha256": "d524c461773cf23a25d1241d21a456f0eff44151bd8785b6b78a3745e2c88516"
+    },
+    {
+      "file": "evidence\\session_status.json",
+      "sha256": "48e18347b210fbef1ff525be97b0965f8dd6a0af077053e3cb2c04cddbb48285"
+    },
+    {
+      "file": "evidence\\summary.json",
+      "sha256": "b36e22bf16ffc5b4e50cc0ba038ec42d74dc93dba5f7de21642340c5ed110094"
+    }
+  ],
+  "compared_results_identical": true,
+  "agent_lines_omitted": 201
+}

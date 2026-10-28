@@ -1,0 +1,31 @@
+{
+  "build": {
+    "schema": "flyarm.hardware_link_build.v1",
+    "action": "check",
+    "source_sha256": "5e75ebfd8358b277b71243cf0d2b8ea6d1b4885b0b5571cbb60a9651b7ee0f98",
+    "files": {
+      "flyarm_hardware_state/CMakeLists.txt": "ac07b487d89d64737c43c65a049786d2b92cb5898bd0309626a7d7c144d22c0d",
+      "flyarm_hardware_state/include/flyarm_hardware_state/link_contract.hpp": "ce83c2627ed4fa1ca9dc058c58a1624332fef0a1375c2fd44f061f009c5dbcd6",
+      "flyarm_hardware_state/include/flyarm_hardware_state/px4_message_adapter.hpp": "ce5ae0447a8a1e1aa7372bd46d06f05782f9f724762bda0ece27a877e25f2c63",
+      "flyarm_hardware_state/include/flyarm_hardware_state/state_math.hpp": "e97bc22e46631f023e2fb91ec51e41e1f67c6dc3df313420fc0c763d045e921d",
+      "flyarm_hardware_state/package.xml": "570cd004bb96ea787533908a692e01ff5ea87b9389c99fa104a61bf93a2ed854",
+      "flyarm_hardware_state/src/px4_link_probe.cpp": "e03bc02c3cc0f30c3f869196db6ab6e895292b1ae642dcb84b00512541da3fb4",
+      "flyarm_hardware_state/src/px4_setpoint_probe.cpp": "240e3a5f97833e7e41c8d366278937e26a575a3ca8729e1e4ad843c53036569b",
+      "flyarm_hardware_state/src/px4_state_probe.cpp": "9ce1f6ed5fed2077d37ac232e106a13079efdd111617b8e4e4927e5c67a8ab3d",
+      "flyarm_hardware_state/test/link_contract_test.cpp": "6e3ffa90b05e1c4488dd7d139edde614a887801eaed8349a3e6d179e0d5540e2",
+      "flyarm_hardware_state/test/probe_link_ros.py": "76acd87f53db2c6b5710aaa705f55849d02f1ab9ca0f528e32c780af6d9cd2f1",
+      "flyarm_hardware_state/test/probe_setpoint_ros.py": "bc134a699525bbb485e79baa85c00b062b7d8e228413947a000b1d0b6c24f726",
+      "flyarm_hardware_state/test/state_math_test.cpp": "aa4f03e3fa9b2dfdfdeebb54c3fba2c63e73f7b54252e000d9783f007d757dcd"
+    },
+    "unit_tests_pass": true,
+    "mock_ros_tests_pass": true,
+    "hardware_accessed": false,
+    "permanent_configuration_changes": false,
+    "setpoint_mock_tests_pass": true
+  },
+  "binary": {
+    "event": "setpoint_binary",
+    "sha256": "539079861c31eb208201b9820b7a4f3ef68a55d519d9b826d436d1141e1133ad",
+    "source_sha256": "5e75ebfd8358b277b71243cf0d2b8ea6d1b4885b0b5571cbb60a9651b7ee0f98"
+  }
+}

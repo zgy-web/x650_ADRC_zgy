@@ -1,0 +1,9 @@
+{
+  "scripts/build_nx_setpoint_check.py": "134a5da934398526ace489b7ebdbff74e1db42a18c7cb366aabe1210411d088d",
+  "scripts/nx_hardware_link_build_remote.py": "10f29157651db07b016131b8313e751bd70959c8c46528c75b4d21257d5f3d49",
+  "scripts/nx_setpoint_check_session_remote.py": "d484a54b8a43293b27c959c3884abc8a09a4efd900eef70a529c9a8142fbc1df",
+  "scripts/px4_debug_console.py": "abba3b2684ddd270cd6b8177e2153ac7bf7ca95f0a881cfef67f6612fa4c9bd5",
+  "scripts/run_nx_setpoint_readback.py": "79f3ad7acdbc6fe3dc1d9f0bdb3da59de31b5fa94e21a68f052b9b3c3c582414",
+  "scripts/summarize_nx_setpoint_readback.py": "98505a7bd6c86a44a4cdc1f22cdee6c8c304ed55c79ffffa13ed5da46d033924",
+  "tests/unit/test_nx_setpoint_readback.py": "f3bdefc6e5c70e176717904a12af318351d4f257e2532624d14e7954c023847c"
+}

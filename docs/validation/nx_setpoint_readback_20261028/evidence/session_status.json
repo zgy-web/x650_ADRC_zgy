@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "before": {
+    "timestamp": 16930485,
+    "arming_state": 1,
+    "nav_state": 4,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "usb_was_already_reserved": false,
+  "temporary_dds_started": true,
+  "after": {
+    "timestamp": 39790373,
+    "arming_state": 1,
+    "nav_state": 4,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "dds_after": "uxrce_dds_client status\r\nINFO  [uxrce_dds_client] Running, connected\r\nINFO  [uxrce_dds_client] Using transport:     serial\r\nINFO  [uxrce_dds_client] Payload tx:          17285 B/s\r\nINFO  [uxrce_dds_client] Payload rx:          0 B/s\r\nINFO  [uxrce_dds_client] timesync converged: true\r\nuxrce_dds_client: cycle: 3651 events, 15047953us elapsed, 4121.60us avg, min 127us max 1008273us 16880.363us rms\r\nuxrce_dds_client: cycle interval: 3652 events, 4121.84us avg, min 128us max 1008274us 16878.107us rms\r\nnsh> \u001b[K",
+  "port_closed": true
+}
