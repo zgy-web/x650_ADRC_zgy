@@ -103,6 +103,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 随后完成[真实 NX→PX4 限时设定值发送与独立回读](docs/validation/nx_setpoint_readback_20261028/README.md)：10 秒内发送 184 条 A/B/C 编码测试值，COM13 读取飞控内部 uORB，35 个新时间戳样本覆盖三种模式并逐字段匹配。其余 115 个采样符合预先捕获的内部基线，无异常字段组合。全程未解锁、非 Offboard；本次不执行实机 MPC 或验证电机响应。临时程序仅在 NX RAM 运行，结果存电脑；USB 未连接故障在未解锁飞控重启后恢复，根因未定。代码与复现见[限时发送及回读指南](docs/NX_PX4_SETPOINT_READBACK.md)。
 
+2026-10-29 补充 [Pixhawk 四旋翼电调／电机检查](docs/PX4_ROTOR_COMMISSIONING.md)：通过 COM13 实读 AUX1–4 分配、DShot600、输出限值及单向模式，用户确认接线符合当天的新分配。电脑端新增只读盘点与默认仅显示计划的单电机限时点动入口，33项无硬件测试通过；当前尚未执行真实电机点动，转向和遥测仍待确认。日志保留电脑，不改 NX 配置或飞控参数；[本次只读证据](docs/validation/px4_rotor_commissioning_20261029/README.md)与实际旋转验收分别记录。
+
 新的 [TS20 Gazebo 条件执行器准备与接口验证](docs/X650_TS20_PLANT_README.md)支持完整 URDF flight 模型派生、独立 airframe 4997、固定 5 ms MIT 总线和实际关节状态记录。两关节低幅正反向原生物理位移检查已通过；新工况的悬停、摆臂与完整末端保持仍须分别验收，快速八字尚未开放。该插件保留原刚体惯性，通过条件自由运动响应施加速度约束，不是已标定的轴端力矩模型。
 
 [X650 控制包](control_packages/x650_wholebody_v1/README.md)提供新的 PID＋前馈协同基线与上层运动学 MPC；[分阶段仿真入口](simulations/x650_wholebody_mpc_v1/README.md)管理地面、悬停、关节、响应辨识与末端定点验收。当前精密上层协议 **`precision_ev_upper_v2` 只接受 `pid_ff` 的 `response_probe` 和 `tip_hold`**。MPC、普通/快速八字及全身动力学 NMPC 尚未在该协议下放行；有源码、预检通过或地面话题正常，不等于 MPC 飞行性能已验证。
