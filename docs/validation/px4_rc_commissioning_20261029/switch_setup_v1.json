@@ -1,0 +1,146 @@
+{
+  "kind": "fixed_px4_rc_switch_setup",
+  "utc_started": "2026-10-29T08:09:33.856961+00:00",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "complete": false,
+  "plan": [
+    [
+      "RC_MAP_KILL_SW",
+      7
+    ],
+    [
+      "COM_FLTMODE1",
+      1
+    ],
+    [
+      "COM_FLTMODE4",
+      2
+    ],
+    [
+      "COM_FLTMODE6",
+      7
+    ],
+    [
+      "RC_MAP_FLTMODE",
+      6
+    ],
+    [
+      "RC_MAP_ARM_SW",
+      5
+    ]
+  ],
+  "operator_power_off": true,
+  "parameter_attempts": [
+    {
+      "name": "RC_MAP_KILL_SW",
+      "value": 7,
+      "attempted": true,
+      "response_received": true,
+      "readback_verified": false
+    }
+  ],
+  "before_parameters": {
+    "RC_MAP_KILL_SW": 0,
+    "RC_MAP_ARM_SW": 0,
+    "RC_MAP_FLTMODE": 0,
+    "RC_MAP_MODE_SW": 0,
+    "RC_MAP_TERM_SW": 0,
+    "RC_MAP_FLTM_BTN": 0,
+    "RC_MAP_RETURN_SW": 0,
+    "RC_MAP_OFFB_SW": 0,
+    "RC_MAP_LOITER_SW": 0,
+    "COM_ARM_SWISBTN": 0,
+    "RC_ARMSWITCH_TH": 0.75,
+    "RC_KILLSWITCH_TH": 0.75,
+    "RC_MAP_ROLL": 1,
+    "RC_MAP_PITCH": 2,
+    "RC_MAP_THROTTLE": 3,
+    "RC_MAP_YAW": 4,
+    "RC_CHAN_CNT": 16,
+    "COM_FLTMODE1": -1,
+    "COM_FLTMODE2": -1,
+    "COM_FLTMODE3": -1,
+    "COM_FLTMODE4": -1,
+    "COM_FLTMODE5": -1,
+    "COM_FLTMODE6": -1,
+    "RC1_REV": 1,
+    "RC2_REV": 1,
+    "RC3_REV": 1,
+    "RC4_REV": 1,
+    "RC5_REV": 1,
+    "RC6_REV": 1,
+    "RC7_REV": 1,
+    "RC5_MIN": 1000,
+    "RC5_TRIM": 1500,
+    "RC5_MAX": 2000,
+    "RC6_MIN": 1000,
+    "RC6_TRIM": 1500,
+    "RC6_MAX": 2000,
+    "RC7_MIN": 1000,
+    "RC7_TRIM": 1500,
+    "RC7_MAX": 2000
+  },
+  "after_parameters": {
+    "RC_MAP_KILL_SW": null
+  },
+  "arm_commands": 0,
+  "motor_commands": 0,
+  "explicit_mode_commands": 0,
+  "nx_accessed": false,
+  "note": "RC mapping changes may generate internal kill/disarm/mode requests.",
+  "powercycle_persistence_verified": false,
+  "rc_takeover_verified": false,
+  "armed_failsafe_verified": false,
+  "physical_stop_verified": false,
+  "flight_ready": false,
+  "source_sha256": "2d6fd204c5b1a3a241e7342cf19bc7df8e1cbf1a18e4449c2471498e3fc85e40",
+  "before": {
+    "state": {
+      "timestamp": 3189054492,
+      "arming_state": 1,
+      "nav_state": 2,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "channels": [
+      1502,
+      1500,
+      1001,
+      1499,
+      1011,
+      1011,
+      1988,
+      1011,
+      1011,
+      1011,
+      1326,
+      1496,
+      1000,
+      1000,
+      2000,
+      2000,
+      0,
+      0
+    ],
+    "switches": {
+      "arm_switch": 0,
+      "kill_switch": 0,
+      "mode_slot": 0
+    },
+    "actuator_kill": false
+  },
+  "error": "ValueError: Write readback mismatch: RC_MAP_KILL_SW",
+  "port_closed": true,
+  "console_sha256": "fbb0b22d0dd4068eb0786b9e0c12b121ee359a80fa703cd66a9f18a50a16c4a7"
+}

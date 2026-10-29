@@ -1,0 +1,1531 @@
+{
+  "scope": "disarmed bench observations, not flight acceptance",
+  "switch_enum": {
+    "NONE": 0,
+    "ON": 1,
+    "MIDDLE": 2,
+    "OFF": 3
+  },
+  "rc_frame_counter_unused_in_current_crsf_driver": true,
+  "observations": [
+    {
+      "case": "after_partial_setup_v1",
+      "utc_started": "2026-10-29T08:09:53.847891+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3214209587,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3210030878,
+        "timestamp_last_signal": 3210030853,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 1
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": true
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "baseline_v1",
+      "utc_started": "2026-10-29T06:18:39.266177+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 4493097464,
+        "arming_state": 1,
+        "nav_state": 4,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 4489371617,
+        "timestamp_last_signal": 0,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": true,
+        "rc_failsafe": true,
+        "link_quality": -1,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": false,
+        "data_source": 0,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": 0.0
+      },
+      "switches": {
+        "mode_slot": null,
+        "arm_switch": null,
+        "kill_switch": null
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": true,
+      "crsf_invalid_crc": null
+    },
+    {
+      "case": "baseline_v2",
+      "utc_started": "2026-10-29T07:15:12.117945+00:00",
+      "read_complete": false,
+      "error": "SerialException: could not open port 'COM13': FileNotFoundError(2, '系统找不到指定的文件。', None, 2)",
+      "state": null,
+      "outputs": null,
+      "channels": null,
+      "rc": {
+        "timestamp": null,
+        "timestamp_last_signal": null,
+        "input_source": null,
+        "channel_count": null,
+        "rc_lost": null,
+        "rc_failsafe": null,
+        "link_quality": null,
+        "rc_total_frame_count": null
+      },
+      "manual": {
+        "valid": null,
+        "data_source": null,
+        "roll": null,
+        "pitch": null,
+        "yaw": null,
+        "throttle": null
+      },
+      "switches": {
+        "mode_slot": null,
+        "arm_switch": null,
+        "kill_switch": null
+      },
+      "actuator": {
+        "armed": null,
+        "prearmed": null,
+        "kill": null
+      },
+      "manual_control_signal_lost": null,
+      "crsf_invalid_crc": null
+    },
+    {
+      "case": "baseline_v3",
+      "utc_started": "2026-10-29T07:25:44.523812+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 564930416,
+        "arming_state": 1,
+        "nav_state": 4,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 560677106,
+        "timestamp_last_signal": 0,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": true,
+        "rc_failsafe": true,
+        "link_quality": -1,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": false,
+        "data_source": 0,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": 0.0
+      },
+      "switches": {
+        "mode_slot": null,
+        "arm_switch": null,
+        "kill_switch": null
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": true,
+      "crsf_invalid_crc": 0
+    },
+    {
+      "case": "baseline_v4_connected",
+      "utc_started": "2026-10-29T07:39:53.529965+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 1414192428,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1490,
+        1499,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 1409662053,
+        "timestamp_last_signal": 1409662028,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -0.02004
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 0
+    },
+    {
+      "case": "config_safe_positions_v1",
+      "utc_started": "2026-10-29T08:03:56.334020+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2857076436,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2852524395,
+        "timestamp_last_signal": 2852524366,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "kill_release_middle_v1",
+      "utc_started": "2026-10-29T08:13:54.720968+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3455172448,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1503,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3450890716,
+        "timestamp_last_signal": 3450890690,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 1,
+        "arm_switch": 3,
+        "kill_switch": 3
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "kill_release_up_mode_middle_v1",
+      "utc_started": "2026-10-29T08:14:34.559608+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3495043215,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1503,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3490627389,
+        "timestamp_last_signal": 3490627364,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 4,
+        "arm_switch": 3,
+        "kill_switch": 3
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "left_horizontal_right_v1",
+      "utc_started": "2026-10-29T07:50:48.997471+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2069482668,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1451,
+        2000,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2065110445,
+        "timestamp_last_signal": 2065110376,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 1.0,
+        "throttle": -0.09218
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 1
+    },
+    {
+      "case": "left_vertical_down_v1",
+      "utc_started": "2026-10-29T07:42:51.496008+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 1592091270,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 1587620756,
+        "timestamp_last_signal": 1587620720,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 1
+    },
+    {
+      "case": "pre_link_loss_v1",
+      "utc_started": "2026-10-29T08:16:28.444801+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3609040416,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3604614192,
+        "timestamp_last_signal": 3604614057,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.00199,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 1,
+        "arm_switch": 3,
+        "kill_switch": 1
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": true
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "radio_off_v1",
+      "utc_started": "2026-10-29T08:17:39.657893+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3679998379,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3675817346,
+        "timestamp_last_signal": 3651961342,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": true,
+        "rc_failsafe": true,
+        "link_quality": -1,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": false,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 1,
+        "arm_switch": 3,
+        "kill_switch": 1
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": true
+      },
+      "manual_control_signal_lost": true,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "radio_reconnected_v1",
+      "utc_started": "2026-10-29T08:19:04.166434+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 3764630380,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 3760227392,
+        "timestamp_last_signal": 3760227366,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 1,
+        "arm_switch": 3,
+        "kill_switch": 1
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": true
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 3
+    },
+    {
+      "case": "right_horizontal_right_v1",
+      "utc_started": "2026-10-29T07:50:04.404724+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2024888942,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        2000,
+        1502,
+        1472,
+        1499,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2020515209,
+        "timestamp_last_signal": 2020515183,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 1.0,
+        "pitch": 0.00399,
+        "yaw": 0.0,
+        "throttle": -0.05611
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 1
+    },
+    {
+      "case": "right_vertical_up_v1",
+      "utc_started": "2026-10-29T07:48:37.726823+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 1938227391,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        2000,
+        1507,
+        1499,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 1933941454,
+        "timestamp_last_signal": 1933941418,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 1.0,
+        "yaw": 0.0,
+        "throttle": 0.01399
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 1
+    },
+    {
+      "case": "sa_down_v1",
+      "utc_started": "2026-10-29T07:57:26.139005+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2466319386,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2462239768,
+        "timestamp_last_signal": 2462239717,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "sa_middle_v1",
+      "utc_started": "2026-10-29T07:56:14.528072+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2394877304,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1503,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2390631324,
+        "timestamp_last_signal": 2390631299,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "sa_up_sb_middle_v1",
+      "utc_started": "2026-10-29T07:58:12.553463+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2512942408,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1503,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2508754340,
+        "timestamp_last_signal": 2508754298,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "sb_down_v1",
+      "utc_started": "2026-10-29T07:59:31.508028+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2592004800,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1988,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2587602723,
+        "timestamp_last_signal": 2587602697,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "sb_up_sf_down_v1",
+      "utc_started": "2026-10-29T08:00:55.061396+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2675630391,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2671154509,
+        "timestamp_last_signal": 2671154480,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    },
+    {
+      "case": "sf_other_high_v1",
+      "utc_started": "2026-10-29T08:02:13.710833+00:00",
+      "read_complete": true,
+      "error": null,
+      "state": {
+        "timestamp": 2754192381,
+        "arming_state": 1,
+        "nav_state": 2,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "channels": [
+        1502,
+        1500,
+        1001,
+        1499,
+        1988,
+        1011,
+        1011,
+        1011,
+        1011,
+        1011,
+        1326,
+        1496,
+        1000,
+        1000,
+        2000,
+        2000,
+        0,
+        0
+      ],
+      "rc": {
+        "timestamp": 2749904551,
+        "timestamp_last_signal": 2749904526,
+        "input_source": 14,
+        "channel_count": 16,
+        "rc_lost": false,
+        "rc_failsafe": false,
+        "link_quality": 100,
+        "rc_total_frame_count": 0
+      },
+      "manual": {
+        "valid": true,
+        "data_source": 1,
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0,
+        "throttle": -1.0
+      },
+      "switches": {
+        "mode_slot": 0,
+        "arm_switch": 0,
+        "kill_switch": 0
+      },
+      "actuator": {
+        "armed": false,
+        "prearmed": false,
+        "kill": false
+      },
+      "manual_control_signal_lost": false,
+      "crsf_invalid_crc": 2
+    }
+  ]
+}

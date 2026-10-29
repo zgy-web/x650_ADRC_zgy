@@ -165,3 +165,8 @@ scripts/run_nx_setpoint_readback.py -text whitespace=cr-at-eol
 scripts/summarize_nx_setpoint_readback.py -text whitespace=cr-at-eol
 tests/unit/test_nx_setpoint_readback.py -text whitespace=cr-at-eol
 docs/validation/nx_setpoint_readback_20261028/** -text -whitespace
+
+# Preserve source and report hashes for the physical RC bench checks.
+scripts/px4_rc*.py -text whitespace=cr-at-eol
+tests/unit/test_px4_rc*.py -text whitespace=cr-at-eol
+docs/validation/px4_rc_commissioning_20261029/*.json -text whitespace=cr-at-eol

@@ -1,0 +1,190 @@
+{
+  "generated_utc": "2026-10-29T08:23:54.607976+00:00",
+  "raw_consoles_remain_local": true,
+  "files": [
+    {
+      "case": "after_partial_setup_v1",
+      "file": "after_partial_setup_v1.json",
+      "sha256": "a6bbdacf9d1183bd7e242d78624262970b06dd2ab9116d4ab1ec5c6248bb83d3",
+      "bytes": 21829,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/after_partial_setup_v1/inventory.json",
+      "local_console_sha256": "ea890c5d0cc20c1aaf12611af26592cf441b7370b726e2d703d607018b105f97"
+    },
+    {
+      "case": "baseline_v1",
+      "file": "baseline_v1.json",
+      "sha256": "5c09c378714dcb1ba14d565e4a1fa8282d9e26da47676e123a1799fd1d235a55",
+      "bytes": 18635,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/baseline_v1/inventory.json",
+      "local_console_sha256": "7b58eec03eafd46343a6735a48e1d7c10cedb22ff44f82a716390b3f1923d25f"
+    },
+    {
+      "case": "baseline_v2",
+      "file": "baseline_v2.json",
+      "sha256": "a9aea1a7f7409af1da0e982e3f01129e0e74cf90bfe42718a32210ef794801ac",
+      "bytes": 3469,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/baseline_v2/inventory.json",
+      "local_console_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "case": "baseline_v3",
+      "file": "baseline_v3.json",
+      "sha256": "3541af8a986817f8065e08fa940830b1d2c5875d28eac90ad89fca0e778891a6",
+      "bytes": 21025,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/baseline_v3/inventory.json",
+      "local_console_sha256": "5e94af4aee83d20a3295180fa57d4700101292fa1ec542c2a1e9915aa242e3d5"
+    },
+    {
+      "case": "baseline_v4_connected",
+      "file": "baseline_v4_connected.json",
+      "sha256": "69c9300995d71de409322d9603b58b146113caa0f1199306507e13f57cac5885",
+      "bytes": 21737,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/baseline_v4_connected/inventory.json",
+      "local_console_sha256": "4f707bf3d7c5a073e17b043daf1f9e3af329648cdc7e26d99edc8fb70f801d50"
+    },
+    {
+      "case": "config_safe_positions_v1",
+      "file": "config_safe_positions_v1.json",
+      "sha256": "9cd64696e5ef78e18b0fed858d3eef138693422b82ee61615b73a8034cb48dfa",
+      "bytes": 21712,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/config_safe_positions_v1/inventory.json",
+      "local_console_sha256": "8553405bcaf486c4d81cc019e49044c6dd01c40501fb19a7f84dd01cb71983ab"
+    },
+    {
+      "case": "kill_release_middle_v1",
+      "file": "kill_release_middle_v1.json",
+      "sha256": "a83db68bdae5e42d3514f0382216776ab8652a0f747644eaced35153740a4dc9",
+      "bytes": 21834,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/kill_release_middle_v1/inventory.json",
+      "local_console_sha256": "65352046685ad3a4567f70abcad8e2d2a65f96350c8156809b3f18e2639d110c"
+    },
+    {
+      "case": "kill_release_up_mode_middle_v1",
+      "file": "kill_release_up_mode_middle_v1.json",
+      "sha256": "91a39e369df3c52ef45c169a7633ebcceb85bd8226c3c8e72bc5903349964f06",
+      "bytes": 21823,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/kill_release_up_mode_middle_v1/inventory.json",
+      "local_console_sha256": "c538c746a341ff15744cc3e2a64fec8dc5cd351240e071a199f233c67225a964"
+    },
+    {
+      "case": "left_horizontal_right_v1",
+      "file": "left_horizontal_right_v1.json",
+      "sha256": "9a3b99f18165cb7c05226ef9bcb8a4acbbb31aa7d4b28f87c79f7fdb61ee9948",
+      "bytes": 21729,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/left_horizontal_right_v1/inventory.json",
+      "local_console_sha256": "f4191d46abfc621bd57b83d24e61405ca1db1a19c556e8c7211eb690b6f3a7f3"
+    },
+    {
+      "case": "left_vertical_down_v1",
+      "file": "left_vertical_down_v1.json",
+      "sha256": "c7f715578aec522ff7c23279c4c7737915fa267d2ff81dae7d867ac2ecd8b16a",
+      "bytes": 21730,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/left_vertical_down_v1/inventory.json",
+      "local_console_sha256": "26cd3414521ef66251e8262ea413e89b861bb66f0bd571cadc31cfc95c35fddd"
+    },
+    {
+      "case": "pre_link_loss_v1",
+      "file": "pre_link_loss_v1.json",
+      "sha256": "67bcf9b5ac2505ea268394c37f1de1db78b5075c9593e5944f6ddc2cca57a88a",
+      "bytes": 21831,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/pre_link_loss_v1/inventory.json",
+      "local_console_sha256": "9f710deebfa2be665f84f0dc5c21cb8514a4cb9bdbf2b5bcb5ef53c0e8a0b368"
+    },
+    {
+      "case": "radio_off_v1",
+      "file": "radio_off_v1.json",
+      "sha256": "3a80ccdde821d14be83ad8a78c48ef9c2ff2c549549c9e6f2059df6d4e7b7f83",
+      "bytes": 21831,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/radio_off_v1/inventory.json",
+      "local_console_sha256": "31e0f6eb97462d3c44bf30bcc633374a09c017e8468994ff2a1d9dba60c1dcac"
+    },
+    {
+      "case": "radio_reconnected_v1",
+      "file": "radio_reconnected_v1.json",
+      "sha256": "103ad84fc08975bab1530ef74271cf0a9a835ebc891002283550a9c1cd1b1d40",
+      "bytes": 21846,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/radio_reconnected_v1/inventory.json",
+      "local_console_sha256": "8518f844b5b484c5c1768a4fe051524f77eff49ccd739155192a12df3eddbca8"
+    },
+    {
+      "case": "right_horizontal_right_v1",
+      "file": "right_horizontal_right_v1.json",
+      "sha256": "7733012402d8a8c949873b8438636abf43a6d06fd5b0b84f8671582061a76a6f",
+      "bytes": 21729,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/right_horizontal_right_v1/inventory.json",
+      "local_console_sha256": "0a45c8ecd21d0c661a06339deb00be20c66c51878fdadbc10764939813e0e5d8"
+    },
+    {
+      "case": "right_vertical_up_v1",
+      "file": "right_vertical_up_v1.json",
+      "sha256": "f62b8040a786e176283a958c03cad7fbf262fc929fed135ab251ec20e9891e73",
+      "bytes": 21733,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/right_vertical_up_v1/inventory.json",
+      "local_console_sha256": "f5e6c2953d7801e875771abbbcf19b373dcf3fdd257e14ea7c123c650ccff509"
+    },
+    {
+      "case": "sa_down_v1",
+      "file": "sa_down_v1.json",
+      "sha256": "0c2eb5ac4243b8754a709ca2790de6dedc5b840ca63d297b9792ecd68120d327",
+      "bytes": 21726,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sa_down_v1/inventory.json",
+      "local_console_sha256": "3475c69b716ab0d6b171fb16d9638026005cd817b27fbde9d0a846a1510fbcac"
+    },
+    {
+      "case": "sa_middle_v1",
+      "file": "sa_middle_v1.json",
+      "sha256": "794333ac0fb6fc669e7a3c4a1f71450001f251f92ea93e4843bf270c0bcc8fe3",
+      "bytes": 21717,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sa_middle_v1/inventory.json",
+      "local_console_sha256": "c5ad0c9aad1fbaa22a6092a423dbf0c5ccb6d6ceb59f8f3d79dd896430694fa3"
+    },
+    {
+      "case": "sa_up_sb_middle_v1",
+      "file": "sa_up_sb_middle_v1.json",
+      "sha256": "c43a4219627bf5ac0bd1a8b306486b7039a9eee74a38d77726e184e4b14ee884",
+      "bytes": 21726,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sa_up_sb_middle_v1/inventory.json",
+      "local_console_sha256": "88a5f258ac82a06ee7070eae773545349b0bb427b9e42511a6126957fc2d5269"
+    },
+    {
+      "case": "sb_down_v1",
+      "file": "sb_down_v1.json",
+      "sha256": "4097e0a69498f423b352466d8b1477a6aaa255c1ef076d7660a2725abc05890d",
+      "bytes": 21721,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sb_down_v1/inventory.json",
+      "local_console_sha256": "22c619d6a04bc29bddefce3bf68eec23201e031f3766729c2a0ee0dbd558c105"
+    },
+    {
+      "case": "sb_up_sf_down_v1",
+      "file": "sb_up_sf_down_v1.json",
+      "sha256": "0b1553c8506a07667e59237e01ea3f092cec97d9e92dade623938fcfb231ecd3",
+      "bytes": 21727,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sb_up_sf_down_v1/inventory.json",
+      "local_console_sha256": "7105d57d28e2fbe73ebd8fac986d4b8c5404d6960a4d5a62e7cd1d50e458def6"
+    },
+    {
+      "case": "sf_other_high_v1",
+      "file": "sf_other_high_v1.json",
+      "sha256": "30512cb282f6c896abc38fee92a7e9c3a7326e7f20269b4b14ad02b5461623cd",
+      "bytes": 21721,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/sf_other_high_v1/inventory.json",
+      "local_console_sha256": "446b53d71ef31a7f90df904db5e87830f1d167e086f03b89c05c9a2fdf2b0cd3"
+    },
+    {
+      "case": "switch_setup_v1",
+      "file": "switch_setup_v1.json",
+      "sha256": "6d2296e0d108ad3d5b1f64e4b1a8698e2788476c7ef9b5ae8fa8920f09a75259",
+      "bytes": 3072,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/switch_setup_v1/setup_report.json",
+      "local_console_sha256": "fbb0b22d0dd4068eb0786b9e0c12b121ee359a80fa703cd66a9f18a50a16c4a7"
+    },
+    {
+      "case": "switch_setup_v2",
+      "file": "switch_setup_v2.json",
+      "sha256": "2d0abd1ad274d3c54387c2d83ffbed441a68f39b3b2778f534efb2570445c64c",
+      "bytes": 5288,
+      "local_source": "artifacts/px4_rc_commissioning_20261029/switch_setup_v2/setup_report.json",
+      "local_console_sha256": "f0df225dd96a8309b281cc65ad8cc8a69a07d23b3390631ac24f13e8d59b3048"
+    }
+  ]
+}

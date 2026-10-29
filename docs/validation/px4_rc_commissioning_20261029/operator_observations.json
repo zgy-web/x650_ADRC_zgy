@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "User-observed stick/switch actions; physical controls are not identified by serial telemetry alone",
+  "esc_power_off_confirmed_before_stick_tests": true,
+  "mixes_sources_reported": {"CH5": "SF", "CH6": "SA", "CH7": "SB"},
+  "sf_physical_up_down_mapping_confirmed": false,
+  "sf_screen_percentage_mapping_confirmed": true,
+  "observations": [
+    {"case": "left_vertical_down_v1", "user_reply": "左杆已下拉"},
+    {"case": "right_vertical_up_v1", "user_reply": "右杆已上推"},
+    {"case": "right_horizontal_right_v1", "user_reply": "右杆已右推"},
+    {"case": "left_horizontal_right_v1", "user_reply": "左杆已右推", "requested_throttle_position": "middle, to avoid a low-throttle arming gesture"},
+    {"case": "sa_middle_v1", "user_reply": "SA中档"},
+    {"case": "sa_down_v1", "user_reply": "SA下档”"},
+    {"case": "sa_up_sb_middle_v1", "user_reply": "SA上、SB中”。"},
+    {"case": "sb_down_v1", "user_reply": "SB下档"},
+    {"case": "sb_up_sf_down_v1", "user_reply": "B上、SF下", "interpretation": "SB returned up; CH5 remained low. SF direction not inferred."},
+    {"case": "sf_other_high_v1", "user_reply": "SF已换到另一档”  ，现在显示CH5100%"},
+    {"case": "config_safe_positions_v1", "user_reply": "“CH5负100，SA上，SB下"},
+    {"case": "kill_release_middle_v1", "user_reply": "SB中档"},
+    {"case": "kill_release_up_mode_middle_v1", "user_reply": "SB上、SA中”。"},
+    {"case": "pre_link_loss_v1", "user_reply": "SA上、SB下”"},
+    {"case": "radio_off_v1", "user_reply": "遥控器已关"},
+    {"case": "radio_reconnected_v1", "user_reply": "已恢复C”"}
+  ],
+  "motors_spun_in_this_rc_stage": false,
+  "armed_failsafe_verified": false,
+  "physical_stop_verified": false,
+  "nx_offboard_takeover_verified": false
+}
