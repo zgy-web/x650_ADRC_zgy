@@ -88,3 +88,54 @@ def test_direction_labels_match_pinned_firmware():
     assert "机头朝上" in m.LABELS["back"]
     assert "机头朝下" in m.LABELS["front"]
     assert m.COMMAND == "commander calibrate accel"
+
+
+@pytest.mark.parametrize("failed_save", [2, 3])
+def test_windows_progress_file_lock_does_not_abort_serial_monitor(monkeypatch, tmp_path, failed_save):
+    writes = []
+    cal = ("[cal] calibration started: 2 accel\n" + "".join(
+        f"[cal] {side} side done, rotate to a different side\n" for side in m.ORDER
+    ) + "[cal] calibration done: accel\n").encode()
+    class FakeConsole:
+        def __init__(self, *a):
+            self.records = []
+            self.s = type("S", (), {"is_open": False, "write": lambda _, data: writes.append(data)})()
+            self.chunks = iter((b"", cal, b"nsh> "))
+        def open(self): self.s.is_open = True
+        def close(self): self.s.is_open = False
+        def query(self, command): return m.FIRMWARE
+        def read(self, *args): return next(self.chunks)
+        def record(self, command, data):
+            self.records.append(dict(command=command, text=data.decode()))
+            return data.decode()
+    original = Path.replace
+    saves = []
+    def locked_once(path, target):
+        saves.append(str(path))
+        if len(saves) == failed_save:  # Initial record, durable intention, live progress.
+            raise PermissionError("Simulated Windows sharing violation")
+        return original(path, target)
+    monkeypatch.setattr(Path, "replace", locked_once)
+    monkeypatch.setattr(m, "ImuConsole", FakeConsole)
+    monkeypatch.setattr(m, "guard", lambda *a, **kw: {})
+    monkeypatch.setattr(m, "read_parameter", lambda c, p: 24 if p == "MOT_POLE_COUNT" else 0)
+    monkeypatch.setattr(m.time, "sleep", lambda _: None)
+    s = m.Session(tmp_path / "case", "unused", operator_power_off=True, operator_ready=True)
+    s.last_ui_poll = time.monotonic()
+    s.run()
+    assert s.report["progress_persistence_failures"] == 1
+    assert s.report["port_closed"]
+    if failed_save == 2:
+        assert not s.report["calibration_success"] and not s.report["command_write_attempted"]
+        assert (m.COMMAND + "\r").encode() not in writes
+        assert s.progress.phase == "failed"
+    else:
+        assert s.report["calibration_success"] and s.report["post_readback_complete"]
+        assert writes.count((m.COMMAND + "\r").encode()) == 1
+        assert m.json.loads((s.out / "status.json").read_text(encoding="utf-8"))["phase"] == "done"
+
+
+def test_binary_serial_data_is_not_mistaken_for_normal_text():
+    assert m.binary_corruption(b"\x00\x80\x01\x03" * 30)
+    assert not m.binary_corruption(b"\x1b[KINFO  [commander] [cal] hold vehicle still\r\n")
+    assert not m.binary_corruption(b"\x00")

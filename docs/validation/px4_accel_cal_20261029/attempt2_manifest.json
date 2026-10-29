@@ -1,0 +1,25 @@
+{
+  "accepted": false,
+  "reason": "Progress-file replacement failed while calibration was still unconfirmed; serial binary corruption also observed.",
+  "raw_stream_bytes": 12961,
+  "raw_stream_nul_bytes": 3677,
+  "raw_stream_sha256": "0b3881d7a018b70cfa3efa021e4c23bce89c7af75aa07218d8910dccb38a0238",
+  "raw_stream_kept_locally": "artifacts\\px4_accel_cal_20261029\\live_v2\\calibration_stream.bin",
+  "confirmed_faces": [
+    "down",
+    "back"
+  ],
+  "operator_restarted_flight_controller": true,
+  "post_restart_parameters_changed": {},
+  "motor_poles_after_restart": 24,
+  "files": [
+    {
+      "file": "attempt2_status.json",
+      "sha256": "a9884831111a7a5c09b4a043bf7c4b20feabee6b796546c06b017d100f11a452"
+    },
+    {
+      "file": "attempt2_host_tool.py",
+      "sha256": "2574bdf864ad7398acff4104d139dd51a513f7368124010999167cdde48d18cc"
+    }
+  ]
+}

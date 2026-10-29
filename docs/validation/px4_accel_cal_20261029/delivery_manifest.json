@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "path": "acceptance_summary.json",
+      "bytes": 21956,
+      "sha256": "97aec98c944f0e62088e487928fd52747e369211cb99e24e5010467a9bbe7083"
+    },
+    {
+      "path": "attempt1_calibration_stream.txt",
+      "bytes": 1977,
+      "sha256": "3c37315e872b7ce1398ded5c7b9be8562af8ffb5a6a5045865c262aa849d51bb"
+    },
+    {
+      "path": "attempt1_host_tool.py",
+      "bytes": 12554,
+      "sha256": "36eec7c40127559c9be1a5f12e2d2ade8cc03742cb6266a3b3fb5e53fc2c490b"
+    },
+    {
+      "path": "attempt1_manifest.json",
+      "bytes": 926,
+      "sha256": "3663e0e2a8be281cedcedbbf295f187e9d64bed1e252ffcfd991f9bfa95a746f"
+    },
+    {
+      "path": "attempt1_status.json",
+      "bytes": 5222,
+      "sha256": "27ee6868facb118c54401bf04e277078996da0fcc0abd4769fbbfab338c0a4ab"
+    },
+    {
+      "path": "attempt2_host_tool.py",
+      "bytes": 12573,
+      "sha256": "2574bdf864ad7398acff4104d139dd51a513f7368124010999167cdde48d18cc"
+    },
+    {
+      "path": "attempt2_manifest.json",
+      "bytes": 888,
+      "sha256": "cf023155578cdd98b0e8c3aa6bcf63cd705b40becd757f9c2337b8571cb0e046"
+    },
+    {
+      "path": "attempt2_post_restart_report.json",
+      "bytes": 41354,
+      "sha256": "38278674b3b8bf58d1f4cd8467f46d9e199ec25a559763f0d8adfb0e17b1ac2b"
+    },
+    {
+      "path": "attempt2_status.json",
+      "bytes": 3973,
+      "sha256": "a9884831111a7a5c09b4a043bf7c4b20feabee6b796546c06b017d100f11a452"
+    },
+    {
+      "path": "attempt3_calibration_stream.txt",
+      "bytes": 5994,
+      "sha256": "6fde5c313d14df24cac87717a8022692ed6bc362f50015cb821e2d14c7358e4d"
+    },
+    {
+      "path": "attempt3_host_tool.py",
+      "bytes": 14481,
+      "sha256": "7bebefe0564b280bb02d9184d832e48c5e1b65f6473882db7f32e1f5e61de0ef"
+    },
+    {
+      "path": "attempt3_status.json",
+      "bytes": 7276,
+      "sha256": "5bd0ec277751d86ba17b8e677d6817bb8b3d634689085eb406af74a86fe0aeab"
+    },
+    {
+      "path": "calibrated_reboot_report.json",
+      "bytes": 205288,
+      "sha256": "539453232af7d3199f8f6c2b9b6d51ae071e23e259f3b97a3d20772c9ce71edb"
+    },
+    {
+      "path": "calibrated_warm_report.json",
+      "bytes": 205370,
+      "sha256": "8d6ce4786c410b4ea48b19b77c278a72f5a11a52a79d5fddea2abbc06b6aa743"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10282,
+      "sha256": "854efc29154d5391c093a88d2b8498e15b6fb2c6b21ab4f4d5c6bff2a1e274f0"
+    },
+    {
+      "path": "restore_report.json",
+      "bytes": 5957,
+      "sha256": "c777aee08c57dff55097d9f277dc398808a63f474a1e3f454aae6c3f3286b16f"
+    },
+    {
+      "path": "restored_reboot_report.json",
+      "bytes": 205734,
+      "sha256": "0972f9ef14d601bfb9f3500cf88023e7794feb8f1eef356c5dee120cb81f73d0"
+    }
+  ],
+  "current_sources": [
+    {
+      "path": "scripts/px4_accel_calibration_live.py",
+      "sha256": "7bebefe0564b280bb02d9184d832e48c5e1b65f6473882db7f32e1f5e61de0ef"
+    },
+    {
+      "path": "scripts/px4_accel_calibration_live.html",
+      "sha256": "eeee2e2b9af5600ab72a353646e1449b6bcba03406c753c125507981bcd5f5f6"
+    },
+    {
+      "path": "scripts/px4_imu_pole_check.py",
+      "sha256": "e322616fd22f81c38c7ed6afa49099c488c47e8f65e9a1bd9f7b681678367e4d"
+    },
+    {
+      "path": "scripts/px4_restore_accel_snapshot.py",
+      "sha256": "28fac50bb19f5c8afef5c4b9449a11f1c52ad7f4111940f798ae49fef48b9db5"
+    },
+    {
+      "path": "scripts/summarize_px4_accel_recovery.py",
+      "sha256": "246896b90b77c19510d08e6677b64dd9b69491864637aa814ffe069ec92293e5"
+    }
+  ],
+  "raw_local_only": [
+    {
+      "path": "artifacts\\px4_accel_cal_20261029\\post_cal_stationary_v1\\console.json",
+      "sha256": "29123f82e31e1dff9198a9718cedd8815c78c2c0712b9e00fb52334792a73fd3",
+      "public_copy": false
+    },
+    {
+      "path": "artifacts\\px4_accel_cal_20261029\\post_cal_reboot_stationary_v1\\console.json",
+      "sha256": "1976b6b35711a881c00f45f8fc3885934c23fdcdde15585f82fd4545c206a43c",
+      "public_copy": false
+    },
+    {
+      "path": "artifacts\\px4_accel_cal_20261029\\post_restore_reboot_stationary_v1\\console.json",
+      "sha256": "97b8800663a49e3cd839654604269f6d64265bb8f70876ac4bb6877c609bd88f",
+      "public_copy": false
+    }
+  ],
+  "decision": "Retain restored pre-calibration parameters; do not continue six-face calibration per user instruction",
+  "verification": {
+    "published_measurements_recomputed": true,
+    "new_summary_regression_tests": 3,
+    "previous_live_and_observer_tests": 34,
+    "previous_restoration_tests": 9
+  },
+  "flight_ready": false
+}

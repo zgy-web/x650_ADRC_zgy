@@ -1,0 +1,98 @@
+commander calibrate accel
+nsh> [KINFO  [commander] [cal] calibration started: 2 accel
+INFO  [commander] [cal] pending: back front left right up down
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down orientation detected
+INFO  [commander] [cal] down orientation detected
+INFO  [commander] [cal] Hold still, measuring down side
+INFO  [commander] [cal] down side result: [0.568 -0.569 -9.758]
+INFO  [commander] [cal] progress <17>
+INFO  [commander] [cal] down side done, rotate to a different side
+INFO  [commander] [cal] down side done, rotate to a different side
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+WARN  [health_and_arming_checks] Preflight Fail: Attitude failure (roll)
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] left orientation detected
+INFO  [commander] [cal] left orientation detected
+INFO  [commander] [cal] Hold still, measuring left side
+INFO  [commander] [cal] left side result: [0.166 9.317 -3.095]
+INFO  [commander] [cal] progress <34>
+INFO  [commander] [cal] left side done, rotate to a different side
+INFO  [commander] [cal] left side done, rotate to a different side
+INFO  [commander] [cal] pending: back front right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] detected motion, hold still...
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+WARN  [health_and_arming_checks] Preflight Fail: Attitude failure (roll)
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] up orientation detected
+INFO  [commander] [cal] up orientation detected
+INFO  [commander] [cal] Hold still, measuring up side
+INFO  [commander] [cal] up side result: [-0.446 -0.788 9.789]
+INFO  [commander] [cal] progress <51>
+INFO  [commander] [cal] up side done, rotate to a different side
+INFO  [commander] [cal] up side done, rotate to a different side
+INFO  [commander] [cal] pending: back front right
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] right orientation detected
+INFO  [commander] [cal] right orientation detected
+INFO  [commander] [cal] Hold still, measuring right side
+INFO  [commander] [cal] right side result: [0.247 -9.621 -1.820]
+INFO  [commander] [cal] progress <68>
+INFO  [commander] [cal] right side done, rotate to a different side
+INFO  [commander] [cal] right side done, rotate to a different side
+INFO  [commander] [cal] pending: back front
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] right side already completed
+INFO  [commander] [cal] pending: back front
+INFO  [commander] [cal] hold vehicle still on a pending side
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+WARN  [health_and_arming_checks] Preflight Fail: Attitude failure (pitch)
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] front orientation detected
+INFO  [commander] [cal] front orientation detected
+INFO  [commander] [cal] Hold still, measuring front side
+INFO  [commander] [cal] front side result: [-9.333 -0.126 -3.043]
+INFO  [commander] [cal] progress <85>
+INFO  [commander] [cal] front side done, rotate to a different side
+INFO  [commander] [cal] front side done, rotate to a different side
+INFO  [commander] [cal] pending: back
+INFO  [commander] [cal] hold vehicle still on a pending side
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+WARN  [health_and_arming_checks] Preflight Fail: Attitude failure (pitch)
+WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged
+WARN  [health_and_arming_checks] Preflight Fail: Flight termination active
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] back orientation detected
+INFO  [commander] [cal] back orientation detected
+INFO  [commander] [cal] Hold still, measuring back side
+INFO  [commander] [cal] back side result: [9.494 -0.247 -2.376]
+INFO  [commander] [cal] progress <102>
+INFO  [commander] [cal] back side done, rotate to a different side
+INFO  [commander] [cal] back side done, rotate to a different side
+ACC 5767194 EN: 1, offset: [0.080 -0.152 0.004], scale: [1.069 1.036 1.049], Internal
+ACC 2818066 EN: 1, offset: [0.075 -0.146 -0.203], scale: [1.070 1.036 1.048], Internal
+ACC 3407882 EN: 1, offset: [0.076 -0.125 0.067], scale: [1.067 1.036 1.045], Internal
+INFO  [commander] [cal] calibration done: accel

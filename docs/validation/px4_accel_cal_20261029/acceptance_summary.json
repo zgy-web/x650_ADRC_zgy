@@ -1,0 +1,940 @@
+{
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "observations": {
+    "pre_calibration_fresh_boot": {
+      "report_sha256": "38278674b3b8bf58d1f4cd8467f46d9e199ec25a559763f0d8adfb0e17b1ac2b",
+      "console_sha256": "16d8613f06c691d166434c6be194c40466325fce79bb80e6241593d584b975ef",
+      "rounds": 1,
+      "sample_start_span_seconds": 0.0,
+      "primary_instances": [
+        2
+      ],
+      "instances": [
+        {
+          "instance": 0,
+          "accel_device_id": 5767194,
+          "accel_bias_range": [
+            [
+              -0.00296,
+              -0.00296
+            ],
+            [
+              0.00939,
+              0.00939
+            ],
+            [
+              0.01595,
+              0.01595
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.41657615536635273,
+              0.41657615536635273
+            ],
+            [
+              0.41886967653695373,
+              0.41886967653695373
+            ],
+            [
+              0.3134164078649988,
+              0.3134164078649988
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.44251,
+            41.44251
+          ]
+        },
+        {
+          "instance": 1,
+          "accel_device_id": 2818066,
+          "accel_bias_range": [
+            [
+              0.00166,
+              0.00166
+            ],
+            [
+              -0.00168,
+              -0.00168
+            ],
+            [
+              -0.00815,
+              -0.00815
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.4089954127475097,
+              0.4089954127475097
+            ],
+            [
+              0.4110405331399305,
+              0.4110405331399305
+            ],
+            [
+              0.3134164078649988,
+              0.3134164078649988
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            39.80051,
+            39.80051
+          ]
+        },
+        {
+          "instance": 2,
+          "accel_device_id": 3407882,
+          "accel_bias_range": [
+            [
+              0.00398,
+              0.00398
+            ],
+            [
+              -0.00025,
+              -0.00025
+            ],
+            [
+              -0.03558,
+              -0.03558
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.4089954127475097,
+              0.4089954127475097
+            ],
+            [
+              0.4114450537260403,
+              0.4114450537260403
+            ],
+            [
+              0.30948683298050517,
+              0.30948683298050517
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.82671,
+            41.82671
+          ]
+        }
+      ],
+      "final_state": {
+        "state": {
+          "timestamp": 436646438,
+          "arming_state": 1,
+          "nav_state": 1,
+          "hil_state": 0,
+          "failsafe": false
+        },
+        "outputs": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "kill": true,
+        "battery_voltage": null,
+        "battery_observation": "never_published_operator_confirmed_off"
+      },
+      "approx_accel_norm_before_runtime_bias_range": [
+        9.840645643335604,
+        9.840645643335604
+      ],
+      "approx_norm_method": "norm(vehicle_acceleration.xyz + selected accel_bias); sequential reads and LPF, not synchronized raw samples",
+      "bias_threshold_precision": "0.75 * limit + 3 * sqrt(variance), using rounded NSH values"
+    },
+    "post_calibration_warm": {
+      "report_sha256": "8d6ce4786c410b4ea48b19b77c278a72f5a11a52a79d5fddea2abbc06b6aa743",
+      "console_sha256": "29123f82e31e1dff9198a9718cedd8815c78c2c0712b9e00fb52334792a73fd3",
+      "rounds": 13,
+      "sample_start_span_seconds": 79.68800000002375,
+      "primary_instances": [
+        2
+      ],
+      "instances": [
+        {
+          "instance": 0,
+          "accel_device_id": 5767194,
+          "accel_bias_range": [
+            [
+              0.01564,
+              0.02807
+            ],
+            [
+              0.39997,
+              0.4
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.41224972160321827,
+              0.4181101181101772
+            ],
+            [
+              0.40173494974687907,
+              0.4089954127475097
+            ],
+            [
+              0.3134164078649988,
+              0.3134164078649988
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.38891,
+            41.45597
+          ]
+        },
+        {
+          "instance": 1,
+          "accel_device_id": 2818066,
+          "accel_bias_range": [
+            [
+              0.00618,
+              0.01626
+            ],
+            [
+              0.39998,
+              0.4
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.4098180313063388,
+              0.41657615536635273
+            ],
+            [
+              0.3972111104761179,
+              0.40435516278555655
+            ],
+            [
+              0.30948683298050517,
+              0.3134164078649988
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            7,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            39.73106,
+            39.79058
+          ]
+        },
+        {
+          "instance": 2,
+          "accel_device_id": 3407882,
+          "accel_bias_range": [
+            [
+              0.04755,
+              0.05685
+            ],
+            [
+              0.39998,
+              0.4
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.40858176642512317,
+              0.4150217370760849
+            ],
+            [
+              0.3972111104761179,
+              0.40478549517943796
+            ],
+            [
+              0.30948683298050517,
+              0.3134164078649988
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            6,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.7884,
+            41.85328
+          ]
+        }
+      ],
+      "final_state": {
+        "state": {
+          "timestamp": 816003915,
+          "arming_state": 1,
+          "nav_state": 1,
+          "hil_state": 0,
+          "failsafe": false
+        },
+        "outputs": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "kill": true,
+        "battery_voltage": null,
+        "battery_observation": "never_published_operator_confirmed_off"
+      },
+      "approx_accel_norm_before_runtime_bias_range": [
+        10.250767331151362,
+        10.264049314383675
+      ],
+      "approx_norm_method": "norm(vehicle_acceleration.xyz + selected accel_bias); sequential reads and LPF, not synchronized raw samples",
+      "bias_threshold_precision": "0.75 * limit + 3 * sqrt(variance), using rounded NSH values"
+    },
+    "post_calibration_reboot": {
+      "report_sha256": "539453232af7d3199f8f6c2b9b6d51ae071e23e259f3b97a3d20772c9ce71edb",
+      "console_sha256": "1976b6b35711a881c00f45f8fc3885934c23fdcdde15585f82fd4545c206a43c",
+      "rounds": 13,
+      "sample_start_span_seconds": 79.64000000001397,
+      "primary_instances": [
+        1
+      ],
+      "instances": [
+        {
+          "instance": 0,
+          "accel_device_id": 5767194,
+          "accel_bias_range": [
+            [
+              0.00717,
+              0.00797
+            ],
+            [
+              -0.02208,
+              -0.0183
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.43007690033207285,
+              0.44071247279470294
+            ],
+            [
+              0.43247641299491774,
+              0.4435618333680649
+            ],
+            [
+              0.3134164078649988,
+              0.3250998007960223
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.01192,
+            41.4057
+          ]
+        },
+        {
+          "instance": 1,
+          "accel_device_id": 2818066,
+          "accel_bias_range": [
+            [
+              0.00914,
+              0.01
+            ],
+            [
+              -0.02685,
+              -0.02393
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.4222292927247802,
+              0.43247641299491774
+            ],
+            [
+              0.42477980605851257,
+              0.4354990774876346
+            ],
+            [
+              0.30948683298050517,
+              0.32323790007724457
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            39.65097,
+            39.71531
+          ]
+        },
+        {
+          "instance": 2,
+          "accel_device_id": 3407882,
+          "accel_bias_range": [
+            [
+              0.00536,
+              0.0063
+            ],
+            [
+              -0.02088,
+              -0.01947
+            ],
+            [
+              -0.4,
+              -0.4
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.4218605760695395,
+              0.43179529581893283
+            ],
+            [
+              0.4244186481199663,
+              0.43483323032546545
+            ],
+            [
+              0.30948683298050517,
+              0.32323790007724457
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            13
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.55708,
+            41.76822
+          ]
+        }
+      ],
+      "final_state": {
+        "state": {
+          "timestamp": 106684462,
+          "arming_state": 1,
+          "nav_state": 1,
+          "hil_state": 0,
+          "failsafe": false
+        },
+        "outputs": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "kill": false,
+        "battery_voltage": null,
+        "battery_observation": "never_published_operator_confirmed_off"
+      },
+      "approx_accel_norm_before_runtime_bias_range": [
+        10.269928490491061,
+        10.285863880024857
+      ],
+      "approx_norm_method": "norm(vehicle_acceleration.xyz + selected accel_bias); sequential reads and LPF, not synchronized raw samples",
+      "bias_threshold_precision": "0.75 * limit + 3 * sqrt(variance), using rounded NSH values"
+    },
+    "restored_reboot": {
+      "report_sha256": "0972f9ef14d601bfb9f3500cf88023e7794feb8f1eef356c5dee120cb81f73d0",
+      "console_sha256": "97b8800663a49e3cd839654604269f6d64265bb8f70876ac4bb6877c609bd88f",
+      "rounds": 13,
+      "sample_start_span_seconds": 79.70300000003772,
+      "primary_instances": [
+        1
+      ],
+      "instances": [
+        {
+          "instance": 0,
+          "accel_device_id": 5767194,
+          "accel_bias_range": [
+            [
+              0.00836,
+              0.00839
+            ],
+            [
+              0.00194,
+              0.00199
+            ],
+            [
+              0.00736,
+              0.00751
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.3985900603509299,
+              0.40217631819555844
+            ],
+            [
+              0.3994987437106621,
+              0.403053384223906
+            ],
+            [
+              0.30948683298050517,
+              0.30948683298050517
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 0,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            41.72108,
+            41.78924
+          ]
+        },
+        {
+          "instance": 1,
+          "accel_device_id": 2818066,
+          "accel_bias_range": [
+            [
+              0.00398,
+              0.004
+            ],
+            [
+              -0.00448,
+              -0.00442
+            ],
+            [
+              -0.00581,
+              -0.00555
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.3924662100445347,
+              0.39581231653602794
+            ],
+            [
+              0.39343446901438467,
+              0.39674709297958266
+            ],
+            [
+              0.30948683298050517,
+              0.30948683298050517
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 4,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            40.05441,
+            40.10431
+          ]
+        },
+        {
+          "instance": 2,
+          "accel_device_id": 3407882,
+          "accel_bias_range": [
+            [
+              0.0064,
+              0.00642
+            ],
+            [
+              -0.00699,
+              -0.00693
+            ],
+            [
+              -0.03572,
+              -0.03564
+            ]
+          ],
+          "accel_threshold_range": [
+            [
+              0.3924662100445347,
+              0.39628083921528734
+            ],
+            [
+              0.39343446901438467,
+              0.3972111104761179
+            ],
+            [
+              0.30948683298050517,
+              0.30948683298050517
+            ]
+          ],
+          "accel_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_stable_count": 3,
+          "gyro_exceed_count": [
+            0,
+            0,
+            0
+          ],
+          "accel_error_max": 0.0,
+          "gyro_error_max": 0.0,
+          "accel_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "gyro_clipping_max": [
+            0,
+            0,
+            0
+          ],
+          "temperature_accel_range": [
+            42.05198,
+            42.09321
+          ]
+        }
+      ],
+      "final_state": {
+        "state": {
+          "timestamp": 587171351,
+          "arming_state": 1,
+          "nav_state": 1,
+          "hil_state": 0,
+          "failsafe": false
+        },
+        "outputs": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        },
+        "kill": false,
+        "battery_voltage": null,
+        "battery_observation": "never_published_operator_confirmed_off"
+      },
+      "approx_accel_norm_before_runtime_bias_range": [
+        9.807220261547101,
+        9.823119986119481
+      ],
+      "approx_norm_method": "norm(vehicle_acceleration.xyz + selected accel_bias); sequential reads and LPF, not synchronized raw samples",
+      "bias_threshold_precision": "0.75 * limit + 3 * sqrt(variance), using rounded NSH values"
+    }
+  },
+  "face_geometry": {
+    "down": {
+      "first_sensor_average": [
+        0.568,
+        -0.569,
+        -9.758
+      ],
+      "norm": 9.791064753130785,
+      "inferred_axis_deviation_deg": 4.710072648388888
+    },
+    "left": {
+      "first_sensor_average": [
+        0.166,
+        9.317,
+        -3.095
+      ],
+      "norm": 9.819015734787271,
+      "inferred_axis_deviation_deg": 18.40052664362584
+    },
+    "up": {
+      "first_sensor_average": [
+        -0.446,
+        -0.788,
+        9.789
+      ],
+      "norm": 9.830787404882683,
+      "inferred_axis_deviation_deg": 5.284697528602201
+    },
+    "right": {
+      "first_sensor_average": [
+        0.247,
+        -9.621,
+        -1.82
+      ],
+      "norm": 9.79474604060769,
+      "inferred_axis_deviation_deg": 10.807931448469795
+    },
+    "front": {
+      "first_sensor_average": [
+        -9.333,
+        -0.126,
+        -3.043
+      ],
+      "norm": 9.81736288419655,
+      "inferred_axis_deviation_deg": 18.072889343855007
+    },
+    "back": {
+      "first_sensor_average": [
+        9.494,
+        -0.247,
+        -2.376
+      ],
+      "norm": 9.789914248858363,
+      "inferred_axis_deviation_deg": 14.123136923624036
+    }
+  },
+  "face_geometry_method": "Direction inferred from rounded first-sensor averages under static-gravity assumption; not an external angular measurement",
+  "capture_completed": true,
+  "new_calibration_quality_accepted": false,
+  "new_calibration_disposition": "Rejected; restored 18 offset/scale values at recorded NSH precision",
+  "restored_parameter_persistence_verified": true,
+  "reboot_evidence": "Operator confirmed physical reboot; subsequent serial parameter readback matches restoration snapshot",
+  "restored_accel_bias_gate_passed_in_observed_window": true,
+  "restored_max_abs_accel_bias": 0.03572,
+  "motor_poles_after_reboot": 24,
+  "original_long_duration_bias_root_cause_resolved": false,
+  "flight_ready": false
+}

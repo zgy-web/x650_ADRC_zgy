@@ -1,0 +1,292 @@
+{
+  "phase": "done",
+  "done": [
+    "down",
+    "left",
+    "up",
+    "right",
+    "front",
+    "back"
+  ],
+  "measuring": null,
+  "latest": "[cal] calibration done: accel",
+  "prompt": "六面采集完成。请恢复正放、保持静止，等待回读与复测。",
+  "sides": {
+    "down": "正放：起落架朝下",
+    "up": "倒置：起落架朝上",
+    "back": "机头朝上、机尾朝下",
+    "front": "机头朝下、机尾朝上",
+    "left": "左侧朝下",
+    "right": "右侧朝下"
+  },
+  "order": [
+    "down",
+    "left",
+    "up",
+    "right",
+    "front",
+    "back"
+  ],
+  "report": {
+    "kind": "real_px4_six_face_accelerometer_calibration",
+    "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "utc_created": "2026-10-29T09:38:42.370551+00:00",
+    "operator_power_off": true,
+    "operator_ready": true,
+    "command": "commander calibrate accel",
+    "command_attempts": 1,
+    "command_write_attempted": true,
+    "nx_accessed": false,
+    "motor_commands": 0,
+    "arm_commands": 0,
+    "calibration_success": true,
+    "post_readback_complete": true,
+    "bias_acceptance_passed": false,
+    "flight_ready": false,
+    "progress_persistence_failures": 3,
+    "serial_quality_warning": false,
+    "source_sha256": "7bebefe0564b280bb02d9184d832e48c5e1b65f6473882db7f32e1f5e61de0ef",
+    "before": {
+      "state": {
+        "timestamp": 565375573,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "kill": true,
+      "battery_voltage": null,
+      "battery_observation": "never_published_operator_confirmed_off"
+    },
+    "before_parameters": {
+      "MOT_POLE_COUNT": 24,
+      "SENS_IMU_MODE": 0,
+      "EKF2_MULTI_IMU": 3,
+      "EKF2_ABL_LIM": 0.4,
+      "EKF2_ABL_GYRLIM": 3,
+      "SENS_BOARD_ROT": 0,
+      "SENS_BOARD_X_OFF": -3.107,
+      "SENS_BOARD_Y_OFF": -2.2961,
+      "SENS_BOARD_Z_OFF": 0,
+      "COM_ARM_IMU_ACC": 0.7,
+      "COM_ARM_IMU_GYR": 0.25,
+      "SYS_HAS_GPS": 1,
+      "DSHOT_BIDIR_EN": 0,
+      "DSHOT_TEL_CFG": 103,
+      "IMU_GYRO_DNF_EN": 0,
+      "CAL_ACC0_ID": 5767194,
+      "CAL_ACC0_PRIO": 50,
+      "CAL_ACC0_XOFF": 0,
+      "CAL_ACC0_YOFF": 0,
+      "CAL_ACC0_ZOFF": 0,
+      "CAL_ACC0_XSCALE": 1,
+      "CAL_ACC0_YSCALE": 1,
+      "CAL_ACC0_ZSCALE": 1,
+      "CAL_ACC1_ID": 2818066,
+      "CAL_ACC1_PRIO": 50,
+      "CAL_ACC1_XOFF": -0.0118,
+      "CAL_ACC1_YOFF": 0.0081,
+      "CAL_ACC1_ZOFF": -0.1963,
+      "CAL_ACC1_XSCALE": 1,
+      "CAL_ACC1_YSCALE": 1,
+      "CAL_ACC1_ZSCALE": 1,
+      "CAL_ACC2_ID": 3407882,
+      "CAL_ACC2_PRIO": 50,
+      "CAL_ACC2_XOFF": -0.0139,
+      "CAL_ACC2_YOFF": 0.0414,
+      "CAL_ACC2_ZOFF": 0.102,
+      "CAL_ACC2_XSCALE": 1,
+      "CAL_ACC2_YSCALE": 1,
+      "CAL_ACC2_ZSCALE": 1
+    },
+    "precommand": {
+      "state": {
+        "timestamp": 566388988,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "kill": true,
+      "battery_voltage": null,
+      "battery_observation": "never_published_operator_confirmed_off"
+    },
+    "command_utc": "2026-10-29T09:39:22.013816+00:00",
+    "last_progress_persistence_error": "[WinError 5] 拒绝访问。: 'artifacts\\\\px4_accel_cal_20261029\\\\live_v3\\\\status.tmp.json' -> 'artifacts\\\\px4_accel_cal_20261029\\\\live_v3\\\\status.json'",
+    "px4_reported_success": true,
+    "completed_sides": [
+      "down",
+      "left",
+      "up",
+      "right",
+      "front",
+      "back"
+    ],
+    "after_parameters": {
+      "MOT_POLE_COUNT": 24,
+      "SENS_IMU_MODE": 0,
+      "EKF2_MULTI_IMU": 3,
+      "EKF2_ABL_LIM": 0.4,
+      "EKF2_ABL_GYRLIM": 3,
+      "SENS_BOARD_ROT": 0,
+      "SENS_BOARD_X_OFF": -3.107,
+      "SENS_BOARD_Y_OFF": -2.2961,
+      "SENS_BOARD_Z_OFF": 0,
+      "COM_ARM_IMU_ACC": 0.7,
+      "COM_ARM_IMU_GYR": 0.25,
+      "SYS_HAS_GPS": 1,
+      "DSHOT_BIDIR_EN": 0,
+      "DSHOT_TEL_CFG": 103,
+      "IMU_GYRO_DNF_EN": 0,
+      "CAL_ACC0_ID": 5767194,
+      "CAL_ACC0_PRIO": 50,
+      "CAL_ACC0_XOFF": 0.0807,
+      "CAL_ACC0_YOFF": -0.1525,
+      "CAL_ACC0_ZOFF": 0.0044,
+      "CAL_ACC0_XSCALE": 1.0695,
+      "CAL_ACC0_YSCALE": 1.0364,
+      "CAL_ACC0_ZSCALE": 1.0491,
+      "CAL_ACC1_ID": 2818066,
+      "CAL_ACC1_PRIO": 50,
+      "CAL_ACC1_XOFF": 0.0757,
+      "CAL_ACC1_YOFF": -0.1459,
+      "CAL_ACC1_ZOFF": -0.2038,
+      "CAL_ACC1_XSCALE": 1.0704,
+      "CAL_ACC1_YSCALE": 1.0355,
+      "CAL_ACC1_ZSCALE": 1.0476,
+      "CAL_ACC2_ID": 3407882,
+      "CAL_ACC2_PRIO": 50,
+      "CAL_ACC2_XOFF": 0.0761,
+      "CAL_ACC2_YOFF": -0.1259,
+      "CAL_ACC2_ZOFF": 0.0672,
+      "CAL_ACC2_XSCALE": 1.0673,
+      "CAL_ACC2_YSCALE": 1.0363,
+      "CAL_ACC2_ZSCALE": 1.0453
+    },
+    "after": {
+      "state": {
+        "timestamp": 642113533,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "kill": true,
+      "battery_voltage": null,
+      "battery_observation": "never_published_operator_confirmed_off"
+    },
+    "parameter_changes": {
+      "CAL_ACC0_XOFF": [
+        0,
+        0.0807
+      ],
+      "CAL_ACC0_YOFF": [
+        0,
+        -0.1525
+      ],
+      "CAL_ACC0_ZOFF": [
+        0,
+        0.0044
+      ],
+      "CAL_ACC0_XSCALE": [
+        1,
+        1.0695
+      ],
+      "CAL_ACC0_YSCALE": [
+        1,
+        1.0364
+      ],
+      "CAL_ACC0_ZSCALE": [
+        1,
+        1.0491
+      ],
+      "CAL_ACC1_XOFF": [
+        -0.0118,
+        0.0757
+      ],
+      "CAL_ACC1_YOFF": [
+        0.0081,
+        -0.1459
+      ],
+      "CAL_ACC1_ZOFF": [
+        -0.1963,
+        -0.2038
+      ],
+      "CAL_ACC1_XSCALE": [
+        1,
+        1.0704
+      ],
+      "CAL_ACC1_YSCALE": [
+        1,
+        1.0355
+      ],
+      "CAL_ACC1_ZSCALE": [
+        1,
+        1.0476
+      ],
+      "CAL_ACC2_XOFF": [
+        -0.0139,
+        0.0761
+      ],
+      "CAL_ACC2_YOFF": [
+        0.0414,
+        -0.1259
+      ],
+      "CAL_ACC2_ZOFF": [
+        0.102,
+        0.0672
+      ],
+      "CAL_ACC2_XSCALE": [
+        1,
+        1.0673
+      ],
+      "CAL_ACC2_YSCALE": [
+        1,
+        1.0363
+      ],
+      "CAL_ACC2_ZSCALE": [
+        1,
+        1.0453
+      ]
+    },
+    "port_closed": true,
+    "worker_finished": true,
+    "console_sha256": "b8ea3b4182d95c242ea7d0109cd2847a26c0ea1932a5e985c78c775a3ee7da6d",
+    "stream_sha256": "6fde5c313d14df24cac87717a8022692ed6bc362f50015cb821e2d14c7358e4d"
+  },
+  "server_unix": 1793266838.0220869,
+  "claimed": true
+}

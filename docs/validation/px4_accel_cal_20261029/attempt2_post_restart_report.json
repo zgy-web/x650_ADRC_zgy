@@ -1,0 +1,317 @@
+{
+  "kind": "px4_stationary_imu_and_fixed_motor_poles",
+  "utc_started": "2026-10-29T09:37:04.549032+00:00",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "complete": true,
+  "parameters": {
+    "MOT_POLE_COUNT": 24,
+    "SENS_IMU_MODE": 0,
+    "EKF2_MULTI_IMU": 3,
+    "EKF2_ABL_LIM": 0.4,
+    "EKF2_ABL_GYRLIM": 3,
+    "SENS_BOARD_ROT": 0,
+    "SENS_BOARD_X_OFF": -3.107,
+    "SENS_BOARD_Y_OFF": -2.2961,
+    "SENS_BOARD_Z_OFF": 0,
+    "COM_ARM_IMU_ACC": 0.7,
+    "COM_ARM_IMU_GYR": 0.25,
+    "SYS_HAS_GPS": 1,
+    "DSHOT_BIDIR_EN": 0,
+    "DSHOT_TEL_CFG": 103,
+    "IMU_GYRO_DNF_EN": 0,
+    "CAL_ACC0_ID": 5767194,
+    "CAL_ACC0_PRIO": 50,
+    "CAL_ACC0_XOFF": 0,
+    "CAL_ACC0_YOFF": 0,
+    "CAL_ACC0_ZOFF": 0,
+    "CAL_ACC0_XSCALE": 1,
+    "CAL_ACC0_YSCALE": 1,
+    "CAL_ACC0_ZSCALE": 1,
+    "CAL_ACC1_ID": 2818066,
+    "CAL_ACC1_PRIO": 50,
+    "CAL_ACC1_XOFF": -0.0118,
+    "CAL_ACC1_YOFF": 0.0081,
+    "CAL_ACC1_ZOFF": -0.1963,
+    "CAL_ACC1_XSCALE": 1,
+    "CAL_ACC1_YSCALE": 1,
+    "CAL_ACC1_ZSCALE": 1,
+    "CAL_ACC2_ID": 3407882,
+    "CAL_ACC2_PRIO": 50,
+    "CAL_ACC2_XOFF": -0.0139,
+    "CAL_ACC2_YOFF": 0.0414,
+    "CAL_ACC2_ZOFF": 0.102,
+    "CAL_ACC2_XSCALE": 1,
+    "CAL_ACC2_YSCALE": 1,
+    "CAL_ACC2_ZSCALE": 1
+  },
+  "samples": [
+    {
+      "index": 0,
+      "pc_monotonic": 415377.437,
+      "raw": {
+        "0": "listener estimator_sensor_bias -i 0 -n 1\n\nTOPIC: estimator_sensor_bias instance 0 #1\n estimator_sensor_bias\n    timestamp: 432795488 (0.929923 seconds ago)\n    timestamp_sample: 432573792 (221696 us before timestamp)\n    gyro_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    gyro_bias: [-0.00236, 0.00063, -0.00275]\n    gyro_bias_limit: 0.15000\n    gyro_bias_variance: [0.00000, 0.00000, 0.00000]\n    accel_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    accel_bias: [-0.00296, 0.00939, 0.01595]\n    accel_bias_limit: 0.40000\n    accel_bias_variance: [0.00151, 0.00157, 0.00002]\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_bias: [0.00076, -0.00140, 0.00053]\n    mag_bias_limit: 0.50000\n    mag_bias_variance: [0.00147, 0.00138, 0.00125]\n    gyro_bias_valid: True\n    gyro_bias_stable: True\n    accel_bias_valid: True\n    accel_bias_stable: False\n    mag_bias_valid: True\n    mag_bias_stable: False\n\nnsh> ",
+        "1": "listener estimator_sensor_bias -i 1 -n 1\n\nTOPIC: estimator_sensor_bias instance 1 #1\n estimator_sensor_bias\n    timestamp: 433678785 (0.218007 seconds ago)\n    timestamp_sample: 433490647 (188138 us before timestamp)\n    gyro_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    gyro_bias: [-0.00205, -0.00016, 0.00280]\n    gyro_bias_limit: 0.15000\n    gyro_bias_variance: [0.00000, 0.00000, 0.00000]\n    accel_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    accel_bias: [0.00166, -0.00168, -0.00815]\n    accel_bias_limit: 0.40000\n    accel_bias_variance: [0.00132, 0.00137, 0.00002]\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_bias: [-0.00011, 0.00030, -0.00019]\n    mag_bias_limit: 0.50000\n    mag_bias_variance: [0.00149, 0.00141, 0.00125]\n    gyro_bias_valid: True\n    gyro_bias_stable: True\n    accel_bias_valid: True\n    accel_bias_stable: False\n    mag_bias_valid: True\n    mag_bias_stable: False\n\nnsh> ",
+        "2": "listener estimator_sensor_bias -i 2 -n 1\n\nTOPIC: estimator_sensor_bias instance 2 #1\n estimator_sensor_bias\n    timestamp: 433649589 (0.416865 seconds ago)\n    timestamp_sample: 433458144 (191445 us before timestamp)\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    gyro_bias: [0.00039, 0.00063, 0.00036]\n    gyro_bias_limit: 0.15000\n    gyro_bias_variance: [0.00000, 0.00000, 0.00000]\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    accel_bias: [0.00398, -0.00025, -0.03558]\n    accel_bias_limit: 0.40000\n    accel_bias_variance: [0.00132, 0.00138, 0.00001]\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_bias: [-0.00015, 0.00031, -0.00019]\n    mag_bias_limit: 0.50000\n    mag_bias_variance: [0.00148, 0.00140, 0.00125]\n    gyro_bias_valid: True\n    gyro_bias_stable: True\n    accel_bias_valid: True\n    accel_bias_stable: False\n    mag_bias_valid: True\n    mag_bias_stable: False\n\nnsh> ",
+        "sensor_accel_0": "listener sensor_accel -i 0 -n 1\n\nTOPIC: sensor_accel instance 0 #1\n sensor_accel\n    timestamp: 434234031 (0.000187 seconds ago)\n    timestamp_sample: 434233768 (263 us before timestamp)\n    device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    x: 0.15935\n    y: -0.02451\n    z: -9.76988\n    temperature: 41.40000\n    error_count: 0\n    clip_counter: [0, 0, 0]\n    samples: 1\n\nnsh> ",
+        "sensor_accel_1": "listener sensor_accel -i 1 -n 1\n\nTOPIC: sensor_accel instance 1 #1\n sensor_accel\n    timestamp: 434305466 (0.001166 seconds ago)\n    timestamp_sample: 434305358 (108 us before timestamp)\n    device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    x: 0.18243\n    y: -0.04525\n    z: -10.00824\n    temperature: 39.83092\n    error_count: 0\n    clip_counter: [0, 0, 0]\n    samples: 10\n\nnsh> ",
+        "sensor_accel_2": "listener sensor_accel -i 2 -n 1\n\nTOPIC: sensor_accel instance 2 #1\n sensor_accel\n    timestamp: 434378310 (0.000931 seconds ago)\n    timestamp_sample: 434378144 (166 us before timestamp)\n    device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    x: 0.12621\n    y: 0.02259\n    z: -9.71814\n    temperature: 41.85537\n    error_count: 0\n    clip_counter: [0, 0, 0]\n    samples: 8\n\nnsh> ",
+        "vehicle_imu_status_0": "listener vehicle_imu_status -i 0 -n 1\n\nTOPIC: vehicle_imu_status instance 0 #1\n vehicle_imu_status\n    timestamp: 434386138 (0.065335 seconds ago)\n    accel_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    gyro_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    accel_clipping: [0, 0, 0]\n    gyro_clipping: [0, 0, 0]\n    accel_error_count: 0\n    gyro_error_count: 0\n    accel_rate_hz: 2009.16638\n    gyro_rate_hz: 2009.16638\n    accel_raw_rate_hz: 2009.16638\n    gyro_raw_rate_hz: 2009.16638\n    accel_vibration_metric: 0.01744\n    gyro_vibration_metric: 0.00231\n    delta_angle_coning_metric: 0.00000\n    mean_accel: [0.56724, -0.56697, -9.75846]\n    mean_gyro: [-0.00155, 0.00064, -0.00090]\n    var_accel: [0.00041, 0.00050, 0.00059]\n    var_gyro: [0.00001, 0.00001, 0.00001]\n    temperature_accel: 41.44251\n    temperature_gyro: 41.44251\n\nnsh> ",
+        "vehicle_imu_status_1": "listener vehicle_imu_status -i 1 -n 1\n\nTOPIC: vehicle_imu_status instance 1 #1\n vehicle_imu_status\n    timestamp: 434527701 (0.081389 seconds ago)\n    accel_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    gyro_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    accel_clipping: [0, 0, 0]\n    gyro_clipping: [0, 0, 0]\n    accel_error_count: 0\n    gyro_error_count: 0\n    accel_rate_hz: 810.10321\n    gyro_rate_hz: 810.10321\n    accel_raw_rate_hz: 8101.03223\n    gyro_raw_rate_hz: 8101.03223\n    accel_vibration_metric: 0.01110\n    gyro_vibration_metric: 0.00152\n    delta_angle_coning_metric: 0.00000\n    mean_accel: [0.58745, -0.59000, -9.97591]\n    mean_gyro: [0.00607, 0.01209, -0.00941]\n    var_accel: [0.00007, 0.00009, 0.00011]\n    var_gyro: [0.00000, 0.00000, 0.00000]\n    temperature_accel: 39.80051\n    temperature_gyro: 39.80051\n\nnsh> ",
+        "vehicle_imu_status_2": "listener vehicle_imu_status -i 2 -n 1\n\nTOPIC: vehicle_imu_status instance 2 #1\n vehicle_imu_status\n    timestamp: 434703393 (0.059604 seconds ago)\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    accel_clipping: [0, 0, 0]\n    gyro_clipping: [0, 0, 0]\n    accel_error_count: 0\n    gyro_error_count: 0\n    accel_rate_hz: 799.99915\n    gyro_rate_hz: 799.99915\n    accel_raw_rate_hz: 6412.61279\n    gyro_raw_rate_hz: 6412.61279\n    accel_vibration_metric: 0.01843\n    gyro_vibration_metric: 0.00112\n    delta_angle_coning_metric: 0.00000\n    mean_accel: [0.53388, -0.52783, -9.70938]\n    mean_gyro: [-0.00006, -0.00307, -0.00224]\n    var_accel: [0.00031, 0.00033, 0.00031]\n    var_gyro: [0.00000, 0.00000, 0.00000]\n    temperature_accel: 41.82671\n    temperature_gyro: 41.82671\n\nnsh> "
+      },
+      "assessment": {
+        "0": {
+          "timestamp": 432795488,
+          "accel_device_id": 5767194,
+          "gyro_device_id": 5767194,
+          "accel": {
+            "valid": true,
+            "stable": false,
+            "bias": [
+              -0.00296,
+              0.00939,
+              0.01595
+            ],
+            "variance": [
+              0.00151,
+              0.00157,
+              2e-05
+            ],
+            "limit": 0.4,
+            "thresholds": [
+              0.41657615536635273,
+              0.41886967653695373,
+              0.3134164078649988
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          },
+          "gyro": {
+            "valid": true,
+            "stable": true,
+            "bias": [
+              -0.00236,
+              0.00063,
+              -0.00275
+            ],
+            "variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "limit": 0.15,
+            "thresholds": [
+              0.11249999999999999,
+              0.11249999999999999,
+              0.11249999999999999
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          }
+        },
+        "1": {
+          "timestamp": 433678785,
+          "accel_device_id": 2818066,
+          "gyro_device_id": 2818066,
+          "accel": {
+            "valid": true,
+            "stable": false,
+            "bias": [
+              0.00166,
+              -0.00168,
+              -0.00815
+            ],
+            "variance": [
+              0.00132,
+              0.00137,
+              2e-05
+            ],
+            "limit": 0.4,
+            "thresholds": [
+              0.4089954127475097,
+              0.4110405331399305,
+              0.3134164078649988
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          },
+          "gyro": {
+            "valid": true,
+            "stable": true,
+            "bias": [
+              -0.00205,
+              -0.00016,
+              0.0028
+            ],
+            "variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "limit": 0.15,
+            "thresholds": [
+              0.11249999999999999,
+              0.11249999999999999,
+              0.11249999999999999
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          }
+        },
+        "2": {
+          "timestamp": 433649589,
+          "accel_device_id": 3407882,
+          "gyro_device_id": 3407882,
+          "accel": {
+            "valid": true,
+            "stable": false,
+            "bias": [
+              0.00398,
+              -0.00025,
+              -0.03558
+            ],
+            "variance": [
+              0.00132,
+              0.00138,
+              1e-05
+            ],
+            "limit": 0.4,
+            "thresholds": [
+              0.4089954127475097,
+              0.4114450537260403,
+              0.30948683298050517
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          },
+          "gyro": {
+            "valid": true,
+            "stable": true,
+            "bias": [
+              0.00039,
+              0.00063,
+              0.00036
+            ],
+            "variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "limit": 0.15,
+            "thresholds": [
+              0.11249999999999999,
+              0.11249999999999999,
+              0.11249999999999999
+            ],
+            "exceeds": [
+              false,
+              false,
+              false
+            ]
+          }
+        }
+      },
+      "selector_before": "listener estimator_selector_status -n 1\n\nTOPIC: estimator_selector_status\n estimator_selector_status\n    timestamp: 432879260 (0.680499 seconds ago)\n    last_instance_change: 2900271\n    instance_changed_count: 2\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    combined_test_ratio: [1.00000, 1.00000, 1.00000, nan, nan, nan, nan, nan, nan]\n    relative_test_ratio: [0.00000, 0.00000, 0.00000, nan, nan, nan, nan, nan, nan]\n    accumulated_gyro_error: [0.00000, 0.00000, 0.00000, nan]\n    accumulated_accel_error: [0.00000, 0.00000, 0.00000, nan]\n    primary_instance: 2\n    instances_available: 3\n    healthy: [True, True, True, False, False, False, False, False, False]\n    gyro_fault_detected: False\n    accel_fault_detected: False\n\nnsh> ",
+      "primary_instance": 2,
+      "attitude": "listener vehicle_attitude -n 1\n\nTOPIC: vehicle_attitude\n vehicle_attitude\n    timestamp: 434913553 (0.003252 seconds ago)\n    timestamp_sample: 434913152 (401 us before timestamp)\n    q: [0.90129, 0.03842, 0.01222, -0.43132] (Roll: 3.4 deg, Pitch: 3.2 deg, Yaw: -51.1 deg)\n    delta_q_reset: [0.90414, -0.00000, 0.00000, -0.42722]\n    quat_reset_counter: 2\n\nnsh> ",
+      "acceleration": "listener vehicle_acceleration -n 1\n\nTOPIC: vehicle_acceleration\n vehicle_acceleration\n    timestamp: 434985824 (0.001354 seconds ago)\n    timestamp_sample: 434985644 (180 us before timestamp)\n    xyz: [0.55339, -0.58133, -9.77204]\n\nnsh> ",
+      "selector_after": "listener estimator_selector_status -n 1\n\nTOPIC: estimator_selector_status\n estimator_selector_status\n    timestamp: 434898724 (0.135711 seconds ago)\n    last_instance_change: 2900271\n    instance_changed_count: 2\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    combined_test_ratio: [1.00000, 1.00000, 1.00000, nan, nan, nan, nan, nan, nan]\n    relative_test_ratio: [0.00000, 0.00000, 0.00000, nan, nan, nan, nan, nan, nan]\n    accumulated_gyro_error: [0.00000, 0.00000, 0.00000, nan]\n    accumulated_accel_error: [0.00000, 0.00000, 0.00000, nan]\n    primary_instance: 2\n    instances_available: 3\n    healthy: [True, True, True, False, False, False, False, False, False]\n    gyro_fault_detected: False\n    accel_fault_detected: False\n\nnsh> ",
+      "primary_unchanged_during_reads": true
+    }
+  ],
+  "status_text": {
+    "commander status": "commander status\nINFO  [commander] Disarmed\nINFO  [commander] navigation mode: Altitude\nINFO  [commander] user intended navigation mode: Altitude\nINFO  [commander] in failsafe: no\ncommander: cycle: 39022 events, 3087182us elapsed, 79.11us avg, min 33us max 3046us 106.629us rms\ncommander: preflight check: 3938 events, 969671us elapsed, 246.23us avg, min 92us max 2991us 142.650us rms\nnsh> ",
+    "sensors status": "sensors status\nselected gyro: 3407882 (2)\nvalidator: best: 1, prev best: 1, failsafe: NO (0 events)\nsensor #0, prio: 50, state: OK\n\tval:  -0.0031, lp:  -0.0023 mean dev:  -0.0000 RMS:   0.0014 conf:   1.0000\n\tval:   0.0017, lp:   0.0007 mean dev:   0.0000 RMS:   0.0015 conf:   1.0000\n\tval:  -0.0014, lp:  -0.0027 mean dev:  -0.0000 RMS:   0.0017 conf:   1.0000\nsensor #1, prio: 50, state: OK\n\tval:  -0.0028, lp:  -0.0020 mean dev:  -0.0000 RMS:   0.0011 conf:   1.0000\n\tval:   0.0011, lp:  -0.0001 mean dev:  -0.0000 RMS:   0.0013 conf:   1.0000\n\tval:   0.0035, lp:   0.0027 mean dev:   0.0000 RMS:   0.0013 conf:   1.0000\nsensor #2, prio: 50, state: OK\n\tval:   0.0001, lp:   0.0003 mean dev:   0.0000 RMS:   0.0010 conf:   1.0000\n\tval:   0.0012, lp:   0.0006 mean dev:  -0.0000 RMS:   0.0012 conf:   1.0000\n\tval:   0.0001, lp:   0.0003 mean dev:  -0.0000 RMS:   0.0012 conf:   1.0000\n\nselected accel: 3407882 (2)\nvalidator: best: 1, prev best: 1, failsafe: NO (0 events)\nsensor #0, prio: 50, state: OK\n\tval:   0.5766, lp:   0.5690 mean dev:   0.0003 RMS:   0.0142 conf:   1.0000\n\tval:  -0.5588, lp:  -0.5673 mean dev:  -0.0003 RMS:   0.0220 conf:   1.0000\n\tval:  -9.7801, lp:  -9.7576 mean dev:  -0.0065 RMS:   0.1268 conf:   1.0000\nsensor #1, prio: 50, state: OK\n\tval:   0.5974, lp:   0.5941 mean dev:   0.0000 RMS:   0.0110 conf:   1.0000\n\tval:  -0.5888, lp:  -0.5852 mean dev:   0.0000 RMS:   0.0194 conf:   1.0000\n\tval:  -9.7856, lp:  -9.7797 mean dev:  -0.0000 RMS:   0.0110 conf:   1.0000\nsensor #2, prio: 50, state: OK\n\tval:   0.5410, lp:   0.5460 mean dev:   0.0003 RMS:   0.0141 conf:   1.0000\n\tval:  -0.5926, lp:  -0.5774 mean dev:  -0.0002 RMS:   0.0206 conf:   1.0000\n\tval:  -9.8163, lp:  -9.8091 mean dev:  -0.0055 RMS:   0.1173 conf:   1.0000\n\n[vehicle_magnetometer] selected MAG: 4395041 (0)\nvalidator: best: 0, prev best: 0, failsafe: NO (0 events)\nsensor #0, prio: 50, state: OK\n\tval:   0.1158, lp:   0.1180 mean dev:  -0.0000 RMS:   0.0025 conf:   1.0000\n\tval:   0.2077, lp:   0.2095 mean dev:   0.0001 RMS:   0.0031 conf:   1.0000\n\tval:   0.4887, lp:   0.4879 mean dev:   0.0001 RMS:   0.0033 conf:   1.0000\nMAG 4395041 EN: 1, offset: [-0.144 0.072 -0.101], scale: [0.997 0.990 1.012], Internal\n\n[vehicle_air_data] selected BARO: 6780433 (1)\nvalidator: best: 1, prev best: 1, failsafe: NO (0 events)\nsensor #0, prio: 50, state: OK\n\tval: 100866.6172, lp: 100867.3594 mean dev: -20.4399 RMS: 163.0961 conf:   1.0000\n\tval:  42.1419, lp:  42.1750 mean dev:   0.0018 RMS:   0.0292 conf:   1.0000\n\tval:  38.2317, lp:  38.1794 mean dev:   1.6825 RMS:  13.4883 conf:   1.0000\nsensor #1, prio: 75, state: OK\n\tval: 100870.9844, lp: 100870.6016 mean dev:  -0.1545 RMS:   1.8003 conf:   1.0000\n\tval:  42.1500, lp:  42.1527 mean dev:   0.0115 RMS:   0.0349 conf:   1.0000\n\tval:  37.8671, lp:  37.9093 mean dev:   0.0050 RMS:   0.1505 conf:   1.0000\nBARO 12084257 EN: 1, offset: -130.227, Internal\nBARO 6780433 EN: 1, offset: 0.000, Ext\n\nAirspeed status:\n\tno data\n\n[vehicle_acceleration] selected sensor: 3407882, rate: 800.0 Hz, estimated bias: [0.0039 -0.0002 -0.0356]\nACC 3407882 EN: 1, offset: [-0.013 0.041 0.102], scale: [1.000 1.000 1.000], Internal\n\n[vehicle_angular_velocity] selected sensor: 3407882, rate: 6413.0 Hz FIFO, estimated bias: [0.00038 0.00063 0.00036]\nGYRO 3407882 EN: 1, offset: [-0.000 -0.003 -0.002], Internal\nvehicle_angular_velocity: gyro filter: 344478 events, 4228854us elapsed, 12.28us avg, min 8us max 244us 1.209us rms\nvehicle_angular_velocity: gyro filter reset: 3 events\nvehicle_angular_velocity: gyro selection changed: 2 events\n\n[vehicle_gps_position] selected GPS: 0\n\n\n[vehicle_imu] 0 - Accel: 5767194, interval: 497.7 us (SD 31.8 us), Gyro: 5767194, interval: 497.7 us (SD 31.8 us)\nvehicle_imu: accel data gap: 0 events\nvehicle_imu: gyro data gap: 0 events\nACC 5767194 EN: 1, offset: [0.000 0.000 0.000], scale: [1.000 1.000 1.000], Internal\nGYRO 5767194 EN: 1, offset: [0.001 -0.000 0.001], Internal\n\n[vehicle_imu] 1 - Accel: 2818066, interval: 1234.4 us (SD 0.9 us), Gyro: 2818066, interval: 1234.4 us (SD 0.9 us)\nvehicle_imu: accel data gap: 1 events\nvehicle_imu: gyro data gap: 1 events\nACC 2818066 EN: 1, offset: [-0.011 0.008 -0.196], scale: [1.000 1.000 1.000], Internal\nGYRO 2818066 EN: 1, offset: [0.007 0.013 -0.011], Internal\n\n[vehicle_imu] 2 - Accel: 3407882, interval: 1250.0 us (SD 12.8 us), Gyro: 3407882, interval: 1250.0 us (SD 12.8 us)\nvehicle_imu: accel data gap: 1 events\nvehicle_imu: gyro data gap: 1 events\nACC 3407882 EN: 1, offset: [-0.013 0.041 0.102], scale: [1.000 1.000 1.000], Internal\nGYRO 3407882 EN: 1, offset: [-0.000 -0.003 -0.002], Internal\nnsh> ",
+    "ekf2 status": "ekf2 status\nINFO  [ekf2] available instances: 3\nINFO  [ekf2] 0: ACC: 5767194, GYRO: 5767194, MAG: 4395041, healthy, test ratio: 1.0000000 (0.00000) \nINFO  [ekf2] 1: ACC: 2818066, GYRO: 2818066, MAG: 4395041, healthy, test ratio: 1.0000000 (0.00000) \nINFO  [ekf2] 2: ACC: 3407882, GYRO: 3407882, MAG: 4395041, healthy, test ratio: 1.0000000 (0.00000) *\n\nekf2:0 EKF dt: 0.0115s, attitude: 1, local position: 0, global position: 0\nekf2: EKF update: 37139 events, 12753857us elapsed, 343.41us avg, min 88us max 886us 130.766us rms\nekf2: IMU message missed: 0 events\n\nekf2:1 EKF dt: 0.0098s, attitude: 1, local position: 0, global position: 0\nekf2: EKF update: 43568 events, 14814039us elapsed, 340.02us avg, min 87us max 1335us 142.189us rms\nekf2: IMU message missed: 0 events\n\nekf2:2 EKF dt: 0.0100s, attitude: 1, local position: 0, global position: 0\nekf2: EKF update: 43024 events, 14417284us elapsed, 335.10us avg, min 87us max 1812us 170.812us rms\nekf2: IMU message missed: 0 events\nnsh> ",
+    "dshot status": "dshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 344871 events, 7644081us elapsed, 22.17us avg, min 17us max 71us 1.712us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 0 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 344870 events, 48662963us elapsed, 141.11us avg, min 126us max 469us 4.327us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 0\nINFO  [dshot] Number of timeouts: 13744\nINFO  [dshot] Number of CRC errors: 0\nnsh> ",
+    "listener vehicle_status -n 1": "listener vehicle_status -n 1\n\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 432082373 (0.491374 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 2043796\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 1\n    nav_state: 1\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: True\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\nnsh> ",
+    "listener actuator_armed -n 1": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 432592360 (0.202632 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+    "listener battery_status -n 1": "listener battery_status -n 1\nnever published\nnsh> ",
+    "listener sensor_selection -n 1": "listener sensor_selection -n 1\n\nTOPIC: sensor_selection\n sensor_selection\n    timestamp: 2900271 (429.966156 seconds ago)\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\nnsh> ",
+    "listener estimator_selector_status -n 1": "listener estimator_selector_status -n 1\n\nTOPIC: estimator_selector_status\n estimator_selector_status\n    timestamp: 432879260 (0.034817 seconds ago)\n    last_instance_change: 2900271\n    instance_changed_count: 2\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    combined_test_ratio: [1.00000, 1.00000, 1.00000, nan, nan, nan, nan, nan, nan]\n    relative_test_ratio: [0.00000, 0.00000, 0.00000, nan, nan, nan, nan, nan, nan]\n    accumulated_gyro_error: [0.00000, 0.00000, 0.00000, nan]\n    accumulated_accel_error: [0.00000, 0.00000, 0.00000, nan]\n    primary_instance: 2\n    instances_available: 3\n    healthy: [True, True, True, False, False, False, False, False, False]\n    gyro_fault_detected: False\n    accel_fault_detected: False\n\nnsh> ",
+    "listener vehicle_attitude -n 1": "listener vehicle_attitude -n 1\n\nTOPIC: vehicle_attitude\n vehicle_attitude\n    timestamp: 433078474 (0.001641 seconds ago)\n    timestamp_sample: 433078144 (330 us before timestamp)\n    q: [0.90136, 0.03843, 0.01224, -0.43118] (Roll: 3.4 deg, Pitch: 3.2 deg, Yaw: -51.0 deg)\n    delta_q_reset: [0.90414, -0.00000, 0.00000, -0.42722]\n    quat_reset_counter: 2\n\nnsh> ",
+    "listener vehicle_acceleration -n 1": "listener vehicle_acceleration -n 1\n\nTOPIC: vehicle_acceleration\n vehicle_acceleration\n    timestamp: 433145831 (0.003794 seconds ago)\n    timestamp_sample: 433145646 (185 us before timestamp)\n    xyz: [0.53872, -0.57097, -9.77680]\n\nnsh> ",
+    "listener failsafe_flags -n 1": "listener failsafe_flags -n 1\n\nTOPIC: failsafe_flags\n failsafe_flags\n    timestamp: 433121530 (0.074531 seconds ago)\n    mode_req_angular_velocity: 8312190\n    mode_req_attitude: 8311166\n    mode_req_local_alt: 8257918\n    mode_req_local_position: 7995448\n    mode_req_local_position_relaxed: 262212\n    mode_req_global_position: 56\n    mode_req_global_position_relaxed: 0\n    mode_req_mission: 8\n    mode_req_offboard_signal: 16384\n    mode_req_home_position: 32\n    mode_req_wind_and_flight_time_compliance: 2621464\n    mode_req_prevent_arming: 3944480\n    mode_req_manual_control: 34119\n    mode_req_other: 2139095040\n    angular_velocity_invalid: False\n    attitude_invalid: False\n    local_altitude_invalid: False\n    local_position_invalid: True\n    local_position_invalid_relaxed: True\n    local_velocity_invalid: True\n    global_position_invalid: True\n    global_position_invalid_relaxed: True\n    auto_mission_missing: True\n    offboard_control_signal_lost: True\n    home_position_invalid: True\n    manual_control_signal_lost: False\n    gcs_connection_lost: True\n    battery_warning: 0\n    battery_low_remaining_time: False\n    battery_unhealthy: False\n    geofence_breached: False\n    mission_failure: False\n    vtol_fixed_wing_system_failure: False\n    wind_limit_exceeded: False\n    flight_time_limit_exceeded: False\n    position_accuracy_low: False\n    navigator_failure: False\n    fd_critical_failure: False\n    fd_esc_arming_failure: False\n    fd_imbalanced_prop: False\n    fd_motor_failure: False\n\nnsh> ",
+    "listener health_report -n 1": "listener health_report -n 1\n\nTOPIC: health_report\n health_report\n    timestamp: 392051363 (41.421139 seconds ago)\n    can_arm_mode_flags: 0\n    can_run_mode_flags: 114563 (0b1'1011'1111'1000'0011)\n    health_is_present_flags: 939655298 (0b11'1000'0000'0010'0000'0000'1000'0010)\n    health_warning_flags: 0\n    health_error_flags: 0\n    arming_check_warning_flags: 0\n    arming_check_error_flags: 17956992 (0b1'0001'0010'0000'0000'1000'0000)\nnsh> ",
+    "listener estimator_status -i 0 -n 1": "listener estimator_status -i 0 -n 1\n\nTOPIC: estimator_status instance 0 #1\n estimator_status\n    timestamp: 435190708 (0.009643 seconds ago)\n    timestamp_sample: 434969893 (220815 us before timestamp)\n    control_mode_flags: 2388605796947 (0b10'0010'1100'0010'0100'0000'0000'0000'0010'0101'0011)\n    output_tracking_error: [0.00002, 0.00013, 0.00059]\n    filter_fault_flags: 0\n    pos_horiz_accuracy: 0.01623\n    pos_vert_accuracy: 0.30551\n    hdg_test_ratio: 0.00480\n    vel_test_ratio: nan\n    pos_test_ratio: nan\n    hgt_test_ratio: 0.00151\n    tas_test_ratio: nan\n    hagl_test_ratio: nan\n    beta_test_ratio: nan\n    time_slip: 0.00000\n    accel_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    gyro_device_id: 5767194 (Type: 0x58, SPI:3 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_inclination_deg: 64.77027\n    mag_inclination_ref_deg: nan\n    mag_strength_gs: 0.53966\n    mag_strength_ref_gs: nan\n    gps_check_fail_flags: 0\n    solution_status_flags: 165 (0b1010'0101)\n    reset_count_vel_ne: 3\n    reset_count_vel_d: 1\n    reset_count_pos_ne: 3\n    reset_count_pod_d: 1\n    reset_count_quat: 1\n    pre_flt_fail_innov_heading: False\n    pre_flt_fail_innov_height: False\n    pre_flt_fail_innov_pos_horiz: False\n    pre_flt_fail_innov_vel_horiz: False\n    pre_flt_fail_innov_vel_vert: False\n    pre_flt_fail_mag_field_disturbed: False\n    health_flags: 0\n    timeout_flags: 0\n\nnsh> ",
+    "listener estimator_status -i 1 -n 1": "listener estimator_status -i 1 -n 1\n\nTOPIC: estimator_status instance 1 #1\n estimator_status\n    timestamp: 435456264 (0.011150 seconds ago)\n    timestamp_sample: 435268198 (188066 us before timestamp)\n    control_mode_flags: 2388605796947 (0b10'0010'1100'0010'0100'0000'0000'0000'0010'0101'0011)\n    output_tracking_error: [0.00009, 0.00019, 0.00019]\n    filter_fault_flags: 0\n    pos_horiz_accuracy: 0.01495\n    pos_vert_accuracy: 0.30391\n    hdg_test_ratio: 0.01176\n    vel_test_ratio: nan\n    pos_test_ratio: nan\n    hgt_test_ratio: 0.00166\n    tas_test_ratio: nan\n    hagl_test_ratio: nan\n    beta_test_ratio: nan\n    time_slip: 0.00000\n    accel_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    gyro_device_id: 2818066 (Type: 0x2B, SPI:2 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_inclination_deg: 64.62630\n    mag_inclination_ref_deg: nan\n    mag_strength_gs: 0.54968\n    mag_strength_ref_gs: nan\n    gps_check_fail_flags: 0\n    solution_status_flags: 165 (0b1010'0101)\n    reset_count_vel_ne: 3\n    reset_count_vel_d: 1\n    reset_count_pos_ne: 3\n    reset_count_pod_d: 1\n    reset_count_quat: 1\n    pre_flt_fail_innov_heading: False\n    pre_flt_fail_innov_height: False\n    pre_flt_fail_innov_pos_horiz: False\n    pre_flt_fail_innov_vel_horiz: False\n    pre_flt_fail_innov_vel_vert: False\n    pre_flt_fail_mag_field_disturbed: False\n    health_flags: 0\n    timeout_flags: 0\n\nnsh> ",
+    "listener estimator_status -i 2 -n 1": "listener estimator_status -i 2 -n 1\n\nTOPIC: estimator_status instance 2 #1\n estimator_status\n    timestamp: 435728833 (0.005162 seconds ago)\n    timestamp_sample: 435538145 (190688 us before timestamp)\n    control_mode_flags: 2388605796947 (0b10'0010'1100'0010'0100'0000'0000'0000'0010'0101'0011)\n    output_tracking_error: [0.00010, 0.00020, 0.00064]\n    filter_fault_flags: 0\n    pos_horiz_accuracy: 0.01541\n    pos_vert_accuracy: 0.30457\n    hdg_test_ratio: 0.00860\n    vel_test_ratio: nan\n    pos_test_ratio: nan\n    hgt_test_ratio: 0.00237\n    tas_test_ratio: nan\n    hagl_test_ratio: nan\n    beta_test_ratio: nan\n    time_slip: 0.00000\n    accel_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    gyro_device_id: 3407882 (Type: 0x34, SPI:1 (0x00))\n    baro_device_id: 6780433 (Type: 0x67, I2C:2 (0x76))\n    mag_device_id: 4395041 (Type: 0x43, I2C:4 (0x10))\n    mag_inclination_deg: 64.70151\n    mag_inclination_ref_deg: nan\n    mag_strength_gs: 0.54752\n    mag_strength_ref_gs: nan\n    gps_check_fail_flags: 0\n    solution_status_flags: 165 (0b1010'0101)\n    reset_count_vel_ne: 3\n    reset_count_vel_d: 1\n    reset_count_pos_ne: 3\n    reset_count_pod_d: 1\n    reset_count_quat: 1\n    pre_flt_fail_innov_heading: False\n    pre_flt_fail_innov_height: False\n    pre_flt_fail_innov_pos_horiz: False\n    pre_flt_fail_innov_vel_horiz: False\n    pre_flt_fail_innov_vel_vert: False\n    pre_flt_fail_mag_field_disturbed: False\n    health_flags: 0\n    timeout_flags: 0\n\nnsh> ",
+    "listener estimator_status_flags -i 0 -n 1": "listener estimator_status_flags -i 0 -n 1\n\nTOPIC: estimator_status_flags instance 0 #1\n estimator_status_flags\n    timestamp: 435121454 (0.880717 seconds ago)\n    timestamp_sample: 434900778 (220676 us before timestamp)\n    control_status_changes: 9\n    fault_status_changes: 0\n    innovation_fault_status_changes: 2\n    cs_tilt_align: True\n    cs_yaw_align: True\n    cs_gnss_pos: False\n    cs_opt_flow: False\n    cs_mag_hdg: True\n    cs_mag_3d: False\n    cs_mag_dec: True\n    cs_in_air: False\n    cs_wind: False\n    cs_baro_hgt: True\n    cs_rng_hgt: False\n    cs_gps_hgt: False\n    cs_ev_pos: False\n    cs_ev_yaw: False\n    cs_ev_hgt: False\n    cs_fuse_beta: False\n    cs_mag_field_disturbed: False\n    cs_fixed_wing: False\n    cs_mag_fault: False\n    cs_fuse_aspd: False\n    cs_gnd_effect: False\n    cs_rng_stuck: False\n    cs_gnss_yaw: False\n    cs_mag_aligned_in_flight: False\n    cs_ev_vel: False\n    cs_synthetic_mag_z: False\n    cs_vehicle_at_rest: True\n    cs_gnss_yaw_fault: False\n    cs_rng_fault: False\n    cs_inertial_dead_reckoning: True\n    cs_wind_dead_reckoning: False\n    cs_rng_kin_consistent: False\n    cs_fake_pos: False\n    cs_fake_hgt: False\n    cs_gravity_vector: True\n    cs_mag: True\n    cs_ev_yaw_fault: False\n    cs_mag_heading_consistent: True\n    cs_aux_gpos: False\n    cs_rng_terrain: False\n    cs_opt_flow_terrain: False\n    cs_valid_fake_pos: True\n    cs_constant_pos: False\n    cs_baro_fault: False\n    cs_gnss_vel: False\n    cs_gnss_fault: False\n    cs_yaw_manual: False\n    cs_gnss_hgt_fault: False\n    fs_bad_mag_x: False\n    fs_bad_mag_y: False\n    fs_bad_mag_z: False\n    fs_bad_hdg: False\n    fs_bad_mag_decl: False\n    fs_bad_airspeed: False\n    fs_bad_sideslip: False\n    fs_bad_optflow_x: False\n    fs_bad_optflow_y: False\n    fs_bad_acc_vertical: False\n    fs_bad_acc_clipping: False\n    reject_hor_vel: False\n    reject_ver_vel: False\n    reject_hor_pos: False\n    reject_ver_pos: False\n    reject_yaw: False\n    reject_airspeed: False\n    reject_sideslip: False\n    reject_hagl: False\n    reject_optflow_x: False\n    reject_optflow_y: False\n\nnsh> ",
+    "listener estimator_status_flags -i 1 -n 1": "listener estimator_status_flags -i 1 -n 1\n\nTOPIC: estimator_status_flags instance 1 #1\n estimator_status_flags\n    timestamp: 436137758 (0.246411 seconds ago)\n    timestamp_sample: 435949592 (188166 us before timestamp)\n    control_status_changes: 10\n    fault_status_changes: 0\n    innovation_fault_status_changes: 2\n    cs_tilt_align: True\n    cs_yaw_align: True\n    cs_gnss_pos: False\n    cs_opt_flow: False\n    cs_mag_hdg: True\n    cs_mag_3d: False\n    cs_mag_dec: True\n    cs_in_air: False\n    cs_wind: False\n    cs_baro_hgt: True\n    cs_rng_hgt: False\n    cs_gps_hgt: False\n    cs_ev_pos: False\n    cs_ev_yaw: False\n    cs_ev_hgt: False\n    cs_fuse_beta: False\n    cs_mag_field_disturbed: False\n    cs_fixed_wing: False\n    cs_mag_fault: False\n    cs_fuse_aspd: False\n    cs_gnd_effect: False\n    cs_rng_stuck: False\n    cs_gnss_yaw: False\n    cs_mag_aligned_in_flight: False\n    cs_ev_vel: False\n    cs_synthetic_mag_z: False\n    cs_vehicle_at_rest: True\n    cs_gnss_yaw_fault: False\n    cs_rng_fault: False\n    cs_inertial_dead_reckoning: True\n    cs_wind_dead_reckoning: False\n    cs_rng_kin_consistent: False\n    cs_fake_pos: False\n    cs_fake_hgt: False\n    cs_gravity_vector: True\n    cs_mag: True\n    cs_ev_yaw_fault: False\n    cs_mag_heading_consistent: True\n    cs_aux_gpos: False\n    cs_rng_terrain: False\n    cs_opt_flow_terrain: False\n    cs_valid_fake_pos: True\n    cs_constant_pos: False\n    cs_baro_fault: False\n    cs_gnss_vel: False\n    cs_gnss_fault: False\n    cs_yaw_manual: False\n    cs_gnss_hgt_fault: False\n    fs_bad_mag_x: False\n    fs_bad_mag_y: False\n    fs_bad_mag_z: False\n    fs_bad_hdg: False\n    fs_bad_mag_decl: False\n    fs_bad_airspeed: False\n    fs_bad_sideslip: False\n    fs_bad_optflow_x: False\n    fs_bad_optflow_y: False\n    fs_bad_acc_vertical: False\n    fs_bad_acc_clipping: False\n    reject_hor_vel: False\n    reject_ver_vel: False\n    reject_hor_pos: False\n    reject_ver_pos: False\n    reject_yaw: False\n    reject_airspeed: False\n    reject_sideslip: False\n    reject_hagl: False\n    reject_optflow_x: False\n    reject_optflow_y: False\n\nnsh> ",
+    "listener estimator_status_flags -i 2 -n 1": "listener estimator_status_flags -i 2 -n 1\n\nTOPIC: estimator_status_flags instance 2 #1\n estimator_status_flags\n    timestamp: 436439256 (0.326087 seconds ago)\n    timestamp_sample: 436248144 (191112 us before timestamp)\n    control_status_changes: 10\n    fault_status_changes: 0\n    innovation_fault_status_changes: 2\n    cs_tilt_align: True\n    cs_yaw_align: True\n    cs_gnss_pos: False\n    cs_opt_flow: False\n    cs_mag_hdg: True\n    cs_mag_3d: False\n    cs_mag_dec: True\n    cs_in_air: False\n    cs_wind: False\n    cs_baro_hgt: True\n    cs_rng_hgt: False\n    cs_gps_hgt: False\n    cs_ev_pos: False\n    cs_ev_yaw: False\n    cs_ev_hgt: False\n    cs_fuse_beta: False\n    cs_mag_field_disturbed: False\n    cs_fixed_wing: False\n    cs_mag_fault: False\n    cs_fuse_aspd: False\n    cs_gnd_effect: False\n    cs_rng_stuck: False\n    cs_gnss_yaw: False\n    cs_mag_aligned_in_flight: False\n    cs_ev_vel: False\n    cs_synthetic_mag_z: False\n    cs_vehicle_at_rest: True\n    cs_gnss_yaw_fault: False\n    cs_rng_fault: False\n    cs_inertial_dead_reckoning: True\n    cs_wind_dead_reckoning: False\n    cs_rng_kin_consistent: False\n    cs_fake_pos: False\n    cs_fake_hgt: False\n    cs_gravity_vector: True\n    cs_mag: True\n    cs_ev_yaw_fault: False\n    cs_mag_heading_consistent: True\n    cs_aux_gpos: False\n    cs_rng_terrain: False\n    cs_opt_flow_terrain: False\n    cs_valid_fake_pos: True\n    cs_constant_pos: False\n    cs_baro_fault: False\n    cs_gnss_vel: False\n    cs_gnss_fault: False\n    cs_yaw_manual: False\n    cs_gnss_hgt_fault: False\n    fs_bad_mag_x: False\n    fs_bad_mag_y: False\n    fs_bad_mag_z: False\n    fs_bad_hdg: False\n    fs_bad_mag_decl: False\n    fs_bad_airspeed: False\n    fs_bad_sideslip: False\n    fs_bad_optflow_x: False\n    fs_bad_optflow_y: False\n    fs_bad_acc_vertical: False\n    fs_bad_acc_clipping: False\n    reject_hor_vel: False\n    reject_ver_vel: False\n    reject_hor_pos: False\n    reject_ver_pos: False\n    reject_yaw: False\n    reject_airspeed: False\n    reject_sideslip: False\n    reject_hagl: False\n    reject_optflow_x: False\n    reject_optflow_y: False\n\nnsh> "
+  },
+  "operator_power_off": true,
+  "apply_poles": false,
+  "parameter_write_attempts": 0,
+  "save_attempts": 0,
+  "motor_commands": 0,
+  "calibration_commands": 0,
+  "arm_commands": 0,
+  "nx_accessed": false,
+  "power_cycle_persistence_verified": false,
+  "flight_ready": false,
+  "source_sha256": "e322616fd22f81c38c7ed6afa49099c488c47e8f65e9a1bd9f7b681678367e4d",
+  "before": {
+    "state": {
+      "timestamp": 430052361,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "kill": true,
+    "battery_voltage": null,
+    "battery_observation": "never_published_operator_confirmed_off"
+  },
+  "after": {
+    "state": {
+      "timestamp": 436646438,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "kill": true,
+    "battery_voltage": null,
+    "battery_observation": "never_published_operator_confirmed_off"
+  },
+  "port_closed": true,
+  "console_sha256": "16d8613f06c691d166434c6be194c40466325fce79bb80e6241593d584b975ef"
+}

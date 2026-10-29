@@ -111,3 +111,22 @@ def test_failed_guards_do_not_save_or_retry_write(monkeypatch, tmp_path, case):
     assert "param save" not in calls
     assert calls.count("param set MOT_POLE_COUNT 24") == (1 if case == "failed_readback" else 0)
     assert json.loads((tmp_path / case / "report.json").read_text())["error"]
+
+
+@pytest.mark.parametrize("allowed", [False, True])
+def test_never_published_battery_is_unknown_not_zero(monkeypatch, allowed):
+    class ColdConsole:
+        def query(self, command):
+            return "never published\nnsh>" if "battery_status" in command else "normal"
+    monkeypatch.setattr(m, "fresh", lambda raw, age: m.number(raw, "timestamp"))
+    monkeypatch.setattr(m, "number", lambda raw, name: (_ for _ in ()).throw(ValueError("missing")) if "never published" in raw else 0)
+    monkeypatch.setattr(m, "status_fields", lambda _: {"arming_state": 1})
+    monkeypatch.setattr(m, "require_zero", lambda _: {0: 0})
+    monkeypatch.setattr(m, "boolean", lambda raw, name: name == "kill")
+    if allowed:
+        result = m.guard(ColdConsole(), require_kill=True, allow_unpublished_battery=True)
+        assert result["battery_voltage"] is None
+        assert result["battery_observation"] == "never_published_operator_confirmed_off"
+    else:
+        with pytest.raises(ValueError):
+            m.guard(ColdConsole(), require_kill=True)

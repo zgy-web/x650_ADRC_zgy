@@ -85,7 +85,7 @@ def assess_bias(raw):
     return result
 
 
-def guard(c, *, require_kill=False):
+def guard(c, *, require_kill=False, allow_unpublished_battery=False):
     state_raw = c.query("listener vehicle_status -n 1")
     fresh(state_raw, 1.5)
     state = status_fields(state_raw)
@@ -98,6 +98,11 @@ def guard(c, *, require_kill=False):
     if require_kill and not kill:
         raise ValueError("Kill must remain engaged for the fixed write")
     battery = c.query("listener battery_status -n 1")
+    if allow_unpublished_battery and re.search(r"^never published$", clean(battery), re.M) and "TOPIC:" not in battery:
+        # Cold USB-only boot may have no battery publisher. Physical ESC power-off
+        # confirmation remains required by the caller; missing telemetry is NOT 0 V.
+        return dict(state=state, outputs=outputs, kill=kill, battery_voltage=None,
+                    battery_observation="never_published_operator_confirmed_off")
     fresh(battery, 1.5)
     if boolean(battery, "connected") or not 0 <= number(battery, "voltage_v") < 1:
         raise ValueError("Battery observation inconsistent with operator-confirmed power off")
@@ -130,7 +135,7 @@ def run(port, output, *, operator_power_off=False, apply_poles=False, rounds=13,
         c.open()
         if FIRMWARE not in clean(c.query("ver all")):
             raise ValueError("Unexpected firmware")
-        report["before"] = guard(c, require_kill=apply_poles)
+        report["before"] = guard(c, require_kill=apply_poles, allow_unpublished_battery=not apply_poles)
         for p in PARAMETERS:
             try:
                 report["parameters"][p] = read_parameter(c, p)
@@ -191,7 +196,7 @@ def run(port, output, *, operator_power_off=False, apply_poles=False, rounds=13,
             for instance in range(3):
                 cmd = f"listener {topic} -i {instance} -n 1"
                 report["status_text"][cmd] = clean(c.query(cmd))
-        report["after"] = guard(c, require_kill=apply_poles)
+        report["after"] = guard(c, require_kill=apply_poles, allow_unpublished_battery=not apply_poles)
         if report["after"]["state"]["timestamp"] <= report["before"]["state"]["timestamp"]:
             raise ValueError("FC time did not advance")
         report["complete"] = True

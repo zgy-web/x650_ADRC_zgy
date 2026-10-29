@@ -26,6 +26,13 @@ LABELS = dict(down="正放：起落架朝下", up="倒置：起落架朝上", ba
 TERMINAL = {"done", "failed", "cancelled", "unknown"}
 
 
+def binary_corruption(chunk):
+    """PX4 console is ASCII text/ANSI; dense NUL/binary data is not progress."""
+    return len(chunk) >= 24 and chunk.count(b"\x00") >= 8 and sum(
+        b not in (9, 10, 13, 27) and not 32 <= b <= 126 for b in chunk
+    ) > len(chunk) * .2
+
+
 class Progress:
     def __init__(self):
         self.phase = "prepared"
@@ -97,19 +104,30 @@ class Session:
         self.report = dict(kind="real_px4_six_face_accelerometer_calibration", firmware=FIRMWARE,
                            utc_created=datetime.now(timezone.utc).isoformat(), operator_power_off=True,
                            operator_ready=True, command=COMMAND, command_attempts=0,
+                           command_write_attempted=False,
                            nx_accessed=False, motor_commands=0, arm_commands=0,
                            calibration_success=False, post_readback_complete=False,
                            bias_acceptance_passed=False, flight_ready=False,
+                           progress_persistence_failures=0, serial_quality_warning=False,
                            source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
-        self.persist()
+        if not self.persist():
+            raise OSError("Cannot create initial progress record; serial not opened")
 
     def persist(self):
         with self.lock:
             state = {**self.progress.data(), "report": self.report,
                      "server_unix": time.time(), "claimed": self.claimed}
             tmp = self.out / "status.tmp.json"
-            tmp.write_text(json.dumps(state, indent=2, ensure_ascii=False, allow_nan=False), encoding="utf-8")
-            tmp.replace(self.out / "status.json")
+            try:
+                tmp.write_text(json.dumps(state, indent=2, ensure_ascii=False, allow_nan=False), encoding="utf-8")
+                tmp.replace(self.out / "status.json")
+                return True
+            except OSError as exc:
+                # A Windows reader can temporarily deny replacement. Keep the live
+                # in-memory state and serial monitoring; next cycle retries saving.
+                self.report["progress_persistence_failures"] += 1
+                self.report["last_progress_persistence_error"] = str(exc)
+                return False
 
     def start(self):
         with self.lock:
@@ -119,7 +137,10 @@ class Session:
                 return False
             self.claimed = True
             self.progress.phase = "checking"
-            self.persist()
+            if not self.persist():
+                self.claimed = False
+                self.progress.phase = "prepared"
+                return False
         threading.Thread(target=self.run, daemon=True).start()
         return True
 
@@ -131,18 +152,20 @@ class Session:
             c.open()
             if FIRMWARE not in clean(c.query("ver all")):
                 raise ValueError("Unexpected firmware")
-            self.report["before"] = guard(c, require_kill=True)
+            self.report["before"] = guard(c, require_kill=True, allow_unpublished_battery=True)
             self.report["before_parameters"] = {p: read_parameter(c, p) for p in PARAMETERS}
             if self.report["before_parameters"]["MOT_POLE_COUNT"] != 24:
                 raise ValueError("Expected verified 24-pole configuration")
-            self.report["precommand"] = guard(c, require_kill=True)
+            self.report["precommand"] = guard(c, require_kill=True, allow_unpublished_battery=True)
             if time.monotonic() - self.last_ui_poll > 3:
                 raise ValueError("Live display is not connected; command not sent")
             # Clear/log any earlier console message before the single authorized command.
             c.record("<precalibration drain>", c.read(.2, False))
             self.report["command_attempts"] = 1
             self.report["command_utc"] = datetime.now(timezone.utc).isoformat()
-            self.persist()  # Record intention before sending; never retry an uncertain write.
+            if not self.persist():  # Require durable intention before the only write.
+                raise OSError("Cannot save calibration intention; command not sent")
+            self.report["command_write_attempted"] = True
             c.s.write((COMMAND + "\r").encode("ascii"))
             end = time.monotonic() + 900
             with (self.out / "calibration_stream.bin").open("xb") as rawfile:
@@ -152,6 +175,11 @@ class Session:
                         stream.extend(chunk)
                         rawfile.write(chunk)
                         rawfile.flush()
+                        if binary_corruption(chunk):
+                            self.report["serial_quality_warning"] = True
+                            tail = ""  # Do not parse a partly corrupt line as progress.
+                            self.persist()
+                            continue
                         tail += chunk.decode(errors="replace")
                         lines = tail.split("\n")
                         tail = lines.pop()
@@ -165,7 +193,8 @@ class Session:
                         self.progress.phase = "unknown"
                         self.progress.latest = "观察超时：飞控校准状态尚未确认，不自动重发。"
             c.record(COMMAND, bytes(stream))
-            self.report["calibration_success"] = self.progress.phase == "done"
+            self.report["px4_reported_success"] = self.progress.phase == "done"
+            self.report["calibration_success"] = self.progress.phase == "done" and not self.report["serial_quality_warning"]
             self.report["completed_sides"] = list(self.progress.done)
             # After an explicit terminal message only, return to read-only console work.
             if self.progress.phase in {"done", "failed", "cancelled"}:
@@ -175,7 +204,7 @@ class Session:
                 if "nsh>" not in response:
                     raise ValueError("Console prompt not recovered")
                 self.report["after_parameters"] = {p: read_parameter(c, p) for p in PARAMETERS}
-                self.report["after"] = guard(c, require_kill=True)
+                self.report["after"] = guard(c, require_kill=True, allow_unpublished_battery=True)
                 self.report["post_readback_complete"] = True
                 self.report["parameter_changes"] = {p: [old, self.report["after_parameters"][p]]
                                                     for p, old in self.report["before_parameters"].items()
@@ -183,7 +212,7 @@ class Session:
         except Exception as exc:
             self.report["error"] = f"{type(exc).__name__}: {exc}"
             with self.lock:
-                self.progress.phase = "unknown" if self.report["command_attempts"] else "failed"
+                self.progress.phase = "unknown" if self.report["command_write_attempted"] else "failed"
                 self.progress.latest = str(exc)
         finally:
             c.close()
@@ -192,7 +221,10 @@ class Session:
             (self.out / "console.json").write_text(json.dumps(c.records, indent=2, ensure_ascii=False), encoding="utf-8")
             self.report["console_sha256"] = hashlib.sha256((self.out / "console.json").read_bytes()).hexdigest()
             self.report["stream_sha256"] = hashlib.sha256(stream).hexdigest()
-            self.persist()
+            for _ in range(3):
+                if self.persist():
+                    break
+                time.sleep(.05)
 
 
 def handler_for(session, origin):
@@ -220,6 +252,7 @@ def handler_for(session, origin):
                     data = {**session.progress.data(), "claimed": session.claimed,
                             "finished": session.report.get("worker_finished", False),
                             "readback": session.report["post_readback_complete"],
+                            "serial_warning": session.report["serial_quality_warning"],
                             "server_unix": time.time()}
                 return self.reply(200, data)
             self.reply(404, {"error": "not found"})
