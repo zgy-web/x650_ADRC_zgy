@@ -35,7 +35,7 @@ DShot 电调控制信号接相应 AUX 信号针，地线与飞控信号地共地
 | 当前四路输出 | 全部为0；驱动显示 Outputs on 仅表示驱动启用，不表示电机已转 |
 | 推力曲线 | `THR_MDL_FAC=0` |
 | 遥测 | `DSHOT_TEL_CFG=103`，驱动 `/dev/ttyS1`；通电后已验证刷新，故障及恢复记录独立保留；最终动力关闭后不要求继续收到ESC新数据 |
-| 极数 | 当前参数仍为`MOT_POLE_COUNT=14`；后续查到MN4014 KV330厂家规格为18N24P（24极），尚未修改参数或复测RPM，不得宣称已标定 |
+| 极数 | 后续静置检查已按MN4014 KV330的18N24P规格写入`MOT_POLE_COUNT=24`、保存并回读；断电保持/转速计核对尚未执行，历史14极报告保留原样，见[极数修正记录](validation/px4_imu_poles_20261029/README.md) |
 | 安全开关 | `CBRK_IO_SAFETY=22027` 为既有旁路值，本程序不改动；台架紧急停止依靠现场断开电调动力 |
 
 原始读数与范围见 [本次记录](validation/px4_rotor_commissioning_20261029/README.md)。`SYS_USE_IO`、`PWM_AUX_TIM4` 在此固件中未读到有效参数，报告保留 `null`，不会以0代替“未知”。
@@ -110,7 +110,7 @@ python -X utf8 scripts/px4_motor_telemetry_check.py --port COM13 --output artifa
 
 当前固件的串口遥测驱动会把 `esc_online_flags`、`esc_armed_flags` 填成配置数量对应的掩码，因此不能只看 `0b1111` 就声称四台均有新遥测或飞机已解锁。这里用每路实际时间戳、有效字段和成功帧计数判断遥测；飞控解锁状态仍用 `vehicle_status` 和 `actuator_armed`。实现见[实际固件的 DShot 驱动](https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/drivers/dshot/DShot.cpp)。
 
-后续先确认电机极数与遥测标定，并排查偶发CRC／帧错位的触发因素，再做遥控接管、失控保护和实际供电条件下的拆桨检查。真实定位、关节反馈及NX控制闭环另行验收。此前NX通信、MPC仿真与本次转子台架检查各自保留范围，不称为已具备实际飞行资格。
+后续先解决静置加速度计偏置预检，再验证24极设置的断电保持与转速换算，继续电流/电压标定和偶发CRC／帧错位排查，推进实际供电条件下的拆桨遥控停机与接管检查。真实定位、关节反馈及NX控制闭环另行验收。此前NX通信、MPC仿真与本次转子台架检查各自保留范围，不称为已具备实际飞行资格。
 
 ## 官方依据
 

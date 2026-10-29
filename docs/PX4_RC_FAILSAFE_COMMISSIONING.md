@@ -82,10 +82,10 @@ python -X utf8 -m pytest tests/unit/test_px4_rc_preflight_readonly.py tests/unit
 
 ## 尚未通过的项目
 
-1. 加速度计偏置：配置时出现`High Accelerometer Bias`预检警告。先在机架静止条件下读取传感器/估计状态，再决定是否需要校准；不通过禁用检查来绕过它。
+1. 加速度计偏置：后续约80秒、13轮静置检查确认三组IMU的X/Y运行偏置持续超限，读取错误/饱和计数为0；主用实例为1。用户不确定是否完成过六面校准，下一步先完整校准再复测，未调大门限。见[静置IMU与极数报告](validation/px4_imu_poles_20261029/README.md)。
 2. 真实解锁、旋转电机停机及遥控接管：本轮未执行。旋翼空载方向已在此前验证，但它不能代替遥控停机的实测。
 3. 位置信息及NX Offboard：当前`local_position_invalid=True`、`offboard_control_signal_lost=True`，待定位/控制流准备完成后再验证主动接管、NX退出、数据陈旧和通信中断。
 4. 失控策略：实读`NAV_RCL_ACT=3`（Land）、`COM_RCL_EXCEPT=0`、`COM_FAIL_ACT_T=5 s`、`COM_OBL_RC_ACT=0`（Position）。本轮没有修改，也没有证明这些策略在当前无定位条件下适合实飞；需结合后续动捕和人工接管方案复核。
-5. 电机极数和遥测：MN4014 KV330厂家规格为18N24P，当前`MOT_POLE_COUNT=14`尚未修改，机械RPM还不能作为已标定结果；详见[厂家参数](https://www.ligpower.com/product/mn4014-kv330-motor-navigator-type.html)。电流/电压标定及ESC CRC根因仍待检查。CRSF接收机CRC与DShot电调遥测CRC是两条不同链路，不能混为一个计数。
+5. 遥测：MN4014 KV330的24极已在后续静置检查中写入`MOT_POLE_COUNT=24`并保存回读，断电保持和光电转速计核对尚未执行；原始14极历史RPM保持原样。电流/电压标定及ESC CRC根因仍待检查。CRSF接收机CRC与DShot电调遥测CRC是两条不同链路，不能混为一个计数。
 
 离开本轮台架时保持SF的CH5=-100%、SA上档、SB下档、油门最低和电调动力关闭。未进行飞控断电重启，因此参数的断电保持尚未实测。

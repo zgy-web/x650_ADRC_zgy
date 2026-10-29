@@ -1,0 +1,50 @@
+{
+  "kind": "real_px4_stationary_observation_and_fixed_pole_correction",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "files": [
+    {
+      "path": "stationary_probe.json",
+      "source_path": "artifacts/px4_imu_poles_20261029/stationary_probe_v1/report.json",
+      "bytes": 42474,
+      "sha256": "0516606837c2984f029c39898aae0013a025b0f72d31d6122093f3d327f0d7ba"
+    },
+    {
+      "path": "stationary_and_poles.json",
+      "source_path": "artifacts/px4_imu_poles_20261029/stationary_and_poles_v1/report.json",
+      "bytes": 207463,
+      "sha256": "5605c9046b2d976d4db93d0fce0bd2e4a2924d2a42a7109bb4a7dbb06973f9b8"
+    },
+    {
+      "path": "summary.json",
+      "source_path": "artifacts/px4_imu_poles_20261029/summary_v2.json",
+      "bytes": 5534,
+      "sha256": "9fdbe8745f1e306f93d73188898a24978619e58f6b241c3476f09833bb410739"
+    }
+  ],
+  "operator_confirmations": {
+    "stationary": true,
+    "esc_power_off": true,
+    "COM13_connected": true,
+    "prior_accelerometer_calibration": "uncertain_or_not_performed"
+  },
+  "raw_console_location": "artifacts/px4_imu_poles_20261029/<run>/console.json on the PC; report contains its hash",
+  "source_files": [
+    {
+      "path": "scripts/px4_imu_pole_check.py",
+      "sha256": "de0afa4dd0e52e70bdec25054af409f223e31862680410a992ec449c79843fd8"
+    },
+    {
+      "path": "scripts/summarize_px4_imu_poles.py",
+      "sha256": "97d5f06c29507611097948cfc216113ef69de3ea7dd69f619f928568ff76ac51"
+    },
+    {
+      "path": "tests/unit/test_px4_imu_pole_check.py",
+      "sha256": "8ff509b38559346d767430cab71b30e4ab9dcd5661ebe8dc1830616beb612948"
+    }
+  ],
+  "no_nx_changes": true,
+  "no_calibration_command": true,
+  "no_motor_command": true,
+  "no_arming_command": true,
+  "no_reboot": true
+}

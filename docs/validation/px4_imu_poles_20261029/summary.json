@@ -1,0 +1,276 @@
+{
+  "report_sha256": "5605c9046b2d976d4db93d0fce0bd2e4a2924d2a42a7109bb4a7dbb06973f9b8",
+  "console_sha256": "de30a3706fb5171917e99a14fb588267e856db43622998879343e5dacecd5b6c",
+  "sample_rounds": 13,
+  "sample_start_span_seconds": 79.71899999998277,
+  "primary_instances": [
+    1
+  ],
+  "primary_stable_in_each_round": true,
+  "parameters": {
+    "MOT_POLE_COUNT": 14,
+    "SENS_IMU_MODE": 0,
+    "EKF2_MULTI_IMU": 3,
+    "EKF2_ABL_LIM": 0.4,
+    "EKF2_ABL_GYRLIM": 3,
+    "SENS_BOARD_ROT": 0,
+    "SENS_BOARD_X_OFF": -3.107,
+    "SENS_BOARD_Y_OFF": -2.2961,
+    "SENS_BOARD_Z_OFF": 0,
+    "COM_ARM_IMU_ACC": 0.7,
+    "COM_ARM_IMU_GYR": 0.25,
+    "SYS_HAS_GPS": 1,
+    "DSHOT_BIDIR_EN": 0,
+    "DSHOT_TEL_CFG": 103,
+    "IMU_GYRO_DNF_EN": 0,
+    "CAL_ACC0_ID": 5767194,
+    "CAL_ACC0_PRIO": 50,
+    "CAL_ACC0_XOFF": 0,
+    "CAL_ACC0_YOFF": 0,
+    "CAL_ACC0_ZOFF": 0,
+    "CAL_ACC0_XSCALE": 1,
+    "CAL_ACC0_YSCALE": 1,
+    "CAL_ACC0_ZSCALE": 1,
+    "CAL_ACC1_ID": 2818066,
+    "CAL_ACC1_PRIO": 50,
+    "CAL_ACC1_XOFF": -0.0118,
+    "CAL_ACC1_YOFF": 0.0081,
+    "CAL_ACC1_ZOFF": -0.1963,
+    "CAL_ACC1_XSCALE": 1,
+    "CAL_ACC1_YSCALE": 1,
+    "CAL_ACC1_ZSCALE": 1,
+    "CAL_ACC2_ID": 3407882,
+    "CAL_ACC2_PRIO": 50,
+    "CAL_ACC2_XOFF": -0.0139,
+    "CAL_ACC2_YOFF": 0.0414,
+    "CAL_ACC2_ZOFF": 0.102,
+    "CAL_ACC2_XSCALE": 1,
+    "CAL_ACC2_YSCALE": 1,
+    "CAL_ACC2_ZSCALE": 1
+  },
+  "instances": [
+    {
+      "instance": 0,
+      "accel_device_id": 5767194,
+      "first_last_bias_timestamp_us": [
+        5381294206,
+        5460939732
+      ],
+      "accel_bias_range": [
+        [
+          -0.39965,
+          -0.39963
+        ],
+        [
+          0.39997,
+          0.4
+        ],
+        [
+          -0.07454,
+          -0.07447
+        ]
+      ],
+      "accel_threshold_range": [
+        [
+          0.35531726674375735,
+          0.35531726674375735
+        ],
+        [
+          0.35531726674375735,
+          0.35612486080160916
+        ],
+        [
+          0.3134164078649988,
+          0.3134164078649988
+        ]
+      ],
+      "accel_exceed_count": [
+        13,
+        13,
+        0
+      ],
+      "gyro_exceed_count": [
+        0,
+        0,
+        0
+      ],
+      "max_accel_error_count": 0.0,
+      "max_gyro_error_count": 0.0,
+      "max_accel_clipping": [
+        0,
+        0,
+        0
+      ],
+      "max_gyro_clipping": [
+        0,
+        0,
+        0
+      ],
+      "accel_temperature_range": [
+        41.43849,
+        41.4872
+      ]
+    },
+    {
+      "instance": 1,
+      "accel_device_id": 2818066,
+      "first_last_bias_timestamp_us": [
+        5381035262,
+        5461617696
+      ],
+      "accel_bias_range": [
+        [
+          -0.39947,
+          -0.39942
+        ],
+        [
+          0.39997,
+          0.4
+        ],
+        [
+          -0.08312,
+          -0.08303
+        ]
+      ],
+      "accel_threshold_range": [
+        [
+          0.35108815909777924,
+          0.35108815909777924
+        ],
+        [
+          0.35108815909777924,
+          0.3519615242270664
+        ],
+        [
+          0.30948683298050517,
+          0.30948683298050517
+        ]
+      ],
+      "accel_exceed_count": [
+        13,
+        13,
+        0
+      ],
+      "gyro_exceed_count": [
+        0,
+        0,
+        0
+      ],
+      "max_accel_error_count": 0.0,
+      "max_gyro_error_count": 0.0,
+      "max_accel_clipping": [
+        0,
+        0,
+        0
+      ],
+      "max_gyro_clipping": [
+        0,
+        0,
+        0
+      ],
+      "accel_temperature_range": [
+        39.77714,
+        39.8143
+      ]
+    },
+    {
+      "instance": 2,
+      "accel_device_id": 3407882,
+      "first_last_bias_timestamp_us": [
+        5382124030,
+        5460904227
+      ],
+      "accel_bias_range": [
+        [
+          -0.39885,
+          -0.3988
+        ],
+        [
+          0.39997,
+          0.4
+        ],
+        [
+          -0.10854,
+          -0.10834
+        ]
+      ],
+      "accel_threshold_range": [
+        [
+          0.3519615242270664,
+          0.3519615242270664
+        ],
+        [
+          0.3519615242270664,
+          0.3519615242270664
+        ],
+        [
+          0.30948683298050517,
+          0.30948683298050517
+        ]
+      ],
+      "accel_exceed_count": [
+        13,
+        13,
+        0
+      ],
+      "gyro_exceed_count": [
+        0,
+        0,
+        0
+      ],
+      "max_accel_error_count": 0.0,
+      "max_gyro_error_count": 0.0,
+      "max_accel_clipping": [
+        0,
+        0,
+        0
+      ],
+      "max_gyro_clipping": [
+        0,
+        0,
+        0
+      ],
+      "accel_temperature_range": [
+        41.82736,
+        41.8789
+      ]
+    }
+  ],
+  "writes": [
+    "param set MOT_POLE_COUNT 24",
+    "param save"
+  ],
+  "pole_before": 14,
+  "pole_after": 24,
+  "final_state": {
+    "state": {
+      "timestamp": 5464457682,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "kill": true,
+    "battery_voltage": 0.0
+  },
+  "power_cycle_persistence_verified": false,
+  "rpm_tachometer_calibration_verified": false,
+  "imu_calibration_performed": false,
+  "esc_crc_root_cause_resolved": false,
+  "esc_current_voltage_calibrated": false,
+  "primary_accel_exceed_rounds": 13,
+  "warning_text_reemitted": false,
+  "threshold_precision": "Approximate: calculated from rounded NSH bias/variance fields",
+  "flight_ready": false
+}

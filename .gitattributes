@@ -170,3 +170,9 @@ docs/validation/nx_setpoint_readback_20261028/** -text -whitespace
 scripts/px4_rc*.py -text whitespace=cr-at-eol
 tests/unit/test_px4_rc*.py -text whitespace=cr-at-eol
 docs/validation/px4_rc_commissioning_20261029/*.json -text whitespace=cr-at-eol
+
+# Preserve executed stationary-IMU source and raw report hashes.
+scripts/px4_imu_pole_check.py -text whitespace=cr-at-eol
+scripts/summarize_px4_imu_poles.py -text whitespace=cr-at-eol
+tests/unit/test_px4_imu_pole_check.py -text whitespace=cr-at-eol
+docs/validation/px4_imu_poles_20261029/*.json -text whitespace=cr-at-eol
