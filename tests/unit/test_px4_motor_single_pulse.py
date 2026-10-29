@@ -119,6 +119,8 @@ def test_run_cleanup_and_evidence(tmp_path, fault):
                 return STATUS
             if command == "listener esc_status -n 1":
                 return "never published"
+            if command == "listener actuator_test -n 1":
+                return "timestamp: 1000000\nfunction: 101\nvalue: 0\naction: 1\ntimeout_ms: 1000\n"
             raise AssertionError(command)
 
     result = pulse.run("unused", tmp_path / "new", 1,
@@ -138,3 +140,22 @@ def test_missing_physical_attestation_does_not_open_port(tmp_path):
     with pytest.raises(ValueError):
         pulse.run("unused", tmp_path / "new", 1, {}, console_factory=forbidden)
     assert not (tmp_path / "new").exists()
+
+
+def test_startup_telemetry_uses_source_time_and_keeps_stale_samples_visible():
+    command = "timestamp: 1000000\nfunction: 102\nvalue: 0\naction: 1\ntimeout_ms: 1000\n"
+    snapshots = "esc_status\n" + "".join(
+        f"\n  esc[{i}] (esc_report):\n    timestamp: {stamp} (0.002 seconds ago)\n"
+        f"    actuator_function: {101+i}\n    esc_rpm: {rpm}\n    esc_voltage: 19.4\n"
+        "    esc_current: 1.2\n    esc_temperature: 30\n"
+        for i, stamp, rpm in ((0, 990000, 0), (1, 1300000, 400), (2, 2100000, 0), (3, 1400000, 0)))
+    r = pulse.pulse_telemetry(command, snapshots, 2)
+    assert r["available"]
+    assert not r["samples"][0]["inside_requested_pulse_window"]
+    assert r["samples"][1]["inside_requested_pulse_window"]
+    assert r["samples"][1]["relative_to_pulse_start_ms"] == 300
+    assert r["samples"][1]["esc_rpm"] == 400
+    assert not r["samples"][2]["inside_requested_pulse_window"]
+    assert not pulse.pulse_telemetry(command.replace("function: 102", "function: 103"), snapshots, 2)["available"]
+    assert not pulse.pulse_telemetry(command, "never published", 2)["available"]
+    assert not pulse.pulse_telemetry(command, snapshots.replace("esc_voltage: 19.4", "esc_voltage: nan", 1), 2)["available"]

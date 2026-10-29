@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "utc_started": "2026-10-29T05:42:04.552629+00:00",
+  "plan": {
+    "motor": 2,
+    "location_viewed_from_above": "rear-left CCW",
+    "aux_port": 2,
+    "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "value": 0,
+    "fc_timeout_seconds": 1,
+    "pulse": "actuator_test set -m 2 -v 0 -t 1",
+    "stop": "actuator_test set -m 2 -v -1 -t 0.1",
+    "value_meaning": "0 is minimum RUNNING output, not stop; DShot mixer value 109/1999",
+    "safety_note": "IO safety bypass is present; operator must be able to disconnect ESC power",
+    "no_automatic_retry": true,
+    "flight_ready": false
+  },
+  "attestations": {
+    "props_removed": true,
+    "frame_secured": true,
+    "operator_ready": true,
+    "power_connected": true,
+    "wiring_confirmed": true
+  },
+  "pulse_attempted": true,
+  "output_observed": true,
+  "automatic_return_to_zero_observed": true,
+  "output_zero_verified": true,
+  "physical_motor_confirmed": false,
+  "rotation_confirmed": false,
+  "parameter_writes": 0,
+  "flight_ready": false,
+  "source_sha256": "6073d9e685bcf6f5ac12ab837549c64ab547f48a1e38e8a09ce45a3eed3f1d3e",
+  "preflight": {
+    "parameters": {
+      "SYS_AUTOSTART": 4001,
+      "CA_AIRFRAME": 0,
+      "CA_ROTOR_COUNT": 4,
+      "SENS_BOARD_ROT": 0,
+      "PWM_AUX_TIM0": -3,
+      "PWM_AUX_REV": 0,
+      "CA_R_REV": 0,
+      "THR_MDL_FAC": 0,
+      "DSHOT_3D_ENABLE": 0,
+      "DSHOT_MIN": 0.055,
+      "COM_MOT_TEST_EN": 1,
+      "DSHOT_BIDIR_EN": 0,
+      "DSHOT_TEL_CFG": 103,
+      "CBRK_IO_SAFETY": 22027,
+      "PWM_AUX_FUNC1": 101,
+      "PWM_AUX_FUNC2": 102,
+      "PWM_AUX_FUNC3": 103,
+      "PWM_AUX_FUNC4": 104,
+      "PWM_AUX_FUNC5": 0,
+      "PWM_AUX_FUNC6": 0,
+      "PWM_AUX_FUNC7": 0,
+      "PWM_AUX_FUNC8": 0,
+      "PWM_MAIN_FUNC1": 0,
+      "PWM_MAIN_FUNC2": 0,
+      "PWM_MAIN_FUNC3": 0,
+      "PWM_MAIN_FUNC4": 0,
+      "PWM_MAIN_FUNC5": 0,
+      "PWM_MAIN_FUNC6": 0,
+      "PWM_MAIN_FUNC7": 0,
+      "PWM_MAIN_FUNC8": 0
+    },
+    "before": {
+      "timestamp": 2293956607,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "after": {
+      "timestamp": 2295477507,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    }
+  },
+  "during_outputs": {
+    "0": 0,
+    "1": 109,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "actuator_test_message": "listener actuator_test -n 1\n\nTOPIC: actuator_test\n actuator_test\n    timestamp: 2296310592 (0.361856 seconds ago)\n    value: 0.00000\n    timeout_ms: 1000\n    function: 102\n    action: 1\n\nnsh> ",
+  "during_esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 2296705903 (0.008558 seconds ago)\n    counter: 6112\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 2296705902 (0.019414 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.40000\n    esc_current: 1.06000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 2296698365 (0.038857 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 642\n    esc_voltage: 19.47000\n    esc_current: 1.22000\n    esc_temperature: 32.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 2296700876 (0.050779 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.43000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 2296703372 (0.059695 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.63000\n    esc_current: 0.00000\n    esc_temperature: 36.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> ",
+  "startup_telemetry": {
+    "available": true,
+    "pulse_message": {
+      "timestamp": 2296310592.0,
+      "function": 102.0,
+      "value": 0.0,
+      "action": 1.0,
+      "timeout_ms": 1000.0
+    },
+    "samples": {
+      "0": {
+        "timestamp": 2296705902.0,
+        "actuator_function": 101.0,
+        "esc_rpm": 0.0,
+        "esc_voltage": 19.4,
+        "esc_current": 1.06,
+        "esc_temperature": 39.0,
+        "relative_to_pulse_start_ms": 395.31,
+        "inside_requested_pulse_window": true
+      },
+      "1": {
+        "timestamp": 2296698365.0,
+        "actuator_function": 102.0,
+        "esc_rpm": 642.0,
+        "esc_voltage": 19.47,
+        "esc_current": 1.22,
+        "esc_temperature": 32.0,
+        "relative_to_pulse_start_ms": 387.773,
+        "inside_requested_pulse_window": true
+      },
+      "2": {
+        "timestamp": 2296700876.0,
+        "actuator_function": 103.0,
+        "esc_rpm": 0.0,
+        "esc_voltage": 19.43,
+        "esc_current": 0.0,
+        "esc_temperature": 26.0,
+        "relative_to_pulse_start_ms": 390.284,
+        "inside_requested_pulse_window": true
+      },
+      "3": {
+        "timestamp": 2296703372.0,
+        "actuator_function": 104.0,
+        "esc_rpm": 0.0,
+        "esc_voltage": 19.63,
+        "esc_current": 0.0,
+        "esc_temperature": 36.0,
+        "relative_to_pulse_start_ms": 392.78,
+        "inside_requested_pulse_window": true
+      }
+    },
+    "calibrated": false
+  },
+  "after_timeout_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "after": {
+    "timestamp": 2298523586,
+    "arming_state": 1,
+    "nav_state": 4,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 2298934620 (0.002739 seconds ago)\n    counter: 6334\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 2298934619 (0.013614 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.39000\n    esc_current: 1.06000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 2298927112 (0.034406 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.46000\n    esc_current: 1.19000\n    esc_temperature: 32.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 2298929644 (0.044664 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.41000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 2298932118 (0.052946 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.64000\n    esc_current: 0.00000\n    esc_temperature: 37.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> ",
+  "final_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "stop_attempted": true,
+  "port_closed": true,
+  "console_check_passed": true,
+  "console_sha256": "28f8a772cc574d08d25d4f2c071d431c2be1af2fc5736dc348218dcb1b10660e"
+}

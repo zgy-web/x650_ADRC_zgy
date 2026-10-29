@@ -1,0 +1,80 @@
+{
+  "utc_started": "2026-10-29T05:59:31.228053+00:00",
+  "kind": "readonly_telemetry_after_operator_power_cycle",
+  "operator_supply_setting_v": 20,
+  "operator_current_limit_a": 2,
+  "operator_cv_confirmed": true,
+  "motor_commands": 0,
+  "parameter_writes": 0,
+  "nx_accessed": false,
+  "samples": [
+    {
+      "status": {
+        "timestamp": 3340720801,
+        "arming_state": 1,
+        "nav_state": 4,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "dshot": "dshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 2671869 events, 64185787us elapsed, 24.02us avg, min 17us max 75us 3.311us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 598647 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 2671868 events, 374054830us elapsed, 140.00us avg, min 125us max 490us 4.054us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 598648\nINFO  [dshot] Number of timeouts: 31428\nINFO  [dshot] Number of CRC errors: 362650\nnsh> ",
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 3341320895 (0.003411 seconds ago)\n    counter: 18628\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 3341320894 (0.015430 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.38000\n    esc_current: 1.03000\n    esc_temperature: 38.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 3341313369 (0.034209 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.44000\n    esc_current: 1.17000\n    esc_temperature: 32.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 3341315874 (0.044674 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.45000\n    esc_current: 0.00000\n    esc_temperature: 25.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 3341318366 (0.056010 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.61000\n    esc_current: 0.00000\n    esc_temperature: 36.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+    },
+    {
+      "status": {
+        "timestamp": 3342755494,
+        "arming_state": 1,
+        "nav_state": 4,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "dshot": "dshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 2673489 events, 64226495us elapsed, 24.02us avg, min 17us max 75us 3.311us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 599457 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 2673489 events, 374281935us elapsed, 140.00us avg, min 125us max 490us 4.054us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 599459\nINFO  [dshot] Number of timeouts: 31428\nINFO  [dshot] Number of CRC errors: 362650\nnsh> ",
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 3343350870 (0.000330 seconds ago)\n    counter: 18831\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 3343350870 (0.011613 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.40000\n    esc_current: 1.03000\n    esc_temperature: 38.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 3343343373 (0.031918 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.41000\n    esc_current: 1.19000\n    esc_temperature: 32.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 3343345893 (0.041443 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.43000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 3343348371 (0.052363 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.61000\n    esc_current: 0.00000\n    esc_temperature: 36.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+    },
+    {
+      "status": {
+        "timestamp": 3344790248,
+        "arming_state": 1,
+        "nav_state": 4,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "dshot": "dshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 2675110 events, 64267102us elapsed, 24.02us avg, min 17us max 75us 3.311us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 600267 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 2675109 events, 374508807us elapsed, 140.00us avg, min 125us max 490us 4.054us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 600269\nINFO  [dshot] Number of timeouts: 31428\nINFO  [dshot] Number of CRC errors: 362650\nnsh> ",
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      },
+      "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 3345370894 (0.003299 seconds ago)\n    counter: 19033\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 3345370894 (0.015114 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.39000\n    esc_current: 1.01000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 3345363368 (0.034650 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.46000\n    esc_current: 1.21000\n    esc_temperature: 32.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 3345365865 (0.045991 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.45000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 3345368363 (0.055652 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 19.62000\n    esc_current: 0.00000\n    esc_temperature: 36.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+    }
+  ],
+  "read_complete": true,
+  "console_sha256": "7e8819fa7341968616d29c38fb8387c09dea14a3b6f7e08132883dbb23c16939"
+}

@@ -28,6 +28,7 @@ STATUS_COMMANDS = (
     "ver all", "listener vehicle_status -n 1", "listener actuator_armed -n 1",
     "control_allocator status", "pwm_out status", "px4io status", "dshot status",
     "listener actuator_motors -n 1", "listener esc_status -n 1",
+    "listener actuator_test -n 1",
 )
 ALLOWED = frozenset(STATUS_COMMANDS + tuple(f"param show -q {name}" for name in PARAMETERS))
 

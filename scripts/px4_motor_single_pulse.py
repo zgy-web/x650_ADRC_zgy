@@ -9,12 +9,14 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import time
 
 from px4_debug_console import FIRMWARE, clean, status_fields
 from px4_motor_preflight_readonly import RotorReadConsole, parse_parameter
+from px4_motor_telemetry_check import telemetry_snapshot, assess_samples
 
 
 LOCATIONS = {1: "front-right CCW", 2: "rear-left CCW", 3: "front-left CW", 4: "rear-right CW"}
@@ -89,6 +91,48 @@ def require_zero(text):
     return channels
 
 
+def pulse_telemetry(pulse_text, esc_text, motor):
+    """Use FC source timestamps, not serial arrival time, for startup evidence.
+
+    UART readout may finish after the pulse. Only source samples inside the
+    requested window are labelled in-window. This is diagnostic evidence, not
+    a calibrated RPM/current measurement or a physical direction observation.
+    """
+    def number(text, name):
+        values = re.findall(r"^\s*" + re.escape(name) + r":\s*(\S+)", clean(text), re.M)
+        if len(values) != 1:
+            raise ValueError("Missing or ambiguous telemetry field: " + name)
+        value = float(values[0])
+        if not math.isfinite(value):
+            raise ValueError("Nonfinite telemetry field: " + name)
+        return value
+
+    try:
+        message = {k: number(pulse_text, k) for k in ("timestamp", "function", "value", "action", "timeout_ms")}
+        if message["timestamp"] <= 0 or (message["function"], message["value"], message["action"], message["timeout_ms"]) != (100 + motor, 0, 1, 1000):
+            raise ValueError("Actuator-test message does not match this pulse")
+        blocks = re.split(r"\n\s*esc\[(\d+)\] \(esc_report\):", clean(esc_text))
+        samples = {}
+        for offset in range(1, len(blocks), 2):
+            index = int(blocks[offset])
+            if index >= 4:
+                continue
+            if index in samples:
+                raise ValueError("Duplicate ESC sample")
+            values = {k: number(blocks[offset + 1], k) for k in
+                      ("timestamp", "actuator_function", "esc_rpm", "esc_voltage", "esc_current", "esc_temperature")}
+            if values["actuator_function"] != 101 + index:
+                raise ValueError("ESC sample mapping differs from reviewed channel assignment")
+            values["relative_to_pulse_start_ms"] = (values["timestamp"] - message["timestamp"]) / 1000
+            values["inside_requested_pulse_window"] = 0 <= values["relative_to_pulse_start_ms"] <= message["timeout_ms"]
+            samples[index] = values
+        if set(samples) != set(range(4)):
+            raise ValueError("Not all four ESC samples are present")
+        return dict(available=True, pulse_message=message, samples=samples, calibrated=False)
+    except (ValueError, TypeError) as exc:
+        return dict(available=False, reason=str(exc), calibrated=False)
+
+
 class PulseConsole(RotorReadConsole):
     """Separate mutation entry point; ordinary query() remains read-only."""
     def __init__(self, port, motor):
@@ -109,17 +153,25 @@ class PulseConsole(RotorReadConsole):
         check_armed(self.query("listener actuator_armed -n 1"))
         if integer_field(self.query("listener actuator_motors -n 1"), "reversible_flags") != 0:
             raise ValueError("Reversible motor flags are set")
-        require_zero(self.query("dshot status"))
+        dshot_before = self.query("dshot status")
+        require_zero(dshot_before)
+        telemetry_before = telemetry_snapshot(dshot_before, self.query("listener esc_status -n 1"))
         # vehicle_status is slower than the mixer; allow one normal publication.
         time.sleep(.6)
         after = status_fields(self.query("listener vehicle_status -n 1"))
         if after["timestamp"] <= before["timestamp"]:
             raise ValueError("FC status did not advance")
         check_armed(self.query("listener actuator_armed -n 1"))
+        dshot_after = self.query("dshot status")
+        require_zero(dshot_after)
+        telemetry_after = telemetry_snapshot(dshot_after, self.query("listener esc_status -n 1"))
+        telemetry_check = assess_samples([telemetry_before, telemetry_after])
+        # The telemetry read takes time; finish on a fresh stopped-output check.
         require_zero(self.query("dshot status"))
         self._permit_until = time.monotonic() + 1
         self._permit = True
-        return dict(parameters=parameters, before=before, after=after)
+        return dict(parameters=parameters, before=before, after=after, telemetry=telemetry_check,
+                    telemetry_observations=[telemetry_before, telemetry_after])
 
     def send_pulse(self):
         if not self._permit or self.pulse_attempted or time.monotonic() > self._permit_until:
@@ -170,6 +222,9 @@ def run(port, output, motor, attestations, console_factory=PulseConsole, sleep=t
             raise RuntimeError("Selected output exceeds the reviewed minimum; stopping")
         report["during_outputs"] = during
         report["output_observed"] = during[motor - 1] == 109
+        report["actuator_test_message"] = clean(console.query("listener actuator_test -n 1"))
+        report["during_esc_status"] = clean(console.query("listener esc_status -n 1"))
+        report["startup_telemetry"] = pulse_telemetry(report["actuator_test_message"], report["during_esc_status"], motor)
         sleep(1.2)
         report["after_timeout_outputs"] = require_zero(console.query("dshot status"))
         report["automatic_return_to_zero_observed"] = report["output_observed"]

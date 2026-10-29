@@ -1,0 +1,84 @@
+{
+  "source": "User statements in this task, viewed from above",
+  "power_source": "bench_DC_supply",
+  "power_set_voltage_v": 20,
+  "power_current_limit_a": 2,
+  "M1": {
+    "original_observation_run": "m1_pulse_v3",
+    "original_direction": "CW",
+    "original_user_statement": "右前顺时针",
+    "after_reverse_run": "m1_after_reverse_v2",
+    "after_reverse_direction": "CCW",
+    "after_reverse_stopped": true,
+    "after_reverse_user_statement": "逆时针，已停止",
+    "save_dispatch_run": "m1_save_v1",
+    "power_cycle_verified": true,
+    "power_cycle_run": "m1_powercycle_v1",
+    "power_cycle_user_statement": "仍为逆时针且已停，可继续左后 M2"
+  },
+  "M2": {
+    "tested": true,
+    "first_run": "m2_pulse_v1",
+    "first_user_statement": "电机有响声但是没转",
+    "power_off_mechanical_check": "转动平顺，三相线接牢，动力已断开",
+    "later_start_run": "m2_startup_diagnostic_v1",
+    "later_start_user_statement": "这次转了",
+    "original_observation_run": "m2_direction_observe_v1",
+    "original_direction": "CW",
+    "original_user_statement": "左后、顺时针、已停止",
+    "temporary_reverse_run": "m2_reverse_v1",
+    "after_reverse_run": "m2_after_reverse_v1",
+    "after_reverse_user_statement": "逆时针",
+    "telemetry_fault_run": "m2_after_reverse_v1",
+    "power_cycle_before_2a_retest": true,
+    "reverse_reapplied_after_power_cycle_run": "m2_reverse_2a_v1",
+    "stable_supply_run": "m2_pulse_2a_v1",
+    "stable_supply_user_statement": "左后逆时针且已停；全程CV、电压稳定",
+    "save_dispatch_run": "m2_save_2a_v1",
+    "power_cycle_verified": true,
+    "power_cycle_run": "m2_powercycle_2a_v1",
+    "power_cycle_user_statement": "M2仍逆时针且已停，可继续左前M3",
+    "final_direction": "CCW",
+    "stopped_confirmed": true
+  },
+  "M3": {
+    "tested": true,
+    "run": "m3_pulse_2a_v1",
+    "location": "front-left",
+    "direction": "CW",
+    "stopped_confirmed": true,
+    "direction_setting_changed": false,
+    "user_statement": "左前顺时针且已停；电源稳定，可继续右后M4"
+  },
+  "M4": {
+    "tested": true,
+    "run": "m4_pulse_2a_v1",
+    "location": "rear-right",
+    "direction": "CW",
+    "stopped_confirmed": true,
+    "direction_setting_changed": false,
+    "user_statement": "右后顺时针且已停，电源稳定，动力已关闭"
+  },
+  "power_rated_max_w_user_report": 200,
+  "power_rated_max_a_user_report": 5,
+  "esc_input_capacitors_installed_user_report": true,
+  "power_source_model": null,
+  "power_setting_history": [
+    {
+      "phase": "prior to telemetry_after_2a_v1",
+      "voltage_v": 20,
+      "current_limit_a": 0.5,
+      "limit_meaning_confirmed_by_user": true
+    },
+    {
+      "phase": "telemetry_after_2a_v1 onward",
+      "voltage_v": 20,
+      "current_limit_a": 2,
+      "cv_at_idle_confirmed_by_user": true
+    }
+  ],
+  "current_esc_power_state": "OFF",
+  "final_user_statement": "右后顺时针且已停，电源稳定，动力已关闭",
+  "all_four_bench_position_direction_stop_confirmed": true,
+  "flight_ready": false
+}

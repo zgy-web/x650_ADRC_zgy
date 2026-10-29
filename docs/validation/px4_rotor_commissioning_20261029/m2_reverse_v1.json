@@ -1,0 +1,89 @@
+{
+  "utc_started": "2026-10-29T05:42:49.736158+00:00",
+  "command": "dshot reverse -m 2",
+  "command_attempted": true,
+  "command_dispatch_success": true,
+  "motor_pulse": false,
+  "persistent_save_requested": false,
+  "esc_acceptance_verified": false,
+  "physical_direction_verified": false,
+  "output_zero_verified": true,
+  "nx_accessed": false,
+  "fc_parameter_writes": 0,
+  "attestations": {
+    "props_removed": true,
+    "frame_secured": true,
+    "operator_ready": true,
+    "power_connected": true,
+    "wiring_confirmed": true
+  },
+  "source_sha256": "89d147f0934226657c062dce1277f41b3da873718e844190ac52413e3dc5b268",
+  "preflight": {
+    "parameters": {
+      "SYS_AUTOSTART": 4001,
+      "CA_AIRFRAME": 0,
+      "CA_ROTOR_COUNT": 4,
+      "SENS_BOARD_ROT": 0,
+      "PWM_AUX_TIM0": -3,
+      "PWM_AUX_REV": 0,
+      "CA_R_REV": 0,
+      "THR_MDL_FAC": 0,
+      "DSHOT_3D_ENABLE": 0,
+      "DSHOT_MIN": 0.055,
+      "COM_MOT_TEST_EN": 1,
+      "DSHOT_BIDIR_EN": 0,
+      "DSHOT_TEL_CFG": 103,
+      "CBRK_IO_SAFETY": 22027,
+      "PWM_AUX_FUNC1": 101,
+      "PWM_AUX_FUNC2": 102,
+      "PWM_AUX_FUNC3": 103,
+      "PWM_AUX_FUNC4": 104,
+      "PWM_AUX_FUNC5": 0,
+      "PWM_AUX_FUNC6": 0,
+      "PWM_AUX_FUNC7": 0,
+      "PWM_AUX_FUNC8": 0,
+      "PWM_MAIN_FUNC1": 0,
+      "PWM_MAIN_FUNC2": 0,
+      "PWM_MAIN_FUNC3": 0,
+      "PWM_MAIN_FUNC4": 0,
+      "PWM_MAIN_FUNC5": 0,
+      "PWM_MAIN_FUNC6": 0,
+      "PWM_MAIN_FUNC7": 0,
+      "PWM_MAIN_FUNC8": 0
+    },
+    "before": {
+      "timestamp": 2339140477,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "after": {
+      "timestamp": 2340673614,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    }
+  },
+  "after_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "after": {
+    "timestamp": 2342197441,
+    "arming_state": 1,
+    "nav_state": 4,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "port_closed": true,
+  "console_sha256": "0d059cdacde32edaf3c655f02514e97beacd402e19cf4610ffca04bb5ac682b2"
+}

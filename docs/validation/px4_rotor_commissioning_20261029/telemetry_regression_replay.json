@@ -1,0 +1,17 @@
+{
+  "kind": "offline_regression_against_real_telemetry",
+  "hardware_accessed": false,
+  "frozen_record": "telemetry_fault_read_v1.json",
+  "frozen_record_rejected": true,
+  "reason": "Telemetry timestamp is zero, invalid, or older than 250 ms",
+  "recovered_record": "telemetry_after_2a_v1.json",
+  "recovered_assessment": {
+    "observed_healthy": true,
+    "successful_frames_added": 1621,
+    "crc_errors_added": 0,
+    "timeouts_added": 0,
+    "max_age_s": 0.25,
+    "scope": "Only this stopped-motor observation window; not a flight-readiness result"
+  },
+  "source_sha256": "b93456783545525f68bea2b0214be81a22a96e7f0442e40e8cfc399187756671"
+}

@@ -1,0 +1,199 @@
+{
+  "utc_started": "2026-10-29T06:05:06.360766+00:00",
+  "command": "dshot save -m 2",
+  "command_attempted": true,
+  "command_dispatch_success": true,
+  "motor_pulse": false,
+  "persistent_save_requested": true,
+  "esc_acceptance_verified": false,
+  "physical_direction_verified": false,
+  "output_zero_verified": true,
+  "nx_accessed": false,
+  "fc_parameter_writes": 0,
+  "attestations": {
+    "props_removed": true,
+    "frame_secured": true,
+    "operator_ready": true,
+    "power_connected": true,
+    "wiring_confirmed": true
+  },
+  "source_sha256": "89d147f0934226657c062dce1277f41b3da873718e844190ac52413e3dc5b268",
+  "preflight": {
+    "parameters": {
+      "SYS_AUTOSTART": 4001,
+      "CA_AIRFRAME": 0,
+      "CA_ROTOR_COUNT": 4,
+      "SENS_BOARD_ROT": 0,
+      "PWM_AUX_TIM0": -3,
+      "PWM_AUX_REV": 0,
+      "CA_R_REV": 0,
+      "THR_MDL_FAC": 0,
+      "DSHOT_3D_ENABLE": 0,
+      "DSHOT_MIN": 0.055,
+      "COM_MOT_TEST_EN": 1,
+      "DSHOT_BIDIR_EN": 0,
+      "DSHOT_TEL_CFG": 103,
+      "CBRK_IO_SAFETY": 22027,
+      "PWM_AUX_FUNC1": 101,
+      "PWM_AUX_FUNC2": 102,
+      "PWM_AUX_FUNC3": 103,
+      "PWM_AUX_FUNC4": 104,
+      "PWM_AUX_FUNC5": 0,
+      "PWM_AUX_FUNC6": 0,
+      "PWM_AUX_FUNC7": 0,
+      "PWM_AUX_FUNC8": 0,
+      "PWM_MAIN_FUNC1": 0,
+      "PWM_MAIN_FUNC2": 0,
+      "PWM_MAIN_FUNC3": 0,
+      "PWM_MAIN_FUNC4": 0,
+      "PWM_MAIN_FUNC5": 0,
+      "PWM_MAIN_FUNC6": 0,
+      "PWM_MAIN_FUNC7": 0,
+      "PWM_MAIN_FUNC8": 0
+    },
+    "before": {
+      "timestamp": 3675820492,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "after": {
+      "timestamp": 3677842504,
+      "arming_state": 1,
+      "nav_state": 4,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "telemetry": {
+      "observed_healthy": true,
+      "successful_frames_added": 649,
+      "crc_errors_added": 0,
+      "timeouts_added": 0,
+      "max_age_s": 0.25,
+      "scope": "Only this stopped-motor observation window; not a flight-readiness result"
+    },
+    "telemetry_observations": [
+      {
+        "counters": {
+          "success": 822279,
+          "timeouts": 31428,
+          "crc_errors": 362658
+        },
+        "header": {
+          "timestamp_us": 3676909622,
+          "age_s": 0.006387
+        },
+        "samples": {
+          "0": {
+            "timestamp_us": 3676909621,
+            "age_s": 0.017864,
+            "actuator_function": 101.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.39,
+            "esc_current": 1.01,
+            "esc_temperature": 40.0
+          },
+          "1": {
+            "timestamp_us": 3676902116,
+            "age_s": 0.038216,
+            "actuator_function": 102.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.44,
+            "esc_current": 1.21,
+            "esc_temperature": 33.0
+          },
+          "2": {
+            "timestamp_us": 3676904621,
+            "age_s": 0.048389,
+            "actuator_function": 103.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.47,
+            "esc_current": 0.0,
+            "esc_temperature": 27.0
+          },
+          "3": {
+            "timestamp_us": 3676907152,
+            "age_s": 0.058123,
+            "actuator_function": 104.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.66,
+            "esc_current": 0.0,
+            "esc_temperature": 37.0
+          }
+        },
+        "calibrated": false
+      },
+      {
+        "counters": {
+          "success": 822928,
+          "timeouts": 31428,
+          "crc_errors": 362658
+        },
+        "header": {
+          "timestamp_us": 3678539668,
+          "age_s": 0.000381
+        },
+        "samples": {
+          "0": {
+            "timestamp_us": 3678539667,
+            "age_s": 0.012498,
+            "actuator_function": 101.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.41,
+            "esc_current": 1.03,
+            "esc_temperature": 40.0
+          },
+          "1": {
+            "timestamp_us": 3678532118,
+            "age_s": 0.031476,
+            "actuator_function": 102.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.44,
+            "esc_current": 1.22,
+            "esc_temperature": 33.0
+          },
+          "2": {
+            "timestamp_us": 3678534619,
+            "age_s": 0.041735,
+            "actuator_function": 103.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.44,
+            "esc_current": 0.0,
+            "esc_temperature": 27.0
+          },
+          "3": {
+            "timestamp_us": 3678537114,
+            "age_s": 0.051048,
+            "actuator_function": 104.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 19.64,
+            "esc_current": 0.0,
+            "esc_temperature": 37.0
+          }
+        },
+        "calibrated": false
+      }
+    ]
+  },
+  "after_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "after": {
+    "timestamp": 3679875707,
+    "arming_state": 1,
+    "nav_state": 4,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "port_closed": true,
+  "console_sha256": "ac45f5b59495df010348b88a0aa27ea3a0a4024b663b5199bf2e6ca349ae9789"
+}

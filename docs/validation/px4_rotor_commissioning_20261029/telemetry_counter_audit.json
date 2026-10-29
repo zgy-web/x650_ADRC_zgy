@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "scope": "Counter deltas over each recorded run, including preflight and post-stop reads; not just the electrical pulse.",
+  "raw_console_location": "Local artifacts only; referenced by SHA-256",
+  "runs": [
+    {
+      "run": "m1_pulse_v1",
+      "utc_started": "2026-10-29T05:16:42.702586+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 14305,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counters_last": {
+        "successful_frames": 15982,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counter_delta": {
+        "successful_frames": 1677,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "b7495257fa295a256d83705daced8755e2c87d926dde359cca77a6202002f341"
+    },
+    {
+      "run": "m1_pulse_v2",
+      "utc_started": "2026-10-29T05:18:20.157418+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 53322,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counters_last": {
+        "successful_frames": 55003,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counter_delta": {
+        "successful_frames": 1681,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "c1c78630249f4dfa6614dae677715863aa76128b48af72e2a8cf1ce97dfacaac"
+    },
+    {
+      "run": "m1_pulse_v3",
+      "utc_started": "2026-10-29T05:21:54.790170+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 139169,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counters_last": {
+        "successful_frames": 140847,
+        "timeouts": 23459,
+        "crc_errors": 0
+      },
+      "counter_delta": {
+        "successful_frames": 1678,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "f542f5d4e97348a0887b4a86d6a9bc6ff53dfd0cee2cbea16f4d130377da7ed3"
+    },
+    {
+      "run": "m1_after_reverse_v1",
+      "utc_started": "2026-10-29T05:26:29.174999+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 259664,
+        "timeouts": 23459,
+        "crc_errors": 6
+      },
+      "counters_last": {
+        "successful_frames": 261799,
+        "timeouts": 23459,
+        "crc_errors": 133
+      },
+      "counter_delta": {
+        "successful_frames": 2135,
+        "timeouts": 0,
+        "crc_errors": 127
+      },
+      "console_sha256": "7c2564241f752dc37507ffca5f168a773b669da25a019f70f610a10a23e37b80"
+    },
+    {
+      "run": "m1_after_reverse_v2",
+      "utc_started": "2026-10-29T05:27:59.141725+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 296096,
+        "timeouts": 23459,
+        "crc_errors": 133
+      },
+      "counters_last": {
+        "successful_frames": 297778,
+        "timeouts": 23459,
+        "crc_errors": 133
+      },
+      "counter_delta": {
+        "successful_frames": 1682,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "47aed7ac2f6f7d17fc7308fe793860dca03a59771617efa712a81c9e375ce77a"
+    },
+    {
+      "run": "m1_powercycle_v1",
+      "utc_started": "2026-10-29T05:31:44.043713+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 379034,
+        "timeouts": 24014,
+        "crc_errors": 136
+      },
+      "counters_last": {
+        "successful_frames": 380714,
+        "timeouts": 24014,
+        "crc_errors": 136
+      },
+      "counter_delta": {
+        "successful_frames": 1680,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "e9510245b9aa1cdca4b671910e6ef19b6105554af00413176a6613a0cc091fda"
+    },
+    {
+      "run": "m2_pulse_v1",
+      "utc_started": "2026-10-29T05:32:49.344105+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 405149,
+        "timeouts": 24014,
+        "crc_errors": 136
+      },
+      "counters_last": {
+        "successful_frames": 406827,
+        "timeouts": 24014,
+        "crc_errors": 136
+      },
+      "counter_delta": {
+        "successful_frames": 1678,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "cb484e121e357a2e5c48f7eb1a838efc5146c3d8f9b981d44a7a75ca39dff4b1"
+    },
+    {
+      "run": "m2_startup_diagnostic_v1",
+      "utc_started": "2026-10-29T05:40:39.719598+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 514057,
+        "timeouts": 30331,
+        "crc_errors": 136
+      },
+      "counters_last": {
+        "successful_frames": 515944,
+        "timeouts": 30331,
+        "crc_errors": 136
+      },
+      "counter_delta": {
+        "successful_frames": 1887,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "cc25a99d8d38dba3fb9de5c8bcd6d9a3fe7e230dc21c115dec7292c92c07b9f8"
+    },
+    {
+      "run": "m2_direction_observe_v1",
+      "utc_started": "2026-10-29T05:42:04.552629+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 547982,
+        "timeouts": 30331,
+        "crc_errors": 136
+      },
+      "counters_last": {
+        "successful_frames": 549870,
+        "timeouts": 30331,
+        "crc_errors": 136
+      },
+      "counter_delta": {
+        "successful_frames": 1888,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "28f8a772cc574d08d25d4f2c071d431c2be1af2fc5736dc348218dcb1b10660e"
+    },
+    {
+      "run": "m2_after_reverse_v1",
+      "utc_started": "2026-10-29T05:43:11.028991+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 582428,
+        "timeouts": 30331,
+        "crc_errors": 143
+      },
+      "counters_last": {
+        "successful_frames": 583592,
+        "timeouts": 30331,
+        "crc_errors": 1455
+      },
+      "counter_delta": {
+        "successful_frames": 1164,
+        "timeouts": 0,
+        "crc_errors": 1312
+      },
+      "console_sha256": "afce9d0135371eed899a4660a55bcb83d5ec3407c1a81c3281ec0f4552cf2405"
+    },
+    {
+      "run": "m2_pulse_2a_v1",
+      "utc_started": "2026-10-29T06:03:49.766225+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 790590,
+        "timeouts": 31428,
+        "crc_errors": 362657
+      },
+      "counters_last": {
+        "successful_frames": 794024,
+        "timeouts": 31428,
+        "crc_errors": 362658
+      },
+      "counter_delta": {
+        "successful_frames": 3434,
+        "timeouts": 0,
+        "crc_errors": 1
+      },
+      "console_sha256": "b476f2f092ef486e696c96b10b71ef9a5ea86d65701b6e6f45b892494f98d54d"
+    },
+    {
+      "run": "m2_powercycle_2a_v1",
+      "utc_started": "2026-10-29T06:06:02.768676+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 839097,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counters_last": {
+        "successful_frames": 841470,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counter_delta": {
+        "successful_frames": 2373,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "d5b3f86bea4ba7efb9d4e8563dd50ff9b0286a556a1db68b8928032995ff8fb1"
+    },
+    {
+      "run": "m3_pulse_2a_v1",
+      "utc_started": "2026-10-29T06:06:43.362412+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 855330,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counters_last": {
+        "successful_frames": 857707,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counter_delta": {
+        "successful_frames": 2377,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "eb6c485ebcdc4aa05759d4e5fe4ff451b0e22bae8a2cdb69149c4936ce5ed7e4"
+    },
+    {
+      "run": "m4_pulse_2a_v1",
+      "utc_started": "2026-10-29T06:07:28.464765+00:00",
+      "console_check_passed": true,
+      "counters_first": {
+        "successful_frames": 873325,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counters_last": {
+        "successful_frames": 875703,
+        "timeouts": 31885,
+        "crc_errors": 362661
+      },
+      "counter_delta": {
+        "successful_frames": 2378,
+        "timeouts": 0,
+        "crc_errors": 0
+      },
+      "console_sha256": "b7356368c067751cc8b1abd084a2679a661bc1846c6e1066cc03c950bd25ef99"
+    }
+  ]
+}
