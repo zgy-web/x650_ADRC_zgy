@@ -1,0 +1,25 @@
+{
+  "kind": "actual_failed_six_face_calibration_attempt",
+  "result": "one_face_only_not_accepted",
+  "operator_report": "Saw the down face turn green but had not begun rotating before failure.",
+  "parameter_changes": {},
+  "full_console_kept_locally": "artifacts\\px4_accel_cal_20261029\\live_v1\\console.json",
+  "full_console_sha256": "61b193a40ef8019e159fb9d49bd450e19096b312016b7097f198472262e5b69d",
+  "files": [
+    {
+      "file": "attempt1_calibration_stream.txt",
+      "bytes": 1977,
+      "sha256": "3c37315e872b7ce1398ded5c7b9be8562af8ffb5a6a5045865c262aa849d51bb"
+    },
+    {
+      "file": "attempt1_host_tool.py",
+      "bytes": 12554,
+      "sha256": "36eec7c40127559c9be1a5f12e2d2ade8cc03742cb6266a3b3fb5e53fc2c490b"
+    },
+    {
+      "file": "attempt1_status.json",
+      "bytes": 5222,
+      "sha256": "27ee6868facb118c54401bf04e277078996da0fcc0abd4769fbbfab338c0a4ab"
+    }
+  ]
+}

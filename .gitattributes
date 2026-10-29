@@ -176,3 +176,9 @@ scripts/px4_imu_pole_check.py -text whitespace=cr-at-eol
 scripts/summarize_px4_imu_poles.py -text whitespace=cr-at-eol
 tests/unit/test_px4_imu_pole_check.py -text whitespace=cr-at-eol
 docs/validation/px4_imu_poles_20261029/*.json -text whitespace=cr-at-eol
+
+# Preserve the exact locally executed calibration helper and its evidence.
+scripts/px4_accel_calibration_live.py -text whitespace=cr-at-eol
+scripts/px4_accel_calibration_live.html -text whitespace=cr-at-eol
+tests/unit/test_px4_accel_calibration_live.py -text whitespace=cr-at-eol
+docs/validation/px4_accel_cal_20261029/attempt* -text whitespace=cr-at-eol

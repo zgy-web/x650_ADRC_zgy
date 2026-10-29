@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>飞控六面校准 · 实时引导</title>
+<style>
+.banner{position:sticky;top:0;z-index:2}
+:root{color-scheme:dark;font:17px/1.55 system-ui,"Microsoft YaHei",sans-serif;background:#101923;color:#e7f0f6}body{max-width:1050px;margin:24px auto;padding:0 24px}h1{font-size:29px;margin-bottom:6px}.muted{color:#a6b9c9}.banner{font-size:27px;padding:24px;background:#17354b;border-left:6px solid #55c5ef;border-radius:8px;min-height:84px;display:flex;align-items:center}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.card{background:#1c2b39;border:2px solid #304657;border-radius:10px;padding:16px}.card strong{display:block;font-size:19px}.tag{color:#9db2c2}.done{border-color:#3aca92;background:#163c33}.done .tag{color:#66e5b4}.measuring{border-color:#ffc761;background:#40351e}.measuring .tag{color:#ffd88e}button{background:#56c6f2;color:#102536;border:0;border-radius:8px;font:700 20px system-ui;padding:14px 24px;cursor:pointer}button:disabled{opacity:.45;cursor:default}.error{background:#4a2426;border-left-color:#fa787b}pre{white-space:pre-wrap;word-break:break-word;color:#b6c8d7;background:#0b121a;padding:12px;border-radius:6px;font-size:13px}.notes{font-size:15px}.pill{display:inline-block;border:1px solid #456275;border-radius:30px;padding:3px 12px;margin-bottom:16px}#count{float:right;font-weight:700}@media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}.banner{font-size:22px}body{padding:0 14px}}
+</style>
+<body><h1>六面加速度计校准</h1><p class="muted">Pixhawk 6X Pro · 按飞控反馈自动更新 · 电调动力保持关闭</p>
+<span class="pill" id="connection">正在连接本机引导程序…</span><span id="count">0 / 6</span>
+<div class="banner" id="prompt">保持正常正放，等待连接。</div><div class="grid" id="sides"></div>
+<button id="start" disabled>开始六面校准</button>
+<p class="notes">点击一次后自动进行。<b>黄色：保持静止；绿色：该面完成，开始平稳换面，摆稳后再保持静止。</b><br>姿态允许轻微偏差；六个方向要明显不同。采样期间不要移动，换面时避免拉扯接口。</p>
+<p class="muted notes">本次只进行加速度计校准，飞控会保存新的校准参数。不会解锁、进入 Offboard 或驱动电机。<br>关闭此网页不会取消飞控校准；若需要立即中止，保持电调动力关闭并断开飞控低压供电，然后返回聊天说明。</p>
+<details><summary>飞控最新原始提示</summary><pre id="raw">尚未发送校准命令。</pre></details>
+<script>
+const token='__TOKEN__';let lastGood=0, claimed=false;
+const prompt=document.getElementById('prompt'),btn=document.getElementById('start');
+function render(s){lastGood=Date.now();claimed=s.claimed;document.getElementById('connection').textContent='实时连接正常';document.getElementById('count').textContent=s.done.length+' / 6';prompt.textContent=s.prompt;prompt.classList.toggle('error',['failed','unknown','cancelled'].includes(s.phase));document.getElementById('raw').textContent=s.latest;btn.disabled=s.claimed;btn.textContent=s.claimed?'已发送启动请求，不重复发送':'开始六面校准';document.getElementById('sides').replaceChildren(...s.order.map((side,i)=>{const el=document.createElement('div'),done=s.done.includes(side),measuring=s.measuring===side;el.className='card'+(done?' done':measuring?' measuring':'');const title=document.createElement('strong');title.textContent=(i+1)+'. '+s.sides[side];const tag=document.createElement('span');tag.className='tag';tag.textContent=done?'✓ 已完成':measuring?'● 正在采集，请保持':'等待采集';el.append(title,tag);return el}));if(s.phase==='done'&&s.finished){document.getElementById('connection').textContent=s.readback?'校准完成，参数已回读':'校准完成，回读需要检查';}}
+async function poll(){try{const r=await fetch('/state',{cache:'no-store'});if(!r.ok)throw Error('status');render(await r.json())}catch(e){if(Date.now()-lastGood>2000){document.getElementById('connection').textContent='连接中断：停止换面，保持动力关闭';prompt.textContent='实时反馈中断，请返回聊天。';prompt.classList.add('error');btn.disabled=true}}finally{setTimeout(poll,250)}}
+btn.onclick=async()=>{btn.disabled=true;try{const r=await fetch('/start',{method:'POST',headers:{'X-Flyarm-Session':token}});if(!r.ok)throw Error('start');btn.textContent='启动请求已发出，正在核对状态…'}catch(e){prompt.textContent='启动请求未确认，请勿重复点击，返回聊天检查。';prompt.classList.add('error')}};poll();
+</script></body></html>

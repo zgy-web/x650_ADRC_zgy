@@ -1,0 +1,34 @@
+commander calibrate accel
+nsh> [KINFO  [commander] [cal] calibration started: 2 accel
+INFO  [commander] [cal] pending: back front left right up down
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down orientation detected
+INFO  [commander] [cal] down orientation detected
+INFO  [commander] [cal] Hold still, measuring down side
+INFO  [commander] [cal] down side result: [0.737 -0.661 -9.761]
+INFO  [commander] [cal] progress <17>
+INFO  [commander] [cal] down side done, rotate to a different side
+INFO  [commander] [cal] down side done, rotate to a different side
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+INFO  [commander] [cal] pending: back front left right up
+INFO  [commander] [cal] hold vehicle still on a pending side
+INFO  [commander] [cal] detected rest position, hold still...
+INFO  [commander] [cal] down side already completed
+WARN  [commander] [cal] calibration failed: timeout: no motion
+WARN  [commander] [cal] calibration failed: accel
