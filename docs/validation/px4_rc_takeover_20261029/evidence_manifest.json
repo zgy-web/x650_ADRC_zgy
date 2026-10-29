@@ -1,0 +1,103 @@
+{
+  "files": [
+    {
+      "file": "baseline_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/baseline_v1/inventory.json",
+      "sha256": "1aad06b77149630b1a473b633ddec03157194b2eb713fc75068dd40b318f076c",
+      "bytes": 3761,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "baseline_v2.json",
+      "original": "artifacts/px4_rc_takeover_20261029/baseline_v2/inventory.json",
+      "sha256": "26a2839d394df63782613ab070e517baf229aab0dfebc787527440e671ff9083",
+      "bytes": 17939,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "sb_middle_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/sb_middle_v1/inventory.json",
+      "sha256": "42e95260b1d5f2e189fd877b911b9fb34ef3fae8a96640586b6d8b9032163182",
+      "bytes": 17962,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "sb_down_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/sb_down_v1/inventory.json",
+      "sha256": "b8a7d59cc3894fa1d177cf71e835c3daecba9817804590fe2e199ffad26c5dfa",
+      "bytes": 17963,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "ready_for_sf_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/ready_for_sf_v1/inventory.json",
+      "sha256": "3378c3def3029d6ab5d8083c4906b4f210823d183945e2d44c3e8d4ab3d2c4b2",
+      "bytes": 18008,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "final_parked_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/final_parked_v1/inventory.json",
+      "sha256": "06edb7d47bba7da3d5409f5b2df4e3d89e090eeaba053e107cd2fa506230c688",
+      "bytes": 18002,
+      "retained": "complete original inventory; console with ver all remains local"
+    },
+    {
+      "file": "kill_arm_inhibit_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/kill_arm_inhibit_v1/report.json",
+      "sha256": "a686b274bd13d949da45c2be3100bd2e686058a10f32a14fab331818130a2495",
+      "bytes": 615110,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "rc_loss_restore_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/rc_loss_restore_v1/report.json",
+      "sha256": "1a9ba7a959eaf9efd23454361b0e50cef50f469a9e5401c0f42ffa22d2b29bf4",
+      "bytes": 616210,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "sf_arm_disarm_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/sf_arm_disarm_v1/report.json",
+      "sha256": "640aea497a0ab7da7eeffbe7fe148df9393f434f07abfff66b6fa86eb25263bc",
+      "bytes": 417792,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "sb_kill_disarm_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/sb_kill_disarm_v1/report.json",
+      "sha256": "f255313952b9e9efe0869a05daaec1edc1b4203de4f858fa2cc2de393b476096",
+      "bytes": 417973,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "armed_rc_loss_v1.json",
+      "original": "artifacts/px4_rc_takeover_20261029/armed_rc_loss_v1/report.json",
+      "sha256": "2506e0544235ff3e0ea22cc7a36888cf099d6703c549e7a472ebd02272e222d3",
+      "bytes": 617181,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "armed_rc_loss_v2.json",
+      "original": "artifacts/px4_rc_takeover_20261029/armed_rc_loss_v2/report.json",
+      "sha256": "fe581d0441b31172d26553305a9554e99d9983ecd3759913b2c8d2db11a85e6a",
+      "bytes": 616967,
+      "retained": "complete original observation report including all sampled raw topic text; console remains local"
+    },
+    {
+      "file": "pinned_events_enums.json",
+      "source_url": "https://raw.githubusercontent.com/PX4/PX4-Autopilot/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/lib/events/enums.json",
+      "sha256": "83493ab78dc522541b2f12d362267b0f1e6713ac89d457590fe5f8b04516f188",
+      "bytes": 31842
+    }
+  ],
+  "source_sha256": {
+    "scripts/px4_rc_safety_observer.py": "9334de3082f2e613f9c71667d4668e586b2a694d65cde2e205aaf93f3bd680a0",
+    "scripts/px4_rc_safety_summary.py": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "scripts/px4_rc_preflight_readonly.py": "f62253b0dc1475cdb6de0acfe8e62f9b23d864c7a72ff66ff878bf0e54fb3c8c",
+    "scripts/px4_debug_console.py": "abba3b2684ddd270cd6b8177e2153ac7bf7ca95f0a881cfef67f6612fa4c9bd5",
+    "scripts/px4_rc_switch_setup.py": "c7d4df72dcb9243a515e4959c65ce09f5ae6816e6cf1b2d913d2b29dbf6b90dc",
+    "scripts/px4_imu_pole_check.py": "e322616fd22f81c38c7ed6afa49099c488c47e8f65e9a1bd9f7b681678367e4d",
+    "scripts/px4_motor_single_pulse.py": "c4c2971ed6bf1b3f6f6427977eb54a306c6ddbdf53ef1780cbaf44bce923a5c3"
+  }
+}

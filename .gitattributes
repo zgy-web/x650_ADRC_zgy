@@ -187,3 +187,4 @@ scripts/px4_restore_accel_snapshot.py -text whitespace=cr-at-eol
 scripts/summarize_px4_accel_recovery.py -text whitespace=cr-at-eol
 tests/unit/test_px4_restore_accel_snapshot.py -text whitespace=cr-at-eol
 tests/unit/test_px4_accel_recovery_summary.py -text whitespace=cr-at-eol
+docs/validation/px4_rc_takeover_20261029/*.json -text whitespace=cr-at-eol

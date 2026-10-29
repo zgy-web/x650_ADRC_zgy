@@ -1,0 +1,566 @@
+{
+  "kill_arm_inhibit_v1": {
+    "case": "kill_inhibit",
+    "observed_logic_pass": true,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "arm_request_observed": true,
+      "explicit_refusal_observed": true,
+      "all_disarmed": true,
+      "all_kill": true,
+      "all_zero": true,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": null,
+    "observations": 74,
+    "unknown": [],
+    "final_disarming_reason": 0,
+    "final_disarming_reason_name": "transition_to_standby",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 919320459,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": false,
+        "kill": true,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 919482193,
+        "arm_switch": 3,
+        "kill_switch": 1,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 920075742,
+        "timestamp_last_signal": 920075717,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 857350427,
+        "action": 0,
+        "source": 1,
+        "mode": 0
+      },
+      "manual_control_setpoint": {
+        "timestamp": 920206352,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "a686b274bd13d949da45c2be3100bd2e686058a10f32a14fab331818130a2495",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": true
+  },
+  "rc_loss_restore_v1": {
+    "case": "rc_loss_restore",
+    "observed_logic_pass": true,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "valid_lost_restored": true,
+      "all_disarmed": true,
+      "all_kill": true,
+      "all_zero": true,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": [
+      0,
+      25,
+      45
+    ],
+    "observations": 74,
+    "unknown": [],
+    "final_disarming_reason": 0,
+    "final_disarming_reason_name": "transition_to_standby",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 1051124446,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": false,
+        "kill": true,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 1051417704,
+        "arm_switch": 3,
+        "kill_switch": 1,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 1051795291,
+        "timestamp_last_signal": 1051795266,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 1016333652,
+        "action": 5,
+        "source": 3,
+        "mode": 1
+      },
+      "manual_control_setpoint": {
+        "timestamp": 1051774742,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "1a9ba7a959eaf9efd23454361b0e50cef50f469a9e5401c0f42ffa22d2b29bf4",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": true
+  },
+  "sf_arm_disarm_v1": {
+    "case": "sf_disarm",
+    "observed_logic_pass": true,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "armed_then_disarmed": true,
+      "arm_request_observed": true,
+      "disarm_request_observed": true,
+      "disarming_reason_rc_switch": true,
+      "all_kill_released": true,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": [
+      30,
+      34
+    ],
+    "observations": 50,
+    "unknown": [],
+    "final_disarming_reason": 2,
+    "final_disarming_reason_name": "rc_switch",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 1194974445,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": true,
+        "kill": false,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 1195255975,
+        "arm_switch": 3,
+        "kill_switch": 3,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 1195371836,
+        "timestamp_last_signal": 1195371807,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 1176205486,
+        "action": 0,
+        "source": 1,
+        "mode": 0
+      },
+      "manual_control_setpoint": {
+        "timestamp": 1195367779,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "640aea497a0ab7da7eeffbe7fe148df9393f434f07abfff66b6fa86eb25263bc",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": true
+  },
+  "sb_kill_disarm_v1": {
+    "case": "kill_disarm",
+    "observed_logic_pass": true,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "kill_cutoff_observed": true,
+      "armed_killed_disarmed": true,
+      "kill_request_observed": true,
+      "disarming_reason_kill_switch": true,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": [
+      20,
+      24,
+      28
+    ],
+    "observations": 50,
+    "unknown": [],
+    "final_disarming_reason": 8,
+    "final_disarming_reason_name": "kill_switch",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 1335749337,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": false,
+        "kill": true,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 1336262182,
+        "arm_switch": 3,
+        "kill_switch": 1,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 1336536226,
+        "timestamp_last_signal": 1336536201,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 1319229370,
+        "action": 0,
+        "source": 1,
+        "mode": 0
+      },
+      "manual_control_setpoint": {
+        "timestamp": 1336483134,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "f255313952b9e9efe0869a05daaec1edc1b4203de4f858fa2cc2de393b476096",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": true
+  },
+  "armed_rc_loss_v1": {
+    "case": "armed_rc_loss",
+    "observed_logic_pass": false,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "armed_then_loss_failsafe_then_recovered": true,
+      "no_kill_intervention": false,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": [
+      22,
+      30,
+      49
+    ],
+    "observations": 74,
+    "unknown": [],
+    "final_disarming_reason": 7,
+    "final_disarming_reason_name": "auto_disarm_preflight",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 1640902444,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": false,
+        "kill": true,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 1640740337,
+        "arm_switch": 3,
+        "kill_switch": 1,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 1641669369,
+        "timestamp_last_signal": 1641669333,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 1639739404,
+        "action": 4,
+        "source": 1,
+        "mode": 0
+      },
+      "manual_control_setpoint": {
+        "timestamp": 1641772206,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "2506e0544235ff3e0ea22cc7a36888cf099d6703c549e7a472ebd02272e222d3",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": false,
+    "exclusion_reason": "Operator reported accidental SB operation; preserve run, use v2 with kill=False throughout for isolated loss acceptance."
+  },
+  "armed_rc_loss_v2": {
+    "case": "armed_rc_loss",
+    "observed_logic_pass": true,
+    "checks": {
+      "ends_disarmed": true,
+      "ends_zero": true,
+      "ends_rc_valid": true,
+      "ends_sf_off": true,
+      "armed_then_loss_failsafe_then_recovered": true,
+      "no_kill_intervention": true,
+      "capture_complete": true,
+      "exact_firmware": true,
+      "port_closed": true,
+      "operator_power_off": true,
+      "no_unknown_fields": true,
+      "no_tool_control_commands": true
+    },
+    "ordered_observation_indices": [
+      27,
+      32,
+      52
+    ],
+    "observations": 74,
+    "unknown": [],
+    "final_disarming_reason": 7,
+    "final_disarming_reason_name": "auto_disarm_preflight",
+    "final": {
+      "vehicle_status": {
+        "timestamp": 2047989163,
+        "arming_state": 1,
+        "nav_state": 1,
+        "failsafe": false
+      },
+      "actuator_armed": {
+        "armed": false,
+        "prearmed": false,
+        "ready_to_arm": true,
+        "kill": false,
+        "termination": false
+      },
+      "manual_control_switches": {
+        "timestamp": 2048129381,
+        "arm_switch": 3,
+        "kill_switch": 3,
+        "mode_slot": 1
+      },
+      "input_rc": {
+        "timestamp": 2048556242,
+        "timestamp_last_signal": 2048556214,
+        "channel_count": 16,
+        "input_source": 14,
+        "rc_lost": false,
+        "rc_failsafe": false
+      },
+      "action_request": {
+        "timestamp": 2022079962,
+        "action": 5,
+        "source": 3,
+        "mode": 1
+      },
+      "manual_control_setpoint": {
+        "timestamp": 2048667916,
+        "data_source": 1,
+        "valid": true,
+        "throttle": -1.0
+      },
+      "failsafe_flags": {
+        "manual_control_signal_lost": false,
+        "offboard_control_signal_lost": true,
+        "local_position_invalid": true,
+        "local_velocity_invalid": true
+      },
+      "dshot": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "physical_motor_stop_verified": false,
+    "airborne_failsafe_verified": false,
+    "nx_offboard_takeover_verified": false,
+    "reaction_time_measured": false,
+    "flight_ready": false,
+    "report_sha256": "fe581d0441b31172d26553305a9554e99d9983ecd3759913b2c8d2db11a85e6a",
+    "auditor_sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c",
+    "acceptance_eligible": true
+  }
+}

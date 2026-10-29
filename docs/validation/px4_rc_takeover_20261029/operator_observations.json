@@ -1,0 +1,8 @@
+{
+  "operator_scope": "All propellers removed; ESC power OFF; FC and RC receiver supplied separately. No new NX access or configuration.",
+  "excluded_run": "armed_rc_loss_v1: user reported accidental SB activation; not acceptance evidence.",
+  "replacement_run": "armed_rc_loss_v2: user confirmed radio C restored, SF=-100%, SB remained middle. No kill intervention in 73 rounds plus final snapshot.",
+  "final_action": "User confirmed SB returned down after recorder completed; final_parked_v1 independently verifies disarmed, kill=True, RC valid, throttle=-1, outputs zero.",
+  "correction": "Initial interpretation of disarming_reason=8 as preflight was wrong: runtime events enum and console establish kill_switch=8, auto_disarm_preflight=7. No firmware change was performed.",
+  "calibration": "User declined further calibration. Previously restored baseline retained; no calibration performed in this task."
+}
