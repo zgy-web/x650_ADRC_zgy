@@ -103,6 +103,8 @@ X650 数值动力配置采用 **T-MOTOR MN4014 KV330＋15×5CF、6S 30000 mAh、
 
 随后完成[真实 NX→PX4 限时设定值发送与独立回读](docs/validation/nx_setpoint_readback_20261028/README.md)：10 秒内发送 184 条 A/B/C 编码测试值，COM13 读取飞控内部 uORB，35 个新时间戳样本覆盖三种模式并逐字段匹配。其余 115 个采样符合预先捕获的内部基线，无异常字段组合。全程未解锁、非 Offboard；本次不执行实机 MPC 或验证电机响应。临时程序仅在 NX RAM 运行，结果存电脑；USB 未连接故障在未解锁飞控重启后恢复，根因未定。代码与复现见[限时发送及回读指南](docs/NX_PX4_SETPOINT_READBACK.md)。
 
+2026-10-30 新阶段采用 [TELEM1 MAVLink UART 控制链](docs/NX_MAVLINK_CONTROL_CHAIN.md)，旧 USB 协议切换因随后发生 Hard Fault 继续隔离。已在真实 NX 完成原 MPC 1,281 个快照的新 MAVLink 输出编码验证，并用 C++ 在原 UART 配置下完成 20 秒零发送接收（330 帧、无 CRC 错误）。消息频率与上下行带宽已明确；用户批准的五项通信参数已应用，飞控重启后确认 921600 baud / 30000 B/s / Custom 生效。新刷新率、PX4 内部目标回读、人工接管与断流退出仍待 NX 网络恢复后验收；不能用软件测试代替。结果与代码身份见[本轮验证记录](docs/validation/nx_uart_contract_20261030/README.md)。
+
 2026-10-29 完成 [Pixhawk 四旋翼电调／电机拆桨台架检查](docs/PX4_ROTOR_COMMISSIONING.md)：COM13核验DShot600、AUX1–4分配及限值，现场逐台确认M1右前CCW、M2左后CCW、M3左前CW、M4右后CW和停止；M1、M2修正方向后均通过保存、断电重启复测。14次最低输出、1秒限时记录保留了未看清、未起转及遥测故障。原20 V／0.5 A限流改为20 V／2 A并断电重启后，遥测恢复；最终M2复测和M3／M4记录窗口无新增CRC错误或超时，但故障根因尚未完全隔离。电脑端新增指定电调转向、遥测新鲜度和计数检查，61项无硬件测试通过，见[真实台架记录](docs/validation/px4_rotor_commissioning_20261029/README.md)。动力已关闭；原始日志存电脑，不改NX配置或PX4参数，不把空载点动视为飞行验收。
 
 新的 [TS20 Gazebo 条件执行器准备与接口验证](docs/X650_TS20_PLANT_README.md)支持完整 URDF flight 模型派生、独立 airframe 4997、固定 5 ms MIT 总线和实际关节状态记录。两关节低幅正反向原生物理位移检查已通过；新工况的悬停、摆臂与完整末端保持仍须分别验收，快速八字尚未开放。该插件保留原刚体惯性，通过条件自由运动响应施加速度约束，不是已标定的轴端力矩模型。

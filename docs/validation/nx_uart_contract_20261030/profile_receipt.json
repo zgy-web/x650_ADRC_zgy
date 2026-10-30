@@ -1,0 +1,55 @@
+{
+  "applied": true,
+  "reboot_verified": true,
+  "original": {
+    "SER_TEL1_BAUD": 57600,
+    "MAV_0_MODE": 0,
+    "MAV_0_RATE": 1200,
+    "MAV_0_FLOW_CTRL": 2,
+    "MAV_0_FORWARD": 1
+  },
+  "active": {
+    "SER_TEL1_BAUD": 921600,
+    "MAV_0_MODE": 1,
+    "MAV_0_RATE": 30000,
+    "MAV_0_FLOW_CTRL": 0,
+    "MAV_0_FORWARD": 0
+  },
+  "initial_state": {
+    "timestamp": 13394384,
+    "arming_state": 1,
+    "nav_state": 1,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "final_state": {
+    "timestamp": 13901600,
+    "arming_state": 1,
+    "nav_state": 1,
+    "hil_state": 0,
+    "failsafe": false
+  },
+  "final_outputs": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0
+  },
+  "before_reboot_fc_us": 3106907421,
+  "after_reboot_fc_us": 13394384,
+  "nx_configuration_changed": false,
+  "mode_commands": 0,
+  "arm_commands": 0,
+  "setpoints": 0,
+  "apply_report_sha256": "93ad858c6e04702550b8f70411c2245634fd0c8b5e273fdba78b5531809830b0",
+  "reboot_report_sha256": "3ab837eaa9c599adbabf6c35c9b848f8bfaf716b75cb37972d83fb26ca84f61f",
+  "raw_pc_directory": "artifacts/nx_uart_contract_20261030",
+  "requested_stream_rates_measured": false,
+  "internal_setpoint_acceptance": false,
+  "takeover_acceptance": false
+}

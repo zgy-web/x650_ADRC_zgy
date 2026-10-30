@@ -53,11 +53,15 @@ def main():
             return p.stdout
         source=root/"control_packages/x650_mpc_controller_v1"
         build=root/"build"
-        run(["cmake","-S",source,"-B",build,"-DCMAKE_BUILD_TYPE=Release","-DBUILD_TESTING=ON",
+        configure=["cmake","-S",source,"-B",build,"-DCMAKE_BUILD_TYPE=Release","-DBUILD_TESTING=ON",
              "-DX650_MPC_BUILD_HARDWARE_REPLAY=ON","-DX650_MPC_BUILD_REPLAY=OFF",
              "-DX650_NATIVE_INCLUDE_DIR="+str(root/"bound_native"),
              "-DX650_BACKEND_LIBRARY_DIR="+str(Path(libs["core"]["path"]).parent),
-             "-DX650_TS20_LIBRARY="+libs["predictor"]["path"],"-DCMAKE_CXX_FLAGS=-ffp-contract=off"],"configure")
+             "-DX650_TS20_LIBRARY="+libs["predictor"]["path"],"-DCMAKE_CXX_FLAGS=-ffp-contract=off"]
+        if request.get('mavlink_wire_replay'):
+            configure += ['-DX650_MPC_BUILD_MAVLINK_WIRE_REPLAY=ON',
+                          '-DX650_MAVLINK_INCLUDE_DIR='+str(root/'mavlink_generated/include')]
+        run(configure,"configure")
         run(["cmake","--build",build,"-j2"],"build")
         run(["ctest","--test-dir",build,"--output-on-failure"],"ctest")
         executable=build/"x650_hardware_replay"
@@ -70,6 +74,9 @@ def main():
             r=json.loads(output)
             if not r.get("passed") or not r.get("complete") or r.get("row_count")!=item["count"]:
                 raise RuntimeError("Incomplete replay result")
+            if request.get('mavlink_wire_replay') and (r.get('mavlink_wire_replay') is not True or
+                  not all(row.get('mavlink_setpoint_fields_exact') is True for row in r['rows'])):
+                raise RuntimeError('MAVLink output replay incomplete')
             results.append(dict(name=item["name"],count=r["row_count"],passed=True))
         if identities()!=expected:raise ValueError("Algorithm libraries changed during replay")
     emit(event="cleanup",ram_removed=not root.exists(),persistent_files_created=[],libraries_unchanged=True)

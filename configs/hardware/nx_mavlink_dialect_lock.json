@@ -1,0 +1,12 @@
+{
+  "px4_commit":"d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "mavlink_submodule_commit":"33af200d25ec6f0925b49b1ba82bbf1294ea5f72",
+  "dialect":"development",
+  "wire_version":"2.0",
+  "files":{
+    "development.xml":"aa9f7f0955c0247fb0c9758d1171638679a698da3d9b768b4aaaf6fff28962da",
+    "common.xml":"bbc1c382a217209f2cb3922416539da3226878dd19c7549f928913a6f72b1498",
+    "standard.xml":"baf3742c22ff8198d496215e1ba2d54281268edf5a1fcf3371b7e012407a4769",
+    "minimal.xml":"dfc2e97198692dffab0fcdc7fbc0375f4dae37c661f0e2cab50cf2d2dba2a2ab"
+  }
+}

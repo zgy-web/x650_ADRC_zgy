@@ -1,0 +1,570 @@
+[
+  {
+    "stage": "bench",
+    "signed_size_budget": false,
+    "baud": 921600,
+    "capacity_bytes_s_per_direction": 92160.0,
+    "directions": {
+      "px4_to_nx": {
+        "messages": [
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 21,
+            "bytes_s": 21,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "ATTITUDE_QUATERNION",
+            "id": 31,
+            "hz": 50,
+            "max_frame_bytes": 60,
+            "bytes_s": 3000,
+            "serialization_ms": 0.6510416666666666
+          },
+          {
+            "name": "RC_CHANNELS",
+            "id": 65,
+            "hz": 20,
+            "max_frame_bytes": 54,
+            "bytes_s": 1080,
+            "serialization_ms": 0.5859375
+          },
+          {
+            "name": "CURRENT_MODE",
+            "id": 436,
+            "hz": 10,
+            "max_frame_bytes": 21,
+            "bytes_s": 210,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "ESTIMATOR_STATUS",
+            "id": 230,
+            "hz": 10,
+            "max_frame_bytes": 54,
+            "bytes_s": 540,
+            "serialization_ms": 0.5859375
+          },
+          {
+            "name": "EXTENDED_SYS_STATE",
+            "id": 245,
+            "hz": 2,
+            "max_frame_bytes": 14,
+            "bytes_s": 28,
+            "serialization_ms": 0.1519097222222222
+          },
+          {
+            "name": "SYS_STATUS",
+            "id": 1,
+            "hz": 2,
+            "max_frame_bytes": 55,
+            "bytes_s": 110,
+            "serialization_ms": 0.5967881944444444
+          },
+          {
+            "name": "BATTERY_STATUS",
+            "id": 147,
+            "hz": 2,
+            "max_frame_bytes": 66,
+            "bytes_s": 132,
+            "serialization_ms": 0.7161458333333334
+          },
+          {
+            "name": "ATTITUDE_TARGET",
+            "id": 83,
+            "hz": 20,
+            "max_frame_bytes": 49,
+            "bytes_s": 980,
+            "serialization_ms": 0.5316840277777778
+          },
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 30,
+            "bytes_s": 300,
+            "serialization_ms": 0.3255208333333333
+          }
+        ],
+        "periodic_bytes_s": 6401,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 8901,
+        "link_fraction": 0.09658203125,
+        "uart_fits": true,
+        "px4_stream_budget_fits": true
+      },
+      "nx_to_px4": {
+        "messages": [
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 30,
+            "bytes_s": 300,
+            "serialization_ms": 0.3255208333333333
+          },
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 21,
+            "bytes_s": 21,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "SET_ATTITUDE_TARGET",
+            "id": 82,
+            "hz": 50,
+            "max_frame_bytes": 63,
+            "bytes_s": 3150,
+            "serialization_ms": 0.68359375
+          }
+        ],
+        "periodic_bytes_s": 3471,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 5971,
+        "link_fraction": 0.06478949652777778,
+        "uart_fits": true,
+        "px4_stream_budget_fits": null
+      }
+    },
+    "measured": false,
+    "budget_fits": true
+  },
+  {
+    "stage": "bench",
+    "signed_size_budget": true,
+    "baud": 921600,
+    "capacity_bytes_s_per_direction": 92160.0,
+    "directions": {
+      "px4_to_nx": {
+        "messages": [
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 34,
+            "bytes_s": 34,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "ATTITUDE_QUATERNION",
+            "id": 31,
+            "hz": 50,
+            "max_frame_bytes": 73,
+            "bytes_s": 3650,
+            "serialization_ms": 0.7921006944444444
+          },
+          {
+            "name": "RC_CHANNELS",
+            "id": 65,
+            "hz": 20,
+            "max_frame_bytes": 67,
+            "bytes_s": 1340,
+            "serialization_ms": 0.7269965277777778
+          },
+          {
+            "name": "CURRENT_MODE",
+            "id": 436,
+            "hz": 10,
+            "max_frame_bytes": 34,
+            "bytes_s": 340,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "ESTIMATOR_STATUS",
+            "id": 230,
+            "hz": 10,
+            "max_frame_bytes": 67,
+            "bytes_s": 670,
+            "serialization_ms": 0.7269965277777778
+          },
+          {
+            "name": "EXTENDED_SYS_STATE",
+            "id": 245,
+            "hz": 2,
+            "max_frame_bytes": 27,
+            "bytes_s": 54,
+            "serialization_ms": 0.29296875
+          },
+          {
+            "name": "SYS_STATUS",
+            "id": 1,
+            "hz": 2,
+            "max_frame_bytes": 68,
+            "bytes_s": 136,
+            "serialization_ms": 0.7378472222222222
+          },
+          {
+            "name": "BATTERY_STATUS",
+            "id": 147,
+            "hz": 2,
+            "max_frame_bytes": 79,
+            "bytes_s": 158,
+            "serialization_ms": 0.8572048611111112
+          },
+          {
+            "name": "ATTITUDE_TARGET",
+            "id": 83,
+            "hz": 20,
+            "max_frame_bytes": 62,
+            "bytes_s": 1240,
+            "serialization_ms": 0.6727430555555556
+          },
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 43,
+            "bytes_s": 430,
+            "serialization_ms": 0.4665798611111111
+          }
+        ],
+        "periodic_bytes_s": 8052,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 10552,
+        "link_fraction": 0.11449652777777777,
+        "uart_fits": true,
+        "px4_stream_budget_fits": true
+      },
+      "nx_to_px4": {
+        "messages": [
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 43,
+            "bytes_s": 430,
+            "serialization_ms": 0.4665798611111111
+          },
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 34,
+            "bytes_s": 34,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "SET_ATTITUDE_TARGET",
+            "id": 82,
+            "hz": 50,
+            "max_frame_bytes": 76,
+            "bytes_s": 3800,
+            "serialization_ms": 0.8246527777777778
+          }
+        ],
+        "periodic_bytes_s": 4264,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 6764,
+        "link_fraction": 0.07339409722222222,
+        "uart_fits": true,
+        "px4_stream_budget_fits": null
+      }
+    },
+    "measured": false,
+    "budget_fits": true
+  },
+  {
+    "stage": "mpc",
+    "signed_size_budget": false,
+    "baud": 921600,
+    "capacity_bytes_s_per_direction": 92160.0,
+    "directions": {
+      "px4_to_nx": {
+        "messages": [
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 21,
+            "bytes_s": 21,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "ATTITUDE_QUATERNION",
+            "id": 31,
+            "hz": 50,
+            "max_frame_bytes": 60,
+            "bytes_s": 3000,
+            "serialization_ms": 0.6510416666666666
+          },
+          {
+            "name": "RC_CHANNELS",
+            "id": 65,
+            "hz": 20,
+            "max_frame_bytes": 54,
+            "bytes_s": 1080,
+            "serialization_ms": 0.5859375
+          },
+          {
+            "name": "CURRENT_MODE",
+            "id": 436,
+            "hz": 10,
+            "max_frame_bytes": 21,
+            "bytes_s": 210,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "ESTIMATOR_STATUS",
+            "id": 230,
+            "hz": 10,
+            "max_frame_bytes": 54,
+            "bytes_s": 540,
+            "serialization_ms": 0.5859375
+          },
+          {
+            "name": "EXTENDED_SYS_STATE",
+            "id": 245,
+            "hz": 2,
+            "max_frame_bytes": 14,
+            "bytes_s": 28,
+            "serialization_ms": 0.1519097222222222
+          },
+          {
+            "name": "SYS_STATUS",
+            "id": 1,
+            "hz": 2,
+            "max_frame_bytes": 55,
+            "bytes_s": 110,
+            "serialization_ms": 0.5967881944444444
+          },
+          {
+            "name": "BATTERY_STATUS",
+            "id": 147,
+            "hz": 2,
+            "max_frame_bytes": 66,
+            "bytes_s": 132,
+            "serialization_ms": 0.7161458333333334
+          },
+          {
+            "name": "ODOMETRY",
+            "id": 331,
+            "hz": 50,
+            "max_frame_bytes": 245,
+            "bytes_s": 12250,
+            "serialization_ms": 2.658420138888889
+          },
+          {
+            "name": "HIGHRES_IMU",
+            "id": 105,
+            "hz": 50,
+            "max_frame_bytes": 75,
+            "bytes_s": 3750,
+            "serialization_ms": 0.8138020833333334
+          },
+          {
+            "name": "POSITION_TARGET_LOCAL_NED",
+            "id": 85,
+            "hz": 20,
+            "max_frame_bytes": 63,
+            "bytes_s": 1260,
+            "serialization_ms": 0.68359375
+          },
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 30,
+            "bytes_s": 300,
+            "serialization_ms": 0.3255208333333333
+          }
+        ],
+        "periodic_bytes_s": 22681,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 25181,
+        "link_fraction": 0.27323133680555556,
+        "uart_fits": true,
+        "px4_stream_budget_fits": true
+      },
+      "nx_to_px4": {
+        "messages": [
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 30,
+            "bytes_s": 300,
+            "serialization_ms": 0.3255208333333333
+          },
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 21,
+            "bytes_s": 21,
+            "serialization_ms": 0.22786458333333334
+          },
+          {
+            "name": "SET_POSITION_TARGET_LOCAL_NED",
+            "id": 84,
+            "hz": 50,
+            "max_frame_bytes": 65,
+            "bytes_s": 3250,
+            "serialization_ms": 0.7052951388888888
+          }
+        ],
+        "periodic_bytes_s": 3571,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 6071,
+        "link_fraction": 0.06587456597222222,
+        "uart_fits": true,
+        "px4_stream_budget_fits": null
+      }
+    },
+    "measured": false,
+    "budget_fits": true
+  },
+  {
+    "stage": "mpc",
+    "signed_size_budget": true,
+    "baud": 921600,
+    "capacity_bytes_s_per_direction": 92160.0,
+    "directions": {
+      "px4_to_nx": {
+        "messages": [
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 34,
+            "bytes_s": 34,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "ATTITUDE_QUATERNION",
+            "id": 31,
+            "hz": 50,
+            "max_frame_bytes": 73,
+            "bytes_s": 3650,
+            "serialization_ms": 0.7921006944444444
+          },
+          {
+            "name": "RC_CHANNELS",
+            "id": 65,
+            "hz": 20,
+            "max_frame_bytes": 67,
+            "bytes_s": 1340,
+            "serialization_ms": 0.7269965277777778
+          },
+          {
+            "name": "CURRENT_MODE",
+            "id": 436,
+            "hz": 10,
+            "max_frame_bytes": 34,
+            "bytes_s": 340,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "ESTIMATOR_STATUS",
+            "id": 230,
+            "hz": 10,
+            "max_frame_bytes": 67,
+            "bytes_s": 670,
+            "serialization_ms": 0.7269965277777778
+          },
+          {
+            "name": "EXTENDED_SYS_STATE",
+            "id": 245,
+            "hz": 2,
+            "max_frame_bytes": 27,
+            "bytes_s": 54,
+            "serialization_ms": 0.29296875
+          },
+          {
+            "name": "SYS_STATUS",
+            "id": 1,
+            "hz": 2,
+            "max_frame_bytes": 68,
+            "bytes_s": 136,
+            "serialization_ms": 0.7378472222222222
+          },
+          {
+            "name": "BATTERY_STATUS",
+            "id": 147,
+            "hz": 2,
+            "max_frame_bytes": 79,
+            "bytes_s": 158,
+            "serialization_ms": 0.8572048611111112
+          },
+          {
+            "name": "ODOMETRY",
+            "id": 331,
+            "hz": 50,
+            "max_frame_bytes": 258,
+            "bytes_s": 12900,
+            "serialization_ms": 2.7994791666666665
+          },
+          {
+            "name": "HIGHRES_IMU",
+            "id": 105,
+            "hz": 50,
+            "max_frame_bytes": 88,
+            "bytes_s": 4400,
+            "serialization_ms": 0.9548611111111112
+          },
+          {
+            "name": "POSITION_TARGET_LOCAL_NED",
+            "id": 85,
+            "hz": 20,
+            "max_frame_bytes": 76,
+            "bytes_s": 1520,
+            "serialization_ms": 0.8246527777777778
+          },
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 43,
+            "bytes_s": 430,
+            "serialization_ms": 0.4665798611111111
+          }
+        ],
+        "periodic_bytes_s": 25632,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 28132,
+        "link_fraction": 0.3052517361111111,
+        "uart_fits": true,
+        "px4_stream_budget_fits": true
+      },
+      "nx_to_px4": {
+        "messages": [
+          {
+            "name": "TIMESYNC",
+            "id": 111,
+            "hz": 10,
+            "max_frame_bytes": 43,
+            "bytes_s": 430,
+            "serialization_ms": 0.4665798611111111
+          },
+          {
+            "name": "HEARTBEAT",
+            "id": 0,
+            "hz": 1,
+            "max_frame_bytes": 34,
+            "bytes_s": 34,
+            "serialization_ms": 0.3689236111111111
+          },
+          {
+            "name": "SET_POSITION_TARGET_LOCAL_NED",
+            "id": 84,
+            "hz": 50,
+            "max_frame_bytes": 78,
+            "bytes_s": 3900,
+            "serialization_ms": 0.8463541666666666
+          }
+        ],
+        "periodic_bytes_s": 4364,
+        "reserve_bytes_s": 2500,
+        "total_budget_bytes_s": 6864,
+        "link_fraction": 0.07447916666666667,
+        "uart_fits": true,
+        "px4_stream_budget_fits": null
+      }
+    },
+    "measured": false,
+    "budget_fits": true
+  }
+]

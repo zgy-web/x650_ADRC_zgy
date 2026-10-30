@@ -1,5 +1,7 @@
 # Pixhawk 内部设定值回读：独立 Debug 串口方案
 
+> **2026-10-30 更新：下文保留为 10 月 28 日的历史验收记录。随后 USB MAVLink／DDS 切换触发 Hard Fault，原实机入口已隔离；不要按本文重新切换 USB。当前执行方案改用 [TELEM1 UART 消息与验收流程](NX_MAVLINK_CONTROL_CHAIN.md)，FMU Debug 仍作独立回读。UART 方案不表示原固件故障已修复。**
+
 适用设备：Orin NX（达妙载板）＋ Pixhawk 6X Pro，已核验 PX4 1.17 固件提交 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`。2026-10-28 已完成 **NX C++ 限时发送 → USB DDS → 飞控内部 uORB → COM13 独立回读**。10 秒发送 184 条测试设定值；150 个内部采样中，A/B/C 分别有 7/10/18 个新时间戳样本逐字段匹配。其余 115 个匹配发送前捕获的内部模式，未发现无法解释的字段组合。全程未解锁、非 Offboard。见[本次验收记录](validation/nx_setpoint_readback_20261028/README.md)，此前的纯只读检查见[接入记录](validation/nx_px4_debug_20261028/README.md)。
 
 ## 为什么要第二条通道

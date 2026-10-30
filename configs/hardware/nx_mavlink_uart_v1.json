@@ -1,0 +1,53 @@
+{
+  "schema": "flyarm.mavlink_uart_profile.v1",
+  "status": "reviewed_profile_v1_actual_deployment_recorded_separately",
+  "px4_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "mavlink_commit": "33af200d25ec6f0925b49b1ba82bbf1294ea5f72",
+  "nx_device": "/dev/ttyTHS1",
+  "px4_device": "/dev/ttyS6",
+  "baud": 921600,
+  "serial_bits_per_byte": 10,
+  "unsigned_overhead_bytes": 12,
+  "signature_extra_bytes": 13,
+  "px4_tx_budget_bytes_s": 30000,
+  "asynchronous_reserve_bytes_s_per_direction": 2500,
+  "px4_parameters_proposed": {
+    "SER_TEL1_BAUD": 921600,
+    "MAV_0_MODE": 1,
+    "MAV_0_RATE": 30000,
+    "MAV_0_FLOW_CTRL": 0,
+    "MAV_0_FORWARD": 0
+  },
+  "control": {"mpc_hz": 25, "dispatcher_hz": 50, "attitude_bench_limit_s": 60, "per_setpoint_ack_required": false},
+  "messages": [
+    {"name":"HEARTBEAT", "id":0, "max_payload":9, "crc_extra":50, "direction":"px4_to_nx", "bench_hz":1, "mpc_hz":1, "purpose":"identity, armed, actual custom mode; keep default heartbeat rate"},
+    {"name":"ATTITUDE_QUATERNION", "id":31, "max_payload":48, "crc_extra":246, "direction":"px4_to_nx", "bench_hz":50, "mpc_hz":50, "purpose":"actual quaternion and body rates, boot timestamp"},
+    {"name":"RC_CHANNELS", "id":65, "max_payload":42, "crc_extra":118, "direction":"px4_to_nx", "bench_hz":20, "mpc_hz":20, "purpose":"observe operator switches; no RC injection"},
+    {"name":"CURRENT_MODE", "id":436, "max_payload":9, "crc_extra":193, "direction":"px4_to_nx", "bench_hz":10, "mpc_hz":10, "purpose":"actual and intended mode; source is event/periodic vehicle_status, not guaranteed 10 Hz"},
+    {"name":"ESTIMATOR_STATUS", "id":230, "max_payload":42, "crc_extra":163, "direction":"px4_to_nx", "bench_hz":10, "mpc_hz":10, "purpose":"estimator flags; does not replace all VehicleLocalPosition validity flags"},
+    {"name":"EXTENDED_SYS_STATE", "id":245, "max_payload":2, "crc_extra":130, "direction":"px4_to_nx", "bench_hz":2, "mpc_hz":2, "purpose":"landed state"},
+    {"name":"SYS_STATUS", "id":1, "max_payload":43, "crc_extra":124, "direction":"px4_to_nx", "bench_hz":2, "mpc_hz":2, "purpose":"health and error indications"},
+    {"name":"BATTERY_STATUS", "id":147, "max_payload":54, "crc_extra":154, "direction":"px4_to_nx", "bench_hz":2, "mpc_hz":2, "purpose":"power observations; a disconnected battery may produce no fresh topic"},
+    {"name":"ATTITUDE_TARGET", "id":83, "max_payload":37, "crc_extra":22, "direction":"px4_to_nx", "bench_hz":20, "mpc_hz":0, "purpose":"attitude setpoint telemetry; Debug checks original uORB fields"},
+    {"name":"ODOMETRY", "id":331, "max_payload":233, "crc_extra":91, "direction":"px4_to_nx", "bench_hz":0, "mpc_hz":50, "purpose":"position, velocity, quaternion, angular velocity, covariance, aggregate reset counter; acceleration absent"},
+    {"name":"HIGHRES_IMU", "id":105, "max_payload":63, "crc_extra":93, "direction":"px4_to_nx", "bench_hz":0, "mpc_hz":50, "purpose":"diagnostic specific force only; not silently substituted for MPC world acceleration"},
+    {"name":"POSITION_TARGET_LOCAL_NED", "id":85, "max_payload":51, "crc_extra":140, "direction":"px4_to_nx", "bench_hz":0, "mpc_hz":20, "purpose":"downstream local-position-controller setpoint, NOT raw trajectory_setpoint echo"},
+    {"name":"TIMESYNC", "id":111, "max_payload":18, "crc_extra":34, "direction":"px4_to_nx", "bench_hz":10, "mpc_hz":10, "purpose":"response budget; request originates NX, do not double-enable unsolicited stream"},
+    {"name":"TIMESYNC", "id":111, "max_payload":18, "crc_extra":34, "direction":"nx_to_px4", "bench_hz":10, "mpc_hz":10, "purpose":"clock probes separate from control updates"},
+    {"name":"HEARTBEAT", "id":0, "max_payload":9, "crc_extra":50, "direction":"nx_to_px4", "bench_hz":1, "mpc_hz":1, "purpose":"companion identity, not MAVLink Offboard proof of life"},
+    {"name":"SET_ATTITUDE_TARGET", "id":82, "max_payload":51, "crc_extra":49, "direction":"nx_to_px4", "bench_hz":50, "mpc_hz":0, "purpose":"bounded power-disconnected bench only: actual initial attitude, scalar thrust zero, ignored body rates"},
+    {"name":"SET_POSITION_TARGET_LOCAL_NED", "id":84, "max_payload":53, "crc_extra":143, "direction":"nx_to_px4", "bench_hz":0, "mpc_hz":50, "purpose":"future MPC final PVA+yaw, LOCAL_NED, yaw-rate ignored, force flag clear"}
+  ],
+  "full_mpc_state_gaps": [
+    "No valid live horizontal position/velocity or heading_good_for_control on the present bench",
+    "No accepted real TS20 q/dq feedback and actual command/packet history",
+    "Stock audited ODOMETRY lacks EKF world acceleration; HIGHRES_IMU has a different physical/filtering meaning",
+    "ESTIMATOR_STATUS and aggregate odometry reset counter do not preserve every original local-position validity/reset field"
+  ],
+  "notes": [
+    "These rates are project requests and bandwidth upper bounds, not official maximum rates or measured delivery guarantees.",
+    "MPC future budget is a capacity reservation, not approval to send real position setpoints.",
+    "No signing is currently configured; signed-size calculation only reserves space and is not a signing/security claim.",
+    "All persistent NX configuration changes/deployment need user approval. UART termios is per-session and restored. No USB protocol switching."
+  ]
+}

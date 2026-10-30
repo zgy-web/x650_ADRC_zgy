@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "source_archive_sha256": "78f3ebe421289bbeb21f2b3cf5090ea79273cc16fa300420c88111b08c4b3e3f",
+  "executable_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "ctest_log_sha256": "f942a7c494cf90717224f6e56f9987b83b95d75e5cc4313dd44fef5823009a71",
+  "pty_log_sha256": "5a8076c91914cf02484820bcec10f5c3c400491bf379a873fdaf8d954111910c",
+  "cases": [
+    {
+      "case": "observe",
+      "passed": true,
+      "setpoints": 0,
+      "reason": "capture_complete"
+    },
+    {
+      "case": "manual_exit",
+      "passed": true,
+      "setpoints": 52,
+      "reason": "manual_or_px4_exit"
+    },
+    {
+      "case": "stream_stop",
+      "passed": true,
+      "setpoints": 163,
+      "reason": "planned_stream_stop"
+    },
+    {
+      "case": "configure",
+      "passed": true,
+      "setpoints": 52,
+      "reason": "manual_or_px4_exit"
+    },
+    {
+      "case": "missing_rc",
+      "passed": true,
+      "setpoints": 32,
+      "reason": "rc_unavailable"
+    },
+    {
+      "case": "repeated_stamp",
+      "passed": true,
+      "setpoints": 25,
+      "reason": "attitude_unavailable"
+    },
+    {
+      "case": "regression",
+      "passed": true,
+      "setpoints": 26,
+      "reason": "invalid_or_regressed_state"
+    },
+    {
+      "case": "throttle",
+      "passed": true,
+      "setpoints": 25,
+      "reason": "rc_mapping_or_throttle"
+    },
+    {
+      "case": "bad_crc",
+      "passed": true,
+      "setpoints": 25,
+      "reason": "post_sync_crc_error"
+    }
+  ],
+  "hardware_accessed": false,
+  "nx_persistent_files_created": []
+}

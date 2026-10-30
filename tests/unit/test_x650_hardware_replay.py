@@ -50,6 +50,17 @@ class SummaryTests(unittest.TestCase):
             loaded_core=dict(sha256="core"),loaded_optimizer=dict(sha256="optimization"),loaded_predictor=dict(sha256="predictor"))
     def verify(self):return summary.checked_result(self.result,self.item,self.libs,["one"])
     def test_healthy(self):self.assertTrue(self.verify()["passed"])
+    def test_mavlink_required_is_not_implied_by_cdr_success(self):
+        with self.assertRaises(ValueError):
+            summary.checked_result(self.result,self.item,self.libs,["one"],wire_required=True)
+        self.result.update(mavlink_wire_replay=True,serial_devices_opened=0)
+        with self.assertRaises(ValueError):
+            summary.checked_result(self.result,self.item,self.libs,["one"],wire_required=True)
+        self.result['rows'][0]['mavlink_setpoint_fields_exact']=True
+        self.assertTrue(summary.checked_result(self.result,self.item,self.libs,["one"],wire_required=True)['passed'])
+        self.result['serial_devices_opened']=1
+        with self.assertRaises(ValueError):
+            summary.checked_result(self.result,self.item,self.libs,["one"],wire_required=True)
     def test_missing_rows(self):
         self.result["rows"]=[]
         with self.assertRaises(ValueError):self.verify()

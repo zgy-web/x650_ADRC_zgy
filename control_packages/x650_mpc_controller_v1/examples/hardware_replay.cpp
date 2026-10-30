@@ -7,6 +7,9 @@
 #include <dlfcn.h>
 #include <iostream>
 #include <tuple>
+#ifdef X650_REPLAY_MAVLINK
+#include "flyarm_mavlink/contract.hpp"
+#endif
 
 extern "C" int ts20_prediction_batch(const double*,const double*,double,double,const double*,const double*,const double*,int,const double*,int,int,double*,int*,int*,double*,double*,int,int*,int*,char*,int);
 extern "C" unsigned x650_optimization_abi_version();
@@ -124,8 +127,26 @@ int main(int argc,char** argv) {
         const auto stamp=std::uint64_t(std::llround(input.state.control_time*1e6));
         const auto message=x650_mpc::encode_mpc_output(candidate.output,stamp,b::number(frame["yaw_enu_rad"]));
         const auto decoded=cdr(message);
-        const bool encoded=output_fields(message,candidate.output,stamp,frame["yaw_enu_rad"].asDouble())&&
+        bool encoded=output_fields(message,candidate.output,stamp,frame["yaw_enu_rad"].asDouble())&&
                            output_fields(decoded,candidate.output,stamp,frame["yaw_enu_rad"].asDouble());
+#ifdef X650_REPLAY_MAVLINK
+        // Additional offline wire check of THIS newly computed candidate. It
+        // neither opens a port nor changes the historical controller/inputs.
+        const auto ml=flyarm_mavlink::mpc_pva(candidate.output.position_reference,
+          candidate.output.velocity_feedforward,candidate.output.acceleration_feedforward,
+          frame["yaw_enu_rad"].asDouble(),std::uint32_t(stamp/1000));
+        mavlink_message_t rx{},rx_buffer{};mavlink_status_t status{},out_status{};bool received=false;
+        for(auto byte:flyarm_mavlink::wire(ml))
+          if(mavlink_frame_char_buffer(&rx_buffer,&status,byte,&rx,&out_status)==MAVLINK_FRAMING_OK)received=true;
+        mavlink_set_position_target_local_ned_t wire{};mavlink_msg_set_position_target_local_ned_decode(&rx,&wire);
+        const bool mavlink_ok=received&&rx.msgid==84&&wire.target_system==1&&wire.target_component==1&&
+          wire.coordinate_frame==1&&wire.type_mask==2048&&wire.time_boot_ms==std::uint32_t(stamp/1000)&&
+          wire.x==decoded.position[0]&&wire.y==decoded.position[1]&&wire.z==decoded.position[2]&&
+          wire.vx==decoded.velocity[0]&&wire.vy==decoded.velocity[1]&&wire.vz==decoded.velocity[2]&&
+          wire.afx==decoded.acceleration[0]&&wire.afy==decoded.acceleration[1]&&wire.afz==decoded.acceleration[2]&&
+          wire.yaw==decoded.yaw&&std::isnan(wire.yaw_rate);
+        item["mavlink_setpoint_fields_exact"]=mavlink_ok;encoded=encoded&&mavlink_ok;
+#endif
         const bool joints=candidate.output.joint_velocity==x650::V2{candidate.output.command[3],candidate.output.command[4]};
         // Simulated local publication transaction only; no DDS publisher exists.
         const auto token=candidate.token;const auto command=candidate.output.command;
@@ -145,6 +166,9 @@ int main(int argc,char** argv) {
       all=all&&item["passed"].asBool();report["rows"].append(item);
     }
     report["row_count"]=Json::UInt64(n);report["passed"]=all;report["complete"]=true;
+#ifdef X650_REPLAY_MAVLINK
+    report["mavlink_wire_replay"]=true;report["serial_devices_opened"]=0;
+#endif
     report["scope"]="Reconstructed typed PX4 and JointState messages, in-memory CDR, shared bench adapter, original MPC, setpoint encoding and simulated commit. No ROS graph, USB, physical consumer, live clock synchronization, continuous controller history or real joint driver qualification.";
   } catch(const std::exception& e) {report["error"]=e.what();report["passed"]=false;}
   Json::StreamWriterBuilder writer;writer["indentation"]="";

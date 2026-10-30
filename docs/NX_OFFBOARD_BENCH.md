@@ -1,5 +1,7 @@
 # NX / Pixhawk Offboard 台架检查（2026-10-30）
 
+后续执行方案已转到 [TELEM1 MAVLink UART](NX_MAVLINK_CONTROL_CHAIN.md)。本文记录旧 DDS 路径及其隔离条件；新方案保留独立 Debug 回读，避免再次切换 USB 协议。
+
 本轮检查真实 NX 接收状态、发送 Offboard 存活流与姿态设定值，以及 PX4 模式归属和退出。仅用于电调动力断开台架。当前没有有效水平位置，使用实际姿态作为固定目标，推力设为零；这是通信与模式生命周期检查，不是位置 MPC 飞行验证。
 
 **当前实机入口已停用。** 2026-10-30 实测在 USB MAVLink/DDS 切换阶段遇到 DDS 强制停止，随后 `mavlink stop` 触发飞控 Hard Fault；两项 Offboard 验收均未通过。详见[故障记录与恢复条件](validation/nx_offboard_bench_20261030/README.md)。下述流程是待修复后的验收设计，不是当前可执行的实机操作指南。C++ 与 ROS 软件测试可独立运行。

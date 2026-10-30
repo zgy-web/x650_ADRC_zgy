@@ -10,13 +10,15 @@ FLAGS=("historical_baseline_match","facade_vs_direct_exact","prepare_did_not_com
        "commit_memory_exact","cdr_setpoint_fields_exact","joint_output_identity","passed")
 
 
-def checked_result(result,item,libraries,ids):
+def checked_result(result,item,libraries,ids,*,wire_required=False):
     if result.get("kind")!="x650_hardware_interface_replay_result_v1" or result.get("complete") is not True:
         raise ValueError("Incomplete native report")
     if result.get("input_sha256")!=item["sha256"] or result.get("source_sha256")!=item["source_sha256"]:
         raise ValueError("Input identity differs")
     if result.get("physical_validation") is not False or result.get("raw_cdr_recording") is not False or result.get("publishers_created")!=0:
         raise ValueError("Replay scope changed")
+    if wire_required and (result.get("mavlink_wire_replay") is not True or result.get("serial_devices_opened")!=0):
+        raise ValueError("Missing offline MAVLink replay evidence")
     for key,reportkey in (("core","loaded_core"),("optimization","loaded_optimizer"),("predictor","loaded_predictor")):
         if result.get(reportkey,{}).get("sha256")!=libraries[key]["sha256"]:
             raise ValueError("Loaded library differs")
@@ -24,6 +26,8 @@ def checked_result(result,item,libraries,ids):
     if result.get("row_count")!=item["count"] or len(rows)!=item["count"] or [r.get("id") for r in rows]!=ids:
         raise ValueError("Missing, duplicated or reordered rows")
     for row in rows:
+        if wire_required and row.get("mavlink_setpoint_fields_exact") is not True:
+            raise ValueError("MAVLink field validation missing or failed")
         if any(row.get(flag) is not True for flag in FLAGS) or "error" in row:
             raise ValueError("Failed replay row: "+str(row.get("id")))
         for key in ("adapter_state_max_error","historical_baseline_max_error","quantized_input_command_difference","quantized_input_position_reference_difference"):
@@ -95,11 +99,13 @@ def summarize(run,inputs):
         if hashlib.sha256(input_raw).hexdigest()!=item["sha256"]:raise ValueError("Local input changed")
         data=json.loads(input_raw);path=run/(item["name"]+".log");raw=path.read_bytes()
         if artifacts.get(path.name,{}).get("sha256")!=hashlib.sha256(raw).hexdigest():raise ValueError("Native output changed")
-        groups.append(checked_result(json.loads(raw),item,request["libraries"],[c["id"] for c in data["recorded"]["cases"]]))
+        groups.append(checked_result(json.loads(raw),item,request["libraries"],[c["id"] for c in data["recorded"]["cases"]],
+                                     wire_required=request.get("mavlink_wire_replay",False)))
         evidence.append(dict(file=path.name,sha256=hashlib.sha256(raw).hexdigest(),bytes=len(raw)))
     return dict(kind="x650_full_interface_replay_summary_v1",passed=True,row_count=sum(g["rows"] for g in groups),
                 groups=groups,build=build[0],cleanup=cleanup[0],evidence=evidence,
                 physical_validation=False,raw_cdr_recording=False,publishers_created=0,
+                mavlink_wire_replay=request.get("mavlink_wire_replay",False),
                 controller_parameters_changed=False,
                 limits=["Reconstructed messages from saved simulation states; not captured raw PX4 CDR.",
                         "Float32 input quantization changes the input: differences against unquantized historical outputs are reported separately.",
