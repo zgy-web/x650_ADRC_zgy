@@ -1,0 +1,182 @@
+{
+  "status": "original_manual_configuration_restored_auto_ascent_exception_retained_by_user",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "checked_inventory_count": 108,
+  "checked_inventory_matches_original": true,
+  "complete_historical_parameter_restore_claimed": false,
+  "explicit_setting_commands": 6,
+  "restored_direct_parameters": {
+    "MPC_MAN_TILT_MAX": 35,
+    "MPC_MAN_Y_MAX": 150,
+    "MPC_Z_VEL_MAX_UP": 3
+  },
+  "actual_final_state": {
+    "state": {
+      "timestamp": 1741158492,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "actual_kill": true,
+    "switches": {
+      "arm_switch": 3.0,
+      "mode_slot": 1.0,
+      "kill_switch": 1.0
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "voltage5v_v": 5.09975,
+    "brick_valid": 1.0,
+    "usb_connected": 0.0,
+    "battery_connected": true,
+    "battery_voltage_v": 24.23733,
+    "esc_telemetry": {
+      "counters": {
+        "success": 696268,
+        "timeouts": 9,
+        "crc_errors": 0
+      },
+      "header": {
+        "timestamp_us": 1742462545,
+        "age_s": 0.008212
+      },
+      "samples": {
+        "0": {
+          "timestamp_us": 1742462544,
+          "age_s": 0.018937,
+          "actuator_function": 101.0,
+          "esc_rpm": 0.0,
+          "esc_voltage": 24.14,
+          "esc_current": 1.08,
+          "esc_temperature": 41.0
+        },
+        "1": {
+          "timestamp_us": 1742455038,
+          "age_s": 0.038486,
+          "actuator_function": 102.0,
+          "esc_rpm": 0.0,
+          "esc_voltage": 24.16,
+          "esc_current": 1.24,
+          "esc_temperature": 36.0
+        },
+        "2": {
+          "timestamp_us": 1742457541,
+          "age_s": 0.048046,
+          "actuator_function": 103.0,
+          "esc_rpm": 0.0,
+          "esc_voltage": 24.15,
+          "esc_current": 0.0,
+          "esc_temperature": 29.0
+        },
+        "3": {
+          "timestamp_us": 1742460041,
+          "age_s": 0.058261,
+          "actuator_function": 104.0,
+          "esc_rpm": 0.0,
+          "esc_voltage": 24.35,
+          "esc_current": 0.0,
+          "esc_temperature": 39.0
+        }
+      },
+      "calibrated": false
+    }
+  },
+  "automatic_values": {
+    "MPC_Z_V_AUTO_UP": 1,
+    "MPC_Z_V_AUTO_DN": 1.5
+  },
+  "automatic_ascent": {
+    "value": 1,
+    "historical_value": null,
+    "source_default": 3,
+    "user_decision": "暂留 1 m/s，后续再核对"
+  },
+  "powercycle_persistence_verified": false,
+  "arm_commands": 0,
+  "motor_commands": 0,
+  "nx_accessed": false,
+  "flight_ready": false,
+  "proposal_live_apply_disabled": true,
+  "offline_tests": {
+    "passed": 72,
+    "failed": 0
+  },
+  "report_saved_utc": "2026-10-30T09:05:37.466120+00:00",
+  "artifacts": [
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v1/console.json",
+      "bytes": 12537,
+      "sha256": "9997bbfd92c3f4f245ee740e594d30050485b9887fba4a2295bfcae2df050f34"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v1/report.json",
+      "bytes": 1332,
+      "sha256": "e836c592d89a41963d0c162ae74b6288ed6ee6604d5f6ecac0016be3d80f64e9"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v2/before_parameters.json",
+      "bytes": 2626,
+      "sha256": "695f4e1d9981b30a1cefe50e6be42bf4d98ddfc06334238e4f09bb1f5d7bf059"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v2/console.json",
+      "bytes": 116293,
+      "sha256": "10ec205bf606f10eedf81d9c547dee977e8839695ca2bc7388343f4f487e9336"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v2/report.json",
+      "bytes": 11675,
+      "sha256": "b068c4a8e6c11f0d11b0affd741020a97770e5c4f01492799ab7e64399841b78"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/apply_v2/rollback_values.json",
+      "bytes": 204,
+      "sha256": "a1b39d69e17bde26cc54f9eaa2aafebd0aa28a2eef8eb204185c7e5d7c98b64f"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/executed_setup_source.py",
+      "bytes": 12254,
+      "sha256": "86757b9e59617220acb0d2445ca6d60a040cb0ee4368c49760dcd587ab405593"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/initial_inventory_v1/console.json",
+      "bytes": 103146,
+      "sha256": "95c3fb99cad629c39b7b09de9bd76bbfd3fd748499c518a73a82d1e68b430ea6"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/initial_inventory_v1/report.json",
+      "bytes": 39178,
+      "sha256": "153bc36834b56d89bafa23e2c963a04f7eb7df00cada329492e13663d97d9622"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/partial_inventory_v1/console.json",
+      "bytes": 103179,
+      "sha256": "20488594c16d9cb97a68a9eb652da7aa10f01445dc1aac5bf80e2ed17d71419b"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/partial_inventory_v1/report.json",
+      "bytes": 39165,
+      "sha256": "ee98082064fbf4fec887b34b7cd44a232ca899ea0e7edfcde1cc4014252001a3"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/restore_v1/console.json",
+      "bytes": 177856,
+      "sha256": "a30cff6c66817f70fa01396737dcfe92c3f2ccf230db09c63f8c1ee8cd32e2e5"
+    },
+    {
+      "path": "artifacts/px4_first_flight_modes_20261030/restore_v1/report.json",
+      "bytes": 20873,
+      "sha256": "1750317d3ab01a6c32a910ca745e78028d3e0ea0cbf1c2a30e7ec4dc95e16f83"
+    }
+  ]
+}

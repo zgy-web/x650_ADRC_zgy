@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "status": "proposal_not_applied",
+  "status": "withdrawn_original_configuration_retained",
   "execution_allowed": false,
   "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
   "historical_baseline_utc": "2026-10-30T07:23:19.872930+00:00",
   "historical_baseline_sha256": "af7315e3f5051a753763b9a07ef30933287b65daa5c6ffb0a89f9fb12892fa60",
-  "latest_live_read": "complete: power_source_inventory_v1",
-  "parameters_written": 0,
+  "latest_live_read": "restore_v1: 108 original inventory values restored; automatic ascent exception retained",
+  "parameters_written": 6,
   "changes": [
     {
       "parameter": "COM_FLTMODE4",
@@ -19,7 +19,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 2,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "COM_FLTMODE6",
@@ -32,7 +33,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 7,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_MAN_TILT_MAX",
@@ -45,7 +47,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 35,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_MAN_Y_MAX",
@@ -58,7 +61,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 150,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_Z_VEL_MAX_UP",
@@ -71,7 +75,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 3,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_Z_VEL_MAX_DN",
@@ -84,7 +89,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 1.5,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_TKO_SPEED",
@@ -97,7 +103,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 1.5,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_LAND_SPEED",
@@ -110,7 +117,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 0.7,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "withdrawn"
     },
     {
       "parameter": "MPC_Z_VEL_ALL",
@@ -123,7 +131,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": -3,
       "current_value_known": true,
-      "differs_from_current": false
+      "differs_from_current": false,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "SYS_VEHICLE_RESP",
@@ -136,7 +145,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": -0.4,
       "current_value_known": true,
-      "differs_from_current": false
+      "differs_from_current": false,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "COM_FAIL_ACT_T",
@@ -149,7 +159,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 5,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "COM_LOW_BAT_ACT",
@@ -162,7 +173,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 0,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "BAT_LOW_THR",
@@ -175,7 +187,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 0.15,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "BAT_CRIT_THR",
@@ -188,7 +201,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 0.07,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "BAT_EMERGEN_THR",
@@ -201,7 +215,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 0.05,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "CBRK_USB_CHK",
@@ -214,7 +229,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 197848,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     },
     {
       "parameter": "CBRK_IO_SAFETY",
@@ -227,7 +243,8 @@
       "rollback": "must use fresh pre-application readback; historical value is reference only",
       "current_value": 22027,
       "current_value_known": true,
-      "differs_from_current": true
+      "differs_from_current": true,
+      "status": "historical_not_selected"
     }
   ],
   "keep": {
@@ -245,12 +262,11 @@
     "MOT_POLE_COUNT": 24
   },
   "keep_pid_filters_and_calibration": true,
-  "approval": "explicit approval of concrete groups required before preparing any live write",
+  "approval": "用户撤回模式与操纵范围变更，保留原配置；自主上升1 m/s经用户确认暂留。其他历史提案未获本轮执行指令。",
   "pending_readback": [],
   "current_baseline": {
-    "utc": "2026-10-30T08:46:48.964441+00:00",
-    "report": "artifacts/px4_power_firstflight_20261030/power_source_inventory_v1/report.json",
-    "sha256": "48092202fa5ebcf9e0198a98590ab933c49dd2a27527d6ad8e037a83d47220e7",
+    "report": "artifacts/px4_first_flight_modes_20261030/restore_v1/report.json",
+    "sha256": "1750317d3ab01a6c32a910ca745e78028d3e0ea0cbf1c2a30e7ec4dc95e16f83",
     "unknown_parameters": []
   },
   "supplementary_observed_parameters": {
@@ -268,9 +284,18 @@
     "BAT1_N_CELLS": 6,
     "BAT1_CAPACITY": 30000
   },
-  "conditional_change_count": 15,
   "dependency_parameters_already_disabled": [
     "MPC_Z_VEL_ALL",
     "SYS_VEHICLE_RESP"
-  ]
+  ],
+  "parameters_written_meaning": "3 proposal commands + 3 original-value restoration commands",
+  "pending_authorized_change_count": 0,
+  "retained_auto_ascent_exception": {
+    "value": 1,
+    "historical_value": null,
+    "source_default": 3,
+    "user_decision": "暂留 1 m/s，后续再核对"
+  },
+  "validation": "docs/validation/px4_first_flight_modes_20261030/summary.json",
+  "historical_conditional_change_count": 15
 }
