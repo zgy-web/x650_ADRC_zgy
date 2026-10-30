@@ -1,0 +1,218 @@
+{
+  "kind": "flyarm.mavlink_uart_capture_summary.v1",
+  "capture_complete": true,
+  "physical_acceptance": false,
+  "elapsed_s": 30.0064,
+  "messages": [
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 0,
+      "name": "HEARTBEAT",
+      "count": 30,
+      "measured_hz": 0.999608176241209,
+      "max_arrival_gap_ms": 1003.743796,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 1,
+      "name": "SYS_STATUS",
+      "count": 57,
+      "measured_hz": 1.9993072797994835,
+      "max_arrival_gap_ms": 503.597347,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 31,
+      "name": "ATTITUDE_QUATERNION",
+      "count": 1447,
+      "measured_hz": 49.89398742759304,
+      "max_arrival_gap_ms": 33.289489,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 42,
+      "name": "MISSION_CURRENT",
+      "count": 30,
+      "measured_hz": 0.9976164188955248,
+      "max_arrival_gap_ms": 1008.004537,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 65,
+      "name": "RC_CHANNELS",
+      "count": 579,
+      "measured_hz": 19.99294622223078,
+      "max_arrival_gap_ms": 64.38595,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 77,
+      "name": "COMMAND_ACK",
+      "count": 8,
+      "measured_hz": 114.36685033057003,
+      "max_arrival_gap_ms": 10.960345,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 83,
+      "name": "ATTITUDE_TARGET",
+      "count": 578,
+      "measured_hz": 19.99220985491112,
+      "max_arrival_gap_ms": 62.397316,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 230,
+      "name": "ESTIMATOR_STATUS",
+      "count": 289,
+      "measured_hz": 9.99537043698641,
+      "max_arrival_gap_ms": 105.909992,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 245,
+      "name": "EXTENDED_SYS_STATE",
+      "count": 57,
+      "measured_hz": 1.9992368041308584,
+      "max_arrival_gap_ms": 503.403416,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 411,
+      "name": "CURRENT_EVENT_SEQUENCE",
+      "count": 10,
+      "measured_hz": 0.3330741419935827,
+      "max_arrival_gap_ms": 3008.290669,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "rx",
+      "system": 1,
+      "component": 1,
+      "id": 436,
+      "name": "CURRENT_MODE",
+      "count": 58,
+      "measured_hz": 1.9914459071945843,
+      "max_arrival_gap_ms": 510.925672,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    },
+    {
+      "direction": "tx",
+      "system": 245,
+      "component": 191,
+      "id": 76,
+      "name": "COMMAND_LONG",
+      "count": 8,
+      "measured_hz": 120.53341892354015,
+      "max_arrival_gap_ms": 10.960185,
+      "duplicate_source_stamps": 0,
+      "regressed_source_stamps": 0
+    }
+  ],
+  "rx_bytes": 144451,
+  "decoded_rx_frame_bytes": 144451,
+  "tx_bytes": 352,
+  "crc_errors_before_sync": 0,
+  "crc_errors_after_sync": 0,
+  "any_heartbeat_armed": false,
+  "observed_mode_main": [
+    2
+  ],
+  "attitude_max_norm_squared_error": 2.775290137702058e-07,
+  "commands": [
+    {
+      "command": 511,
+      "param1": 31.0,
+      "param2": 20000.0
+    },
+    {
+      "command": 511,
+      "param1": 65.0,
+      "param2": 50000.0
+    },
+    {
+      "command": 511,
+      "param1": 436.0,
+      "param2": 100000.0
+    },
+    {
+      "command": 511,
+      "param1": 230.0,
+      "param2": 100000.0
+    },
+    {
+      "command": 511,
+      "param1": 245.0,
+      "param2": 500000.0
+    },
+    {
+      "command": 511,
+      "param1": 1.0,
+      "param2": 500000.0
+    },
+    {
+      "command": 511,
+      "param1": 147.0,
+      "param2": 500000.0
+    },
+    {
+      "command": 511,
+      "param1": 83.0,
+      "param2": 50000.0
+    }
+  ],
+  "setpoints": 0,
+  "mpc_called": false,
+  "seen_offboard": false,
+  "stop_reason": "capture_complete",
+  "max_send_gap_ms": 0,
+  "tested_binary_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "cleanup": {
+    "event": "cleanup",
+    "memfd_closed": true,
+    "process_exited": true
+  },
+  "evidence_sha256": "b1aee8ae218e041775881ef774a25da0172f4b70e37ccf51231f795813b0d24a"
+}

@@ -1,0 +1,119 @@
+{
+  "kind": "flyarm.mavlink_uart_manual_readback.v2",
+  "unarmed_manual_exit_passed": true,
+  "raw_internal_attitude_readback_passed": true,
+  "armed_takeover_qualified": false,
+  "mpc_executed_in_live_loop": false,
+  "setpoints": 1483,
+  "max_send_gap_ms": 22.28,
+  "anchor_frd_to_ned_q": [
+    0.7848355174064636,
+    0.025781013071537018,
+    -0.01460971962660551,
+    -0.6189952492713928
+  ],
+  "offboard_start_px4_us": 306406372,
+  "offboard_exit_px4_us": 316098376,
+  "internal_matching_samples": [
+    {
+      "timestamp": 306944548,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 308264345,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 309585115,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 310926436,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 312246005,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 313566886,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    },
+    {
+      "timestamp": 314888551,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ],
+      "q_max_display_difference": 9.719626605510581e-06
+    }
+  ],
+  "exact_float32_telemetry_samples": 159,
+  "boundary_telemetry_differences": [
+    {
+      "timestamp": 316078000,
+      "q": [
+        0.7861689329147339,
+        -0.0,
+        0.0,
+        -0.6180116534233093
+      ],
+      "thrust": 0.0010000000474974513
+    }
+  ],
+  "transition_rows_outside_actual_offboard_interval": 1,
+  "transition_explanation": "Sequential Debug topics and mode/controller publications are not an atomic snapshot. Retain boundary differences; require exact telemetry inside the independently Debug-confirmed interval.",
+  "display_precision_explanation": "Debug values have five decimal places. Verify the actual rounded or truncated representation, not a half-unit rounding assumption; no controller tolerance was changed.",
+  "last_setpoint_before_exit_observation_ms": 14.308811,
+  "observed_after_exit_s": 45.142244538,
+  "zero_setpoints_after_observed_exit": true,
+  "all_debug_samples_disarmed": true,
+  "all_debug_outputs_zero": true,
+  "crc_errors_after_sync": 0,
+  "nx_kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "hashes": {
+    "artifacts\\nx_uart_contract_20261030\\cpp_manual_v1\\transport.jsonl": "516cc74fce1df107458e55522f8ea4eab3dc5b68cb640006386b360253893a33",
+    "artifacts\\nx_uart_contract_20261030\\debug_manual_v1\\report.json": "b9c5ba4ebfd3f5d37ae0fcb9a1d2be43be8fe3628abe918022496c5e5703f072",
+    "artifacts\\nx_uart_contract_20261030\\debug_manual_v1\\rounds.jsonl": "615f713060444f3cdce41ea2b96134767e6f159e6a94e97a1616805360d0fd6f",
+    "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\scripts\\check_nx_uart_manual_readback.py": "a5dc2011f85a6d06a4bdc434201190082d4fd5e46a3e62911655d7232c524212"
+  }
+}

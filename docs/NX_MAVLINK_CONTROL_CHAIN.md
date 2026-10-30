@@ -1,6 +1,6 @@
 # NX → Pixhawk：UART 消息、带宽与分阶段验收
 
-日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**五项通信参数已获批准、应用并在飞控重启后回读一致；新刷新率、真实设定值回读、人工接管和发送中断后的退出尚未验收。** 重启后 NX 网络暂时不可达，尚未成功下发新频率试验。
+日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**五项通信参数已加载，真实状态刷新率、原始姿态／零推力回读、未解锁状态下的 SA 人工退出已通过。** NX 网络恢复后已完成真实采集。断流首轮因操作未进入发送窗口而到时结束，不能算断流验收；需要单独重测。已解锁接管与失效保护仍未由本轮试验验证。
 
 本次结果见 [验证记录](validation/nx_uart_contract_20261030/README.md)。使用的 PX4 固件为 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`；MAVLink 定义绑定到该固件的子模块提交 `33af200d25ec6f0925b49b1ba82bbf1294ea5f72`。不再切换 USB MAVLink／DDS，原 USB 路径的 Hard Fault 隔离措施继续有效。
 
@@ -60,7 +60,7 @@ MAVLink 的 `SET_ATTITUDE_TARGET`／`SET_POSITION_TARGET_LOCAL_NED` 不逐条返
 
 签名一行只是容量预留，本次没有配置或验收 MAVLink 签名。带宽不是端到端延迟：例如最大 65 字节的位置设定值，在该波特率下的串行占用约 0.71 ms，仍不含调度、排队、PX4 消费和控制响应。
 
-2026-10-30 调整前实读 TELEM1 为 57600 baud、发送预算 1200 B/s，`tx rate mult=0.302`，不满足选定的消息组合。用户批准后仅修改以下五项；重启后回读全部一致，实际链路为 921600、Custom、流控关闭、转发关闭，`tx rate mult=1.000`。这只证明配置生效，新请求频率仍待实测。
+2026-10-30 调整前实读 TELEM1 为 57600 baud、发送预算 1200 B/s，`tx rate mult=0.302`，不满足选定的消息组合。用户批准后仅修改以下五项；重启后回读全部一致，实际链路为 921600、Custom、流控关闭、转发关闭，`tx rate mult=1.000`。随后完成 30 秒实测：姿态 49.894 Hz、RC 19.993 Hz、估计器状态 9.995 Hz；最大到达间隔分别为 33.29 / 64.39 / 105.91 ms，均无源时间戳倒退。CURRENT_MODE 实测 1.991 Hz，与源主题约 2 Hz 的静态更新相符，不是链路降速。共接收 144451 字节，全部组成 CRC 正确的完整帧，未观察到 NX UART 内核错误。详见 [实测速率](validation/nx_uart_contract_20261030/configured_rates.json)。
 
 | PX4 参数 | 修改前原值 | 已应用值 | 原因 |
 |---|---:|---:|---|
@@ -78,13 +78,19 @@ NX 程序只在当前会话设置 `/dev/ttyTHS1` 的 termios，结束恢复原�
 
 每一步单独形成证据，前一步不通过就定位该项。四桨拆下，电调动力物理断开；实际拨杆动作等待当次记录器就绪后指导。
 
-1. **真实状态输入**：应用已批准配置并重启后，在 921600 下仅请求状态流，检查消息身份、CRC、实际刷新率、最大间隔、重复／倒退时间戳与 NX 内核串口错误。姿态要求 100 ms 内新鲜、RC 150 ms、心跳 1.5 s、CURRENT_MODE 1.2 s；这些是本台架守卫阈值，不是官方实时性标准。当前已完成原 57600 配置下的纯 C++ 零发送接收检查；不据此宣称新频率合格。
+1. **真实状态输入**：应用已批准配置并重启后，在 921600 下仅请求状态流，检查消息身份、CRC、实际刷新率、最大间隔、重复／倒退时间戳与 NX 内核串口错误。姿态要求 100 ms 内新鲜、RC 150 ms、心跳 1.5 s、CURRENT_MODE 1.2 s；这些是本台架守卫阈值，不是官方实时性标准。当前真实状态采集满足本阶段阈值；这不是长期实时性认证。
 2. **内部设定值回读**：C++ 使用实际初始姿态、零推力，50 Hz 发送，单次流最长 60 s。操作者选择 Offboard，COM13 独立读取 `offboard_control_mode`、`vehicle_control_mode`、`vehicle_attitude_setpoint`、`vehicle_status`，核对真实模式、更新时间、`q_d`、`thrust_body=[0,0,0]`、忽略 yaw rate 的语义。输出计数或同一串口的遥测回显不作为唯一验收。
 3. **接管与退出**：一次用 SA 切回 Altitude，验证模式退出、C++ 停发且不会自动重入；另一次进入 Offboard 后 3 s 主动停止设定值，继续观察 PX4 退出与最终状态。COM_OF_LOSS_T 当前为 1 s，COM_OBL_RC_ACT=0，但定位无效时可能发生进一步降级，必须记录实际结果。未解锁模式切换不能替代已解锁失效保护测试；后者仅在动力断开、预检允许且操作者按当次指引操作 SF 的条件下进行。当前 COM_RC_OVERRIDE=1 不提供 Offboard 摇杆夺权，本轮人工接管使用 SA。
 
 本固件的 MAVLink 接收器只在已处于 Offboard 时向内部发布这些控制设定值。因此“发送了包但原始 uORB 未刷新”不能立即归因于丢包，要同时看模式。`POSITION_TARGET_LOCAL_NED` 来自下游 `vehicle_local_position_setpoint`，以后位置 MPC 的原始 PVA 验收仍要独立读 `trajectory_setpoint`。
 
 状态过期、时钟倒退、异常油门、停机请求、发送积压或调度严重停顿会结束当前发送；状态恢复不自动重入。本工具从不发解锁、模式请求或执行器覆盖命令。没有设置放宽预检或隐藏故障的参数。
+
+已完成的人工退出运行发送 1483 条固定实际初始姿态、零推力目标，最大发送间隔 22.28 ms。Debug 独立记录到 Offboard 约 9.692 s，7 个不同时间戳的内部 `q_d`、零推力和忽略 yaw rate 语义匹配；由这些 Debug 样本界定的稳定区间内，159 条目标遥测的完整 float32 四元数也完全一致。SA 回上档后 PX4 返回 Altitude，NX 在观察到退出后不再发送目标，并继续记录约 45.14 s，无自动重入。全程未解锁、DShot 输出为零。证据与复核器见 [manual_readback.json](validation/nx_uart_contract_20261030/manual_readback.json) 和 `scripts/check_nx_uart_manual_readback.py`。
+
+Debug 的五位小数输出在本次样本中为截断显示；最初分析脚本误按四舍五入的半个末位单位检查，造成假差异。复核器现验证精确的截断／舍入显示形式，并另核对完整 float32 遥测，没有放宽控制器约束。各 Debug 主题按顺序读取，并非原子快照；模式切换边界的一条其他控制器目标及一条跨越退出时间的 Debug 行均保留在证据中，不混入稳态匹配数量。
+
+断流首轮 `cpp_stream_stop_v1` 在 60 s 发送上限内未观察到 Offboard，以 `session_limit` 停止，随后完成清理。它只证明限时停止执行了，**不证明 PX4 的 Offboard 断流退出成功**；见 [未完成断流工况的记录](validation/nx_uart_contract_20261030/stream_stop_expired_v1.json)。重测必须重新确认 SA 上档并启动新记录，不延长既有上限，也不覆盖这一轮证据。
 
 ## 5. 之前的 MPC 什么时候测试
 
@@ -95,7 +101,7 @@ NX 程序只在当前会话设置 `/dev/ttyTHS1` 的 termios，结束恢复原�
 | 层级 | 内容 | 当前进度／进入条件 |
 |---|---|---|
 | 原 MPC 计算与输出接口 | 历史输入→原 C++ MPC→新 MAVLink 编码 | 本次已完成；真实 NX 1281/1281 |
-| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 原配置纯接收已通过；新配置已应用，待 NX 网络恢复后验收 |
+| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 新频率、姿态零推力内部回读、未解锁 SA 退出通过；断流待重测，已解锁退出另行验收 |
 | 真实状态影子运行 | 真实机体及关节状态→原 MPC，仅记录输出 | 需完整、同时间基准、有效的机体与 TS20 状态；禁止用零值或旧日志伪装缺失输入 |
 | 位置 MPC 实机无动力发送 | 真实 MPC PVA→PX4 内部原始 trajectory_setpoint | 上一步通过、外部定位有效、状态重置语义完整后进行 |
 | 动力闭环 | 限定空间末端保持→普通八字→快速八字 | 后续单独准备与验收，当前通信检查不批准这一层 |
@@ -118,6 +124,7 @@ NX 程序只在当前会话设置 `/dev/ttyTHS1` 的 termios，结束恢复原�
 | `scripts/run_nx_mavlink_uart_bench.py` | 运行已验证 ELF，默认 observe 零发送；内存退出清理 |
 | `scripts/observe_px4_uart_bench.py` | COM13 独立限时只读记录模式、原始设定值与输出 |
 | `scripts/summarize_nx_mavlink_capture.py` | 电脑端按固定协议定义复核 CRC、实测频率与时间戳 |
+| `scripts/check_nx_uart_manual_readback.py` | 合并真实发送帧与独立 Debug 证据，核对显示精度、稳态目标、人工退出后停发 |
 | `control_packages/x650_mpc_controller_v1/examples/hardware_replay.cpp` | 原 MPC 输出→CDR 与 MAVLink 双编码核验 |
 | `scripts/run_nx_full_interface_replay.py` | 指定已锁定输入及 `--mavlink-generated`，在真实 NX 回放 |
 
