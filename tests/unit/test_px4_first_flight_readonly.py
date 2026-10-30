@@ -12,7 +12,8 @@ import px4_first_flight_readonly as m
 
 @pytest.mark.parametrize('command', ['commander arm', 'commander check', 'commander takeoff',
     'param set SYS_HAS_GPS 0', 'param save', 'commander calibrate accel',
-    'mavlink stop-all', 'listener vehicle_status -n 1; commander arm'])
+    'mavlink stop-all', 'listener vehicle_status -n 1; commander arm',
+    'ina226 stop', 'battery_status start', 'adc stop'])
 def test_mutating_or_arbitrary_commands_rejected(command):
     c = m.FirstFlightConsole('unused')
     with pytest.raises(ValueError):

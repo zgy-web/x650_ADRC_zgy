@@ -1,15 +1,56 @@
-# POWER验证与首飞参数表：准备记录
+# X650 POWER1 独立供电：静止台架通过
 
-2026-10-30，本轮按用户要求准备无桨 POWER 独立供电验证与首飞参数变更表。参数表已形成，硬件供电验证尚未完成。
+2026-10-30，本轮完成用户要求的无桨POWER1独立供电验证和首飞参数变更表，并继续核对电池监测。全程未解锁、未启动电机、未写飞控参数、未访问或修改NX。尚未进行首飞。
 
-第一次固定只读采集在 COM13 打开后未收到任何字节，结果为 `No verified NSH prompt`，串口已关闭。没有读到本轮新供电或参数数据，没有发参数写入、解锁、模式或电机命令。完整失败记录保留在电脑 `artifacts/px4_power_firstflight_20261030/initial_inventory/`。
+## 实机结果
 
-新工具 `scripts/px4_power_readonly.py` 分别记录 USB＋POWER 和仅POWER窗口，检查实际锁定状态、POWER／USB位、5V、过流及RC状态；通过电脑单调时钟与飞控时间戳的对应关系检测窗口之间的复位。combined窗口单独通过不会输出独立供电通过结论。电池监测与供电结论分别记录，缺失读数不填0。
+用户确认6S电池接通、四桨未装、SF负100%、SA上档、SB下档、油门最低，FMU Debug接COM13。当前电源接POWER1，准确模块型号待确认。组合窗口通过后，用户明确确认只拔飞控USB、POWER1保持供电。
 
-`scripts/px4_first_flight_readonly.py` 增加12项固定参数读取，用于核对手动限制、整体设置覆盖和电源监测。两套工具共 **33项离线检查通过**。合成测试涵盖两阶段成功路径和会造成错误放行的反例；不是实机POWER结果。
+| 项目 | USB＋POWER1 | 仅POWER1 |
+|---|---:|---:|
+| 新窗口 | `combined_v2` | `power_only_v1` |
+| 实际观察时长 | 10.781秒 | 60.078秒 |
+| 采样组数 | 8 | 40 |
+| 5V总线范围 | 5.09341–5.10620V | 5.09411–5.10791V |
+| `brick_valid` | 1 | 1 |
+| `usb_connected`／`usb_valid` | 1／1 | 0／0 |
+| 两项过流标志 | 均0 | 均0 |
+| 电池电压 | 24.43818–24.43935V | 24.42492–24.43057V |
+| 未解锁、实际kill、输出全零 | 全部采样满足 | 全部采样满足 |
+| RC有效、最低油门、约定开关 | 全部采样满足 | 全部采样满足 |
 
-参数提案基于同日15:23历史快照和飞控实际版本的源码。源码下载过程中未找到的路径（404）也保留在清单；最终参数定义来自已找到的C文件及Commander `module.yaml`，没有以最新主分支或默认值补齐未知实读。`pinned_source_manifest.json`记录固定版本、来源和源码哈希；源码缓存不自动安装到任何设备。
+两窗口的电脑单调时钟／飞控时间戳对应关系一致，没有检测到USB撤去后的飞控重启；不是只用后一个时间戳更大作判断。各主题依次查询，采样约1.5秒一组；没有测毫秒级掉电、纹波或带桨负载压降。只能声明**静止台架独立供电通过**，不能声明飞行供电或双路冗余已验收。`flight_ready=false`。
 
-`summary.json`关联测试XML、两份原始失败记录、源文件和提案的SHA256。硬件状态明确为 `NOT_COMPLETED`，`independent_power_verified=false`，`flight_ready=false`。无参数改动、无NX配置改动。
+## 电池监测的下一项核对
 
-下一步待现场确认电池连接状态、POWER模块型号和恢复FMU Debug实际回读，随后按 [POWER流程](../../X650_POWER_VALIDATION.md)完成两阶段；[首飞参数表](../../X650_FIRST_FLIGHT_PARAMETERS.md)在新的实读和具体确认前不应用。
+16:46只读检查确认INA228驱动在I2C Bus 1、地址0x45运行，通信错误计数0；电池消息`source=0`属于电源模块类。明确的`SENS_EN_INA228=0`与驱动运行并不矛盾，固定板级脚本提供INA自动探测路径；本次未改驱动或启动配置。`adc`、`ina220`命令不存在的原始返回也保留，不能把命令缺失解释为硬件故障。
+
+用户随后确认“飞控显示的约24.4 V与电池实际电压一致”。这完成了现场近似电压一致性核对；没有仪表精度和同步原始数据，不能据此报告定量误差或已完成精密标定。
+
+`BAT1_V_CHARGED=4.05`、`BAT1_V_EMPTY=3.6`仍是现有配置；电池显示接近100%不表示真实荷电状态已测准。电流比例、逐节电芯电压和剩余电量精度未验收，模块型号／额定规格及电池化学体系仍待补。本轮未改电池阈值。
+
+固定FMUv6X板级定义中`BOARD_ADC_SERVO_VALID`恒为1，不能拿`servo_valid=1`证明额外电源存在或供电冗余。参考来源集中在 [POWER流程](../../X650_POWER_VALIDATION.md)及`pinned_source_manifest.json`，所有源码版本均与实际固件`d6f12ad1c4f70ad3230afd7d86e971421e02fef4`对应。
+
+## 参数表与保留的失败记录
+
+16:40和16:46两次真实只读快照的108项参数完全一致，未知参数为0。[首飞参数表](../../X650_FIRST_FLIGHT_PARAMETERS.md)已经补齐当前值、建议值、实施前提与回退方法。15项是待确认的条件变更，另2项整体设置已关闭、无需更改；实际写入数0。姿态／角速度PID、滤波和已恢复IMU校准不变。
+
+最早的`initial_inventory`在COM13打开后未收到字节，随后`combined_v1`因实际kill=False停止。后者已经读到POWER1有效，并非电源模块失败；操作者将SB中→下恢复实际kill后才建立`combined_v2`基线。这些原始失败记录没有覆盖或删除。
+
+用户要求保持动力供电继续检查，因此没有执行先前建议的收尾断电。最后实读为POWER1有效、USB无效、未解锁、Altitude、kill=True、DShot全零，四个ESC遥测RPM均为0；COM13已释放。这里记录的是最后采样，**没有后台持续监控**。当前停机档的预检不能作为解除停机后的解锁预检结果。
+
+## 可追溯文件与验证
+
+- [summary.json](summary.json)：结论、用户现场核对、限制和文件SHA256。
+- [power_windows.json](power_windows.json)：48组实机采样的结构化电源、状态、RC判定和时间连续性数据，去掉重复原文。
+- [power_source_readback.json](power_source_readback.json)：电源驱动status、POWER／电池／开关原文与结束状态。
+- [parameter_snapshot.json](parameter_snapshot.json)：108项真实参数，只读快照而非自动写入文件。
+- 原始报告及逐命令串口数据保存在电脑`artifacts/px4_power_firstflight_20261030/`，对应SHA256在摘要中。记录不写NX。
+
+`px4_power_readonly.py`不改变判定规则或阈值；本轮只给完整清单工具增加电源驱动固定status查询，并补上拒绝相关启动／停止命令的检查。两套工具合计**36项离线测试通过**，离线测试与实机证据分别报告。离线测试命令：
+
+```powershell
+python -B -m pytest tests/unit/test_px4_first_flight_readonly.py tests/unit/test_px4_power_readonly.py -q -p no:cacheprovider
+```
+
+本轮参数提案没有自动写参入口。下一阶段先由飞手确认SA布局及手动控制范围，再按确认后的具体变更分组实施、回读和复核；低电策略和旁路项各自的前提不由这次供电通过自动替代。

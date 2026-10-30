@@ -54,7 +54,9 @@ TOPICS = (
     'battery_status', 'system_power', 'esc_status',
 )
 STATUS = ('ver all', 'commander status', 'dshot status', 'gps status',
-          'sensors status', 'ekf2 status', 'logger status', 'mavlink status')
+          'sensors status', 'ekf2 status', 'logger status', 'mavlink status',
+          'battery_status status', 'adc status', 'ina220 status',
+          'ina226 status', 'ina228 status', 'ina238 status')
 READS = frozenset(STATUS + tuple('listener '+t+' -n 1' for t in TOPICS) +
                   tuple('listener estimator_sensor_bias -i '+str(i)+' -n 1' for i in range(3)) +
                   tuple('param show -q '+p for p in PARAMETERS))

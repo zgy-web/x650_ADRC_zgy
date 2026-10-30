@@ -1,0 +1,2741 @@
+{
+  "combined_v2": {
+    "complete": true,
+    "window_verified": true,
+    "independent_power_verified": false,
+    "flight_ready": false,
+    "phase": "combined",
+    "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "seconds_requested": 10,
+    "utc": "2026-10-30T08:41:22.674192+00:00",
+    "arm_commands": 0,
+    "mode_commands": 0,
+    "parameter_writes": 0,
+    "motor_commands": 0,
+    "nx_accessed": false,
+    "operator_disconnect_required": false,
+    "scope": "Sampled idle POWER validation; not a transient/loaded-flight power test",
+    "source_sha256": "ee1626d02b640ef39822ca6d3b12df82a09725e43137a479e353da2c7567c4c6",
+    "observed_duration_s": 10.78100000001723,
+    "after": {
+      "state": {
+        "timestamp": 300915599,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "kill": true,
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "battery_monitor_usable_all_samples": true,
+    "rail_min_max_v": [
+      5.09341,
+      5.1062
+    ],
+    "port_closed": true,
+    "source_report_sha256": "500234956607c759a39fc5dd85fabafd5b5e4ce43d1d8758080e9857da4e03dd",
+    "samples": [
+      {
+        "host_end_s": 498431.75,
+        "standby": {
+          "state": {
+            "timestamp": 288752359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10308,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43916",
+            "cell_count": "6",
+            "remaining": "0.99846",
+            "warning": "0",
+            "current_a": "0.55250",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.544191,
+            498141.637191
+          ]
+        }
+      },
+      {
+        "host_end_s": 498433.281,
+        "standby": {
+          "state": {
+            "timestamp": 290272444,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09341,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43935",
+            "cell_count": "6",
+            "remaining": "0.99845",
+            "warning": "0",
+            "current_a": "0.53312",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54630499997,
+            498141.625305
+          ]
+        }
+      },
+      {
+        "host_end_s": 498434.828,
+        "standby": {
+          "state": {
+            "timestamp": 291792397,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10398,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43857",
+            "cell_count": "6",
+            "remaining": "0.99845",
+            "warning": "0",
+            "current_a": "0.55875",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554498,
+            498141.632498
+          ]
+        }
+      },
+      {
+        "host_end_s": 498436.375,
+        "standby": {
+          "state": {
+            "timestamp": 293314411,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09834,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43916",
+            "cell_count": "6",
+            "remaining": "0.99844",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.544811,
+            498141.637811
+          ]
+        }
+      },
+      {
+        "host_end_s": 498437.921,
+        "standby": {
+          "state": {
+            "timestamp": 294834358,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1062,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43838",
+            "cell_count": "6",
+            "remaining": "0.99843",
+            "warning": "0",
+            "current_a": "0.53312",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.55156799994,
+            498141.63056799996
+          ]
+        }
+      },
+      {
+        "host_end_s": 498439.453,
+        "standby": {
+          "state": {
+            "timestamp": 296864628,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10257,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43838",
+            "cell_count": "6",
+            "remaining": "0.99842",
+            "warning": "0",
+            "current_a": "0.54625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554815,
+            498141.63281499996
+          ]
+        }
+      },
+      {
+        "host_end_s": 498441.0,
+        "standby": {
+          "state": {
+            "timestamp": 298383673,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10016,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43838",
+            "cell_count": "6",
+            "remaining": "0.99841",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.546292,
+            498141.62429199996
+          ]
+        }
+      },
+      {
+        "host_end_s": 498442.531,
+        "standby": {
+          "state": {
+            "timestamp": 299902373,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10358,
+            "brick_valid": 1.0,
+            "usb_connected": 1.0,
+            "usb_valid": 1.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43818",
+            "cell_count": "6",
+            "remaining": "0.99841",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.552493,
+            498141.631493
+          ]
+        }
+      }
+    ]
+  },
+  "power_only_v1": {
+    "complete": true,
+    "window_verified": true,
+    "independent_power_verified": true,
+    "flight_ready": false,
+    "phase": "power_only",
+    "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+    "seconds_requested": 60,
+    "utc": "2026-10-30T08:42:46.214866+00:00",
+    "arm_commands": 0,
+    "mode_commands": 0,
+    "parameter_writes": 0,
+    "motor_commands": 0,
+    "nx_accessed": false,
+    "operator_disconnect_required": true,
+    "scope": "Sampled idle POWER validation; not a transient/loaded-flight power test",
+    "source_sha256": "ee1626d02b640ef39822ca6d3b12df82a09725e43137a479e353da2c7567c4c6",
+    "baseline_sha256": "500234956607c759a39fc5dd85fabafd5b5e4ce43d1d8758080e9857da4e03dd",
+    "observed_duration_s": 60.07799999997951,
+    "after": {
+      "state": {
+        "timestamp": 433617360,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "kill": true,
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "battery_monitor_usable_all_samples": true,
+    "rail_min_max_v": [
+      5.09411,
+      5.10791
+    ],
+    "port_closed": true,
+    "source_report_sha256": "f7560d7b08227232ade1d7c591a69a37724a656162200eef61c55ea45b2f6c76",
+    "samples": [
+      {
+        "host_end_s": 498515.39,
+        "standby": {
+          "state": {
+            "timestamp": 372325373,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10217,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43038",
+            "cell_count": "6",
+            "remaining": "0.99804",
+            "warning": "0",
+            "current_a": "0.54875",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54647700005,
+            498141.64047700004
+          ]
+        }
+      },
+      {
+        "host_end_s": 498516.937,
+        "standby": {
+          "state": {
+            "timestamp": 373845370,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10076,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43057",
+            "cell_count": "6",
+            "remaining": "0.99803",
+            "warning": "0",
+            "current_a": "0.53375",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.551805,
+            498141.62980500003
+          ]
+        }
+      },
+      {
+        "host_end_s": 498518.468,
+        "standby": {
+          "state": {
+            "timestamp": 375871500,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1061,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43038",
+            "cell_count": "6",
+            "remaining": "0.99803",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.557242,
+            498141.635242
+          ]
+        }
+      },
+      {
+        "host_end_s": 498520.015,
+        "standby": {
+          "state": {
+            "timestamp": 377389359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09603,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43038",
+            "cell_count": "6",
+            "remaining": "0.99802",
+            "warning": "0",
+            "current_a": "0.53562",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54593900003,
+            498141.639939
+          ]
+        }
+      },
+      {
+        "host_end_s": 498521.562,
+        "standby": {
+          "state": {
+            "timestamp": 378911359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10016,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.43019",
+            "cell_count": "6",
+            "remaining": "0.99801",
+            "warning": "0",
+            "current_a": "0.53500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.5523,
+            498141.6303
+          ]
+        }
+      },
+      {
+        "host_end_s": 498523.093,
+        "standby": {
+          "state": {
+            "timestamp": 380429372,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09804,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42979",
+            "cell_count": "6",
+            "remaining": "0.99800",
+            "warning": "0",
+            "current_a": "0.55312",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.558473,
+            498141.636473
+          ]
+        }
+      },
+      {
+        "host_end_s": 498524.64,
+        "standby": {
+          "state": {
+            "timestamp": 381948377,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09442,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42999",
+            "cell_count": "6",
+            "remaining": "0.99799",
+            "warning": "0",
+            "current_a": "0.53312",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.550262,
+            498141.628262
+          ]
+        }
+      },
+      {
+        "host_end_s": 498526.171,
+        "standby": {
+          "state": {
+            "timestamp": 383468401,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1071,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42960",
+            "cell_count": "6",
+            "remaining": "0.99799",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554151,
+            498141.632151
+          ]
+        }
+      },
+      {
+        "host_end_s": 498527.718,
+        "standby": {
+          "state": {
+            "timestamp": 384988915,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10741,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42941",
+            "cell_count": "6",
+            "remaining": "0.99798",
+            "warning": "0",
+            "current_a": "0.53500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54825399996,
+            498141.62625399994
+          ]
+        }
+      },
+      {
+        "host_end_s": 498529.25,
+        "standby": {
+          "state": {
+            "timestamp": 386507359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09411,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42960",
+            "cell_count": "6",
+            "remaining": "0.99797",
+            "warning": "0",
+            "current_a": "0.53625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.553558,
+            498141.631558
+          ]
+        }
+      },
+      {
+        "host_end_s": 498530.796,
+        "standby": {
+          "state": {
+            "timestamp": 388027359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10569,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42921",
+            "cell_count": "6",
+            "remaining": "0.99796",
+            "warning": "0",
+            "current_a": "0.53375",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.55893,
+            498141.63693000004
+          ]
+        }
+      },
+      {
+        "host_end_s": 498532.343,
+        "standby": {
+          "state": {
+            "timestamp": 389548388,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10227,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42882",
+            "cell_count": "6",
+            "remaining": "0.99796",
+            "warning": "0",
+            "current_a": "0.53500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54891199997,
+            498141.62691199995
+          ]
+        }
+      },
+      {
+        "host_end_s": 498533.875,
+        "standby": {
+          "state": {
+            "timestamp": 391066395,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10509,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42921",
+            "cell_count": "6",
+            "remaining": "0.99795",
+            "warning": "0",
+            "current_a": "0.53375",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.553481,
+            498141.631481
+          ]
+        }
+      },
+      {
+        "host_end_s": 498535.421,
+        "standby": {
+          "state": {
+            "timestamp": 392587361,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10237,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42863",
+            "cell_count": "6",
+            "remaining": "0.99794",
+            "warning": "0",
+            "current_a": "0.54500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54491199995,
+            498141.638912
+          ]
+        }
+      },
+      {
+        "host_end_s": 498536.968,
+        "standby": {
+          "state": {
+            "timestamp": 394108634,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10026,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42882",
+            "cell_count": "6",
+            "remaining": "0.99793",
+            "warning": "0",
+            "current_a": "0.53500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54953899997,
+            498141.62753899995
+          ]
+        }
+      },
+      {
+        "host_end_s": 498538.5,
+        "standby": {
+          "state": {
+            "timestamp": 395627358,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09673,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42863",
+            "cell_count": "6",
+            "remaining": "0.99792",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.555776,
+            498141.633776
+          ]
+        }
+      },
+      {
+        "host_end_s": 498540.046,
+        "standby": {
+          "state": {
+            "timestamp": 397145563,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10146,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42785",
+            "cell_count": "6",
+            "remaining": "0.99792",
+            "warning": "0",
+            "current_a": "0.55937",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.547448,
+            498141.64144800004
+          ]
+        }
+      },
+      {
+        "host_end_s": 498541.578,
+        "standby": {
+          "state": {
+            "timestamp": 398664361,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10449,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42843",
+            "cell_count": "6",
+            "remaining": "0.99791",
+            "warning": "0",
+            "current_a": "0.53562",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554507,
+            498141.632507
+          ]
+        }
+      },
+      {
+        "host_end_s": 498543.125,
+        "standby": {
+          "state": {
+            "timestamp": 400183364,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10529,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42668",
+            "cell_count": "6",
+            "remaining": "0.99790",
+            "warning": "0",
+            "current_a": "0.60437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.559085,
+            498141.637085
+          ]
+        }
+      },
+      {
+        "host_end_s": 498544.671,
+        "standby": {
+          "state": {
+            "timestamp": 401702359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10791,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42765",
+            "cell_count": "6",
+            "remaining": "0.99789",
+            "warning": "0",
+            "current_a": "0.54000",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.55113199994,
+            498141.63013199996
+          ]
+        }
+      },
+      {
+        "host_end_s": 498546.203,
+        "standby": {
+          "state": {
+            "timestamp": 403221372,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10046,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42765",
+            "cell_count": "6",
+            "remaining": "0.99789",
+            "warning": "0",
+            "current_a": "0.54187",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.555861,
+            498141.63386099995
+          ]
+        }
+      },
+      {
+        "host_end_s": 498547.75,
+        "standby": {
+          "state": {
+            "timestamp": 404743363,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10469,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42765",
+            "cell_count": "6",
+            "remaining": "0.99788",
+            "warning": "0",
+            "current_a": "0.53562",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.546832,
+            498141.639832
+          ]
+        }
+      },
+      {
+        "host_end_s": 498549.296,
+        "standby": {
+          "state": {
+            "timestamp": 406265363,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10388,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42746",
+            "cell_count": "6",
+            "remaining": "0.99787",
+            "warning": "0",
+            "current_a": "0.53687",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.551887,
+            498141.630887
+          ]
+        }
+      },
+      {
+        "host_end_s": 498550.828,
+        "standby": {
+          "state": {
+            "timestamp": 407783406,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1059,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42726",
+            "cell_count": "6",
+            "remaining": "0.99786",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.558776,
+            498141.63677599997
+          ]
+        }
+      },
+      {
+        "host_end_s": 498552.375,
+        "standby": {
+          "state": {
+            "timestamp": 409302448,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1069,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42746",
+            "cell_count": "6",
+            "remaining": "0.99786",
+            "warning": "0",
+            "current_a": "0.53625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.550253,
+            498141.628253
+          ]
+        }
+      },
+      {
+        "host_end_s": 498553.906,
+        "standby": {
+          "state": {
+            "timestamp": 410824410,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10469,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42706",
+            "cell_count": "6",
+            "remaining": "0.99785",
+            "warning": "0",
+            "current_a": "0.53375",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554885,
+            498141.633885
+          ]
+        }
+      },
+      {
+        "host_end_s": 498555.453,
+        "standby": {
+          "state": {
+            "timestamp": 412852378,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10378,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42648",
+            "cell_count": "6",
+            "remaining": "0.99784",
+            "warning": "0",
+            "current_a": "0.54562",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54770199995,
+            498141.64070199995
+          ]
+        }
+      },
+      {
+        "host_end_s": 498556.984,
+        "standby": {
+          "state": {
+            "timestamp": 414371362,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10177,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42648",
+            "cell_count": "6",
+            "remaining": "0.99783",
+            "warning": "0",
+            "current_a": "0.55875",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.556113,
+            498141.634113
+          ]
+        }
+      },
+      {
+        "host_end_s": 498558.531,
+        "standby": {
+          "state": {
+            "timestamp": 415890450,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09663,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42668",
+            "cell_count": "6",
+            "remaining": "0.99782",
+            "warning": "0",
+            "current_a": "0.53812",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.547518,
+            498141.641518
+          ]
+        }
+      },
+      {
+        "host_end_s": 498560.062,
+        "standby": {
+          "state": {
+            "timestamp": 417411361,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.09683,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42590",
+            "cell_count": "6",
+            "remaining": "0.99782",
+            "warning": "0",
+            "current_a": "0.56750",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.557464,
+            498141.63546400005
+          ]
+        }
+      },
+      {
+        "host_end_s": 498561.609,
+        "standby": {
+          "state": {
+            "timestamp": 418930540,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10126,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42668",
+            "cell_count": "6",
+            "remaining": "0.99781",
+            "warning": "0",
+            "current_a": "0.53312",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.549954,
+            498141.62795399997
+          ]
+        }
+      },
+      {
+        "host_end_s": 498563.14,
+        "standby": {
+          "state": {
+            "timestamp": 420449359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10056,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42628",
+            "cell_count": "6",
+            "remaining": "0.99780",
+            "warning": "0",
+            "current_a": "0.55500",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.556156,
+            498141.634156
+          ]
+        }
+      },
+      {
+        "host_end_s": 498564.687,
+        "standby": {
+          "state": {
+            "timestamp": 421968374,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10157,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42628",
+            "cell_count": "6",
+            "remaining": "0.99779",
+            "warning": "0",
+            "current_a": "0.53750",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.545567,
+            498141.63956700003
+          ]
+        }
+      },
+      {
+        "host_end_s": 498566.234,
+        "standby": {
+          "state": {
+            "timestamp": 423488372,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10479,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42570",
+            "cell_count": "6",
+            "remaining": "0.99779",
+            "warning": "0",
+            "current_a": "0.53625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.550515,
+            498141.628515
+          ]
+        }
+      },
+      {
+        "host_end_s": 498567.765,
+        "standby": {
+          "state": {
+            "timestamp": 425006372,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10005,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42590",
+            "cell_count": "6",
+            "remaining": "0.99778",
+            "warning": "0",
+            "current_a": "0.53562",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.557777,
+            498141.635777
+          ]
+        }
+      },
+      {
+        "host_end_s": 498569.312,
+        "standby": {
+          "state": {
+            "timestamp": 426525371,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10338,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42570",
+            "cell_count": "6",
+            "remaining": "0.99777",
+            "warning": "0",
+            "current_a": "0.53625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.54967599997,
+            498141.643676
+          ]
+        }
+      },
+      {
+        "host_end_s": 498570.843,
+        "standby": {
+          "state": {
+            "timestamp": 428046925,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10418,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42570",
+            "cell_count": "6",
+            "remaining": "0.99776",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.554988,
+            498141.632988
+          ]
+        }
+      },
+      {
+        "host_end_s": 498572.39,
+        "standby": {
+          "state": {
+            "timestamp": 429569196,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10146,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42531",
+            "cell_count": "6",
+            "remaining": "0.99775",
+            "warning": "0",
+            "current_a": "0.53625",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.546996,
+            498141.640996
+          ]
+        }
+      },
+      {
+        "host_end_s": 498573.921,
+        "standby": {
+          "state": {
+            "timestamp": 431087359,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.1065,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42531",
+            "cell_count": "6",
+            "remaining": "0.99775",
+            "warning": "0",
+            "current_a": "0.53437",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.553991,
+            498141.63199100003
+          ]
+        }
+      },
+      {
+        "host_end_s": 498575.468,
+        "standby": {
+          "state": {
+            "timestamp": 432605371,
+            "arming_state": 1,
+            "nav_state": 1,
+            "hil_state": 0,
+            "failsafe": false
+          },
+          "kill": true,
+          "outputs": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          }
+        },
+        "assessment": {
+          "power": {
+            "voltage5v_v": 5.10378,
+            "brick_valid": 1.0,
+            "usb_connected": 0.0,
+            "usb_valid": 0.0,
+            "periph_5v_oc": 0.0,
+            "hipower_5v_oc": 0.0
+          },
+          "checks": {
+            "brick_detected": true,
+            "usb_matches_phase": true,
+            "rail_within_pinned_px4_limits": true,
+            "no_reported_overcurrent": true
+          },
+          "power_ok": true,
+          "battery": {
+            "connected": "True",
+            "voltage_v": "24.42492",
+            "cell_count": "6",
+            "remaining": "0.99774",
+            "warning": "0",
+            "current_a": "0.54937",
+            "source": "0"
+          },
+          "battery_monitor_usable": true,
+          "clock_interval": [
+            498141.545686,
+            498141.639686
+          ]
+        }
+      }
+    ]
+  }
+}

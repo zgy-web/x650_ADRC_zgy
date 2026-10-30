@@ -1,0 +1,43 @@
+{
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "utc": "2026-10-30T08:46:48.964441+00:00",
+  "source_report_sha256": "48092202fa5ebcf9e0198a98590ab933c49dd2a27527d6ad8e037a83d47220e7",
+  "status": {
+    "battery_status status": "battery_status status\nINFO  [battery_status] running\nnsh> ",
+    "adc status": "adc status\nnsh: adc: command not found\nnsh> ",
+    "ina220 status": "ina220 status\nnsh: ina220: command not found\nnsh> ",
+    "ina226 status": "ina226 status\nINFO  [SPI_I2C] Not running\nnsh> ",
+    "ina228 status": "ina228 status\nINFO  [SPI_I2C] Running on I2C Bus 1, Address 0x45\nina228_read: 6065 events, 10187141us elapsed, 1679.66us avg, min 1659us max 1938us 35.157us rms\nina228_com_err: 0 events\npoll interval:  99993 \nnsh> ",
+    "ina238 status": "ina238 status\nINFO  [SPI_I2C] Not running\nnsh> "
+  },
+  "raw": {
+    "system_power": "listener system_power -n 1\n\nTOPIC: system_power\n system_power\n    timestamp: 620671418 (0.005298 seconds ago)\n    voltage5v_v: 5.10710\n    voltage_payload_v: 0.00000\n    sensors3v3: [3.29406, 3.32578, 3.31007, 3.31289]\n    sensors3v3_valid: 15\n    usb_connected: 0\n    brick_valid: 1\n    usb_valid: 0\n    servo_valid: 1\n    periph_5v_oc: 0\n    hipower_5v_oc: 0\n    comp_5v_valid: 0\n    can1_gps1_5v_valid: 0\n    payload_v_valid: 0\n\nnsh> ",
+    "battery_status": "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 620429341 (0.027978 seconds ago)\n    voltage_v: 24.40874\n    current_a: 0.53812\n    current_average_a: 15.00000\n    discharged_mah: 95.88492\n    remaining: 0.99680\n    scale: 1.00000\n    time_remaining_s: 7176.97119\n    temperature: 34.44531\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00484\n    ocv_estimate: 24.42437\n    ocv_estimate_filtered: 24.42469\n    volt_based_soc_estimate: 1.00000\n    voltage_prediction: 24.40898\n    prediction_error: -0.00024\n    estimation_covariance_norm: 1.11833\n    capacity: 30000\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 0\n\nnsh> ",
+    "actuator_armed": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 619013355 (0.095278 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+    "manual_control_setpoint": "listener manual_control_setpoint -n 1\n\nTOPIC: manual_control_setpoint\n manual_control_setpoint\n    timestamp: 619155478 (0.012871 seconds ago)\n    timestamp_sample: 618955390 (200088 us before timestamp)\n    roll: 0.00000\n    pitch: 0.00000\n    yaw: 0.00000\n    throttle: -1.00000\n    flaps: 0.00000\n    aux1: 0.00000\n    aux2: 0.00000\n    aux3: 0.00000\n    aux4: 0.00000\n    aux5: 0.00000\n    aux6: 0.00000\n    buttons: 0\n    valid: True\n    data_source: 1\n    sticks_moving: False\n\nnsh> \u001b",
+    "manual_control_switches": "[Klistener manual_control_switches -n 1\n\nTOPIC: manual_control_switches\n manual_control_switches\n    timestamp: 619192350 (0.066200 seconds ago)\n    timestamp_sample: 619188252 (4098 us before timestamp)\n    switch_changes: 3\n    mode_slot: 1\n    arm_switch: 3\n    return_switch: 0\n    loiter_switch: 0\n    offboard_switch: 0\n    kill_switch: 1\n    termination_switch: 0\n    gear_switch: 0\n    transition_switch: 0\n    photo_switch: 0\n    video_switch: 0\n    engage_main_motor_switch: 0\n    payload_power_switch: 0\n\nnsh> \u001b["
+  },
+  "after": {
+    "state": {
+      "timestamp": 621545359,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "kill": true,
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    }
+  },
+  "port_closed": true,
+  "parameter_writes": 0
+}

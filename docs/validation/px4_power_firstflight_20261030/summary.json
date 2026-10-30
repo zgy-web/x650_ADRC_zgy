@@ -1,6 +1,6 @@
 {
-  "hardware_power_test": "NOT_COMPLETED",
-  "independent_power_verified": false,
+  "hardware_power_test": "PASS_SAMPLED_IDLE_POWER1_WITHOUT_USB",
+  "independent_power_verified": true,
   "flight_ready": false,
   "parameters_written": 0,
   "initial_read": {
@@ -11,7 +11,7 @@
     "source_sha256": "87281c5a0884d5778deba6a20b39bc3733e0c891904b97064a87d84f70350456"
   },
   "tests": {
-    "tests": 33,
+    "tests": 36,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -25,21 +25,169 @@
       "bytes": 152,
       "sha256": "ed11b2c332b4cfae58d17b363bc21d38932f3748e389b74ea7a23ca6bba4baca"
     },
+    "artifacts/px4_power_firstflight_20261030/combined_v1/report.json": {
+      "bytes": 702,
+      "sha256": "3fad095c5ea6f74035587b8f19908e79831c8972310bf871deec8ece04e49cc4"
+    },
+    "artifacts/px4_power_firstflight_20261030/combined_v1/console.json": {
+      "bytes": 16199,
+      "sha256": "675bbdf07e67bed0155d4d6b57ec51b1fd639224e5be4e187fb5eea9f7408b7e"
+    },
+    "artifacts/px4_power_firstflight_20261030/battery_connected_inventory_v1/report.json": {
+      "bytes": 38863,
+      "sha256": "50e5060749f1ef4038a1f9c48d0c3f5cd1868c8e692030f3ae36dac5e7e41160"
+    },
+    "artifacts/px4_power_firstflight_20261030/battery_connected_inventory_v1/console.json": {
+      "bytes": 102199,
+      "sha256": "a1dca1000c5f6d9e6511b50d1dcc764dbf823060054184035424a66d6adfa9dc"
+    },
+    "artifacts/px4_power_firstflight_20261030/combined_v2/report.json": {
+      "bytes": 35325,
+      "sha256": "500234956607c759a39fc5dd85fabafd5b5e4ce43d1d8758080e9857da4e03dd"
+    },
+    "artifacts/px4_power_firstflight_20261030/combined_v2/console.json": {
+      "bytes": 126731,
+      "sha256": "1d9d788bf43d5270dace46f99fc9d465294cd4d2ee7baf45cb63192689dd5d98"
+    },
+    "artifacts/px4_power_firstflight_20261030/power_only_v1/report.json": {
+      "bytes": 172021,
+      "sha256": "f7560d7b08227232ade1d7c591a69a37724a656162200eef61c55ea45b2f6c76"
+    },
+    "artifacts/px4_power_firstflight_20261030/power_only_v1/console.json": {
+      "bytes": 597098,
+      "sha256": "b0ad65bdea44005cfb163c42bc51b5373f4d298fc30d5430dbe24ffc7bf1dba9"
+    },
+    "artifacts/px4_power_firstflight_20261030/power_source_inventory_v1/report.json": {
+      "bytes": 39137,
+      "sha256": "48092202fa5ebcf9e0198a98590ab933c49dd2a27527d6ad8e037a83d47220e7"
+    },
+    "artifacts/px4_power_firstflight_20261030/power_source_inventory_v1/console.json": {
+      "bytes": 103085,
+      "sha256": "af649696a39958ea267ac37def608a5db1271eda65b00d8c210d53f5620bf7ea"
+    },
     "artifacts/px4_power_firstflight_20261030/software_tests.xml": {
       "bytes": 5190,
       "sha256": "f7f8a1c38d6750eba00c1c76bc30b3a2b64c3be5b0d84bd4467bd0e924e43512"
+    },
+    "artifacts/px4_power_firstflight_20261030/software_tests_v2.xml": {
+      "bytes": 5628,
+      "sha256": "a53a2b97c34857242d964f192b7470fcce03da095c3997048dba7d2100676dda"
+    },
+    "scripts/px4_first_flight_readonly.py": {
+      "bytes": 9408,
+      "sha256": "bc993ce233e967e9311ffedb419e459548ad01d0a7c59db38ac3549612cfdbc7"
     },
     "scripts/px4_power_readonly.py": {
       "bytes": 8760,
       "sha256": "ee1626d02b640ef39822ca6d3b12df82a09725e43137a479e353da2c7567c4c6"
     },
-    "scripts/px4_first_flight_readonly.py": {
-      "bytes": 9281,
-      "sha256": "30f143e4503718107a59020b3e15dd3e33c645eac2d589f750aa40fece954c6a"
-    },
     "configs/hardware/x650_first_flight_v1.proposal.json": {
-      "bytes": 8882,
-      "sha256": "6bcf9256dcd2a6231f896e7ceec856230bac320ffdb085c7b44fb4664cafcf97"
+      "bytes": 11151,
+      "sha256": "9cb627bc1fab2bdbf069a8a1394644fd12dd42ef56c6c5d51dc17907cbf4e012"
+    },
+    "docs/validation/px4_power_firstflight_20261030/power_windows.json": {
+      "bytes": 73129,
+      "sha256": "d5728b9b07bed978010fbf7c538aa7e06bd5a66580f38d62d79e8c0d769263c2"
+    },
+    "docs/validation/px4_power_firstflight_20261030/parameter_snapshot.json": {
+      "bytes": 3150,
+      "sha256": "f8f20c4915d14013ae35dc76c35c520fe0f465ad993fa171a4d0383e08412346"
+    },
+    "docs/validation/px4_power_firstflight_20261030/power_source_readback.json": {
+      "bytes": 4484,
+      "sha256": "8544b29f68901a785b69bec761735643dc4f9d55cfa7679680c1e9a23bbbd57a"
     }
-  }
+  },
+  "motor_commands": 0,
+  "arm_commands": 0,
+  "nx_accessed": false,
+  "combined_window": {
+    "samples": 8,
+    "duration_s": 10.78100000001723,
+    "rail_min_max_v": [
+      5.09341,
+      5.1062
+    ]
+  },
+  "power_only_window": {
+    "samples": 40,
+    "duration_s": 60.07799999997951,
+    "rail_min_max_v": [
+      5.09411,
+      5.10791
+    ],
+    "usb_connected": 0,
+    "usb_valid": 0,
+    "brick_valid": 1,
+    "no_reboot_detected_from_host_fc_clock_relation": true
+  },
+  "prior_combined_attempt": {
+    "complete": false,
+    "error": "Actual kill flag is not active",
+    "port_closed": true,
+    "resolved_by": "operator moved SB middle -> lower before new baseline"
+  },
+  "battery_voltage_crosscheck": {
+    "operator_statement": "飞控显示的约 24.4 V 与电池实际电压一致",
+    "approximate_agreement_reported": true,
+    "independently_captured_meter_data": false,
+    "quantitative_error_or_accuracy_not_established": true,
+    "current_calibration_verified": false,
+    "state_of_charge_accuracy_verified": false
+  },
+  "power_monitor": {
+    "driver": "ina228",
+    "bus": "I2C 1",
+    "address": "0x45",
+    "comm_error_count_at_readback": 0,
+    "battery_source_enum": 0,
+    "module_product_model": "unconfirmed"
+  },
+  "current_parameter_snapshot": {
+    "count": 108,
+    "unknown": 0,
+    "matched_across_two_inventories": true,
+    "actual_written": 0,
+    "conditional_change_proposals": 15
+  },
+  "final_sampled_state": {
+    "utc": "2026-10-30T08:46:48.964441+00:00",
+    "after": {
+      "state": {
+        "timestamp": 621545359,
+        "arming_state": 1,
+        "nav_state": 1,
+        "hil_state": 0,
+        "failsafe": false
+      },
+      "kill": true,
+      "outputs": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
+      }
+    },
+    "power": {
+      "voltage5v_v": "5.10710",
+      "usb_connected": "0",
+      "brick_valid": "1",
+      "servo_valid": "1"
+    },
+    "battery_connected": true,
+    "port_closed": true,
+    "user_requested_keep_battery_connected": true,
+    "not_a_continuous_monitor": true
+  },
+  "limitations": [
+    "idle samples only; no propeller load or oscilloscope ripple test",
+    "single POWER1 feed; no dual-supply redundancy proof",
+    "no first-flight approval; no parameter changes",
+    "module rating, current and SOC calibration remain unverified"
+  ]
 }

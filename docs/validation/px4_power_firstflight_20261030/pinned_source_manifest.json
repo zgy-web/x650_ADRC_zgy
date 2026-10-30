@@ -113,5 +113,27 @@
       "bytes": 31103,
       "sha256": "0e025b28e1dcd40f8e861b64668b1bafc502b3223277a29b76564f8997dcbeac"
     }
+  ],
+  "additional_web_references": [
+    {
+      "path": "boards/px4/fmu-v6x/init/rc.board_sensors",
+      "url": "https://raw.githubusercontent.com/PX4/PX4-Autopilot/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/boards/px4/fmu-v6x/init/rc.board_sensors",
+      "inspection": "read via web tool; no local cached-byte hash claimed"
+    },
+    {
+      "path": "msg/versioned/BatteryStatus.msg",
+      "url": "https://raw.githubusercontent.com/PX4/PX4-Autopilot/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/msg/versioned/BatteryStatus.msg",
+      "inspection": "read via web tool; no local cached-byte hash claimed"
+    },
+    {
+      "path": "src/modules/battery_status/battery_status.cpp",
+      "url": "https://raw.githubusercontent.com/PX4/PX4-Autopilot/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/modules/battery_status/battery_status.cpp",
+      "inspection": "read via web tool; no local cached-byte hash claimed"
+    },
+    {
+      "path": "src/drivers/dshot/DShot.cpp",
+      "url": "https://raw.githubusercontent.com/PX4/PX4-Autopilot/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/drivers/dshot/DShot.cpp",
+      "inspection": "read via web tool; no local cached-byte hash claimed"
+    }
   ]
 }
