@@ -197,3 +197,11 @@ tests/unit/test_nx_offboard_bench.py -text whitespace=cr-at-eol
 docs/NX_OFFBOARD_BENCH.md -text whitespace=cr-at-eol
 docs/validation/px4_powered_stop_20261030/** -text -whitespace
 docs/validation/nx_offboard_bench_20261030/** -text -whitespace
+
+# Preserve the audited UART repair and capture-source hashes on Windows/Linux.
+hardware/nx/*.dts -text
+hardware/nx/*.py -text
+scripts/nx_uart_mavlink_readonly.py -text
+tests/unit/test_nx_uart_boot_fix.py -text
+tests/unit/test_nx_uart_mavlink_readonly.py -text
+docs/validation/nx_uart_mavlink_20261030/*.json -text whitespace=cr-at-eol

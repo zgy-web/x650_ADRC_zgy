@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Candidate only: apply after explicit NX configuration approval.
+ * Damiao physical UART1 -> Tegra UARTA (serial@3100000).
+ * NVIDIA R36.5 UART DMA workaround:
+ * https://forums.developer.nvidia.com/t/363837/7
+ * 0x04 = TEGRA234_SID_GPCDMA, also verified against this NX's
+ * /bus@0/dma-controller@2600000/iommus property.
+ * Do not replace the UART's compatible, clocks, DMA channel or pinmux.
+ */
+/ {
+    overlay-name = "Flyarm UART1 IOMMU mapping for R36.5";
+    compatible = "nvidia,tegra234";
+
+    fragment@0 {
+        target = <&uarta>;
+        __overlay__ {
+            iommus = <&smmu_niso0 0x04>;
+        };
+    };
+};

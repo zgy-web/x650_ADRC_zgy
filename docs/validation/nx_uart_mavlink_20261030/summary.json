@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "scope": "NX UART1 <-> PX4 TELEM1 read-only MAVLink",
+  "uart_fix_loaded": true,
+  "config_sha256": "558033e178661ff468acef15094d6fa557c9361781b4da7d83ccc58294a8477f",
+  "overlay_sha256": "6aadc1c08fe536cf20b90018867a95bf671f3736c41fbb2aacf64e7009709226",
+  "base_dtb_sha256": "4c533869e70e6b0fe1426ad2f00e25b29450dab090997fa42385b8b16a55869f",
+  "baud": 57600,
+  "px4_mode": "Normal",
+  "configured_tx_budget_bytes_s": 1200,
+  "runs": [
+    {
+      "source": "uart_rx_after_fix_v2.json",
+      "seconds": 20.013453069000008,
+      "bytes": 12803,
+      "known_crc_valid_frames": 307,
+      "unknown_frames_not_crc_validated": 22,
+      "heartbeats": 20,
+      "parse_errors_before_sync": 3,
+      "parse_errors_after_sync": 0,
+      "kernel_faults": 0,
+      "tx_bytes": 0,
+      "settings_restored": true,
+      "fd_closed": true,
+      "acceptance": {
+        "basic_receive_pass": true,
+        "kernel_fault_check_pass": true,
+        "parameter_readback_pass": null,
+        "scope_pass": true,
+        "control_path_verified": false,
+        "offboard_verified": false
+      },
+      "statistics": {
+        "HEARTBEAT": {
+          "count": 20,
+          "rate_hz": 1.0053170929504194,
+          "max_receive_gap_ms": 1006.2617589999974
+        },
+        "ATTITUDE": {
+          "count": 90,
+          "rate_hz": 4.569576255860396,
+          "max_receive_gap_ms": 227.79814599999781
+        },
+        "ATTITUDE_QUATERNION": {
+          "count": 61,
+          "rate_hz": 3.0464244316012477,
+          "max_receive_gap_ms": 347.67275299999767
+        },
+        "LOCAL_POSITION_NED": {
+          "count": 6,
+          "rate_hz": 0.3040135101570673,
+          "max_receive_gap_ms": 3324.354285999988
+        }
+      }
+    },
+    {
+      "source": "uart_param_read_after_fix_v2.json",
+      "seconds": 30.025191882,
+      "bytes": 19186,
+      "known_crc_valid_frames": 463,
+      "unknown_frames_not_crc_validated": 32,
+      "heartbeats": 30,
+      "parse_errors_before_sync": 1,
+      "parse_errors_after_sync": 0,
+      "kernel_faults": 0,
+      "tx_bytes": 28,
+      "settings_restored": true,
+      "fd_closed": true,
+      "acceptance": {
+        "basic_receive_pass": true,
+        "kernel_fault_check_pass": true,
+        "parameter_readback_pass": true,
+        "scope_pass": true,
+        "control_path_verified": false,
+        "offboard_verified": false
+      },
+      "statistics": {
+        "HEARTBEAT": {
+          "count": 30,
+          "rate_hz": 0.999808117239853,
+          "max_receive_gap_ms": 1018.375763999984
+        },
+        "ATTITUDE": {
+          "count": 136,
+          "rate_hz": 4.544406239528055,
+          "max_receive_gap_ms": 230.22216399999706
+        },
+        "ATTITUDE_QUATERNION": {
+          "count": 91,
+          "rate_hz": 3.0276599006417517,
+          "max_receive_gap_ms": 345.37564400000065
+        },
+        "LOCAL_POSITION_NED": {
+          "count": 9,
+          "rate_hz": 0.30290898472335503,
+          "max_receive_gap_ms": 3338.7840499999866
+        }
+      },
+      "param_read": {
+        "name": "MAV_0_CONFIG",
+        "int32_value": 101,
+        "observed_single_roundtrip_ms": 12.363926999995556,
+        "includes_serial_firmware_and_host_scheduling": true,
+        "mpc_solve_time": false
+      }
+    }
+  ],
+  "parameter_writes": 0,
+  "arm_commands": 0,
+  "mode_commands": 0,
+  "setpoints": 0,
+  "control_path_verified": false,
+  "offboard_verified": false,
+  "flight_ready": false,
+  "local_tests_passed": 11,
+  "evidence": {
+    "uart_rx_passive_v1.json": {
+      "sha256": "1f204a71dcd2b8adf5e14416178eb34704025d3b7c633d8c420945fb8a01486e",
+      "bytes": 58991
+    },
+    "nx_uart_inventory_v1.json": {
+      "sha256": "e662f2fc9c289aa0b171e5fbe26d13191c8a551b104c138cf4480a8fb92589b1",
+      "bytes": 19483
+    },
+    "overlay_verification.json": {
+      "sha256": "bdfddc18d8206d8d1283b39274fcff09161445fe0bff7f97876ff13204b315ea",
+      "bytes": 659
+    },
+    "deployment_preflight_v1.json": {
+      "sha256": "a7d310a2d2b94721c05151279c3d11283ef3775ce202e5a22bb754da5ea8e175",
+      "bytes": 1785
+    },
+    "post_reboot_preflight_v1.json": {
+      "sha256": "68e85e16d031670aa731a4943add4755276def4aa6eccc4e8ddd70d800c82a25",
+      "bytes": 1374
+    },
+    "base_dtb_audit_v1.json": {
+      "sha256": "ecffe4bebca259760fcb9b69cd5cd5fd732a1212083fcb0969759f5840b35a2f",
+      "bytes": 32000
+    },
+    "deployment_preflight_v2.json": {
+      "sha256": "51062a1e31639d2b252cfa187a0712a7441cb307c722b22d51b588ad552cd631",
+      "bytes": 2798
+    },
+    "post_reboot_preflight_v2.json": {
+      "sha256": "12142e0c43b645f9f976a1da2889418d35205a34f452d681d493b9812540032d",
+      "bytes": 1905
+    },
+    "base_dtb_audit_v2.json": {
+      "sha256": "876bd4df9a66a8d861cd0559e53f1376d15c871b4eec882743a36ccfe3c6e428",
+      "bytes": 31742
+    },
+    "uart_rx_after_fix_v2.json": {
+      "sha256": "914d7d5f0e3067307adc7f7c0e8967fc239f1666b4c36ef21939628decab0ee6",
+      "bytes": 47270
+    },
+    "uart_param_read_after_fix_v2.json": {
+      "sha256": "853d806c22a89f6a6cf6267edda0f5d6c6e2617c508d3eac5c7e37301e8d71d4",
+      "bytes": 67762
+    },
+    "fc_before_uart_probe_v2.json": {
+      "sha256": "a12fd2e603d30b598ed5a2938d86ad2d3eaadf476a16fc96075d7fb7d11b8287",
+      "bytes": 5713
+    },
+    "fc_final_after_fix_v2.json": {
+      "sha256": "d8d6d4b85b5abec921d59d729a5824582308a4adccedcc94e2687beb6e662f43",
+      "bytes": 5469
+    }
+  },
+  "final_fc_disarmed": true,
+  "final_all_outputs_zero": true
+}
