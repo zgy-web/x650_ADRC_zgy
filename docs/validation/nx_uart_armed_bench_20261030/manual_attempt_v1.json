@@ -1,0 +1,87 @@
+{
+  "kind": "flyarm.armed_uart_attempt.v1",
+  "case": "manual_exit",
+  "passed": false,
+  "reason": "No independent armed, valid Offboard interval",
+  "attempt": "armed_manual_v1",
+  "preflight_pass": true,
+  "actual_arm_observed": true,
+  "offboard_observed": false,
+  "sa_down_observed": false,
+  "operator_feedback": "Did not see or could not act on the SA prompt in time.",
+  "guidance_limitation": "First panel imposed a separate four-second SA-action timeout; removed for the repeat without changing PX4 automatic-disarm parameters.",
+  "state_transitions": [
+    {
+      "px4_timestamp_us": 400390374,
+      "arming_state": 1,
+      "nav_state": 1,
+      "kill": false,
+      "sf": "3",
+      "sa_slot": "1",
+      "sb_kill_request": "3"
+    },
+    {
+      "px4_timestamp_us": 409564366,
+      "arming_state": 1,
+      "nav_state": 1,
+      "kill": false,
+      "sf": "1",
+      "sa_slot": "1",
+      "sb_kill_request": "3"
+    },
+    {
+      "px4_timestamp_us": 410911992,
+      "arming_state": 2,
+      "nav_state": 1,
+      "kill": false,
+      "sf": "1",
+      "sa_slot": "1",
+      "sb_kill_request": "3"
+    },
+    {
+      "px4_timestamp_us": 421444435,
+      "arming_state": 1,
+      "nav_state": 1,
+      "kill": false,
+      "sf": "1",
+      "sa_slot": "1",
+      "sb_kill_request": "3"
+    },
+    {
+      "px4_timestamp_us": 426511365,
+      "arming_state": 1,
+      "nav_state": 1,
+      "kill": false,
+      "sf": "3",
+      "sa_slot": "1",
+      "sb_kill_request": "3"
+    },
+    {
+      "px4_timestamp_us": 429043363,
+      "arming_state": 1,
+      "nav_state": 1,
+      "kill": true,
+      "sf": "3",
+      "sa_slot": "1",
+      "sb_kill_request": "1"
+    }
+  ],
+  "safe_final_restoration": true,
+  "setpoints": 1357,
+  "zero_thrust_only": true,
+  "maximum_send_gap_ms": 22.0119,
+  "crc_errors_after_sync": 0,
+  "stop_reason": "operator_kill_request",
+  "nx_kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "tested_binary_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "mpc_executed": false,
+  "flight_qualified": false,
+  "raw_local_directory": "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v1",
+  "hashes": {
+    "nx\\transport.jsonl": "0cdef190d3e4b8dff4263bdb57508765bfbd40d79d50df639fdf92fe1a39572f",
+    "debug\\rounds.jsonl": "6ae215b1e83b6a83ba04a5ce412836c4125388268d7709e580948874b1f09b09",
+    "preflight\\report.json": "0e4bbba90a5ff390472648b1598eaffa0024b4f58a79d11d1ed524c3fdb0fd45",
+    "restore\\report.json": "fdc8ee44764c118827785c13bc87322cbcf95a0cf726eebfbe82aca00430cd8b"
+  }
+}

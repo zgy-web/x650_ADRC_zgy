@@ -1,0 +1,29 @@
+{
+  "kind": "flyarm.armed_uart_software_checks.v1",
+  "cpp_ctest_passed": true,
+  "pty_cases": 11,
+  "local_python_tests_passed": 40,
+  "source_archive_sha256": "46ea5fbb2d58ab8c0629fb6f0b44744bdb741457b965388a650347784d0df322",
+  "production_executable_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "same_production_binary_as_unarmed_bench": true,
+  "build_completion": [
+    {
+      "event": "complete",
+      "passed": true,
+      "hardware_accessed": false,
+      "installed": false,
+      "source_sha256": "46ea5fbb2d58ab8c0629fb6f0b44744bdb741457b965388a650347784d0df322"
+    },
+    {
+      "event": "cleanup",
+      "removed": true,
+      "persistent_files_created": []
+    }
+  ],
+  "files_sha256": {
+    "bench_armed_tests_v3\\ctest.log": "11f7be1f998be340b7b684bd68dede721ccdad81f616e3bfdde8fce471244951",
+    "bench_armed_tests_v3\\pty_tests.log": "91e33312cd8578c5b83c00012864f9ccd6e2ff60188a9416ce13bd3ab604ee8b",
+    "local_tests_v3.xml": "ecac4b26b64b963fea5a4d3f668f9478ea224560cdc37b52a29d6ab3e46f4fa5",
+    "local_tests_v4.xml": "523739d8b7dc87226af01a688bd8e15a1bba71aade0455ab16eb1ef3b720cd92"
+  }
+}

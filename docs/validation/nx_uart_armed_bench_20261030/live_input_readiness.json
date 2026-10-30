@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "nx_accessed": false,
+  "parameter_writes": 0,
+  "arm_commands": 0,
+  "mode_commands": 0,
+  "setpoints": 0,
+  "power_disconnected_confirmed": true,
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "source_sha256": "a4d45598fdb57bcdadb69db0a87d7dc815589abb18f0cda0dcd48b2c348fad83",
+  "assessment": {
+    "whole_body_shadow_ready": false,
+    "blockers": [
+      "xy_valid is not valid",
+      "v_xy_valid is not valid",
+      "heading_good_for_control is not valid",
+      "real joint angles and velocities not verified by this PX4-only audit",
+      "applied joint-command history not verified",
+      "live MAVLink world-acceleration/reset adapter not qualified",
+      "cross-device time alignment not qualified"
+    ],
+    "local_position_validity": {
+      "xy_valid": "False",
+      "z_valid": "True",
+      "v_xy_valid": "False",
+      "v_z_valid": "True",
+      "heading_good_for_control": "False"
+    },
+    "source_fresh": {
+      "vehicle_attitude": true,
+      "vehicle_local_position": true,
+      "vehicle_odometry": true
+    },
+    "attitude_invalid": "False",
+    "local_position_invalid": "True",
+    "local_velocity_invalid": "True",
+    "joint_feedback_verified": false,
+    "applied_history_verified": false,
+    "mpc_executed": false,
+    "substituted_states": 0
+  },
+  "port_closed": true,
+  "raw_local_path": "artifacts/nx_uart_armed_bench_20261030/live_input_audit_v1/report.json",
+  "raw_sha256": "2394c2570954e341d8fc2b37e3078fd78e2693178935789a38ed8d0c64b5754d"
+}

@@ -1,0 +1,12 @@
+{"case": "observe", "passed": true, "setpoints": 0, "reason": "capture_complete"}
+{"case": "manual_exit", "passed": true, "setpoints": 52, "reason": "manual_or_px4_exit"}
+{"case": "stream_stop", "passed": true, "setpoints": 163, "reason": "planned_stream_stop"}
+{"case": "configure", "passed": true, "setpoints": 52, "reason": "manual_or_px4_exit"}
+{"case": "missing_rc", "passed": true, "setpoints": 31, "reason": "rc_unavailable"}
+{"case": "repeated_stamp", "passed": true, "setpoints": 25, "reason": "attitude_unavailable"}
+{"case": "regression", "passed": true, "setpoints": 26, "reason": "invalid_or_regressed_state"}
+{"case": "throttle", "passed": true, "setpoints": 26, "reason": "rc_mapping_or_throttle"}
+{"case": "bad_crc", "passed": true, "setpoints": 26, "reason": "post_sync_crc_error"}
+{"case": "armed_manual_exit", "passed": true, "setpoints": 76, "reason": "manual_or_px4_exit"}
+{"case": "armed_stream_stop", "passed": true, "setpoints": 185, "reason": "planned_stream_stop"}
+{"passed": true, "cases": [{"case": "observe", "passed": true, "setpoints": 0, "reason": "capture_complete"}, {"case": "manual_exit", "passed": true, "setpoints": 52, "reason": "manual_or_px4_exit"}, {"case": "stream_stop", "passed": true, "setpoints": 163, "reason": "planned_stream_stop"}, {"case": "configure", "passed": true, "setpoints": 52, "reason": "manual_or_px4_exit"}, {"case": "missing_rc", "passed": true, "setpoints": 31, "reason": "rc_unavailable"}, {"case": "repeated_stamp", "passed": true, "setpoints": 25, "reason": "attitude_unavailable"}, {"case": "regression", "passed": true, "setpoints": 26, "reason": "invalid_or_regressed_state"}, {"case": "throttle", "passed": true, "setpoints": 26, "reason": "rc_mapping_or_throttle"}, {"case": "bad_crc", "passed": true, "setpoints": 26, "reason": "post_sync_crc_error"}, {"case": "armed_manual_exit", "passed": true, "setpoints": 76, "reason": "manual_or_px4_exit"}, {"case": "armed_stream_stop", "passed": true, "setpoints": 185, "reason": "planned_stream_stop"}], "hardware_accessed": false}

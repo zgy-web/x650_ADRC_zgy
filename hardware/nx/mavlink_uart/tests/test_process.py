@@ -8,12 +8,18 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 def run_case(name):
     master,slave=pty.openpty();path=os.ttyname(slave)
     env=os.environ.copy();env['FLYARM_UART_TEST_PTY']=path
-    mode='observe' if name=='observe' else ('stream_stop' if name=='stream_stop' else 'manual_exit')
+    mode='observe' if name=='observe' else ('stream_stop' if name in ('stream_stop','armed_stream_stop') else 'manual_exit')
     cmd=[sys.argv[1],'--baud','921600','--seconds','5','--case',mode,'--power-disconnected']
     if name=='configure':cmd.append('--configure-bench-streams')
     child=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env)
-    output_chunks=[];error_chunks=[]
-    readers=[threading.Thread(target=lambda:output_chunks.append(child.stdout.read()),daemon=True),
+    output_chunks=[];error_chunks=[];ready_at=[None]
+    def stdout():
+        for line in child.stdout:
+            output_chunks.append(line)
+            try:event=json.loads(line)
+            except ValueError:continue
+            if event.get('event')=='ready':ready_at[0]=time.monotonic()
+    readers=[threading.Thread(target=stdout,daemon=True),
              threading.Thread(target=lambda:error_chunks.append(child.stderr.read()),daemon=True)]
     for reader in readers:reader.start()
     tx=m.MAVLink(None,srcSystem=1,srcComponent=1);rx=m.MAVLink(None);rx.robust_parsing=True
@@ -25,7 +31,11 @@ def run_case(name):
     try:
         while child.poll() is None and time.monotonic()-start<8:
             now=time.monotonic();elapsed=now-start;stamp=1000+int(elapsed*1000)
-            in_mode=elapsed>=.65 and not (name in ('manual_exit','configure') and elapsed>=1.5)
+            # Operator arming happens only after observed READY, not an assumed
+            # process-start delay. No state is pre-armed at the initial gate.
+            action_time=(now-ready_at[0] if ready_at[0] is not None else -1) if name.startswith('armed_') else elapsed
+            in_mode=action_time>=.65 and not (name in ('manual_exit','configure','armed_manual_exit') and action_time>=1.5)
+            armed=name.startswith('armed_') and action_time>=.3
             if now>=next_att:
                 sample=stamp
                 if name=='repeated_stamp' and elapsed>=1.:sample=1900
@@ -43,11 +53,11 @@ def run_case(name):
                 sa=2000 if in_mode else 1000
                 throttle=1500 if name=='throttle' and elapsed>=1. else 1000
                 if name!='missing_rc' or elapsed<1.:
-                    channels=[1500,1500,throttle,1500,1000,sa,1500]+[1500]*11
+                    channels=[1500,1500,throttle,1500,2000 if armed else 1000,sa,1500]+[1500]*11
                     emit(m.MAVLink_rc_channels_message(stamp,16,*channels,100))
                 next_rc=now+.045
             if now>=next_hb:
-                emit(m.MAVLink_heartbeat_message(m.MAV_TYPE_QUADROTOR,m.MAV_AUTOPILOT_PX4,0,(6 if in_mode else 2)<<16,m.MAV_STATE_STANDBY,3));next_hb=now+.5
+                emit(m.MAVLink_heartbeat_message(m.MAV_TYPE_QUADROTOR,m.MAV_AUTOPILOT_PX4,128 if armed else 0,(6 if in_mode else 2)<<16,m.MAV_STATE_STANDBY,3));next_hb=now+.5
             if now>=next_mode:
                 emit(m.MAVLink_current_mode_message(0,(6 if in_mode else 2)<<16,(6 if in_mode else 2)<<16));next_mode=now+.09
             if select.select([master],[],[],.002)[0]:
@@ -73,7 +83,8 @@ def run_case(name):
         expected={'manual_exit':'manual_or_px4_exit','configure':'manual_or_px4_exit',
           'stream_stop':'planned_stream_stop','missing_rc':'rc_unavailable',
           'repeated_stamp':'attitude_unavailable','regression':'invalid_or_regressed_state',
-          'throttle':'rc_mapping_or_throttle','bad_crc':'post_sync_crc_error'}
+          'throttle':'rc_mapping_or_throttle','bad_crc':'post_sync_crc_error',
+          'armed_manual_exit':'manual_or_px4_exit','armed_stream_stop':'planned_stream_stop'}
         if name=='observe':assert not sent and result['setpoints']==0
         else:
             assert len(sps)>5 and result['stop_reason']==expected[name],(name,result['stop_reason'],len(sps))
@@ -87,6 +98,6 @@ def run_case(name):
 
 
 results=[]
-for name in ('observe','manual_exit','stream_stop','configure','missing_rc','repeated_stamp','regression','throttle','bad_crc'):
+for name in ('observe','manual_exit','stream_stop','configure','missing_rc','repeated_stamp','regression','throttle','bad_crc','armed_manual_exit','armed_stream_stop'):
     results.append(run_case(name));print(json.dumps(results[-1]),flush=True)
 print(json.dumps(dict(passed=True,cases=results,hardware_accessed=False)))

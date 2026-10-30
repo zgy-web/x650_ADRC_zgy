@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NX–PX4 · 已解锁无动力台架</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:#0b1420;color:#e5eef6;font:18px/1.65 system-ui,"Microsoft YaHei",sans-serif}
+main{max-width:1080px;margin:20px auto;padding:20px}h1{font-size:30px;margin:8px 0 14px}
+.scope{background:#283126;padding:14px 18px;border-left:5px solid #e2c271}
+.sequence{display:flex;gap:12px;align-items:stretch;margin:18px 0}.step{flex:1;background:#172435;border:2px solid #31475a;border-radius:10px;padding:12px 16px}
+.step strong{display:block;font-size:28px}.step.active{border-color:#77f5bc;background:#164739;color:#fff}
+.card{margin:16px 0;padding:20px 24px;background:#172b3c;border:3px solid #405b70;border-radius:12px}
+.green{border-color:#66e5b5;background:#12392f}.action{font-size:54px;font-weight:800;line-height:1.2;margin:12px 0}
+#hint{font-size:24px;font-weight:600}#error{color:#ffb291;white-space:pre-wrap}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.values>div{padding:10px 14px;background:#172435;border-radius:9px}.values strong{font-size:22px;display:block}
+.label,.note{font-size:15px;color:#b6c6d6}button{font:600 20px system-ui;background:#68ddba;color:#071e24;border:0;border-radius:10px;padding:16px 22px;margin:16px 12px 12px 0;cursor:pointer}
+button:disabled{opacity:.3;cursor:not-allowed}#phase{color:#8fd7ef}#count{font-variant-numeric:tabular-nums;margin:6px 0;font-size:16px}
+label{display:inline-flex;align-items:center;gap:8px;font-size:16px}input{width:20px;height:20px}
+@media(max-width:650px){main{padding:12px}.sequence{gap:6px}.step{padding:10px}.step strong{font-size:21px}.action{font-size:38px}#hint{font-size:20px}.values{grid-template-columns:1fr}}
+</style>
+<main>
+<div class="label">FLYARM · C++ 零推力通信检查 · SF / SA 由现场操作者操作</div>
+<h1 id="title">已解锁状态下的接管与退出</h1>
+<div class="scope"><strong>四桨全部拆下，电调动力物理断开，全程保持。</strong><br>油门最低；初始 SF负100%、SA上档、SB中档。请提前把手准备在 SF、SA 旁，盯住下方大字提示，不必回聊天。</div>
+<div class="sequence" aria-label="本轮顺序">
+  <div class="step" id="step-sf">① 等绿色提示<strong>SF 正100%</strong></div>
+  <div class="step" id="step-enter">② 确认解锁后<strong>SA 下档</strong></div>
+  <div class="step" id="step-exit">③ 等接管提示<strong id="last-action">SA 回上档</strong></div>
+</div>
+<section id="card" class="card" aria-live="polite">
+  <div id="phase">尚未开始</div><div id="action" class="action">先读完操作顺序</div>
+  <div id="hint">保持初始开关位置，准备好连续完成 SF、SA 两步后点击开始。</div>
+  <p id="count"></p><div id="error"></div>
+</section>
+<div class="values">
+  <div><span class="label">实际模式</span><strong id="mode">—</strong></div>
+  <div><span class="label">实际解锁状态</span><strong id="armed">—</strong></div>
+  <div><span class="label">Offboard信号丢失</span><strong id="lost">—</strong></div>
+</div>
+<button id="start">动力已断开，我已就位，开始核对</button>
+<button id="restore" disabled>开关已恢复，恢复回读</button>
+<label><input type="checkbox" id="sound" checked>步骤切换提示音（同时看大字）</label>
+<p class="note">飞控保留10秒未起飞自动锁定，页面不再另设4秒拨杆限时。如果未及时完成或已经自动锁定，本轮不重复解锁。提示收尾时：SF先回负100% → SA回上档 → SB再拨下档。</p>
+<p class="note">页面断联时立即恢复上述开关位置，保持动力断开。记录收尾最长约90秒；最后点击“恢复回读”。程序只发送初始实际姿态与零推力，发送源最长60秒，无自动解锁、无模式命令，不运行MPC或位置目标。日志只存电脑，NX系统配置不变。</p>
+</main>
+<script>
+const token='__TOKEN__';let pending=false,refreshing=false,lastPhase=null,audioCtx=null;
+const $=id=>document.getElementById(id);
+const names={idle:'等待操作者',starting:'复核预检与记录器',warmup:'等待发送预热',arm:'第1步 · 现在操作SF',enter_offboard:'第2步 · 现在立即操作SA',hold:'保持开关，正在记录',manual_exit:'第3步 · 现在用SA人工接管',return_switches:'本轮操作结束，请恢复开关',finished:'记录结束',failed:'本轮未完成',restoring:'回读恢复状态',restored:'恢复已确认',restore_failed:'恢复未确认',active_error:'需要检查进程'};
+const actions={idle:'先读完操作顺序',starting:'开关保持不动',warmup:'准备SF、SA，等待提示',arm:'SF → 正100%',enter_offboard:'SA → 下档！',hold:'保持，等下一条提示',manual_exit:'SA → 上档！',return_switches:'SF负100% → SA上 → SB下',finished:'恢复开关后，点击回读',restoring:'保持静止，正在回读',restored:'恢复已确认',failed:'停止本轮，恢复开关',restore_failed:'保持动力断开，通知我',active_error:'停止操作，恢复开关'};
+function beep(phase){
+  if(!$('sound').checked||!audioCtx||audioCtx.state!=='running')return;
+  const count=phase==='manual_exit'?3:2;
+  for(let i=0;i<count;i++){
+    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),t=audioCtx.currentTime+i*.22;
+    osc.frequency.value=phase==='enter_offboard'?1040:780;gain.gain.setValueAtTime(.10,t);
+    gain.gain.exponentialRampToValueAtTime(.001,t+.13);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(t);osc.stop(t+.14);
+  }
+}
+async function refresh(){
+  if(refreshing)return;refreshing=true;
+  try{
+    const r=await fetch('/status',{cache:'no-store',signal:AbortSignal.timeout(2500)});if(!r.ok)throw Error('status');const s=await r.json();
+    $('title').textContent=s.case==='manual_exit'?'已解锁 · SA人工接管':'已解锁 · 断流自动退出';
+    $('last-action').textContent=s.case==='manual_exit'?'SA 回上档':'SA 保持下档';
+    $('phase').textContent=names[s.phase]||s.phase;$('action').textContent=actions[s.phase]||'保持开关';
+    $('hint').textContent=s.hint;$('error').textContent=s.error||'';
+    const actionable=['arm','enter_offboard','manual_exit'].includes(s.phase);
+    $('card').className='card'+(actionable?' green':'');
+    for(const [id,active] of [['step-sf',s.phase==='arm'],['step-enter',s.phase==='enter_offboard'],['step-exit',s.phase==='manual_exit'||s.phase==='hold']])$(id).className='step'+(active?' active':'');
+    $('mode').textContent=s.nav_state===14?'Offboard':s.nav_state===1?'Altitude':s.nav_state===null?'—':s.nav_state;
+    $('armed').textContent=s.records===0?'—':s.armed?'已解锁':'未解锁';
+    $('lost').textContent=s.signal_lost===null?'—':s.signal_lost?'已丢失':'未丢失';
+    $('count').textContent=s.action_seconds_left!==null&&!['return_switches','finished','restored','failed'].includes(s.phase)?'发送就绪后的本轮总窗口：剩余 '+s.action_seconds_left+' 秒（不是地面解锁剩余时间）':'';
+    $('start').disabled=pending||s.phase!=='idle';$('restore').disabled=pending||!['finished','failed'].includes(s.phase);
+    if(s.phase!==lastPhase&&actionable)beep(s.phase);lastPhase=s.phase;
+  }catch(e){
+    $('action').textContent='停止操作，恢复开关';$('hint').textContent='页面状态中断：SF拨负100%、SA上档、SB下档，保持动力断开。不要按旧提示继续。';
+    $('error').textContent='请通知我检查。';$('card').className='card';$('count').textContent='';$('start').disabled=$('restore').disabled=true;
+  }finally{refreshing=false;}
+}
+async function act(path){
+  if(pending)return;pending=true;
+  if(path==='start'&&$('sound').checked){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();await audioCtx.resume();beep('arm');}catch(e){/* Visual guidance remains authoritative. */}}
+  try{const r=await fetch('/'+path,{method:'POST',headers:{'X-Operator-Token':token},signal:AbortSignal.timeout(3000)});if(!r.ok)throw Error('操作未接受');}
+  catch(e){$('error').textContent=e.message;}finally{pending=false;await refresh();}
+}
+$('start').onclick=()=>act('start');$('restore').onclick=()=>act('restore');refresh();setInterval(refresh,250);
+</script>
+</html>

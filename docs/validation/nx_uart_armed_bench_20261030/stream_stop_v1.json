@@ -1,0 +1,91 @@
+{
+  "kind": "flyarm.armed_uart_bench.v2",
+  "case": "stream_stop",
+  "passed": true,
+  "power_disconnected": true,
+  "automatic_arm_commands": 0,
+  "automatic_mode_commands": 0,
+  "persistent_parameter_writes": 0,
+  "temporary_stream_requests": 8,
+  "mpc_executed": false,
+  "flight_qualified": false,
+  "safe_final_restoration": true,
+  "actual_exit_nav_state": 1,
+  "actual_armed_through_exit": true,
+  "nx_target_stream_restarted": false,
+  "armed_offboard_reentry": false,
+  "unarmed_offboard_mode_observations": [
+    {
+      "px4_timestamp_us": 1259142640,
+      "nav_state": 14,
+      "arming_state": 1,
+      "sf": "off",
+      "offboard_signal_lost": true,
+      "sa_mode_slot": "6"
+    },
+    {
+      "px4_timestamp_us": 1260158367,
+      "nav_state": 14,
+      "arming_state": 1,
+      "sf": "off",
+      "offboard_signal_lost": true,
+      "sa_mode_slot": "1"
+    }
+  ],
+  "offboard_start_px4_us": 1250102360,
+  "offboard_exit_px4_us": 1254167650,
+  "offboard_duration_s": 4.06529,
+  "setpoints": 438,
+  "max_send_gap_ms": 21.9047,
+  "anchor_frd_to_ned_q": [
+    0.7676570415496826,
+    0.027417190372943878,
+    -0.011689598672091961,
+    -0.6401673555374146
+  ],
+  "internal_matching_samples": [
+    {
+      "timestamp": 1250420156,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    },
+    {
+      "timestamp": 1251739190,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    },
+    {
+      "timestamp": 1253059989,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    }
+  ],
+  "exact_float32_telemetry_samples": 53,
+  "crc_errors_after_sync": 0,
+  "observed_after_last_target_s": 66.160552825,
+  "last_target_to_exit_observation_s": 1.139657341,
+  "timing_note": "NX receipt times and sequential Debug samples include sampling/telemetry delay; not a precise failsafe response-time measurement.",
+  "tested_binary_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "nx_kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "hashes": {
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_stream_stop_v1\\nx\\transport.jsonl": "c889dfa626fc03586d366ba9de36259026060a28631781c9d7316140af9625ae",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_stream_stop_v1\\debug\\rounds.jsonl": "fa80952091e5defcd14ba001c2aa3c4edd45ef892d8203c236fa7cbb687e5254",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_stream_stop_v1\\debug\\report.json": "26633b863279b325f02cf084a1c94bce025098176a04b0ffb3a9eab7b30cbc5a",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_stream_stop_v1\\preflight\\report.json": "5f04233541bd7bedd703febf008a26ba77da3c2707d9eba2b93cd4521b2f33cf",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_stream_stop_v1\\restore\\report.json": "7b356ad6f578453daf8882b7766f6c0a6f03260b524550749bd9d0f5b876e1e4",
+    "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\scripts\\check_nx_uart_armed.py": "6ea2a97bd606a90be94c9ce469ff0b4511deceb2e1e93c59efaf1e3877e02f79"
+  }
+}

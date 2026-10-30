@@ -1,8 +1,10 @@
 # NX → Pixhawk：UART 消息、带宽与分阶段验收
 
-日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**五项通信参数已加载，真实状态刷新率、原始姿态／零推力回读、未解锁状态下的 SA 人工退出、计划停流及 PX4 断流检测已通过。** 使用电脑实时引导页完成第三轮断流工况，最后确认未解锁、Altitude、实际kill有效、输出为零。未解锁时该固件不执行失效保护动作，因此本轮没有自动模式退出；已解锁接管与失效保护仍未验收。
+日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**真实状态刷新率、原始姿态／零推力回读，以及已解锁状态下的SA人工接管和断流自动退出均已通过。** 两项已解锁试验最终均确认未解锁、Altitude、实际kill有效、输出为零。完整实时影子MPC和位置目标实机回读仍需有效定位、真实关节反馈与时间对齐等输入条件；本轮未运行MPC。
 
 本次结果见 [验证记录](validation/nx_uart_contract_20261030/README.md)。使用的 PX4 固件为 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`；MAVLink 定义绑定到该固件的子模块提交 `33af200d25ec6f0925b49b1ba82bbf1294ea5f72`。不再切换 USB MAVLink／DDS，原 USB 路径的 Hard Fault 隔离措施继续有效。
+
+后续已解锁两项结果见 [已解锁台架记录](validation/nx_uart_armed_bench_20261030/README.md)，现场复现流程见 [NX_ARMED_UART_BENCH.md](NX_ARMED_UART_BENCH.md)。旧USB故障转储经完整备份、明确批准后归档，重启预检通过；故障检查仍开启，USB切换故障未因此修复。下文保留早期未解锁试验的过程和适用边界。
 
 ## 1. 这次要验证什么
 
@@ -107,7 +109,7 @@ Debug 的五位小数输出在本次样本中为截断显示；最初分析脚�
 | 层级 | 内容 | 当前进度／进入条件 |
 |---|---|---|
 | 原 MPC 计算与输出接口 | 历史输入→原 C++ MPC→新 MAVLink 编码 | 本次已完成；真实 NX 1281/1281 |
-| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 新频率、姿态零推力内部回读、未解锁 SA 退出及计划停流检测通过；已解锁自动退出另行验收 |
+| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 姿态零推力内部回读、已解锁SA接管及断流自动退回Altitude通过；限定动力断开台架 |
 | 真实状态影子运行 | 真实机体及关节状态→原 MPC，仅记录输出 | 需完整、同时间基准、有效的机体与 TS20 状态；禁止用零值或旧日志伪装缺失输入 |
 | 位置 MPC 实机无动力发送 | 真实 MPC PVA→PX4 内部原始 trajectory_setpoint | 上一步通过、外部定位有效、状态重置语义完整后进行 |
 | 动力闭环 | 限定空间末端保持→普通八字→快速八字 | 后续单独准备与验收，当前通信检查不批准这一层 |
@@ -133,6 +135,8 @@ Debug 的五位小数输出在本次样本中为截断显示；最初分析脚�
 | `scripts/check_nx_uart_manual_readback.py` | 合并真实发送帧与独立 Debug 证据，核对显示精度、稳态目标、人工退出后停发 |
 | `scripts/nx_uart_operator_panel.py`、`hardware/nx/mavlink_uart/operator_panel.html` | 电脑本机单轮引导、倒计时与恢复回读，不依赖聊天操作时机 |
 | `scripts/check_nx_uart_stream_stop.py` | 验证计划停流、独立丢失标志和恢复状态；明确保留已解锁验收未完成状态 |
+| `scripts/nx_uart_armed_panel.py`、`scripts/check_nx_uart_armed.py` | 已解锁动力断开台架引导及独立证据复核，排除地面自动锁定和SB停机混杂 |
+| `scripts/audit_px4_live_mpc_inputs.py` | 真机影子MPC前的只读输入核对；主题新鲜不等于水平位置／航向有效 |
 | `control_packages/x650_mpc_controller_v1/examples/hardware_replay.cpp` | 原 MPC 输出→CDR 与 MAVLink 双编码核验 |
 | `scripts/run_nx_full_interface_replay.py` | 指定已锁定输入及 `--mavlink-generated`，在真实 NX 回放 |
 

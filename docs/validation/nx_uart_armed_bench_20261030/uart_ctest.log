@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /dev/shm/flyarm_uart_build_uhpxi13w/build
+Test project /dev/shm/flyarm_uart_build_uhpxi13w/build
+    Start 1: mavlink_contract
+1/1 Test #1: mavlink_contract .................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec

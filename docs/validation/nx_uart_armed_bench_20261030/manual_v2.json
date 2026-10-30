@@ -1,0 +1,74 @@
+{
+  "kind": "flyarm.armed_uart_bench.v2",
+  "case": "manual_exit",
+  "passed": true,
+  "power_disconnected": true,
+  "automatic_arm_commands": 0,
+  "automatic_mode_commands": 0,
+  "persistent_parameter_writes": 0,
+  "temporary_stream_requests": 8,
+  "mpc_executed": false,
+  "flight_qualified": false,
+  "safe_final_restoration": true,
+  "actual_exit_nav_state": 1,
+  "actual_armed_through_exit": true,
+  "nx_target_stream_restarted": false,
+  "armed_offboard_reentry": false,
+  "unarmed_offboard_mode_observations": [],
+  "offboard_start_px4_us": 1027323358,
+  "offboard_exit_px4_us": 1031091641,
+  "offboard_duration_s": 3.768283,
+  "setpoints": 583,
+  "max_send_gap_ms": 21.9915,
+  "anchor_frd_to_ned_q": [
+    0.7676746845245361,
+    0.027478894218802452,
+    -0.01169938500970602,
+    -0.640143632888794
+  ],
+  "internal_matching_samples": [
+    {
+      "timestamp": 1027587334,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    },
+    {
+      "timestamp": 1028907199,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    },
+    {
+      "timestamp": 1030247522,
+      "display_methods": [
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp",
+        "truncated_5dp"
+      ]
+    }
+  ],
+  "exact_float32_telemetry_samples": 53,
+  "crc_errors_after_sync": 0,
+  "observed_after_last_target_s": 62.649919797,
+  "last_target_to_exit_observation_s": 0.010662657,
+  "timing_note": "NX receipt times and sequential Debug samples include sampling/telemetry delay; not a precise failsafe response-time measurement.",
+  "tested_binary_sha256": "e9fddfce561033530579944bfc3972a0f38b2bf44194d30b0c2c04d70efa0b41",
+  "nx_kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "hashes": {
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v2\\nx\\transport.jsonl": "06892df242328dcadd628272542f301d1218cf8e192fb3c01b526802be84ef23",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v2\\debug\\rounds.jsonl": "1d801a70bf8ca319018a2b7b7b03078c71fe128232dd4ce46756240a71d64d80",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v2\\debug\\report.json": "48a68167f80c79da3a9457d83dc2a6f3a31e2855a8595c78ba1f0e572ccf0f05",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v2\\preflight\\report.json": "6f9046407f1aad849a32b3f1defb7e4676287b664fecabe7e664c75f1a302c21",
+    "artifacts\\nx_uart_armed_bench_20261030\\armed_manual_v2\\restore\\report.json": "c615175c89231e2e5f7711c9e00bb744cbd44d210e7127a4ec2131a261ac1bc0",
+    "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\scripts\\check_nx_uart_armed.py": "6ea2a97bd606a90be94c9ce469ff0b4511deceb2e1e93c59efaf1e3877e02f79"
+  }
+}

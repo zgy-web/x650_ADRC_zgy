@@ -226,7 +226,8 @@ def handler(session, token):
                     and self.headers.get('X-Operator-Token') == token)
         def do_GET(self):
             if self.path == '/':
-                self.reply(200, HTML.read_text(encoding='utf-8').replace('__TOKEN__', token), 'text/html; charset=utf-8')
+                template = getattr(session, 'html', HTML)
+                self.reply(200, template.read_text(encoding='utf-8').replace('__TOKEN__', token), 'text/html; charset=utf-8')
             elif self.path == '/status':
                 self.reply(200, json.dumps(session.snapshot(), ensure_ascii=False))
             else:

@@ -1,0 +1,90 @@
+{
+  "kind": "flyarm.known_fault_archive_receipt.v1",
+  "complete": true,
+  "user_approved": true,
+  "plan": {
+    "source": "/fs/microsd/fault_2026_10_29_09_01_06.log",
+    "target": "/fs/microsd/flyarm_fault_archive_20261030/fault_2026_10_29_09_01_06.log",
+    "bytes": 16923,
+    "sha256": "d97375d97750fd7a8f93ec4979f5789ffe16a0aa9750f77ca5056b6ce154b9bb",
+    "commands": [
+      "mkdir /fs/microsd/flyarm_fault_archive_20261030",
+      "mv /fs/microsd/fault_2026_10_29_09_01_06.log /fs/microsd/flyarm_fault_archive_20261030/fault_2026_10_29_09_01_06.log"
+    ],
+    "deletion": false,
+    "fault_check_remains_enabled": true,
+    "nx_accessed": false,
+    "reboot_required_after_archive": true,
+    "scope": "Power-disconnected UART bench only; USB fault remains unresolved"
+  },
+  "writes": [
+    {
+      "command": "mkdir /fs/microsd/flyarm_fault_archive_20261030",
+      "response_received": true,
+      "response": "[Kmkdir /fs/microsd/flyarm_fault_archive_20261030\nnsh> "
+    },
+    {
+      "command": "mv /fs/microsd/fault_2026_10_29_09_01_06.log /fs/microsd/flyarm_fault_archive_20261030/fault_2026_10_29_09_01_06.log",
+      "response_received": true,
+      "response": "mv /fs/microsd/fault_2026_10_29_09_01_06.log /fs/microsd/flyarm_fault_archive_20261030/fault_2026_10_29_09_01_06.log\nnsh> "
+    }
+  ],
+  "fault_check": 1,
+  "fault_backup": {
+    "old_dump_fingerprint_matches": {
+      "task": true,
+      "pc": true,
+      "lr": true,
+      "cfsr": true,
+      "hfsr": true
+    },
+    "two_identical_reads": true,
+    "source_bytes": 16923,
+    "backup_sha256": "d97375d97750fd7a8f93ec4979f5789ffe16a0aa9750f77ca5056b6ce154b9bb",
+    "new_fault_observed_this_turn": false,
+    "fc_wall_date_not_pc_date": true
+  },
+  "post_reboot_preflight_ready": true,
+  "post_reboot_assessment": {
+    "ready": true,
+    "checks": {
+      "disarmed": true,
+      "altitude_mode": true,
+      "no_hil_or_failsafe": true,
+      "preflight_pass": true,
+      "altitude_can_arm": true,
+      "kill_released": true,
+      "no_actuator_override": true,
+      "rc_valid_minimum_throttle": true,
+      "sticks_centered": true,
+      "sf_off_sa_up_sb_released": true
+    },
+    "failed_checks": [],
+    "health_error_flags": 0,
+    "arming_check_error_flags": 17956864
+  },
+  "parameters": {
+    "COM_DISARM_PRFLT": 10,
+    "COM_DISARM_LAND": 2,
+    "COM_KILL_DISARM": 5,
+    "COM_OF_LOSS_T": 1,
+    "COM_OBL_RC_ACT": 0,
+    "COM_RC_OVERRIDE": 1,
+    "COM_ARM_WO_GPS": 1,
+    "CBRK_USB_CHK": 197848,
+    "COM_ARM_HFLT_CHK": 1,
+    "COM_CPU_MAX": 95,
+    "COM_RAM_MAX": 95,
+    "COM_FLTMODE1": 1,
+    "COM_FLTMODE6": 7
+  },
+  "port_closed": true,
+  "nx_configuration_changed": false,
+  "usb_switch_fault_fixed": false,
+  "flight_qualified": false,
+  "local_evidence_sha256": {
+    "fault_archive_v1/report.json": "bad85b6436370e0a7190bbd8fe66216ad17991d24a979035843cd5dae1651225",
+    "fault_backup/verification.json": "fab5b531c17a0f12c76a5c47261eb6ad6fcd432a1521463e7596382bd4881fea",
+    "preflight_after_reboot_v1/report.json": "69240df22d14e49d92b4a40b9930ada76681dc5bfe86c6ad54d61afc767f6a12"
+  }
+}
