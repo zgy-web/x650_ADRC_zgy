@@ -1,0 +1,45 @@
+{
+  "hardware_power_test": "NOT_COMPLETED",
+  "independent_power_verified": false,
+  "flight_ready": false,
+  "parameters_written": 0,
+  "initial_read": {
+    "complete": false,
+    "error": "RuntimeError('No verified NSH prompt')",
+    "port_closed": true,
+    "utc": "2026-10-30T07:40:58.462116+00:00",
+    "source_sha256": "87281c5a0884d5778deba6a20b39bc3733e0c891904b97064a87d84f70350456"
+  },
+  "tests": {
+    "tests": 33,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "files": {
+    "artifacts/px4_power_firstflight_20261030/initial_inventory/report.json": {
+      "bytes": 583,
+      "sha256": "78fd464d425488e7ccf11eff46cba96f51071df7a3c7bf0029232bb36983d125"
+    },
+    "artifacts/px4_power_firstflight_20261030/initial_inventory/console.json": {
+      "bytes": 152,
+      "sha256": "ed11b2c332b4cfae58d17b363bc21d38932f3748e389b74ea7a23ca6bba4baca"
+    },
+    "artifacts/px4_power_firstflight_20261030/software_tests.xml": {
+      "bytes": 5190,
+      "sha256": "f7f8a1c38d6750eba00c1c76bc30b3a2b64c3be5b0d84bd4467bd0e924e43512"
+    },
+    "scripts/px4_power_readonly.py": {
+      "bytes": 8760,
+      "sha256": "ee1626d02b640ef39822ca6d3b12df82a09725e43137a479e353da2c7567c4c6"
+    },
+    "scripts/px4_first_flight_readonly.py": {
+      "bytes": 9281,
+      "sha256": "30f143e4503718107a59020b3e15dd3e33c645eac2d589f750aa40fece954c6a"
+    },
+    "configs/hardware/x650_first_flight_v1.proposal.json": {
+      "bytes": 8882,
+      "sha256": "6bcf9256dcd2a6231f896e7ceec856230bac320ffdb085c7b44fb4664cafcf97"
+    }
+  }
+}

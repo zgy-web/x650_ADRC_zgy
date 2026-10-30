@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "status": "proposal_not_applied",
+  "execution_allowed": false,
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "historical_baseline_utc": "2026-10-30T07:23:19.872930+00:00",
+  "historical_baseline_sha256": "af7315e3f5051a753763b9a07ef30933287b65daa5c6ffb0a89f9fb12892fa60",
+  "latest_live_read": "failed: no verified NSH prompt",
+  "parameters_written": 0,
+  "changes": [
+    {
+      "parameter": "COM_FLTMODE4",
+      "historical_value": 2,
+      "historical_value_known": true,
+      "proposed": 1,
+      "group": "pilot_modes_and_limits",
+      "reason": "SA middle becomes Altitude",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "COM_FLTMODE6",
+      "historical_value": 7,
+      "historical_value_known": true,
+      "proposed": 8,
+      "group": "pilot_modes_and_limits",
+      "reason": "SA lower becomes Stabilized; pilot must understand direct-thrust throttle",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_MAN_TILT_MAX",
+      "historical_value": null,
+      "historical_value_known": false,
+      "proposed": 20,
+      "group": "pilot_modes_and_limits",
+      "reason": "manual tilt limit in Stabilized/Altitude",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_MAN_Y_MAX",
+      "historical_value": null,
+      "historical_value_known": false,
+      "proposed": 60,
+      "group": "pilot_modes_and_limits",
+      "reason": "manual yaw-rate limit, deg/s",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_Z_VEL_MAX_UP",
+      "historical_value": 3,
+      "historical_value_known": true,
+      "proposed": 1.0,
+      "group": "pilot_modes_and_limits",
+      "reason": "manual climb-rate upper bound, m/s",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_Z_VEL_MAX_DN",
+      "historical_value": 1.5,
+      "historical_value_known": true,
+      "proposed": 0.6,
+      "group": "pilot_modes_and_limits",
+      "reason": "manual descent-rate upper bound, m/s",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_TKO_SPEED",
+      "historical_value": 1.5,
+      "historical_value_known": true,
+      "proposed": 1.0,
+      "group": "pilot_modes_and_limits",
+      "reason": "respect pinned metadata minimum 1 m/s",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_LAND_SPEED",
+      "historical_value": 0.7,
+      "historical_value_known": true,
+      "proposed": 0.6,
+      "group": "pilot_modes_and_limits",
+      "reason": "respect pinned metadata minimum 0.6 m/s",
+      "condition": "fresh readback and pilot agreement; do not silently increase an existing smaller manual limit",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "MPC_Z_VEL_ALL",
+      "historical_value": null,
+      "historical_value_known": false,
+      "proposed": -3.0,
+      "group": "override_dependencies",
+      "reason": "disable overall vertical speed overwrite",
+      "condition": "only if fresh value >= 0; otherwise retain current negative value",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "SYS_VEHICLE_RESP",
+      "historical_value": null,
+      "historical_value_known": false,
+      "proposed": -0.4,
+      "group": "override_dependencies",
+      "reason": "disable overall responsiveness overwrite",
+      "condition": "only if fresh value >= 0; retain independent parameters and backup affected values",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "COM_FAIL_ACT_T",
+      "historical_value": 5,
+      "historical_value_known": true,
+      "proposed": 0,
+      "group": "failsafe",
+      "reason": "remove added action wait, not RC detection time",
+      "condition": "fresh snapshot; repeat changed failsafe behavior on physically unpowered bench",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "COM_LOW_BAT_ACT",
+      "historical_value": 0,
+      "historical_value_known": true,
+      "proposed": 2,
+      "group": "battery_conditional",
+      "reason": "Land action instead of warning-only; no horizontal hold guarantee",
+      "condition": "battery source and measurement checks first; no use of invalid remaining values",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "BAT_LOW_THR",
+      "historical_value": 0.15,
+      "historical_value_known": true,
+      "proposed": 0.25,
+      "group": "battery_conditional",
+      "reason": "candidate warning remaining fraction",
+      "condition": "battery source and measurement checks first; no use of invalid remaining values",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "BAT_CRIT_THR",
+      "historical_value": 0.07,
+      "historical_value_known": true,
+      "proposed": 0.15,
+      "group": "battery_conditional",
+      "reason": "candidate critical remaining fraction",
+      "condition": "battery source and measurement checks first; no use of invalid remaining values",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "BAT_EMERGEN_THR",
+      "historical_value": 0.05,
+      "historical_value_known": true,
+      "proposed": 0.1,
+      "group": "battery_conditional",
+      "reason": "candidate emergency remaining fraction",
+      "condition": "battery source and measurement checks first; no use of invalid remaining values",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "CBRK_USB_CHK",
+      "historical_value": 197848,
+      "historical_value_known": true,
+      "proposed": 0,
+      "group": "bench_bypass_conditional",
+      "reason": "restore USB arming check",
+      "condition": "POWER-only proof and flight USB arrangement confirmed",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    },
+    {
+      "parameter": "CBRK_IO_SAFETY",
+      "historical_value": 22027,
+      "historical_value_known": true,
+      "proposed": 0,
+      "group": "bench_bypass_conditional",
+      "reason": "restore hardware safety switch",
+      "condition": "physical safety switch verified and props-off checks prepared",
+      "rollback": "must use fresh pre-application readback; historical value is reference only"
+    }
+  ],
+  "keep": {
+    "COM_FLTMODE1": 1,
+    "NAV_RCL_ACT": 3,
+    "COM_RC_LOSS_T": 0.5,
+    "COM_RCL_EXCEPT": 0,
+    "CBRK_SUPPLY_CHK": 0,
+    "COM_ARM_HFLT_CHK": 1,
+    "COM_ARM_WO_GPS": 1,
+    "MPC_THR_HOVER": 0.5,
+    "MPC_USE_HTE": 1,
+    "MPC_THR_MIN": 0.12,
+    "MPC_THR_MAX": 1,
+    "MOT_POLE_COUNT": 24
+  },
+  "keep_pid_filters_and_calibration": true,
+  "approval": "explicit approval of concrete groups required before preparing any live write",
+  "pending_readback": [
+    "MPC_MAN_TILT_MAX",
+    "MPC_MAN_Y_MAX",
+    "MPC_Z_VEL_ALL",
+    "SYS_VEHICLE_RESP",
+    "MPC_TKO_RAMP_T",
+    "MPC_ALT_MODE",
+    "MPC_THR_CURVE",
+    "MPC_MANTHR_MIN",
+    "COM_POWER_COUNT",
+    "COM_RC_IN_MODE",
+    "SENS_EN_INA226",
+    "SENS_EN_INA228"
+  ]
+}

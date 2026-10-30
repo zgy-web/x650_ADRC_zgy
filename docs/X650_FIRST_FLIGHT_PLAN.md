@@ -2,6 +2,8 @@
 
 2026-10-30：用户将当前优先级改为先完成飞机本体的起降和稳定飞行。现场为室内，有熟悉 PX4 多旋翼的飞手；无机械臂 X650，装电池约 3.02 kg，四片桨仍拆下。动捕尚未恢复，机械臂未接。**本阶段采用 PX4 自带控制器，由现场飞手操作；当前工作是准备与只读检查，尚未进行首飞。**
 
+配套执行准备：[POWER独立供电验证](X650_POWER_VALIDATION.md)、[首飞参数变更表（尚未应用）](X650_FIRST_FLIGHT_PARAMETERS.md)。后续本轮COM13无回复，POWER实测尚未完成，不能沿用下面较早的成功快照宣称新的供电验证通过。
+
 ## 当前能做什么
 
 Pixhawk 6X Pro 内置 IMU、气压计和 BMM150 磁力计，提供两个外接 GPS 接口，没有内置 GNSS 定位接收机。接口或 `SYS_HAS_GPS=1` 不代表已有可用 GPS。[厂家规格](https://docs.holybro.com/autopilot/pixhawk-6x-pro/technical-specification)
