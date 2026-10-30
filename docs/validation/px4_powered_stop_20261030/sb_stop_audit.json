@@ -1,0 +1,114 @@
+{
+  "physical_sb_stop_verified": true,
+  "checks": {
+    "complete_capture": true,
+    "expected_firmware": true,
+    "closed_port": true,
+    "no_tool_commands": true,
+    "explicit_powered_bench": true,
+    "parse_and_freshness_pass": true,
+    "spinning_killed_then_disarmed": true,
+    "reason_is_kill_switch": true,
+    "final_sf_off": true,
+    "final_kill_set": true,
+    "final_disarmed": true,
+    "final_zero": true,
+    "operator_all_started_and_stopped": true
+  },
+  "errors": [],
+  "ordered_observation_indices": [
+    79,
+    81,
+    84
+  ],
+  "spinning_samples": [
+    {
+      "index": 78,
+      "rpm": {
+        "0": 491.0,
+        "1": 525.0,
+        "2": 500.0,
+        "3": 516.0
+      }
+    },
+    {
+      "index": 79,
+      "rpm": {
+        "0": 500.0,
+        "1": 516.0,
+        "2": 500.0,
+        "3": 525.0
+      }
+    }
+  ],
+  "final_disarming_reason": 8,
+  "final_disarming_reason_name": "kill_switch",
+  "telemetry_counters": {
+    "observed_healthy": true,
+    "successful_frames_added": 73374,
+    "crc_errors_added": 0,
+    "timeouts_added": 0,
+    "max_age_s": 0.25,
+    "scope": "This powered start/stop observation window only; voltage/current are not calibrated"
+  },
+  "final": {
+    "vehicle_status": {
+      "timestamp": 1481641377,
+      "arming_state": 1,
+      "nav_state": 1,
+      "failsafe": false
+    },
+    "actuator_armed": {
+      "armed": false,
+      "prearmed": false,
+      "ready_to_arm": false,
+      "kill": true,
+      "termination": false
+    },
+    "manual_control_switches": {
+      "timestamp": 1481878661,
+      "arm_switch": 3,
+      "kill_switch": 1,
+      "mode_slot": 1
+    },
+    "input_rc": {
+      "timestamp": 1482487124,
+      "timestamp_last_signal": 1482487099,
+      "channel_count": 16,
+      "input_source": 14,
+      "rc_lost": false,
+      "rc_failsafe": false
+    },
+    "manual_control_setpoint": {
+      "timestamp": 1482450365,
+      "data_source": 1,
+      "valid": true,
+      "throttle": -1.0
+    },
+    "action_request": {
+      "timestamp": 1435786545,
+      "action": 0,
+      "source": 1,
+      "mode": 0
+    },
+    "dshot": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    }
+  },
+  "observations": 117,
+  "reaction_time_measured": false,
+  "airborne_stop_verified": false,
+  "nx_offboard_takeover_verified": false,
+  "flight_ready": false,
+  "report_sha256": "996d1ae4ddaba003d5b9ee588956fdfce304825e35985e40e0e3bce3a101815a",
+  "auditor_sha256": "95518b09df2e5154adfe563282a65a1f30f187e3e46adf403664b2d74d97a938",
+  "operator_statement": "电机都启动、SB下档后全部停稳"
+}

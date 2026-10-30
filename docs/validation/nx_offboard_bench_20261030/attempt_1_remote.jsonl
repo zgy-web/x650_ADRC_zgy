@@ -1,0 +1,12 @@
+{"event": "session_started", "binary_sha256": "144a02e5b3c73bbe83bb26e5081202344cd99ab21cf30588d691f5658930aa39", "source_sha256": "d26280593b016815e9ff6876b13ceffa710f5dd4115c167a975c879614d03cab", "physical_px4": true, "persistent_deployment": false, "send_window_s": 60, "zero_thrust": true, "arm_requests": 0, "mode_requests": 0}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333480.840394]\u001b[m info     | \u001b[34mTermiosAgentLinux.cpp\u001b[m | \u001b[37minit                    \u001b[m | \u001b[32mrunning...\u001b[m             | fd: 3"}}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333480.841082]\u001b[m info     | \u001b[34mRoot.cpp          \u001b[m | \u001b[37mset_verbose_level       \u001b[m | \u001b[32mlogger setup\u001b[m           | verbose_level: 4"}}
+{"event": "agent_port_open", "device": "/dev/ttyACM0"}
+{"event": "probe", "payload": {"event": "bench_started", "zero_thrust": true, "maximum_stream_s": 60, "arm_requests": 0, "mode_requests": 0}}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333482.902494]\u001b[m info     | \u001b[34mRoot.cpp          \u001b[m | \u001b[37mcreate_client           \u001b[m | \u001b[32mcreate\u001b[m                 | client_key: 0x00000001, session_id: 0x81"}}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333482.902625]\u001b[m info     | \u001b[34mSessionManager.hpp\u001b[m | \u001b[37mestablish_session       \u001b[m | \u001b[32msession established\u001b[m    | client_key: 0x00000001, address: 1"}}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333482.903204]\u001b[m info     | \u001b[34mSessionManager.hpp\u001b[m | \u001b[37mestablish_session       \u001b[m | \u001b[32msession re-established\u001b[m | client_key: 0x00000001, address: 1"}}
+{"event": "agent", "payload": {"text": "\u001b[35m[1793333483.015701]\u001b[m info     | \u001b[34mProxyClient.cpp   \u001b[m | \u001b[37mcreate_participant      \u001b[m | \u001b[32mparticipant created\u001b[m    | client_key: 0x00000001, participant_id: 0x001(1)"}}
+{"event": "probe", "payload": {"text": "[INFO] [1793333505.973522033] [rclcpp]: signal_handler(SIGINT/SIGTERM)"}}
+{"event": "process_cleanup", "probe_stopped": true, "agent_stopped": true}
+{"event": "failure", "error": "RuntimeError('Control pipe ended or unexpected message')"}

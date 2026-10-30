@@ -64,6 +64,9 @@ def main():
         setpoint_test=work/"flyarm_hardware_state/test/probe_setpoint_ros.py"
         if setpoint_test.is_file():
             run(["python3",setpoint_test,install/"lib/flyarm_hardware_state/px4_setpoint_probe"],overlay=True)
+        offboard_test=work/"flyarm_hardware_state/test/probe_offboard_ros.py"
+        if offboard_test.is_file():
+            run(["python3",offboard_test,install/"lib/flyarm_hardware_state/px4_offboard_bench"],overlay=True)
         manifest = dict(schema="flyarm.hardware_link_build.v1", action=action, source_sha256=digest,
                         files=request["files"], unit_tests_pass=True, mock_ros_tests_pass=True,
                         hardware_accessed=False, permanent_configuration_changes=False)
@@ -73,6 +76,12 @@ def main():
             print(json.dumps(dict(event="setpoint_binary",sha256=hashlib.sha256(binary).hexdigest(),
                                   base64=base64.b64encode(binary).decode(),source_sha256=digest)),flush=True)
             manifest["setpoint_mock_tests_pass"]=True
+        if request.get("export_offboard_bench") is True:
+            if action!="check" or not offboard_test.is_file():raise ValueError("Tested RAM-only export required")
+            binary=(install/"lib/flyarm_hardware_state/px4_offboard_bench").read_bytes()
+            print(json.dumps(dict(event="offboard_binary",sha256=hashlib.sha256(binary).hexdigest(),
+                                  base64=base64.b64encode(binary).decode(),source_sha256=digest)),flush=True)
+            manifest["offboard_mock_tests_pass"]=True
         if action == "install":
             (install / "flyarm_link_source.json").write_text(json.dumps(manifest, indent=2))
             manifest["install_path"] = str(install)

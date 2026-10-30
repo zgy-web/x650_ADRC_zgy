@@ -1,0 +1,42 @@
+{
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "offboard_takeover_pass": false,
+  "offboard_stream_loss_pass": false,
+  "offboard_stream_started": false,
+  "mavlink_task": "mavlink_if2",
+  "pc": "08030118",
+  "lr": "08022bfd",
+  "cfsr": "01000000",
+  "hfsr": "40000000",
+  "operator_power_cycle": false,
+  "operator_statement": "没有操作飞控供电",
+  "operator_power_disconnected": true,
+  "fault_command": "mavlink stop -d /dev/ttyACM0",
+  "preceded_by_forced_dds_stop": true,
+  "precise_firmware_root_cause_proven": false,
+  "corrected_teardown_hardware_verified": false,
+  "usb_switch_quarantined": true,
+  "historical_attempt1_restore_flag_is_health_acceptance": false,
+  "sources": {
+    "artifacts\\px4_powered_offboard_20261030\\manual_takeover_v1\\console.json": {
+      "bytes": 37296,
+      "sha256": "eb0cd58abf4cc05beadb94ec82065185bd98768b18aa7eda3918f9e5e0c2b2a2"
+    },
+    "artifacts\\px4_powered_offboard_20261030\\manual_takeover_v2\\console.json": {
+      "bytes": 48608,
+      "sha256": "f36c080691e4d731b0e776a5d1ea4f99b43d05d1f0291f7d6bb4be5a54f8f35e"
+    },
+    "artifacts\\px4_powered_offboard_20261030\\manual_takeover_v1\\remote.jsonl": {
+      "bytes": 2310,
+      "sha256": "d8c735b0ff88d50b40db189b1e499423c7c215afa1f7829335ea6a98d3512b7b"
+    },
+    "artifacts\\px4_powered_offboard_20261030\\post_reboot_readonly\\report.json": {
+      "bytes": 10747,
+      "sha256": "521024a1c0b51013675733ef3c8c46255d1bc70a00c3bfa8b754cf9bc58a04d7"
+    },
+    "artifacts\\px4_powered_offboard_20261030\\final_kill_readback_v1\\report.json": {
+      "bytes": 6500,
+      "sha256": "c31650d39e39e18212df3d4143bf10d45a4ae8627f54f36a5856beb02e05f72b"
+    }
+  }
+}

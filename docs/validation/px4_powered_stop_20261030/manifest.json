@@ -1,0 +1,96 @@
+{
+  "base_commit": "94ff5ea78f1304c7dcad21ea26fa5392633d0b84",
+  "files": [
+    {
+      "path": "docs/validation/px4_powered_stop_20261030/battery_metadata_report.json",
+      "bytes": 39236,
+      "sha256": "969e7e00f82be02102df8e0b72582daf14872c3a97ba998a0a13dd0c010e6591"
+    },
+    {
+      "path": "docs/validation/px4_powered_stop_20261030/README.md",
+      "bytes": 3047,
+      "sha256": "0e70eba193e1581c6ea6646fc0ece7baa81fddd9bdbf230f9c27103f4d10fbdb"
+    },
+    {
+      "path": "docs/validation/px4_powered_stop_20261030/sb_stop_audit.json",
+      "bytes": 2769,
+      "sha256": "0e3bd704e11a677be8162bb0d7b04f44b7e604b1d4a0239633e2bb6e1f8fdfb1"
+    },
+    {
+      "path": "docs/validation/px4_powered_stop_20261030/sb_stop_report.json",
+      "bytes": 1417634,
+      "sha256": "996d1ae4ddaba003d5b9ee588956fdfce304825e35985e40e0e3bce3a101815a"
+    },
+    {
+      "path": "docs/validation/px4_rc_takeover_20261029/pinned_events_enums.json",
+      "bytes": 31842,
+      "sha256": "83493ab78dc522541b2f12d362267b0f1e6713ac89d457590fe5f8b04516f188"
+    },
+    {
+      "path": "scripts/px4_debug_console.py",
+      "bytes": 3769,
+      "sha256": "abba3b2684ddd270cd6b8177e2153ac7bf7ca95f0a881cfef67f6612fa4c9bd5"
+    },
+    {
+      "path": "scripts/px4_imu_pole_check.py",
+      "bytes": 11855,
+      "sha256": "e322616fd22f81c38c7ed6afa49099c488c47e8f65e9a1bd9f7b681678367e4d"
+    },
+    {
+      "path": "scripts/px4_motor_single_pulse.py",
+      "bytes": 14480,
+      "sha256": "c4c2971ed6bf1b3f6f6427977eb54a306c6ddbdf53ef1780cbaf44bce923a5c3"
+    },
+    {
+      "path": "scripts/px4_motor_telemetry_check.py",
+      "bytes": 6776,
+      "sha256": "89f7768583e648c9915109e35e6aa67c8692d8fd7992a42e4a0c6936af233f3e"
+    },
+    {
+      "path": "scripts/px4_rc_battery_metadata.py",
+      "bytes": 6357,
+      "sha256": "7ed1253c33e2911fd81a89bbf5ae8d65041b3a95179fb835cc8afa21c774a8a2"
+    },
+    {
+      "path": "scripts/px4_rc_powered_stop_observer.py",
+      "bytes": 7699,
+      "sha256": "60386ea9c6f3ed1073396c593d0c95ae87d46dd404873ab3b13bf1a240a16390"
+    },
+    {
+      "path": "scripts/px4_rc_powered_stop_summary.py",
+      "bytes": 5436,
+      "sha256": "95518b09df2e5154adfe563282a65a1f30f187e3e46adf403664b2d74d97a938"
+    },
+    {
+      "path": "scripts/px4_rc_safety_observer.py",
+      "bytes": 6995,
+      "sha256": "9334de3082f2e613f9c71667d4668e586b2a694d65cde2e205aaf93f3bd680a0"
+    },
+    {
+      "path": "scripts/px4_rc_safety_summary.py",
+      "bytes": 8191,
+      "sha256": "7b7a7cf536942b66e2c8d7733788b67092c5f0ed5d79776aa3d09d837d60fb0c"
+    },
+    {
+      "path": "scripts/px4_rc_switch_setup.py",
+      "bytes": 12112,
+      "sha256": "c7d4df72dcb9243a515e4959c65ce09f5ae6816e6cf1b2d913d2b29dbf6b90dc"
+    },
+    {
+      "path": "tests/unit/test_px4_rc_battery_metadata.py",
+      "bytes": 1362,
+      "sha256": "07540f11b5745059271fedddb36352dba73d08079671b8ccda5bb746e15d4b41"
+    },
+    {
+      "path": "tests/unit/test_px4_rc_powered_stop_observer.py",
+      "bytes": 3677,
+      "sha256": "ee4ab7d27302b0c23a50d068a497ec95bd96d8047743e02e89adf3236c0d239d"
+    },
+    {
+      "path": "tests/unit/test_px4_rc_powered_stop_summary.py",
+      "bytes": 1717,
+      "sha256": "293641342abf3f0c293ab465c6645384ba7cb56e66509a33f432d99bc8fac3dd"
+    }
+  ],
+  "scope": "Evidence and current reviewed source; historical failed runner output retained as recorded; revised cleanup has offline verification only"
+}

@@ -1,0 +1,9 @@
+{
+  "source": "read-only SSH process and tmpfs directory enumeration after final FC readback",
+  "processes": {
+    "MicroXRCEAgent": [],
+    "px4_offboard_bench": []
+  },
+  "offboard_ram_dirs": [],
+  "system_configuration_changes": false
+}

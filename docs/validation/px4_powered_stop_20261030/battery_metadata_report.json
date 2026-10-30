@@ -1,0 +1,387 @@
+{
+  "kind": "fixed_6s_30000mah_metadata",
+  "complete": true,
+  "write_attempts": [
+    "param set BAT1_N_CELLS 6",
+    "param set BAT1_CAPACITY 30000",
+    "param save"
+  ],
+  "guard_rows": [
+    {
+      "raw": {
+        "vehicle_status": "listener vehicle_status -n 1\n\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 1244322382 (0.256625 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 2043900\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 1\n    nav_state: 1\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: True\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\nnsh> ",
+        "actuator_armed": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 1244322379 (0.478499 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+        "manual_control_switches": "listener manual_control_switches -n 1\n\nTOPIC: manual_control_switches\n manual_control_switches\n    timestamp: 1244253800 (0.606676 seconds ago)\n    timestamp_sample: 1244249708 (4092 us before timestamp)\n    switch_changes: 15\n    mode_slot: 1\n    arm_switch: 3\n    return_switch: 0\n    loiter_switch: 0\n    offboard_switch: 0\n    kill_switch: 1\n    termination_switch: 0\n    gear_switch: 0\n    transition_switch: 0\n    photo_switch: 0\n    video_switch: 0\n    engage_main_motor_switch: 0\n    payload_power_switch: 0\n\nnsh> \u001b",
+        "input_rc": "[Klistener input_rc -n 1\n\nTOPIC: input_rc\n input_rc\n    timestamp: 1244951564 (0.002679 seconds ago)\n    timestamp_last_signal: 1244951540\n    rssi: -1\n    rssi_dbm: -12.00000\n    rc_lost_frame_count: 0\n    rc_total_frame_count: 0\n    rc_ppm_frame_length: 0\n    values: [1502, 1500, 1001, 1499, 1011, 1011, 1988, 1011, 1011, 1011, 1326, 1496, 1000, 1000, 2000, 2000, 0, 0]\n    channel_count: 16\n    rc_failsafe: False\n    rc_lost: False\n    input_source: 14\n    link_quality: 100\n\nnsh> ",
+        "manual_control_setpoint": "listener manual_control_setpoint -n 1\n\nTOPIC: manual_control_setpoint\n manual_control_setpoint\n    timestamp: 1244970212 (0.079543 seconds ago)\n    timestamp_sample: 1244769360 (200852 us before timestamp)\n    roll: 0.00000\n    pitch: 0.00000\n    yaw: 0.00000\n    throttle: -1.00000\n    flaps: 0.00000\n    aux1: 0.00000\n    aux2: 0.00000\n    aux3: 0.00000\n    aux4: 0.00000\n    aux5: 0.00000\n    aux6: 0.00000\n    buttons: 0\n    valid: True\n    data_source: 1\n    sticks_moving: False\n\nnsh> ",
+        "action_request": "listener action_request -n 1\n\nTOPIC: action_request\n action_request\n    timestamp: 864454163 (380.685120 seconds ago)\n    action: 0\n    source: 1\n    mode: 0\n\nERROR [uORB] logic error\nnsh> \u001b",
+        "dshot": "[Kdshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 1007923 events, 23293945us elapsed, 23.11us avg, min 17us max 75us 3.147us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 168259 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 1007923 events, 158473471us elapsed, 157.23us avg, min 147us max 457us 6.037us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 168261\nINFO  [dshot] Number of timeouts: 25822\nINFO  [dshot] Number of CRC errors: 0\nnsh> ",
+        "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 1245442021 (0.005093 seconds ago)\n    counter: 42093\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 1245442020 (0.017074 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.10000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 1245434617 (0.036442 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.24000\n    esc_temperature: 33.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 1245437080 (0.045486 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 1245439571 (0.056022 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 37.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+      },
+      "summary": {
+        "vehicle_status": {
+          "timestamp": 1244322382,
+          "arming_state": 1,
+          "nav_state": 1,
+          "failsafe": false
+        },
+        "actuator_armed": {
+          "armed": false,
+          "prearmed": false,
+          "ready_to_arm": false,
+          "kill": true,
+          "termination": false
+        },
+        "manual_control_switches": {
+          "timestamp": 1244253800,
+          "arm_switch": 3,
+          "kill_switch": 1,
+          "mode_slot": 1
+        },
+        "input_rc": {
+          "timestamp": 1244951564,
+          "timestamp_last_signal": 1244951540,
+          "channel_count": 16,
+          "input_source": 14,
+          "rc_lost": false,
+          "rc_failsafe": false
+        },
+        "manual_control_setpoint": {
+          "timestamp": 1244970212,
+          "data_source": 1,
+          "valid": true,
+          "throttle": -1.0
+        },
+        "action_request": {
+          "timestamp": 864454163,
+          "action": 0,
+          "source": 1,
+          "mode": 0
+        },
+        "dshot": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        }
+      },
+      "telemetry": {
+        "counters": {
+          "success": 168261,
+          "timeouts": 25822,
+          "crc_errors": 0
+        },
+        "header": {
+          "timestamp_us": 1245442021,
+          "age_s": 0.005093
+        },
+        "samples": {
+          "0": {
+            "timestamp_us": 1245442020,
+            "age_s": 0.017074,
+            "actuator_function": 101.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.1,
+            "esc_temperature": 39.0
+          },
+          "1": {
+            "timestamp_us": 1245434617,
+            "age_s": 0.036442,
+            "actuator_function": 102.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.24,
+            "esc_temperature": 33.0
+          },
+          "2": {
+            "timestamp_us": 1245437080,
+            "age_s": 0.045486,
+            "actuator_function": 103.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 26.0
+          },
+          "3": {
+            "timestamp_us": 1245439571,
+            "age_s": 0.056022,
+            "actuator_function": 104.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 37.0
+          }
+        },
+        "calibrated": false
+      }
+    },
+    {
+      "raw": {
+        "vehicle_status": "listener vehicle_status -n 1\n\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 1249481381 (0.349019 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 2043900\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 1\n    nav_state: 1\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: True\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\nnsh> ",
+        "actuator_armed": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 1249987377 (0.066141 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+        "manual_control_switches": "listener manual_control_switches -n 1\n\nTOPIC: manual_control_switches\n manual_control_switches\n    timestamp: 1249259527 (0.854145 seconds ago)\n    timestamp_sample: 1249255402 (4125 us before timestamp)\n    switch_changes: 15\n    mode_slot: 1\n    arm_switch: 3\n    return_switch: 0\n    loiter_switch: 0\n    offboard_switch: 0\n    kill_switch: 1\n    termination_switch: 0\n    gear_switch: 0\n    transition_switch: 0\n    photo_switch: 0\n    video_switch: 0\n    engage_main_motor_switch: 0\n    payload_power_switch: 0\n\nnsh> \u001b",
+        "input_rc": "[Klistener input_rc -n 1\n\nTOPIC: input_rc\n input_rc\n    timestamp: 1250205785 (0.001430 seconds ago)\n    timestamp_last_signal: 1250205759\n    rssi: -1\n    rssi_dbm: -12.00000\n    rc_lost_frame_count: 0\n    rc_total_frame_count: 0\n    rc_ppm_frame_length: 0\n    values: [1502, 1500, 1001, 1499, 1011, 1011, 1988, 1011, 1011, 1011, 1326, 1496, 1000, 1000, 2000, 2000, 0, 0]\n    channel_count: 16\n    rc_failsafe: False\n    rc_lost: False\n    input_source: 14\n    link_quality: 100\n\nnsh> ",
+        "manual_control_setpoint": "WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged\nWARN  [health_and_arming_checks] Preflight Fail: Flight termination active\nlistener manual_control_setpoint -n 1\n\nTOPIC: manual_control_setpoint\n manual_control_setpoint\n    timestamp: 1250260939 (0.039890 seconds ago)\n    timestamp_sample: 1250083593 (177346 us before timestamp)\n    roll: 0.00000\n    pitch: 0.00000\n    yaw: 0.00000\n    throttle: -1.00000\n    flaps: 0.00000\n    aux1: 0.00000\n    aux2: 0.00000\n    aux3: 0.00000\n    aux4: 0.00000\n    aux5: 0.00000\n    aux6: 0.00000\n    buttons: 0\n    valid: True\n    data_source: 1\n    sticks_moving: False\n\nnsh> ",
+        "action_request": "listener action_request -n 1\n\nTOPIC: action_request\n action_request\n    timestamp: 864454163 (385.961884 seconds ago)\n    action: 0\n    source: 1\n    mode: 0\n\nERROR [uORB] logic error\nnsh> \u001b",
+        "dshot": "[Kdshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 1012198 events, 23402083us elapsed, 23.12us avg, min 17us max 75us 3.154us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 170396 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 1012198 events, 159145578us elapsed, 157.23us avg, min 147us max 457us 6.040us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 170398\nINFO  [dshot] Number of timeouts: 25822\nINFO  [dshot] Number of CRC errors: 0\nnsh> ",
+        "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 1250715036 (0.008809 seconds ago)\n    counter: 42627\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 1250715035 (0.020033 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.10000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 1250707630 (0.040311 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.26000\n    esc_temperature: 33.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 1250710098 (0.050245 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 26.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 1250712567 (0.059761 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 37.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+      },
+      "summary": {
+        "vehicle_status": {
+          "timestamp": 1249481381,
+          "arming_state": 1,
+          "nav_state": 1,
+          "failsafe": false
+        },
+        "actuator_armed": {
+          "armed": false,
+          "prearmed": false,
+          "ready_to_arm": false,
+          "kill": true,
+          "termination": false
+        },
+        "manual_control_switches": {
+          "timestamp": 1249259527,
+          "arm_switch": 3,
+          "kill_switch": 1,
+          "mode_slot": 1
+        },
+        "input_rc": {
+          "timestamp": 1250205785,
+          "timestamp_last_signal": 1250205759,
+          "channel_count": 16,
+          "input_source": 14,
+          "rc_lost": false,
+          "rc_failsafe": false
+        },
+        "manual_control_setpoint": {
+          "timestamp": 1250260939,
+          "data_source": 1,
+          "valid": true,
+          "throttle": -1.0
+        },
+        "action_request": {
+          "timestamp": 864454163,
+          "action": 0,
+          "source": 1,
+          "mode": 0
+        },
+        "dshot": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        }
+      },
+      "telemetry": {
+        "counters": {
+          "success": 170398,
+          "timeouts": 25822,
+          "crc_errors": 0
+        },
+        "header": {
+          "timestamp_us": 1250715036,
+          "age_s": 0.008809
+        },
+        "samples": {
+          "0": {
+            "timestamp_us": 1250715035,
+            "age_s": 0.020033,
+            "actuator_function": 101.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.1,
+            "esc_temperature": 39.0
+          },
+          "1": {
+            "timestamp_us": 1250707630,
+            "age_s": 0.040311,
+            "actuator_function": 102.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.26,
+            "esc_temperature": 33.0
+          },
+          "2": {
+            "timestamp_us": 1250710098,
+            "age_s": 0.050245,
+            "actuator_function": 103.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 26.0
+          },
+          "3": {
+            "timestamp_us": 1250712567,
+            "age_s": 0.059761,
+            "actuator_function": 104.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 37.0
+          }
+        },
+        "calibrated": false
+      }
+    },
+    {
+      "raw": {
+        "vehicle_status": "listener vehicle_status -n 1\n\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 1251204329 (0.111009 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 2043900\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 0\n    latest_disarming_reason: 0\n    nav_state_user_intention: 1\n    nav_state: 1\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: True\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\nnsh> ",
+        "actuator_armed": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 1251204326 (0.337932 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+        "manual_control_switches": "listener manual_control_switches -n 1\n\nTOPIC: manual_control_switches\n manual_control_switches\n    timestamp: 1251262793 (0.341119 seconds ago)\n    timestamp_sample: 1251258698 (4095 us before timestamp)\n    switch_changes: 15\n    mode_slot: 1\n    arm_switch: 3\n    return_switch: 0\n    loiter_switch: 0\n    offboard_switch: 0\n    kill_switch: 1\n    termination_switch: 0\n    gear_switch: 0\n    transition_switch: 0\n    photo_switch: 0\n    video_switch: 0\n    engage_main_motor_switch: 0\n    payload_power_switch: 0\n\nnsh> \u001b",
+        "input_rc": "[Klistener input_rc -n 1\n\nTOPIC: input_rc\n input_rc\n    timestamp: 1251697784 (0.000123 seconds ago)\n    timestamp_last_signal: 1251697758\n    rssi: -1\n    rssi_dbm: -13.00000\n    rc_lost_frame_count: 0\n    rc_total_frame_count: 0\n    rc_ppm_frame_length: 0\n    values: [1502, 1500, 1001, 1499, 1011, 1011, 1988, 1011, 1011, 1011, 1326, 1496, 1000, 1000, 2000, 2000, 0, 0]\n    channel_count: 16\n    rc_failsafe: False\n    rc_lost: False\n    input_source: 14\n    link_quality: 100\n\nnsh> ",
+        "manual_control_setpoint": "listener manual_control_setpoint -n 1\n\nTOPIC: manual_control_setpoint\n manual_control_setpoint\n    timestamp: 1251598990 (0.192640 seconds ago)\n    timestamp_sample: 1251598942 (48 us before timestamp)\n    roll: 0.00000\n    pitch: 0.00000\n    yaw: 0.00000\n    throttle: -1.00000\n    flaps: 0.00000\n    aux1: 0.00000\n    aux2: 0.00000\n    aux3: 0.00000\n    aux4: 0.00000\n    aux5: 0.00000\n    aux6: 0.00000\n    buttons: 0\n    valid: True\n    data_source: 1\n    sticks_moving: False\n\nnsh> ",
+        "action_request": "listener action_request -n 1\n\nTOPIC: action_request\n action_request\n    timestamp: 864454163 (387.426392 seconds ago)\n    action: 0\n    source: 1\n    mode: 0\n\nERROR [uORB] logic error\nnsh> \u001b",
+        "dshot": "[Kdshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 1013385 events, 23432292us elapsed, 23.12us avg, min 17us max 75us 3.156us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 170990 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 1013385 events, 159332474us elapsed, 157.23us avg, min 147us max 457us 6.044us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 170992\nINFO  [dshot] Number of timeouts: 25822\nINFO  [dshot] Number of CRC errors: 0\nnsh> ",
+        "esc_status": "listener esc_status -n 1\n\nTOPIC: esc_status\n esc_status\n    timestamp: 1252186346 (0.002932 seconds ago)\n    counter: 42776\n    esc_count: 4\n    esc_connectiontype: 5\n    esc_online_flags: 15 (0b1111)\n    esc_armed_flags: 15 (0b1111)\n\n  esc[0] (esc_report):\n    timestamp: 1252186346 (0.014464 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.10000\n    esc_temperature: 39.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 101\n    esc_power: 0\n\n  esc[1] (esc_report):\n    timestamp: 1252178940 (0.033674 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 1.28000\n    esc_temperature: 33.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 102\n    esc_power: 0\n\n  esc[2] (esc_report):\n    timestamp: 1252181412 (0.043029 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 27.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 103\n    esc_power: 0\n\n  esc[3] (esc_report):\n    timestamp: 1252183880 (0.052467 seconds ago)\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 24.35000\n    esc_current: 0.00000\n    esc_temperature: 37.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 104\n    esc_power: 0\n\n  esc[4] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[5] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[6] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\n  esc[7] (esc_report):\n    timestamp: 0\n    esc_errorcount: 0\n    esc_rpm: 0\n    esc_voltage: 0.00000\n    esc_current: 0.00000\n    esc_temperature: 0.00000\n    failures: 0\n    esc_address: 0\n    esc_cmdcount: 0\n    esc_state: 0\n    actuator_function: 0\n    esc_power: 0\n\nnsh> "
+      },
+      "summary": {
+        "vehicle_status": {
+          "timestamp": 1251204329,
+          "arming_state": 1,
+          "nav_state": 1,
+          "failsafe": false
+        },
+        "actuator_armed": {
+          "armed": false,
+          "prearmed": false,
+          "ready_to_arm": false,
+          "kill": true,
+          "termination": false
+        },
+        "manual_control_switches": {
+          "timestamp": 1251262793,
+          "arm_switch": 3,
+          "kill_switch": 1,
+          "mode_slot": 1
+        },
+        "input_rc": {
+          "timestamp": 1251697784,
+          "timestamp_last_signal": 1251697758,
+          "channel_count": 16,
+          "input_source": 14,
+          "rc_lost": false,
+          "rc_failsafe": false
+        },
+        "manual_control_setpoint": {
+          "timestamp": 1251598990,
+          "data_source": 1,
+          "valid": true,
+          "throttle": -1.0
+        },
+        "action_request": {
+          "timestamp": 864454163,
+          "action": 0,
+          "source": 1,
+          "mode": 0
+        },
+        "dshot": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
+        }
+      },
+      "telemetry": {
+        "counters": {
+          "success": 170992,
+          "timeouts": 25822,
+          "crc_errors": 0
+        },
+        "header": {
+          "timestamp_us": 1252186346,
+          "age_s": 0.002932
+        },
+        "samples": {
+          "0": {
+            "timestamp_us": 1252186346,
+            "age_s": 0.014464,
+            "actuator_function": 101.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.1,
+            "esc_temperature": 39.0
+          },
+          "1": {
+            "timestamp_us": 1252178940,
+            "age_s": 0.033674,
+            "actuator_function": 102.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 1.28,
+            "esc_temperature": 33.0
+          },
+          "2": {
+            "timestamp_us": 1252181412,
+            "age_s": 0.043029,
+            "actuator_function": 103.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 27.0
+          },
+          "3": {
+            "timestamp_us": 1252183880,
+            "age_s": 0.052467,
+            "actuator_function": 104.0,
+            "esc_rpm": 0.0,
+            "esc_voltage": 24.35,
+            "esc_current": 0.0,
+            "esc_temperature": 37.0
+          }
+        },
+        "calibrated": false
+      }
+    }
+  ],
+  "utc_started": "2026-10-30T03:58:38.657729+00:00",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "source_sha256": "7ed1253c33e2911fd81a89bbf5ae8d65041b3a95179fb835cc8afa21c774a8a2",
+  "nx_accessed": false,
+  "before": {
+    "BAT1_N_CELLS": 0,
+    "BAT1_CAPACITY": -1,
+    "BAT1_SOURCE": 0,
+    "BAT1_V_EMPTY": 3.6,
+    "BAT1_V_CHARGED": 4.05,
+    "BAT_LOW_THR": 0.15,
+    "BAT_CRIT_THR": 0.07,
+    "BAT_EMERGEN_THR": 0.05,
+    "COM_ARM_BAT_MIN": -1
+  },
+  "battery_samples": [
+    "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 1245870574 (0.085290 seconds ago)\n    voltage_v: 24.51989\n    current_a: 0.19562\n    current_average_a: 15.00000\n    discharged_mah: 23.72475\n    remaining: -1.00000\n    scale: 1.00000\n    time_remaining_s: nan\n    temperature: 32.46094\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00500\n    ocv_estimate: 24.51989\n    ocv_estimate_filtered: 0.00000\n    volt_based_soc_estimate: -1.00000\n    voltage_prediction: 0.00000\n    prediction_error: 0.00000\n    estimation_covariance_norm: 0.00000\n    capacity: 0\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 0\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 3\n\nnsh> ",
+    "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 1247090954 (0.083473 seconds ago)\n    voltage_v: 24.52066\n    current_a: 0.19250\n    current_average_a: 15.00000\n    discharged_mah: 23.78860\n    remaining: 0.00000\n    scale: 1.30000\n    time_remaining_s: nan\n    temperature: 32.46094\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00634\n    ocv_estimate: 24.52800\n    ocv_estimate_filtered: 16.71192\n    volt_based_soc_estimate: 0.00000\n    voltage_prediction: 24.51952\n    prediction_error: 0.00114\n    estimation_covariance_norm: 0.80631\n    capacity: 0\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 3\n\nnsh> ",
+    "WARN  [health_and_arming_checks] Preflight Fail: Kill switch engaged\nWARN  [health_and_arming_checks] Preflight Fail: Flight termination active\nWARN  [health_and_arming_checks] Critical battery\t\nlistener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 1248311245 (0.082256 seconds ago)\n    voltage_v: 24.52008\n    current_a: 0.18750\n    current_average_a: 15.00000\n    discharged_mah: 23.85234\n    remaining: 0.16184\n    scale: 1.10269\n    time_remaining_s: nan\n    temperature: 32.44531\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00634\n    ocv_estimate: 24.52722\n    ocv_estimate_filtered: 22.03698\n    volt_based_soc_estimate: 0.16184\n    voltage_prediction: 24.51965\n    prediction_error: 0.00043\n    estimation_covariance_norm: 0.80631\n    capacity: 0\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 0\n\nnsh> ",
+    "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 1249531364 (0.080445 seconds ago)\n    voltage_v: 24.52028\n    current_a: 0.19125\n    current_average_a: 15.00000\n    discharged_mah: 23.91677\n    remaining: 0.79012\n    scale: 1.02388\n    time_remaining_s: nan\n    temperature: 32.48438\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00634\n    ocv_estimate: 24.52756\n    ocv_estimate_filtered: 23.73335\n    volt_based_soc_estimate: 0.79013\n    voltage_prediction: 24.51896\n    prediction_error: 0.00131\n    estimation_covariance_norm: 0.80631\n    capacity: 0\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 0\n\nnsh> "
+  ],
+  "after": {
+    "BAT1_N_CELLS": 6,
+    "BAT1_CAPACITY": 30000,
+    "BAT1_SOURCE": 0,
+    "BAT1_V_EMPTY": 3.6,
+    "BAT1_V_CHARGED": 4.05,
+    "BAT_LOW_THR": 0.15,
+    "BAT_CRIT_THR": 0.07,
+    "BAT_EMERGEN_THR": 0.05,
+    "COM_ARM_BAT_MIN": -1
+  },
+  "final_battery": "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 1252683807 (0.035507 seconds ago)\n    voltage_v: 24.51891\n    current_a: 0.18937\n    current_average_a: 15.00000\n    discharged_mah: 24.08371\n    remaining: 0.99919\n    scale: 1.00000\n    time_remaining_s: 7194.21973\n    temperature: 32.50000\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00634\n    ocv_estimate: 24.52612\n    ocv_estimate_filtered: 24.48519\n    volt_based_soc_estimate: 1.00000\n    voltage_prediction: 24.51833\n    prediction_error: 0.00057\n    estimation_covariance_norm: 0.80631\n    capacity: 30000\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: True\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 0\n\nnsh> ",
+  "port_closed": true
+}

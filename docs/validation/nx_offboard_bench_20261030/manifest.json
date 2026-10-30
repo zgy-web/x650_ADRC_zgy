@@ -1,0 +1,211 @@
+{
+  "base_commit": "94ff5ea78f1304c7dcad21ea26fa5392633d0b84",
+  "files": [
+    {
+      "path": "docs/NX_OFFBOARD_BENCH.md",
+      "bytes": 5438,
+      "sha256": "86d26a0581c02ce91f694b5faa98bdb65d7c21913b0fefb2c820ce76ba069f2d"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/attempt_1_remote.jsonl",
+      "bytes": 2310,
+      "sha256": "d8c735b0ff88d50b40db189b1e499423c7c215afa1f7829335ea6a98d3512b7b"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/attempt_1_report.json",
+      "bytes": 7640,
+      "sha256": "2904db43edba1bff854feb5b0621de9260521e48619e4f640c94114537b5bfc5"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/attempt_2_report.json",
+      "bytes": 7598,
+      "sha256": "abaae5c3aa3462faf50ccf64e793882b263448ae0a51b3fa312e0ae29069f41d"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/final_state_console.json",
+      "bytes": 21712,
+      "sha256": "41529206c1767ef577aebaccdfa426e26db8c21628f838d63cf5cb396736bcfd"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/final_state_report.json",
+      "bytes": 6500,
+      "sha256": "c31650d39e39e18212df3d4143bf10d45a4ae8627f54f36a5856beb02e05f72b"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/hardfault.txt",
+      "bytes": 6672,
+      "sha256": "dbc185d3d83e78a7c2cdcd3e9fbb4f69376eebc09c66f1c84d443067cc5b50bb"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/incident.json",
+      "bytes": 1738,
+      "sha256": "43c407a7c87e73517f4782119403754055846d945466d4e452d85e57e1eee935"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/local_regression.xml",
+      "bytes": 15751,
+      "sha256": "74a6b562922c0da9ba8e639472b0e2e50fcad6c07fff26fedfbb7e6bdaf1f2d1"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/nx_binary_manifest.json",
+      "bytes": 203,
+      "sha256": "4fcfb5d9d276d7e8837f3a2dc68a90dcd32f063027d5304a42cd1fc3bbe3decc"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/nx_build.log",
+      "bytes": 10997,
+      "sha256": "454aaeda352976a239eef1aaf13a10d901af1b10d94ae332247a7690d75aabe9"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/nx_build_report.json",
+      "bytes": 2420,
+      "sha256": "d978e82743f4f4687dddd4f48f60c8ff45d954708cf0f78592f8a35a9121e264"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/nx_final_cleanup.json",
+      "bytes": 248,
+      "sha256": "46b7c830bc5eee4048c61204c86be979b8397b37e0a3aff875db8e9d7c2915c8"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/nx_source_manifest.json",
+      "bytes": 2228,
+      "sha256": "ea31352c96ba34192005b2a120182cced8a2933271df2ce27712cf0321422783"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/protocol_failure_records.json",
+      "bytes": 16621,
+      "sha256": "144eca6378450e296636eefecbb105d265b058f61c8a04580e14af44fb179431"
+    },
+    {
+      "path": "docs/validation/nx_offboard_bench_20261030/README.md",
+      "bytes": 6917,
+      "sha256": "ef0f8dd33ed569c2481c34973483b1226d7658fb760d666819d3e34ef5798b59"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/CMakeLists.txt",
+      "bytes": 2583,
+      "sha256": "dbd5490110aa79a2620f018d8a73b90e05a256a604bebc77ae790b87e87b3642"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/link_contract.hpp",
+      "bytes": 7102,
+      "sha256": "ce83c2627ed4fa1ca9dc058c58a1624332fef0a1375c2fd44f061f009c5dbcd6"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/offboard_bench_contract.hpp",
+      "bytes": 2580,
+      "sha256": "a5d0775afb94ed6092b07880f7f103b2a6c895aafcb77084c89580874e7d959f"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/px4_message_adapter.hpp",
+      "bytes": 3234,
+      "sha256": "ce5ae0447a8a1e1aa7372bd46d06f05782f9f724762bda0ece27a877e25f2c63"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/include/flyarm_hardware_state/state_math.hpp",
+      "bytes": 2180,
+      "sha256": "e97bc22e46631f023e2fb91ec51e41e1f67c6dc3df313420fc0c763d045e921d"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/package.xml",
+      "bytes": 505,
+      "sha256": "570cd004bb96ea787533908a692e01ff5ea87b9389c99fa104a61bf93a2ed854"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/src/px4_link_probe.cpp",
+      "bytes": 8925,
+      "sha256": "e03bc02c3cc0f30c3f869196db6ab6e895292b1ae642dcb84b00512541da3fb4"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/src/px4_offboard_bench.cpp",
+      "bytes": 6876,
+      "sha256": "d0bf0c8e1982a9bfa210017057e2ca231982dc19e241f355a83001b0d95a7b4f"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/src/px4_setpoint_probe.cpp",
+      "bytes": 6183,
+      "sha256": "240e3a5f97833e7e41c8d366278937e26a575a3ca8729e1e4ad843c53036569b"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/src/px4_state_probe.cpp",
+      "bytes": 8561,
+      "sha256": "9ce1f6ed5fed2077d37ac232e106a13079efdd111617b8e4e4927e5c67a8ab3d"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/link_contract_test.cpp",
+      "bytes": 3632,
+      "sha256": "6e3ffa90b05e1c4488dd7d139edde614a887801eaed8349a3e6d179e0d5540e2"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/offboard_bench_contract_test.cpp",
+      "bytes": 1915,
+      "sha256": "909d36b14efed8d11143eba26a4fb9359162500a00e6f26b0f3f1de53061869f"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/probe_link_ros.py",
+      "bytes": 6297,
+      "sha256": "76acd87f53db2c6b5710aaa705f55849d02f1ab9ca0f528e32c780af6d9cd2f1"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/probe_offboard_ros.py",
+      "bytes": 5923,
+      "sha256": "91a045a7e8462e31508ce20c43a84b56148352a0486b6079a9e476c3218c7201"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/probe_setpoint_ros.py",
+      "bytes": 4942,
+      "sha256": "bc134a699525bbb485e79baa85c00b062b7d8e228413947a000b1d0b6c24f726"
+    },
+    {
+      "path": "ros2_ws/src/flyarm_hardware_state/test/state_math_test.cpp",
+      "bytes": 1825,
+      "sha256": "aa4f03e3fa9b2dfdfdeebb54c3fba2c63e73f7b54252e000d9783f007d757dcd"
+    },
+    {
+      "path": "scripts/build_nx_offboard_check.py",
+      "bytes": 2550,
+      "sha256": "0f588fa0b4529ec89efae75609db8ee2d8c32ebbb30a55fddd385dc28209b91c"
+    },
+    {
+      "path": "scripts/nx_hardware_link_build_remote.py",
+      "bytes": 5563,
+      "sha256": "2342d13f0a5822454f64f5fd6b5a03aff68ffb14bce35b40f992a2969de7bf5e"
+    },
+    {
+      "path": "scripts/nx_offboard_bench_session_remote.py",
+      "bytes": 6655,
+      "sha256": "293a4dc980f04c32921753c44692848e500cde5e4bf5c5003feb7e9f36ad9bd6"
+    },
+    {
+      "path": "scripts/px4_debug_console.py",
+      "bytes": 3769,
+      "sha256": "abba3b2684ddd270cd6b8177e2153ac7bf7ca95f0a881cfef67f6612fa4c9bd5"
+    },
+    {
+      "path": "scripts/px4_imu_pole_check.py",
+      "bytes": 11855,
+      "sha256": "e322616fd22f81c38c7ed6afa49099c488c47e8f65e9a1bd9f7b681678367e4d"
+    },
+    {
+      "path": "scripts/px4_motor_single_pulse.py",
+      "bytes": 14480,
+      "sha256": "c4c2971ed6bf1b3f6f6427977eb54a306c6ddbdf53ef1780cbaf44bce923a5c3"
+    },
+    {
+      "path": "scripts/px4_rc_switch_setup.py",
+      "bytes": 12112,
+      "sha256": "c7d4df72dcb9243a515e4959c65ce09f5ae6816e6cf1b2d913d2b29dbf6b90dc"
+    },
+    {
+      "path": "scripts/run_nx_offboard_bench.py",
+      "bytes": 17305,
+      "sha256": "bfca641f494f4fe0e920bbc95677eaa9135b8bf7b90eacd45d074c47cced4720"
+    },
+    {
+      "path": "tests/unit/test_nx_offboard_bench.py",
+      "bytes": 6763,
+      "sha256": "8935f5f180bb49e15cbec827087e7b42590a914b665f054b76c2509973a59a18"
+    }
+  ],
+  "scope": "Evidence and current reviewed source; historical failed runner output retained as recorded; revised cleanup has offline verification only"
+}

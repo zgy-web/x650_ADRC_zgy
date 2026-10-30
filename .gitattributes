@@ -188,3 +188,12 @@ scripts/summarize_px4_accel_recovery.py -text whitespace=cr-at-eol
 tests/unit/test_px4_restore_accel_snapshot.py -text whitespace=cr-at-eol
 tests/unit/test_px4_accel_recovery_summary.py -text whitespace=cr-at-eol
 docs/validation/px4_rc_takeover_20261029/*.json -text whitespace=cr-at-eol
+# Powered stop and Offboard incident evidence retain exact cross-host hashes.
+scripts/px4_motor_telemetry_check.py -text whitespace=cr-at-eol
+scripts/build_nx_offboard_check.py -text whitespace=cr-at-eol
+scripts/nx_offboard_bench_session_remote.py -text whitespace=cr-at-eol
+scripts/run_nx_offboard_bench.py -text whitespace=cr-at-eol
+tests/unit/test_nx_offboard_bench.py -text whitespace=cr-at-eol
+docs/NX_OFFBOARD_BENCH.md -text whitespace=cr-at-eol
+docs/validation/px4_powered_stop_20261030/** -text -whitespace
+docs/validation/nx_offboard_bench_20261030/** -text -whitespace

@@ -1,0 +1,47 @@
+{
+  "complete": false,
+  "scenario": "manual_takeover",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "rounds": [],
+  "operator_power_off": true,
+  "arm_commands": 0,
+  "mode_commands": 0,
+  "parameter_writes": 0,
+  "physical_stop_verified": false,
+  "operator_arming_allowed": true,
+  "before_guard": {
+    "state": {
+      "timestamp": 2082863385,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "kill": true,
+    "battery_voltage": 0.0
+  },
+  "before": {
+    "vehicle_status": "listener vehicle_status -n 1\n\nTOPIC: vehicle_status\n vehicle_status\n    timestamp: 2083370376 (0.296651 seconds ago)\n    armed_time: 0\n    takeoff_time: 0\n    nav_state_timestamp: 2043900\n    valid_nav_states_mask: 2147411327\n    can_set_nav_states_mask: 8308095\n    failure_detector_status: 0\n    arming_state: 1\n    latest_arming_reason: 2\n    latest_disarming_reason: 8\n    nav_state_user_intention: 1\n    nav_state: 1\n    executor_in_charge: 0\n    hil_state: 0\n    vehicle_type: 1\n    failsafe: False\n    failsafe_and_user_took_over: False\n    failsafe_defer_state: 0\n    gcs_connection_lost: True\n    gcs_connection_lost_counter: 0\n    high_latency_data_link_lost: False\n    is_vtol: False\n    is_vtol_tailsitter: False\n    in_transition_mode: False\n    in_transition_to_fw: False\n    system_type: 2\n    system_id: 1\n    component_id: 1\n    safety_button_available: True\n    safety_off: True\n    power_input_valid: True\n    usb_connected: True\n    open_drone_id_system_present: False\n    open_drone_id_system_healthy: False\n    parachute_system_present: False\n    parachute_system_healthy: False\n    rc_calibration_in_progress: False\n    calibration_enabled: False\n    pre_flight_checks_pass: False\n\nnsh> ",
+    "vehicle_control_mode": "listener vehicle_control_mode -n 1\n\nTOPIC: vehicle_control_mode\n vehicle_control_mode\n    timestamp: 2083877405 (0.012366 seconds ago)\n    flag_armed: False\n    flag_multicopter_position_control_enabled: True\n    flag_control_manual_enabled: True\n    flag_control_auto_enabled: False\n    flag_control_offboard_enabled: False\n    flag_control_position_enabled: False\n    flag_control_velocity_enabled: False\n    flag_control_altitude_enabled: True\n    flag_control_climb_rate_enabled: True\n    flag_control_acceleration_enabled: False\n    flag_control_attitude_enabled: True\n    flag_control_rates_enabled: True\n    flag_control_allocation_enabled: True\n    flag_control_termination_enabled: False\n    source_id: 0\n\nnsh> ",
+    "offboard_control_mode": "listener offboard_control_mode -n 1\nnever published\nnsh> ",
+    "vehicle_attitude_setpoint": "listener vehicle_attitude_setpoint -n 1\n\nTOPIC: vehicle_attitude_setpoint\n vehicle_attitude_setpoint\n    timestamp: 2084033974 (0.003605 seconds ago)\n    yaw_sp_move_rate: 0.00000\n    q_d: [0.61788, 0.00000, 0.00000, -0.78627] (Roll: 0.0 deg, Pitch: 0.0 deg, Yaw: -103.7 deg)\n    thrust_body: [0.00000, 0.00000, -0.00100]\nnsh> ",
+    "actuator_armed": "listener actuator_armed -n 1\n\nTOPIC: actuator_armed\n actuator_armed\n    timestamp: 2083877403 (0.220545 seconds ago)\n    armed: False\n    prearmed: False\n    ready_to_arm: False\n    lockdown: False\n    kill: True\n    termination: False\n    in_esc_calibration_mode: False\n\nnsh> ",
+    "manual_control_switches": "listener manual_control_switches -n 1\n\nTOPIC: manual_control_switches\n manual_control_switches\n    timestamp: 2084115176 (0.042238 seconds ago)\n    timestamp_sample: 2084111052 (4124 us before timestamp)\n    switch_changes: 19\n    mode_slot: 1\n    arm_switch: 3\n    return_switch: 0\n    loiter_switch: 0\n    offboard_switch: 0\n    kill_switch: 1\n    termination_switch: 0\n    gear_switch: 0\n    transition_switch: 0\n    photo_switch: 0\n    video_switch: 0\n    engage_main_motor_switch: 0\n    payload_power_switch: 0\n\nnsh> \u001b",
+    "manual_control_setpoint": "[Klistener manual_control_setpoint -n 1\n\nTOPIC: manual_control_setpoint\n manual_control_setpoint\n    timestamp: 2084115181 (0.139491 seconds ago)\n    timestamp_sample: 2083999818 (115363 us before timestamp)\n    roll: 0.00000\n    pitch: 0.00000\n    yaw: 0.00000\n    throttle: -1.00000\n    flaps: 0.00000\n    aux1: 0.00000\n    aux2: 0.00000\n    aux3: 0.00000\n    aux4: 0.00000\n    aux5: 0.00000\n    aux6: 0.00000\n    buttons: 0\n    valid: True\n    data_source: 1\n    sticks_moving: False\n\nnsh> ",
+    "battery_status": "listener battery_status -n 1\n\nTOPIC: battery_status\n battery_status\n    timestamp: 2084246861 (0.099387 seconds ago)\n    voltage_v: 0.00000\n    current_a: 0.00000\n    current_average_a: 12.66317\n    discharged_mah: 43.21065\n    remaining: 0.00000\n    scale: 1.00000\n    time_remaining_s: 0.00000\n    temperature: 34.11719\n    voltage_cell_v: [0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000]\n    max_cell_voltage_delta: 0.00000\n    full_charge_capacity_wh: 0.00000\n    remaining_capacity_wh: 0.00000\n    nominal_voltage: 0.00000\n    internal_resistance_estimate: 0.00000\n    ocv_estimate: 0.00000\n    ocv_estimate_filtered: 21.55110\n    volt_based_soc_estimate: 0.00000\n    voltage_prediction: 13.43180\n    prediction_error: -8.12897\n    estimation_covariance_norm: 0.78937\n    capacity: 30000\n    cycle_count: 0\n    average_time_to_empty: 0\n    manufacture_date: 0\n    state_of_health: 0\n    max_error: 0\n    interface_error: 0\n    faults: 0\n    over_discharge_count: 0\n    connected: False\n    cell_count: 6\n    source: 0\n    priority: 0\n    id: 1\n    is_powering_off: False\n    is_required: False\n    warning: 0\n\nnsh> ",
+    "dshot": "dshot status\nINFO  [dshot] Outputs initialized: yes\nINFO  [dshot] Outputs used: 0xf\nINFO  [dshot] Outputs on: yes\ndshot: cycle: 536059 events, 12226454us elapsed, 22.81us avg, min 19us max 45us 3.073us rms\ndshot: bdshot rpm: 0 events\ndshot: dshot telem: 75991 events\nINFO  [mixer_module] Param prefix: PWM_AUX\ncontrol latency: 536060 events, 84284100us elapsed, 157.23us avg, min 147us max 378us 6.049us rms\nINFO  [mixer_module] Switched to rate_ctrl work queue\nChannel Configuration:\nChannel 0: func: 101, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 1: func: 102, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 2: func: 103, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 3: func: 104, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 4: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 5: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 6: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 7: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nChannel 8: func:   0, value: 0, failsafe: 0, disarmed: 0, min: 109, max: 1999, center: 65535\nINFO  [dshot] telemetry on: /dev/ttyS1\nINFO  [dshot] Number of successful ESC frames: 316226\nINFO  [dshot] Number of timeouts: 40591\nINFO  [dshot] Number of CRC errors: 0\nnsh> "
+  },
+  "error": "RuntimeError('Missing prompt: mavlink stop -d /dev/ttyACM0')",
+  "port_closed": true
+}

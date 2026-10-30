@@ -39,8 +39,12 @@ def _timestamp(text):
     return dict(timestamp_us=stamp, age_s=age)
 
 
-def telemetry_snapshot(dshot_text, esc_text):
-    """Require four fresh stopped ESC slots; does not prove their physical IDs."""
+def telemetry_snapshot(dshot_text, esc_text, *, require_stopped=True):
+    """Require four fresh ESC slots; stopped is the default for existing tools.
+
+    A read-only rotation observer may explicitly accept nonnegative running RPM.
+    This never authorizes motion or identifies physical motor locations.
+    """
     counters = {}
     for key, label in (("success", "successful ESC frames"), ("timeouts", "timeouts"), ("crc_errors", "CRC errors")):
         values = re.findall(r"Number of " + label + r":\s*(\d+)\s*$", clean(dshot_text), re.M)
@@ -61,8 +65,10 @@ def telemetry_snapshot(dshot_text, esc_text):
         block = parts[offset + 1]
         values = {name: _number(block, name) for name in
                   ("actuator_function", "esc_rpm", "esc_voltage", "esc_current", "esc_temperature")}
-        if values["actuator_function"] != 101 + index or values["esc_rpm"] != 0:
-            raise ValueError("Unexpected ESC function or nonzero stopped-motor RPM")
+        if values["actuator_function"] != 101 + index or values["esc_rpm"] < 0:
+            raise ValueError("Unexpected ESC function or negative RPM")
+        if require_stopped and values["esc_rpm"] != 0:
+            raise ValueError("Nonzero stopped-motor RPM")
         if not 0 < values["esc_voltage"] <= 30:
             raise ValueError("Invalid voltage for this 6S bench setup")
         samples[index] = {**_timestamp(block), **values}
