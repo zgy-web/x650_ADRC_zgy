@@ -1,0 +1,584 @@
+{
+  "complete": true,
+  "flight_ready": false,
+  "utc": "2026-10-30T07:23:19.872930+00:00",
+  "firmware": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "parameter_writes": 0,
+  "arm_commands": 0,
+  "mode_commands": 0,
+  "motor_commands": 0,
+  "nx_accessed": false,
+  "parameters": {
+    "SYS_AUTOSTART": 4001,
+    "SYS_HAS_GPS": 1,
+    "GPS_1_CONFIG": 201,
+    "GPS_2_CONFIG": 0,
+    "SENS_BOARD_ROT": 0,
+    "SENS_BOARD_X_OFF": -3.107,
+    "SENS_BOARD_Y_OFF": -2.2961,
+    "SENS_BOARD_Z_OFF": 0,
+    "EKF2_MULTI_IMU": 3,
+    "EKF2_ABL_LIM": 0.4,
+    "EKF2_GPS_CTRL": 7,
+    "EKF2_EV_CTRL": 0,
+    "EKF2_HGT_REF": 1,
+    "SENS_MAG_MODE": 1,
+    "CAL_MAG0_ID": 4395041,
+    "CAL_MAG0_ROT": -1,
+    "CAL_MAG0_PRIO": 50,
+    "CAL_MAG1_ID": 0,
+    "CAL_MAG1_ROT": -1,
+    "CAL_MAG1_PRIO": -1,
+    "CA_AIRFRAME": 0,
+    "CA_ROTOR_COUNT": 4,
+    "MOT_POLE_COUNT": 24,
+    "DSHOT_MIN": 0.055,
+    "DSHOT_3D_ENABLE": 0,
+    "THR_MDL_FAC": 0,
+    "MPC_THR_HOVER": 0.5,
+    "MPC_USE_HTE": 1,
+    "MPC_THR_MIN": 0.12,
+    "MPC_THR_MAX": 1,
+    "MPC_TKO_SPEED": 1.5,
+    "MPC_LAND_SPEED": 0.7,
+    "MPC_TILTMAX_AIR": 45,
+    "MPC_TILTMAX_LND": 12,
+    "MPC_Z_VEL_MAX_UP": 3,
+    "MPC_Z_VEL_MAX_DN": 1.5,
+    "MPC_VEL_MANUAL": 10,
+    "MPC_ACC_HOR_MAX": 5,
+    "MC_ROLL_P": 4,
+    "MC_PITCH_P": 4,
+    "MC_YAW_P": 2.8,
+    "MC_ROLLRATE_P": 0.15,
+    "MC_ROLLRATE_I": 0.2,
+    "MC_ROLLRATE_D": 0.003,
+    "MC_PITCHRATE_P": 0.15,
+    "MC_PITCHRATE_I": 0.2,
+    "MC_PITCHRATE_D": 0.003,
+    "MC_YAWRATE_P": 0.2,
+    "MC_YAWRATE_I": 0.1,
+    "MC_YAWRATE_D": 0,
+    "IMU_GYRO_CUTOFF": 40,
+    "IMU_DGYRO_CUTOFF": 20,
+    "IMU_GYRO_DNF_EN": 0,
+    "BAT1_SOURCE": 0,
+    "BAT1_N_CELLS": 6,
+    "BAT1_CAPACITY": 30000,
+    "BAT1_V_CHARGED": 4.05,
+    "BAT1_V_EMPTY": 3.6,
+    "BAT_LOW_THR": 0.15,
+    "BAT_CRIT_THR": 0.07,
+    "BAT_EMERGEN_THR": 0.05,
+    "COM_LOW_BAT_ACT": 0,
+    "COM_RC_LOSS_T": 0.5,
+    "NAV_RCL_ACT": 3,
+    "COM_RCL_EXCEPT": 0,
+    "COM_FAIL_ACT_T": 5,
+    "COM_DL_LOSS_T": 10,
+    "NAV_DLL_ACT": 0,
+    "COM_RC_OVERRIDE": 1,
+    "COM_OBL_RC_ACT": 0,
+    "COM_ARM_WO_GPS": 1,
+    "COM_ARM_HFLT_CHK": 1,
+    "COM_DISARM_LAND": 2,
+    "COM_DISARM_PRFLT": 10,
+    "COM_KILL_DISARM": 5,
+    "CBRK_IO_SAFETY": 22027,
+    "CBRK_USB_CHK": 197848,
+    "CBRK_SUPPLY_CHK": 0,
+    "RC_MAP_ARM_SW": 5,
+    "RC_MAP_KILL_SW": 7,
+    "RC_MAP_FLTMODE": 6,
+    "SDLOG_MODE": 0,
+    "SDLOG_PROFILE": 1,
+    "GF_ACTION": 2,
+    "GF_MAX_HOR_DIST": 0,
+    "GF_MAX_VER_DIST": 0,
+    "COM_FLTMODE1": 1,
+    "COM_FLTMODE2": -1,
+    "COM_FLTMODE3": -1,
+    "COM_FLTMODE4": 2,
+    "COM_FLTMODE5": -1,
+    "COM_FLTMODE6": 7,
+    "PWM_AUX_FUNC1": 101,
+    "PWM_AUX_FUNC2": 102,
+    "PWM_AUX_FUNC3": 103,
+    "PWM_AUX_FUNC4": 104
+  },
+  "before": {
+    "state": {
+      "timestamp": 2219435375,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "kill": true,
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    }
+  },
+  "after": {
+    "state": {
+      "timestamp": 2225006458,
+      "arming_state": 1,
+      "nav_state": 1,
+      "hil_state": 0,
+      "failsafe": false
+    },
+    "kill": true,
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    }
+  },
+  "biases": {
+    "0": {
+      "timestamp": 2224069011,
+      "accel_device_id": 5767194,
+      "gyro_device_id": 5767194,
+      "accel": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          -0.0036,
+          -0.00019,
+          -0.00926
+        ],
+        "variance": [
+          0.00048,
+          0.00048,
+          1e-05
+        ],
+        "limit": 0.4,
+        "thresholds": [
+          0.36572670690062,
+          0.36572670690062,
+          0.30948683298050517
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      },
+      "gyro": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          -0.00255,
+          0.00064,
+          -0.00305
+        ],
+        "variance": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "limit": 0.15,
+        "thresholds": [
+          0.11249999999999999,
+          0.11249999999999999,
+          0.11249999999999999
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "1": {
+      "timestamp": 2224258719,
+      "accel_device_id": 2818066,
+      "gyro_device_id": 2818066,
+      "accel": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          0.00019,
+          -0.00208,
+          -0.00946
+        ],
+        "variance": [
+          0.00041,
+          0.00041,
+          1e-05
+        ],
+        "limit": 0.4,
+        "thresholds": [
+          0.3607453701939498,
+          0.3607453701939498,
+          0.30948683298050517
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      },
+      "gyro": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          -0.00214,
+          6e-05,
+          0.00263
+        ],
+        "variance": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "limit": 0.15,
+        "thresholds": [
+          0.11249999999999999,
+          0.11249999999999999,
+          0.11249999999999999
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "2": {
+      "timestamp": 2224359066,
+      "accel_device_id": 3407882,
+      "gyro_device_id": 3407882,
+      "accel": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          0.00064,
+          0.00278,
+          0.01343
+        ],
+        "variance": [
+          0.00041,
+          0.00041,
+          1e-05
+        ],
+        "limit": 0.4,
+        "thresholds": [
+          0.3607453701939498,
+          0.3607453701939498,
+          0.30948683298050517
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      },
+      "gyro": {
+        "valid": true,
+        "stable": true,
+        "bias": [
+          0.0004,
+          0.00066,
+          0.00021
+        ],
+        "variance": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "limit": 0.15,
+        "thresholds": [
+          0.11249999999999999,
+          0.11249999999999999,
+          0.11249999999999999
+        ],
+        "exceeds": [
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  "assessment": {
+    "flight_ready": false,
+    "scope": "read-only inventory; no automatic flight authorization",
+    "position_fresh": true,
+    "local_position_validity": {
+      "xy_valid": "False",
+      "z_valid": "True",
+      "v_xy_valid": "False",
+      "v_z_valid": "True",
+      "heading_good_for_control": "False"
+    },
+    "positioning_blockers": [
+      "xy_valid not valid",
+      "v_xy_valid not valid",
+      "heading_good_for_control not valid"
+    ],
+    "gps": {
+      "fix_type": null,
+      "satellites_used": null,
+      "eph": null,
+      "epv": null,
+      "vel_ned_valid": null
+    },
+    "power": {
+      "voltage5v_v": "5.01224",
+      "usb_connected": "1",
+      "brick_valid": "0",
+      "servo_valid": "1"
+    },
+    "battery": {
+      "connected": null,
+      "voltage_v": null,
+      "cell_count": null,
+      "remaining": null,
+      "warning": null,
+      "source": null
+    },
+    "rc": {
+      "valid": "True",
+      "throttle": "-1.00000"
+    },
+    "switches": {
+      "arm_switch": "3",
+      "mode_slot": "1",
+      "kill_switch": "1"
+    },
+    "estimator_biases": {
+      "0": {
+        "timestamp": 2224069011,
+        "accel_device_id": 5767194,
+        "gyro_device_id": 5767194,
+        "accel": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            -0.0036,
+            -0.00019,
+            -0.00926
+          ],
+          "variance": [
+            0.00048,
+            0.00048,
+            1e-05
+          ],
+          "limit": 0.4,
+          "thresholds": [
+            0.36572670690062,
+            0.36572670690062,
+            0.30948683298050517
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        },
+        "gyro": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            -0.00255,
+            0.00064,
+            -0.00305
+          ],
+          "variance": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "limit": 0.15,
+          "thresholds": [
+            0.11249999999999999,
+            0.11249999999999999,
+            0.11249999999999999
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "1": {
+        "timestamp": 2224258719,
+        "accel_device_id": 2818066,
+        "gyro_device_id": 2818066,
+        "accel": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            0.00019,
+            -0.00208,
+            -0.00946
+          ],
+          "variance": [
+            0.00041,
+            0.00041,
+            1e-05
+          ],
+          "limit": 0.4,
+          "thresholds": [
+            0.3607453701939498,
+            0.3607453701939498,
+            0.30948683298050517
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        },
+        "gyro": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            -0.00214,
+            6e-05,
+            0.00263
+          ],
+          "variance": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "limit": 0.15,
+          "thresholds": [
+            0.11249999999999999,
+            0.11249999999999999,
+            0.11249999999999999
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "2": {
+        "timestamp": 2224359066,
+        "accel_device_id": 3407882,
+        "gyro_device_id": 3407882,
+        "accel": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            0.00064,
+            0.00278,
+            0.01343
+          ],
+          "variance": [
+            0.00041,
+            0.00041,
+            1e-05
+          ],
+          "limit": 0.4,
+          "thresholds": [
+            0.3607453701939498,
+            0.3607453701939498,
+            0.30948683298050517
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        },
+        "gyro": {
+          "valid": true,
+          "stable": true,
+          "bias": [
+            0.0004,
+            0.00066,
+            0.00021
+          ],
+          "variance": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "limit": 0.15,
+          "thresholds": [
+            0.11249999999999999,
+            0.11249999999999999,
+            0.11249999999999999
+          ],
+          "exceeds": [
+            false,
+            false,
+            false
+          ]
+        }
+      }
+    },
+    "mode_parameters": {
+      "COM_FLTMODE1": 1,
+      "COM_FLTMODE4": 2,
+      "COM_FLTMODE6": 7
+    },
+    "circuit_breakers": {
+      "CBRK_IO_SAFETY": 22027,
+      "CBRK_USB_CHK": 197848,
+      "CBRK_SUPPLY_CHK": 0
+    },
+    "motor_poles": 24,
+    "physical_checks_not_observable": [
+      "flight configuration and actual takeoff mass",
+      "propeller orientation/fastening and structural inspection",
+      "power redundancy and stability with external USB disconnected",
+      "pilot, clear flight area, weather, and on-site operating permissions",
+      "actual loaded attitude/vibration and landing behavior"
+    ]
+  },
+  "unknown_parameters": [],
+  "port_closed": true,
+  "gps_driver_status": "gps status\nINFO  [gps] Main GPS\nINFO  [gps] protocol: UBX\nINFO  [gps] status: NOT OK, port: /dev/ttyS0, baudrate: 0\nINFO  [gps] sat info: disabled\nINFO  [gps] rate reading: \t\t     0 B/s\nnsh> ",
+  "raw_evidence": {
+    "artifacts/px4_first_flight_20261030/inventory_v1/report.json": {
+      "bytes": 34803,
+      "sha256": "916409d7f7d5bab121c2e0eb06dcc09b661fd198d4f9fc7bbeed02c25dc63417"
+    },
+    "artifacts/px4_first_flight_20261030/inventory_v1/console.json": {
+      "bytes": 90645,
+      "sha256": "1d2a4def207dfe7ef6e6be316f53452a15eb3762e8dfdeee7a311ff7ec0fc1e6"
+    },
+    "artifacts/px4_first_flight_20261030/software_tests.xml": {
+      "bytes": 2602,
+      "sha256": "d7de7984aa9bb8b6ff8ac23cb8ce0cef9e9c039042d9b8f021e23cf2e9bb6178"
+    }
+  },
+  "source_sha256": "87281c5a0884d5778deba6a20b39bc3733e0c891904b97064a87d84f70350456",
+  "software_tests": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Planning and fixed read-only hardware inventory only; no first flight or flight authorization.",
+  "user_confirmed": {
+    "airframe": "X650 without arm",
+    "takeoff_mass_kg_approx": 3.02,
+    "venue": "indoor; suitability pending on-site review",
+    "pilot": "experienced PX4 multicopter pilot present",
+    "props": "not installed",
+    "power_input": "POWER1/POWER2 connected; module model pending",
+    "mocap": "unavailable, under maintenance"
+  }
+}

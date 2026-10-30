@@ -6,6 +6,8 @@
 >
 > 仿真平台有意独立于 `main` 分支维护。
 
+2026-10-30 真机当前优先事项：[无机械臂 X650 的起飞、定高与降落准备](docs/X650_FIRST_FLIGHT_PLAN.md)。动捕仍不可用，先由现场飞手验证 PX4 本体控制；已有 UART 台架通过不等于首飞放行，本轮仅完成只读基线与测试安排。
+
 <p align="center">
   <img src="docs/images/simulation_reviewed_underfold.png" width="48%" alt="Gazebo 中的已验证两连杆空中机械臂">
   <img src="docs/images/simulation_3link_overview.png" width="48%" alt="Gazebo 中的可配置三连杆空中机械臂">
