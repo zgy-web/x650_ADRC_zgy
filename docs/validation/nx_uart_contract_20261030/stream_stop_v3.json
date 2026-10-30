@@ -1,0 +1,40 @@
+{
+  "kind": "flyarm.unarmed_uart_stream_stop.v1",
+  "planned_stop_and_loss_detection_passed": true,
+  "armed_failsafe_qualified": false,
+  "automatic_mode_exit_observed": false,
+  "unarmed_mode_states_after_loss": [
+    14
+  ],
+  "explanation": "This firmware selects Action::None while unarmed; loss detection is verified but armed automatic fallback remains untested.",
+  "setpoints": 282,
+  "observed_offboard_to_last_target_s": 3.009559924,
+  "recorded_after_last_target_s": 68.975065691,
+  "max_send_gap_ms": 21.9649,
+  "last_px4_offboard_control_mode_stamp_us": 1666951767,
+  "first_lost_flag_stamp_us": 1668596647,
+  "first_lost_sample_age_s": 1.64488,
+  "loss_timing_note": "Sequential Debug sampling gives an observation time, not the exact instant when the flag changed.",
+  "continuous_loss_observation_s": 81.604324,
+  "target_stream_resumed": false,
+  "all_debug_samples_disarmed": true,
+  "all_debug_outputs_zero": true,
+  "restored_disarmed_altitude_kill_true_outputs_zero": true,
+  "preflight_pass_after_restore": false,
+  "crc_errors_after_sync": 0,
+  "nx_kernel_faults": [],
+  "nx_persistent_files_created": [],
+  "mpc_executed_in_live_loop": false,
+  "firmware_sources": {
+    "unarmed_action_selection": "https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/modules/commander/failsafe/framework.cpp#L404-L420",
+    "offboard_loss_detection": "https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/modules/commander/HealthAndArmingChecks/checks/offboardCheck.cpp#L36-L62"
+  },
+  "hashes": {
+    "artifacts\\nx_uart_contract_20261030\\operator_stream_stop_v3\\nx\\transport.jsonl": "510c6c7b94bbad8b777a5c5743d3b6cf7e6653c7ceb029a7ff83d3ad34e86fd5",
+    "artifacts\\nx_uart_contract_20261030\\operator_stream_stop_v3\\debug\\rounds.jsonl": "bc49f28fdc37bc18e7113205c40c1ea5884c12758206c1d045629757d74b3c9b",
+    "artifacts\\nx_uart_contract_20261030\\operator_stream_stop_v3\\debug\\report.json": "6a1cb8d46c06c30a983c3deff749b4535bb050816ab6e4120a63609da57f55f3",
+    "artifacts\\nx_uart_contract_20261030\\operator_stream_stop_v3\\restore\\report.json": "c0dae8ed1f5663aff7547ccc33c30ccfd6948af468fc193334d05f3ac00ebcf5",
+    "artifacts\\nx_uart_contract_20261030\\operator_stream_stop_v3\\restore\\rounds.jsonl": "7a8b1b3ea83f13da36eb4188c195aeece0cd02c0da10a00b6f40c620e03fe9f4",
+    "E:\\research_my_studio\\flyarm\\safe-aerial-manipulator-testbed\\scripts\\check_nx_uart_stream_stop.py": "69e515228e47e0ac91c1088473308d1425cc0a87552fdf901d5541e95e70efa5"
+  }
+}

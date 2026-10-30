@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NX–PX4 · 限时断流检查</title>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#0b1420;color:#e6eef7;font:18px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:990px;margin:36px auto;padding:24px}.eyebrow{color:#6bdad0;font-size:16px}h1{font-size:34px;margin:8px 0 18px}.scope{color:#c2d0df;background:#172435;border-radius:10px;padding:16px 22px}.card{margin:24px 0;background:#142333;border:2px solid #34516b;border-radius:14px;padding:28px}.card.ready{border-color:#56e0bc;background:#12392f}.card.error{border-color:#ed946f}#hint{font-size:28px;font-weight:650;line-height:1.55}#count{font-size:50px;font-variant-numeric:tabular-nums;color:#65e2c1;min-height:78px}.status{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.status>div{background:#172435;border-radius:10px;padding:15px}.label{font-size:14px;color:#a9bed3}.value{font-size:22px}button{font:600 20px system-ui;color:#091d25;background:#67e1c3;padding:18px 26px;border:0;border-radius:10px;cursor:pointer;margin:18px 12px 12px 0}button:disabled{opacity:.35;cursor:not-allowed}#restore{background:#b6d5f6}.note{font-size:15px;color:#a8bfd4}#error{color:#ffb291;white-space:pre-wrap}#badge{color:#b6d5f6;font-size:15px}.steps{padding-left:24px}@media(max-width:650px){main{margin:8px auto;padding:16px}.status{grid-template-columns:1fr}h1{font-size:26px}#hint{font-size:24px}}
+</style>
+<main>
+<div class="eyebrow">FLYARM · 真实 UART · 未解锁台架</div>
+<h1>NX → PX4 限时断流检查</h1>
+<div class="scope"><strong>四桨拆下，电调动力断开。</strong>SF＝负100%，油门最低。仅发送实际初始姿态与零推力；不解锁、不运行 MPC、不改配置。</div>
+<section class="card" id="card"><div id="badge">尚未启动</div><div id="hint">保持 SA 上档、SB 中档；就位后点击开始。</div><div id="count"></div><div id="error"></div></section>
+<div class="status"><div><div class="label">飞控实际模式</div><div class="value" id="mode">—</div></div><div><div class="label">本轮曾进入 Offboard</div><div class="value" id="seen">—</div></div><div><div class="label">Offboard 信号丢失标志</div><div class="value" id="lost">—</div></div></div>
+<button id="start">我已就位，开始限时测试</button><button id="restore" disabled>已恢复，回读确认</button>
+<ol class="steps"><li>点击开始后先保持 SA 上档，等待上方绿色提示。</li><li>出现“现在将 SA 拨到下档”后立即操作，并保持下档。<strong>不必回聊天确认。</strong></li><li>进入 Offboard 约3秒后，C++ 程序主动停发。按页面提示等记录结束。</li><li>页面通知结束后，SA回上档、SB拨回下档；点击恢复回读。</li></ol>
+<p class="note">发送最长60秒；页面只提供更短的操作倒计时，不延长发送期限。关闭页面不会延长或自动重启测试。每页仅启动一轮；采集完成不等于验收通过，需结合原始记录分析。日志仅保存在这台电脑。</p>
+</main>
+<script>
+const token='__TOKEN__';let pending=false;
+const names={idle:'尚未启动',starting:'核对初始状态',ready:'发送已就绪 · 现在操作',observing:'正在记录',finished:'记录结束 · 恢复开关',failed:'本轮未通过',restoring:'核对恢复状态',restored:'恢复已确认',restore_failed:'需要检查恢复状态',active_error:'进程状态需要人工检查'};
+const $=id=>document.getElementById(id);
+async function refresh(){try{const response=await fetch('/status',{cache:'no-store'});if(!response.ok)throw Error('状态读取失败');const s=await response.json();$('badge').textContent=names[s.phase]||s.phase;$('hint').textContent=s.hint;$('card').className='card'+(s.phase==='ready'?' ready':'')+(s.error?' error':'');$('count').textContent=s.phase==='ready'?'操作窗口 '+s.action_seconds_left+' 秒':'';$('error').textContent=s.error||'';$('mode').textContent=s.restored?'Altitude（恢复已回读）':s.nav_state===14?'Offboard':s.nav_state===1?'Altitude':s.nav_state===null?'—':String(s.nav_state);$('seen').textContent=s.seen_offboard?'已进入':'尚未进入';$('lost').textContent=s.signal_lost===null?'—':s.signal_lost?'已丢失':'未丢失';$('start').disabled=pending||s.phase!=='idle';$('restore').disabled=pending||!['finished','failed'].includes(s.phase);}catch(e){$('error').textContent='实时页面连接中断。保持动力断开、SF负100%；请联系我。不要凭旧提示开始操作。';$('start').disabled=$('restore').disabled=true;$('card').className='card error';$('count').textContent='';$('hint').textContent='暂停操作：页面未获得新状态';}}
+async function action(name){if(pending)return;pending=true;$('start').disabled=$('restore').disabled=true;try{const r=await fetch('/'+name,{method:'POST',headers:{'X-Operator-Token':token}});if(!r.ok)throw Error('操作未被接受，请等待状态刷新');}catch(e){$('error').textContent=e.message;}finally{pending=false;await refresh();}}
+$('start').onclick=()=>action('start');$('restore').onclick=()=>action('restore');refresh();setInterval(refresh,500);
+</script></html>

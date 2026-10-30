@@ -1,6 +1,6 @@
 # NX → Pixhawk：UART 消息、带宽与分阶段验收
 
-日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**五项通信参数已加载，真实状态刷新率、原始姿态／零推力回读、未解锁状态下的 SA 人工退出已通过。** NX 网络恢复后已完成真实采集。断流首轮因操作未进入发送窗口而到时结束，不能算断流验收；需要单独重测。已解锁接管与失效保护仍未由本轮试验验证。
+日期：2026-10-30。对象：Orin NX／达妙载板、Pixhawk 6X Pro、TELEM1 三线 UART。当前阶段为动力断开的通信台架。**五项通信参数已加载，真实状态刷新率、原始姿态／零推力回读、未解锁状态下的 SA 人工退出、计划停流及 PX4 断流检测已通过。** 使用电脑实时引导页完成第三轮断流工况，最后确认未解锁、Altitude、实际kill有效、输出为零。未解锁时该固件不执行失效保护动作，因此本轮没有自动模式退出；已解锁接管与失效保护仍未验收。
 
 本次结果见 [验证记录](validation/nx_uart_contract_20261030/README.md)。使用的 PX4 固件为 `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`；MAVLink 定义绑定到该固件的子模块提交 `33af200d25ec6f0925b49b1ba82bbf1294ea5f72`。不再切换 USB MAVLink／DDS，原 USB 路径的 Hard Fault 隔离措施继续有效。
 
@@ -90,7 +90,13 @@ NX 程序只在当前会话设置 `/dev/ttyTHS1` 的 termios，结束恢复原�
 
 Debug 的五位小数输出在本次样本中为截断显示；最初分析脚本误按四舍五入的半个末位单位检查，造成假差异。复核器现验证精确的截断／舍入显示形式，并另核对完整 float32 遥测，没有放宽控制器约束。各 Debug 主题按顺序读取，并非原子快照；模式切换边界的一条其他控制器目标及一条跨越退出时间的 Debug 行均保留在证据中，不混入稳态匹配数量。
 
-断流首轮 `cpp_stream_stop_v1` 在 60 s 发送上限内未观察到 Offboard，以 `session_limit` 停止，随后完成清理。它只证明限时停止执行了，**不证明 PX4 的 Offboard 断流退出成功**；见 [未完成断流工况的记录](validation/nx_uart_contract_20261030/stream_stop_expired_v1.json)。重测必须重新确认 SA 上档并启动新记录，不延长既有上限，也不覆盖这一轮证据。
+前两轮 `cpp_stream_stop_v1/v2` 在 60 s 发送上限内未观察到 Offboard，以 `session_limit` 停止并清理。聊天确认与现场动作未落在同一窗口，两轮均保留为未完成断流工况，不能计入断流检测通过；见 [首轮记录](validation/nx_uart_contract_20261030/stream_stop_expired_v1.json)、[第二轮记录](validation/nx_uart_contract_20261030/stream_stop_expired_v2.json)。
+
+第三轮改由操作者点击电脑上的实时引导页启动。NX仍运行相同ELF、相同60 s上限；页面只负责顺序启动记录器、显示即时提示和倒计时，不修改C++算法或飞控。`operator_stream_stop_v3` 实际发送282条目标，观察到Offboard后约3.00956 s停止，随后记录68.975 s未恢复目标发送。最大目标发送间隔21.9649 ms，CRC错误及所检查的NX串口内核错误均为0。Debug确认最后一条`offboard_control_mode`时间戳不再更新，信号丢失标志置位并持续观察81.604 s。第一次读到丢失标志的样本距最后内部控制模式更新时间1.645 s；这是低频、顺序Debug采样下的观察上界，**不是精确失联响应延迟**。
+
+断流后本轮仍显示Offboard，且始终未解锁。原因已核对到[同版本失效保护框架](https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/modules/commander/failsafe/framework.cpp#L404-L420)：未解锁时返回`Action::None`。[Offboard检查](https://github.com/PX4/PX4-Autopilot/blob/d6f12ad1c4f70ad3230afd7d86e971421e02fef4/src/modules/commander/HealthAndArmingChecks/checks/offboardCheck.cpp#L36-L62)仍独立检测超时。因此本轮结论为“计划停流与断流检测通过”，而不是“自动退出通过”。最后操作者恢复SA上档、SB下档，独立回读确认未解锁、Altitude、kill=True、输出全零。详见[第三轮分析](validation/nx_uart_contract_20261030/stream_stop_v3.json)。
+
+电脑引导工具为 `scripts/nx_uart_operator_panel.py`。它只监听`127.0.0.1`，打开页面和GET请求不访问硬件；启动需同源、带随机会话令牌的显式按钮操作，每页限一轮。串口记录器先通过初态检查才启动NX发送。发送／观察仍使用原有脚本，日志只落在电脑。页面不判定已解锁失效保护通过；恢复回读显示的是恢复后的真实状态，测试阶段历史值另行保留。程序不依赖聊天回复推进现场时序。
 
 ## 5. 之前的 MPC 什么时候测试
 
@@ -101,7 +107,7 @@ Debug 的五位小数输出在本次样本中为截断显示；最初分析脚�
 | 层级 | 内容 | 当前进度／进入条件 |
 |---|---|---|
 | 原 MPC 计算与输出接口 | 历史输入→原 C++ MPC→新 MAVLink 编码 | 本次已完成；真实 NX 1281/1281 |
-| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 新频率、姿态零推力内部回读、未解锁 SA 退出通过；断流待重测，已解锁退出另行验收 |
+| 真实通信与退出 | C++ 真实状态→PX4 内部设定值→人工接管／断流退出 | 新频率、姿态零推力内部回读、未解锁 SA 退出及计划停流检测通过；已解锁自动退出另行验收 |
 | 真实状态影子运行 | 真实机体及关节状态→原 MPC，仅记录输出 | 需完整、同时间基准、有效的机体与 TS20 状态；禁止用零值或旧日志伪装缺失输入 |
 | 位置 MPC 实机无动力发送 | 真实 MPC PVA→PX4 内部原始 trajectory_setpoint | 上一步通过、外部定位有效、状态重置语义完整后进行 |
 | 动力闭环 | 限定空间末端保持→普通八字→快速八字 | 后续单独准备与验收，当前通信检查不批准这一层 |
@@ -125,6 +131,8 @@ Debug 的五位小数输出在本次样本中为截断显示；最初分析脚�
 | `scripts/observe_px4_uart_bench.py` | COM13 独立限时只读记录模式、原始设定值与输出 |
 | `scripts/summarize_nx_mavlink_capture.py` | 电脑端按固定协议定义复核 CRC、实测频率与时间戳 |
 | `scripts/check_nx_uart_manual_readback.py` | 合并真实发送帧与独立 Debug 证据，核对显示精度、稳态目标、人工退出后停发 |
+| `scripts/nx_uart_operator_panel.py`、`hardware/nx/mavlink_uart/operator_panel.html` | 电脑本机单轮引导、倒计时与恢复回读，不依赖聊天操作时机 |
+| `scripts/check_nx_uart_stream_stop.py` | 验证计划停流、独立丢失标志和恢复状态；明确保留已解锁验收未完成状态 |
 | `control_packages/x650_mpc_controller_v1/examples/hardware_replay.cpp` | 原 MPC 输出→CDR 与 MAVLink 双编码核验 |
 | `scripts/run_nx_full_interface_replay.py` | 指定已锁定输入及 `--mavlink-generated`，在真实 NX 回放 |
 
