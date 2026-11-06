@@ -1,0 +1,18 @@
+/dts-v1/;
+/plugin/;
+
+/* 仅增加 UARTA 的 DMA 映射；不改变引脚、驱动、时钟和 DMA 通道。
+ * NVIDIA R36.5 修正依据：https://forums.developer.nvidia.com/t/363837/7
+ * 0x04 已与本机 GPCDMA 映射核对；实际安装需另行授权。
+ */
+/ {
+    overlay-name = "Flyarm UART1 IOMMU mapping for R36.5";
+    compatible = "nvidia,tegra234";
+
+    fragment@0 {
+        target = <&uarta>;
+        __overlay__ {
+            iommus = <&smmu_niso0 0x04>;
+        };
+    };
+};

@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-06",
+  "status": "UART_DMA_REPAIR_AND_PASSIVE_RECEIVE_PASSED",
+  "platform": "Damiao carrier / Orin NX / Jetson Linux R36.5.0",
+  "px4_release": "1.17.0",
+  "px4_git": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "repair": "UARTA iommus = <&smmu_niso0 0x04>; explicit FDT+OVERLAYS; original primary retained as manual fallback",
+  "before": {
+    "receive_seconds": 20,
+    "valid_frames": 0,
+    "kernel_error_records": 83
+  },
+  "after": {
+    "receive_seconds": 20.000457,
+    "baud": 921600,
+    "rx_bytes": 858,
+    "valid_frames": 46,
+    "px4_heartbeats": 20,
+    "last_heartbeat_armed": false,
+    "bad_crc_or_unknown_dialect": 0,
+    "bad_signature": 0,
+    "same_window_uart_dma_kernel_errors": 0,
+    "application_serial_write_calls": 0,
+    "driver_tx_delta": 0,
+    "settings_restored": true,
+    "port_closed": true,
+    "ram_tools_removed": true
+  },
+  "tree": {
+    "comparison_passed": true,
+    "unexpected_static_changes": 0,
+    "known_removed_odm_labels": [
+      "gbe-uphy-config-8",
+      "hsio-uphy-config-0",
+      "hsstp-lane-map-3"
+    ],
+    "base_dtb_unmodified": true
+  },
+  "local_tests_passed": 10,
+  "nx_preflight_passed": true,
+  "final_px4_disarmed": true,
+  "scope": "Single-direction UART receive only; not command downlink, MPC feedback, Offboard, HIL, hard-real-time or flight acceptance. No attitude or position/velocity stream in this window.",
+  "px4_parameters_modified": false,
+  "mpc_production_code_modified": false,
+  "experiment_records_location": "PC only"
+}

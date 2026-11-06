@@ -1,5 +1,7 @@
 # NX R36.5 UART1 DMA 映射修复
 
+2026-11-06 新板独立实例已完成启动及单向接收验收，见 [orinnx实例](orinnx_20261106/README.md)。本目录原脚本仍绑定旧板配置，新板使用独立目录和散列，不混用两套安装器。
+
 本目录针对已核对的达妙载板 / Orin NX：物理 UART1 对应 `serial@3100000`、`/dev/ttyTHS1`，系统为 Jetson Linux R36.5.0。它不是通用刷机或串口配置工具。
 
 `flyarm-uart1-iommu-r365.dts` 只增加 UARTA 的 `iommus = <&smmu_niso0 0x04>`。该映射来自 [NVIDIA 工程师给出的 R36.5 修复](https://forums.developer.nvidia.com/t/solved-uart-serial-port-not-working-after-upgradint-to-jetpack-6-2-2-orin-nano-nx/363837/7)。启动配置采用 R36.5 官方支持的 [extlinux OVERLAYS](https://docs.nvidia.com/jetson/archives/r36.5/DeveloperGuide/HR/JetsonModuleAdaptationAndBringUp/JetsonOrinNxNanoSeries.html#device-tree-overlays)，保留原来的内核、initrd、启动参数。

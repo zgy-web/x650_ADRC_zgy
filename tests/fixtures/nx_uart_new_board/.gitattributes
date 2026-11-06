@@ -1,0 +1,2 @@
+# 末尾空格和空行属于启动配置字节保留测试输入。
+*.conf -text whitespace=-blank-at-eol,-blank-at-eof

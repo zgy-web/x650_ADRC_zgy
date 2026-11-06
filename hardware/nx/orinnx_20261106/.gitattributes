@@ -1,0 +1,3 @@
+# 源码散列参与NX安装检查，检出后必须保持LF。
+*.py text eol=lf
+*.dts text eol=lf
