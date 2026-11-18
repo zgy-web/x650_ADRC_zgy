@@ -1,0 +1,12 @@
+{
+  "source_urdf_sha256": "75e3afc27edb9341d7afd0924069cae6c9eb5eadd7ae459be940c1137b050c22",
+  "source_validated_sdf_sha256": "ee866a5d71dd279b56b2ee8b3ada8d90db7ab0c5f2ebf013ea630ffcee8583ea",
+  "mass_kg": 3.0050809999999992,
+  "urdf_changes": [
+    "physical passive joints replace mimic chain",
+    "B proxy frame moved to joint anchor, with inertial transform preserving mass properties",
+    "Gazebo sensors, motor and closure plugins embedded as gazebo extensions",
+    "package-relative meshes and basename plugin library"
+  ],
+  "source_validation": "PX4 flight success on original v2 SDF; distribution URDF conversion requires separate verification"
+}

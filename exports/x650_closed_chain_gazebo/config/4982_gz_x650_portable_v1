@@ -1,0 +1,65 @@
+#!/bin/sh
+. ${R}etc/init.d/rc.mc_defaults
+PX4_SIMULATOR=gz
+PX4_GZ_WORLD=x650_portable_v1
+PX4_SIM_MODEL=amsim_urdf_x650_portable_v1_flight
+PX4_GZ_MODEL_POSE=0,0,0.40,0,0,0
+param set SIM_GZ_EN 1
+param set CA_AIRFRAME 0
+param set CA_ROTOR_COUNT 4
+param set CA_R_REV 0
+param set SIM_GZ_EC_REV 0
+param set THR_MDL_FAC 1
+param set MPC_THR_HOVER 0.38689179235632154
+param set CA_ROTOR0_PX 0.2340745108596403
+param set CA_ROTOR0_PY 0.23004023051946063
+param set CA_ROTOR0_PZ -0.061826570610978994
+param set CA_ROTOR0_AX 0
+param set CA_ROTOR0_AY 0
+param set CA_ROTOR0_AZ -1
+param set CA_ROTOR0_CT 19.042648468430656
+param set CA_ROTOR0_KM 0.016
+param set SIM_GZ_EC_FUNC1 101
+param set SIM_GZ_EC_DIS1 0
+param set SIM_GZ_EC_MIN1 0
+param set SIM_GZ_EC_MAX1 628
+param set CA_ROTOR1_PX -0.22573876436345672
+param set CA_ROTOR1_PY -0.22977304470363638
+param set CA_ROTOR1_PZ -0.061826570610978994
+param set CA_ROTOR1_AX 0
+param set CA_ROTOR1_AY 0
+param set CA_ROTOR1_AZ -1
+param set CA_ROTOR1_CT 19.042648468430656
+param set CA_ROTOR1_KM 0.016
+param set SIM_GZ_EC_FUNC2 102
+param set SIM_GZ_EC_DIS2 0
+param set SIM_GZ_EC_MIN2 0
+param set SIM_GZ_EC_MAX2 628
+param set CA_ROTOR2_PX 0.2340745108596403
+param set CA_ROTOR2_PY -0.22977304470363638
+param set CA_ROTOR2_PZ -0.061826570610978994
+param set CA_ROTOR2_AX 0
+param set CA_ROTOR2_AY 0
+param set CA_ROTOR2_AZ -1
+param set CA_ROTOR2_CT 19.042648468430656
+param set CA_ROTOR2_KM -0.016
+param set SIM_GZ_EC_FUNC3 103
+param set SIM_GZ_EC_DIS3 0
+param set SIM_GZ_EC_MIN3 0
+param set SIM_GZ_EC_MAX3 628
+param set CA_ROTOR3_PX -0.22573876436345672
+param set CA_ROTOR3_PY 0.23004023051946063
+param set CA_ROTOR3_PZ -0.061826570610978994
+param set CA_ROTOR3_AX 0
+param set CA_ROTOR3_AY 0
+param set CA_ROTOR3_AZ -1
+param set CA_ROTOR3_CT 19.042648468430656
+param set CA_ROTOR3_KM -0.016
+param set SIM_GZ_EC_FUNC4 104
+param set SIM_GZ_EC_DIS4 0
+param set SIM_GZ_EC_MIN4 0
+param set SIM_GZ_EC_MAX4 628
+param set SIM_GZ_EC_FUNC5 0
+param set SIM_GZ_EC_FUNC6 0
+param set SIM_GZ_EC_FUNC7 0
+param set SIM_GZ_EC_FUNC8 0

@@ -285,7 +285,17 @@ def start_gui() -> dict:
         ]
 
     topics = _run(["gz", "topic", "-l"], env=env, timeout=8)
-    if topics.returncode != 0 or "/world/default/" not in topics.stdout:
+    # Imported flight models may use a dedicated world and physics engine.
+    # Gazebo publishes a world-scoped clock for every running world; its name
+    # is not necessarily "default".
+    world_clocks = [
+        topic.strip() for topic in topics.stdout.splitlines()
+        if topic.strip().startswith("/world/")
+        and len(topic.strip().split("/")) == 4
+        and topic.strip().endswith("/clock")
+        and topic.strip().split("/")[2]
+    ]
+    if topics.returncode != 0 or not world_clocks:
         raise RuntimeError(
             "Gazebo server is not visible on the current GZ_PARTITION"
         )

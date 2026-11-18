@@ -1,0 +1,11 @@
+schema_version: 1
+name: my_controller
+module: scenarios/my_controller.py
+backend: px4_sitl
+model: x500_underfold
+visualization:
+  default: gui
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true

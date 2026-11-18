@@ -1,0 +1,68 @@
+schema_version: 1
+type: px4_multicopter
+base_link: base_link
+body_frame: FLU
+px4_sys_autostart: 4982
+controlled_joints:
+- upper_arm_joint
+- fore_crank_joint
+notes: CAD combined 3.005081 kg; inherited MN4014 KV330/15x5CF/22.2V approximate simulation
+  propulsion. New rotor names map by geometry, not hardware wiring. Force-servo closed
+  chain; Bullet Featherstone required.
+rotors:
+- motor_number: 0
+  joint: M1_joint
+  link: M1_link
+  turning_direction: ccw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M1, front_right, ccw viewed from above.
+- motor_number: 1
+  joint: M2_joint
+  link: M2_link
+  turning_direction: ccw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M2, rear_left, ccw viewed from above.
+- motor_number: 2
+  joint: M3_joint
+  link: M3_link
+  turning_direction: cw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M3, front_left, cw viewed from above.
+- motor_number: 3
+  joint: M4_joint
+  link: M4_link
+  turning_direction: cw
+  motor_constant: 4.828453605732144e-05
+  moment_constant: 0.016
+  max_rot_velocity: 628.3185307179587
+  time_constant_up: 0.0125
+  time_constant_down: 0.025
+  rotor_drag_coefficient: 0.0001
+  rolling_moment_coefficient: 1.0e-06
+  rotor_velocity_slowdown_sim: 10.0
+  allow_continuous_conversion: false
+  notes: Simulation M4, rear_right, cw viewed from above.

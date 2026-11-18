@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "identified": true,
+  "gain": [
+    1.1971876517526172,
+    1.1094961061398787,
+    1.0792712071410813
+  ],
+  "tau": [
+    0.8306469346489274,
+    0.6204569197210713,
+    0.2626878407483634
+  ],
+  "delay_s": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "bias_velocity": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fit_rmse_m_s": [
+    0.010798424756358463,
+    0.027514989499619467,
+    0.006380944316604905
+  ],
+  "validation_rmse_m_s": [
+    0.01053310459196469,
+    0.025758603367390737,
+    0.006750412014149626
+  ],
+  "fit_boundary_hit": [
+    false,
+    false,
+    false
+  ],
+  "fit_samples": [
+    200,
+    200,
+    200
+  ],
+  "validation_samples": [
+    200,
+    200,
+    200
+  ],
+  "equation": "p_dot=v; tau*v_dot=-v+gain*u; zero pure delay and zero fitted bias",
+  "fitting": "Recursive positive-pulse trajectory least squares for gain/tau; fixed bias=0 and delay=0; negative pulse held out",
+  "time_basis": "Effective observed response at control receipt time; source timestamps deduplicate samples",
+  "delay_policy": "Effective tau absorbs observed inner-loop/transport rise time; no claim of a physical delay measurement",
+  "parameter_bounds": {
+    "gain": [
+      0.1,
+      3.0
+    ],
+    "tau_s": [
+      0.04,
+      2.0
+    ]
+  },
+  "validation_limit_m_s": 0.08,
+  "validation_accepted": true,
+  "model_sha256": "d586104a8b81b0190df4a0fa2ec07a3c91fca98245709c0240660f0ef29ab64f",
+  "source_run": "/home/ubuntu22/uav_arm/simulation/safe-aerial-manipulator-testbed/runs/x650_control_comparison_20261118_021008_12275",
+  "source_trace_sha256": "461b09ed5248027c9b23bf4b10c528336ac0253cea189b2e66d3d970d4985104"
+}

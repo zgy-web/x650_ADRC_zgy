@@ -1,0 +1,73 @@
+{
+  "distribution_urdf_sha256": "a99e7ed8c1f54fb9480222b5c832f8e6f1f4168083073d6e10c26786210396c6",
+  "urdf_conversion": {
+    "urdf_sha256": "a99e7ed8c1f54fb9480222b5c832f8e6f1f4168083073d6e10c26786210396c6",
+    "sdf_sha256": "296673807d9418ce221cdac298035f5e735ea5238a89cebb673763fedd8c6b54",
+    "plugin_sha256": "a050d70782f6d6e8001db59dfc6532f996f6386e21481127f4879e905913004c",
+    "mass_kg": 3.0050809999999992,
+    "links": 10,
+    "joints": 9,
+    "native_validation": "Valid.\n"
+  },
+  "bench": {
+    "ok": true,
+    "samples": 999,
+    "duration_s": 9.995,
+    "max_closure_m": 1.382114786e-06,
+    "max_axis_rad": 4.69090826473e-07,
+    "joint_motion_rad": [
+      0.30305354392686806,
+      0.250439673662
+    ],
+    "settled_max_error_rad": [
+      0.00399084482342,
+      0.000434069952462
+    ]
+  },
+  "flight": {
+    "run_id": "x650_portable_flight_20261117_215930_26139",
+    "success": true,
+    "landing_confirmed": true,
+    "metrics": {
+      "frame": "Gazebo world; target = pre-takeoff base pose + requested world-Z height",
+      "sample_count": 420,
+      "duration_s": 20.959999999999997,
+      "position_rmse_m": 0.043377641363054775,
+      "position_max_m": 0.07291449286538061,
+      "axis_rmse_m": {
+        "x": 0.02408384913129554,
+        "y": 0.030435179761011923,
+        "z": 0.019372346635286218
+      },
+      "roll_rms_deg": 0.9507303551926372,
+      "pitch_rms_deg": 0.20945212532911908,
+      "yaw_error_rms_deg": 0.8682184995644224,
+      "tilt_max_deg": 2.4261561402623975,
+      "criteria": {
+        "position_rmse_m": true,
+        "position_max_m": true,
+        "tilt_max_deg": true
+      },
+      "accepted": true
+    },
+    "arm_tracking_error_rad": [
+      0.0024626791477203314,
+      0.00024899989366530817
+    ],
+    "arm_motion_rad": [
+      0.15160631231265143,
+      0.10017837754276115
+    ],
+    "max_closure_m": 3.2611458821605345e-07,
+    "max_control_dt_s": 0.020000000000003126,
+    "parameters_unchanged": true
+  },
+  "relocation": {
+    "tested": true,
+    "different_directory_with_spaces": true,
+    "rebuilt_from_source": true,
+    "converted_sdf_identical": true,
+    "bench_passed": true,
+    "max_closure_m": 1.382114786e-06
+  }
+}

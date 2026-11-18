@@ -1,0 +1,124 @@
+X650 + 用户闭环连杆机械臂：PX4/Gazebo/ROS 2 算法开发入口
+========================================================
+
+当前可用入口（仓库根目录执行）
+
+  ./scripts/amsim run x650_cad_arm_flight
+
+无界面运行：
+
+  ./scripts/amsim run x650_cad_arm_flight --headless
+
+运行过程：校验模型和资源哈希 -> 启动 Gazebo/PX4/DDS/ROS bridge ->
+正常解锁前检查及参数读回 -> 上升1.5 m -> 稳定悬停 -> Offboard速度控制21秒，
+同时驱动两个机械臂关节 -> 正常降落并自动上锁 -> 归档并停止本次运行时。
+不要同时运行固定基座 GUI 或其他 PX4/Gazebo 会话。amsim 会检查冲突。
+场景已经在本机完成完整无界面验证；GUI由平台原有可视化入口启动。
+
+当前选择
+  scenarios/x650_cad_arm_flight.yaml
+  generated/imported_models/amsim_urdf_x650_cad_arm_v2_flight/
+  PX4 airframe: 4984_gz_x650_cad_arm_v2
+  世界: x650_cad_arm_v2，物理步长0.0005 s，Bullet Featherstone。
+  其他模型的物理引擎和场景配置未修改。
+
+模型如何导入
+  源: /home/ubuntu22/uav_arm/urdf/uav_arm_urdf/urdf/uav_arm_urdf.urdf
+  原始URDF及九个STL不修改；生成包保存源副本及哈希。
+  保留机腹安装关系、质量/惯量及网格。总质量3.005081 kg。
+  O-B/C-D为230 mm，O-C/B-D为50 mm；校准截断角度使轴线平行。
+  由两个主动关节、三个被动铰链及B点物理闭合约束替换mimic显示链。
+  移除基座到world的固定关节，使机体可以自由飞行。
+  四个旋翼恢复转动，统一轴线并保持原网格/惯量朝向；添加四路动力插件。
+  根据新总成初始重心重新计算PX4电机分配位置，按几何将M1~M4对应四电机。
+  复用项目MN4014 KV330、15x5CF、22.2V近似动力参数，非新增实机标定。
+  添加IMU、气压计、磁力计、GPS、真值里程计、关节状态和ROS命令桥。
+  使用简化起落架/机体/臂杆碰撞盒；未验证完整CAD自碰撞或接触作业。
+
+Bullet IMU 兼容处理
+  第一次飞行中物理加速明显，但原始加速度计没有反映平移加速度，造成高度估计滞后。
+  ImuAcceleration.cc在Physics更新后，根据物理世界速度差计算线加速度，
+  转到IMU局部坐标，并交给Gazebo原有IMU继续处理重力、噪声和发布频率。
+  当前仅支持本模型IMU位于base_link原点，不是给PX4注入位置真值。
+  修正只挂载于新总成，原仿真环境的传感器插件和库文件不修改。
+  API语义参考：
+  https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/systems/imu/Imu.cc
+  此修正需要在未来切换引擎/升级引擎时重新评估，不能盲目用于其他配置。
+
+从哪里开发算法
+  algorithm.py: 独立数学控制器；现为普通位置P基线，尚未实现ADRC。
+  run_flight.py: 状态读取、Offboard接管、调用算法、下发、监督、起降和记录。
+  Closure.cc: 闭环约束、力矩伺服、速度命令超时保持及闭合误差监测。
+
+算法接口：
+  command = controller.step(t, dt, state, target)
+
+  t: 本次Offboard任务开始后的仿真秒；预发送阶段为-1。
+  dt: 实际控制间隔，当前约0.02 s；不能用真实墙钟替代仿真时间。
+  state.position / state.velocity: PX4估计值转换到ENU，m与m/s。
+  state.q / state.dq: 两个主动关节实测角度/角速度，rad与rad/s。
+  state.stamp_s: 当前仿真时间，注意不等同于每个异步传感器的采样时刻。
+  target.position: ENU坐标系位置目标。
+  target.q: [upper_arm_joint, fore_crank_joint]目标角度。
+  command.velocity: 三轴ENU速度参考，m/s。
+  command.joint_velocity: 两关节速度参考，rad/s。
+
+  飞机侧转为NED，通过MAVLink发送速度参考和航向；位置与加速度字段屏蔽，
+  保留PX4速度、姿态、角速度控制。这里不直接输出推力或电机转速。
+  机械臂侧由ROS话题进入Gazebo，速度积分为目标位置，再经力矩PD驱动真实关节。
+  力矩限制±10 N·m，速度限制0.3 rad/s；场景进一步限制到0.15 rad/s。
+  速度命令超过0.25仿真秒未更新时停止积分、保持当前位置目标。
+  此伺服未辨识为真实TS20动态；不能声称已模拟准确的电机电气特性。
+
+开发ADRC时，可以替换PositionBaseline类内部实现，保留step接口。
+观测器应围绕“速度参考 -> PX4内环 -> 飞机位置”这一通道设计。
+不要直接套用推力输入模型的输入增益，也不要直接套用固定x500串联臂的旧控制包。
+若研究推力/力矩级ADRC，需要另做接口及验证。
+更改Python算法不需重新编译Gazebo插件，每次启动会重新加载。
+
+主要话题
+  /arm/joint_states                        ROS sensor_msgs/JointState
+  /arm/upper_arm_joint/cmd_vel             ROS std_msgs/Float64, rad/s
+  /arm/fore_crank_joint/cmd_vel            ROS std_msgs/Float64, rad/s
+  /fmu/out/vehicle_local_position_v1       PX4估计位置/速度（NED）
+  /ground_truth/odometry                  Gazebo真值，仅用作独立评估/监督
+  /x650_cad_arm/closure_metrics           场景额外桥接，x=闭合误差m，y=轴夹角rad，z=仿真时间
+  不要在场景运行时由其他节点争用这些命令接口。
+
+默认任务
+  Offboard前保持零位；任务0~5秒保持，5~13秒目标角[0.15,0.10] rad，
+  13~21秒返回零位。飞机始终保持起飞前位置上方1.5 m的目标。
+  目标值和时间分段在run_flight.py的target_q处修改。
+  已验证的是该小范围运动；不能据此宣称全机械臂工作空间或奇异位形已通过。
+
+结果位置
+  runs/x650_cad_arm_flight_<时间与进程号>/
+  result.json: 起降结果、飞机误差、关节误差、闭合误差及参数读回。
+  flight_samples.csv: 真值轨迹及PX4估计，覆盖起飞、任务、降落。
+  control_trace.csv: 算法周期、命令、关节运动及采样到的闭合误差。
+  bag/: 平台ROS消息、关节命令及真值；额外闭合指标保存在control_trace.csv。
+  px4.ulg: PX4原始日志。
+  model_snapshot.sdf/model_manifest.json: 本次模型与参数来源。
+  experiment.py以及后续运行的algorithm.py等副本: 场景及算法来源。
+
+已通过的完整飞行证据
+  runs/x650_cad_arm_flight_20261117_205410_18459/result.json
+  正常起飞、约21秒测量、正常降落和自动上锁；运行时已关闭。
+  位置RMSE=0.059744 m，最大位置误差=0.122236 m，最大倾角=2.05366度。
+  主动关节运动幅度=0.151450 / 0.100166 rad。
+  稳定段最大关节误差=0.002213 / 0.000244 rad。
+  最大采样闭合误差=2.96221e-7 m，最大实际控制间隔=0.020 s。
+  起飞前后101项PX4参数均读回，前后相同。
+  imu_acceleration_audit.json以低倾角起飞段的真值位移二阶差分交叉检查IMU：
+  近似RMSE=0.1875 m/s²；这是仿真反馈一致性检查，不是实机校准。
+  首次v1失败记录保存在205018_16454目录，未覆盖。
+
+重建说明
+  日常运行使用上述amsim命令即可，无需重新导入。
+  修改C++后先执行：
+    cmake -S simulations/x650_cad_arm_v1 -B generated/x650_cad_arm_build -DCMAKE_BUILD_TYPE=Release
+    cmake --build generated/x650_cad_arm_build -j2
+  然后用尚未占用的新版本号、airframe ID运行prepare_flight.py，保留旧版本证据：
+    ../amsim-venv/bin/python3 simulations/x650_cad_arm_v1/prepare_flight.py --revision v3 --airframe-id 4983
+  该命令会把场景切到新版本。新版本需要重新验证，不能沿用v2的通过结论。
+  准备脚本默认源路径为本机已导入URDF，源文件必须保持可用。

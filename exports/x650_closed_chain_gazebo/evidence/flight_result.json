@@ -1,0 +1,121 @@
+{
+  "success": true,
+  "model": "amsim_urdf_x650_portable_v1_flight",
+  "model_sha256": "d586104a8b81b0190df4a0fa2ec07a3c91fca98245709c0240660f0ef29ab64f",
+  "control": "External position P -> PX4 velocity/attitude/rate loops; force-servo closed-chain arm",
+  "acceptance": {
+    "position_rmse_m": 0.25,
+    "position_max_m": 0.5,
+    "tilt_max_deg": 15.0
+  },
+  "landing_confirmed": true,
+  "metrics": {
+    "frame": "Gazebo world; target = pre-takeoff base pose + requested world-Z height",
+    "sample_count": 420,
+    "duration_s": 20.959999999999997,
+    "position_rmse_m": 0.043377641363054775,
+    "position_max_m": 0.07291449286538061,
+    "axis_rmse_m": {
+      "x": 0.02408384913129554,
+      "y": 0.030435179761011923,
+      "z": 0.019372346635286218
+    },
+    "roll_rms_deg": 0.9507303551926372,
+    "pitch_rms_deg": 0.20945212532911908,
+    "yaw_error_rms_deg": 0.8682184995644224,
+    "tilt_max_deg": 2.4261561402623975,
+    "criteria": {
+      "position_rmse_m": true,
+      "position_max_m": true,
+      "tilt_max_deg": true
+    },
+    "accepted": true
+  },
+  "arm_tracking_error_rad": [
+    0.0024626791477203314,
+    0.00024899989366530817
+  ],
+  "arm_motion_rad": [
+    0.15160631231265143,
+    0.10017837754276115
+  ],
+  "max_closure_m": 3.2611458821605345e-07,
+  "max_control_dt_s": 0.020000000000003126,
+  "telemetry": {
+    "schema_version": 1,
+    "file": "flight_samples.csv",
+    "model_sha256": "d586104a8b81b0190df4a0fa2ec07a3c91fca98245709c0240660f0ef29ab64f",
+    "sha256": "04af1c00e75cc6ce365eba45eb8549fec0c09926ad077215f0f32f2ff460c16e",
+    "source_topic": "/ground_truth/odometry",
+    "requested_rate_hz": 20,
+    "time": "Original Odometry header stamp in simulation seconds; no interpolation",
+    "pose": "Gazebo world pose of the odometry child frame (base_link); original frame IDs are preserved",
+    "quaternion": "world_qx/y/z/w: body-to-world active rotation, ROS xyzw ordering, no frame conversion",
+    "target": "Fixed hover point: initial base_link world position plus takeoff_height_m along world +Z; not a dynamic takeoff/landing reference",
+    "px4_status": "Latest received PX4 state at each truth callback; separate PX4 microsecond timestamps identify asynchronous telemetry",
+    "sample_count": 823,
+    "observed_interval_s": {
+      "min": 0.03999999999999915,
+      "max": 0.060000000000002274,
+      "mean": 0.05
+    },
+    "phases": {
+      "ground_ready": 1,
+      "takeoff": 267,
+      "measure": 420,
+      "landing": 126,
+      "landed": 9
+    },
+    "capture_error": null
+  },
+  "parameters": {
+    "before": {
+      "file": "px4_parameters_before.json",
+      "sha256": "016872d9a95a786e19309f459e2fe6499d752ad6a07f6354155f4bb36e9f71c5",
+      "airframe_sha256": "f9f8eb49788e6a577f74a370b4cb083b33f2e96e4f087c36eb12e2934033bd2c",
+      "parameter_count": 101,
+      "contract_matches": true,
+      "control_readback_complete": true
+    },
+    "after": {
+      "file": "px4_parameters_after.json",
+      "sha256": "fd3c147bdadb80fc1abfadde1cc38c2f88102f8a3deb7a3d6a404117410b2007",
+      "airframe_sha256": "f9f8eb49788e6a577f74a370b4cb083b33f2e96e4f087c36eb12e2934033bd2c",
+      "parameter_count": 101,
+      "contract_matches": true,
+      "control_readback_complete": true,
+      "parameters_unchanged": true,
+      "changed_names": []
+    }
+  },
+  "events": [
+    {
+      "event": "takeoff_begin",
+      "sim_time_s": 13.778
+    },
+    {
+      "event": "stable_hover",
+      "sim_time_s": 23.878
+    },
+    {
+      "event": "offboard_arm_trial_begin",
+      "sim_time_s": 27.138
+    },
+    {
+      "event": "landing_begin",
+      "sim_time_s": 48.158
+    },
+    {
+      "event": "landed_and_disarmed",
+      "sim_time_s": 54.438
+    }
+  ],
+  "experiment": "x650_portable_flight",
+  "scenario_returncode": 0,
+  "ulog_source": "/home/ubuntu22/uav_arm/simulation/PX4-Autopilot/build/px4_sitl_default/rootfs/log/2026-11-17/13_59_25.ulg",
+  "ulog_copied": true,
+  "ulog_archive_method": "copy_after_px4_shutdown",
+  "ulog_sha256": "247e7eb3650b125fc2473009807d276209657c4c1b6ba9bbaeddb3121d0502f1",
+  "ulog_size_bytes": 15401652,
+  "ulog_finalized_wall_time": 1794924018.3031263
+}

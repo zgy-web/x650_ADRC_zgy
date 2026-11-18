@@ -1,0 +1,430 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="amsim_urdf_x650_portable_v1_flight">
+  <!--Gazebo Harmonic dynamic model. Requires bundled closure/IMU plugins and meshes. See README_CN.txt.-->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.00074357 9.8075e-05 -0.018768" rpy="0 -0 0" />
+      <mass value="2.75" />
+      <inertia ixx="0.0016399" ixy="-1.4193e-06" ixz="-3.2998e-08" iyy="0.002814" iyz="1.7423e-08" izz="0.0034264" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/base_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="base_link_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="skid_-1">
+      <origin xyz="0 -0.15 -0.33550595" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.32 0.025 0.02" />
+      </geometry>
+    </collision>
+    <collision name="skid_1">
+      <origin xyz="0 0.15 -0.33550595" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.32 0.025 0.02" />
+      </geometry>
+    </collision>
+    <collision name="body">
+      <origin xyz="0 0 -0.015" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.16 0.16 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <sensor name="air_pressure_sensor" type="air_pressure">
+      <gz_frame_id>base_link</gz_frame_id>
+      <always_on>1</always_on>
+      <update_rate>50</update_rate>
+      <air_pressure>
+        <pressure>
+          <noise type="gaussian">
+            <mean>0</mean>
+            <stddev>3</stddev>
+          </noise>
+        </pressure>
+      </air_pressure>
+    </sensor>
+    <sensor name="magnetometer_sensor" type="magnetometer">
+      <gz_frame_id>base_link</gz_frame_id>
+      <always_on>1</always_on>
+      <update_rate>100</update_rate>
+      <magnetometer>
+        <x>
+          <noise type="gaussian">
+            <stddev>0.0001</stddev>
+          </noise>
+        </x>
+        <y>
+          <noise type="gaussian">
+            <stddev>0.0001</stddev>
+          </noise>
+        </y>
+        <z>
+          <noise type="gaussian">
+            <stddev>0.0001</stddev>
+          </noise>
+        </z>
+      </magnetometer>
+    </sensor>
+    <sensor name="imu_sensor" type="imu">
+      <gz_frame_id>base_link</gz_frame_id>
+      <always_on>1</always_on>
+      <update_rate>250</update_rate>
+      <imu>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0008726646</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0008726646</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.0008726646</stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.00637</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.00637</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>0.00686</stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
+    <sensor name="navsat_sensor" type="navsat">
+      <gz_frame_id>base_link</gz_frame_id>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+    </sensor>
+  </gazebo>
+  <link name="M1_link">
+    <inertial>
+      <origin xyz="1.3878e-16 0 0.00049999" rpy="0 -0 0" />
+      <mass value="0.021" />
+      <inertia ixx="8.8595e-07" ixy="-2.9086e-06" ixz="1.3735e-22" iyy="0.00010659" iyz="-3.9282e-22" izz="0.00010747" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/M1_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="M1_link_0">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="M2_link">
+    <inertial>
+      <origin xyz="-8.8818e-16 -1.74570575460818e-18 0.00049999" rpy="1.5707963267949 -0 0" />
+      <mass value="0.021" />
+      <inertia ixx="8.8595e-07" ixy="5.049e-22" ixz="2.9086e-06" iyy="0.00010747" iyz="1.5172e-22" izz="0.00010659" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="1.5707963267949 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/M2_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="M2_link_0">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="M3_link">
+    <inertial>
+      <origin xyz="8.8818e-16 6.6613e-16 0.00049999" rpy="0 -0 0" />
+      <mass value="0.021" />
+      <inertia ixx="8.8595e-07" ixy="-2.9086e-06" ixz="2.6394e-23" iyy="0.00010659" iyz="3.8187e-22" izz="0.00010747" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/M3_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="M3_link_0">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="M4_link">
+    <inertial>
+      <origin xyz="2.4425e-15 4.4409e-16 0.00049999" rpy="0 -0 0" />
+      <mass value="0.021" />
+      <inertia ixx="8.8595e-07" ixy="-2.9086e-06" ixz="9.4793e-22" iyy="0.00010659" iyz="2.0836e-22" izz="0.00010747" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/M4_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="M4_link_0">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="upper_arm_Link">
+    <inertial>
+      <origin xyz="0.12315 8.67159999999856e-05 -0.0073443" rpy="-3.53993727976508e-31 8.13401285973998e-32 -3.83897293890886e-18" />
+      <mass value="0.07465955" />
+      <inertia ixx="1.05773e-05" ixy="-1.601225e-08" ixz="1.463855e-05" iyy="0.0005110144999999999" iyz="1.37959e-07" izz="0.0005151185" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="-1.38777878078145e-17 -1.38777878078145e-17 0" rpy="-3.53993727976508e-31 8.13401285973998e-32 -3.83897293890886e-18" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/upper_arm_Link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="upper_arm_Link_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="arm_box">
+      <origin xyz="0.114 -1.43154307228501e-17 -0.008" rpy="-3.53993727976508e-31 8.13401285973998e-32 -3.83897293890886e-18" />
+      <geometry>
+        <box size="0.266 0.038 0.027" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="fore_crank_Link">
+    <inertial>
+      <origin xyz="0.014321 -6.4497e-15 0.0027147" rpy="0 -0 -4.28021310024616e-46" />
+      <mass value="0.037" />
+      <inertia ixx="1.5317e-06" ixy="-9.0748e-23" ixz="2.3915e-08" iyy="7.1335e-06" iyz="9.0714e-23" izz="8.4855e-06" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="-6.16297582203915e-33 0 0" rpy="0 -0 -4.28021310024616e-46" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/fore_crank_Link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="fore_crank_Link_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="fore_long_link">
+    <inertial>
+      <origin xyz="-0.089189 -0.069682 0.0035934" rpy="0 -0 0" />
+      <mass value="0.014559" />
+      <inertia ixx="2.6879e-05" ixy="-3.4265e-05" ixz="1.5241e-20" iyy="4.3965e-05" iyz="1.2098e-20" izz="7.0806e-05" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/fore_long_link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="fore_long_link_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="fore_arm_Link">
+    <inertial>
+      <origin xyz="0.12397 8.5424e-05 0.0015116" rpy="0 -0 0" />
+      <mass value="0.040933" />
+      <inertia ixx="3.0578e-06" ixy="-4.8419e-07" ixz="-7.5423e-07" iyy="0.00035161" iyz="7.7673e-10" izz="0.000354" />
+    </inertial>
+    <visual name="visual_0">
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="package://x650_closed_chain_gazebo/meshes/fore_arm_Link.STL" scale="1 1 1" />
+      </geometry>
+      <material name="fore_arm_Link_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="forearm_box">
+      <origin xyz="0.141 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.298 0.03 0.019" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="B_closure_proxy">
+    <inertial>
+      <origin xyz="-0.10685 8.67159999997775e-05 0.00360570000000059" rpy="-3.53993727976508e-31 8.13401285973998e-32 -3.83897293890886e-18" />
+      <mass value="0.00392945" />
+      <inertia ixx="5.567e-07" ixy="-8.427500000000002e-10" ixz="7.704500000000001e-07" iyy="2.68955e-05" iyz="7.261000000000001e-09" izz="2.7111500000000006e-05" />
+    </inertial>
+  </link>
+  <joint name="M1_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="M1_link" />
+    <origin xyz="0.229906637611549 -0.229906637611549 0.0325" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="1000" velocity="1000" />
+  </joint>
+  <joint name="M2_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="M2_link" />
+    <origin xyz="-0.229906637611548 0.229906637611548 0.0325" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="1000" velocity="1000" />
+  </joint>
+  <joint name="M3_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="M3_link" />
+    <origin xyz="0.229906637611549 0.229906637611548 0.0325" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="1000" velocity="1000" />
+  </joint>
+  <joint name="M4_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="M4_link" />
+    <origin xyz="-0.229906637611548 -0.229906637611549 0.0325" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="1000" velocity="1000" />
+  </joint>
+  <joint name="upper_arm_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="upper_arm_Link" />
+    <origin xyz="0 -0.00925 -0.155" rpy="-1.5707963267949 0.66323 -3.14159265358979" />
+    <axis xyz="2.54612327912393e-15 -5.48075088704857e-15 1" />
+    <limit effort="10" velocity="1" lower="0" upper="1.95" />
+    <dynamics damping="0.002" friction="0" />
+  </joint>
+  <joint name="fore_crank_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="fore_crank_Link" />
+    <origin xyz="0 0.01025 -0.155" rpy="-1.5707963267949 -0 3.14159265358979" />
+    <axis xyz="3.23108914886517e-15 3.49148133884313e-15 -1" />
+    <limit effort="10" velocity="1" lower="0" upper="0.78" />
+    <dynamics damping="0.002" friction="0" />
+  </joint>
+  <joint name="C_passive" type="revolute">
+    <parent link="fore_crank_Link" />
+    <child link="fore_long_link" />
+    <origin xyz="0.05 -2.77555756156289e-17 0.00700000000000016" rpy="0 3.23108914886517e-15 3.14159265358979" />
+    <axis xyz="0 -3.49148133884313e-15 -1" />
+    <limit effort="1000" velocity="1000" lower="-3.141592653589793" upper="3.141592653589793" />
+    <dynamics damping="0.002" friction="0" />
+  </joint>
+  <joint name="D_passive" type="revolute">
+    <parent link="fore_long_link" />
+    <child link="fore_arm_Link" />
+    <origin xyz="-0.181241781708246 -0.141603024555341 0.00155000000000049" rpy="0 -0 0" />
+    <axis xyz="0 -3.49148133884313e-15 -1" />
+    <limit effort="1000" velocity="1000" lower="-3.141592653589793" upper="3.141592653589793" />
+    <dynamics damping="0.002" friction="0" />
+  </joint>
+  <joint name="B_passive" type="revolute">
+    <parent link="fore_arm_Link" />
+    <child link="B_closure_proxy" />
+    <origin xyz="0.05 0 0" rpy="-2.72943654507891e-15 -4.69570726937923e-15 -2.47836265358979" />
+    <axis xyz="-2.54612327912393e-15 5.48075088704857e-15 -1" />
+    <limit effort="1000" velocity="1000" lower="-3.141592653589793" upper="3.141592653589793" />
+    <dynamics damping="0.002" friction="0" />
+  </joint>
+  <gazebo>
+    <self_collide>false</self_collide>
+    <plugin filename="libx650_cad_arm.so" name="cad_arm::Closure">
+      <enabled>true</enabled>
+      <exercise>false</exercise>
+      <anchor_big>0.23 -4.16333634234434e-17 -0.01095</anchor_big>
+      <anchor_small>0.05 0 5.28992658003769e-20</anchor_small>
+      <velocity_mode>true</velocity_mode>
+    </plugin>
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+      <update_rate>50</update_rate>
+      <joint_name>upper_arm_joint</joint_name>
+      <joint_name>fore_crank_joint</joint_name>
+    </plugin>
+    <plugin filename="libx650_cad_arm.so" name="cad_arm::ImuAcceleration" />
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>M1_joint</jointName>
+      <linkName>M1_link</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorConstant>4.828453605732144e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <maxRotVelocity>628.3185307179587</maxRotVelocity>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <rotorDragCoefficient>0.0001</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10.0</rotorVelocitySlowdownSim>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>0</motorNumber>
+      <motorType>velocity</motorType>
+    </plugin>
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>M2_joint</jointName>
+      <linkName>M2_link</linkName>
+      <turningDirection>ccw</turningDirection>
+      <motorConstant>4.828453605732144e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <maxRotVelocity>628.3185307179587</maxRotVelocity>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <rotorDragCoefficient>0.0001</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10.0</rotorVelocitySlowdownSim>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>1</motorNumber>
+      <motorType>velocity</motorType>
+    </plugin>
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>M3_joint</jointName>
+      <linkName>M3_link</linkName>
+      <turningDirection>cw</turningDirection>
+      <motorConstant>4.828453605732144e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <maxRotVelocity>628.3185307179587</maxRotVelocity>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <rotorDragCoefficient>0.0001</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10.0</rotorVelocitySlowdownSim>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <motorType>velocity</motorType>
+    </plugin>
+    <plugin filename="gz-sim-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>M4_joint</jointName>
+      <linkName>M4_link</linkName>
+      <turningDirection>cw</turningDirection>
+      <motorConstant>4.828453605732144e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <maxRotVelocity>628.3185307179587</maxRotVelocity>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <rotorDragCoefficient>0.0001</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10.0</rotorVelocitySlowdownSim>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <motorType>velocity</motorType>
+    </plugin>
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <dimensions>3</dimensions>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <odom_topic>/ground_truth/odometry</odom_topic>
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>amsim_urdf_x650_portable_v1_flight/model_frame</robot_base_frame>
+      <gaussian_noise>0</gaussian_noise>
+    </plugin>
+  </gazebo>
+</robot>

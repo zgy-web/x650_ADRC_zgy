@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Run the supplied closed-chain arm with the project's Harmonic environment.
+set -eo pipefail
+PROJECT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [[ -f "$PROJECT/.amsim/local.env" ]]; then
+  set -a
+  source "$PROJECT/.amsim/local.env"
+  set +a
+fi
+ARM_WORKSPACE="${AMSIM_PARALLEL_ARM_WS:-$PROJECT/../parallel_arm_humble_harmonic/parallel_arm_ws}"
+source /opt/ros/humble/setup.bash
+action="${1:-help}"
+[[ $# -eq 0 ]] || shift
+if [[ "$action" == build ]]; then
+  cd "$ARM_WORKSPACE"
+  export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-2}"
+  exec bash scripts/build.sh "$@"
+fi
+if [[ "$action" == help || "$action" == --help || "$action" == -h ]]; then
+  cat <<'EOF'
+Usage: ./scripts/parallel-arm build
+       ./scripts/parallel-arm start [gui:=false] [gravity:=0]
+       ./scripts/parallel-arm check [--output DIRECTORY]
+       ./scripts/parallel-arm command --big DEG --small DEG [--duration SEC] [--hold SEC]
+Fixed-base arm only. Default ROS domain 37 and Gazebo partition amsim_parallel_arm.
+Use Ctrl+C in the start terminal to stop Gazebo and its bridge.
+EOF
+  exit 0
+fi
+if [[ ! -f "$ARM_WORKSPACE/install/setup.bash" ]]; then
+  echo "Build the arm first: ./scripts/parallel-arm build" >&2
+  exit 2
+fi
+source "$ARM_WORKSPACE/install/setup.bash"
+# Keep the Harmonic bridge ahead of a host installation built for Fortress.
+if [[ -n "${AMSIM_HARMONIC_PREFIX:-}" ]]; then
+  export AMENT_PREFIX_PATH="$AMSIM_HARMONIC_PREFIX:${AMENT_PREFIX_PATH:-}"
+  export LD_LIBRARY_PATH="$AMSIM_HARMONIC_PREFIX/lib:${LD_LIBRARY_PATH:-}"
+  export PYTHONPATH="$AMSIM_HARMONIC_PREFIX/local/lib/python3.10/dist-packages:${PYTHONPATH:-}"
+fi
+export ROS_DOMAIN_ID="${PARALLEL_ARM_ROS_DOMAIN_ID:-37}"
+export GZ_PARTITION="${PARALLEL_ARM_GZ_PARTITION:-amsim_parallel_arm}"
+cd "$PROJECT"
+case "$action" in
+  start) exec ros2 launch parallel_arm_sim sim.launch.py "$@" ;;
+  check)
+    if [[ $# -eq 0 ]]; then
+      set -- --output "$PROJECT/runs/parallel_arm_check_$(date +%Y%m%d_%H%M%S)"
+    fi
+    exec ros2 run parallel_arm_sim verify_sim.py "$@"
+    ;;
+  command) exec ros2 run parallel_arm_sim arm_command.py "$@" ;;
+  *) echo "Unknown action: $action; use --help" >&2; exit 2 ;;
+esac

@@ -1,0 +1,13 @@
+schema_version: 1
+name: x650_portable_flight
+module: simulations/x650_portable_v1/run_flight.py
+backend: px4_sitl
+model: amsim_urdf_x650_portable_v1_flight
+vehicle:
+  takeoff_height_m: 1.5
+record:
+  rosbag: true
+  px4_ulog: true
+  ground_truth: true
+visualization:
+  default: gui
